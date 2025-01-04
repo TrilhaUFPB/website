@@ -12,6 +12,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "jsxImportSource": "react",
+    "types": ["react", "node"],
     "incremental": true,
     "plugins": [
       {
