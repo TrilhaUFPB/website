@@ -1,9 +1,15 @@
 import Image from "next/image";
 import { Carousel } from "@/components/ui/apple-cards-carousel";
+import { FaQuoteLeft } from "react-icons/fa";
 
-import { FaQuoteLeft } from "react-icons/fa"; 
+interface Testimonial {
+  name: string;
+  role: string;
+  photo: string;
+  text: string;
+}
 
-function Card({ card, index }: { card: any; index: number }) {
+function Card({ card, index }: { card: Testimonial; index: number }) {
   return (
     <div
       key={index}
@@ -26,7 +32,9 @@ function Card({ card, index }: { card: any; index: number }) {
         <FaQuoteLeft className="text-gray-400 text-1xl" />
 
         {/* Testimonial Text */}
-        <p className="text-gray-700 text-sm leading-relaxed">"{card.text}"</p>
+        <p className="text-gray-700 text-sm leading-relaxed">
+          &quot;{card.text}&quot;
+        </p>
 
         {/* Name */}
         <h3 className="text-lg font-bold text-gray-800">{card.name}</h3>
@@ -39,7 +47,7 @@ function Card({ card, index }: { card: any; index: number }) {
 }
 
 export default function Depoimentos() {
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
       name: "Maria Silva",
       role: "Estudante de Ciências da Computação",
@@ -70,7 +78,7 @@ export default function Depoimentos() {
       photo: "https://via.placeholder.com/150?text=Beatriz", // Mock image for Beatriz
       text: "A abordagem prática dos cursos me ajudou a aplicar o conhecimento diretamente no meu trabalho.",
     },
-  ];  
+  ];
 
   const testimonialCards = testimonials.map((testimonial, index) => (
     <Card key={index} card={testimonial} index={index} />
