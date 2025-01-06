@@ -64,12 +64,13 @@ export default function Depoimentos() {
 
 
 function Card({ card, index }: { card: Testimonial; index: number }) {
-  const color = index % 2 === 0 ? "AzulEletrico" : "VerdeMenta";
+  const borderClass = index % 2 === 0 ? "border-AzulEletrico" : "border-VerdeMenta";
+  const colorClass = index % 2 === 0 ? "text-AzulEletrico" : "text-VerdeMenta";
   return (
     <div
       key={index}
       className={`border p-6 rounded-2xl flex flex-col md:flex-row items-center w-full md:w-[500px] mx-auto h-auto md:h-[400px] ${
-        color === "AzulEletrico" ? "border-AzulEletrico" : "border-VerdeMenta"
+        borderClass
       }`}
     >
       {/* Left: Image */}
@@ -86,7 +87,7 @@ function Card({ card, index }: { card: Testimonial; index: number }) {
       {/* Right: Content */}
       <div className="w-full md:w-1/2 flex flex-col items-start justify-center pl-0 md:pl-6 mt-4 md:mt-0">
         {/* Icon */}
-        <FaQuoteLeft className={`text-1xl text-${color}`}/>
+        <FaQuoteLeft className={`text-1xl ${colorClass}`}/>
 
         {/* Testimonial Text */}
         <p className="text-gray-700 text-2sm leading-relaxed font-spaceGrotesk mt-4">

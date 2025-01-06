@@ -94,7 +94,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         <div className="flex justify-end gap-2 mr-10">
           <button
             className="relative z-40 h-10 w-10 rounded-full bg-Branco flex items-center justify-center disabled:opacity-50
-            border border-AzulMeiaNoite border-2 hover:border-AzulEletrico text-AzulMeiaNoite hover:text-AzulEletrico 
+            border border-AzulMeiaNoite border-2 hover:border-AzulCeu text-AzulMeiaNoite hover:text-AzulCeu 
             disabled:border-AzulMeiaNoite disabled:text-AzulMeiaNoite transition-colors duration-300"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
@@ -103,7 +103,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           </button>
           <button
             className="relative z-40 h-10 w-10 rounded-full bg-Branco flex items-center justify-center disabled:opacity-50
-            border border-AzulMeiaNoite border-2 hover:border-AzulEletrico text-AzulMeiaNoite hover:text-AzulEletrico 
+            border border-AzulMeiaNoite border-2 hover:border-AzulCeu text-AzulMeiaNoite hover:text-AzulCeu 
             disabled:border-AzulMeiaNoite disabled:text-AzulMeiaNoite transition-colors duration-300"
             onClick={scrollRight}
             disabled={!canScrollRight}

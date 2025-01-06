@@ -16,8 +16,8 @@ export default function Navbar() {
   return (
     <nav className="bg-gradient-to-b from-AzulCeu/10 to-AzulCeu/0 font-poppins">
       <div className="container mx-auto px-4 md:px-28 py-5 flex justify-between items-center">
-        <div className="text-xl font-bold text-gray-800">trilha</div>
-        <div className="hidden md:flex space-x-12">
+        <div className="text-xl font-bold text-AzulMeiaNoite select-none">trilha</div>
+        <div className="hidden md:flex space-x-12 text-AzulMeiaNoite">
           <NavLink href="#sobre">Sobre</NavLink>
           <NavLink href="#depoimentos">Depoimentos</NavLink>
           <NavLink href="#turmas">Turmas</NavLink>
