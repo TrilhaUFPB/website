@@ -9,7 +9,9 @@ const nextConfig: NextConfig = {
         hostname: "via.placeholder.com",
       },
     ],
+    unoptimized: true 
   },
+  output: 'export',
 };
 
 export default nextConfig;
