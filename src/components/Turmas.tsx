@@ -41,10 +41,22 @@ export default function Turmas() {
         ))}
       </div>
 
-      <h2 className="text-1xl font-semibold text-center text-AzulCeu fnt-poppins mb-2 z-10">Turmas</h2>
-      <h1 className="text-3xl font-semibold text-center text-Branco font-poppins mb-14 z-10">
-        Conheça nossos tutores e alunos de turmas anteriores
-      </h1>
+      <div className="px-6">
+        <h2 className="text-1xl font-semibold text-center text-AzulCeu fnt-poppins mb-2 z-10">Turmas</h2>
+        <h1 className="text-3xl font-semibold text-center text-Branco font-poppins mb-6 z-10">
+          Conheça nossos tutores e alunos de turmas anteriores
+        </h1>
+
+        <p className="text-2sm font-regular text-center text-Branco font-spaceGrotesk mb-8 z-10">
+          Nós temos grande orgulho de nossas turmas anteriores e de nossos alunos. 
+          Sempre apoiamos e incentivamos a conexão entre os alunos e tutores, e mantemos contato com todos até hoje.
+          Nossas mentorias não são apenas para o período de aula, mas para a vida.
+
+          Temos felicidade também em dizer que muitos de nossos alunos continuam a contribuir para a comunidade Trilha.
+          Além disso, um impacto direto de nosso programa se encontra em nossos alunos que, logo após a finalização da turma,
+          entram no mercado de trabalho e em projetos práticos, já com uma base sólida de conhecimento.
+        </p>
+      </div>
 
       <div className="container mx-auto px-6 flex flex-col items-center justify-center z-10">
         {/* Use the TurmaSection Component */}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatedTooltip } from "./ui/animated-tooltip";
+import { ChevronDown } from "lucide-react";
 
 const TurmaSection = ({
   title,
@@ -19,13 +20,13 @@ const TurmaSection = ({
   };
 
   return (
-    <div className="border-2 border-AzulMeiaNoite rounded-3xl py-4 px-6 w-full bg-Branco/5 text-Branco">
+    <div className="border-2 border-AzulMeiaNoite rounded-3xl py-4 px-6 w-full bg-Branco/5 text-Branco relative">
       {/* Accordion Header */}
       <div
-        className="flex justify-between items-center cursor-pointer p-4 bg-AzulCeu rounded-lg"
+        className="flex justify-between items-center cursor-pointer flex-row px-4 p-4 bg-AzulCeu rounded-lg z-20"
         onClick={toggleAccordion}
       >
-        <h1 className="text-2xl font-bold text-Branco font-spaceGrotesk">{title}</h1>
+        <h1 className="text-2xl font-bold text-Branco font-poppins text-center">{title}</h1>
         <button
           className="text-Branco font-bold text-lg focus:outline-none"
           onClick={(e) => {
@@ -33,20 +34,22 @@ const TurmaSection = ({
             toggleAccordion();
           }}
         >
-          {isOpen ? "Fechar" : "Abrir"}
+          <ChevronDown
+            className={`transform transition-transform duration-500 ${isOpen ? "rotate-180" : "rotate-0"}`}
+          />
         </button>
       </div>
 
       {/* Accordion Content */}
       <div
-        className={`overflow-hidden transition-all duration-500 ${
-          isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+        className={`transition-all duration-500 ${
+          isOpen ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="mt-4 px-4">
+        <div className="mt-0 px-4 py-4">
           {/* Organizers Section */}
           <div className="flex flex-col items-center mb-8">
-            <h2 className="text-1xl font-semibold text-center font-spaceGrotesk mb-4">Organização:</h2>
+            <h2 className="text-1xl font-semibold text-center font-poppins mb-4">Organização:</h2>
             <div className="flex flex-row items-center justify-center w-full">
               <AnimatedTooltip items={organizers} />
             </div>
@@ -54,8 +57,8 @@ const TurmaSection = ({
 
           {/* Students Section */}
           <div className="flex flex-col items-center">
-            <h2 className="text-1xl font-semibold text-center font-spaceGrotesk mb-6">Alunos:</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            <h2 className="text-1xl font-semibold text-center font-poppins mb-6 gap-2">Alunos:</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 px-4 md:px-4 lg:px-20">
               {students.map((student, index) => (
                 <div key={index} className="flex flex-col items-center mb-6">
                   <div className="w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 rounded-full border-0 border-AzulMeiaNoite overflow-hidden mb-2">
