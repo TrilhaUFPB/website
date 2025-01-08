@@ -98,7 +98,7 @@ export default function FAQ() {
                 <AccordionTrigger className="text-BrancoCreme text-lg font-semibold p-4 rounded-lg font-poppins text-left">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="bg-AzulMeiaNoite p-4">
+                <AccordionContent className="bg-AzulMeiaNoite">
                   <div className="text-BrancoCreme font-spaceGrotesk mb-4">
                     {faq.answer}
                   </div>
