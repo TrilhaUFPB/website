@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Carousel } from "@/components/ui/apple-cards-carousel";
 import { FaQuoteLeft } from "react-icons/fa";
+import DynamicGrid from "./DynamicGrid";
 
 interface Testimonial {
   name: string;
@@ -48,7 +49,8 @@ export default function Depoimentos() {
   ));
 
   return (
-    <section id="depoimentos" className="py-20 bg-Branco">
+    <section id="depoimentos" className="py-20 bg-Branco relative">
+      <DynamicGrid cellSize={50} className="opacity-5 z-0" />
       <div className="container mx-auto px-6">
         <h2 className="text-1xl font-bold text-center text-AzulCeu fnt-poppins mb-3">
           Depoimentos
