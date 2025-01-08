@@ -356,3 +356,11 @@ export const peopleOrganization20242: Person[] = [
     Kruta,
     Luigi
 ]
+
+export const peopleFounders: Person[] = [
+    Tiago,
+    Felipe,
+    Nicholas,
+    Guilherme,
+    Icaro,
+]
