@@ -14,31 +14,31 @@ export default function Depoimentos() {
     {
       name: "Pedro Kruta",
       role: "Desenvolvedor Web",
-      photo: "pessoas/kruta.png",
+      photo: "pessoas/2024.1/kruta.png",
       text: "Os instrutores são muito dedicados e realmente se preocupam com o progresso dos alunos. Recomendo!",
     },
     {
       name: "Maria Clara Dantas",
       role: "Estudante de Ciências da Computação",
-      photo: "pessoas/clara.png",
+      photo: "pessoas/2024.1/clara.png",
       text: "Excelente experiência de aprendizado! O curso é muito bem estruturado e os instrutores são atenciosos.",
     },
     {
       name: "Luigi Smitgchi",
       role: "Engenheiro de Software",
-      photo: "pessoas/luigi.png",
+      photo: "pessoas/2024.1/luigi.png",
       text: "Aprendi mais em poucas semanas do que em anos de estudo. Os instrutores tornam o aprendizado envolvente.",
     },
     {
       name: "Emyle Santos",
       role: "Especialista em Dados",
-      photo: "pessoas/emyle.png",
+      photo: "pessoas/2024.1/emyle.png",
       text: "Recomendo a todos que querem evoluir. Os conteúdos são práticos e aplicáveis ao mercado de trabalho.",
     },
     {
       name: "Beatriz Pessôa",
       role: "Analista de Sistemas",
-      photo: "pessoas/bea.png",
+      photo: "pessoas/2024.1/bea.png",
       text: "A abordagem prática dos cursos me ajudou a aplicar o conhecimento diretamente no meu trabalho.",
     },
   ];

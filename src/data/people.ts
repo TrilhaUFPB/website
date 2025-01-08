@@ -18,7 +18,7 @@ interface Person {
     link: "https://www.linkedin.com/in/tiagotrindade03/",
     photo: "pessoas/tiago.jpeg",
     class: null,
-    org: ["2024.2", "2025.1"],
+    org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Gerente de Mídia"],
 };
 
@@ -30,7 +30,7 @@ interface Person {
     photo: "pessoas/felipe.png",
     link: "https://www.linkedin.com/in/felipeduartea/",
     class: null,
-    org: ["2024.2", "2025.1"],
+    org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Gerente de Pessoas"],
 };
 
@@ -42,7 +42,7 @@ interface Person {
     link: "https://www.linkedin.com/in/pucavaz/",
     photo: "pessoas/puca.png",
     class: null,
-    org: ["2025.1"],
+    org: ["2024.2"],
     pos: ["Membro da Organização"],
 };
 
@@ -54,7 +54,7 @@ interface Person {
     link: "https://www.linkedin.com/in/nicholas-rodrigues-/",
     photo: "pessoas/nicholas.png",
     class: null,
-    org: ["2024.2", "2025.1"],
+    org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Gerente de Aulas"],
 };
 
@@ -66,7 +66,7 @@ interface Person {
     link: "https://www.linkedin.com/in/icaro-mori-983608210/",
     photo: "pessoas/icaro.png",
     class: null,
-    org: ["2024.2", "2025.1"],
+    org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Membro da Organização"],
 };
 
@@ -74,11 +74,11 @@ interface Person {
     name: "Luigi Schmitt",
     course: "Ciência da Computação",
     period: "2",
-    role: "",
+    role: "Researcher Moises.AI",
     link: "https://www.linkedin.com/in/luigischmitt/",
-    photo: "pessoas/2024.2/luigi.png",
-    class: "2024.2",
-    org: ["2025.1"],
+    photo: "pessoas/2024.1/luigi.png",
+    class: "2024.1",
+    org: ["2024.2"],
     pos: ["Membro da Organização"],
 };
 
@@ -86,11 +86,11 @@ interface Person {
     name: "Pedro Kruta",
     course: "Ciência de Dados e Inteligência Artificial",
     period: "2",
-    role: "Data Scientist/Researcher ZOOX SMART DATA",
+    role: "Researcher Moises.AI | Researcher Zoox Smart Data",
     link: "https://www.linkedin.com/in/pedro-kruta-50992a1b2/",
-    photo: "pessoas/2024.2/kruta.png",
-    class: "2024.2",
-    org: ["2025.1"],
+    photo: "pessoas/2024.1/kruta.png",
+    class: "2024.1",
+    org: ["2024.2"],
     pos: ["Membro da Organização"],
 };
 
@@ -102,7 +102,7 @@ interface Person {
     link: "https://www.linkedin.com/in/daniel-victorcb/",
     photo: "pessoas/daniel.png",
     class: null,
-    org: ["2024.2", "2025.1"],
+    org: ["2024.1", "2024.2"],
     pos: ["Membro da Organização"],
 };
 
@@ -111,10 +111,10 @@ interface Person {
     course: "Ciência da Computação",
     period: "2",
     role: "",
-    photo: "pessoas/2024.2/bea.png",
+    photo: "pessoas/2024.1/bea.png",
     link: "https://www.linkedin.com/in/beatriz-pess%C3%B4a/",
-    class: "2024.2",
-    org: ["2025.1"],
+    class: "2024.1",
+    org: ["2024.2"],
     pos: ["Membro da Organização"],
 };
 
@@ -126,7 +126,7 @@ interface Person {
     link: "https://www.linkedin.com/in/luiz-fernando632",
     photo: "pessoas/luiz.png",
     class: null,
-    org: ["2024.2", "2025.1"],
+    org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Membro da Organização"],
 };
 
@@ -138,7 +138,7 @@ interface Person {
     link: "https://www.linkedin.com/in/gabrielbayres/",
     photo: "pessoas/gabriel.png",
     class: null,
-    org: ["2024.2", "2025.1"],
+    org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Membro da Organização"],
 };
 
@@ -150,7 +150,7 @@ interface Person {
     link: "https://www.linkedin.com/in/guilhermehuther",
     photo: "pessoas/guilherme.png",
     class: null,
-    org: ["2024.2", "2025.1"],
+    org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Gerente de Aulas"],
 };
 
@@ -160,9 +160,9 @@ interface Person {
     period: "2",
     role: "Software Engineer TRIL Lab",
     link: "https://www.linkedin.com/in/emylesantos",
-    photo: "pessoas/2024.2/emyle.png",
-    class: "2024.2",
-    org: ["2025.1"],
+    photo: "pessoas/2024.1/emyle.png",
+    class: "2024.1",
+    org: ["2024.2"],
     pos: ["Membro da Organização"],
 };
 
@@ -172,9 +172,9 @@ interface Person {
     period: "2",
     role: "",
     link: "https://www.linkedin.com/in/claradantast",
-    photo: "pessoas/2024.2/clara.png",
-    class: "2024.2",
-    org: ["2025.1"],
+    photo: "pessoas/2024.1/clara.png",
+    class: "2024.1",
+    org: ["2024.2"],
     pos: ["Membro da Organização"],
 };
 
@@ -186,7 +186,7 @@ interface Person {
     link: "https://www.linkedin.com/in/caiolchacon",
     photo: "pessoas/caio.png",
     class: null,
-    org: ["2024.2"],
+    org: ["2024.1"],
     pos: ["Membro da Organização"],
 };
 
@@ -198,7 +198,7 @@ interface Person {
     link: "https://www.linkedin.com/in/davi-nasiasene-amorim-111bb6248/",
     photo: "pessoas/davi.png",
     class: null,
-    org: ["2024.2", "2025.1"],
+    org: ["2024.1", "2024.2"],
     pos: ["Membro da Organização"],
 };
 
@@ -208,8 +208,8 @@ interface Person {
     period: "2",
     role: "",
     link: "https://www.linkedin.com/in/arturpereira12",
-    photo: "pessoas/2024.2/artur.png",
-    class: "2024.2",
+    photo: "pessoas/2024.1/artur.png",
+    class: "2024.1",
     org: [],
     pos: [],
 };
@@ -220,8 +220,8 @@ interface Person {
     period: "2",
     role: "Software Engineer TRIL Lab",
     link: "http://linkedin.com/in/marcus-vinicius-2b6612310/",
-    photo: "pessoas/2024.2/marcus.jpg",
-    class: "2024.2",
+    photo: "pessoas/2024.1/marcus.jpg",
+    class: "2024.1",
     org: [],
     pos: [],
 };
@@ -232,8 +232,8 @@ interface Person {
     period: "2",
     role: "",
     link: "https://www.linkedin.com/in/luís-henrique-magalhães-353556165",
-    photo: "pessoas/2024.2/luisaranha.png",
-    class: "2024.2",
+    photo: "pessoas/2024.1/luisaranha.png",
+    class: "2024.1",
     org: [],
     pos: [],
 };
@@ -242,10 +242,10 @@ interface Person {
     name: "José Vitor Rodrigues",
     course: "Ciência da Computação",
     period: "5",
-    role: "Software Engineer intern Inovatec-JP",
+    role: "Software Engineer Intern Inovatec-JP",
     link: "https://www.linkedin.com/in/josé-vitor-rodrigues-79b81128a/",
-    photo: "pessoas/2024.2/jose.jpg",
-    class: "2024.2",
+    photo: "pessoas/2024.1/jose.jpg",
+    class: "2024.1",
     org: [],
     pos: [],
 };
@@ -254,10 +254,10 @@ interface Person {
     name: "Vitor Reis Machado",
     course: "Ciência da Computação",
     period: "3",
-    role: "Software Engineer intern Softcom",
+    role: "Software Engineer Intern Softcom",
     link: "https://www.linkedin.com/in/vitor-reis-7680982b2",
-    photo: "pessoas/2024.2/vitor.png",
-    class: "2024.2",
+    photo: "pessoas/2024.1/vitor.png",
+    class: "2024.1",
     org: [],
     pos: [],
 };
@@ -268,8 +268,8 @@ interface Person {
     period: "2",
     role: "",
     link:"https://www.linkedin.com/in/queirozmiguel",
-    photo: "pessoas/2024.2/miguel.png",
-    class: "2024.2",
+    photo: "pessoas/2024.1/miguel.png",
+    class: "2024.1",
     org: [],
     pos: [],
 };
@@ -280,8 +280,8 @@ interface Person {
     period: "2",
     role: "",
     link: "https://www.linkedin.com/in/davigurgel",
-    photo: "pessoas/2024.2/davigurgel.jpg",
-    class: "2024.2",
+    photo: "pessoas/2024.1/davigurgel.jpg",
+    class: "2024.1",
     org: [],
     pos: [],
 };
@@ -292,8 +292,8 @@ interface Person {
     period: "2",
     role: "",
     link: "http://linkedin.com/in/rafaeltng",
-    photo: "pessoas/2024.2/rafael.jpg",
-    class: "2024.2",
+    photo: "pessoas/2024.1/rafael.jpg",
+    class: "2024.1",
     org: [],
     pos: [],
 };
@@ -304,13 +304,13 @@ interface Person {
     period: "2",
     role: " ",
     link: "https://www.linkedin.com/in/nicolaskleiton/",
-    photo: "pessoas/2024.2/nicolas.png",
-    class: "2024.2",
+    photo: "pessoas/2024.1/nicolas.png",
+    class: "2024.1",
     org: [],
     pos: [],
 };
 
-export const peopleOrganization20242: Person[] = [
+export const peopleOrganization20241: Person[] = [
     Tiago,
     Felipe,
     Nicholas,
@@ -322,13 +322,13 @@ export const peopleOrganization20242: Person[] = [
     Daniel,
     Caio,
 ]
-export const peopleStudents20242: Person[] = [
+export const peopleStudents20241: Person[] = [
     Kruta,
+    Luigi,
     JoseVitor,
     Marcus,
     VitorReis,
     Emyle,
-    Luigi,
     Clara,
     Bea,
     Artur,
@@ -339,7 +339,7 @@ export const peopleStudents20242: Person[] = [
     NicolasKleiton,
 ]
 
-export const peopleOrganization20251: Person[] = [
+export const peopleOrganization20242: Person[] = [
     Tiago,
     Felipe,
     Nicholas,

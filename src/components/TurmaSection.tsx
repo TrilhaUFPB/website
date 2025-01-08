@@ -1,8 +1,8 @@
 "use client"
-
 import { useState } from "react";
 import { AnimatedTooltip } from "./ui/animated-tooltip";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 const TurmaSection = ({
   title,
@@ -42,8 +42,10 @@ const TurmaSection = ({
 
       {/* Accordion Content */}
       <div
-        className={`transition-all duration-500 ${
-          isOpen ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0"
+        className={`transition-[max-height,opacity,visibility] duration-500 ease-in-out ${
+          isOpen
+            ? "max-h-[8000px] opacity-100 visible"
+            : "max-h-0 opacity-0 invisible"
         }`}
       >
         <div className="mt-0 px-4 py-4">
@@ -61,19 +63,26 @@ const TurmaSection = ({
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 px-4 md:px-4 lg:px-20">
               {students.map((student, index) => (
                 <div key={index} className="flex flex-col items-center mb-6">
-                  <div className="w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 rounded-full border-0 border-AzulMeiaNoite overflow-hidden mb-2">
-                    <img
+                  <a
+                    href={student.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden mb-2 relative block"
+                  >
+                    <Image
                       src={student.photo}
                       alt={student.name}
-                      className="w-full h-full object-cover z-10"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full hover:scale-110 transition-transform duration-300 ease-in-out"
                     />
-                  </div>
+                  </a>
                   <h3 className="text-center font-bold font-poppins text-sm w-full truncate">
                     {student.name.split(" ").slice(0, 2).join(" ")}
                   </h3>
-                  <p className="text-center font-spaceGrotesk text-xs font-semibold">{student.course}</p>
+                  <p className="text-center font-poppins text-xs font-regular">{student.course}</p>
                   <hr className="border-t border-Branco w-3/4 my-1" />
-                  <p className="text-center font-spaceGrotesk text-xs font-semibold">{student.role}</p>
+                  <p className="text-center font-poppins text-xs font-regular">{student.role}</p>
                 </div>
               ))}
             </div>

@@ -1,26 +1,61 @@
+"use client";
+
+import DynamicGrid from "./DynamicGrid";
+import { peopleOrganization20242 } from "@/data/people";
+import Image from "next/image";
+
+const courses = {
+  "Ciência da Computação": "CC",
+  "Engenharia da Computação": "EC",
+  "Ciência de Dados e Inteligência Artificial": "CDIA",
+};
+
 export default function QuemSomos() {
-    const team = [
-      { name: 'Dr. Carlos Mendes', role: 'Diretor Acadêmico' },
-      { name: 'Profa. Beatriz Lima', role: 'Coordenadora de Cursos' },
-      { name: 'Paulo Rodrigues', role: 'Instrutor Sênior' },
-    ]
-  
-    return (
-      <section id="quem-somos" className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Quem Somos</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="text-center">
-                <div className="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
-                <h3 className="text-xl font-semibold text-gray-800">{member.name}</h3>
-                <p className="text-gray-600">{member.role}</p>
-              </div>
-            ))}
-          </div>
+  return (
+    <section id="quem-somos" className="py-20 bg-Branco px-4 md:px-28 relative">
+      <DynamicGrid cellSize={50} className="opacity-5 z-0" />
+
+      <div className="px-6">
+        <h2 className="text-1xl font-semibold text-center text-AzulCeu font-poppins mb-2 z-10">Quem Somos</h2>
+        <h1 className="text-3xl font-bold text-center text-AzulMeiaNoite font-poppins mb-6 z-10">
+          Conheça nossa organização atual
+        </h1>
+
+        {/* People Section */}
+        <div className="flex flex-wrap justify-center gap-6 relative z-10">
+          {peopleOrganization20242.map((person) => (
+            <a
+              key={person.name}
+              href={person.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center text-center w-24 md:w-40"
+            >
+              {/* Image Circle */}
+                <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-AzulMeiaNoite overflow-hidden group">
+                <Image
+                  src={person.photo}
+                  alt={person.name}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-full transition-transform duration-300 group-hover:scale-110"
+                />
+                </div>
+
+              {/* Person Details */}
+              <h3 className="mt-2 font-bold font-poppins text-sm md:text-base text-AzulMeiaNoite">
+                {person.name.split(" ").slice(0, 2).join(" ")}
+              </h3>
+              <p className="text-xs md:text-sm font-spaceGrotesk font-semibold text-AzulCeu">
+                {courses[person.course as keyof typeof courses]} - {person.period}º 
+              </p>
+              <p className="text-xs md:text-sm font-spaceGrotesk text-neutral-600 font-semibold mt-0">
+                {person.pos[person.pos.length - 1]} {/* Last role */}
+              </p>
+            </a>
+          ))}
         </div>
-      </section>
-    )
-  }
-  
-  
+      </div>
+    </section>
+  );
+}

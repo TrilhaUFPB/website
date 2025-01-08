@@ -1,8 +1,8 @@
 "use client"
 
-import { AnimatedTooltip } from "./ui/animated-tooltip";
-import { peopleOrganization20242, peopleStudents20242 } from "@/data/people";
+import { peopleOrganization20241, peopleStudents20241 } from "@/data/people";
 import TurmaSection from "./TurmaSection";
+import DynamicGrid from "./DynamicGrid"; 
 
 const courses = {
   "Ciência da Computação": "CC",
@@ -10,7 +10,7 @@ const courses = {
   "Ciência de Dados e Inteligência Artificial": "CDIA",
 };
 
-const transformedPeople20242 = peopleOrganization20242.map((person, index) => ({
+const transformedPeople20241 = peopleOrganization20241.map((person, index) => ({
   id: index,
   name: person.name,
   designation: person.role,
@@ -18,7 +18,7 @@ const transformedPeople20242 = peopleOrganization20242.map((person, index) => ({
   link: person.link,
 }));
 
-const transformedPeopleStudents20242 = peopleStudents20242.map((person) => ({
+const transformedPeopleStudents20241 = peopleStudents20241.map((person) => ({
   name: person.name,
   course: courses[person.course as keyof typeof courses],
   photo: person.photo,
@@ -28,18 +28,8 @@ const transformedPeopleStudents20242 = peopleStudents20242.map((person) => ({
 
 export default function Turmas() {
   return (
-    <section id="quem-somos" className="py-20 bg-AzulMeiaNoite px-4 md:px-28 relative">
-      <div
-        className="absolute inset-0 grid pointer-events-none opacity-5 z-0"
-        style={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(50px, 1fr))",
-          gridTemplateRows: "repeat(auto-fit, 50px)",
-        }}
-      >
-        {Array.from({ length: 700 }, (_, index) => (
-          <div key={index} className="border border-gray-600"></div>
-        ))}
-      </div>
+    <section id="turmas" className="py-20 bg-AzulMeiaNoite px-4 md:px-28 relative">
+      <DynamicGrid cellSize={50} className="opacity-5 z-0" />
 
       <div className="px-6">
         <h2 className="text-1xl font-semibold text-center text-AzulCeu fnt-poppins mb-2 z-10">Turmas</h2>
@@ -61,9 +51,9 @@ export default function Turmas() {
       <div className="container mx-auto px-6 flex flex-col items-center justify-center z-10">
         {/* Use the TurmaSection Component */}
         <TurmaSection
-          title="Primeira Turma - 2024.2"
-          organizers={transformedPeople20242}
-          students={transformedPeopleStudents20242}
+          title="Primeira Turma - 2024.1"
+          organizers={transformedPeople20241}
+          students={transformedPeopleStudents20241}
         />
       </div>
     </section>
