@@ -72,8 +72,8 @@ const TurmaSection = ({
                     <Image
                       src={student.photo}
                       alt={student.name}
-                      layout="fill"
-                      objectFit="cover"
+                      height={200}
+                      width={200}
                       className="rounded-full hover:scale-110 transition-transform duration-300 ease-in-out"
                     />
                   </a>

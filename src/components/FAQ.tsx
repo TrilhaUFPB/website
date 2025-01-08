@@ -50,6 +50,10 @@ export default function FAQ() {
       answer: "Sim, o número de participantes é limitado para garantir um ambiente mais interativo e personalizado." 
     },
     { 
+      question: "Qual a cor favorita de Tiago?", 
+      answer: "Uma das perguntas mais frequentes no Trilha, e a cor favorita de Tiago é " + getFavoriteColor() + ", obviamente.", 
+    },
+    { 
       question: "Posso entrar na organização?", 
       answer: "Se tiver interesse em fazer parte da organização, entre em contato com a equipe do Trilha para verificar se há necessidade de novas pessoas no momento." 
     },
@@ -61,8 +65,21 @@ export default function FAQ() {
       question: "Onde são as aulas?", 
       answer: "As aulas são realizadas no Centro de Informática (CI) da UFPB." 
     },
-];
+  ];
 
+  function getFavoriteColor() {
+    const day = new Date().getDay();
+    const colors = [
+      "Vermelho", // Domingo
+      "Azul",     // Segunda-feira
+      "Verde",    // Terça-feira
+      "Amarelo",  // Quarta-feira
+      "Laranja",  // Quinta-feira
+      "Roxo",     // Sexta-feira
+      "Preto",     // Sábado
+    ];
+    return colors[day];
+  }
 
   return (
     <section id="faq" className="py-20 bg-AzulMeiaNoite">

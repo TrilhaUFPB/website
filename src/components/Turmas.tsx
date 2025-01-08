@@ -33,7 +33,7 @@ export default function Turmas() {
 
       <div className="px-6">
         <h2 className="text-1xl font-semibold text-center text-AzulCeu fnt-poppins mb-2 z-10">Turmas</h2>
-        <h1 className="text-3xl font-semibold text-center text-Branco font-poppins mb-6 z-10">
+        <h1 className="text-3xl font-bold text-center text-Branco font-poppins mb-6 z-10">
           Conheça nossos tutores e alunos de turmas anteriores
         </h1>
 

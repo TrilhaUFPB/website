@@ -17,11 +17,11 @@ export default function QuemSomos() {
 
       <div className="px-6">
         <h2 className="text-1xl font-semibold text-center text-AzulCeu font-poppins mb-2 z-10">Quem Somos</h2>
-        <h1 className="text-3xl font-bold text-center text-AzulMeiaNoite font-poppins mb-6 z-10">
+        <h1 className="text-3xl font-extrabold text-center text-AzulMeiaNoite font-poppins mb-6 z-10">
           Conheça quem são as pessoas por trás do Trilha
         </h1>
 
-        <h2 className="text-1xl font-semibold text-center text-AzulCeu font-poppins mt-12 mb-6 z-10">Fundadores</h2>
+        <h2 className="text-1xl font-semibold text-center text-AzulMeiaNoite font-poppins mt-12 mb-6 z-10">Fundadores</h2>
 
         {/* Founders Section */}
         <div className="flex flex-wrap justify-center gap-6 relative z-10">
@@ -38,8 +38,8 @@ export default function QuemSomos() {
                 <Image
                   src={person.photo}
                   alt={person.name}
-                  layout="fill"
-                  objectFit="cover"
+                  width={200}
+                  height={200}
                   className="rounded-full transition-transform duration-300 group-hover:scale-110"
                 />
                 </div>
@@ -48,18 +48,12 @@ export default function QuemSomos() {
               <h3 className="mt-2 font-bold font-poppins text-sm md:text-base text-AzulMeiaNoite">
                 {person.name.split(" ").slice(0, 2).join(" ")}
               </h3>
-              <p className="text-xs md:text-sm font-spaceGrotesk font-semibold text-AzulCeu">
-                {courses[person.course as keyof typeof courses]} - {person.period}º 
-              </p>
-              <p className="text-xs md:text-sm font-spaceGrotesk text-neutral-600 font-semibold mt-0">
-                Fundador
-              </p>
             </a>
           ))}
 
         </div>
 
-        <h2 className="text-1xl font-semibold text-center text-AzulCeu font-poppins mt-12 mb-6 z-10">Organização Atual</h2>
+        <h2 className="text-1xl font-semibold text-center text-AzulMeiaNoite font-poppins mt-12 mb-6 z-10">Organização Atual</h2>
 
         {/* People Section */}
         <div className="flex flex-wrap justify-center gap-6 relative z-10">
@@ -76,8 +70,8 @@ export default function QuemSomos() {
                 <Image
                   src={person.photo}
                   alt={person.name}
-                  layout="fill"
-                  objectFit="cover"
+                  width={200}
+                  height={200}
                   className="rounded-full transition-transform duration-300 group-hover:scale-110"
                 />
                 </div>
