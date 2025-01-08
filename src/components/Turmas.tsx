@@ -1,25 +1,59 @@
+"use client"
+
+import { AnimatedTooltip } from "./ui/animated-tooltip";
+import { peopleOrganization20242, peopleStudents20242 } from "@/data/people";
+import TurmaSection from "./TurmaSection";
+
+const courses = {
+  "Ciência da Computação": "CC",
+  "Engenharia da Computação": "EC",
+  "Ciência de Dados e Inteligência Artificial": "CDIA",
+};
+
+const transformedPeople20242 = peopleOrganization20242.map((person, index) => ({
+  id: index,
+  name: person.name,
+  designation: person.role,
+  image: person.photo,
+  link: person.link,
+}));
+
+const transformedPeopleStudents20242 = peopleStudents20242.map((person) => ({
+  name: person.name,
+  course: courses[person.course as keyof typeof courses],
+  photo: person.photo,
+  link: person.link,
+  role: person.role.trim() === "" ? "Ex Aluno Trilha" : person.role,
+}));
+
 export default function Turmas() {
-    const classes = [
-      { name: 'Programação Básica', schedule: 'Segundas e Quartas, 19h-21h' },
-      { name: 'Design Gráfico', schedule: 'Terças e Quintas, 18h-20h' },
-      { name: 'Marketing Digital', schedule: 'Sextas, 14h-18h' },
-    ]
-  
-    return (
-      <section id="turmas" className="py-20 bg-gray-100">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Nossas Turmas</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {classes.map((cls, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">{cls.name}</h3>
-                <p className="text-gray-600">{cls.schedule}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
-  
-  
+  return (
+    <section id="quem-somos" className="py-20 bg-AzulMeiaNoite px-4 md:px-28 relative">
+      <div
+        className="absolute inset-0 grid pointer-events-none opacity-5 z-0"
+        style={{
+          gridTemplateColumns: "repeat(auto-fit, minmax(50px, 1fr))",
+          gridTemplateRows: "repeat(auto-fit, 50px)",
+        }}
+      >
+        {Array.from({ length: 700 }, (_, index) => (
+          <div key={index} className="border border-gray-600"></div>
+        ))}
+      </div>
+
+      <h2 className="text-1xl font-semibold text-center text-AzulCeu fnt-poppins mb-2 z-10">Turmas</h2>
+      <h1 className="text-3xl font-semibold text-center text-Branco font-poppins mb-14 z-10">
+        Conheça nossos tutores e alunos de turmas anteriores
+      </h1>
+
+      <div className="container mx-auto px-6 flex flex-col items-center justify-center z-10">
+        {/* Use the TurmaSection Component */}
+        <TurmaSection
+          title="Primeira Turma - 2024.2"
+          organizers={transformedPeople20242}
+          students={transformedPeopleStudents20242}
+        />
+      </div>
+    </section>
+  );
+}
