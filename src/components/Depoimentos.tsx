@@ -50,7 +50,7 @@ export default function Depoimentos() {
 
   return (
     <section id="depoimentos" className="py-20 bg-Branco relative">
-      <DynamicGrid cellSize={50} className="opacity-5 z-0" />
+      <DynamicGrid cellSize={50} className="opacity-5 z-0" numberOfCells={50}/>
       <div className="container mx-auto px-6">
         <h2 className="text-1xl font-bold text-center text-AzulCeu fnt-poppins mb-3">
           Depoimentos
@@ -71,7 +71,7 @@ function Card({ card, index }: { card: Testimonial; index: number }) {
   return (
     <div
       key={index}
-      className={`border-4 p-6 rounded-3xl w-[270px] md:w-[500px] sm:w-[400px] mx-auto h-[370px] md:h-[300px] sm:h-[300px] ${borderClass}`}
+      className={`border-4 p-6 rounded-3xl w-[270px] md:w-[500px] sm:w-[400px] mx-auto h-[370px] md:h-[300px] sm:h-[300px] ${borderClass} bg-Branco z-30`}
     >
 
       {/* Upper content */}

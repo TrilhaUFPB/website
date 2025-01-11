@@ -73,7 +73,7 @@ export default function FAQ() {
       "Vermelho", // Domingo
       "Azul",     // Segunda-feira
       "Verde",    // Terça-feira
-      "Amarelo",  // Quarta-feira
+      "Rosa",  // Quarta-feira
       "Laranja",  // Quinta-feira
       "Roxo",     // Sexta-feira
       "Preto",     // Sábado

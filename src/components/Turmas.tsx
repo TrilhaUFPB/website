@@ -29,7 +29,7 @@ const transformedPeopleStudents20241 = peopleStudents20241.map((person) => ({
 export default function Turmas() {
   return (
     <section id="turmas" className="py-20 bg-AzulMeiaNoite px-4 md:px-28 relative">
-      <DynamicGrid cellSize={50} className="opacity-5 z-0" />
+      <DynamicGrid cellSize={50} className="opacity-5 z-0" numberOfCells={50}/>
 
       <div className="px-6">
         <h2 className="text-1xl font-semibold text-center text-AzulCeu fnt-poppins mb-2 z-10">Turmas</h2>

@@ -11,7 +11,7 @@ export default function Hero() {
       <BackgroundBeamsWithCollision className="relative overflow-hidden flex flex-col bg-Branco w-full">
         <Navbar />
 
-        <DynamicGrid cellSize={50} className="opacity-5 z-0" />
+        <DynamicGrid cellSize={50} className="opacity-5 z-0" numberOfCells={50}/>
 
         {/* Main Hero Section */}
         <div className="h-[90vh] relative overflow-hidden flex items-center justify-center">
