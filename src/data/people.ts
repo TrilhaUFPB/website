@@ -1,7 +1,7 @@
-interface Person {
+export interface Person {
     name: string;
     course: string;
-    period: string;
+    semester: string;
     role: string;
     link: string;
     photo: string;
@@ -10,10 +10,10 @@ interface Person {
     pos: string[];
 }
 
- const Tiago: Person = {
+export const Tiago: Person = {
     name: "Tiago Trindade",
     course: "Ciência da Computação",
-    period: "6",
+    semester: "6",
     role: "Software Engineer B3 | Software Engineer Cebraspe",
     link: "https://www.linkedin.com/in/tiagotrindade03/",
     photo: "pessoas/tiago.jpeg",
@@ -22,10 +22,10 @@ interface Person {
     pos: ["Fundador", "Gerente de Mídia"],
 };
 
- const Felipe: Person = {
+export const Felipe: Person = {
     name: "Felipe Duarte",
     course: "Ciência da Computação",
-    period: "6",
+    semester: "6",
     role: "Software Engineer mobile.dev",
     photo: "pessoas/felipe.png",
     link: "https://www.linkedin.com/in/felipeduartea/",
@@ -34,10 +34,10 @@ interface Person {
     pos: ["Fundador", "Gerente de Pessoas"],
 };
 
- const Puca: Person = {
+export const Puca: Person = {
     name: "Puca Vaz",
     course: "Ciência da Computação",
-    period: "4",
+    semester: "4",
     role: "Software Engineer Isaac | Machine Learning Engineer  LAVID",
     link: "https://www.linkedin.com/in/pucavaz/",
     photo: "pessoas/puca.png",
@@ -46,10 +46,10 @@ interface Person {
     pos: ["Membro da Organização"],
 };
 
- const Nicholas: Person = {
+export const Nicholas: Person = {
     name: "Nicholas Rodrigues",
     course: "Ciência da Computação",
-    period: "6",
+    semester: "6",
     role: "Software Engineer 11x | SWE Career Fellow Uber",
     link: "https://www.linkedin.com/in/nicholas-rodrigues-/",
     photo: "pessoas/nicholas.png",
@@ -58,10 +58,10 @@ interface Person {
     pos: ["Fundador", "Gerente de Aulas"],
 };
 
- const Icaro: Person = {
+export const Icaro: Person = {
     name: "Ícaro Mori",
     course: "Ciência da Computação",
-    period: "Null",
+    semester: "Null",
     role: "Data Scientist Zoox",
     link: "https://www.linkedin.com/in/icaro-mori-983608210/",
     photo: "pessoas/icaro.png",
@@ -70,10 +70,10 @@ interface Person {
     pos: ["Fundador", "Membro da Organização"],
 };
 
- const Luigi: Person = {
+export const Luigi: Person = {
     name: "Luigi Schmitt",
     course: "Ciência da Computação",
-    period: "2",
+    semester: "2",
     role: "Researcher Moises.AI",
     link: "https://www.linkedin.com/in/luigischmitt/",
     photo: "pessoas/2024.1/luigi.png",
@@ -82,10 +82,10 @@ interface Person {
     pos: ["Membro da Organização"],
 };
 
- const Kruta: Person = {
+export const Kruta: Person = {
     name: "Pedro Kruta",
     course: "Ciência de Dados e Inteligência Artificial",
-    period: "2",
+    semester: "2",
     role: "Researcher Moises.AI | Researcher Zoox Smart Data",
     link: "https://www.linkedin.com/in/pedro-kruta-50992a1b2/",
     photo: "pessoas/2024.1/kruta.png",
@@ -94,10 +94,10 @@ interface Person {
     pos: ["Membro da Organização"],
 };
 
- const Daniel: Person = {
+export const Daniel: Person = {
     name: "Daniel Victor",
     course: "Ciência da Computação",
-    period: "3",
+    semester: "3",
     role: "Software Engineer Moises",
     link: "https://www.linkedin.com/in/daniel-victorcb/",
     photo: "pessoas/daniel.png",
@@ -106,10 +106,10 @@ interface Person {
     pos: ["Membro da Organização"],
 };
 
- const Bea: Person = {
+export const Bea: Person = {
     name: "Beatriz Pessôa",
     course: "Ciência da Computação",
-    period: "2",
+    semester: "2",
     role: "Software Engineer Intern Zênite",
     photo: "pessoas/2024.1/bea.png",
     link: "https://www.linkedin.com/in/beatriz-pess%C3%B4a/",
@@ -118,10 +118,10 @@ interface Person {
     pos: ["Membro da Organização"],
 };
 
- const Luiz: Person = {
+export const Luiz: Person = {
     name: "Luiz Fernando",
     course: "Ciência de Dados e Inteligência Artificial",
-    period: "11",
+    semester: "11",
     role: "Machine Learning Engineering Nubank",
     link: "https://www.linkedin.com/in/luiz-fernando632",
     photo: "pessoas/luiz.png",
@@ -130,10 +130,10 @@ interface Person {
     pos: ["Fundador", "Membro da Organização"],
 };
 
- const Gabriel: Person = {
+export const Gabriel: Person = {
     name: "Gabriel Ayres",
     course: "Engenharia da Computação",
-    period: "4",
+    semester: "4",
     role: "Researcher UPenn/USP | Software Engineer Cebraspe",
     link: "https://www.linkedin.com/in/gabrielbayres/",
     photo: "pessoas/gabriel.png",
@@ -142,10 +142,10 @@ interface Person {
     pos: ["Fundador", "Membro da Organização"],
 };
 
- const Guilherme: Person = {
+export const Guilherme: Person = {
     name: "Guilherme Huther",
     course: "Ciência da Computação",
-    period: "8",
+    semester: "8",
     role: "Data Engineer A3Data",
     link: "https://www.linkedin.com/in/guilhermehuther",
     photo: "pessoas/guilherme.png",
@@ -154,10 +154,10 @@ interface Person {
     pos: ["Fundador", "Gerente de Aulas"],
 };
 
- const Emyle: Person = {
+export const Emyle: Person = {
     name: "Emyle Santos",
     course: "Ciência da Computação",
-    period: "2",
+    semester: "2",
     role: "Software Engineer Intern Zênite",
     link: "https://www.linkedin.com/in/emylesantos",
     photo: "pessoas/2024.1/emyle.png",
@@ -166,10 +166,10 @@ interface Person {
     pos: ["Membro da Organização"],
 };
 
- const Clara: Person = {
+export const Clara: Person = {
     name: "Maria Clara Dantas",
     course: "Ciência da Computação",
-    period: "2",
+    semester: "2",
     role: "Software Engineer Intern Zênite",
     link: "https://www.linkedin.com/in/claradantast",
     photo: "pessoas/2024.1/clara.png",
@@ -178,10 +178,10 @@ interface Person {
     pos: ["Membro da Organização"],
 };
 
- const Caio: Person = {
+export const Caio: Person = {
     name: "Caio Chacon",
     course: "Ciência de Dados e Inteligência Artificial",
-    period: "8",
+    semester: "8",
     role: "Data Scientist Bitka | Data Scientist VLibras",
     link: "https://www.linkedin.com/in/caiolchacon",
     photo: "pessoas/caio.png",
@@ -190,10 +190,10 @@ interface Person {
     pos: ["Membro da Organização"],
 };
 
- const Davi: Person = {
+export const Davi: Person = {
     name: "Davi Nasiasene",
     course: "Ciência da Computação",
-    period: "4",
+    semester: "4",
     role: "Software Engineer Intern Zênite | Software Engineer Cebraspe",
     link: "https://www.linkedin.com/in/davi-nasiasene-amorim-111bb6248/",
     photo: "pessoas/davi.png",
@@ -202,10 +202,10 @@ interface Person {
     pos: ["Membro da Organização"],
 };
 
- const Artur: Person = {
+export const Artur: Person = {
     name: "Artur Coelho Batista Guedes Pereira",
     course: "Ciência da Computação",
-    period: "2",
+    semester: "2",
     role: "",
     link: "https://www.linkedin.com/in/arturpereira12",
     photo: "pessoas/2024.1/artur.png",
@@ -214,10 +214,10 @@ interface Person {
     pos: [],
 };
 
- const Marcus: Person = {
+export const Marcus: Person = {
     name: "Marcus Vinicius da Silva Araujo",
     course: "Ciência da Computação",
-    period: "2",
+    semester: "2",
     role: "Software Engineer TRIL Lab",
     link: "http://linkedin.com/in/marcus-vinicius-2b6612310/",
     photo: "pessoas/2024.1/marcus.jpg",
@@ -226,10 +226,10 @@ interface Person {
     pos: [],
 };
 
- const LuisAranha: Person = {
+export const LuisAranha: Person = {
     name: "Luís Henrique Aranha Magalhães",
     course: "Ciência da Computação",
-    period: "2",
+    semester: "2",
     role: "",
     link: "https://www.linkedin.com/in/luís-henrique-magalhães-353556165",
     photo: "pessoas/2024.1/luisaranha.png",
@@ -238,10 +238,10 @@ interface Person {
     pos: [],
 };
 
- const JoseVitor: Person = {
+export const JoseVitor: Person = {
     name: "José Vitor Rodrigues",
     course: "Ciência da Computação",
-    period: "5",
+    semester: "5",
     role: "Software Engineer Intern Inovatec-JP",
     link: "https://www.linkedin.com/in/josé-vitor-rodrigues-79b81128a/",
     photo: "pessoas/2024.1/jose.jpg",
@@ -250,10 +250,10 @@ interface Person {
     pos: [],
 };
 
- const VitorReis: Person = {
+export const VitorReis: Person = {
     name: "Vitor Reis Machado",
     course: "Ciência da Computação",
-    period: "3",
+    semester: "3",
     role: "Software Engineer Intern Softcom",
     link: "https://www.linkedin.com/in/vitor-reis-7680982b2",
     photo: "pessoas/2024.1/vitor.png",
@@ -262,10 +262,10 @@ interface Person {
     pos: [],
 };
 
- const MiguelQueiroz: Person = {
+export const MiguelQueiroz: Person = {
     name:  "Miguel de Queiroz Fernandes Soares",
     course:  "Ciência da Computação",
-    period: "2",
+    semester: "2",
     role: "",
     link:"https://www.linkedin.com/in/queirozmiguel",
     photo: "pessoas/2024.1/miguel.png",
@@ -274,10 +274,10 @@ interface Person {
     pos: [],
 };
 
- const DaviGurgel: Person = {
+export const DaviGurgel: Person = {
     name: "Davi de Oliveira Gurgel",
     course: "Ciência da Computação",
-    period: "2",
+    semester: "2",
     role: "",
     link: "https://www.linkedin.com/in/davigurgel",
     photo: "pessoas/2024.1/davigurgel.jpg",
@@ -286,10 +286,10 @@ interface Person {
     pos: [],
 };
 
- const RafaelTorres: Person = {
+export const RafaelTorres: Person = {
     name: "Rafael Torres Nóbrega Gomes",
     course: "Ciência da Computação",
-    period: "2",
+    semester: "2",
     role: "",
     link: "http://linkedin.com/in/rafaeltng",
     photo: "pessoas/2024.1/rafael.jpg",
@@ -298,10 +298,10 @@ interface Person {
     pos: [],
 };
 
- const NicolasKleiton: Person = {
+export const NicolasKleiton: Person = {
     name: "Nicolas Kleiton",
     course: "Ciência da Computação",
-    period: "2",
+    semester: "2",
     role: " ",
     link: "https://www.linkedin.com/in/nicolaskleiton/",
     photo: "pessoas/2024.1/nicolas.png",

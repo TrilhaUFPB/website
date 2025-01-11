@@ -1,8 +1,12 @@
 "use client";
 
+import DynamicGrid from "./DynamicGrid";
+
 export default function Sobre() {
   return (
-    <section id="sobre" className="py-20 bg-AzulMeiaNoite flex w-full overflow-hidden">
+    <section id="sobre" className="py-20 bg-AzulMeiaNoite flex w-full overflow-hidden relative">
+      <DynamicGrid cellSize={50} className="opacity-5 z-0" numberOfCells={50}/>
+      
       <div className="container mx-auto px-12">
         <h2 className="text-1xl font-semibold text-center text-AzulCeu font-poppins mb-2">Sobre Nós</h2>
         <p className="text-3xl font-semibold text-center text-Branco font-poppins mb-10">

@@ -81,7 +81,7 @@ export default function QuemSomos() {
                 {person.name.split(" ").slice(0, 2).join(" ")}
               </h3>
               <p className="text-xs md:text-sm font-spaceGrotesk font-semibold text-AzulCeu">
-                {courses[person.course as keyof typeof courses]} - {person.period}º 
+                {courses[person.course as keyof typeof courses]} - {person.semester}º 
               </p>
               <p className="text-xs md:text-sm font-spaceGrotesk text-neutral-600 font-semibold mt-0">
                 {person.pos[person.pos.length - 1]} {/* Last role */}
