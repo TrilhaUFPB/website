@@ -13,7 +13,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-BrancoCreme text-AzulMeiaNoite py-12 relative">
-      <DynamicGrid cellSize={50} className="opacity-5 z-0" />
+      <DynamicGrid cellSize={50} className="opacity-5 z-0" numberOfCells={50}/>
       <div className="container px-6 md:px-12 lg:px-28 mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12 lg:gap-4 text-center md:text-left">
           <div className="col-span-2">
@@ -50,10 +50,7 @@ export default function Footer() {
               Contato
             </h3>
             <p className="text-sm font-spaceGrotesk mt-4 mb-4">
-              Email: contato@trilhaufpb.com
-            </p>
-            <p className="text-sm font-spaceGrotesk">
-              Telefone: (83) 1234-5678
+              Email: contato.trilhaufpb@gmail.com
             </p>
           </div>
 
