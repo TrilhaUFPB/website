@@ -15,7 +15,7 @@ export default function QuemSomos() {
     <section id="quem-somos" className="py-20 bg-Branco px-4 md:px-28 relative">
       <DynamicGrid cellSize={50} className="opacity-5 z-0" />
 
-      <div className="px-6">
+      <div className="px-8">
         <h2 className="text-1xl font-semibold text-center text-AzulCeu font-poppins mb-2 z-10">Quem Somos</h2>
         <h1 className="text-3xl font-extrabold text-center text-AzulMeiaNoite font-poppins mb-6 z-10">
           Conheça quem são as pessoas por trás do Trilha
