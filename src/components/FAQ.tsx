@@ -2,6 +2,7 @@
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Divider from "@/components/ui/divider";
+import DynamicGrid from "./DynamicGrid";
 
 export default function FAQ() {
   const faqs = [
@@ -82,8 +83,9 @@ export default function FAQ() {
   }
 
   return (
-    <section id="faq" className="py-20 bg-AzulMeiaNoite">
-      <div className="container max-w-7xl mx-auto px-6">
+    <section id="faq" className="py-20 bg-AzulMeiaNoite relative">
+      <DynamicGrid cellSize={50} className="opacity-5 z-0" />
+      <div className="container mx-auto px-4 md:px-28">
         <h2 className="text-1xl font-bold text-center text-AzulCeu font-poppins mb-3">
           FAQ
         </h2>
