@@ -7,7 +7,7 @@ import { Person } from "@/data/people";
 import { 
   MiguelQueiroz, Emyle, Marcus, LuisAranha,
   Clara, Kruta, Luigi, NicolasKleiton, Bea,
-  DaviGurgel, Artur, VitorReis,
+  DaviGurgel, Artur, VitorReis, RafaelTorres,
   // JoseVitor, RafaelTorres,
  } from "@/data/people";
 
@@ -78,13 +78,19 @@ const VitorReisTestimonial: Testimonial = {
   text: "O Trilha foi uma experiência incrível pra mim, na qual aprendi muita coisa no ramo da programação, desde o básico até conceitos mais avançados, e tive minha primeira experiência em um trabalho em equipe no hackathon. Além disso, pude conhecer pessoas incríveis, as quais sou extremamente grato por terem feito minhas sextas-feiras mais felizes durante o Trilha.",
 };
 
+const RafaelTorresTestimonial: Testimonial = {
+  person: RafaelTorres,
+  text: "O Trilha foi uma experiência transformadora para mim. O projeto não apenas me ajudou a construir uma base sólida, mas também proporcionou contato com assuntos muito importantes, que dificilmente eu conheceria de outra forma. Participar do Trilha no início do curso foi com certeza uma das melhores decisões que tomei, sou muito grato por ter participado.",
+};
+
 export default function Depoimentos() {
 
   const testimonials = [KrutaTestimonial, EmyleTestimonial, LuigiTestimonial, 
     BeaTestimonial, MiguelTestimonial, 
     LuisAranhaTestimonial, MarcusTestimonial, 
     ClaraTestimonial, NicolasKleitonTestimonial, 
-    DaviGurgelTestimonial, ArturTestimonial, VitorReisTestimonial];
+    DaviGurgelTestimonial, ArturTestimonial, VitorReisTestimonial,
+    RafaelTorresTestimonial];
 
   const testimonialCards = testimonials.map((testimonial, index) => (
     <Card key={index} card={testimonial} index={index} />
