@@ -266,7 +266,7 @@ export const MiguelQueiroz: Person = {
     name:  "Miguel de Queiroz Fernandes Soares",
     course:  "Ciência da Computação",
     semester: "2",
-    role: "",
+    role: "Software Engineer Intern Zênite",
     link:"https://www.linkedin.com/in/queirozmiguel",
     photo: "pessoas/2024.1/miguel.png",
     class: "2024.1",
