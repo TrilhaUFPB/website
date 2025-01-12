@@ -80,9 +80,10 @@ const VitorReisTestimonial: Testimonial = {
 
 export default function Depoimentos() {
 
-  const testimonials = [KrutaTestimonial, EmyleTestimonial, LuigiTestimonial, BeaTestimonial, MiguelTestimonial, 
-    LuisAranhaTestimonial, MarcusTestimonial, ClaraTestimonial, 
-    NicolasKleitonTestimonial, BeaTestimonial,
+  const testimonials = [KrutaTestimonial, EmyleTestimonial, LuigiTestimonial, 
+    BeaTestimonial, MiguelTestimonial, 
+    LuisAranhaTestimonial, MarcusTestimonial, 
+    ClaraTestimonial, NicolasKleitonTestimonial, 
     DaviGurgelTestimonial, ArturTestimonial, VitorReisTestimonial];
 
   const testimonialCards = testimonials.map((testimonial, index) => (
@@ -112,7 +113,7 @@ function Card({ card, index }: { card: Testimonial; index: number }) {
   return (
     <div
       key={index}
-      className={`overflow-hidden border-4 p-6 rounded-3xl w-[270px] md:w-[500px] sm:w-[400px] mx-auto h-[550px] md:h-[320px] sm:h-[320px] ${borderClass} bg-Branco z-30`}
+      className={`overflow-hidden border-4 p-6 rounded-3xl w-[270px] md:w-[500px] sm:w-[400px] mx-auto h-[560px] md:h-[330px] sm:h-[330px] ${borderClass} bg-Branco z-30`}
     >
 
       {/* Upper content */}
