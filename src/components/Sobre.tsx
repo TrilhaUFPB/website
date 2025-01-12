@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import DynamicGrid from "./DynamicGrid";
 
 export default function Sobre() {
@@ -27,11 +28,11 @@ export default function Sobre() {
                 >
                 Conheça nosso time
               </button>
-              <img className="rounded-xl mt-4 mb-2 lg:mt-4" src="trilha2024.JPG" alt="imagem palestra" />
+              <Image className="rounded-xl mt-4 mb-2 lg:mt-4" src="/trilha2024.JPG" alt="imagem palestra" width={800} height={600} />
             </div>
 
             <div className="bg-AzulEletrico p-4 lg:p-10 rounded-2xl shadow-lg flex-grow lg:flex-[5] transform transition-transform duration-500 hover:scale-[1.02] hover:z-10">
-              <img className="rounded-xl lg:mt-4" src="aulas.jpeg" alt="imagem aulas" />
+              <Image className="rounded-xl lg:mt-4" src="/aulas.jpeg" alt="imagem aulas" width={800} height={600} />
               <h3 className="font-poppins font-extrabold text-xl lg:text-3xl text-BrancoCreme mb-2 mt-2 lg:mb-4 lg:mt-4">
                 Como são as aulas?
               </h3>
@@ -46,7 +47,7 @@ export default function Sobre() {
               <h3 className="font-poppins font-extrabold text-xl lg:text-3xl text-BrancoCreme mb-2 mt-2 lg:mb-4 lg:mt-2">
                 Palestras e Eventos
               </h3>
-              <img className="rounded-xl mb-4 lg:mb-4" src="palestra.JPG" alt="imagem palestra" />
+              <Image className="rounded-xl mb-4 lg:mb-4" src="/palestra.JPG" alt="imagem palestra" width={800} height={600} />
               <p className="text-BrancoCreme text-sm lg:text-xl font-bold font-spaceGrotesk">
                 O TRILHA também oferece palestras e eventos para complementar a formação dos alunos, trazendo especialistas do mercado e da academia para compartilhar conhecimentos, tendências e experiências.
               </p>
@@ -59,7 +60,7 @@ export default function Sobre() {
               <p className="text-BrancoCreme text-sm lg:text-xl font-bold font-spaceGrotesk">
                 Os objetivos do TRILHA são capacitar e inspirar estudantes dos primeiros períodos. O projeto visa fomentar a troca de conhecimento e o desenvolvimento de habilidades técnicas essenciais para a carreira dos alunos.
               </p>
-              <img className="rounded-xl mt-4 mb-2" src="aulaTrilha.JPG" alt="imagem aula pratica" />
+              <Image className="rounded-xl mt-4 mb-2" src="/aulaTrilha.JPG" alt="imagem aula pratica" width={800} height={600} />
             </div>
           </div>
         </div>
