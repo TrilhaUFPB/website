@@ -19,7 +19,7 @@ export const Tiago: Person = {
     photo: "pessoas/tiago.jpeg",
     class: null,
     org: ["2024.1", "2024.2"],
-    pos: ["Fundador", "Gerente de Mídia"],
+    pos: ["Fundador", "Líder de Mídia"],
 };
 
 export const Felipe: Person = {
@@ -31,7 +31,7 @@ export const Felipe: Person = {
     link: "https://www.linkedin.com/in/felipeduartea/",
     class: null,
     org: ["2024.1", "2024.2"],
-    pos: ["Fundador", "Gerente de Pessoas"],
+    pos: ["Fundador", "Líder de Pessoas"],
 };
 
 export const Puca: Person = {
@@ -55,7 +55,7 @@ export const Nicholas: Person = {
     photo: "pessoas/nicholas.png",
     class: null,
     org: ["2024.1", "2024.2"],
-    pos: ["Fundador", "Gerente de Aulas"],
+    pos: ["Fundador", "Líder de Aulas"],
 };
 
 export const Icaro: Person = {
@@ -151,7 +151,7 @@ export const Guilherme: Person = {
     photo: "pessoas/guilherme.png",
     class: null,
     org: ["2024.1", "2024.2"],
-    pos: ["Fundador", "Gerente de Aulas"],
+    pos: ["Fundador", "Líder de Aulas"],
 };
 
 export const Emyle: Person = {

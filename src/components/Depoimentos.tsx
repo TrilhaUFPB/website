@@ -119,7 +119,7 @@ function Card({ card, index }: { card: Testimonial; index: number }) {
   return (
     <div
       key={index}
-      className={`overflow-hidden border-4 p-6 rounded-3xl w-[270px] md:w-[500px] sm:w-[400px] mx-auto h-[560px] md:h-[330px] sm:h-[330px] ${borderClass} bg-Branco z-30`}
+      className={`overflow-hidden border-4 p-6 rounded-3xl w-[270px] md:w-[500px] sm:w-[400px] mx-auto h-[570px] md:h-[340px] sm:h-[340px] ${borderClass} bg-Branco z-30`}
     >
 
       {/* Upper content */}
