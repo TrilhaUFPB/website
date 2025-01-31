@@ -310,6 +310,18 @@ export const NicolasKleiton: Person = {
     pos: [],
 };
 
+export const Ceci: Person = {
+    name: "Cecilia Bissigo",
+    course: "Fonoaudiologia",
+    semester: "2",
+    role: " ",
+    link: "",
+    photo: "pessoas/ceci.png",
+    class: null,
+    org: ["2024.2"],
+    pos: ["Membro da Organização"],
+};
+
 export const peopleOrganization20241: Person[] = [
     Tiago,
     Felipe,
@@ -354,8 +366,10 @@ export const peopleOrganization20242: Person[] = [
     Bea,
     Emyle,
     Kruta,
-    Luigi
+    Luigi,
+    Ceci,
 ]
+
 
 export const peopleFounders: Person[] = [
     Tiago,

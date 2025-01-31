@@ -8,7 +8,9 @@ const courses = {
   "Ciência da Computação": "CC",
   "Engenharia da Computação": "EC",
   "Ciência de Dados e Inteligência Artificial": "CDIA",
+  "Fonoaudiologia": "Fono",
 };
+
 
 export default function QuemSomos() {
   return (
