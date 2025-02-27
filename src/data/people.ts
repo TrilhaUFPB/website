@@ -86,7 +86,7 @@ export const Kruta: Person = {
     name: "Pedro Kruta",
     course: "Ciência de Dados e Inteligência Artificial",
     semester: "2",
-    role: "Researcher Moises.AI | Researcher Zoox",
+    role: "Researcher Moises.AI",
     link: "https://www.linkedin.com/in/pedro-kruta-50992a1b2/",
     photo: "pessoas/2024.1/kruta.png",
     class: "2024.1",
@@ -258,15 +258,15 @@ export const VitorReis: Person = {
     link: "https://www.linkedin.com/in/vitor-reis-7680982b2",
     photo: "pessoas/2024.1/vitor.png",
     class: "2024.1",
-    org: [],
-    pos: [],
+    org: ["2024.2"],
+    pos: ["Membro da Organização"],
 };
 
 export const MiguelQueiroz: Person = {
     name:  "Miguel de Queiroz Fernandes Soares",
     course:  "Ciência da Computação",
     semester: "2",
-    role: "Software Engineer Intern Zênite",
+    role: "Software Engineer Intern TRIL",
     link:"https://www.linkedin.com/in/queirozmiguel",
     photo: "pessoas/2024.1/miguel.png",
     class: "2024.1",
@@ -368,6 +368,7 @@ export const peopleOrganization20242: Person[] = [
     Kruta,
     Luigi,
     Ceci,
+    VitorReis
 ]
 
 
