@@ -1,0 +1,182 @@
+{
+  "hero": {
+    "title": "Trilha: Your Path to",
+    "words": ["Learning", "Growing", "Connecting", "Inspiring"],
+    "description": "Start your university journey with practical experiences and lasting relationships.",
+    "button": "Learn More"
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "classes": "Classes",
+    "testimonials": "Testimonials",
+    "who": "Who We Are",
+    "faq": "FAQ"
+  },
+  "metadata": {
+    "title": "Trilha",
+    "description": "Start your university journey with practical experiences and lasting relationships."
+  },
+  "sobre": {
+    "title": "About Us",
+    "subtitle": "Classes, Talks, Mentoring and more",
+    "origin": {
+      "title": "How did TRILHA start?",
+      "description": "TRILHA started as an initiative by UFPB students to support first-year students at the Computing Center.",
+      "button": "Meet our team"
+    },
+    "classes": {
+      "title": "What are the classes like?",
+      "description": "TRILHA classes are practical and focused on the job market, with personalized tutoring and engaging content."
+    },
+    "events": {
+      "title": "Talks and Events",
+      "description": "TRILHA also offers talks and events to complement student education, bringing experts from the market and academia to share knowledge, trends, and experiences."
+    },
+    "goals": {
+      "title": "What are our goals?",
+      "description": "TRILHA's goals are to empower and inspire first-year students. The project aims to foster knowledge exchange and the development of technical skills essential for students' careers."
+    }
+  },
+  "quemSomos": {
+    "title": "Who We Are",
+    "subtitle": "Meet the people behind Trilha",
+    "founders": "Founders",
+    "current": "Current Organization",
+    "semester": "th"
+  },
+  "turmas": {
+    "title": "Classes",
+    "subtitle": "Meet our tutors and students from previous classes",
+    "description": "We are very proud of our previous classes and students. We always support and encourage connections between students and tutors, and we stay in touch with everyone to this day. Our mentorships are not just for the class period, but for life. We are also happy to say that many of our students continue to contribute to the Trilha community. Additionally, a direct impact of our program can be seen in our students who, immediately after completing the class, enter the job market and practical projects with a solid knowledge base.",
+    "firstClass": "First Class - 2024.1"
+  },
+  "turmaSection": {
+    "organization": "Organization:",
+    "students": "Students:"
+  },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Have questions?",
+    "questions": [
+      {
+        "question": "Is it for all courses?",
+        "answer": "Yes, the program is open to students from any course, not restricted to UFPB only."
+      },
+      {
+        "question": "How can I sign up?",
+        "answer": "Registrations open periodically, whenever a class finishes, at the beginning of each academic semester."
+      },
+      {
+        "question": "How many classes are there?",
+        "answer": "There is only one class per semester."
+      },
+      {
+        "question": "Can everyone attend the classes?",
+        "answer": "No, only participants officially enrolled in the program can attend the classes."
+      },
+      {
+        "question": "Is the project associated with any laboratory?",
+        "answer": "No, the program is not linked to any laboratory. It is a group of independent students. However, Trilha provides the necessary skills for participants to join any laboratory at the Computing Center, with many joining soon after completing the program."
+      },
+      {
+        "question": "How long does a class last?",
+        "answer": "Each class has an average duration of one semester, equivalent to six months. However, the exact period may vary according to UFPB's academic calendar."
+      },
+      {
+        "question": "I didn't get in, can I try again?",
+        "answer": "Yes, you can try again in the next class when registrations open."
+      },
+      {
+        "question": "Who can participate?",
+        "answer": "Anyone interested in technology and learning can participate, regardless of their current level of knowledge. However, our focus is on students who have just entered college and have little or no programming knowledge."
+      },
+      {
+        "question": "Do I need to know how to program?",
+        "answer": "No, the program is focused on students who are just starting out in the world of technology and does not require prior knowledge of programming."
+      },
+      {
+        "question": "Is it free?",
+        "answer": "Yes, the program is completely free."
+      },
+      {
+        "question": "Is there a limit of people per class?",
+        "answer": "Yes, the number of participants is limited to ensure a more interactive and personalized environment."
+      },
+      {
+        "question": "What is Tiago's favorite color?",
+        "answer": "One of the most frequently asked questions at Trilha, and Tiago's favorite color is "
+      },
+      {
+        "question": "Can I join the organization?",
+        "answer": "If you are interested in becoming part of the organization, contact the Trilha team to check if there is a need for new people at the moment."
+      },
+      {
+        "question": "Who are the tutors?",
+        "answer": "The tutors are senior students from UFPB's technology courses, with experience in the field, such as internships and jobs at various companies."
+      },
+      {
+        "question": "Where are the classes held?",
+        "answer": "Classes are held at the Computing Center (CI) of UFPB."
+      }
+    ],
+    "colors": {
+      "sunday": "Red",
+      "monday": "Blue",
+      "tuesday": "Green",
+      "wednesday": "Pink",
+      "thursday": "Orange",
+      "friday": "Purple",
+      "saturday": "Black"
+    },
+    "colorSuffix": ", obviously."
+  },
+  "footer": {
+    "tagline": "Empowering and inspiring students for a bright future.",
+    "contact": "Contact",
+    "email": "Email: contato.trilhaufpb@gmail.com",
+    "sections": "Sections",
+    "rights": "All rights reserved."
+  },
+  "depoimentos": {
+    "title": "Testimonials",
+    "subtitle": "What our students have to say about Trilha"
+  },
+  "people": {
+    "courses": {
+      "Ciência da Computação": "Computer Science",
+      "Engenharia da Computação": "Computer Engineering",
+      "Ciência de Dados e Inteligência Artificial": "Data Science and Artificial Intelligence",
+      "Fonoaudiologia": "Speech Therapy"
+    },
+    "roles": {
+      "Software Engineer": "Software Engineer",
+      "Data Scientist": "Data Scientist",
+      "Machine Learning Engineer": "Machine Learning Engineer",
+      "Researcher": "Researcher",
+      "Software Engineer Intern": "Software Engineer Intern",
+      "Data Engineer": "Data Engineer",
+      "Ex Aluno Trilha": "Former Trilha Student",
+      "Fundador": "Founder",
+      "Líder de Mídia": "Media Lead",
+      "Líder de Pessoas": "People Lead",
+      "Líder de Aulas": "Classes Lead",
+      "Membro da Organização": "Organization Member"
+    }
+  },
+  "testimonials": {
+    "Emyle": "Trilha was an incredible experience. If it weren't for the project, I would hardly have come into contact with so many important programming topics in my first semester. It not only provided me with a technical foundation, but also helped me develop skills such as teamwork and project management, especially during the hackathon, preparing me for real professional life.",
+    "Miguel": "Trilha was of paramount importance for my introduction to the computer science course which, until then, was predominantly theoretical. The weekly classes and the hackathon at the end of the period transformed my view of programming by making me put into practice all the theory learned in class. I was very happy and grateful to have participated, so I recommend it to everyone who is starting the course!",
+    "LuisAranha": "Trilha was an experience that provided me with a lot of learning and connection with important people in the field, explaining everything from the basics of what programming is and what a programming language is, especially Python, to how to produce a group project with extremely competent people who walked the path with me. I believe it was of great importance to me, since I started the Computer Science course with almost zero knowledge of the area, and it helped me fill this void!",
+    "Marcus": "Here, I had great experiences with things I never thought I would have. I was able to learn from people who inspire me and, from beginning to end, I had enormous satisfaction in participating in this journey.",
+    "Clara": "The experience that Trilha provided was simply unique. The project helped me grow both as a student and as a person, teaching me to be more focused and to work better in teams. More than that, meeting incredible people and hearing inspiring stories completely changed the way I see the field. I am very grateful to everyone involved, because Trilha has profoundly marked my life, both personally and academically.",
+    "Kruta": "The Trilha program was a fundamental pillar for my education at the beginning of my undergraduate studies. In it, I had the opportunity to meet new people, build valuable friendships and acquire a lot of knowledge, both in the technical part and in teamwork and group interaction.",
+    "Luigi": "Trilha helped me build a solid foundation and forge a learning path that covers the main concepts needed to enter a first real project. Through it, I developed practical and theoretical skills that were fundamental to my journey, preparing me for challenges like those I currently face at Moises. This experience not only reinforced my confidence, but also opened doors to more complex projects, where I can apply the knowledge received and impact the world.",
+    "NicolasKleiton": "Participating in Trilha was an incredible experience for me, especially because I had just entered university, didn't know anyone, and during that time, I was able to meet amazing people. Trilha was essential for putting what we learned into practice, especially during the hackathon. I am very grateful to Trilha for everything. I am sure that this experience was not only important for me but also for everyone who had the chance to participate.",
+    "Bea": "Experiencing Trilha was a milestone at the beginning of my journey in Computer Science. The project not only introduced me to the fundamentals of programming, but also gave me the confidence to explore the field with more security. The practical experience and team learning were transformative, showing the importance of collaborating and growing with other people. Trilha was a special part of this beginning, and I am very grateful to have been part of this journey.",
+    "DaviGurgel": "Trilha was essential for my beginning of the course and provided me with a very solid foundation of what I will need for good training as a student and professional. The experience was indispensable for me, as I entered the course with little programming background and I believe that Trilha made me reach a level that I might have taken several more months to reach without mentoring. Additionally, during this project I met incredible people, with whom I want to stay in touch for the rest of my life. That's why I'm very grateful to have participated in the first edition of Trilha.",
+    "Artur": "Trilha was essential to help me build a solid foundation in the basic concepts of programming and to follow a structured learning path in the various possible areas of the field, covering the main concepts necessary to enter real projects. During this journey, I developed practical and theoretical skills that were of paramount importance to my evolution. Having experiences with recognized professionals in the market and with former students was, for me, the most enriching part of the project. I am extremely happy to have had this unique opportunity!",
+    "VitorReis": "Trilha was an incredible experience for me, in which I learned a lot in the field of programming, from the basics to more advanced concepts, and had my first experience in teamwork during the hackathon. In addition, I was able to meet incredible people, to whom I am extremely grateful for making my Fridays happier during Trilha.",
+    "RafaelTorres": "Trilha was a transformative experience for me. The project not only helped me build a solid foundation, but also provided contact with very important subjects that I would hardly have known otherwise. Participating in Trilha at the beginning of the course was certainly one of the best decisions I made, I am very grateful to have participated."
+  }
+} 

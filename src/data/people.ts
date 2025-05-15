@@ -19,7 +19,7 @@ export const Tiago: Person = {
     photo: "pessoas/tiago.jpeg",
     class: null,
     org: ["2024.1", "2024.2"],
-    pos: ["Fundador", "Líder de Mídia"],
+    pos: ["Fundador", "Líder de Mídia"],    
 };
 
 export const Felipe: Person = {
