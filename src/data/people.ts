@@ -84,7 +84,7 @@ export const Luigi: Person = {
 
 export const Kruta: Person = {
     name: "Pedro Kruta",
-    course: "Ciência de Dados e Inteligência Artificial",
+    course: "Ciência de Dados e IA",
     semester: "2",
     role: "Researcher Moises.AI",
     link: "https://www.linkedin.com/in/pedro-kruta-50992a1b2/",
@@ -120,7 +120,7 @@ export const Bea: Person = {
 
 export const Luiz: Person = {
     name: "Luiz Fernando",
-    course: "Ciência de Dados e Inteligência Artificial",
+    course: "Ciência de Dados e IA",
     semester: "11",
     role: "Machine Learning Engineering Nubank",
     link: "https://www.linkedin.com/in/luiz-fernando632",
@@ -180,7 +180,7 @@ export const Clara: Person = {
 
 export const Caio: Person = {
     name: "Caio Chacon",
-    course: "Ciência de Dados e Inteligência Artificial",
+    course: "Ciência de Dados e IA",
     semester: "8",
     role: "Data Scientist Bitka | Data Scientist VLibras",
     link: "https://www.linkedin.com/in/caiolchacon",

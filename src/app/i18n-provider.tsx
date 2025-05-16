@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 
 import ptCommon from "../locales/pt/common.json";
 import enCommon from "../locales/en/common.json";
@@ -18,7 +17,7 @@ const translations: Translations = {
 };
 
 interface I18nContextType {
-  t: (key: string, params?: Record<string, string>) => any;
+  t: <T = string>(key: string, params?: Record<string, string>) => T;
   locale: Locale;
   changeLanguage: (newLocale: Locale) => void;
 }
@@ -27,7 +26,6 @@ const I18nContext = createContext<I18nContextType | null>(null);
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocale] = useState<Locale>("pt");
-  const pathname = usePathname();
 
   // Check local storage or browser preferences on mount
   useEffect(() => {
@@ -49,24 +47,42 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   }, [locale]);
 
   // Function to get a translation by key
-  const t = (key: string, params: Record<string, string> = {}) => {
+  const t = <T = string,>(
+    key: string,
+    params: Record<string, string> = {}
+  ): T => {
     const keys = key.split(".");
-    let value = keys.reduce((obj: any, k) => {
-      return obj?.[k];
-    }, translations[locale]);
+    let value: unknown = translations[locale];
+
+    // Navigate through the keys
+    for (const k of keys) {
+      if (
+        typeof value === "object" &&
+        value !== null &&
+        k in (value as Record<string, unknown>)
+      ) {
+        value = (value as Record<string, unknown>)[k];
+      } else {
+        // Key not found, return original key for string type or empty array/object for other types
+        return key as unknown as T;
+      }
+    }
 
     if (value === undefined) {
-      return key;
+      return key as unknown as T;
     }
 
-    // Replace parameters in the string
+    // Replace parameters in the string if value is a string
     if (typeof value === "string") {
+      let result = value;
       Object.entries(params).forEach(([paramKey, paramValue]) => {
-        value = (value as string).replace(`{{${paramKey}}}`, paramValue);
+        result = result.replace(`{{${paramKey}}}`, paramValue);
       });
+      return result as unknown as T;
     }
 
-    return value;
+    // For non-string values (arrays, objects), return as is
+    return value as T;
   };
 
   // Function to change the language

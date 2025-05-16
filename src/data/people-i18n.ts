@@ -13,7 +13,7 @@ export function useTranslatedPeople() {
    * Translates a course name
    */
   const translateCourse = (course: string): string => {
-    return t(`people.courses.${course}`);
+    return t(`people.courses.${course}`) as string;
   };
 
   /**
@@ -30,14 +30,14 @@ export function useTranslatedPeople() {
     if (parts.length > 1) {
       // For roles like "Software Engineer Intern Zoox", we want to translate "Software Engineer Intern"
       // but keep "Zoox" as is
-      let translatedParts = [];
+      const translatedParts = [];
       let currentPart = '';
 
       for (const part of parts) {
         currentPart = currentPart ? `${currentPart} ${part}` : part;
         
         // Try to translate the accumulated part
-        const translated = t(`people.roles.${currentPart}`);
+        const translated = t(`people.roles.${currentPart}`) as string;
         
         // If translation successful (not same as key), add it and reset
         if (translated !== `people.roles.${currentPart}`) {
@@ -55,8 +55,9 @@ export function useTranslatedPeople() {
     }
 
     // Simple role, just translate directly
-    return t(`people.roles.${role}`) !== `people.roles.${role}` 
-      ? t(`people.roles.${role}`) 
+    const translatedRole = t(`people.roles.${role}`) as string;
+    return translatedRole !== `people.roles.${role}` 
+      ? translatedRole 
       : role;
   };
 
@@ -82,9 +83,18 @@ export function useTranslatedPeople() {
 
   // Create a mapping of courses
   const courses: Record<string, string> = {};
+  
+  // Type guard to check if an object is a Person
+  const isPerson = (obj: unknown): obj is PeopleData.Person => {
+    return obj !== null && 
+      typeof obj === 'object' && 
+      'course' in obj && 
+      typeof (obj as PeopleData.Person).course === 'string';
+  };
+  
   Object.keys(PeopleData).forEach(key => {
-    const person = (PeopleData as any)[key];
-    if (person && typeof person === 'object' && person.course) {
+    const person = (PeopleData as Record<string, unknown>)[key];
+    if (isPerson(person)) {
       courses[person.course] = translateCourse(person.course);
     }
   });
