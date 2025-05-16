@@ -1,8 +1,10 @@
-"use client"
+"use client";
 
 import { peopleOrganization20241, peopleStudents20241 } from "@/data/people";
 import TurmaSection from "./TurmaSection";
-import DynamicGrid from "./DynamicGrid"; 
+import DynamicGrid from "./DynamicGrid";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useTranslatedPeople } from "@/data/people-i18n";
 
 const courses = {
   "Ciência da Computação": "CC",
@@ -10,48 +12,54 @@ const courses = {
   "Ciência de Dados e Inteligência Artificial": "CDIA",
 };
 
-const transformedPeople20241 = peopleOrganization20241.map((person, index) => ({
-  id: index,
-  name: person.name,
-  designation: person.role,
-  image: person.photo,
-  link: person.link,
-}));
-
-const transformedPeopleStudents20241 = peopleStudents20241.map((person) => ({
-  name: person.name,
-  course: courses[person.course as keyof typeof courses],
-  photo: person.photo,
-  link: person.link,
-  role: person.role.trim() === "" ? "Ex Aluno Trilha" : person.role,
-}));
-
 export default function Turmas() {
+  const { t } = useTranslation();
+  const { 
+    peopleOrganization20241: translatedOrg, 
+    peopleStudents20241: translatedStudents,
+    courses 
+  } = useTranslatedPeople();
+
+  const transformedPeople20241 = translatedOrg.map((person, index) => ({
+    id: index,
+    name: person.name,
+    designation: person.role,
+    image: person.photo,
+    link: person.link,
+  }));
+
+  const transformedPeopleStudents20241 = translatedStudents.map((person) => ({
+    name: person.name,
+    course: courses[person.course] ? courses[person.course].split(' ')[0] : "CC",
+    photo: person.photo,
+    link: person.link,
+    role: person.role.trim() === "" ? t("people.roles.Ex Aluno Trilha") : person.role,
+  }));
+
   return (
-    <section id="turmas" className="py-20 bg-AzulMeiaNoite px-4 md:px-28 relative">
-      <DynamicGrid cellSize={50} className="opacity-5 z-0" numberOfCells={50}/>
+    <section
+      id="turmas"
+      className="py-20 bg-AzulMeiaNoite px-4 md:px-28 relative"
+    >
+      <DynamicGrid cellSize={50} className="opacity-5 z-0" numberOfCells={50} />
 
       <div className="px-6">
-        <h2 className="text-1xl font-semibold text-center text-AzulCeu fnt-poppins mb-2 z-10">Turmas</h2>
+        <h2 className="text-1xl font-semibold text-center text-AzulCeu fnt-poppins mb-2 z-10">
+          {t("turmas.title")}
+        </h2>
         <h1 className="text-3xl font-bold text-center text-Branco font-poppins mb-6 z-10">
-          Conheça nossos tutores e alunos de turmas anteriores
+          {t("turmas.subtitle")}
         </h1>
 
         <p className="text-2sm font-regular text-center text-Branco font-spaceGrotesk mb-8 z-10">
-          Nós temos grande orgulho de nossas turmas anteriores e de nossos alunos. 
-          Sempre apoiamos e incentivamos a conexão entre os alunos e tutores, e mantemos contato com todos até hoje.
-          Nossas mentorias não são apenas para o período de aula, mas para a vida.
-
-          Temos felicidade também em dizer que muitos de nossos alunos continuam a contribuir para a comunidade Trilha.
-          Além disso, um impacto direto de nosso programa se encontra em nossos alunos que, logo após a finalização da turma,
-          entram no mercado de trabalho e em projetos práticos, já com uma base sólida de conhecimento.
+          {t("turmas.description")}
         </p>
       </div>
 
       <div className="container mx-auto px-6 flex flex-col items-center justify-center z-10">
         {/* Use the TurmaSection Component */}
         <TurmaSection
-          title="Primeira Turma - 2024.1"
+          title={t("turmas.firstClass")}
           organizers={transformedPeople20241}
           students={transformedPeopleStudents20241}
         />

@@ -1,0 +1,182 @@
+{
+  "hero": {
+    "title": "Trilha: Seu Caminho para",
+    "words": ["Aprender", "Crescer", "Conectar-se", "Inspirar-se"],
+    "description": "Iniciando a graduação com experiências práticas e relacionamentos duradouros.",
+    "button": "Saiba Mais"
+  },
+  "navbar": {
+    "home": "Início",
+    "about": "Sobre",
+    "classes": "Turmas",
+    "testimonials": "Depoimentos",
+    "who": "Quem Somos",
+    "faq": "FAQ"
+  },
+  "metadata": {
+    "title": "Trilha",
+    "description": "Iniciando a graduação com experiências práticas e relacionamentos duradouros."
+  },
+  "sobre": {
+    "title": "Sobre Nós",
+    "subtitle": "Aulas, Palestras, Mentorias e muito mais",
+    "origin": {
+      "title": "Como o TRILHA surgiu?",
+      "description": "O TRILHA surgiu como uma iniciativa de alunos da UFPB para apoiar estudantes dos primeiros períodos do Centro de Informática.",
+      "button": "Conheça nosso time"
+    },
+    "classes": {
+      "title": "Como são as aulas?",
+      "description": "As aulas do TRILHA são práticas e focadas no mercado de trabalho, com tutoria personalizada e conteúdo envolvente."
+    },
+    "events": {
+      "title": "Palestras e Eventos",
+      "description": "O TRILHA também oferece palestras e eventos para complementar a formação dos alunos, trazendo especialistas do mercado e da academia para compartilhar conhecimentos, tendências e experiências."
+    },
+    "goals": {
+      "title": "Quais são os nossos objetivos?",
+      "description": "Os objetivos do TRILHA são capacitar e inspirar estudantes dos primeiros períodos. O projeto visa fomentar a troca de conhecimento e o desenvolvimento de habilidades técnicas essenciais para a carreira dos alunos."
+    }
+  },
+  "quemSomos": {
+    "title": "Quem Somos",
+    "subtitle": "Conheça quem são as pessoas por trás do Trilha",
+    "founders": "Fundadores",
+    "current": "Organização Atual",
+    "semester": "º"
+  },
+  "turmas": {
+    "title": "Turmas",
+    "subtitle": "Conheça nossos tutores e alunos de turmas anteriores",
+    "description": "Nós temos grande orgulho de nossas turmas anteriores e de nossos alunos. Sempre apoiamos e incentivamos a conexão entre os alunos e tutores, e mantemos contato com todos até hoje. Nossas mentorias não são apenas para o período de aula, mas para a vida. Temos felicidade também em dizer que muitos de nossos alunos continuam a contribuir para a comunidade Trilha. Além disso, um impacto direto de nosso programa se encontra em nossos alunos que, logo após a finalização da turma, entram no mercado de trabalho e em projetos práticos, já com uma base sólida de conhecimento.",
+    "firstClass": "Primeira Turma - 2024.1"
+  },
+  "turmaSection": {
+    "organization": "Organização:",
+    "students": "Alunos:"
+  },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Tem dúvidas?",
+    "questions": [
+      {
+        "question": "É para todos os cursos?",
+        "answer": "Sim, o programa é aberto a estudantes de qualquer curso, não sendo restrito apenas à UFPB."
+      },
+      {
+        "question": "Como posso me inscrever?",
+        "answer": "As inscrições abrem periodicamente, sempre que uma turma termina, no início de cada semestre letivo."
+      },
+      {
+        "question": "Quantas turmas existem?",
+        "answer": "Há apenas uma turma por semestre."
+      },
+      {
+        "question": "Todo mundo pode assistir às aulas?",
+        "answer": "Não, somente os participantes oficialmente inscritos no programa podem assistir às aulas."
+      },
+      {
+        "question": "O projeto está associado a algum laboratório?",
+        "answer": "Não, o programa não está vinculado a nenhum laboratório. Trata-se de um grupo de estudantes independentes. No entanto, o Trilha oferece as habilidades necessárias para que os participantes se integrem a qualquer laboratório do Centro de Informática, com muitos ingressando logo após o término do programa."
+      },
+      {
+        "question": "Quanto tempo dura uma turma?",
+        "answer": "Cada turma tem a duração média de um semestre, equivalente a seis meses. No entanto, o período exato pode variar de acordo com o período letivo da UFPB."
+      },
+      {
+        "question": "Não passei, posso tentar novamente?",
+        "answer": "Sim, você pode tentar novamente na próxima turma, quando as inscrições forem abertas."
+      },
+      {
+        "question": "Quem pode participar?",
+        "answer": "Qualquer pessoa interessada em tecnologia e em aprender pode participar, independentemente do nível de conhecimento atual. No entanto, nosso foco são em alunos que acabaram de ingressar na faculdade e possuem pouco ou nenhum conhecimento de programação."
+      },
+      {
+        "question": "Precisa saber programar?",
+        "answer": "Não, o programa é focado em estudantes que estão começando agora no mundo da tecnologia e não exige conhecimento prévio em programação."
+      },
+      {
+        "question": "É gratuito?",
+        "answer": "Sim, o programa é totalmente gratuito."
+      },
+      {
+        "question": "Tem limite de pessoas por turma?",
+        "answer": "Sim, o número de participantes é limitado para garantir um ambiente mais interativo e personalizado."
+      },
+      {
+        "question": "Qual a cor favorita de Tiago?",
+        "answer": "Uma das perguntas mais frequentes no Trilha, e a cor favorita de Tiago é "
+      },
+      {
+        "question": "Posso entrar na organização?",
+        "answer": "Se tiver interesse em fazer parte da organização, entre em contato com a equipe do Trilha para verificar se há necessidade de novas pessoas no momento."
+      },
+      {
+        "question": "Quem são os tutores?",
+        "answer": "Os tutores são estudantes veteranos dos cursos de tecnologia da UFPB, com experiência na área, tais como estágios e empregos em diversas empresas."
+      },
+      {
+        "question": "Onde são as aulas?",
+        "answer": "As aulas são realizadas no Centro de Informática (CI) da UFPB."
+      }
+    ],
+    "colors": {
+      "sunday": "Vermelho",
+      "monday": "Azul",
+      "tuesday": "Verde",
+      "wednesday": "Rosa",
+      "thursday": "Laranja",
+      "friday": "Roxo",
+      "saturday": "Preto"
+    },
+    "colorSuffix": ", obviamente."
+  },
+  "footer": {
+    "tagline": "Capacitando e inspirando estudantes para um futuro brilhante.",
+    "contact": "Contato",
+    "email": "Email: contato.trilhaufpb@gmail.com",
+    "sections": "Seções",
+    "rights": "Todos os direitos reservados."
+  },
+  "depoimentos": {
+    "title": "Depoimentos",
+    "subtitle": "O que nossos alunos têm a falar sobre o Trilha"
+  },
+  "people": {
+    "courses": {
+      "Ciência da Computação": "Ciência da Computação",
+      "Engenharia da Computação": "Engenharia da Computação",
+      "Ciência de Dados e Inteligência Artificial": "Ciência de Dados e Inteligência Artificial",
+      "Fonoaudiologia": "Fonoaudiologia"
+    },
+    "roles": {
+      "Software Engineer": "Software Engineer",
+      "Data Scientist": "Data Scientist",
+      "Machine Learning Engineer": "Machine Learning Engineer",
+      "Researcher": "Researcher",
+      "Software Engineer Intern": "Software Engineer Intern",
+      "Data Engineer": "Data Engineer",
+      "Ex Aluno Trilha": "Ex Aluno Trilha",
+      "Fundador": "Fundador",
+      "Líder de Mídia": "Líder de Mídia",
+      "Líder de Pessoas": "Líder de Pessoas",
+      "Líder de Aulas": "Líder de Aulas",
+      "Membro da Organização": "Membro da Organização"
+    }
+  },
+  "testimonials": {
+    "Emyle": "O Trilha foi uma experiência incrível. Se não fosse pelo projeto, dificilmente eu teria tido contato com tantos assuntos importantes de programação logo no meu primeiro período.  Ele não só me proporcionou uma base técnica, mas também me ajudou a desenvolver habilidades como trabalho em equipe e gestão de projeto, especialmente durante o hackathon, preparando-me para a vida profissional real",
+    "Miguel": "O Trilha foi de suma importância para a minha introdução ao curso de ciência da computação que, até então, estava sendo predominantemente teórico. As aulas semanais e o hackathon no fim do período transformaram a minha visão sobre a programação ao me fazer pôr em prática toda a teoria aprendida em sala. Fiquei muito feliz e grato por ter participado, por isso recomendo a todos que estão iniciando no curso!",
+    "LuisAranha": "O trilha foi uma experiência que me proporcionou muito aprendizado e conexão com pessoas importantes da área, explicando desde a base do que é programar e o que é uma linguagem de programação, em especial o Python, até como produzir um projeto em grupo com pessoas extremamente competentes que trilharam o caminho comigo. Acredito ter sido de grande importância para mim, visto que iniciei no curso de Ciência da Computação com um conhecimento quase nulo da área, e me proporcionou preencher esse vazio!",
+    "Marcus": "Aqui, tive grandes experiências com coisas que sequer pensei que teria. Consegui aprender com pessoas que me inspiram e, do início ao fim, tive uma enorme satisfação em participar dessa trajetória.",
+    "Clara": "A experiência que o Trilha proporcionou foi simplesmente única. O projeto me ajudou a crescer tanto como estudante quanto como pessoa, me ensinando a ser mais focada e a trabalhar melhor em equipe. Mais do que isso, conhecer pessoas incríveis e ouvir histórias inspiradoras mudou totalmente a forma como eu vejo a área. Sou muito grata a todos os envolvidos, porque o Trilha marcou profundamente minha vida, tanto no lado pessoal quanto no acadêmico.",
+    "Kruta": "O programa Trilha foi um pilar fundamental para a minha formação nesse início de graduação. Nele, tive a oportunidade de conhecer novas pessoas, construir amizades valiosas e adquirir muito conhecimento, tanto na parte técnica quanto no trabalho em equipe e na convivência em grupo.",
+    "Luigi": "O Trilha me ajudou a construir uma base sólida e a trilhar um caminho de aprendizado que passa pelos conceitos principais necessários para entrar em um primeiro projeto real. Através dele, desenvolvi habilidades práticas e teóricas que foram fundamentais para minha jornada, me preparando para desafios como aqueles que enfrento atualmente na Moises. Essa experiência não apenas reforçou minha confiança, mas também abriu portas para projetos mais complexos, onde posso aplicar os conhecimentos recebidos e impactar o mundo.",
+    "NicolasKleiton": "Participar do trilha foi uma experiência incrível pra mim, especialmente porque eu tinha acabado de entrar na universidade, não conhecia ninguém e, nesse tempo, pude conhecer pessoas incríveis. O trilha foi essencial para colocar em prática o que aprendemos, principalmente durante o hackathon. Sou muito grato ao trilha por tudo. Tenho certeza de que essa experiência não foi importante apenas pra mim, mas também para todos que tiveram a chance de participar.",
+    "Bea": "Vivenciar o Trilha foi um marco no início da minha trajetória na Ciência da Computação. O projeto não apenas me apresentou os fundamentos da programação, mas também me deu a confiança para explorar a área com mais segurança. A experiência prática e o aprendizado em equipe foram transformadores, mostrando a importância de colaborar e crescer junto com outras pessoas. O Trilha foi uma parte especial desse começo, e sou muito grata por ter feito parte dessa jornada.",
+    "DaviGurgel": "O Trilha foi essencial para o meu início de curso e me proporcionou uma base muito sólida do que vou precisar para uma boa formação como estudante e profissional. A experiência foi indispensável para mim, pois entrei no curso com pouca base de programação e acredito que o Trilha me fez alcançar um nível que eu talvez demoraria vários meses a mais para atingir, sem a mentoria. Além disso, durante esse projeto conheci pessoas incríveis, com quem tenho vontade de manter contato pelo resto da minha vida. Por isso, sou muito grato por ter participado da primeira edição do Trilha.",
+    "Artur": "O Trilha foi essencial para me ajudar a construir uma base sólida nos conceitos básicos de programação e a seguir um caminho estruturado de aprendizado nas diversas áreas possíveis do ramo, abrangendo os principais conceitos necessários para ingressar em projetos reais. Durante essa jornada, desenvolvi habilidades práticas e teóricas que foram de suma importância para a minha evolução. Ter experiências com profissionais reconhecidos no mercado e com ex-alunos foi, para mim, a parte mais engrandecedora do projeto. Estou extremamente feliz por ter tido essa oportunidade singular!",
+    "VitorReis": "O Trilha foi uma experiência incrível pra mim, na qual aprendi muita coisa no ramo da programação, desde o básico até conceitos mais avançados, e tive minha primeira experiência em um trabalho em equipe no hackathon. Além disso, pude conhecer pessoas incríveis, as quais sou extremamente grato por terem feito minhas sextas-feiras mais felizes durante o Trilha.",
+    "RafaelTorres": "O Trilha foi uma experiência transformadora para mim. O projeto não apenas me ajudou a construir uma base sólida, mas também proporcionou contato com assuntos muito importantes, que dificilmente eu conheceria de outra forma. Participar do Trilha no início do curso foi com certeza uma das melhores decisões que tomei, sou muito grato por ter participado."
+  }
+} 
