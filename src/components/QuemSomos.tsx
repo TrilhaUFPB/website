@@ -1,21 +1,16 @@
 "use client";
 
 import DynamicGrid from "./DynamicGrid";
-import { peopleOrganization20242, peopleFounders } from "@/data/people";
 import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useTranslatedPeople } from "@/data/people-i18n";
 
-const courses = {
-  "Ciência da Computação": "CC",
-  "Engenharia da Computação": "EC",
-  "Ciência de Dados e Inteligência Artificial": "CDIA",
-  Fonoaudiologia: "Fono",
-};
-
 export default function QuemSomos() {
   const { t } = useTranslation();
-  const { peopleFounders: translatedFounders, peopleOrganization20242: translatedOrg, courses } = useTranslatedPeople();
+  const {
+    peopleFounders: translatedFounders,
+    peopleOrganization20242: translatedOrg,
+  } = useTranslatedPeople();
 
   return (
     <section id="quem-somos" className="py-20 bg-Branco px-4 md:px-28 relative">
@@ -92,8 +87,7 @@ export default function QuemSomos() {
                 {person.name.split(" ").slice(0, 2).join(" ")}
               </h3>
               <p className="text-xs md:text-sm font-spaceGrotesk font-semibold text-AzulCeu">
-                {courses[person.course] ? courses[person.course].split(' ')[0] : 'CC'} -{" "}
-                {person.semester}
+                {person.course} - {person.semester}
                 {t("quemSomos.semester")}
               </p>
               <p className="text-xs md:text-sm font-spaceGrotesk text-neutral-600 font-semibold mt-0">

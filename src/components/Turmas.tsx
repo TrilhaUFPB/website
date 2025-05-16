@@ -1,23 +1,15 @@
 "use client";
 
-import { peopleOrganization20241, peopleStudents20241 } from "@/data/people";
 import TurmaSection from "./TurmaSection";
 import DynamicGrid from "./DynamicGrid";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useTranslatedPeople } from "@/data/people-i18n";
 
-const courses = {
-  "Ciência da Computação": "CC",
-  "Engenharia da Computação": "EC",
-  "Ciência de Dados e Inteligência Artificial": "CDIA",
-};
-
 export default function Turmas() {
   const { t } = useTranslation();
-  const { 
-    peopleOrganization20241: translatedOrg, 
+  const {
+    peopleOrganization20241: translatedOrg,
     peopleStudents20241: translatedStudents,
-    courses 
   } = useTranslatedPeople();
 
   const transformedPeople20241 = translatedOrg.map((person, index) => ({
@@ -30,10 +22,13 @@ export default function Turmas() {
 
   const transformedPeopleStudents20241 = translatedStudents.map((person) => ({
     name: person.name,
-    course: courses[person.course] ? courses[person.course].split(' ')[0] : "CC",
+    course: person.course || "",
     photo: person.photo,
     link: person.link,
-    role: person.role.trim() === "" ? t("people.roles.Ex Aluno Trilha") : person.role,
+    role:
+      person.role.trim() === ""
+        ? t("people.roles.Ex Aluno Trilha")
+        : person.role,
   }));
 
   return (
