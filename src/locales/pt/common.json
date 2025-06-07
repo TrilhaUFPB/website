@@ -54,7 +54,8 @@
   },
   "turmaSection": {
     "organization": "Organização:",
-    "students": "Alunos:"
+    "students": "Alunos:",
+    "moreDetails": "Mais detalhes"
   },
   "faq": {
     "title": "FAQ",
@@ -184,6 +185,7 @@
     "title": "Hackathons",
     "subtitle": "Projetos desenvolvidos nas nossas edições do TRILHATHLON",
     "2024_1": "TRILHATHLON 2024.1",
+    "moreDetails": "Mais detalhes",
     "projects": {
       "ClarIAr": {
         "description": "A grande vencedora do TRILHATHLON, inovando ao gerar descrições humanizadas e detalhadas de qualquer imagem na tela usando recursos nativos do Android e modelos de linguagem avançados."
@@ -197,6 +199,12 @@
       "TARG": {
         "description": "Ferramenta para investidores com previsões gráficas, análise de notícias e dados históricos, construída com tecnologias de IA e web scraping."
       }
+    }
+  },
+  "classPages": {
+    "2024_1": {
+      "title": "Turma 2024.1",
+      "description": "Texto fictício descrevendo mais detalhes sobre a primeira turma."
     }
   }
 }

@@ -54,7 +54,8 @@
   },
   "turmaSection": {
     "organization": "Organization:",
-    "students": "Students:"
+    "students": "Students:",
+    "moreDetails": "More details"
   },
   "faq": {
     "title": "FAQ",
@@ -184,6 +185,7 @@
     "title": "Hackathons",
     "subtitle": "Projects developed in our TRILHATHLON editions",
     "2024_1": "TRILHATHLON 2024.1",
+    "moreDetails": "More details",
     "projects": {
       "ClarIAr": {
         "description": "The grand winner, using Android's native resources and advanced language models to generate detailed, human-like descriptions of anything on screen."
@@ -197,6 +199,12 @@
       "TARG": {
         "description": "Tool for investors featuring chart predictions, news sentiment analysis and historical data, built with AI technologies and web scraping."
       }
+    }
+  },
+  "classPages": {
+    "2024_1": {
+      "title": "Class 2024.1",
+      "description": "This is placeholder text describing the first class in more detail."
     }
   }
 }

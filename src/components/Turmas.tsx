@@ -4,32 +4,38 @@ import TurmaSection from "./TurmaSection";
 import DynamicGrid from "./DynamicGrid";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useTranslatedPeople } from "@/data/people-i18n";
+import { classes } from "@/data/classes";
 
 export default function Turmas() {
   const { t } = useTranslation();
-  const {
-    peopleOrganization20241: translatedOrg,
-    peopleStudents20241: translatedStudents,
-  } = useTranslatedPeople();
+  const { translatePerson } = useTranslatedPeople();
 
-  const transformedPeople20241 = translatedOrg.map((person, index) => ({
-    id: index,
-    name: person.name,
-    designation: person.role,
-    image: person.photo,
-    link: person.link,
-  }));
+  const transformOrganizers = (org: any[]) =>
+    org.map((person, index) => {
+      const translated = translatePerson(person);
+      return {
+        id: index,
+        name: translated.name,
+        designation: translated.role,
+        image: translated.photo,
+        link: translated.link,
+      };
+    });
 
-  const transformedPeopleStudents20241 = translatedStudents.map((person) => ({
-    name: person.name,
-    course: person.course || "",
-    photo: person.photo,
-    link: person.link,
-    role:
-      person.role.trim() === ""
-        ? t("people.roles.Ex Aluno Trilha")
-        : person.role,
-  }));
+  const transformStudents = (students: any[]) =>
+    students.map((person) => {
+      const translated = translatePerson(person);
+      return {
+        name: translated.name,
+        course: translated.course || "",
+        photo: translated.photo,
+        link: translated.link,
+        role:
+          translated.role.trim() === ""
+            ? t("people.roles.Ex Aluno Trilha")
+            : translated.role,
+      };
+    });
 
   return (
     <section
@@ -51,13 +57,20 @@ export default function Turmas() {
         </p>
       </div>
 
-      <div className="container mx-auto px-6 flex flex-col items-center justify-center z-10">
-        {/* Use the TurmaSection Component */}
-        <TurmaSection
-          title={t("turmas.firstClass")}
-          organizers={transformedPeople20241}
-          students={transformedPeopleStudents20241}
-        />
+      <div className="container mx-auto px-6 flex flex-col items-center justify-center z-10 gap-8">
+        {classes.map((cls) => {
+          const org = transformOrganizers(cls.organizers);
+          const stu = transformStudents(cls.students);
+          return (
+            <TurmaSection
+              key={cls.id}
+              title={t(`classPages.${cls.id.replace('.', '_')}.title`)}
+              organizers={org}
+              students={stu}
+              detailsLink={`/classes/${cls.id}`}
+            />
+          );
+        })}
       </div>
     </section>
   );

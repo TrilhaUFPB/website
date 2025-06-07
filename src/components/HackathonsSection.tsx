@@ -3,10 +3,16 @@
 import DynamicGrid from "./DynamicGrid";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useTranslatedPeople } from "@/data/people-i18n";
-import { hackathons } from "@/data/hackathons";
+import { hackathons, Hackathon } from "@/data/hackathons";
 import { AnimatedTooltip } from "./ui/animated-tooltip";
 
-export default function HackathonsSection() {
+export default function HackathonsSection({
+  hackathonsList = hackathons,
+  showMoreLink = true,
+}: {
+  hackathonsList?: Hackathon[];
+  showMoreLink?: boolean;
+}) {
   const { t } = useTranslation();
   const { translatePerson } = useTranslatedPeople();
 
@@ -22,7 +28,7 @@ export default function HackathonsSection() {
         </h1>
       </div>
       <div className="flex flex-col gap-12">
-        {hackathons.map((hackathon, idx) => (
+        {hackathonsList.map((hackathon, idx) => (
           <div key={idx}>
             <h2 className="text-2xl font-bold text-AzulMeiaNoite font-poppins mb-6 text-center">
               {t(`hackathons.${hackathon.class.replace('.', '_')}`)}
@@ -42,7 +48,7 @@ export default function HackathonsSection() {
                 return (
                   <div
                     key={pIndex}
-                    className="border-2 border-AzulMeiaNoite rounded-3xl p-6 bg-Branco/5"
+                    className="border-2 border-AzulMeiaNoite rounded-3xl p-6 bg-Branco/5 flex flex-col gap-4"
                   >
                     <h3 className="text-xl font-bold font-poppins text-AzulMeiaNoite mb-2 text-center">
                       {project.name}
@@ -53,6 +59,14 @@ export default function HackathonsSection() {
                     <div className="flex justify-center">
                       <AnimatedTooltip items={members} />
                     </div>
+                    {showMoreLink && (
+                      <a
+                        href={`/hackathons/${project.slug}`}
+                        className="text-AzulMeiaNoite underline text-center mt-auto"
+                      >
+                        {t('hackathons.moreDetails')}
+                      </a>
+                    )}
                   </div>
                 );
               })}

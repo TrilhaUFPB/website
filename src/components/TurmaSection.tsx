@@ -3,12 +3,14 @@ import { useState } from "react";
 import { AnimatedTooltip } from "./ui/animated-tooltip";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const TurmaSection = ({
   title,
   organizers,
   students,
+  detailsLink,
 }: {
   title: string;
   organizers: {
@@ -25,6 +27,7 @@ const TurmaSection = ({
     link?: string;
     role: string;
   }[];
+  detailsLink?: string;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
@@ -83,8 +86,8 @@ const TurmaSection = ({
               {t("turmaSection.students")}
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 px-4 md:px-4 lg:px-20">
-              {students.map((student, index) => (
-                <div key={index} className="flex flex-col items-center mb-6">
+          {students.map((student, index) => (
+            <div key={index} className="flex flex-col items-center mb-6">
                   <a
                     href={student.link}
                     target="_blank"
@@ -112,6 +115,13 @@ const TurmaSection = ({
                 </div>
               ))}
             </div>
+            {detailsLink && (
+              <div className="flex justify-center mt-4">
+                <Link href={detailsLink} className="underline">
+                  {t("turmaSection.moreDetails")}
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
