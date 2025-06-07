@@ -9,6 +9,7 @@
     "home": "Início",
     "about": "Sobre",
     "classes": "Turmas",
+    "hackathons": "Hackathons",
     "testimonials": "Depoimentos",
     "who": "Quem Somos",
     "faq": "FAQ"
@@ -178,5 +179,24 @@
     "Artur": "O Trilha foi essencial para me ajudar a construir uma base sólida nos conceitos básicos de programação e a seguir um caminho estruturado de aprendizado nas diversas áreas possíveis do ramo, abrangendo os principais conceitos necessários para ingressar em projetos reais. Durante essa jornada, desenvolvi habilidades práticas e teóricas que foram de suma importância para a minha evolução. Ter experiências com profissionais reconhecidos no mercado e com ex-alunos foi, para mim, a parte mais engrandecedora do projeto. Estou extremamente feliz por ter tido essa oportunidade singular!",
     "VitorReis": "O Trilha foi uma experiência incrível pra mim, na qual aprendi muita coisa no ramo da programação, desde o básico até conceitos mais avançados, e tive minha primeira experiência em um trabalho em equipe no hackathon. Além disso, pude conhecer pessoas incríveis, as quais sou extremamente grato por terem feito minhas sextas-feiras mais felizes durante o Trilha.",
     "RafaelTorres": "O Trilha foi uma experiência transformadora para mim. O projeto não apenas me ajudou a construir uma base sólida, mas também proporcionou contato com assuntos muito importantes, que dificilmente eu conheceria de outra forma. Participar do Trilha no início do curso foi com certeza uma das melhores decisões que tomei, sou muito grato por ter participado."
+  },
+  "hackathons": {
+    "title": "Hackathons",
+    "subtitle": "Projetos desenvolvidos nas nossas edições do TRILHATHLON",
+    "2024_1": "TRILHATHLON 2024.1",
+    "projects": {
+      "ClarIAr": {
+        "description": "A grande vencedora do TRILHATHLON, inovando ao gerar descrições humanizadas e detalhadas de qualquer imagem na tela usando recursos nativos do Android e modelos de linguagem avançados."
+      },
+      "PerCurso": {
+        "description": "Plataforma colaborativa que reúne provas antigas, links úteis e estratégias de estudo para alunos de Ciência da Computação da UFPB, totalmente open source."
+      },
+      "TrilhaSonora": {
+        "description": "Aplicativo que integra leitura a uma trilha musical personalizada via Spotify, permitindo escolher livros de domínio público e ajustar a velocidade de narração."
+      },
+      "TARG": {
+        "description": "Ferramenta para investidores com previsões gráficas, análise de notícias e dados históricos, construída com tecnologias de IA e web scraping."
+      }
+    }
   }
-} 
+}

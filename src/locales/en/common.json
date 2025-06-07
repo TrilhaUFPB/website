@@ -9,6 +9,7 @@
     "home": "Home",
     "about": "About",
     "classes": "Classes",
+    "hackathons": "Hackathons",
     "testimonials": "Testimonials",
     "who": "Who We Are",
     "faq": "FAQ"
@@ -178,5 +179,24 @@
     "Artur": "Trilha was essential to help me build a solid foundation in the basic concepts of programming and to follow a structured learning path in the various possible areas of the field, covering the main concepts necessary to enter real projects. During this journey, I developed practical and theoretical skills that were of paramount importance to my evolution. Having experiences with recognized professionals in the market and with former students was, for me, the most enriching part of the project. I am extremely happy to have had this unique opportunity!",
     "VitorReis": "Trilha was an incredible experience for me, in which I learned a lot in the field of programming, from the basics to more advanced concepts, and had my first experience in teamwork during the hackathon. In addition, I was able to meet incredible people, to whom I am extremely grateful for making my Fridays happier during Trilha.",
     "RafaelTorres": "Trilha was a transformative experience for me. The project not only helped me build a solid foundation, but also provided contact with very important subjects that I would hardly have known otherwise. Participating in Trilha at the beginning of the course was certainly one of the best decisions I made, I am very grateful to have participated."
+  },
+  "hackathons": {
+    "title": "Hackathons",
+    "subtitle": "Projects developed in our TRILHATHLON editions",
+    "2024_1": "TRILHATHLON 2024.1",
+    "projects": {
+      "ClarIAr": {
+        "description": "The grand winner, using Android's native resources and advanced language models to generate detailed, human-like descriptions of anything on screen."
+      },
+      "PerCurso": {
+        "description": "Collaborative platform that gathers past exams, useful links and study strategies for UFPB's Computer Science students. It is completely open source."
+      },
+      "TrilhaSonora": {
+        "description": "App that pairs reading with a custom soundtrack via Spotify, letting users pick public-domain books and control narration speed."
+      },
+      "TARG": {
+        "description": "Tool for investors featuring chart predictions, news sentiment analysis and historical data, built with AI technologies and web scraping."
+      }
+    }
   }
-} 
+}
