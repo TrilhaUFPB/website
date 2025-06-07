@@ -32,11 +32,12 @@ export default function Navbar() {
           trilha
         </div>
         <div className="hidden md:flex space-x-12 text-AzulMeiaNoite">
-          <NavLink href="#sobre">{t("navbar.about")}</NavLink>
-          <NavLink href="#depoimentos">{t("navbar.testimonials")}</NavLink>
-          <NavLink href="#turmas">{t("navbar.classes")}</NavLink>
-          <NavLink href="#quem-somos">{t("navbar.who")}</NavLink>
-          <NavLink href="#faq">{t("navbar.faq")}</NavLink>
+          <NavLink href="/#sobre">{t("navbar.about")}</NavLink>
+          <NavLink href="/#depoimentos">{t("navbar.testimonials")}</NavLink>
+          <NavLink href="/#turmas">{t("navbar.classes")}</NavLink>
+          <NavLink href="/hackathons">{t("navbar.hackathons")}</NavLink>
+          <NavLink href="/#quem-somos">{t("navbar.who")}</NavLink>
+          <NavLink href="/#faq">{t("navbar.faq")}</NavLink>
         </div>
         <LanguageSwitcher />
       </div>

@@ -9,11 +9,12 @@ export default function Footer() {
   const { t } = useTranslation();
 
   const sections = [
-    { name: t("navbar.about"), href: "#sobre" },
-    { name: t("navbar.testimonials"), href: "#depoimentos" },
-    { name: t("navbar.classes"), href: "#turmas" },
-    { name: t("navbar.who"), href: "#quem-somos" },
-    { name: t("navbar.faq"), href: "#faq" },
+    { name: t("navbar.about"), href: "/#sobre" },
+    { name: t("navbar.testimonials"), href: "/#depoimentos" },
+    { name: t("navbar.classes"), href: "/#turmas" },
+    { name: t("navbar.hackathons"), href: "/hackathons" },
+    { name: t("navbar.who"), href: "/#quem-somos" },
+    { name: t("navbar.faq"), href: "/#faq" },
   ];
 
   return (
