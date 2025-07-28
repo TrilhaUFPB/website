@@ -45,17 +45,31 @@ export default function Hero() {
             <p className="font-spaceGrotesk text-neutral-600 mb-8 text-lg md:text-2xl max-w-[100%] md:max-w-[80%] align-middle">
               {t("hero.description")}
             </p>
-            <button
-              className="bg-VerdeMenta text-white font-bold py-2 px-4 rounded hover:bg-AzulEletrico transition duration-300"
-              onClick={() => {
-                const aboutSection = document.getElementById("sobre");
-                if (aboutSection) {
-                  aboutSection.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
-            >
-              {t("hero.button")}
-            </button>
+            <div className="flex gap-4 flex-wrap justify-center">
+              <button
+                className="bg-VerdeMenta text-white font-bold py-2 px-4 rounded hover:bg-AzulEletrico transition duration-300"
+                onClick={() => {
+                  const aboutSection = document.getElementById("sobre");
+                  if (aboutSection) {
+                    aboutSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                {t("hero.button")}
+              </button>
+              <a
+                href="/vote"
+                className="bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
+              >
+                🗳️ Vote Now
+              </a>
+              <a
+                href="/admin"
+                className="bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-700 transition duration-300"
+              >
+                🎛️ Admin
+              </a>
+            </div>
           </div>
         </div>
       </BackgroundBeamsWithCollision>
