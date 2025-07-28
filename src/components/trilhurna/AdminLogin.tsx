@@ -31,17 +31,14 @@ export const AdminLogin = () => {
 
   if (isAdmin) {
     return (
-      <div className="max-w-md mx-auto p-8 bg-Branco rounded-2xl shadow-xl border border-gray-100">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-AzulMeiaNoite mb-4 font-poppins">
-            🎉 Admin Logged In
-          </h2>
-          <p className="text-gray-600 mb-8 font-spaceGrotesk">
-            You can now create and manage polls.
-          </p>
+      <div className="max-w-md mx-auto p-4 bg-Branco rounded-lg shadow-sm border border-gray-100">
+        <div className="flex items-center justify-between">
+          <div className="text-sm text-gray-600 font-spaceGrotesk">
+            Logged in as admin
+          </div>
           <button
             onClick={logout}
-            className="bg-red-500 text-white font-bold py-3 px-6 rounded-xl hover:bg-red-600 transition duration-300 font-poppins"
+            className="text-xs text-gray-400 hover:text-red-500 transition duration-300 font-spaceGrotesk"
           >
             Logout
           </button>
@@ -51,45 +48,45 @@ export const AdminLogin = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto p-8 bg-Branco rounded-2xl shadow-xl border border-gray-100">
+    <div className="max-w-md mx-auto p-6 bg-Branco rounded-lg shadow-sm border border-gray-100">
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-AzulMeiaNoite mb-4 font-poppins">
-          🔐 Admin Login
+        <h2 className="text-xl font-bold text-AzulMeiaNoite mb-3 font-poppins">
+          Admin Login
         </h2>
-        <p className="text-gray-600 mb-8 font-spaceGrotesk">
+        <p className="text-gray-600 mb-6 font-spaceGrotesk text-sm">
           Login with your Firebase account to access admin features.
         </p>
         
         {error && (
-          <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
+          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
             {error}
           </div>
         )}
         
-        <form onSubmit={handleLogin} className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3 font-poppins">
+            <label className="block text-xs font-medium text-gray-700 mb-2 font-poppins">
               Email
             </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-VerdeMenta focus:border-VerdeMenta transition duration-200"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-VerdeMenta focus:border-VerdeMenta transition duration-200 text-sm"
               placeholder="your-email@domain.com"
               required
             />
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3 font-poppins">
+            <label className="block text-xs font-medium text-gray-700 mb-2 font-poppins">
               Password
             </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-VerdeMenta focus:border-VerdeMenta transition duration-200"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-VerdeMenta focus:border-VerdeMenta transition duration-200 text-sm"
               placeholder="Your password"
               required
             />
@@ -98,17 +95,17 @@ export const AdminLogin = () => {
           <button
             type="submit"
             disabled={isLoggingIn}
-            className={`w-full font-bold py-4 px-6 rounded-xl transition duration-300 font-poppins ${
+            className={`w-full font-bold py-2 px-4 rounded-lg transition duration-300 font-poppins text-sm ${
               isLoggingIn
                 ? 'bg-gray-400 cursor-not-allowed text-gray-500'
-                : 'bg-VerdeMenta hover:bg-AzulEletrico text-white hover:shadow-lg'
+                : 'bg-VerdeMenta hover:bg-AzulEletrico text-white hover:shadow-md'
             }`}
           >
             {isLoggingIn ? 'Logging in...' : 'Login'}
           </button>
         </form>
         
-        <div className="mt-6 text-sm text-gray-500 font-spaceGrotesk">
+        <div className="mt-4 text-xs text-gray-500 font-spaceGrotesk">
           <p>Note: You need to be added as an admin in Firestore.</p>
           <p>Contact the system administrator to get access.</p>
         </div>

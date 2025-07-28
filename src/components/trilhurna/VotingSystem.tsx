@@ -109,19 +109,9 @@ export const VotingSystem = () => {
             <p className="text-blue-800 font-medium mb-3">
               ✅ You have voted! Thanks for participating.
             </p>
-            <button
-              onClick={resetVotes}
-              className="text-sm text-blue-600 hover:text-blue-800 underline"
-            >
-              Reset my vote (for testing)
-            </button>
           </div>
         </div>
       )}
-
-      <div className="mt-8 text-center text-sm text-gray-500">
-        <p>Results update in real-time across all devices</p>
-      </div>
     </div>
   );
 }; 

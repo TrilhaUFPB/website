@@ -63,36 +63,36 @@ export const AdminDashboard = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">
-          🎛️ Admin Dashboard
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold text-AzulMeiaNoite font-poppins">
+          Admin Dashboard
         </h1>
         <button
           onClick={() => setShowCreateForm(true)}
-          className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-200 font-medium"
+          className="bg-VerdeMenta text-white px-4 py-2 rounded-lg hover:bg-AzulEletrico transition duration-300 font-bold font-poppins text-sm"
         >
           + Create New Poll
         </button>
       </div>
 
       {error && (
-        <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+        <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
           {error}
         </div>
       )}
 
       {loading ? (
         <div className="flex items-center justify-center min-h-[200px]">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-VerdeMenta"></div>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3">
           {polls.length === 0 ? (
-            <div className="text-center py-12">
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">
+            <div className="text-center py-8">
+              <h3 className="text-lg font-semibold text-gray-600 mb-2 font-poppins">
                 No polls created yet
               </h3>
-              <p className="text-gray-500">
+              <p className="text-gray-500 text-sm font-spaceGrotesk">
                 Create your first poll to get started!
               </p>
             </div>
@@ -100,51 +100,60 @@ export const AdminDashboard = () => {
             polls.map((poll) => (
               <div
                 key={poll.id}
-                className="bg-white p-6 rounded-lg shadow-lg border border-gray-200"
+                className="bg-Branco p-4 rounded-lg shadow-sm border border-gray-100"
               >
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-start mb-3">
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <h3 className="text-lg font-semibold text-AzulMeiaNoite mb-1 font-poppins">
                       {poll.title}
                     </h3>
                     {poll.description && (
-                      <p className="text-gray-600 mb-2">
+                      <p className="text-gray-600 mb-2 text-sm font-spaceGrotesk">
                         {poll.description}
                       </p>
                     )}
-                    <div className="text-sm text-gray-500">
+                    <div className="text-xs text-gray-500 font-spaceGrotesk">
                       Created: {poll.createdAt.toLocaleDateString()}
                       <span className="mx-2">•</span>
                       Total votes: {poll.totalVotes}
                       <span className="mx-2">•</span>
                       Options: {poll.options.length}
+                      {poll.allowMultipleVotes && (
+                        <>
+                          <span className="mx-2">•</span>
+                          <span className="text-AzulEletrico">Multiple choice (max {poll.maxVotes})</span>
+                        </>
+                      )}
                     </div>
                   </div>
                   <div className="flex gap-2 ml-4">
                     <button
                       onClick={() => copyPollLink(poll.id)}
-                      className="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition duration-200"
+                      className="bg-AzulEletrico text-white px-2 py-1 rounded text-xs hover:bg-AzulMeiaNoite transition duration-200 font-bold"
+                      title="Copy poll link"
                     >
-                      Copy Link
+                      Copy
                     </button>
                     <a
                       href={`/vote?id=${poll.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700 transition duration-200"
+                      className="bg-VerdeMenta text-white px-2 py-1 rounded text-xs hover:bg-AzulEletrico transition duration-200 font-bold"
+                      title="View poll"
                     >
                       View
                     </a>
                     <button
                       onClick={() => handleDeletePoll(poll.id)}
                       disabled={deletingPoll === poll.id}
-                      className={`px-3 py-1 rounded text-sm transition duration-200 ${
+                      className={`px-2 py-1 rounded text-xs transition duration-200 font-bold ${
                         deletingPoll === poll.id
                           ? 'bg-gray-400 cursor-not-allowed'
-                          : 'bg-red-600 text-white hover:bg-red-700'
+                          : 'bg-red-500 text-white hover:bg-red-600'
                       }`}
+                      title="Delete poll"
                     >
-                      {deletingPoll === poll.id ? 'Deleting...' : 'Delete'}
+                      {deletingPoll === poll.id ? 'Deleting...' : '×'}
                     </button>
                   </div>
                 </div>
@@ -153,12 +162,12 @@ export const AdminDashboard = () => {
                   {poll.options.map((option) => (
                     <div
                       key={option.id}
-                      className="bg-gray-50 p-3 rounded text-center"
+                      className="bg-gray-50 p-2 rounded text-center"
                     >
-                      <div className="font-medium text-gray-900">
+                      <div className="font-medium text-gray-900 text-sm font-poppins">
                         {option.name}
                       </div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-xs text-gray-600 font-spaceGrotesk">
                         {option.votes} votes
                       </div>
                     </div>

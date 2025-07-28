@@ -28,12 +28,16 @@ export interface Poll {
   updatedAt: Date;
   createdBy: string;
   isActive: boolean;
+  allowMultipleVotes?: boolean;
+  maxVotes?: number; // Maximum number of options a user can vote for
 }
 
 export interface CreatePollData {
   title: string;
   description?: string;
   options: string[]; // Array of option names
+  allowMultipleVotes?: boolean;
+  maxVotes?: number;
 }
 
 export const usePolls = () => {
@@ -59,7 +63,9 @@ export const usePolls = () => {
           createdAt: data.createdAt?.toDate() || new Date(),
           updatedAt: data.updatedAt?.toDate() || new Date(),
           createdBy: data.createdBy || 'admin',
-          isActive: data.isActive !== false
+          isActive: data.isActive !== false,
+          allowMultipleVotes: data.allowMultipleVotes || false,
+          maxVotes: data.maxVotes || 1
         });
       });
       setPolls(pollsData);
@@ -91,7 +97,9 @@ export const usePolls = () => {
         createdAt: new Date(),
         updatedAt: new Date(),
         createdBy: 'admin',
-        isActive: true
+        isActive: true,
+        allowMultipleVotes: pollData.allowMultipleVotes || false,
+        maxVotes: pollData.maxVotes || 1
       };
 
       const docRef = await addDoc(collection(db, 'polls'), newPoll);
@@ -146,7 +154,9 @@ export const usePolls = () => {
           createdAt: data.createdAt?.toDate() || new Date(),
           updatedAt: data.updatedAt?.toDate() || new Date(),
           createdBy: data.createdBy || 'admin',
-          isActive: data.isActive !== false
+          isActive: data.isActive !== false,
+          allowMultipleVotes: data.allowMultipleVotes || false,
+          maxVotes: data.maxVotes || 1
         };
       }
       return null;

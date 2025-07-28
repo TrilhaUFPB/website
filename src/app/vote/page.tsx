@@ -37,11 +37,11 @@ export default function VotePage() {
     <div className="min-h-screen bg-gradient-to-br from-AzulCeu/20 to-Branco py-12">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold text-AzulMeiaNoite mb-6 font-poppins">
-              🗳️ Voting Polls
+          <div className="text-center mb-12">
+            <h1 className="text-3xl font-bold text-AzulMeiaNoite mb-4 font-poppins">
+              Voting Polls
             </h1>
-            <p className="text-xl text-gray-600 font-spaceGrotesk">
+            <p className="text-base text-gray-600 font-spaceGrotesk">
               Choose a poll to vote in or create your own!
             </p>
           </div>
@@ -52,18 +52,18 @@ export default function VotePage() {
             </div>
           )}
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="space-y-3">
             {polls.length === 0 ? (
-              <div className="col-span-full text-center py-16">
-                <h3 className="text-2xl font-semibold text-gray-600 mb-4 font-poppins">
+              <div className="text-center py-12">
+                <h3 className="text-lg font-semibold text-gray-600 mb-3 font-poppins">
                   No polls available yet
                 </h3>
-                <p className="text-gray-500 mb-6 font-spaceGrotesk">
+                <p className="text-gray-500 mb-4 font-spaceGrotesk text-sm">
                   Be the first to create a poll!
                 </p>
                 <Link
                   href="/admin"
-                  className="inline-block bg-VerdeMenta text-white px-8 py-4 rounded-xl hover:bg-AzulEletrico transition duration-300 font-bold font-poppins"
+                  className="inline-block bg-VerdeMenta text-white px-6 py-2 rounded-lg hover:bg-AzulEletrico transition duration-300 font-bold font-poppins text-sm"
                 >
                   Create Poll
                 </Link>
@@ -72,61 +72,44 @@ export default function VotePage() {
               polls.map((poll) => (
                 <div
                   key={poll.id}
-                  className="bg-Branco p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]"
+                  className="bg-Branco p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between"
                 >
-                  <h3 className="text-2xl font-semibold text-AzulMeiaNoite mb-4 font-poppins">
-                    {poll.title}
-                  </h3>
-                  {poll.description && (
-                    <p className="text-gray-600 mb-6 line-clamp-2 font-spaceGrotesk">
-                      {poll.description}
-                    </p>
-                  )}
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-AzulMeiaNoite mb-1 font-poppins">
+                      {poll.title}
+                    </h3>
+                    {poll.description && (
+                      <p className="text-gray-600 text-sm line-clamp-1 font-spaceGrotesk">
+                        {poll.description}
+                      </p>
+                    )}
+                    <div className="flex items-center gap-4 mt-2">
+                      <span className="text-xs text-VerdeMenta font-medium">
+                        {poll.totalVotes} votes
+                      </span>
+                      <span className="text-xs text-AzulEletrico font-medium">
+                        {poll.options.length} options
+                      </span>
+                    </div>
+                  </div>
                   
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="text-sm text-VerdeMenta font-medium bg-VerdeMenta/10 px-3 py-1 rounded-full">
-                      🗳️ {poll.totalVotes} votes
-                    </div>
-                    <div className="text-sm text-AzulEletrico font-medium bg-AzulEletrico/10 px-3 py-1 rounded-full">
-                      {poll.options.length} options
-                    </div>
-                  </div>
-
-                  <div className="mb-6">
-                    <div className="text-sm font-medium text-gray-700 mb-3 font-poppins">
-                      Options:
-                    </div>
-                    <div className="space-y-2">
-                      {poll.options.slice(0, 3).map((option) => (
-                        <div key={option.id} className="text-sm text-gray-600 font-spaceGrotesk">
-                          • {option.name}
-                        </div>
-                      ))}
-                      {poll.options.length > 3 && (
-                        <div className="text-sm text-gray-500 font-spaceGrotesk">
-                          +{poll.options.length - 3} more...
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
                   <Link
                     href={`/vote?id=${poll.id}`}
-                    className="block w-full bg-VerdeMenta text-white text-center py-4 px-6 rounded-xl hover:bg-AzulEletrico transition duration-300 font-bold font-poppins"
+                    className="bg-VerdeMenta text-white px-4 py-2 rounded-lg hover:bg-AzulEletrico transition duration-300 font-bold font-poppins text-sm"
                   >
-                    🗳️ Vote Now
+                    Vote Now
                   </Link>
                 </div>
               ))
             )}
           </div>
 
-          <div className="mt-16 text-center">
+          <div className="mt-8 text-right">
             <Link
               href="/admin"
-              className="inline-block bg-AzulMeiaNoite text-white px-10 py-5 rounded-2xl hover:bg-AzulEletrico transition duration-300 font-bold text-xl font-poppins"
+              className="inline-block text-gray-400 hover:text-AzulEletrico transition duration-300 text-xs font-spaceGrotesk"
             >
-              🎛️ Admin Panel
+              Admin Panel
             </Link>
           </div>
         </div>

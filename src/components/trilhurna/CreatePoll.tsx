@@ -11,6 +11,8 @@ export const CreatePoll = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [options, setOptions] = useState(['', '']); // Start with 2 empty options
+  const [allowMultipleVotes, setAllowMultipleVotes] = useState(false);
+  const [maxVotes, setMaxVotes] = useState(1);
   const [isCreating, setIsCreating] = useState(false);
 
   const addOption = () => {
@@ -48,7 +50,9 @@ export const CreatePoll = () => {
       const pollData: CreatePollData = {
         title: title.trim(),
         description: description.trim() || undefined,
-        options: validOptions
+        options: validOptions,
+        allowMultipleVotes,
+        maxVotes: allowMultipleVotes ? maxVotes : 1
       };
 
       const pollId = await createPoll(pollData);
@@ -73,18 +77,18 @@ export const CreatePoll = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-        📊 Create New Poll
+    <div className="max-w-2xl mx-auto p-6 bg-Branco rounded-lg shadow-sm border border-gray-100">
+      <h2 className="text-xl font-bold text-AzulMeiaNoite mb-4 text-center font-poppins">
+        Create New Poll
       </h2>
 
       {error && (
-        <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+        <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
           {error}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Poll Title *
@@ -146,6 +150,38 @@ export const CreatePoll = () => {
           >
             + Add Option
           </button>
+        </div>
+
+        <div className="border-t pt-4">
+          <div className="flex items-center mb-3">
+            <input
+              type="checkbox"
+              id="allowMultipleVotes"
+              checked={allowMultipleVotes}
+              onChange={(e) => setAllowMultipleVotes(e.target.checked)}
+              className="mr-2"
+            />
+            <label htmlFor="allowMultipleVotes" className="text-sm font-medium text-gray-700">
+              Allow multiple choice voting
+            </label>
+          </div>
+          
+          {allowMultipleVotes && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Maximum votes per user
+              </label>
+              <input
+                type="number"
+                min="1"
+                max={options.filter(opt => opt.trim() !== '').length}
+                value={maxVotes}
+                onChange={(e) => setMaxVotes(Math.min(parseInt(e.target.value) || 1, options.filter(opt => opt.trim() !== '').length))}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="1"
+              />
+            </div>
+          )}
         </div>
 
         <button
