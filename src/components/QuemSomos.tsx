@@ -9,7 +9,7 @@ export default function QuemSomos() {
   const { t } = useTranslation();
   const {
     peopleFounders: translatedFounders,
-    peopleOrganization20242: translatedOrg,
+    peopleOrganization20251: translatedOrg,
   } = useTranslatedPeople();
 
   return (
@@ -45,7 +45,7 @@ export default function QuemSomos() {
                   alt={person.name}
                   width={200}
                   height={200}
-                  className="rounded-full transition-transform duration-300 group-hover:scale-110"
+                  className="rounded-full transition-transform duration-300 group-hover:scale-110 object-cover w-full h-full"
                 />
               </div>
 
@@ -78,7 +78,7 @@ export default function QuemSomos() {
                   alt={person.name}
                   width={200}
                   height={200}
-                  className="rounded-full transition-transform duration-300 group-hover:scale-110"
+                  className="rounded-full transition-transform duration-300 group-hover:scale-110 object-cover w-full h-full"
                 />
               </div>
 
