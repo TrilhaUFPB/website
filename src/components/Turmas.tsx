@@ -8,11 +8,13 @@ import { useTranslatedPeople } from "@/data/people-i18n";
 export default function Turmas() {
   const { t } = useTranslation();
   const {
-    peopleOrganization20241: translatedOrg,
-    peopleStudents20241: translatedStudents,
+    peopleOrganization20241: translatedOrg20241,
+    peopleStudents20241: translatedStudents20241,
+    peopleOrganization20242: translatedOrg20242,
+    peopleStudents20242: translatedStudents20242,
   } = useTranslatedPeople();
 
-  const transformedPeople20241 = translatedOrg.map((person, index) => ({
+  const transformedPeople20241 = translatedOrg20241.map((person, index) => ({
     id: index,
     name: person.name,
     designation: person.role,
@@ -20,7 +22,26 @@ export default function Turmas() {
     link: person.link,
   }));
 
-  const transformedPeopleStudents20241 = translatedStudents.map((person) => ({
+  const transformedPeopleStudents20241 = translatedStudents20241.map((person) => ({
+    name: person.name,
+    course: person.course || "",
+    photo: person.photo,
+    link: person.link,
+    role:
+      person.role.trim() === ""
+        ? t("people.roles.Ex Aluno Trilha")
+        : person.role,
+  }));
+
+  const transformedPeople20242 = translatedOrg20242.map((person, index) => ({
+    id: index,
+    name: person.name,
+    designation: person.role,
+    image: person.photo,
+    link: person.link,
+  }));
+
+  const transformedPeopleStudents20242 = translatedStudents20242.map((person) => ({
     name: person.name,
     course: person.course || "",
     photo: person.photo,
@@ -57,6 +78,11 @@ export default function Turmas() {
           title={t("turmas.firstClass")}
           organizers={transformedPeople20241}
           students={transformedPeopleStudents20241}
+        />
+        <TurmaSection
+          title={t("turmas.secondClass")}
+          organizers={transformedPeople20242}
+          students={transformedPeopleStudents20242}
         />
       </div>
     </section>

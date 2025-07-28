@@ -96,7 +96,7 @@ const TurmaSection = ({
                       alt={student.name}
                       height={200}
                       width={200}
-                      className="rounded-full hover:scale-110 transition-transform duration-300 ease-in-out"
+                      className="rounded-full hover:scale-110 transition-transform duration-300 ease-in-out object-cover w-full h-full"
                     />
                   </a>
                   <h3 className="text-center font-bold font-poppins text-sm w-full truncate">
