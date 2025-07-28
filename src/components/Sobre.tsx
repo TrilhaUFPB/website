@@ -5,8 +5,18 @@ import DynamicGrid from "./DynamicGrid";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useState, useEffect } from "react";
 
-// Slideshow component
-function Slideshow({ images, alt, className }: { images: string[], alt: string, className?: string }) {
+// Slideshow component with optional captions
+function Slideshow({ 
+  images, 
+  alt, 
+  className, 
+  captions 
+}: { 
+  images: string[], 
+  alt: string, 
+  className?: string,
+  captions?: string[]
+}) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -20,16 +30,26 @@ function Slideshow({ images, alt, className }: { images: string[], alt: string, 
   return (
     <div className={`relative overflow-hidden ${className}`}>
       {images.map((image, index) => (
-        <Image
+        <div
           key={image}
-          src={image}
-          alt={alt}
-          width={800}
-          height={600}
-          className={`rounded-xl transition-opacity duration-1000 ${
+          className={`absolute inset-0 transition-opacity duration-1000 ${
             index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-          } absolute inset-0 w-full h-full object-cover`}
-        />
+          }`}
+        >
+          <Image
+            src={image}
+            alt={alt}
+            width={800}
+            height={600}
+            className="rounded-xl w-full h-full object-cover"
+          />
+          {/* Caption overlay */}
+          {captions && captions[index] && (
+            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-3 rounded-b-xl">
+              <p className="text-sm font-semibold text-center">{captions[index]}</p>
+            </div>
+          )}
+        </div>
       ))}
       {/* Placeholder to maintain aspect ratio */}
       <div className="w-full h-0 pb-[75%]"></div>
@@ -51,6 +71,15 @@ export default function Sobre() {
     "/palestras/terron.png"
   ];
   const objetivosImages = ["/objetivos/aulaTrilha.JPG", "/objetivos/festa.JPG"];
+
+  // Define captions for palestras
+  const palestrasCaptions = [
+    "João Pedro (Microsoft, Ex UFPB) e Felipe Honorato (Moises, Ex UFPB)",
+    "Herval Freire (Maestro, Ex Meta, Twitter, UFPB)",
+    "Itamar Rocha (Harvard, Ex Meta, Google, UFPB)",
+    "Lara Pontes (MIT, Ex UFPB)",
+    "Rodrigo Terron (Newhack Founder, Ex RocketSeat CEO, Forbes Under 30)"
+  ];
 
   return (
     <section
@@ -116,6 +145,7 @@ export default function Sobre() {
                 images={palestrasImages}
                 alt="imagem palestra"
                 className="mb-4 lg:mb-4"
+                captions={palestrasCaptions}
               />
               <p className="text-BrancoCreme text-sm lg:text-xl font-bold font-spaceGrotesk">
                 {t("sobre.events.description")}
