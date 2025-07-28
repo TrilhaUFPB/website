@@ -57,18 +57,6 @@ export default function Hero() {
               >
                 {t("hero.button")}
               </button>
-              <a
-                href="/vote"
-                className="bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
-              >
-                🗳️ Vote Now
-              </a>
-              <a
-                href="/admin"
-                className="bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-700 transition duration-300"
-              >
-                🎛️ Admin
-              </a>
             </div>
           </div>
         </div>
