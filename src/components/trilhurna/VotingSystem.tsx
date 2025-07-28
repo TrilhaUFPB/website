@@ -4,7 +4,7 @@ import { useVoting } from '@/hooks/trilhurna/useVoting';
 import { useState } from 'react';
 
 export const VotingSystem = () => {
-  const { votingData, loading, hasVoted, vote, resetVotes } = useVoting();
+  const { votingData, loading, hasVoted, vote } = useVoting();
   const [isVoting, setIsVoting] = useState(false);
 
   const handleVote = async (optionId: string) => {
