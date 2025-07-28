@@ -45,8 +45,8 @@ function Slideshow({
           />
           {/* Caption overlay */}
           {captions && captions[index] && (
-            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-3 rounded-b-xl">
-              <p className="text-sm font-semibold text-center">{captions[index]}</p>
+            <div className="absolute bottom-4 right-4 bg-Branco/30 bg-opacity-90 text-black px-3 py-1 rounded-full shadow-lg backdrop-blur-sm border border-white border-opacity-20">
+              <p className="text-sm font-bold">{captions[index]}</p>
             </div>
           )}
         </div>
