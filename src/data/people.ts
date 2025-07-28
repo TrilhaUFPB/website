@@ -238,7 +238,9 @@ export const peopleOrganization20251: Person[] = [
     Luigi,
     Ceci,
     Beatriz,
-    Kawane
+    Kawane,
+    MiguelQueiroz,
+    Marcus,
 ]
 
 export const peopleFounders: Person[] = [
