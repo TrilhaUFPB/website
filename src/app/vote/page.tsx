@@ -4,8 +4,9 @@ import { usePolls } from '@/hooks/trilhurna/usePolls';
 import { PollVoting } from '@/components/trilhurna/PollVoting';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
-export default function VotePage() {
+function VotePageContent() {
   const { polls, loading, error } = usePolls();
   const searchParams = useSearchParams();
   const pollId = searchParams.get('id');
@@ -116,4 +117,20 @@ export default function VotePage() {
       </div>
     </div>
   );
-} 
+}
+
+export default function VotePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-AzulCeu/20 to-Branco py-12">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-center min-h-[400px]">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-VerdeMenta"></div>
+          </div>
+        </div>
+      </div>
+    }>
+      <VotePageContent />
+    </Suspense>
+  );
+}
