@@ -3,9 +3,54 @@
 import Image from "next/image";
 import DynamicGrid from "./DynamicGrid";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useState, useEffect } from "react";
+
+// Slideshow component
+function Slideshow({ images, alt, className }: { images: string[], alt: string, className?: string }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <div className={`relative overflow-hidden ${className}`}>
+      {images.map((image, index) => (
+        <Image
+          key={image}
+          src={image}
+          alt={alt}
+          width={800}
+          height={600}
+          className={`rounded-xl transition-opacity duration-1000 ${
+            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+          } absolute inset-0 w-full h-full object-cover`}
+        />
+      ))}
+      {/* Placeholder to maintain aspect ratio */}
+      <div className="w-full h-0 pb-[75%]"></div>
+    </div>
+  );
+}
 
 export default function Sobre() {
   const { t } = useTranslation();
+
+  // Define image arrays for each slideshow
+  const turmasImages = ["/turmas/trilha2024.JPG", "/turmas/trilha20242.jpeg"];
+  const aulasImages = ["/aulas/aulas.jpeg", "/aulas/luigi.jpg"];
+  const palestrasImages = [
+    "/palestras/jp_honorato.jpeg",
+    "/palestras/herval.jpeg", 
+    "/palestras/itamar.JPG",
+    "/palestras/lara.JPG",
+    "/palestras/terron.png"
+  ];
+  const objetivosImages = ["/objetivos/aulaTrilha.JPG", "/objetivos/festa.JPG"];
 
   return (
     <section
@@ -40,22 +85,18 @@ export default function Sobre() {
               >
                 {t("sobre.origin.button")}
               </button>
-              <Image
-                className="rounded-xl mt-4 mb-2 lg:mt-4"
-                src="/trilha2024.JPG"
-                alt="imagem palestra"
-                width={800}
-                height={600}
+              <Slideshow
+                images={turmasImages}
+                alt="imagem turmas"
+                className="mt-4 mb-2 lg:mt-4"
               />
             </div>
 
             <div className="bg-AzulEletrico p-4 lg:p-10 rounded-2xl shadow-lg flex-grow lg:flex-[5] transform transition-transform duration-500 hover:scale-[1.02] hover:z-10">
-              <Image
-                className="rounded-xl lg:mt-4"
-                src="/aulas.jpeg"
+              <Slideshow
+                images={aulasImages}
                 alt="imagem aulas"
-                width={800}
-                height={600}
+                className="lg:mt-4"
               />
               <h3 className="font-poppins font-extrabold text-xl lg:text-3xl text-BrancoCreme mb-2 mt-2 lg:mb-4 lg:mt-4">
                 {t("sobre.classes.title")}
@@ -71,12 +112,10 @@ export default function Sobre() {
               <h3 className="font-poppins font-extrabold text-xl lg:text-3xl text-BrancoCreme mb-2 mt-2 lg:mb-4 lg:mt-2">
                 {t("sobre.events.title")}
               </h3>
-              <Image
-                className="rounded-xl mb-4 lg:mb-4"
-                src="/palestra.JPG"
+              <Slideshow
+                images={palestrasImages}
                 alt="imagem palestra"
-                width={800}
-                height={600}
+                className="mb-4 lg:mb-4"
               />
               <p className="text-BrancoCreme text-sm lg:text-xl font-bold font-spaceGrotesk">
                 {t("sobre.events.description")}
@@ -90,12 +129,10 @@ export default function Sobre() {
               <p className="text-BrancoCreme text-sm lg:text-xl font-bold font-spaceGrotesk">
                 {t("sobre.goals.description")}
               </p>
-              <Image
-                className="rounded-xl mt-4 mb-2"
-                src="/aulaTrilha.JPG"
+              <Slideshow
+                images={objetivosImages}
                 alt="imagem aula pratica"
-                width={800}
-                height={600}
+                className="mt-4 mb-2"
               />
             </div>
           </div>

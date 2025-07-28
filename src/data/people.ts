@@ -146,7 +146,7 @@ export const Caio: Person = {
 };
 
 export const Ceci: Person = {
-    name: "Cecilia Bissigo",
+    name: "Cecília Bíssigo",
     course: "Fonoaudiologia",
     semester: "3",
     role: " ",
@@ -156,6 +156,18 @@ export const Ceci: Person = {
     org: ["2024.2", "2025.1"],
     pos: ["Membro da Organização", "Membro da Organização"],
 };
+
+export const CeciliaLog: Person = {
+    name: "Ana Cecilia Bezerra",
+    course: "Ciência da Computação",
+    semester: "5",
+    role: "Researcher Log",
+    link: "https://www.linkedin.com/in/ana-cec%C3%ADlia-bezerra-338070242/",
+    photo: "pessoas/cecilialog.jpeg",
+    class: null,
+    org: ["2025.1"],
+    pos: ["Membro da Organização"],
+}
 
 export const peopleOrganization20241: Person[] = [
     Tiago,
@@ -241,6 +253,7 @@ export const peopleOrganization20251: Person[] = [
     Kawane,
     MiguelQueiroz,
     Marcus,
+    CeciliaLog,
 ]
 
 export const peopleFounders: Person[] = [
