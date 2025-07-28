@@ -181,12 +181,8 @@ export default function Depoimentos() {
     LuigiTestimonial,
     BeaTestimonial,
     MiguelTestimonial,
-    LuisAranhaTestimonial,
     MarcusTestimonial,
     ClaraTestimonial,
-    NicolasKleitonTestimonial,
-    DaviGurgelTestimonial,
-    ArturTestimonial,
     VitorReisTestimonial,
     RafaelTorresTestimonial,
   ];

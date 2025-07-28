@@ -89,7 +89,7 @@ export const Bea: Person = {
     name: "Beatriz Pessôa",
     course: "Ciência da Computação",
     semester: "3",
-    role: "Software Engineer Intern Cebraspe",
+    role: "Software Engineer Cebraspe",
     photo: "pessoas/2024.1/bea.png",
     link: "https://www.linkedin.com/in/beatriz-pess%C3%B4a/",
     class: "2024.1",
