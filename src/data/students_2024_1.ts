@@ -56,8 +56,8 @@ export const Marcus: Person = {
     link: "http://linkedin.com/in/marcus-vinicius-2b6612310/",
     photo: "pessoas/2024.1/marcus.jpg",
     class: "2024.1",
-    org: [],
-    pos: [],
+    org: ["2025.1"],
+    pos: ["Membro da Organização"],
 };
 
 export const VitorReis: Person = {
@@ -104,8 +104,8 @@ export const MiguelQueiroz: Person = {
     link:"https://www.linkedin.com/in/queirozmiguel",
     photo: "pessoas/2024.1/miguel.png",
     class: "2024.1",
-    org: [],
-    pos: [],
+    org: ["2025.1"],
+    pos: ["Membro da Organização"],
 };
 
 export const DaviGurgel: Person = {
