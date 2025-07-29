@@ -58,7 +58,7 @@ export const CreatePoll = () => {
       const pollId = await createPoll(pollData);
       
       // Show success message with the poll link
-      const pollUrl = `${window.location.origin}/vote?id=${pollId}`;
+      const pollUrl = `${window.location.origin}/trilhurna?id=${pollId}`;
       alert(`Poll created successfully!\n\nShare this link:\n${pollUrl}`);
       
       // Reset form
@@ -67,7 +67,7 @@ export const CreatePoll = () => {
       setOptions(['', '']);
       
       // Optionally redirect to the new poll
-      router.push(`/vote?id=${pollId}`);
+      router.push(`/trilhurna?id=${pollId}`);
       
     } catch (error) {
       console.error('Error creating poll:', error);

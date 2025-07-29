@@ -135,7 +135,7 @@ export const AdminDashboard = () => {
                       Copy
                     </button>
                     <a
-                      href={`/vote?id=${poll.id}`}
+                      href={`/trilhurna?id=${poll.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-VerdeMenta text-white px-2 py-1 rounded text-xs hover:bg-AzulEletrico transition duration-200 font-bold"

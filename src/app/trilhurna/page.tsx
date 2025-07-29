@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
-function VotePageContent() {
+function TrilhurnaPageContent() {
   const { polls, loading, error } = usePolls();
   const searchParams = useSearchParams();
   const pollId = searchParams.get('id');
@@ -40,7 +40,7 @@ function VotePageContent() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-3xl font-bold text-AzulMeiaNoite mb-4 font-poppins">
-              Voting Polls
+              Trilhurna Voting
             </h1>
             <p className="text-base text-gray-600 font-spaceGrotesk">
               Choose a poll to vote in or create your own!
@@ -95,7 +95,7 @@ function VotePageContent() {
                   </div>
                   
                   <Link
-                    href={`/vote?id=${poll.id}`}
+                    href={`/trilhurna?id=${poll.id}`}
                     className="bg-VerdeMenta text-white px-4 py-2 rounded-lg hover:bg-AzulEletrico transition duration-300 font-bold font-poppins text-sm"
                   >
                     Vote Now
@@ -119,7 +119,7 @@ function VotePageContent() {
   );
 }
 
-export default function VotePage() {
+export default function TrilhurnaPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-gradient-to-br from-AzulCeu/20 to-Branco py-12">
@@ -130,7 +130,7 @@ export default function VotePage() {
         </div>
       </div>
     }>
-      <VotePageContent />
+      <TrilhurnaPageContent />
     </Suspense>
   );
 }
