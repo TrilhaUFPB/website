@@ -4,6 +4,7 @@ import { AnimatedTooltip } from "./ui/animated-tooltip";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
+import { usePostHogTracking } from "@/hooks/usePostHogTracking";
 
 const TurmaSection = ({
   title,
@@ -28,9 +29,14 @@ const TurmaSection = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+  const { trackTurmaSectionInteraction, trackStudentProfileClick, trackOrganizerProfileClick } = usePostHogTracking();
 
   const toggleAccordion = () => {
-    setIsOpen((prev) => !prev);
+    setIsOpen((prev) => {
+      const newState = !prev;
+      trackTurmaSectionInteraction(newState ? "expand" : "collapse", title);
+      return newState;
+    });
   };
 
   return (
@@ -73,7 +79,12 @@ const TurmaSection = ({
               {t("turmaSection.organization")}
             </h2>
             <div className="flex flex-row items-center justify-center w-full">
-              <AnimatedTooltip items={organizers} />
+              <AnimatedTooltip 
+                items={organizers.map(org => ({
+                  ...org,
+                  onClick: () => trackOrganizerProfileClick(org.name, title)
+                }))} 
+              />
             </div>
           </div>
 
@@ -90,6 +101,7 @@ const TurmaSection = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden mb-2 relative block"
+                    onClick={() => trackStudentProfileClick(student.name, title)}
                   >
                     <Image
                       src={student.photo}

@@ -5,9 +5,11 @@ import { FlipWords } from "./ui/flip-words";
 import { BackgroundBeamsWithCollision } from "./ui/background-beams-with-collision";
 import DynamicGrid from "./DynamicGrid";
 import { useTranslation } from "@/hooks/useTranslation";
+import { usePostHogTracking } from "@/hooks/usePostHogTracking";
 
 export default function Hero() {
   const { t } = useTranslation();
+  const { trackHeroButtonClick } = usePostHogTracking();
 
   return (
     <div className="relative overflow-hidden flex flex-col bg-Branco">
@@ -49,6 +51,7 @@ export default function Hero() {
               <button
                 className="bg-VerdeMenta text-white font-bold py-2 px-4 rounded hover:bg-AzulEletrico transition duration-300"
                 onClick={() => {
+                  trackHeroButtonClick();
                   const aboutSection = document.getElementById("sobre");
                   if (aboutSection) {
                     aboutSection.scrollIntoView({ behavior: "smooth" });

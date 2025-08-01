@@ -9,6 +9,7 @@ import {
 import Divider from "@/components/ui/divider";
 import DynamicGrid from "./DynamicGrid";
 import { useTranslation } from "@/hooks/useTranslation";
+import { usePostHogTracking } from "@/hooks/usePostHogTracking";
 
 // Define FAQ type to avoid 'any'
 interface FAQItem {
@@ -18,6 +19,7 @@ interface FAQItem {
 
 export default function FAQ() {
   const { t } = useTranslation();
+  const { trackFAQInteraction } = usePostHogTracking();
 
   function getFavoriteColor() {
     const dayNames = [
@@ -45,7 +47,20 @@ export default function FAQ() {
         </h1>
 
         <div className="space-y-5">
-          <Accordion type="single" collapsible>
+          <Accordion 
+            type="single" 
+            collapsible
+            onValueChange={(value) => {
+              if (value) {
+                const index = parseInt(value.replace('item-', ''));
+                const questions = t("faq.questions") as FAQItem[];
+                const questionText = questions[index]?.question;
+                trackFAQInteraction("expand", index, questionText);
+              } else {
+                trackFAQInteraction("collapse");
+              }
+            }}
+          >
             {(t("faq.questions") as FAQItem[]).map((faq, index) => (
               <AccordionItem key={`faq-${index}`} value={`item-${index}`}>
                 <AccordionTrigger className="text-BrancoCreme text-lg font-semibold p-4 rounded-lg font-poppins text-left">
