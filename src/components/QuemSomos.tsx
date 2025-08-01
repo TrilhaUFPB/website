@@ -4,6 +4,7 @@ import DynamicGrid from "./DynamicGrid";
 import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useTranslatedPeople } from "@/data/people-i18n";
+import { usePostHogTracking } from "@/hooks/usePostHogTracking";
 
 export default function QuemSomos() {
   const { t } = useTranslation();
@@ -11,6 +12,7 @@ export default function QuemSomos() {
     peopleFounders: translatedFounders,
     peopleOrganization20251: translatedOrg,
   } = useTranslatedPeople();
+  const { trackFounderProfileClick, trackCurrentMemberProfileClick } = usePostHogTracking();
 
   return (
     <section id="quem-somos" className="py-20 bg-Branco px-4 md:px-28 relative">
@@ -37,6 +39,7 @@ export default function QuemSomos() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center text-center w-24 md:w-40"
+              onClick={() => trackFounderProfileClick(person.name)}
             >
               {/* Image Circle */}
               <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-AzulMeiaNoite overflow-hidden group">
@@ -70,6 +73,7 @@ export default function QuemSomos() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center text-center w-24 md:w-40"
+              onClick={() => trackCurrentMemberProfileClick(person.name, person.pos[person.pos.length - 1])}
             >
               {/* Image Circle */}
               <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-AzulMeiaNoite overflow-hidden group">
