@@ -57,14 +57,6 @@ export default function Hero() {
               >
                 {t("hero.button")}
               </button>
-              <button
-                className="bg-AzulEletrico text-white font-bold py-2 px-4 rounded hover:bg-AzulMeiaNoite transition duration-300"
-                onClick={() => {
-                  window.location.href = '/trilhurna';
-                }}
-              >
-                🗳️ Trilhurna Voting
-              </button>
             </div>
           </div>
         </div>
