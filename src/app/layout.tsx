@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins, Space_Grotesk } from "next/font/google";
 import { I18nProvider } from "./i18n-provider";
+import { PostHogProvider } from "./posthog-provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -31,7 +32,9 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${spaceGrotesk.variable} antialiased`}
       >
-        <I18nProvider>{children}</I18nProvider>
+        <PostHogProvider>
+          <I18nProvider>{children}</I18nProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
