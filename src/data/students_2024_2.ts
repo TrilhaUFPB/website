@@ -40,7 +40,7 @@ export const Chaves: Person = {
     name: "João Vitor Chaves de Souza",
     course: "Ciência de Dados e IA",
     semester: "2",
-    role: "",
+    role: "Software Engineer Intern Zoox",
     link: "https://www.linkedin.com/in/jo%C3%A3o-vitor-chaves-de-souza-546611352?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     photo: "pessoas/2024.2/chaves.jpg",
     class: "2024.2",
