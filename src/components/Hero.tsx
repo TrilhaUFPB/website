@@ -49,7 +49,7 @@ export default function Hero() {
             </p>
             <div className="flex gap-4 flex-wrap justify-center">
               <button
-                className="bg-AzulMeiaNoite text-white font-bold py-2 px-4 rounded hover:bg-AzulEletrico transition duration-300"
+                className="bg-VerdeMenta text-white font-bold py-2 px-4 rounded hover:bg-AzulEletrico transition duration-300"
                 onClick={() => {
                   trackHeroButtonClick();
                   const aboutSection = document.getElementById("sobre");
@@ -60,14 +60,6 @@ export default function Hero() {
               >
                 {t("hero.button")}
               </button>
-              <button
-                className="bg-VerdeMenta text-white font-bold py-2 px-4 rounded hover:bg-AzulEletrico transition duration-300"
-                onClick={() => {
-                  window.open("https://forms.gle/m4DDHj5s2KLq1mDX8", "_blank");
-                }}
-              >
-                Se Inscreva
-                </button>
             </div>
           </div>
         </div>
