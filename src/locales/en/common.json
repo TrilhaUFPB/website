@@ -50,7 +50,8 @@
     "subtitle": "Meet our tutors and students from previous classes",
     "description": "We are very proud of our previous classes and students. We always support and encourage connections between students and tutors, and we stay in touch with everyone to this day. Our mentorships are not just for the class period, but for life. We are also happy to say that many of our students continue to contribute to the Trilha community. Additionally, a direct impact of our program can be seen in our students who, immediately after completing the class, enter the job market and practical projects with a solid knowledge base.",
     "firstClass": "First Class - 2024.1",
-    "secondClass": "Second Class - 2024.2"
+    "secondClass": "Second Class - 2024.2",
+    "thirdClass": "Third Class - 2025.1"
   },
   "turmaSection": {
     "organization": "Organization:",
@@ -159,10 +160,13 @@
       "Data Engineer": "Data Engineer",
       "Ex Aluno Trilha": "Former Trilha Student",
       "Fundador": "Founder",
-      "Líder de Mídia": "Media Lead",
-      "Líder de Pessoas": "People Lead",
+      "Líder de Mídias e Impacto": "Media Lead",
+      "Líder de Operações": "Operations Lead",
       "Líder de Aulas": "Classes Lead",
       "Membro da Organização": "Organization Member"
+    },
+    "semesters": {
+      "Formado": "Graduated"
     }
   },
   "testimonials": {
