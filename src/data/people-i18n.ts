@@ -62,6 +62,15 @@ export function useTranslatedPeople() {
   };
 
   /**
+   * Translates a semester label (e.g., Formado -> Graduated)
+   */
+  const translateSemester = (semester: string): string => {
+    const key = `people.semesters.${semester}`;
+    const translated = t(key) as string;
+    return translated !== key ? translated : semester;
+  };
+
+  /**
    * Returns a translated person
    */
   const translatePerson = (person: PeopleData.Person): PeopleData.Person => {
@@ -71,7 +80,8 @@ export function useTranslatedPeople() {
       ...person,
       course: translateCourse(person.course),
       role: person.role ? translateRole(person.role) : person.role,
-      pos: person.pos.map(translateRole)
+      pos: person.pos.map(translateRole),
+      semester: person.semester ? translateSemester(person.semester) : person.semester,
     };
   };
 
@@ -80,7 +90,9 @@ export function useTranslatedPeople() {
   const peopleOrganization20241 = PeopleData.peopleOrganization20241.map(translatePerson);
   const peopleStudents20241 = PeopleData.peopleStudents20241.map(translatePerson);
   const peopleOrganization20242 = PeopleData.peopleOrganization20242.map(translatePerson);
+  const peopleStudents20242 = PeopleData.peopleStudents20242.map(translatePerson);
   const peopleOrganization20251 = PeopleData.peopleOrganization20251.map(translatePerson);
+  const peopleStudents20251 = PeopleData.peopleStudents20251.map(translatePerson);
 
   // Create a mapping of courses
   const courses: Record<string, string> = {};
@@ -106,10 +118,13 @@ export function useTranslatedPeople() {
     peopleOrganization20241,
     peopleStudents20241,
     peopleOrganization20242,
+    peopleStudents20242,
     peopleOrganization20251,
+    peopleStudents20251,
     courses,
     translatePerson,
     translateCourse,
-    translateRole
+    translateRole,
+    translateSemester
   };
 } 
