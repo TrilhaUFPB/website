@@ -93,9 +93,9 @@ const TurmaSection = ({
             <h2 className="text-1xl font-semibold text-center font-poppins mb-6 gap-2">
               {t("turmaSection.students")}
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 px-4 md:px-4 lg:px-20">
+            <div className="flex flex-wrap justify-center px-4 md:px-6 lg:px-20 gap-x-6 gap-y-10">
               {students.map((student, index) => (
-                <div key={index} className="flex flex-col items-center mb-6">
+                <div key={index} className="flex flex-col items-center w-1/2 sm:w-1/3 md:w-1/4 lg:w-[14%] xl:w-1/6 px-2">
                   <a
                     href={student.link}
                     target="_blank"
