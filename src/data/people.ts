@@ -80,7 +80,7 @@ export const Daniel: Person = {
     semester: "5",
     role: "Software Engineer Brief",
     link: "https://www.linkedin.com/in/daniel-victorcb/",
-    photo: "pessoas/daniel.png",
+    photo: "pessoas/daniel.jpeg",
     class: null,
     org: ["2024.1", "2024.2", "2025.1"],
     pos: ["Membro da Organização", "Membro da Organização"],
