@@ -270,6 +270,25 @@ export const peopleOrganization20251: Person[] = [
     Emyle,
     Luigi,
     Ceci,
+    Kawane,
+    Beatriz,
+    MiguelQueiroz,
+    Marcus,
+    CeciliaLog,
+]
+
+// Current Organizaition ("Quem Somos" Section)
+export const peopleOrganizationCurrent: Person[] = [
+    Clara,
+    Guilherme,
+    Kruta,
+    Bea,
+    Daniel,
+    Davi,
+    Puca,
+    Emyle,
+    Luigi,
+    Ceci,
     Beatriz,
     MiguelQueiroz,
     Marcus,

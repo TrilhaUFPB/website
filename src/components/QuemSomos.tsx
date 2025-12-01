@@ -10,7 +10,7 @@ export default function QuemSomos() {
   const { t } = useTranslation();
   const {
     peopleFounders: translatedFounders,
-    peopleOrganization20251: translatedOrg,
+    peopleOrganizationCurrent: translatedOrg,
   } = useTranslatedPeople();
   const { trackFounderProfileClick, trackCurrentMemberProfileClick } = usePostHogTracking();
 
