@@ -298,6 +298,7 @@ export const peopleOrganizationCurrent: Person[] = [
     NicoleCosta,
     MariaLuisaQuintela,
     Joaquim,
+    EduardoOliveira,
 ]
 
 export const peopleFounders: Person[] = [
