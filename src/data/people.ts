@@ -75,7 +75,7 @@ export const Icaro: Person = {
 };
 
 export const Daniel: Person = {
-    name: "Daniel Victor",
+    name: "Daniel Brandão",
     course: "Ciência da Computação",
     semester: "5",
     role: "Software Engineer Brief",

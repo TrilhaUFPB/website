@@ -148,6 +148,7 @@
     "courses": {
       "Ciência da Computação": "Computer Science",
       "Engenharia da Computação": "Computer Engineering",
+      "Engenharia de Software (IFPB)": "Software Engineering (IFPB)",
       "Ciência de Dados e IA": "Data Science & AI",
       "Fonoaudiologia": "Speech Therapy"
     },
@@ -160,6 +161,7 @@
       "Data Engineer": "Data Engineer",
       "Ex Aluno Trilha": "Former Trilha Student",
       "Fundador": "Founder",
+      "Presidente": "President",
       "Líder de Mídia": "Media Lead",
       "Líder de Pessoas": "People Lead",
       "Líder de Mídias e Impacto": "Media & Impact Lead",
