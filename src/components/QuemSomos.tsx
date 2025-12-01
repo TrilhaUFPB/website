@@ -10,7 +10,7 @@ export default function QuemSomos() {
   const { t } = useTranslation();
   const {
     peopleFounders: translatedFounders,
-    peopleOrganization20251: translatedOrg,
+    peopleOrganizationCurrent: translatedOrg,
   } = useTranslatedPeople();
   const { trackFounderProfileClick, trackCurrentMemberProfileClick } = usePostHogTracking();
 
@@ -92,7 +92,7 @@ export default function QuemSomos() {
               </h3>
               <p className="text-xs md:text-sm font-spaceGrotesk font-semibold text-AzulCeu">
                 {person.course} - {person.semester}
-                {t("quemSomos.semester")}
+                {/^\d+$/.test(person.semester.trim()) ? t("quemSomos.semester") : ""}
               </p>
               <p className="text-xs md:text-sm font-spaceGrotesk text-neutral-600 font-semibold mt-0">
                 {person.pos[person.pos.length - 1]} {/* Last role */}

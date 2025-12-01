@@ -12,6 +12,8 @@ export default function Turmas() {
     peopleStudents20241: translatedStudents20241,
     peopleOrganization20242: translatedOrg20242,
     peopleStudents20242: translatedStudents20242,
+    peopleOrganization20251: translatedOrg20251,
+    peopleStudents20251: translatedStudents20251,
   } = useTranslatedPeople();
 
   const transformedPeople20241 = translatedOrg20241.map((person, index) => ({
@@ -42,6 +44,25 @@ export default function Turmas() {
   }));
 
   const transformedPeopleStudents20242 = translatedStudents20242.map((person) => ({
+    name: person.name,
+    course: person.course || "",
+    photo: person.photo,
+    link: person.link,
+    role:
+      person.role.trim() === ""
+        ? t("people.roles.Ex Aluno Trilha")
+        : person.role,
+  }));
+
+  const transformedPeople20251 = translatedOrg20251.map((person, index) => ({
+    id: index,
+    name: person.name,
+    designation: person.role,
+    image: person.photo,
+    link: person.link,
+  }));
+
+  const transformedPeopleStudents20251 = translatedStudents20251.map((person) => ({
     name: person.name,
     course: person.course || "",
     photo: person.photo,
@@ -83,6 +104,11 @@ export default function Turmas() {
           title={t("turmas.secondClass")}
           organizers={transformedPeople20242}
           students={transformedPeopleStudents20242}
+        />
+        <TurmaSection
+          title={t("turmas.thirdClass")}
+          organizers={transformedPeople20251}
+          students={transformedPeopleStudents20251}
         />
       </div>
     </section>
