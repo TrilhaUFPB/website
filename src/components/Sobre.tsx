@@ -61,7 +61,7 @@ export default function Sobre() {
   const { t } = useTranslation();
 
   // Define image arrays for each slideshow
-  const turmasImages = ["/turmas/trilha2024.JPG", "/turmas/trilha20242.jpeg"];
+  const turmasImages = ["/turmas/trilha2024.JPG", "/turmas/trilha20242.jpeg", "/turmas/trilha2025.jpeg"];
   const aulasImages = ["/aulas/aulas.jpeg", "/aulas/luigi.jpg"];
   const palestrasImages = [
     "/palestras/jp_honorato.jpeg",
