@@ -8,8 +8,8 @@ export const EduardoOliveira: Person = {
     link: "",
     photo: "pessoas/2025.1/eduardo.jpeg",
     class: "2025.1",
-    org: [],
-    pos: [],
+    org: ["2025.1"],
+    pos: ["Membro da Organização"],
 };
 
 export const DanielSilva: Person = {
