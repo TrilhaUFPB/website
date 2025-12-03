@@ -42,6 +42,7 @@ export default function Navbar() {
           <NavLink href="#turmas" onClick={() => trackNavigationClick("turmas")}>{t("navbar.classes")}</NavLink>
           <NavLink href="#quem-somos" onClick={() => trackNavigationClick("quem-somos")}>{t("navbar.who")}</NavLink>
           <NavLink href="#faq" onClick={() => trackNavigationClick("faq")}>{t("navbar.faq")}</NavLink>
+          <NavLink href="/material">Material</NavLink>
         </div>
         <LanguageSwitcher />
       </div>
