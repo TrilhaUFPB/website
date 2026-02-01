@@ -46,7 +46,7 @@ export async function GET(
     const contentType = contentTypes[ext] || "application/octet-stream";
 
     // Retornar o arquivo com cache headers
-    return new NextResponse(fileBuffer, {
+    return new NextResponse(new Uint8Array(fileBuffer), {
       status: 200,
       headers: {
         "Content-Type": contentType,
