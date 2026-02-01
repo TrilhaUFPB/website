@@ -13,9 +13,7 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   transpilePackages: [],
-  webpack: (config) => {
-    return config;
-  },
+  turbopack: {},
   async rewrites() {
     return [
       {
