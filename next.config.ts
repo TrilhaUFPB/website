@@ -11,7 +11,6 @@ const nextConfig: NextConfig = {
     ],
     unoptimized: true,
   },
-  output: 'export',
   poweredByHeader: false,
   transpilePackages: [],
   webpack: (config) => {
