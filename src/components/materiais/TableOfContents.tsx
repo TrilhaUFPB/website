@@ -17,26 +17,48 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Define o primeiro heading como ativo inicialmente
+  useEffect(() => {
+    if (headings && headings.length > 0 && !activeId) {
+      setActiveId(headings[0].id);
+    }
+  }, [headings, activeId]);
+
   useEffect(() => {
     if (!headings || headings.length === 0) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
+        // Filtra apenas as entradas visíveis
+        const visibleEntries = entries.filter(entry => entry.isIntersecting);
+        
+        if (visibleEntries.length > 0) {
+          // Pega o primeiro heading visível na viewport
+          const topEntry = visibleEntries.reduce((prev, current) => {
+            return prev.boundingClientRect.top < current.boundingClientRect.top ? prev : current;
+          });
+          
+          setActiveId(topEntry.target.id);
+        }
       },
-      { rootMargin: "-80px 0px -80% 0px" }
+      { 
+        rootMargin: "-100px 0px -66% 0px",
+        threshold: [0, 0.25, 0.5, 0.75, 1]
+      }
     );
 
-    headings.forEach((heading) => {
-      const element = document.getElementById(heading.id);
-      if (element) observer.observe(element);
-    });
+    // Adiciona um pequeno delay para garantir que os elementos estão renderizados
+    const timeoutId = setTimeout(() => {
+      headings.forEach((heading) => {
+        const element = document.getElementById(heading.id);
+        if (element) observer.observe(element);
+      });
+    }, 100);
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(timeoutId);
+      observer.disconnect();
+    };
   }, [headings]);
 
   const handleMouseEnter = () => {

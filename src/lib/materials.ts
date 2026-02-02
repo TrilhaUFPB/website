@@ -159,15 +159,19 @@ export function getAllAreas() {
 
 /**
  * Extrai os headings do conteúdo markdown para o TOC
+ * Ignora headings dentro de blocos de código
  */
 export function extractHeadings(
   content: string
 ): { id: string; text: string; level: number }[] {
+  // Remove blocos de código primeiro (tanto ``` quanto ~~~)
+  const contentWithoutCodeBlocks = content.replace(/```[\s\S]*?```/g, '').replace(/~~~[\s\S]*?~~~/g, '');
+  
   const headingRegex = /^(#{1,6})\s+(.+)$/gm;
   const headings: { id: string; text: string; level: number }[] = [];
 
   let match;
-  while ((match = headingRegex.exec(content)) !== null) {
+  while ((match = headingRegex.exec(contentWithoutCodeBlocks)) !== null) {
     const level = match[1].length;
     const text = match[2].trim();
     const id = text
