@@ -44,21 +44,7 @@ export default function MaterialsSidebar({ areas, className = "" }: MaterialsSid
 
   const SidebarContent = () => (
     <div className="h-full flex flex-col">
-      {/* Header */}
-      <div className="mb-6">
-        <Link 
-          href="/materiais"
-          className="flex items-center gap-3 group"
-        >
-          <Book className="w-6 h-6 text-AzulEletrico dark:text-AzulCeu" />
-          <h2 className="text-lg font-bold text-AzulMeiaNoite dark:text-white group-hover:text-AzulEletrico dark:group-hover:text-AzulCeu transition-colors">
-            Materiais
-          </h2>
-        </Link>
-        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 ml-9">
-          Conteúdos didáticos
-        </p>
-      </div>
+
 
       {/* Lista de índice */}
       <Link
