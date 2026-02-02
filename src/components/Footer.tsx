@@ -14,6 +14,7 @@ export default function Footer() {
     { name: t("navbar.classes"), href: "#turmas" },
     { name: t("navbar.who"), href: "#quem-somos" },
     { name: t("navbar.faq"), href: "#faq" },
+    { name: t("navbar.materials"), href: "/materiais" },
   ];
 
   return (

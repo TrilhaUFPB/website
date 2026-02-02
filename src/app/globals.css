@@ -80,3 +80,163 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* ========================================
+   ESTILOS PARA MATERIAIS DIDÁTICOS
+   ======================================== */
+
+/* Markdown Content Styles - SUPER COMPACTO */
+.markdown-content {
+  @apply text-gray-700;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.dark .markdown-content {
+  @apply text-gray-300;
+}
+
+/* Container do conteúdo - mais espaço */
+.prose-container {
+  @apply max-w-none;
+}
+
+/* Table of Contents Styles - Estilo Notion */
+.toc-nav {
+  @apply pl-0;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+}
+
+.toc-nav::-webkit-scrollbar {
+  width: 3px;
+}
+
+.toc-nav::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.toc-nav::-webkit-scrollbar-thumb {
+  @apply bg-gray-200 dark:bg-slate-700 rounded-full;
+}
+
+.toc-nav::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-300 dark:bg-slate-600;
+}
+
+/* Syntax Highlighting - Light Theme */
+.hljs {
+  @apply text-gray-100;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+  color: #ff7b72;
+}
+
+.hljs-function .hljs-keyword {
+  color: #ff7b72;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-name,
+.hljs-type,
+.hljs-attribute,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+  color: #a5d6ff;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: #8b949e;
+}
+
+.hljs-number {
+  color: #79c0ff;
+}
+
+.hljs-params {
+  color: #c9d1d9;
+}
+
+.hljs-built_in {
+  color: #ffa657;
+}
+
+.hljs-title.class_,
+.hljs-class .hljs-title {
+  color: #f0883e;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizada para sidebar */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  @apply bg-gray-200 rounded-full;
+}
+
+.dark .overflow-y-auto::-webkit-scrollbar-thumb {
+  @apply bg-slate-700;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-300;
+}
+
+.dark .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-600;
+}
+
+/* Animações sutis */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.markdown-content {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Print styles */
+@media print {
+  .markdown-content {
+    max-width: 100% !important;
+  }
+  
+  nav, aside, footer, button {
+    display: none !important;
+  }
+  
+  pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+  }
+}

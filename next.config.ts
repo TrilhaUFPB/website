@@ -11,12 +11,9 @@ const nextConfig: NextConfig = {
     ],
     unoptimized: true,
   },
-  output: 'export',
   poweredByHeader: false,
   transpilePackages: [],
-  webpack: (config) => {
-    return config;
-  },
+  turbopack: {},
   async rewrites() {
     return [
       {

@@ -77,7 +77,7 @@ export const GabrielCarvalho: Person = {
     course: "Engenharia de Software (IFPB)",
     semester: "1",
     role: "Software Engineer Brief",
-    link: "https://www.linkedin.com/in/gabriel-gomes-oliveira-de-carvalho-93ab88340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+    link: "https://www.linkedin.com/in/gabrielcarvvlho/",
     photo: "pessoas/2024.2/gabriel.jpg",
     class: "2024.2",
     org: ["2025.1"],
