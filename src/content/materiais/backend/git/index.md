@@ -18,9 +18,6 @@ Controle de versão é um sistema que registra alterações em arquivos ao longo
 - **Experimentar**: Criar "branches" para testar novas funcionalidades
 - **Documentar**: Histórico completo de todas as mudanças
 
-### Assista uma introdução ao Git
-
-[https://youtu.be/59Z6G31k5Qs?si=IxSV4yd-Iwy_L1SE](https://youtu.be/59Z6G31k5Qs?si=IxSV4yd-Iwy_L1SE)
 
 ## Instalando o Git
 
