@@ -174,6 +174,7 @@ export const MariaLuisaQuintela: Person = {
     semester: "2",
     role: "Researcher UPenn",
     link: "https://www.linkedin.com/in/maria-lu%C3%ADsa-quintela-034061267/",
+    photo: "pessoas/2025.1/quintela.jpeg",
     class: "2025.1",
     org: ["2025.1"],
     pos: ["Membro da Organização"],
