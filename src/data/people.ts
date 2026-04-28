@@ -150,7 +150,7 @@ export const Ceci: Person = {
     name: "Cecília Bíssigo",
     course: "Fonoaudiologia",
     semester: "4",
-    role: " ",
+    role: "Líder de Marketing",
     link: "",
     photo: "pessoas/ceci.png",
     class: null,
