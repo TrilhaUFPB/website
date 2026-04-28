@@ -1,5 +1,5 @@
 ---
-title: POO (Programação Orientada a Objetos)
+title: Programação Orientada a Objetos
 description: 
 category: Programação
 order: 16

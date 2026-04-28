@@ -26,11 +26,12 @@ const materialsDirectory = path.join(process.cwd(), "src/content/materiais");
 
 // Áreas fixas com ordem de exibição
 const FIXED_AREAS = [
-  { slug: "python-basico", name: "Python Básico", order: 1 },
-  { slug: "frontend", name: "Frontend", order: 2 },
-  { slug: "backend", name: "Backend", order: 3 },
-  { slug: "dados", name: "Dados", order: 4 },
+  { slug: "introducao-ao-python", name: "Introdução ao Python", order: 1 },
+  { slug: "estruturas-de-dados", name: "Estruturas de Dados", order: 2 },
+  { slug: "dados", name: "Dados", order: 3 },
+  { slug: "backend", name: "Backend", order: 4 },
   { slug: "banco-de-dados", name: "Banco de Dados", order: 5 },
+  { slug: "frontend", name: "Frontend", order: 6 },
 ];
 
 /**

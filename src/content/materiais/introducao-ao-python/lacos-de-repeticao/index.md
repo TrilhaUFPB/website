@@ -1,5 +1,5 @@
 ---
-title: Laços de Repetição (Iteração)
+title: Laços de Repetição
 description: Compreender o que são laços de repetição, repetição por condição, repetição por iteração, controle de fluxo e como utilizá-los
 category: Programação
 order: 5
