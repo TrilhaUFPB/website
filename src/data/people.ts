@@ -17,7 +17,7 @@ import { EduardoOliveira, DanielSilva, MariaLuizaCavalcanti, LarissaGondim, Pedr
 export const Tiago: Person = {
     name: "Tiago Trindade",
     course: "Ciência da Computação",
-    semester: "8",
+    semester: "9",
     role: "Software Engineer Maestro | SGI Fellow @ MIT",
     link: "https://www.linkedin.com/in/tiagotrindade03/",
     photo: "pessoas/tiago.jpeg",
@@ -29,7 +29,7 @@ export const Tiago: Person = {
 export const Felipe: Person = {
     name: "Felipe Duarte",
     course: "Ciência da Computação",
-    semester: "7",
+    semester: "8",
     role: "Software Engineer Maestro",
     photo: "pessoas/felipe.png",
     link: "https://www.linkedin.com/in/felipeduartea/",
@@ -41,7 +41,7 @@ export const Felipe: Person = {
 export const Puca: Person = {
     name: "Puca Vaz",
     course: "Ciência da Computação",
-    semester: "6",
+    semester: "7",
     role: "Software Engineer Isaac | Machine Learning Engineer LAVID",
     link: "https://www.linkedin.com/in/pucavaz/",
     photo: "pessoas/puca.png",
@@ -53,7 +53,7 @@ export const Puca: Person = {
 export const Nicholas: Person = {
     name: "Nicholas Rodrigues",
     course: "Ciência da Computação",
-    semester: "7",
+    semester: "8",
     role: "Software Engineer 11x | SWE Career Fellow Uber",
     link: "https://www.linkedin.com/in/nicholas-rodrigues-/",
     photo: "pessoas/nicholas.png",
@@ -77,7 +77,7 @@ export const Icaro: Person = {
 export const Daniel: Person = {
     name: "Daniel Brandão",
     course: "Ciência da Computação",
-    semester: "5",
+    semester: "6",
     role: "Software Engineer Brief",
     link: "https://www.linkedin.com/in/daniel-victorcb/",
     photo: "pessoas/daniel.jpeg",
@@ -89,7 +89,7 @@ export const Daniel: Person = {
 export const Bea: Person = {
     name: "Beatriz Pessôa",
     course: "Ciência da Computação",
-    semester: "4",
+    semester: "5",
     role: "Software Engineer Brief",
     photo: "pessoas/2024.1/bea.png",
     link: "https://www.linkedin.com/in/beatriz-pess%C3%B4a/",
@@ -113,7 +113,7 @@ export const Luiz: Person = {
 export const Gabriel: Person = {
     name: "Gabriel Ayres",
     course: "Engenharia da Computação",
-    semester: "5",
+    semester: "6",
     role: "Researcher UPenn/USP | Software Engineer",
     link: "https://www.linkedin.com/in/gabrielbayres/",
     photo: "pessoas/gabriel.png",
@@ -137,7 +137,7 @@ export const Guilherme: Person = {
 export const Caio: Person = {
     name: "Caio Chacon",
     course: "Ciência de Dados e IA",
-    semester: "10",
+    semester: "11",
     role: "Data Scientist Bitka",
     link: "https://www.linkedin.com/in/caiolchacon",
     photo: "pessoas/caio.png",
@@ -149,7 +149,7 @@ export const Caio: Person = {
 export const Ceci: Person = {
     name: "Cecília Bíssigo",
     course: "Fonoaudiologia",
-    semester: "4",
+    semester: "5",
     role: " ",
     link: "",
     photo: "pessoas/ceci.png",
@@ -161,7 +161,7 @@ export const Ceci: Person = {
 export const CeciliaLog: Person = {
     name: "Ana Cecilia Bezerra",
     course: "Ciência da Computação",
-    semester: "6",
+    semester: "7",
     role: "Researcher Log",
     link: "https://www.linkedin.com/in/ana-cec%C3%ADlia-bezerra-338070242/",
     photo: "pessoas/cecilialog.jpeg",
