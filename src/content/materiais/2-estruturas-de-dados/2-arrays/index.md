@@ -638,8 +638,6 @@ Vocês estão espalhados, mas **conectados**. Se seguirmos as pistas, encontramo
 
 *Em azul está uma lista convencional e em verde uma linked list.*
 
----
-
 ### Anatomia de um Nó (Node)
 
 Na nossa analogia, cada pessoa no cinema é um **Nó** (Node). Para que a mágica aconteça, cada nó precisa carregar **duas coisas** na mochila:
@@ -655,8 +653,6 @@ Se tivermos uma Lista Encadeada com 3 nós: `A -> B -> C`.
 
 1. O que está armazenado no `next` do nó C?
 2. Se, por acidente, fizermos `A.next = None`, o que acontece com os nós B e C na memória?
-
----
 
 ### Arrays vs. Linked Lists
 
@@ -687,8 +683,6 @@ Você quer adicionar um novo amigo bem no meio da fila.
 Você está criando um sistema de logs de erro onde novos erros são adicionados constantemente (milhares por segundo), mas raramente precisamos ler logs antigos.
 
 Para guardar esses logs, qual estrutura seria mais eficiente na **escrita**: Array ou Linked List? Por quê?
-
----
 
 ### Implementação em Python (Hands On)
 
