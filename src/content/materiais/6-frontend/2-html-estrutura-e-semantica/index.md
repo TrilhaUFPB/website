@@ -5,8 +5,6 @@ category: Frontend
 order: 2
 ---
 
-# 2. HTML: Estrutura e Semântica
-
 ## Objetivo da aula
 
 Entender o HTML como **linguagem de marcação** que descreve a **estrutura** e o **significado** do conteúdo de uma página, aprendendo a escrever documentos bem formados, legíveis e semanticamente corretos — base para acessibilidade, manutenção e para o navegador interpretar a página de forma consistente.
@@ -33,26 +31,9 @@ Entender o HTML como **linguagem de marcação** que descreve a **estrutura** e 
 
 ---
 
-## Sumário
+# 2.1. O que é HTML de verdade
 
-1. [O que é HTML de verdade](#1-o-que-é-html-de-verdade)
-2. [Estrutura básica de um documento HTML](#2-estrutura-básica-de-um-documento-html)
-3. [Conteúdo e hierarquia: títulos e parágrafos](#3-conteúdo-e-hierarquia-títulos-e-parágrafos)
-4. [Listas (ul, ol, li)](#4-listas-ul-ol-li)
-5. [Links e imagens (a, img)](#5-links-e-imagens-a-img)
-6. [Estrutura semântica de página](#6-estrutura-semântica-de-página)
-7. [Formulários básicos](#7-formulários-básicos)
-8. [Boas práticas gerais e erros comuns](#8-boas-práticas-gerais-e-erros-comuns)
-9. [Checklist mental](#9-checklist-mental)
-10. [Glossário rápido](#10-glossário-rápido)
-11. [Resumo final](#11-resumo-final)
-12. [Projeto Prático](#12-projeto-prático)
-
----
-
-## O que é HTML de verdade
-
-### Estrutura x aparência
+## Estrutura x aparência
 
 HTML (HyperText Markup Language) é uma **linguagem de marcação**. Isso significa que ele serve para **marcar** partes de um conteúdo e atribuir a elas um **papel**: título, parágrafo, navegação, seção, artigo, imagem, formulário etc.
 
@@ -71,7 +52,7 @@ Quando você escolhe uma tag, você está fazendo uma escolha semântica. Por ex
 > **Anti-padrão**  
 > Escolher tags "pelo tamanho" ("usei `<h1>` porque fica grande") é misturar estrutura com estilo. O resultado costuma ser uma página confusa, difícil de manter e pior para acessibilidade.
 
-### HTML, CSS e JavaScript (visão geral)
+## HTML, CSS e JavaScript (visão geral)
 
 Pense numa página web como uma casa:
 
@@ -84,7 +65,7 @@ Pense numa página web como uma casa:
 
 ---
 
-## Estrutura básica de um documento HTML
+# 2.2. Estrutura básica de um documento HTML
 
 Todo documento HTML completo tem uma "casca" mínima que ajuda o navegador a interpretar corretamente a página.
 
@@ -101,7 +82,7 @@ Todo documento HTML completo tem uma "casca" mínima que ajuda o navegador a int
 > **Dica**  
 > O `head` não é "opcional": ele melhora compatibilidade, legibilidade e comportamento em diferentes dispositivos.
 
-### Exemplo mínimo completo
+## Exemplo mínimo completo
 
 ```html
 <!doctype html>
@@ -127,7 +108,7 @@ Todo documento HTML completo tem uma "casca" mínima que ajuda o navegador a int
 - `<title>`: aparece na aba do navegador e é usado como rótulo do documento.
 - `<body>`: tudo o que você quer que o usuário veja fica aqui.
 
-### Como o navegador interpreta isso
+## Como o navegador interpreta isso
 
 O navegador lê o HTML e constrói uma estrutura em memória chamada **DOM** (Document Object Model). Pense no DOM como uma árvore: cada elemento vira um nó, e nós podem conter outros nós.
 
@@ -140,9 +121,9 @@ O navegador lê o HTML e constrói uma estrutura em memória chamada **DOM** (Do
 
 ---
 
-## Conteúdo e hierarquia: títulos e parágrafos
+# 2.3. Conteúdo e hierarquia: títulos e parágrafos
 
-### h1 a h6: hierarquia e leitura
+## h1 a h6: hierarquia e leitura
 
 Títulos (`<h1>` a `<h6>`) formam uma **hierarquia de seções**. Eles ajudam:
 
@@ -159,14 +140,14 @@ Títulos (`<h1>` a `<h6>`) formam uma **hierarquia de seções**. Eles ajudam:
 > **Anti-padrão**  
 > Pular níveis sem motivo (ex.: `h1` → `h4`) costuma indicar que você está usando heading por aparência, não por estrutura.
 
-### p: parágrafo como unidade de texto
+## p: parágrafo como unidade de texto
 
 `<p>` representa um **parágrafo**: um bloco de texto com uma ideia ou unidade textual coerente.
 
 > **Boa prática**  
 > Quebre o texto em parágrafos quando muda a ideia, como em escrita normal. Isso melhora leitura e manutenção.
 
-### strong vs em: significado semântico
+## strong vs em: significado semântico
 
 - `<strong>` indica **importância** (o conteúdo é crucial no contexto).
 - `<em>` indica **ênfase** (mudança de entonação/ênfase no sentido).
@@ -208,7 +189,7 @@ h1: Guia de HTML Semântico
 
 ---
 
-## Listas (ul, ol, li)
+# 2.4. Listas (ul, ol, li)
 
 Listas são mais do que "itens com bolinhas": elas comunicam que existe um **conjunto de elementos relacionados**.
 
@@ -252,9 +233,9 @@ Listas são mais do que "itens com bolinhas": elas comunicam que existe um **con
 
 ---
 
-## Links e imagens (a, img)
+# 2.5. Links e imagens (a, img)
 
-### Links absolutos x relativos
+## Links absolutos x relativos
 
 Links são criados com `<a>` e o destino vai no atributo `href`.
 
@@ -276,7 +257,7 @@ Links são criados com `<a>` e o destino vai no atributo `href`.
 > **Conceito-chave**  
 > URL relativa torna seu projeto mais portátil: se você mover a pasta inteira para outro lugar, os links internos continuam funcionando.
 
-### target="_blank" e rel
+## target="_blank" e rel
 
 Abrir em nova aba é possível com `target="_blank"`:
 
@@ -292,7 +273,7 @@ Abrir em nova aba é possível com `target="_blank"`:
 > **Boa prática**  
 > Use nova aba com critério (por exemplo, quando o usuário está em um fluxo e você quer evitar que ele "perca" a página atual). Em muitos casos, abrir na mesma aba é mais previsível.
 
-### Âncoras internas (#)
+## Âncoras internas (#)
 
 Âncoras internas permitem navegar para um ponto da mesma página, geralmente usando `id`.
 
@@ -316,7 +297,7 @@ Abrir em nova aba é possível com `target="_blank"`:
 > **Dica**  
 > Âncoras internas são muito úteis para páginas longas (documentação, artigos, landing pages) e para navegação rápida.
 
-### Imagens: src, alt, width/height
+## Imagens: src, alt, width/height
 
 Imagens são inseridas com `<img>`. Ela não tem tag de fechamento, porque é um elemento "vazio".
 
@@ -355,9 +336,9 @@ Imagens são inseridas com `<img>`. Ela não tem tag de fechamento, porque é um
 
 ---
 
-## Estrutura semântica de página
+# 2.6. Estrutura semântica de página
 
-### Por que semântica existe
+## Por que semântica existe
 
 Tags semânticas existem para que o HTML expresse intenção e papel dos blocos. Isso melhora:
 
@@ -369,7 +350,7 @@ Tags semânticas existem para que o HTML expresse intenção e papel dos blocos.
 > **Boa prática**  
 > Imagine uma página de blog: cabeçalho com logo, menu, conteúdo do artigo e rodapé. Tags semânticas deixam essa estrutura explícita.
 
-### Quando usar header, nav, main, section, article, footer
+## Quando usar header, nav, main, section, article, footer
 
 - `<header>`: introdução de uma página ou de uma seção (pode conter logo, título, ações iniciais).
 - `<nav>`: bloco de navegação (menu principal, menu lateral, "pular para seção").
@@ -382,7 +363,7 @@ Tags semânticas existem para que o HTML expresse intenção e papel dos blocos.
 > - Em geral, use **um `<main>` por página**.
 > - Você pode ter mais de um `header`/`footer` se fizer sentido (por exemplo, `header` dentro de um `article`).
 
-### section vs div (conceitual)
+## section vs div (conceitual)
 
 `<div>` é um contêiner **genérico**: não diz "o que é". Ele serve quando não existe um elemento mais específico ou quando você precisa agrupar por motivos estruturais/estilísticos sem significado adicional.
 
@@ -397,9 +378,9 @@ Tags semânticas existem para que o HTML expresse intenção e papel dos blocos.
 
 ---
 
-## Formulários básicos
+# 2.7. Formulários básicos
 
-### form: action e method (GET x POST)
+## form: action e method (GET x POST)
 
 Formulários são o mecanismo clássico da web para **enviar dados**.
 
@@ -415,7 +396,7 @@ Formulários são o mecanismo clássico da web para **enviar dados**.
 > **Atenção**  
 > Mesmo com `POST`, não pense "está automaticamente seguro". Segurança envolve HTTPS, backend, políticas, etc. Aqui a ideia é entender o papel do HTML no envio.
 
-### label ↔ input (for/id)
+## label ↔ input (for/id)
 
 `<label>` dá um **nome acessível** para o campo e melhora usabilidade: clicar no texto pode focar o input.
 
@@ -429,7 +410,7 @@ A associação é feita com:
 > **Anti-padrão**  
 > Usar apenas `placeholder` e omitir `label` prejudica leitura (o placeholder some quando você digita) e acessibilidade.
 
-### Tipos essenciais de input
+## Tipos essenciais de input
 
 Alguns tipos comuns e úteis:
 
@@ -442,7 +423,7 @@ Alguns tipos comuns e úteis:
 > **Dica**  
 > Escolher o `type` adequado melhora a experiência especialmente no celular (teclado contextual) e permite validações simples do navegador, sem JavaScript.
 
-### button: submit vs button
+## button: submit vs button
 
 - `<button type="submit">`: envia o formulário
 - `<button type="button">`: botão genérico (não envia)
@@ -486,14 +467,14 @@ Alguns tipos comuns e úteis:
 
 | | |
 |---|---|
-| ![Dois diagramas lado a lado mostrando a associação correta entre label e input: à esquerda, um label com atributo 'for' conectado a um input com 'id' correspondente; à direita, um exemplo de campo de e-mail com label "E-mail" e input type="email"](/api/materiais-assets/6-frontend/2-html-estrutura-e-semantica/assets/image-3.png){width=300px} | ![Exemplo visual de formulário preenchido mostrando campos de texto, e-mail, senha e checkboxes com labels claramente associados](/api/materiais-assets/6-frontend/2-html-estrutura-e-semantica/assets/image-4.png){width=400px} |
+| ![Dois diagramas lado a lado mostrando a associação correta entre label e input: à esquerda, um label com atributo 'for' conectado a um input com 'id' correspondente; à direita, um exemplo de campo de e-mail com label "E-mail" e input type="email"](/api/materiais-assets/6-frontend/2-html-estrutura-e-semantica/assets/image-3.png) | ![Exemplo visual de formulário preenchido mostrando campos de texto, e-mail, senha e checkboxes com labels claramente associados](/api/materiais-assets/6-frontend/2-html-estrutura-e-semantica/assets/image-4.png) |
 
 
 *Figura 4 — Associação label ↔ input*
 
 ---
 
-## Boas práticas gerais e erros comuns
+# 2.8. Boas práticas gerais e erros comuns
 
 > **Boa prática — Semântica acima de aparência**
 > - Não use `h1` "porque é grande".
@@ -533,7 +514,7 @@ Alguns tipos comuns e úteis:
 
 ---
 
-## Checklist mental
+# 2.9. Checklist mental
 
 Uma revisão rápida (conceitual) antes de considerar seu HTML "pronto":
 
@@ -548,7 +529,7 @@ Uma revisão rápida (conceitual) antes de considerar seu HTML "pronto":
 
 ---
 
-## Glossário rápido
+# 2.10. Glossário rápido
 
 - **Elemento**: a unidade do HTML (ex.: um parágrafo é um elemento).
 - **Tag**: a "marca" do elemento (ex.: `<p>` e `</p>`).
@@ -561,13 +542,13 @@ Uma revisão rápida (conceitual) antes de considerar seu HTML "pronto":
 
 ---
 
-## Resumo final
+# 2.11. Resumo final
 
 HTML é a base estrutural da web: ele organiza o conteúdo e comunica significado. Quando você escolhe tags corretamente — títulos em hierarquia, parágrafos, listas, links, imagens com `alt`, blocos semânticos e formulários com `label` — você cria páginas mais claras, mais acessíveis e muito mais fáceis de manter. CSS e JavaScript entram depois para aparência e comportamento, mas um bom HTML continua sendo o "esqueleto" que sustenta tudo.
 
 ---
 
-## Projeto Prático
+# 2.12. Projeto Prático
 
 Para consolidar o aprendizado desta aula, confira a implementação prática no repositório **to-do**:
 
