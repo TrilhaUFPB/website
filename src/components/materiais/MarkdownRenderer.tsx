@@ -71,7 +71,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <h1
                 id={id}
-                className="text-lg md:text-xl font-bold text-AzulMeiaNoite dark:text-white mt-6 mb-2 scroll-mt-28 leading-tight"
+                className="text-xl md:text-2xl font-bold text-AzulMeiaNoite dark:text-white mt-6 mb-2 scroll-mt-28 leading-tight"
                 {...props}
               >
                 {children}
@@ -84,7 +84,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <h2
                 id={id}
-                className="text-base md:text-lg font-bold text-AzulMeiaNoite dark:text-white mt-6 mb-2 scroll-mt-28 border-b border-gray-200 dark:border-slate-700 pb-1 leading-tight"
+                className="text-lg md:text-xl font-bold text-AzulMeiaNoite dark:text-white mt-6 mb-2 scroll-mt-28 border-b border-gray-200 dark:border-slate-700 pb-1 leading-tight"
                 {...props}
               >
                 {children}
@@ -97,7 +97,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <h3
                 id={id}
-                className="text-sm md:text-base font-semibold text-AzulMeiaNoite dark:text-white mt-5 mb-2 scroll-mt-28 leading-snug"
+                className="text-base md:text-lg font-semibold text-AzulMeiaNoite dark:text-white mt-5 mb-2 scroll-mt-28 leading-snug"
                 {...props}
               >
                 {children}
@@ -110,7 +110,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <h4
                 id={id}
-                className="text-xs md:text-sm font-semibold text-AzulMeiaNoite dark:text-white mt-4 mb-2 scroll-mt-28 leading-snug"
+                className="text-sm md:text-base font-semibold text-AzulMeiaNoite dark:text-white mt-4 mb-2 scroll-mt-28 leading-snug"
                 {...props}
               >
                 {children}
@@ -120,8 +120,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           // Parágrafos - SUPER COMPACTOS
           p: ({ children, ...props }) => (
             <p
-              className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed mb-2 max-w-[180ch]"
-              style={{ lineHeight: '1.4' }}
+              className="font-inter text-[15px] text-black dark:text-white mb-3 max-w-[180ch]"
+              style={{ lineHeight: '1.7', fontWeight: 450 }}
               {...props}
             >
               {children}
@@ -130,8 +130,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           // Listas - SUPER COMPACTAS
           ul: ({ children, ...props }) => (
             <ul
-              className="list-disc space-y-1 mb-3 text-xs text-gray-700 dark:text-gray-300 ml-6"
-              style={{ lineHeight: '1.4' }}
+              className="font-inter list-disc space-y-1.5 mb-3 text-[15px] text-black dark:text-white ml-6"
+              style={{ lineHeight: '1.7', fontWeight: 450 }}
               {...props}
             >
               {children}
@@ -139,8 +139,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
           ol: ({ children, ...props }) => (
             <ol
-              className="list-decimal space-y-1 mb-3 text-xs text-gray-700 dark:text-gray-300 ml-6"
-              style={{ lineHeight: '1.4' }}
+              className="font-inter list-decimal space-y-1.5 mb-3 text-[15px] text-black dark:text-white ml-6"
+              style={{ lineHeight: '1.7', fontWeight: 450 }}
               {...props}
             >
               {children}
@@ -165,7 +165,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             
             return (
               <code
-                className="px-1.5 py-0.5 rounded bg-gray-100 dark:bg-slate-800 text-AzulEletrico dark:text-AzulCeu font-mono text-xs"
+                className="px-1.5 py-0.5 rounded bg-gray-100 dark:bg-slate-800 text-AzulEletrico dark:text-AzulCeu font-mono text-sm"
                 {...props}
               >
                 {children}
@@ -184,7 +184,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <div className="relative group my-4">
                 <pre
-                  className="overflow-x-auto rounded-lg bg-slate-900 dark:bg-slate-950 p-2.5 text-xs leading-relaxed"
+                  className="overflow-x-auto rounded-lg bg-slate-900 dark:bg-slate-950 p-3 text-sm leading-relaxed"
                   {...props}
                 >
                   {children}
@@ -196,7 +196,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           // Blockquote - SUPER COMPACTO
           blockquote: ({ children, ...props }) => (
             <blockquote
-              className="border-l-4 border-AzulCeu pl-4 py-2 my-4 bg-AzulCeu/5 dark:bg-AzulCeu/10 rounded-r-lg text-xs italic text-gray-700 dark:text-gray-300"
+              className="font-inter border-l-4 border-AzulCeu pl-4 py-2 my-4 bg-AzulCeu/5 dark:bg-AzulCeu/10 rounded-r-lg text-[15px] italic text-black dark:text-white"
+              style={{ lineHeight: '1.7', fontWeight: 450 }}
               {...props}
             >
               {children}
@@ -256,7 +257,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
           th: ({ children, ...props }) => (
             <th
-              className="px-2 py-1 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider"
+              className="px-3 py-1.5 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider"
               {...props}
             >
               {children}
@@ -264,7 +265,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
           td: ({ children, ...props }) => (
             <td
-              className="px-2 py-1 text-xs text-gray-700 dark:text-gray-300 border-t border-gray-200 dark:border-slate-700"
+              className="font-inter px-3 py-2 text-sm text-black dark:text-white border-t border-gray-200 dark:border-slate-700"
+              style={{ lineHeight: '1.65', fontWeight: 450 }}
               {...props}
             >
               {children}

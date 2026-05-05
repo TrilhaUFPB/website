@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import MaterialsSidebar from "@/components/materiais/MaterialsSidebar";
-import ThemeToggle from "@/components/ThemeToggle";
 import { getMaterialsByArea } from "@/lib/materials";
 
 export default function MaterialsLayout({
@@ -31,7 +30,6 @@ export default function MaterialsLayout({
                 trilha<span className="text-AzulCeu">/materiais</span>
               </Link>
             </div>
-            <ThemeToggle />
           </div>
         </div>
       </header>

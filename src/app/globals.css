@@ -87,13 +87,14 @@ body {
 
 /* Markdown Content Styles - SUPER COMPACTO */
 .markdown-content {
-  @apply text-gray-700;
-  font-size: 0.9rem;
-  line-height: 1.4;
+  @apply text-black;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .dark .markdown-content {
-  @apply text-gray-300;
+  @apply text-white;
 }
 
 /* Container do conteúdo - mais espaço */

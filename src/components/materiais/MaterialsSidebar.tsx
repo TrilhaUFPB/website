@@ -99,7 +99,7 @@ export default function MaterialsSidebar({ areas, className = "" }: MaterialsSid
                         className={`
                           flex items-center gap-3 px-4 py-2 ml-3 text-xs rounded-lg transition-all duration-200
                           ${isActive(material.area, material.slug)
-                            ? "bg-AzulCeu/15 text-AzulEletrico dark:text-AzulCeu font-medium border-l-2 border-AzulEletrico dark:border-AzulCeu -ml-0.5 pl-[18px]"
+                            ? "bg-AzulCeu/15 text-AzulEletrico dark:text-AzulCeu font-medium"
                             : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-800 hover:text-gray-900 dark:hover:text-gray-200"
                           }
                         `}

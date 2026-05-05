@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Poppins, Space_Grotesk } from "next/font/google";
+import { Poppins, Space_Grotesk, Inter } from "next/font/google";
 import { I18nProvider } from "./i18n-provider";
 import { PostHogProvider } from "./posthog-provider";
 
@@ -14,6 +14,11 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-space-grotesk",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -30,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="pt">
       <body
-        className={`${poppins.variable} ${spaceGrotesk.variable} antialiased`}
+        className={`${poppins.variable} ${spaceGrotesk.variable} ${inter.variable} antialiased`}
       >
         <PostHogProvider>
           <I18nProvider>{children}</I18nProvider>
