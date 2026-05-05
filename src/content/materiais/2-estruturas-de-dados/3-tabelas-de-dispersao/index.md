@@ -74,7 +74,7 @@ Como dito anteriormente, diferente de uma lista sequencial onde você percorre i
 
 ## Vantagens e Desvantagens
 
-Como você ja pode concluir, a grande vantagem dessa estrutura é sua busca é, em média $O(1)$, o que a torna extremamente eficiente para operações de acesso, inserção e remoção. No entanto, como toda estrutura de dados, ela apreenta desvantagens:
+Como você ja pode concluir, a grande vantagem dessa estrutura é sua busca é, em média $O(1)$, o que a torna extremamente eficiente para operações de acesso, inserção e remoção. No entanto, como toda estrutura de dados, ela apresenta desvantagens:
 
 - Colisões: É matematicamente difícil **garantir** que chaves diferentes caiam em lugares diferentes. O sistema precisa gastar processamento extra para resolver esses conflitos (usando listas ou sondagem).
 - Desperdício de Memória (Trade-off): Para que a tabela seja rápida, ela precisa ter "espaço de sobra". Se você tem 100 itens, talvez precise de uma tabela de tamanho 200 para evitar colisões. Isso consome mais memória RAM do que uma lista simples compacta.
@@ -135,7 +135,7 @@ else:
     print("Aluno não encontrado!")
 ```
 
-Além disso, pode se previnir erros de chaves que não existem no dicionário através do `.get()`, que retorna um valor padrão caso a chave não exista.
+Além disso, pode se prevenir erros de chaves que não existem no dicionário através do `.get()`, que retorna um valor padrão caso a chave não exista.
 
 ```python
 nota = d.get("Cecília")
@@ -161,3 +161,33 @@ Frequentemente precisamos percorrer o dicionário. O Python oferece métodos par
 for aluno, nota in d.items():
     print(f"O aluno {aluno} tirou {nota} na prova")
 ```
+
+---
+
+## Lista de Exercícios
+
+Estes exercícios combinam dicionários com os conceitos vistos nos capítulos anteriores (listas, strings, laços).
+
+**1. Contador de Palavras**
+Dada uma string longa (um parágrafo), conte quantas vezes cada palavra aparece e retorne um dicionário no formato `{"palavra": frequência}`. Normalize o texto para minúsculo antes de contar e use `split()` para separar as palavras.
+
+**2. Inversão de Dicionário**
+Dado `notas = {"Ana": 8.5, "Bruno": 7.0, "Carla": 9.2}`, crie um novo dicionário em que as chaves viram valores e os valores viram chaves: `{8.5: "Ana", 7.0: "Bruno", 9.2: "Carla"}`. O que acontece se houver dois alunos com a mesma nota? Discuta a limitação.
+
+**3. Agenda Telefônica**
+Implemente um pequeno sistema de agenda usando dicionário. Ele deve permitir: adicionar um contato (`nome -> telefone`), remover um contato pelo nome, buscar o telefone de um nome específico e listar todos os contatos em ordem alfabética.
+
+**4. Mesclar Notas de Provas**
+Dadas duas provas: `prova1 = {"Ana": 7, "Bruno": 8}` e `prova2 = {"Ana": 9, "Carla": 10}`, gere um dicionário com a média de cada aluno. Alunos que fizeram apenas uma das provas devem manter a nota única no resultado.
+
+**5. Anagrama**
+Duas palavras são anagramas se possuem exatamente as mesmas letras com as mesmas frequências (ex: "amor" e "roma"). Escreva uma função que receba duas strings e retorne `True` se forem anagramas. Construa um dicionário de frequência para cada string e compare.
+
+**6. Cache com Dicionário (Memoização)**
+Escreva uma função `fibonacci(n)` recursiva que use um dicionário como cache para guardar resultados já calculados. Compare o tempo de execução com a versão sem cache para `n = 35` usando `time.perf_counter()`.
+
+**7. Top 3 mais frequentes**
+Dada uma lista de produtos vendidos em um dia, retorne os 3 produtos mais vendidos. Use um dicionário para contar as ocorrências e depois ordene pelas frequências.
+
+**8. Validação de Estoque**
+Você tem dois dicionários: `pedido = {"caneta": 5, "caderno": 2}` e `estoque = {"caneta": 10, "caderno": 1, "lápis": 50}`. Verifique se é possível atender ao pedido completamente (todos os itens em quantidade suficiente). Retorne uma lista com os itens que faltam no estoque, se houver.
