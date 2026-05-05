@@ -5,8 +5,6 @@ category: Frontend
 order: 1
 ---
 
-# 1. Fundamentos da Web
-
 ## Objetivo da aula
 
 Construir uma base sólida e precisa sobre o que é a Web, como ela funciona por baixo do capô e como uma página sai de um endereço digitado (URL) para virar pixels na tela. Ao final, você deve conseguir entender o processo completo de uma navegação simples, usando o vocabulário técnico correto.
@@ -20,50 +18,9 @@ Construir uma base sólida e precisa sobre o que é a Web, como ela funciona por
 - A diferença entre front-end e back-end, onde entra banco de dados e o que é uma API
 - Como organizar um projeto front-end básico com index.html e style.css 
 
-## Sumário
+# 1.1. Visão geral da Web
 
-1. [Visão geral da Web](#1-visão-geral-da-web)
-   - [1.1 A ideia da Web](#11-a-ideia-da-web)
-   - [1.2 Site, página, navegador e servidor](#12-site-página-navegador-e-servidor)
-   - [1.3 Requisição e resposta: a conversa básica](#13-requisição-e-resposta-a-conversa-básica)
-   - [1.4 Internet ≠ Web](#14-internet--web)
-2. [Modelo Cliente–Servidor](#2-modelo-clienteservidor)
-   - [2.1 O que roda no cliente vs. no servidor](#21-o-que-roda-no-cliente-vs-no-servidor)
-   - [2.2 HTTP e o conceito de stateless](#22-http-e-o-conceito-de-stateless)
-   - [2.3 Cookies e sessão (visão conceitual)](#23-cookies-e-sessão-visão-conceitual)
-3. [O caminho de uma página: do URL até aparecer na tela](#3-o-caminho-de-uma-página-do-url-até-aparecer-na-tela)
-   - [3.1 Anatomia de um URL](#31-anatomia-de-um-url)
-   - [3.2 DNS: como o nome vira endereço](#32-dns-como-o-nome-vira-endereço)
-   - [3.3 Conexão: TCP/UDP e onde entra TLS/HTTPS](#33-conexão-tcpudp-e-onde-entra-tlshttps)
-   - [3.4 Ciclo Request/Response: headers, status e body](#34-ciclo-requestresponse-headers-status-e-body)
-   - [3.5 Renderização no navegador: do HTML aos pixels](#35-renderização-no-navegador-do-html-aos-pixels)
-4. [HTTP na prática](#4-http-na-prática)
-   - [4.1 Métodos HTTP](#41-métodos-http)
-   - [4.2 Status codes essenciais](#42-status-codes-essenciais)
-   - [4.3 Headers comuns (e por que importam)](#43-headers-comuns-e-por-que-importam)
-   - [4.4 Cache: por que existe e como ajuda](#44-cache-por-que-existe-e-como-ajuda)
-   - [4.5 HTTP vs HTTPS](#45-http-vs-https)
-5. [Front-end vs Back-end](#5-front-end-vs-back-end)
-   - [5.1 Responsabilidades do front-end](#51-responsabilidades-do-front-end)
-   - [5.2 Responsabilidades do back-end](#52-responsabilidades-do-back-end)
-   - [5.3 Onde entra o banco de dados](#53-onde-entra-o-banco-de-dados)
-   - [5.4 API: o que é e por que existe](#54-api-o-que-é-e-por-que-existe)
-   - [5.5 Separação de responsabilidades: por que importa](#55-separação-de-responsabilidades-por-que-importa)
-6. [Estrutura básica de um projeto front-end](#6-estrutura-básica-de-um-projeto-front-end)
-   - [6.1 index.html e style.css: o papel de cada um](#61-indexhtml-e-stylecss-o-papel-de-cada-um)
-   - [6.2 Organização de pastas (boas práticas)](#62-organização-de-pastas-boas-práticas)
-   - [6.3 Como o navegador "junta" HTML e CSS](#63-como-o-navegador-junta-html-e-css)
-   - [6.4 Exemplo mínimo: HTML + CSS](#64-exemplo-mínimo-html--css)
-   - [6.5 O que ainda não teremos (e por quê)](#65-o-que-ainda-não-teremos-e-por-quê)
-7. [Erros comuns e confusões clássicas](#7-erros-comuns-e-confusões-clássicas)
-8. [Glossário rápido](#8-glossário-rápido)
-9. [Resumo final](#9-resumo-final)
-
----
-
-## Visão geral da Web
-
-### A ideia da Web
+## A ideia da Web
 
 A Web (World Wide Web) pode ser entendida como um sistema de documentos e recursos interligados, acessados por meio de endereços (URLs) e transferidos por um protocolo de comunicação (principalmente HTTP/HTTPS).
 
@@ -74,7 +31,7 @@ Um jeito bom de visualizar isso é pensar em uma biblioteca gigantesca:
 
 **Conceito-chave:** na Web, você não "entra" em um computador remoto; você pede recursos (documentos/arquivos/dados) e os recebe, seguindo regras bem definidas.
 
-### Site, página, navegador e servidor
+## Site, página, navegador e servidor
 
 Esses termos aparecem desde o primeiro dia, mas muita gente usa como sinônimos — e eles não são.
 
@@ -88,7 +45,7 @@ Esses termos aparecem desde o primeiro dia, mas muita gente usa como sinônimos 
 
 **Dica:** quando você diz "o site está fora do ar", tecnicamente você está dizendo: "o servidor não está respondendo corretamente às requisições" — pode ser por queda, sobrecarga, falha de rede, erro interno, manutenção, etc.
 
-### Requisição e resposta: a conversa básica
+## Requisição e resposta: a conversa básica
 
 A navegação na Web é uma sequência de "perguntas" e "respostas":
 
@@ -116,7 +73,7 @@ Uma analogia forte é a de restaurante:
 
 ---
 
-### Internet ≠ Web
+## Internet ≠ Web
 
 - **A Internet** é a infraestrutura: uma rede global (na verdade, um conjunto de redes) conectando máquinas e permitindo troca de dados usando protocolos como IP.
 - **A Web** é um serviço que usa a Internet. Ela é uma das "aplicações" construídas em cima da Internet, assim como:
@@ -128,9 +85,9 @@ Uma analogia forte é a de restaurante:
 
 ---
 
-## Modelo Cliente–Servidor
+# 1.2. Modelo Cliente–Servidor
 
-### O que roda no cliente vs. no servidor
+## O que roda no cliente vs. no servidor
 
 O modelo cliente–servidor organiza responsabilidades:
 
@@ -150,7 +107,7 @@ O modelo cliente–servidor organiza responsabilidades:
 
 **Atenção:** "servidor" pode significar máquina (hardware) ou programa (software). Em Web, na maioria das vezes estamos falando do software que responde às requisições, mesmo que ele rode em várias máquinas.
 
-### HTTP e o conceito de stateless
+## HTTP e o conceito de stateless
 
 HTTP é, por design, um protocolo **stateless**. Isso significa que, do ponto de vista do protocolo, cada requisição é independente: o servidor não é obrigado a "lembrar" automaticamente do que aconteceu antes.
 
@@ -164,7 +121,7 @@ Pense em um balcão de atendimento onde:
 
 **Conceito-chave:** "stateless" não significa "não existe login" ou "não existe carrinho". Significa que o HTTP puro não garante memória de contexto entre requisições. A "memória" é construída por outros mecanismos.
 
-### Cookies e sessão (visão conceitual)
+## Cookies e sessão (visão conceitual)
 
 Para criar experiências com continuidade (login, preferências, carrinho), usamos mecanismos de estado por cima do HTTP.
 
@@ -179,7 +136,7 @@ Para criar experiências com continuidade (login, preferências, carrinho), usam
 
 ---
 
-## O caminho de uma página: do URL até aparecer na tela
+# 1.3. O caminho de uma página: do URL até aparecer na tela
 
 Vamos narrar uma situação real: você abre o navegador, digita um endereço e pressiona Enter. O que acontece?
 
@@ -192,7 +149,7 @@ Vamos narrar uma situação real: você abre o navegador, digita um endereço e 
 
 ---
 
-### Anatomia de um URL
+## Anatomia de um URL
 
 URL é o endereço de um recurso. Ele não é só "o domínio". Um URL típico:
 
@@ -214,7 +171,7 @@ Quebrando em partes:
 
 **Conceito-chave:** domínio identifica "para onde ir"; caminho e query ajudam a definir "o que pedir"; fragmento ajuda o navegador a decidir "onde focar" no conteúdo carregado.
 
-### DNS: como o nome vira endereço
+## DNS: como o nome vira endereço
 
 Computadores na rede se comunicam usando endereços IP (como 203.0.113.10 em IPv4 ou endereços IPv6). O problema: humanos preferem nomes.
 
@@ -229,7 +186,7 @@ O DNS (Domain Name System) funciona como uma "agenda telefônica":
 
 **Dica:** DNS também é um dos motivos de "às vezes funciona para mim e não para você": caches diferentes podem estar em estados diferentes (ou apontando para IPs diferentes por balanceamento).
 
-### Conexão: TCP/UDP e onde entra TLS/HTTPS
+## Conexão: TCP/UDP e onde entra TLS/HTTPS
 
 Depois de obter o IP, o navegador precisa estabelecer comunicação com o servidor.
 
@@ -255,7 +212,7 @@ HTTPS é HTTP + TLS (Transport Layer Security). Antes de trafegar os dados HTTP,
 
 **Atenção:** "HTTPS" não significa "o site é confiável em conteúdo". Significa que a conexão é protegida contra espionagem e adulteração no caminho, e que você está falando com o servidor que provou possuir o certificado adequado para aquele domínio.
 
-### Ciclo Request/Response: headers, status e body
+## Ciclo Request/Response: headers, status e body
 
 Uma vez que a conexão está pronta, ocorre a troca HTTP.
 
@@ -293,7 +250,7 @@ Cache-Control: max-age=60
 
 **Conceito-chave:** headers são "envelopes" de informação sobre o conteúdo e sobre como tratá-lo (tipo, cache, autenticação, idioma, compressão…). Eles não são detalhe: são parte essencial da Web moderna.
 
-### Renderização no navegador: do HTML aos pixels
+## Renderização no navegador: do HTML aos pixels
 
 Receber o HTML é só o começo. O navegador precisa transformar texto em uma página visual. Em alto nível:
 
@@ -319,9 +276,9 @@ Receber o HTML é só o começo. O navegador precisa transformar texto em uma p�
 
 ---
 
-## HTTP na prática
+# 1.4. HTTP na prática
 
-### Métodos HTTP
+## Métodos HTTP
 
 Métodos descrevem a intenção da requisição.
 
@@ -335,7 +292,7 @@ Métodos descrevem a intenção da requisição.
 
 **Conceito-chave:** métodos ajudam a construir APIs e sistemas previsíveis. Mesmo em sites "com páginas", por trás pode existir um conjunto de recursos que são criados, lidos, atualizados e removidos.
 
-### Status codes essenciais
+## Status codes essenciais
 
 Status codes são a forma padrão do servidor dizer "o que aconteceu".
 
@@ -355,7 +312,7 @@ Status codes são a forma padrão do servidor dizer "o que aconteceu".
 
 ---
 
-### Headers comuns (e por que importam)
+## Headers comuns (e por que importam)
 
 Alguns headers aparecem tanto que viram parte do vocabulário:
 
@@ -371,7 +328,7 @@ Alguns headers aparecem tanto que viram parte do vocabulário:
 
 **Dica:** se o conteúdo "parece certo mas o navegador não renderiza", uma causa clássica é Content-Type errado (por exemplo, servidor enviando CSS como texto genérico).
 
-### Cache: por que existe e como ajuda
+## Cache: por que existe e como ajuda
 
 Cache existe para evitar pedir a mesma coisa toda hora. Se você entra em um site várias vezes:
 - o logo, fontes, CSS e imagens quase sempre são os mesmos
@@ -389,7 +346,7 @@ Cache pode existir em vários pontos:
 
 **Atenção:** cache também é fonte de confusão em desenvolvimento: você muda um arquivo e "parece que não mudou". Muitas vezes o navegador está usando uma versão cacheada.
 
-### HTTP vs HTTPS
+## HTTP vs HTTPS
 
 **HTTP** é comunicação em texto claro (conceitualmente). Alguém no caminho pode:
 - ler o conteúdo
@@ -406,9 +363,9 @@ Cache pode existir em vários pontos:
 
 ---
 
-## Front-end vs Back-end
+# 1.5. Front-end vs Back-end
 
-### Responsabilidades do front-end
+## Responsabilidades do front-end
 
 Front-end é tudo que acontece do lado do usuário, no navegador, com foco em:
 - estrutura e conteúdo (HTML)
@@ -421,7 +378,7 @@ Mesmo sem interatividade avançada, front-end já envolve decisões importantes:
 - responsividade (telas diferentes)
 - semântica (usar a tag certa para o significado certo)
 
-### Responsabilidades do back-end
+## Responsabilidades do back-end
 
 Back-end é o que acontece no servidor, com foco em:
 - regras de negócio (o que pode/não pode)
@@ -432,7 +389,7 @@ Back-end é o que acontece no servidor, com foco em:
 
 **Conceito-chave:** front-end e back-end conversam. O front-end pede; o back-end decide e responde.
 
-### Onde entra o banco de dados
+## Onde entra o banco de dados
 
 Banco de dados (BD) é um componente usado para persistir informação:
 - usuários, produtos, pedidos, posts, comentários…
@@ -446,7 +403,7 @@ Isso protege regras e dados e facilita controle de acesso.
 
 **Atenção:** "o back-end" não é "o banco de dados". O back-end pode usar banco de dados, mas também pode usar cache, filas, serviços externos e lógica própria.
 
-### API: o que é e por que existe
+## API: o que é e por que existe
 
 API (Application Programming Interface) é, na prática, um contrato de comunicação. Em Web, geralmente significa:
 - um conjunto de URLs/rotas que aceitam requisições (GET/POST/…)
@@ -458,7 +415,7 @@ API (Application Programming Interface) é, na prática, um contrato de comunica
 - permite múltiplos clientes: navegador, app mobile, integração com parceiros
 - torna o sistema mais modular e evolutivo
 
-### Separação de responsabilidades: por que importa
+## Separação de responsabilidades: por que importa
 
 Separar front-end e back-end não é "moda"; é engenharia.
 
@@ -472,11 +429,11 @@ Separar front-end e back-end não é "moda"; é engenharia.
 
 ---
 
-## Estrutura básica de um projeto front-end
+# 1.6. Estrutura básica de um projeto front-end
 
 Nesta etapa, vamos montar o "esqueleto" clássico de um projeto estático: HTML + CSS. Isso já é suficiente para criar páginas bem estruturadas e bonitas — só não teremos a camada de interatividade programável ainda.
 
-### index.html e style.css: o papel de cada um
+## index.html e style.css: o papel de cada um
 
 **index.html**
 - É o ponto de entrada mais comum. Contém:
@@ -499,7 +456,7 @@ Nesta etapa, vamos montar o "esqueleto" clássico de um projeto estático: HTML 
 
 ---
 
-### Organização de pastas (boas práticas)
+## Organização de pastas (boas práticas)
 
 Para projetos pequenos, o importante é não virar bagunça. Uma organização típica (sem exageros) é:
 
@@ -518,7 +475,7 @@ meu-site/
 
 **Dica:** organização é parte da engenharia. Um projeto com nomes claros economiza tempo e evita erros bobos (como linkar arquivo errado).
 
-### Como o navegador "junta" HTML e CSS
+## Como o navegador "junta" HTML e CSS
 
 Quando o navegador recebe o HTML, ele:
 1. faz parsing e constrói o DOM
@@ -533,7 +490,7 @@ Isso explica por que:
 
 **Atenção:** caminhos de arquivos importam. `href="css/style.css"` significa "dentro da pasta css". Se você mudar pastas sem ajustar caminhos, o navegador não "adivinha".
 
-### Exemplo mínimo: HTML + CSS
+## Exemplo mínimo: HTML + CSS
 
 Exemplo propositalmente curto, apenas para mostrar a ligação.
 
@@ -586,7 +543,7 @@ Perceba a ideia central:
 - o `<link rel="stylesheet" ...>` conecta o CSS
 - o CSS altera a aparência sem mudar o significado do conteúdo
 
-### O que ainda não teremos (e por quê)
+## O que ainda não teremos (e por quê)
 
 Neste capítulo, não vamos ensinar nem usar JavaScript. Isso é intencional:
 - primeiro, você consolida a fundação: rede + HTTP + HTML/CSS
@@ -596,7 +553,7 @@ Neste capítulo, não vamos ensinar nem usar JavaScript. Isso é intencional:
 
 ---
 
-## Erros comuns e confusões clássicas
+# 1.7. Erros comuns e confusões clássicas
 
 - **"HTML é o site pronto."**
   - HTML é a estrutura do documento. "Site" envolve conjunto de páginas, recursos, organização, e muitas vezes servidores e dados.
@@ -621,7 +578,7 @@ Neste capítulo, não vamos ensinar nem usar JavaScript. Isso é intencional:
 
 ---
 
-## Glossário rápido
+# 1.8. Glossário rápido
 
 - **Web:** sistema de recursos interligados acessados por URLs (principalmente via HTTP/HTTPS).
 - **Internet:** infraestrutura de redes conectadas que permite troca de dados (IP).
@@ -647,7 +604,7 @@ Neste capítulo, não vamos ensinar nem usar JavaScript. Isso é intencional:
 
 ---
 
-## Resumo final
+# 1.9. Resumo final
 
 A Web é uma camada construída sobre a Internet para solicitar e entregar recursos por meio de URLs, usando principalmente HTTP/HTTPS. O navegador (cliente) faz requisições; o servidor responde com status, headers e conteúdo. Antes de qualquer HTML aparecer, há um caminho técnico bem definido: URL é analisado, DNS resolve domínio em IP, uma conexão é estabelecida (com TLS no caso de HTTPS), o ciclo request/response acontece, e o navegador interpreta HTML e CSS para renderizar a página. Com essa base, você está pronto para separar com clareza o que é front-end e back-end e entender por que um simples index.html ligado a um style.css já é um "microcosmo" do funcionamento real da Web — a camada de interatividade programável virá depois, em momento apropriado.
 
