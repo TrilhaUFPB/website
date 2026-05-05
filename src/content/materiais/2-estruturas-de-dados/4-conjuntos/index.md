@@ -12,7 +12,7 @@ Para compreender a estrutura de dados `set` (conjunto) em Python, é necessário
 Uma analogia útil é a de um pacote de figurinhas soltas, e não coladas em um álbum. Ao despejar as figurinhas sobre uma mesa, observam-se duas regras fundamentais:
 
 1. **Unicidade:** Ter duas figurinhas idênticas não altera o fato de que você possui *aquele* item na coleção. Duplicatas são redundantes e ignoradas.
-2. **Ausência de Ordem:** Não existe "primeira" ou "última" figurinha na mesa. Elas estão dispersas. O conceito de índice posicional () inexiste.
+2. **Ausência de Ordem:** Não existe "primeira" ou "última" figurinha na mesa. Elas estão dispersas. O conceito de índice posicional inexiste.
 
 Na Ciência da Computação, definimos formalmente um `set` como uma **Coleção Mutável de Elementos Imutáveis e Não Ordenados**.
 
@@ -109,7 +109,7 @@ Neste caso, a variável `sao_iguais` será avaliada como `True`. O Python ignora
 
 # 4.7. Continência (Subconjuntos)
 
-A linguagem distingue com precisão entre subconjunto e subconjunto próprio através de operadores relacionais. Um subconjunto () pode ser igual ao conjunto original, enquanto um subconjunto próprio () deve ser estritamente menor.
+A linguagem distingue com precisão entre subconjunto e subconjunto próprio através de operadores relacionais. Um subconjunto (operador `<=`) pode ser igual ao conjunto original, enquanto um subconjunto próprio (operador `<`) deve ser estritamente menor.
 
 ```python
 s = {1, 2}
@@ -176,8 +176,8 @@ A tabela abaixo compara o custo computacional médio de operações de busca:
 
 | Estrutura de Dados | Operação | Complexidade Média | Interpretação |
 | --- | --- | --- | --- |
-| **Lista (`list`)** | `x in lista` |  (Linear) | O tempo de busca cresce proporcionalmente ao tamanho dos dados. Em grandes volumes, torna-se ineficiente. |
-| **Conjunto (`set`)** | `x in set` |  (Constante) | O tempo de busca é praticamente instantâneo e independe do tamanho do conjunto (seja 10 ou 10 milhões de itens). |
+| **Lista (`list`)** | `x in lista` | O(n) (Linear) | O tempo de busca cresce proporcionalmente ao tamanho dos dados. Em grandes volumes, torna-se ineficiente. |
+| **Conjunto (`set`)** | `x in set` | O(1) (Constante) | O tempo de busca é praticamente instantâneo e independe do tamanho do conjunto (seja 10 ou 10 milhões de itens). |
 
 # 4.11. Conclusão Prática
 
@@ -214,14 +214,14 @@ Dadas duas listas de produtos: `estoque_loja_A` e `estoque_loja_B`. Gere um conj
 **6. O CPF Único**
 Um banco de dados corrompido gerou uma lista onde todos os CPFs aparecem duas vezes, exceto um, que aparece apenas uma vez.
 Encontre o CPF "solitário".
-*Dica Hard:* Tente resolver isso matematicamente usando conjuntos: . Por que essa fórmula funciona?
+*Dica Hard:* Tente resolver isso matematicamente usando conjuntos: pegue a diferença simétrica (XOR) entre o conjunto da lista e o conjunto sem duplicatas. Por que essa abordagem funciona?
 
 **7. Validação de Senha Forte**
 Uma senha forte deve conter caracteres de pelo menos 3 grupos diferentes: minúsculas, maiúsculas, números e símbolos.
 Crie uma função que receba uma senha e use conjuntos para verificar se ela atende aos requisitos. (Crie sets de referência para cada grupo).
 
 **8. Jaccard Index (OPCIONAL)**
-O Índice de Jaccard é uma métrica usada para medir a similaridade entre dois conjuntos. A fórmula é:
+O Índice de Jaccard é uma métrica usada para medir a similaridade entre dois conjuntos. A fórmula é: `J(A, B) = |A ∩ B| / |A ∪ B|` — ou seja, o tamanho da interseção dividido pelo tamanho da união. O resultado fica entre 0 (nenhuma similaridade) e 1 (conjuntos idênticos).
 
 Implemente uma função que receba duas frases, transforme-as em conjuntos de palavras e retorne o nível de similaridade (entre 0 e 1).
 
