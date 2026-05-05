@@ -1,15 +1,17 @@
 ---
-title: 3. Modelagem de Dados
-description: 
+title: 5. Modelagem de Dados
+description: Como estruturar os dados para o formato de um banco de dados?
 category: Banco de Dados
-order: 3
+order: 5
 ---
 
-# 3.1. Introdução
+![Imagem 10](/api/materiais-assets/5-banco-de-dados/5-modelagem-de-dados/assets/imagem10.png)
+
+# 5.1 Introdução
 
 **Modelagem de dados** é o processo de planejar como seus dados serão estruturados no banco de dados. É tipo fazer a planta de uma casa antes de construir.
 
-### Por que é importante planejar antes?
+## Por que é importante planejar antes?
 
 Imagina criar um e-commerce sem planejar:
 - Você coloca tudo em uma tabela gigante
@@ -21,16 +23,8 @@ Imagina criar um e-commerce sem planejar:
 **Consequências de uma modelagem ruim:**
 
 ❌ **Redundância** - mesma informação repetida em vários lugares
-```
-Pedido 1: cliente_nome="Ana Silva", cliente_cpf="111.111.111"
-Pedido 2: cliente_nome="Ana Silva", cliente_cpf="111.111.111"  // Repetido!
-```
 
 ❌ **Inconsistência** - informações contraditórias
-```
-Pedido 1: cliente_email="ana@email.com"
-Pedido 2: cliente_email="ana@gmail.com"  // Qual é o certo?
-```
 
 ❌ **Performance ruim** - queries lentas e ineficientes
 
@@ -43,13 +37,11 @@ Pedido 2: cliente_email="ana@gmail.com"  // Qual é o certo?
 
 > **Tempo investido em modelagem = tempo economizado depois!**
 
----
-
-## Entidades, Atributos e Relacionamentos
+# 5.2 Entidades, Atributos e Relacionamentos
 
 Esses são os 3 conceitos fundamentais da modelagem. Vamos entender cada um:
 
-### Entidades
+## 5.2.1 Entidades
 
 **Entidade** é qualquer "coisa" do mundo real que você quer guardar informações. Pode ser uma pessoa, objeto, conceito, evento...
 
@@ -77,7 +69,7 @@ Entidades: Cliente, Pedido, Produto, Categoria
 
 ---
 
-### Atributos
+## 5.2.2 Atributos
 
 **Atributos** são as características/propriedades de uma entidade. São as informações que você quer guardar sobre ela.
 
@@ -98,7 +90,7 @@ Atributos:
 
 ---
 
-### Relacionamentos
+## 5.2.3 Relacionamentos
 
 **Relacionamentos** são as conexões entre entidades. Como elas se relacionam?
 
@@ -115,23 +107,23 @@ Atributos:
 
 ---
 
-## Normalização
+# 5.3 Normalização
 
 Agora chegamos em um dos conceitos mais importantes da modelagem: **normalização**!
 
-### O Problema: Dados Desnormalizados
+## O Problema: Dados Desnormalizados
 
-Imagina que você fez essa tabela (ruim):
+Imagina que você fez essa tabela:
 
 ```
 Tabela: pedidos_completos
-+----+-------------+-------------+-------------+-----------------------------+
-| id | cliente_nome| cliente_cpf | cliente_end | produtos                     |
-+----+-------------+-------------+-------------+-----------------------------+
-| 1  | Ana Silva   | 111.111.111 | Rua A, 123  | Notebook Dell, Mouse Logitech|
-| 2  | Ana Silva   | 111.111.111 | Rua A, 123  | Teclado Mecânico             |
-| 3  | Bruno Costa | 222.222.222 | Rua B, 456  | Mouse Logitech               |
-+----+-------------+-------------+-------------+-----------------------------+
++----+-------------+-------------+-------------+------------------+
+| id | cliente_nome| cliente_cpf | cliente_end | produtos         |
++----+-------------+-------------+-------------+------------------+
+| 1  | Joaquim     | 111.111.111 | Rua A, 123  | Notebook , Mouse |
+| 2  | Joaquim     | 111.111.111 | Rua A, 123  | Teclado Mecânico |
+| 3  | Maria Luísa | 222.222.222 | Rua B, 456  | Mouse            |
++----+-------------+-------------+-------------+------------------+
 ```
 
 **Problemas dessa tabela:**
@@ -158,42 +150,42 @@ Tabela: pedidos_completos
 
 ---
 
-### A Solução: Formas Normais
+## A Solução: **Formas Normais**
 
 A **normalização** é um processo de organizar os dados para eliminar esses problemas. Vamos passar pelas 3 primeiras formas normais, existem outras, mas essas são as mais importantes:
 
-![Imagem 9](/api/materiais-assets/5-banco-de-dados/3-modelagem-de-dados/assets/imagem9.png)
+![Imagem 11](/api/materiais-assets/5-banco-de-dados/5-modelagem-de-dados/assets/imagem11.png)
 
 ---
 
-#### 1ª Forma Normal (1FN)
+### 1ª Forma Normal (1FN)
 
 **Regra:** Eliminar atributos multivalorados - cada célula deve ter APENAS um valor.
 
 **ANTES (Errado):**
 ```
-+----+-------------+-------------------------------------+
-| id | cliente_nome| produtos                             |
-+----+-------------+-------------------------------------+
-| 1  | Ana Cecília | Notebook Dell, Mouse Logitech        |  ❌ Múltiplos valores
-+----+-------------+-------------------------------------+
++----+-------------+--------------------+
+| id | cliente_nome| produtos           |
++----+-------------+--------------------+
+| 1  | Ana Cecília | Notebook, Mouse    |  ❌ Múltiplos valores
++----+-------------+--------------------+
 ```
 
 **DEPOIS (1FN):**
 ```
-+----+-------------+-------------------+
-| id | cliente_nome| produto            |
-+----+-------------+-------------------+
-| 1  | Ana Cecília | Notebook Dell      |  ✅ Um valor por célula
-| 1  | Ana Cecília | Mouse Logitech     |  ✅ Um valor por célula
-+----+-------------+-------------------+
++----+-------------+---------------+
+| id | cliente_nome| produto       |
++----+-------------+---------------+
+| 1  | Ana Cecília | Notebook      |  ✅ Um valor por célula
+| 1  | Ana Cecília | Mouse         |  ✅ Um valor por célula
++----+-------------+---------------+
 ```
 
 **Mas ainda tem o problema da redundância!** Vamos para a 2FN...
 
 ---
 
-#### 2ª Forma Normal (2FN)
+### 2ª Forma Normal (2FN)
 
 **Regra:** Deve estar em 1FN + eliminar dependências parciais.
 
@@ -204,8 +196,8 @@ A **normalização** é um processo de organizar os dados para eliminar esses pr
 +-------------+-------------+-------------------+---------------+
 | pedido_id   | produto_id  | produto_nome      | cliente_nome  |
 +-------------+-------------+-------------------+---------------+
-| 1           | 10          | Notebook Dell     | Ana Cecília   |
-| 1           | 20          | Mouse Logitech    | Ana Cecília   |
+| 1           | 10          | Notebook          | Ana Cecília   |
+| 1           | 20          | Mouse             | Ana Cecília   |
 +-------------+-------------+-------------------+---------------+
 Chave primária composta: (pedido_id, produto_id)
 ```
@@ -240,11 +232,11 @@ Tabela: pedidos_produtos (intermediária)
 +-----------+-------------+----------+
 ```
 
-**Melhor, mas ainda tem problema!** O cliente está na tabela de pedidos...
+**Melhor, mas ainda tem problema.** O cliente está na tabela de pedidos...
 
 ---
 
-#### 3ª Forma Normal (3FN)
+### 3ª Forma Normal (3FN)
 
 **Regra:** Deve estar em 2FN + eliminar dependências transitivas.
 
@@ -301,11 +293,11 @@ Tabela: pedidos_produtos
 +-----------+------------+----------+
 ```
 
-**Agora sim! ✅** Dados organizados, sem redundância, sem anomalias!
+**Agora sim!! ✅** Dados organizados, sem redundância, sem anomalias!
 
 ---
 
-### Resultado Final: Estrutura Normalizada
+## Resultado Final: Estrutura Normalizada
 
 Conseguimos separar tudo em tabelas coesas:
 
@@ -326,11 +318,9 @@ Conseguimos separar tudo em tabelas coesas:
 - Sistemas que priorizam leitura sobre escrita
 - Quando a performance de leitura é crítica
 
----
+# 5.4 Boas Práticas
 
-## Boas Práticas
-
-### Nomenclatura
+## 5.4.1 Nomenclatura
 
 **Nomes de tabelas:**
 
@@ -371,7 +361,7 @@ nome1           -- Use nomes descritivos!
 
 ---
 
-### Tipos de Dados
+## 5.4.2 Tipos de Dados
 
 **Escolher o tipo certo economiza espaço e melhora performance!**
 
@@ -422,11 +412,11 @@ CREATE TABLE produtos (
 
 ---
 
-### Constraints (Restrições)
+## 5.4.3 Constraints (Restrições)
 
 **Constraints** são regras que garantem a integridade dos dados:
 
-#### NOT NULL
+### NOT NULL
 "Este campo é obrigatório!"
 
 ```sql
@@ -438,7 +428,7 @@ CREATE TABLE usuarios (
 );
 ```
 
-#### UNIQUE
+### UNIQUE
 "Este valor não pode repetir!"
 
 ```sql
@@ -449,7 +439,7 @@ CREATE TABLE usuarios (
 );
 ```
 
-#### CHECK
+### CHECK
 "O valor tem que seguir esta regra!"
 
 ```sql
@@ -467,7 +457,7 @@ CREATE TABLE usuarios (
 );
 ```
 
-#### DEFAULT
+### DEFAULT
 "Se não passar valor, usa este!"
 
 ```sql
@@ -479,7 +469,7 @@ CREATE TABLE produtos (
 );
 ```
 
-#### Exemplo completo com todas as constraints:
+### Exemplo completo com todas as constraints:
 
 ```sql
 CREATE TABLE produtos (
@@ -498,6 +488,9 @@ CREATE TABLE produtos (
 
 **Benefícios das constraints:**
 ✅ Dados sempre válidos
+
 ✅ Menos bugs
+
 ✅ Integridade garantida pelo banco (não depende do código)
+
 ✅ Documentação automática (deixa claro as regras)
