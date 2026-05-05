@@ -1,6 +1,6 @@
 ---
 title: 4. Conjuntos
-description: 
+description: Sets em Python, álgebra de conjuntos e performance.
 category: Programação
 order: 4
 ---

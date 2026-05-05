@@ -1,6 +1,6 @@
 ---
 title: 5. Tuplas
-description: 
+description: 'Tuplas em Python: imutabilidade, operações e quando usar.'
 category: Programação
 order: 5
 ---

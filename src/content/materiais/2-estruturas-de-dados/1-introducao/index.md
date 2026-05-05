@@ -1,6 +1,6 @@
 ---
 title: 1. Introdução
-description: Introdução a conceitos e o são estruturas de dados
+description: Big O Notation e introdução a estruturas de dados.
 category: Programação
 order: 1
 ---

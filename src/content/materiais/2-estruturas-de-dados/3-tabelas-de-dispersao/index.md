@@ -1,6 +1,6 @@
 ---
 title: 3. Tabelas de Dispersão ou Dicionários
-description: 
+description: Hash tables, colisões e dicionários em Python.
 category: Programação
 order: 3
 ---

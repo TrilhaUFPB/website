@@ -1,6 +1,6 @@
 ---
 title: 7. Exercícios e Referências
-description: 
+description: Exercícios de fixação no LeetCode e referências bibliográficas.
 category: Programação
 order: 7
 ---

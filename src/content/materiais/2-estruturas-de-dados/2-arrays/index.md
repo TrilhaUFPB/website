@@ -1,6 +1,6 @@
 ---
 title: 2. Arrays ou Listas
-description: 
+description: Listas, busca binária, slicing, métodos e listas encadeadas.
 category: Programação
 order: 2
 ---

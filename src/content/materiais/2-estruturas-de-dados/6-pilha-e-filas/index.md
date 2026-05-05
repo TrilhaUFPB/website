@@ -1,6 +1,6 @@
 ---
 title: 6. Pilhas e Filas
-description: 
+description: Pilhas (LIFO) e Filas (FIFO) e suas implementações em Python.
 category: Programação
 order: 6
 ---
