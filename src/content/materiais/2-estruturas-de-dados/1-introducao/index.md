@@ -82,4 +82,4 @@ Já sabemos que podemos armazenar informações por meio da **declaração de va
 
 ![Representação de variáveis na memória](/api/materiais-assets/2-estruturas-de-dados/1-introducao/assets/memoria.png)
 
-Esse modelo funciona bem quando temos poucos dados. Porém, quando a quantidade de informações cresce, é necessário estruturas de dados adequadas para o armazenamento dessas informações, para facilitação de acesso, organização, eficiência etc..
+Esse modelo funciona bem quando temos poucos dados. Porém, quando a quantidade de informações cresce, são necessárias estruturas de dados adequadas para o armazenamento dessas informações, facilitando o acesso, a organização e a eficiência.
