@@ -30,10 +30,10 @@ Em Python, a estrutura de dados lista (list) é ideal para implementar uma pilha
 
 Essas são as três operações básicas da pilha: inserção(push), remoção(pop) e acesso(top).
 
-```
-.append(valor) # adiciona um elemento no topo
-.pop() # remove e retorna o elemento do topo
-lista[-1] # acessa o último elemento sem remover
+```python
+.append(valor)  # adiciona um elemento no topo
+.pop()          # remove e retorna o elemento do topo
+lista[-1]       # acessa o último elemento sem remover
 ```
 
 # 6.2. Fila
@@ -54,7 +54,7 @@ Um exemplo comum de uso dessa estrutura é uma fila de músicas, como em aplicat
 
 Em Python, uma fila pode ser implementada de forma simples utilizando uma lista, como mostrado a seguir:
 
-```
+```python
 fila = []
 
 # Enfileirar elementos
@@ -69,4 +69,34 @@ print(fila[0])  # Música 1
 fila.pop(0)
 ```
 
-OBS: Embora seja possível implementar uma fila utilizando listas em Python, essa abordagem não é a mais eficiente, pois a remoção de elementos do início da lista (pop(0)) exige o deslocamento dos demais elementos. Para aplicações reais, recomenda-se o uso do módulo collections, especialmente da estrutura deque, que permite inserções e remoções eficientes nas extremidades da fila
+> **OBS:** Embora seja possível implementar uma fila utilizando listas em Python, essa abordagem não é a mais eficiente, pois a remoção de elementos do início da lista (`pop(0)`) exige o deslocamento dos demais elementos. Para aplicações reais, recomenda-se o uso do módulo `collections`, especialmente a estrutura `deque`, que permite inserções e remoções eficientes nas extremidades da fila.
+
+---
+
+## Lista de Exercícios
+
+Estes exercícios usam pilhas e filas para resolver problemas clássicos. Em todos eles, prefira `list` para pilha e `collections.deque` para fila.
+
+**1. Inverter String com Pilha**
+Escreva uma função que receba uma string e retorne a mesma string invertida, usando uma pilha. Empilhe cada caractere e depois desempilhe um a um para montar o resultado.
+
+**2. Validador de Parênteses**
+Dada uma string contendo apenas os caracteres `(`, `)`, `[`, `]`, `{` e `}`, verifique se eles estão balanceados (cada abertura tem o fechamento correspondente, na ordem certa). Use uma pilha. Exemplos: `"(()())"` → True, `"([)]"` → False.
+
+**3. Conversor Decimal → Binário**
+Implemente a conversão de um número decimal para binário usando uma pilha. Para cada divisão por 2, empilhe o resto; ao final, desempilhe para formar o binário da esquerda para a direita.
+
+**4. Atendimento de Clientes**
+Simule uma fila de atendimento em um banco. Aceite N clientes (`fila.append(nome)`) e atenda-os na ordem de chegada (`fila.popleft()` se usar `deque`). Imprima a ordem em que foram atendidos.
+
+**5. Hot Potato (Josephus simplificado)**
+N pessoas em uma fila circular. A cada `k` passadas, a pessoa que estiver segurando a "batata" sai do círculo. Quem é o último a sobrar? Implemente usando `collections.deque` e o método `rotate()`.
+
+**6. Pilhas vs Deques (Performance)**
+Insira e remova 100.000 elementos no início de uma `list` (com `insert(0, x)` e `pop(0)`) e depois no início de um `deque` (com `appendleft` e `popleft`). Meça os dois tempos com `time.perf_counter()` e comente a diferença.
+
+**7. Histórico de Navegação (Pilha Dupla)**
+Use duas pilhas para simular os botões "voltar" e "avançar" do navegador. Ao visitar uma nova página, empilhe na pilha de voltar e limpe a de avançar. Implemente os métodos `visitar(url)`, `voltar()` e `avancar()`.
+
+**8. Fila de Prioridade Simples**
+Mantenha uma fila em que cada item é uma tupla `(prioridade, tarefa)`. Ao remover, sempre saia a tarefa de menor prioridade numérica. Implemente sem usar `heapq`, apenas `deque` + busca linear (lembre-se: é uma versão simples para praticar lógica).
