@@ -28,8 +28,6 @@ Fonte: Fundamentals of Data Engineering
 A extração é a primeira etapa do pipeline ETL e seu objetivo é coletar dados de um ou mais sistemas de origem e transportá‑los para um ambiente intermediário ou de processamento.
 Essa fase busca obter informações de forma íntegra e consistente, com a menor latência possível, evitando sobrecarregar os sistemas transacionais ou de produção.
 
-Fonte:
-
 ### Fontes de dados
 
 Os sistemas de origem podem variar bastante em tipo e tecnologia, e cada um exige estratégias específicas de extração.
@@ -44,6 +42,13 @@ Alguns exemplos comuns:
 
 
 ### Ingestão de dados
+
+“A ingestão de dados é o processo de mover dados de um local para outro.
+
+A ingestão de dados implica a movimentação de dados de sistemas de origem para o armazenamento no ciclo de vida da engenharia de dados, sendo a ingestão uma etapa intermediária.”
+
+Fonte: **Fundamentals of Data Engineering**.
+
 
 A ingestão de dados define como e com que frequência as informações extraídas são movidas para o ambiente de processamento ou armazenamento.
 Essa escolha impacta desempenho, custo e atualidade das análises.
@@ -109,6 +114,10 @@ Dimensões de qualidade:
 - **Confiabilidade**: processos devem ser rastreáveis, reprodutíveis e auditáveis.
 
 ## Armazenar
+
+“O armazenamento permeia todo o ciclo de vida da engenharia de dados, frequentemente ocorrendo em vários pontos de um pipeline de dados, com sistemas de armazenamento interagindo com sistemas de origem, ingestão, transformação e disponibilização.”
+
+Fonte: **Fundamentals of Data Engineering**.
 
 ### O que é o processo de armazenar (Load)
 

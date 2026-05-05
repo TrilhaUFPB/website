@@ -60,8 +60,8 @@ A engenharia garante automação, escalabilidade, observabilidade e monitorament
 
 O sucesso de uma aplicação de dados depende da sinergia entre as subáreas:
 
-- Engenharia de dados: constrói os alicerces, integra fontes, automatiza e monitora o fluxo.
-- Ciência de dados: explora, testa hipóteses e cria o valor analítico.
-- Análise de dados: traduz resultados em narrativas, insights e recomendações acionáveis.
+- Analytics & BI: Os dados são preparados para uso em análises estatísticas, relatórios e painéis de controle. Esta é a área mais tradicional de disponibilização de dados.
+- Aplicações de ML: O aprendizado de máquina (ML) não é possível sem dados de alta qualidade e preparados adequadamente. Engenheiros de dados trabalham com cientistas de dados e engenheiros de ML para adquirir, transformar e fornecer os dados necessários para o treinamento do modelo.
+- ETL Reverso: O processo de enviar dados de volta para as fontes de dados. O ETL reverso está altamente interligado com BI e ML.
 
 Esse ciclo se repete e se aprimora continuamente, à medida que novos dados, perguntas e produtos surgem dentro do ecossistema da organização.
