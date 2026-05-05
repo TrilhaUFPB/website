@@ -151,7 +151,7 @@ Analisando os resultados das operações acima:
 3. **Diferença (`-`):** A variável `diferenca` conterá `{1}`. Note que esta operação não é comutativa; ela remove de `a` tudo que também existe em `b`.
 4. **Diferença Simétrica (`^`):** A variável `dif_simetrica` resultará em `{1, 4}`. Este é o "Ou Exclusivo" (XOR), mantendo apenas o que é exclusivo de cada lado e descartando o que é comum.
 
-<img src="images/diagrama_venn.png" width="500">
+![Diagrama de Venn das operações de conjunto](/api/materiais-assets/2-estruturas-de-dados/4-conjuntos/assets/diagrama_venn.png)
 
 ## **Exercício de Fixação**
 

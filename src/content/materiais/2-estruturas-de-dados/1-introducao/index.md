@@ -75,20 +75,11 @@ Quando estiver programando, pergunte-se: *"Se meus dados dobrarem, quanto mais t
 > *Qual é a melhor forma de armazenar um dado (ou conjunto de dados) na memória para que possamos usá-lo de maneira eficiente?*
 
 Já sabemos que podemos armazenar informações por meio da **declaração de variáveis**, em que:
-<div style="display: flex; align-items: center; gap: 20px;">
 
-  <div>
-    <ul>
-      <li>Uma variável ocupa uma posição na memória</li>
-      <li>Cada posição possui um <b>endereço</b></li>
-      <li>Nesse endereço, um <b>valor</b> é armazenado</li>
-    </ul>
-  </div>
+- Uma variável ocupa uma posição na memória
+- Cada posição possui um **endereço**
+- Nesse endereço, um **valor** é armazenado
 
-  <div>
-    <img src="images/memoria.png" width="300">
-  </div>
-
-</div>
+![Representação de variáveis na memória](/api/materiais-assets/2-estruturas-de-dados/1-introducao/assets/memoria.png)
 
 Esse modelo funciona bem quando temos poucos dados. Porém, quando a quantidade de informações cresce, é necessário estruturas de dados adequadas para o armazenamento dessas informações, para facilitação de acesso, organização, eficiência etc..

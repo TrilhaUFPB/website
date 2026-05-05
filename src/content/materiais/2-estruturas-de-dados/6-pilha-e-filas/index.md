@@ -9,7 +9,7 @@ order: 6
 
 Uma Pilha, como estrutura de dados, é uma sequência lógica onde os elementos são inseridos e removidos apenas por uma das extremidades, denominada topo. Esse fluxo de manipulação é chamado de LIFO (Last In, First Out — o último a entrar é o primeiro a sair). Para exemplificar seu funcionamento, imagine uma pilha de livros organizada para estudo. Sempre que você adquire um novo material, você o coloca no topo para que ele seja o próximo a ser lido. A remoção segue a mesma lógica: você retira primeiro o que está em cima para acessar o conteúdo de forma ordenada. Da mesma forma, em uma pilha de dados, o acesso ocorre sempre pelo topo, garantindo que o elemento mais recente seja sempre o primeiro a ser processado.
 
-<img src="images/stack.png" width=500>
+![Estrutura de pilha (LIFO)](/api/materiais-assets/2-estruturas-de-dados/6-pilha-e-filas/assets/stack.png)
 
 ## Operações principais
 
@@ -42,7 +42,7 @@ Assim como as filas que existem no nosso cotidiano (no supermercado, por exemplo
 
 Um exemplo comum de uso dessa estrutura é uma fila de músicas, como em aplicativos de streaming (Spotify, por exemplo), em que as músicas são reproduzidas na mesma ordem em que foram adicionadas à fila.
 
-<img src="images/queue.png" width=500>
+![Estrutura de fila (FIFO)](/api/materiais-assets/2-estruturas-de-dados/6-pilha-e-filas/assets/queue.png)
 
 ## Operações principais
 

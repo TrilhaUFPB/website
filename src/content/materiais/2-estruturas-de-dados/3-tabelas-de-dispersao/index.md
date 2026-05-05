@@ -25,7 +25,7 @@ O objetivo da função de dispersão é **transformar uma chave** (que pode ser 
 
 > **Exemplo:** O sistema tem um dado referente ao funcionário que funciona como a chave (ex: ID 3809). A partir disso, a função de dispersão calcula qual seria o índice correspondente.
 
-<img src="images/hash.png" width=500>
+![Função de dispersão calculando o índice](/api/materiais-assets/2-estruturas-de-dados/3-tabelas-de-dispersao/assets/hash.png)
 
 ## Mas que Tipo de Função é Essa?
 

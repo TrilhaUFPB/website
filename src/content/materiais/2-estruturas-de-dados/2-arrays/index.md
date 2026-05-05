@@ -24,7 +24,7 @@ Então surge a pergunta:
 
 Sim, com arrays. Um **array** é uma **variável estruturada** que armazena vários valores do **mesmo tipo** de forma **contínua na memória** sob **um único nome** com acesso por **índice**. Isso significa que em vez de variáveis separadas, usamos apenas uma estrutura:
 
-<img src="images/array.png" width="70%">
+![Array indexado](/api/materiais-assets/2-estruturas-de-dados/2-arrays/assets/array.png)
 
 Cada posição do array possui um **índice**, que indica a posição de um elemento. Note que na imagem, os índices do array começam em 0, porque é assim na maioria das linguagens de Programação, como Python, C e Java. Além disso, Para acessar os valores, usamos a notação com colchetes `[]`:
 
@@ -634,7 +634,7 @@ Vocês estão espalhados, mas **conectados**. Se seguirmos as pistas, encontramo
 
 > **Moral da História:** Arrays exigem memória vizinha (contígua). Linked Lists aceitam memória espalhada (fragmentada).
 
-<img src="images/linked_list.png" width="500">
+![Lista convencional vs linked list](/api/materiais-assets/2-estruturas-de-dados/2-arrays/assets/linked_list.png)
 
 *Em azul está uma lista convencional e em verde uma linked list.*
 
@@ -795,7 +795,7 @@ Cada nó agora tem dois braços: um para segurar o da frente (next) e um para se
 - **Vantagem:** Permite ir e vir (botão Voltar/Avançar do navegador).
 - **Custo:** Ocupa mais memória (precisa guardar 2 endereços por item).
 
-<img src="images/doubly_linked.png" width="500">
+![Lista duplamente encadeada](/api/materiais-assets/2-estruturas-de-dados/2-arrays/assets/doubly_linked.png)
 
 # 2.14. O Jeito Pythonico (`collections.deque`)
 
