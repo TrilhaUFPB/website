@@ -1,11 +1,11 @@
 ---
-title: 9. Programação Orientada a Objetos
+title: 10. Programação Orientada a Objetos
 description: 
 category: Programação
-order: 9
+order: 10
 ---
 
-# 9.1. Conceitos Básicos
+# 10.1. Conceitos Básicos
 
 Programação orientada a objetos, ou POO para os mais íntimos, se trata muito de uma forma de organização de construação de sistemas, especificamente no nível do código.
 
@@ -94,7 +94,7 @@ classe Aluno:
 
 ```
 
-# 9.2. Abstração
+# 10.2. Abstração
 
 Inicialmente pode não ser claro como POO ajuda, parecendo talvez até como uma camada de complexidade a mais. No fim, tudo vai depender do contexto do seu problema, pode ser que POO realmente não seja a melhor abordagem e você precise explorar outros paradigmas da programação.
 
@@ -108,7 +108,7 @@ Colocando isso em nível de código, digamos que você criou um sistema de autor
 
 No fim, tudo são sobre práticas que visam facilitar o trabalho do programador. Não só o trabalho pessoal, mas também o em conjunto a outras pessoas. Facilitar organização de ideias e garantir que se uma nova pessoa começar a contribuir no sistema ela consiga entender melhor devido a estsrutura padronizada e bem definida.
 
-# 9.3. Implementando em Python
+# 10.3. Implementando em Python
 
 Agora que entendemos a teoria, vamos ver como isso funciona na prática com Python. Até agora usamos pseudocódigo, mas a sintaxe real é bem direta.
 
@@ -205,7 +205,7 @@ Para se aprofundar nesse universo e ver a lista completa, recomendo a documenta�
 
 ---
 
-# 9.4. Encapsulamento: Estratégia e Proteção
+# 10.4. Encapsulamento: Estratégia e Proteção
 
 Encapsulamento vai muito além de apenas esconder variáveis. É uma **estratégia de design** para proteger a integridade dos dados e garantir que o objeto esteja sempre em um estado válido.
 
@@ -298,7 +298,7 @@ public class ContaBancaria {
 
 ---
 
-# 9.5. Herança
+# 10.5. Herança
 
 Herança é um dos pilares da POO que permite a reutilização de código e a criação de hierarquias. É baseada na relação **"É UM"**.
 
@@ -345,7 +345,7 @@ meu_carro.buzinar() # Método exclusivo de Carro
 
 ---
 
-# 9.6. Polimorfismo
+# 10.6. Polimorfismo
 
 Polimorfismo ("muitas formas") permite que objetos de tipos diferentes sejam tratados da mesma maneira. Existem dois tipos principais que você precisa conhecer:
 
@@ -389,7 +389,7 @@ print(calc.somar(10, 20)) # Funciona (b assume 20)
 
 ---
 
-# 9.7. Classes Abstratas e Interfaces
+# 10.7. Classes Abstratas e Interfaces
 
 À medida que seus sistemas crescem, você vai querer garantir que certas classes sigam um padrão rigoroso. É aqui que entram as Classes Abstratas e Interfaces.
 
@@ -489,7 +489,7 @@ class IDesenhavel(ABC): # O 'I' no começo é convenção para Interface
 
 ---
 
-# 9.8. Aplicando Tudo: De Volta à Escola
+# 10.8. Aplicando Tudo: De Volta à Escola
 
 Vamos consolidar os 4 pilares (Encapsulamento, Herança, Polimorfismo e Abstração) no nosso exemplo escolar.
 

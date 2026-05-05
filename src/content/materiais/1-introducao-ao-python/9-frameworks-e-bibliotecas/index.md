@@ -1,11 +1,11 @@
 ---
-title: 8. Frameworks e Bibliotecas
+title: 9. Frameworks e Bibliotecas
 description: 
 category: Programação
-order: 8
+order: 9
 ---
 
-# 8.1. Bibliotecas
+# 9.1. Bibliotecas
 
 Bem-vindo à aula sobre Bibliotecas! Este é um guia essencial para entender como bibliotecas podem simplificar e acelerar seu desenvolvimento em Python.
 
@@ -244,7 +244,7 @@ Para aprofundar seus conhecimentos sobre bibliotecas, confira o seguinte recurso
 
 ---
 
-# 8.2. Frameworks
+# 9.2. Frameworks
 
 Bem-vindo à aula sobre Frameworks! Este é um guia essencial para entender como frameworks podem acelerar seu desenvolvimento.
 

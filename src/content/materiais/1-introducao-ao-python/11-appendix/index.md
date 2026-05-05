@@ -1,11 +1,11 @@
 ---
-title: 10. Appendix
+title: 11. Appendix
 description: 
 category: Programação
-order: 10
+order: 11
 ---
 
-# 10.1. Ferramentas Úteis
+# 11.1. Ferramentas Úteis
 
 Bem-vindo à aula sobre Ferramentas Úteis! Este é um guia essencial para entender como preparar corretamente seu ambiente de desenvolvimento Python.
 

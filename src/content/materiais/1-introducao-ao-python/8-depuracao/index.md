@@ -1,13 +1,13 @@
 ---
-title: 7. Depuração
-description: Compreender o que são os tipos de erros de código, saber como identificar esses erros e como corrigí-los
+title: 8. Depuração
+description: Compreender o que são os tipos de erros de código, saber como identificar esses erros e como corrigí-los.
 category: Programação
-order: 7
+order: 8
 ---
 
 Programar exige lidar com erros, chamados de _bugs_. O processo de encontrá-los e corrigi-los é a depuração (_debugging_).
 
-# 7.1. Erro de Sintaxe
+# 8.1. Erro de Sintaxe
 Problemas na estrutura do código que impedem o programa de rodar.
 
 __Exemplo de erro de sintaxe:__
@@ -17,7 +17,7 @@ def soma(a, b) # Erro
 ```
 Erro: falta dos dois pontos (:) após os parâmetros.
 ___
-# 7.2. Erro de Tempo de Execução (Exceção)
+# 8.2. Erro de Tempo de Execução (Exceção)
 O programa começa a rodar, mas algo inesperado acontece e ele para.
 
 __Exemplo de erro de tempo de execução:__
@@ -28,7 +28,7 @@ print(x / y) # Erro
 ```
 Erro: divisão por zero (ZeroDivisionError).
 ___
-# 7.3. Erro de Lógica
+# 8.3. Erro de Lógica
 O programa roda sem erros, mas produz um resultado incorreto.
 
 __Exemplo de erro de lógica:__
@@ -42,7 +42,7 @@ O código roda, mas a lógica está incorreta. O correto seria:
 return (a + b) / 2
 ```
 
-# 7.4. Dica final
+# 8.4. Dica final
 Pense no computador como um funcionário extremamente __rápido e preciso__, mas __sem empatia ou discernimento__. Ele não entende o que você quis dizer, apenas o que você escreveu.
 
 1. Observar o problema (resultado inesperado ou erro).
