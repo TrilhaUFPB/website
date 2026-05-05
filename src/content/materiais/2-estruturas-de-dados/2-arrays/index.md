@@ -823,7 +823,7 @@ print(playlist)
 
 Se usarmos uma lista padrão do Python (`lista = []`) e fizermos `lista.insert(0, "Item")`, o Python precisa deslocar todos os outros itens.
 Se usarmos `deque` e fizermos `deque.appendleft("Item")`, ele não precisa deslocar ninguém.
-Qual dessas operações tem complexidade  e qual tem ?
+Qual dessas operações tem complexidade O(n) e qual tem O(1)?
 
 ---
 
@@ -882,7 +882,7 @@ def inverter(head):
         atual.next = anterior     # 2. Inverte a seta para trás
         anterior = atual          # 3. Avança o "passado"
         atual = proximo_temp      # 4. Avança o "presente"
-    return anterior # A nova cabeça`
+    return anterior  # A nova cabeça
 
 ```
 
