@@ -5,15 +5,15 @@ category: Programação
 order: 1
 ---
 
-# 1.1. Big O Notation: Entendendo a Eficiência dos Algoritmos
+## 1.1. Big O Notation: Entendendo a Eficiência dos Algoritmos
 
-## O que é Big O?
+### O que é Big O?
 
 **Big O** é uma forma de medir quão rápido um algoritmo cresce conforme a quantidade de dados aumenta. Não é sobre segundos ou milissegundos, mas sobre **como o tempo de execução escala**.
 
 > **Pense assim:** Se você tem 10 elementos e seu código demora 1 segundo, quanto tempo vai demorar com 100 elementos? Com 1000? Big O responde isso.
 
-## Uma Analogia do Dia a Dia
+### Uma Analogia do Dia a Dia
 
 Imagine que você precisa encontrar um livro na biblioteca:
 
@@ -23,16 +23,16 @@ Imagine que você precisa encontrar um livro na biblioteca:
 
 **Cenário 3 - O(n²):** Para cada livro que você pega, precisa conferir todos os outros para comparar. Com 100 livros, você faz 10.000 comparações (100 × 100). Isso é **O(n²) - tempo quadrático**.
 
-## As Principais Complexidades
+### As Principais Complexidades
 
-### O(1) - Constante: Sempre a mesma velocidade
+#### O(1) - Constante: Sempre a mesma velocidade
 
 ```python
 def pegar_primeiro(lista):
     return lista[0]  # Sempre uma operação
 ```
 
-### O(n) - Linear: Cresce proporcionalmente
+#### O(n) - Linear: Cresce proporcionalmente
 
 ```python
 def imprimir_todos(lista):
@@ -40,7 +40,7 @@ def imprimir_todos(lista):
         print(item)
 ```
 
-### O(n²) - Quadrática: Cresce muito rápido
+#### O(n²) - Quadrática: Cresce muito rápido
 
 ```python
 def comparar_todos(lista):
@@ -49,17 +49,17 @@ def comparar_todos(lista):
             print(i, j)
 ```
 
-### O(log n) - Logarítmica: Muito eficiente, divide o problema
+#### O(log n) - Logarítmica: Muito eficiente, divide o problema
 
 Aqui entra a **busca binária**, um exemplo perfeito de O(log n)! Veremos a implementação detalhada mais adiante, após entendermos listas em Python.
 
-## Regras Simples
+### Regras Simples
 
 1. **Ignoramos constantes:** O(2n) vira O(n)
 2. **Pegamos o pior termo:** O(n² + n) vira O(n²)
 3. **Pensamos em grandes volumes:** Big O descreve o comportamento com muitos dados
 
-## Dica Final
+### Dica Final
 
 Quando estiver programando, pergunte-se: *"Se meus dados dobrarem, quanto mais tempo isso vai levar?"*
 
@@ -68,7 +68,7 @@ Quando estiver programando, pergunte-se: *"Se meus dados dobrarem, quanto mais t
 - Se for **"só mais uma operação"**, é **O(log n)**
 - Se for **"nenhum tempo a mais"**, pode ser **O(1)**
 
-# 1.2. O que é Estrutura de Dados?
+## 1.2. O que é Estrutura de Dados?
 
 **Estrutura de dados** é a forma como organizamos, armazenamos e acessamos informações na memória do computador. Em termos simples, ela busca responder à seguinte pergunta:
 

@@ -5,20 +5,20 @@ category: Programação
 order: 5
 ---
 
-# 5.1.Tupla (Tuple)
+## 5.1.Tupla (Tuple)
 
-## O que é uma Tupla? (Estrutura e Características)
+### O que é uma Tupla? (Estrutura e Características)
 
 Imagine uma tupla como uma **caixa lacrada**. Você coloca os objetos lá dentro, fecha a caixa e, a partir desse momento, ninguém mais pode mudar o que está lá dentro. Você pode olhar e usar o que está dentro, mas nunca trocar um objeto por outro.
 
-## Características principais
+### Características principais
 
 - **Imutável:** Uma vez criada, ela não aceita adições, remoções ou alterações. É o que chamamos de dado "somente leitura".
 - **Ordenada:** A ordem dos elementos é preservada rigorosamente desde a criação.
 - **Sintaxe:** Utilizamos **parênteses** `()` para defini-las, com os itens separados por vírgulas.
 - **Heterogênea:** Elas são flexíveis quanto ao conteúdo, permitindo misturar textos, números e booleanos na mesma estrutura.
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Analise as declarações abaixo. Qual delas é uma **Lista** e qual é uma **Tupla**?
 
@@ -32,11 +32,11 @@ Se tentarmos fazer `var_b[0] = 50`, o que acontecerá?
 
 ---
 
-# 5.2.Operações Principais
+## 5.2.Operações Principais
 
 Diferente das listas, as operações em tuplas são focadas em leitura e consulta, já que a estrutura é fixa.
 
-## Acesso por Índice
+### Acesso por Índice
 
 Para buscar um valor específico, utilizamos o número da posição (índice) entre colchetes logo após o nome da variável. Lembre-se que em Python a contagem sempre começa no zero. No exemplo abaixo, criamos a variável e acessamos a primeira e a segunda posição:
 
@@ -51,7 +51,7 @@ print(idade) # Saída: 25
 
 ```
 
-## A Tupla de um único item
+### A Tupla de um único item
 
 Existe uma peculiaridade sintática: para o Python entender que uma variável é uma tupla e não apenas um texto comum, você deve colocar uma vírgula após o primeiro item, mesmo que não haja um segundo.
 
@@ -64,7 +64,7 @@ print(type(apenas_texto))  # Saída: <class 'str'>
 
 ```
 
-## Contagem e Localização
+### Contagem e Localização
 
 Existem dois métodos principais para investigar uma tupla: o `count`, que informa a frequência de um valor, e o `index`, que revela em qual posição um valor aparece pela primeira vez.
 
@@ -76,7 +76,7 @@ print(dados_do_usuario.index(30)) # Saída: 3
 
 ```
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 O programador júnior criou uma tupla de notas: `notas = (10)`.
 Ao tentar usar `notas.count(10)`, o programa quebrou.
@@ -86,11 +86,11 @@ Ao tentar usar `notas.count(10)`, o programa quebrou.
 
 ---
 
-# 5.3. Uso: Por que não usar apenas Listas?
+## 5.3. Uso: Por que não usar apenas Listas?
 
 À primeira vista, tuplas parecem listas com menos recursos. Se a lista pode tudo que a tupla pode (e mais), por que a linguagem mantém as duas? A resposta está em três pontos: **segurança**, **performance** e **semântica**.
 
-## Segurança: dados que não devem mudar
+### Segurança: dados que não devem mudar
 
 Quando um valor representa algo que **não deveria** ser modificado depois de criado, a tupla impede mudanças acidentais. Pense em coordenadas geográficas, datas de nascimento ou as dimensões de uma tela: são informações que vivem em conjunto e não fazem sentido ser alteradas item por item.
 
@@ -103,7 +103,7 @@ joao_pessoa = (-7.1195, -34.8450)
 # Com tupla, o Python levanta TypeError e protege o dado.
 ```
 
-## Performance: tuplas são mais rápidas
+### Performance: tuplas são mais rápidas
 
 Por serem imutáveis, tuplas são otimizadas pelo Python: ocupam menos memória e são criadas mais rápido que listas equivalentes. Para conjuntos de dados que serão lidos muitas vezes mas nunca alterados, tuplas levam vantagem.
 
@@ -116,7 +116,7 @@ print(sys.getsizeof(lista))  # ex: 104 bytes
 print(sys.getsizeof(tupla))  # ex: 80 bytes
 ```
 
-## Tuplas como chaves de dicionário
+### Tuplas como chaves de dicionário
 
 Esta é, talvez, a vantagem prática mais marcante. Listas **não podem** ser chaves de dicionário (são mutáveis); tuplas **podem**. Isso permite usar pares ou trios de valores como identificadores compostos.
 
@@ -131,7 +131,7 @@ matriculas = {
 print(matriculas[("CDIA", 3)])  # 25
 ```
 
-## Múltiplos retornos e desempacotamento
+### Múltiplos retornos e desempacotamento
 
 Funções em Python costumam retornar várias informações de uma vez usando tuplas. Combinado com o **desempacotamento**, isso fica muito legível:
 
@@ -151,7 +151,7 @@ for nome, idade in pessoas:
     print(f"{nome} tem {idade} anos")
 ```
 
-## Resumo prático
+### Resumo prático
 
 | Use uma **lista** quando... | Use uma **tupla** quando... |
 | --- | --- |
@@ -160,7 +160,7 @@ for nome, idade in pessoas:
 | A ordem é dinâmica | Cada posição tem um significado fixo (ex: `(x, y)`) |
 | Você precisa de `append`, `sort`, etc. | Você quer usar como chave de `dict` ou elemento de `set` |
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Para cada situação abaixo, decida se é melhor usar `list` ou `tuple`:
 

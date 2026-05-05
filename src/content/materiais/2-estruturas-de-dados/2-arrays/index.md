@@ -5,7 +5,7 @@ category: Programação
 order: 2
 ---
 
-# 2.1. Arrays (Vetores)
+## 2.1. Arrays (Vetores)
 
 Imagine uma turma com **4 alunos**, cada um possuindo uma nota. Uma forma simples de armazenar isso seria:
 
@@ -39,7 +39,7 @@ Ou seja: `notas[i]` acessa o elemento que está na posição `i`.
 
 Além de tornar os dados mais organizados na memória e fornecer um código mais legível, o uso de arrays permite maior facilidade para diversas operações, como somar, listar e buscar valores, além de possibilitar o uso de laços de repetição, como será apresentado a seguir.
 
-## Arrays em Python
+### Arrays em Python
 
 Em Python são chamados de lista e armazenam valores de qualquer tipo. Os valores em uma lista são chamados de elementos, ou, algumas vezes, de itens.
 
@@ -73,7 +73,7 @@ Obviamente, podemos atribuir uma lista de valores, vazio ou não, a variáveis:
 
 ```
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Crie uma variável chamada `meus_dados` que contenha uma lista com os seguintes elementos, exatamente nesta ordem:
 
@@ -81,7 +81,7 @@ Crie uma variável chamada `meus_dados` que contenha uma lista com os seguintes 
 2. Um número inteiro com sua idade.
 3. Uma lista contendo suas duas cores favoritas.
 
-# 2.2. Busca Binária: O Poder de Dividir pela Metade
+## 2.2. Busca Binária: O Poder de Dividir pela Metade
 
 Agora que você já entende o que são listas em Python e como trabalhar com elas, vamos explorar um algoritmo clássico e extremamente eficiente para buscar elementos em uma lista ordenada: a **Busca Binária**.
 
@@ -123,7 +123,7 @@ resultado = busca_binaria(numeros, 23)
 print(f"Encontrado na posição: {resultado}")
 ```
 
-## Por Que Dividir pela Metade é Tão Poderoso?
+### Por Que Dividir pela Metade é Tão Poderoso?
 
 Vamos ver o que acontece quando buscamos em listas de tamanhos diferentes:
 
@@ -146,7 +146,7 @@ Vamos ver o que acontece quando buscamos em listas de tamanhos diferentes:
 
 Percebe o padrão? Cada vez que você **dobra** a quantidade de dados, você só precisa de **mais uma** tentativa! Isso é logarítmico.
 
-## Visualizando a Diferença
+### Visualizando a Diferença
 
 ```
 Busca Linear vs Busca Binária
@@ -160,7 +160,7 @@ Linear:     pode levar até 1.048.576 tentativas
 Binária:    leva no máximo 20 tentativas
 ```
 
-## O Truque: A Lista Precisa Estar Ordenada
+### O Truque: A Lista Precisa Estar Ordenada
 
 Importante: A busca binária só funciona se a lista estiver ordenada! É como a lista telefônica - se os nomes estivessem embaralhados, você não saberia qual metade descartar.
 
@@ -174,7 +174,7 @@ numeros_bagunçados = [5, 1, 9, 3, 7, 13, 11]
 busca_binaria(numeros_bagunçados, 7)  # Resultado imprevisível
 ```
 
-## Por Que Isso Importa?
+### Por Que Isso Importa?
 
 Com 10 elementos, qualquer algoritmo funciona bem. Mas com 1 milhão:
 
@@ -183,7 +183,7 @@ Com 10 elementos, qualquer algoritmo funciona bem. Mas com 1 milhão:
 - O(n): 1.000.000 operações
 - O(n²): 1.000.000.000.000 operações (um trilhão!)
 
-## Dica Final sobre Busca Binária
+### Dica Final sobre Busca Binária
 
 Quando estiver programando, pergunte-se: "Se meus dados dobrarem, quanto mais tempo isso vai levar?"
 
@@ -196,13 +196,13 @@ A busca binária é um dos algoritmos mais elegantes da computação: ela transf
 
 ---
 
-# 2.3. Listas são Mutáveis
+## 2.3. Listas são Mutáveis
 
 A sintaxe para acessar os elementos de uma lista é a mesma que para acessar os caracteres de uma string: o **operador de colchete** (`[]`). A expressão dentro dos colchetes especifica o **índice**.
 
 > **Lembre-se:** Os índices começam em 0.
 
-## Modificando Elementos
+### Modificando Elementos
 
 Diferente das strings, **listas são mutáveis**. Quando o operador de colchete aparece do lado esquerdo de uma atribuição, ele identifica o elemento da lista que será modificado:
 
@@ -217,7 +217,7 @@ O elemento no índice `1` de `numeros`, que costumava ser `123`, agora é `5`.
 
 > **Atenção:** Se tentar ler ou escrever um elemento que não existe, você recebe um `IndexError`. Se um índice tiver valor negativo, ele conta de trás para a frente a partir do final da lista.
 
-## Verificando Pertinência
+### Verificando Pertinência
 
 O operador `in` também funciona com listas:
 
@@ -227,7 +227,7 @@ O operador `in` também funciona com listas:
 True
 ```
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Dada a lista `notas = [8.0, 5.5, 9.0, 10.0]`:
 
@@ -236,9 +236,9 @@ Dada a lista `notas = [8.0, 5.5, 9.0, 10.0]`:
 
 ---
 
-# 2.4. Percorrendo uma Lista
+## 2.4. Percorrendo uma Lista
 
-## Iteração Simples
+### Iteração Simples
 
 A forma mais comum de percorrer os elementos em uma lista é com um **loop `for`**:
 
@@ -249,7 +249,7 @@ for curso in cursos:
 
 Isso funciona bem se você precisa apenas **ler** os elementos.
 
-## Iteração com Índices
+### Iteração com Índices
 
 Mas se você quer **escrever ou atualizar** os elementos, você precisa dos índices. Uma forma comum de fazer isso é combinar as funções integradas `range()` e `len()`:
 
@@ -263,15 +263,15 @@ Este loop percorre a lista e atualiza cada elemento:
 - `len()` retorna o número de elementos na lista
 - `range()` retorna uma sequência de índices de 0 a n-1
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Escreva um loop `for` que percorra a lista `precos = [10, 20, 30]` e dê um desconto de 10% em cada item (multiplique por 0.9), atualizando a lista original.
 
 ---
 
-# 2.5. Operações com Listas
+## 2.5. Operações com Listas
 
-## Concatenação
+### Concatenação
 
 O operador `+` **concatena** (junta) listas:
 
@@ -283,7 +283,7 @@ O operador `+` **concatena** (junta) listas:
 [1, 2, 3, 4, 5, 6]
 ```
 
-## Repetição
+### Repetição
 
 O operador `*` **repete** a lista um dado número de vezes:
 
@@ -293,7 +293,7 @@ O operador `*` **repete** a lista um dado número de vezes:
 
 ```
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Sem rodar o código, qual será o resultado de:
 
@@ -306,9 +306,9 @@ print(nova_lista)
 
 ---
 
-# 2.6. Fatias de Listas (Slicing)
+## 2.6. Fatias de Listas (Slicing)
 
-## Extraindo Sublistas
+### Extraindo Sublistas
 
 O **operador de fatiamento** também funciona com listas, usando a sintaxe `lista[inicio:fim]`:
 
@@ -322,7 +322,7 @@ O **operador de fatiamento** também funciona com listas, usando a sintaxe `list
 
 > **Dica:** Se você omitir ambos os índices (`lista[:]`), a fatia é uma cópia da lista inteira. Como as listas são mutáveis, pode ser útil fazer uma cópia antes de executar operações que as alterem.
 
-## Modificando através de Fatias
+### Modificando através de Fatias
 
 Um operador de fatia à esquerda de uma atribuição pode **atualizar vários elementos**:
 
@@ -332,15 +332,15 @@ Um operador de fatia à esquerda de uma atribuição pode **atualizar vários el
 ["a", "x", "y", "d", "e", "f"]
 ```
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Dada a lista `semana = ["seg", "ter", "qua", "qui", "sex", "sab", "dom"]`, use o fatiamento (slicing) para imprimir apenas os dias do fim de semana ("sab" e "dom").
 
 ---
 
-# 2.7. Métodos de Listas
+## 2.7. Métodos de Listas
 
-## Adicionando Elementos
+### Adicionando Elementos
 
 O Python oferece métodos que operam em listas:
 
@@ -359,7 +359,7 @@ O Python oferece métodos que operam em listas:
 
 > **Atenção Importante:** A maior parte dos métodos de listas são **nulos** (void); eles **alteram** a lista e **retornam `None`**. Se você escrever `t = t.sort()` por acidente, ficará desapontado com o resultado (perderá sua lista).
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Um aluno escreveu o seguinte código e a lista dele sumiu. Explique o erro:
 
@@ -371,11 +371,11 @@ print(numeros)  # Resultado: None
 
 ---
 
-# 2.8. Mapeamento, Filtragem e Redução
+## 2.8. Mapeamento, Filtragem e Redução
 
 As operações de lista mais comuns podem ser expressas como combinações de **mapeamento**, **filtragem** e **redução**.
 
-## Conceitos
+### Conceitos
 
 1. **Redução:** Uma operação que **combina** uma sequência de elementos em um **único valor** (como somar todos os números). O Python tem a função `sum()` para isso.
 
@@ -383,7 +383,7 @@ As operações de lista mais comuns podem ser expressas como combinações de **
 
 3. **Filtragem:** **Selecionar** alguns elementos e desconsiderar outros (como pegar apenas as strings que já são maiúsculas).
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Classifique as operações abaixo como **Mapeamento**, **Filtragem** ou **Redução**:
 
@@ -393,11 +393,11 @@ Classifique as operações abaixo como **Mapeamento**, **Filtragem** ou **Reduç
 
 ---
 
-# 2.9. Como Excluir Elementos
+## 2.9. Como Excluir Elementos
 
 Há **várias formas** de excluir elementos de uma lista.
 
-## Método `pop()`
+### Método `pop()`
 
 Se souber o **índice** do elemento que procura, você pode usar `pop()`:
 
@@ -413,15 +413,15 @@ Se souber o **índice** do elemento que procura, você pode usar `pop()`:
 - `pop()` **altera** a lista e **retorna** o elemento que foi excluído
 - Se você não incluir um índice, ele exclui e retorna o **último elemento**
 
-## Instrução `del`
+### Instrução `del`
 
 Se não precisar do valor removido, você pode usar a instrução `del`.
 
-## Método `remove()`
+### Método `remove()`
 
 Se souber o **elemento** que quer excluir (mas não o índice), você pode usar `remove()`.
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Você tem a lista `mochila = ["livro", "caneta", "notebook", "lanche"]`.
 
@@ -430,15 +430,15 @@ Você tem a lista `mochila = ["livro", "caneta", "notebook", "lanche"]`.
 
 ---
 
-# 2.10. Listas e Strings
+## 2.10. Listas e Strings
 
-## Conversão entre Tipos
+### Conversão entre Tipos
 
 Uma **string** é uma sequência de caracteres e uma **lista** é uma sequência de valores, mas uma lista de caracteres não é a mesma coisa que uma string.
 
 Para converter uma string em uma lista de caracteres, você pode usar `list()`.
 
-## Método `split()`
+### Método `split()`
 
 Se você quiser **quebrar uma string em palavras**, você pode usar o método `split()`:
 
@@ -449,7 +449,7 @@ Se você quiser **quebrar uma string em palavras**, você pode usar o método `s
 ["eu", "so", "durmo", "com", "meu", "ventilador", "ligado"]
 ```
 
-## Método `join()`
+### Método `join()`
 
 `join()` é o **contrário** de `split()`. Ele toma uma lista de strings e **concatena** os elementos.
 
@@ -463,13 +463,13 @@ Se você quiser **quebrar uma string em palavras**, você pode usar o método `s
 "eu so durmo com meu ventilador ligado"
 ```
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Converta a data `"25/12/2024"` em uma lista `['25', '12', '2024']` usando o método `split()`. Qual delimitador você deve usar?
 
 ---
 
-# 2.11. Objetos e valores
+## 2.11. Objetos e valores
 
 Se executarmos a = 'banana' e b = 'banana', sabemos que a e b se referem a uma string, mas não sabemos se elas se referem à mesma string.
 
@@ -485,7 +485,7 @@ False
 
 Nesse caso, diríamos que as duas listas são **equivalentes** (têm os mesmos elementos), mas não **idênticas** (não são o mesmo objeto).
 
-## Aliasing
+### Aliasing
 
 Se `a` se refere a um objeto e você atribui `b = a`, então ambas as variáveis se referem ao mesmo objeto.
 
@@ -510,7 +510,7 @@ Se o objeto com alias é mutável, alterações feitas em um alias afetam o outr
 
 Apesar desse comportamento poder ser útil, ele é passível de erros.
 
-## Argumentos de listas
+### Argumentos de listas
 
 Ao passar uma lista a uma função, a função recebe uma referência à lista. Se a função alterar a lista, quem faz a chamada vê a mudança.
 
@@ -526,7 +526,7 @@ Se usarmos essa função, a variável original é afetada.
 
 É importante distinguir entre operações que alteram listas e operações que criam novas listas. Por exemplo, o método `append` altera a lista, mas o operador `+` cria uma nova lista.
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Observe o código abaixo e responda: `lista_original` será alterada? Por que?
 
@@ -606,9 +606,9 @@ Escreva um código que gere a matriz transposta (transforme linhas em colunas). 
 
 ---
 
-# 2.12. Lista Encadeada (Linked List)
+## 2.12. Lista Encadeada (Linked List)
 
-## O Problema da Memória
+### O Problema da Memória
 
 Imagine que você vai ao cinema com 5 amigos. Vocês são um grupo unido e querem sentar juntos.
 
@@ -624,7 +624,7 @@ Não existem 6 cadeiras juntas. Existe uma vaga na fila A, outra na fila C, outr
 
 Como vocês vão assistir ao filme juntos sendo um grupo?
 
-## A Solução da Lista Encadeada
+### A Solução da Lista Encadeada
 
 Você senta na fila A. Mas, no seu bolso, você tem um papelzinho que diz: *"O próximo amigo está na cadeira 12 da Fila C"*.
 
@@ -640,7 +640,7 @@ Vocês estão espalhados, mas **conectados**. Se seguirmos as pistas, encontramo
 
 ---
 
-## Anatomia de um Nó (Node)
+### Anatomia de um Nó (Node)
 
 Na nossa analogia, cada pessoa no cinema é um **Nó** (Node). Para que a mágica aconteça, cada nó precisa carregar **duas coisas** na mochila:
 
@@ -649,7 +649,7 @@ Na nossa analogia, cada pessoa no cinema é um **Nó** (Node). Para que a mágic
 
 > **Atenção:** Se você perder o endereço do próximo, a corrente se quebra e o resto da lista desaparece da memória para sempre.
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Se tivermos uma Lista Encadeada com 3 nós: `A -> B -> C`.
 
@@ -658,13 +658,13 @@ Se tivermos uma Lista Encadeada com 3 nós: `A -> B -> C`.
 
 ---
 
-## Arrays vs. Linked Lists
+### Arrays vs. Linked Lists
 
 **Por que usaríamos Linked Lists se Arrays são tão fáceis de criar em Python (`lista = []`)?**
 
 Tudo se resume a uma troca: **Velocidade de Leitura** vs. **Velocidade de Escrita**.
 
-### O Cenário da Leitura
+#### O Cenário da Leitura
 
 Você quer saber quem é o 5º amigo da lista.
 
@@ -673,7 +673,7 @@ Você quer saber quem é o 5º amigo da lista.
 | **Array** | O computador sabe onde começa e sabe o tamanho de cada cadeira. Ele faz uma conta matemática simples e *BUM!* cai direto no colo do 5º amigo. | **O(1) - Instantâneo** |
 | **Linked List** | Você tem que ir no primeiro, ler o papel, ir no segundo, ler o papel... até chegar no quinto. | **O(n) - Lento** |
 
-### O Cenário da Inserção
+#### O Cenário da Inserção
 
 Você quer adicionar um novo amigo bem no meio da fila.
 
@@ -682,7 +682,7 @@ Você quer adicionar um novo amigo bem no meio da fila.
 | **Array** | Você tem que pedir para **todo mundo** que está à direita se levantar e dar um passo para o lado para abrir espaço. Se tiver 1 milhão de itens, o computador tem que mover 1 milhão de coisas. | **O(n) - Lento e cansativo** |
 | **Linked List** | Aqui a mágica acontece. Você simplesmente muda o papelzinho do amigo anterior para apontar para o novo, e o novo aponta para o seguinte. Ninguém mais precisa se mexer. | **O(1) - Instantâneo** |
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Você está criando um sistema de logs de erro onde novos erros são adicionados constantemente (milhares por segundo), mas raramente precisamos ler logs antigos.
 
@@ -690,11 +690,11 @@ Para guardar esses logs, qual estrutura seria mais eficiente na **escrita**: Arr
 
 ---
 
-## Implementação em Python (Hands On)
+### Implementação em Python (Hands On)
 
 Em Python, não temos Linked Lists nativas "puras". Vamos criar uma para entender a engenharia por trás. Vamos dividir em **três atos**.
 
-### Criando o Nó
+#### Criando o Nó
 
 Primeiro, criamos a classe que representa o item individual.
 
@@ -705,7 +705,7 @@ class Node:
         self.next = None      # O endereço do próximo (começa apontando para o vazio)
 ```
 
-### Criando a Lista
+#### Criando a Lista
 
 Alguém precisa segurar a ponta da corda. Chamamos isso de `head` (cabeça).
 
@@ -717,7 +717,7 @@ class LinkedList:
         self.head = None  # A lista nasce vazia
 ```
 
-## O Método Append
+### O Método Append
 
 Aqui temos que pensar como o computador.
 
@@ -745,7 +745,7 @@ Aqui temos que pensar como o computador.
 
 ```
 
-## Visualizar
+### Visualizar
 
 ```python
     def display(self):
@@ -768,7 +768,7 @@ lista.display()
 
 ```
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Um aluno tentou percorrer a lista para imprimir os valores, mas esqueceu uma linha importante e seu programa entrou em **loop infinito** (travou).
 
@@ -784,7 +784,7 @@ Qual linha de código está faltando dentro do `while`?
 
 ---
 
-# 2.13. Doubly Linked Lists
+## 2.13. Doubly Linked Lists
 
 Na lista simples, se você esquecer algo no nó anterior, **já era**. Não dá para voltar. É como descer um rio de canoa: só vai a favor da correnteza.
 
@@ -797,7 +797,7 @@ Cada nó agora tem dois braços: um para segurar o da frente (next) e um para se
 
 ![Lista duplamente encadeada](/api/materiais-assets/2-estruturas-de-dados/2-arrays/assets/doubly_linked.png)
 
-# 2.14. O Jeito Pythonico (`collections.deque`)
+## 2.14. O Jeito Pythonico (`collections.deque`)
 
 Na vida real, não reinvente a roda. O Python tem uma estrutura otimizada chamada `deque` (pronuncia-se "deck"). Ela é uma Doubly Linked List pronta para uso.
 
@@ -819,7 +819,7 @@ print(playlist)
 
 ```
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Se usarmos uma lista padrão do Python (`lista = []`) e fizermos `lista.insert(0, "Item")`, o Python precisa deslocar todos os outros itens.
 Se usarmos `deque` e fizermos `deque.appendleft("Item")`, ele não precisa deslocar ninguém.
@@ -827,11 +827,11 @@ Qual dessas operações tem complexidade O(n) e qual tem O(1)?
 
 ---
 
-# 2.15. Exercícios Resolvidos: Entendendo os Padrões
+## 2.15. Exercícios Resolvidos: Entendendo os Padrões
 
 Aqui estão 3 problemas clássicos resolvidos para você entender como manipular os ponteiros.
 
-## O Contador (Iteração)
+### O Contador (Iteração)
 
 Como saber o tamanho da lista sem usar len()?
 
@@ -848,7 +848,7 @@ def contar(head):
 
 ```
 
-## A Tartaruga e a Lebre (Detectar Ciclos)
+### A Tartaruga e a Lebre (Detectar Ciclos)
 
 Como saber se a lista tem um loop infinito sem travar o computador?
 
@@ -867,7 +867,7 @@ def tem_ciclo(head):
 
 ```
 
-## Inversão (Manipulação de Ponteiros)
+### Inversão (Manipulação de Ponteiros)
 
 Como inverter a direção das setas? A -> B vira A <- B.
 
@@ -886,7 +886,7 @@ def inverter(head):
 
 ```
 
-### **Exercício de Fixação**
+#### **Exercício de Fixação**
 
 Na função `inverter` acima, o que aconteceria se esquecêssemos de fazer a linha `proximo_temp = atual.next` antes de mudar o `atual.next`?
 ( ) Nada demais.

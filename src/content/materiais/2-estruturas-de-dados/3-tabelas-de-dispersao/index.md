@@ -5,15 +5,15 @@ category: Programação
 order: 3
 ---
 
-# 3.1. Tabelas de Dispersão (Dicionários em Python)
+## 3.1. Tabelas de Dispersão (Dicionários em Python)
 
-## O Problema
+### O Problema
 
 Imagine que você precisa organizar os arquivos de **100 empregados** de uma empresa. Se você usar uma lista simples, para encontrar o empregado número 99, você teria que passar por todos os anteriores. Isso é **lento**.
 
 A **Tabela de Dispersão** (Hash Table) é uma estrutura criada para resolver esse problema de acesso, em que buscar e armazenar valores é feito com uma complexidade constante **O(1)**.
 
-## Componentes Principais
+### Componentes Principais
 
 Ela é composta basicamente por dois elementos:
 
@@ -27,7 +27,7 @@ O objetivo da função de dispersão é **transformar uma chave** (que pode ser 
 
 ![Função de dispersão calculando o índice](/api/materiais-assets/2-estruturas-de-dados/3-tabelas-de-dispersao/assets/hash.png)
 
-## Mas que Tipo de Função é Essa?
+### Mas que Tipo de Função é Essa?
 
 Um exemplo de função de dispersão simples é a **Divisão Modular**, onde se pega o **resto da divisão** da chave pelo tamanho da tabela: `chave mod tamanho`.
 
@@ -37,13 +37,13 @@ Assim, a primeira execução da função hash servirá para identificar onde é 
 
 > **OBS:** Na prática, as funções de dispersão implementadas são mais complexas do que essa, principalmente para garantir **uniformidade** e evitar as **colisões**, que será melhor explicada a seguir.
 
-## Colisões
+### Colisões
 
 Mas, você deve estar se perguntando, **como garantir que duas chaves nunca vão resultar no mesmo índice?**
 
 No exemplo anterior, uma outra chave de número 2709, por exemplo, também resultaria no mesmo índice do array. De fato, na prática é difícil garantir que chaves diferentes gerem índices diferentes sempre e esse problema precisa de alguma forma ser solucionado.
 
-### Solução: Encadeamento (Chaining)
+#### Solução: Encadeamento (Chaining)
 
 Uma solução para isso é o **Encadeamento** (Chaining), que usa a técnica vista anteriormente: a **lista encadeada**.
 
@@ -51,7 +51,7 @@ Nessa técnica, o coletor não guarda apenas um item, mas sim uma **lista encade
 
 > **Questão:** Mas você pode estar se perguntando, como a tabela de dispersão garante ser O(1) se as listas encadeadas têm uma busca em O(n)?
 
-### Caso Médio vs. Pior Caso
+#### Caso Médio vs. Pior Caso
 
 A resposta está no comportamento do **Caso Médio** versus o **Pior Caso**. A garantia de O(1) na verdade não é absoluta, mas **estatística**.
 
@@ -65,14 +65,14 @@ Imagine que você tem 100 posições na tabela e insere 100 itens:
 
 Portanto, a tabela de dispersão é **O(1)** na média porque desenhamos a estrutura para manter essas listas encadeadas (os coletores) sempre **curtas**. Ou seja, a função escolhida deve ter a propriedade de **uniformidade**. Ela precisa espalhar os dados aleatoriamente para evitar que se formem "agrupamentos" ou listas longas em um único índice. Se a função for bem projetada e a tabela tiver um tamanho adequado, as colisões serão raras e as listas encadeadas serão tão pequenas que o custo de percorrê-las é desprezível.
 
-## Acesso e complexidade
+### Acesso e complexidade
 
 Como dito anteriormente, diferente de uma lista sequencial onde você percorre item por item, na tabela de dispersão o acesso é direto. Você calcula o endereço e vai lá. Isso permite que operações de busca, inserção e remoção tenham um custo de tempo extremamente baixo
 
 - Caso Médio (O Cenário Esperado): A complexidade é $O(1)$ (tempo constante). Isso significa que o tempo para achar um item é praticamente o mesmo, não importa se a tabela tem 10 elementos ou 1 bilhão de elementos
 - Pior Caso (O Cenário Pesadelo): Se a função de dispersão for ruim e jogar todos os dados no mesmo índice (gerando uma longa lista encadeada), a complexidade degrada para $O(n)$ (tempo linear). Nesse caso, a tabela fica tão lenta quanto uma lista comum
 
-## Vantagens e Desvantagens
+### Vantagens e Desvantagens
 
 Como você ja pode concluir, a grande vantagem dessa estrutura é sua busca é, em média $O(1)$, o que a torna extremamente eficiente para operações de acesso, inserção e remoção. No entanto, como toda estrutura de dados, ela apresenta desvantagens:
 
@@ -80,7 +80,7 @@ Como você ja pode concluir, a grande vantagem dessa estrutura é sua busca é, 
 - Desperdício de Memória (Trade-off): Para que a tabela seja rápida, ela precisa ter "espaço de sobra". Se você tem 100 itens, talvez precise de uma tabela de tamanho 200 para evitar colisões. Isso consome mais memória RAM do que uma lista simples compacta.
 - Ausência de ordenação e sequenciamento: Diferentemente de estruturas como listas ou vetores, as tabelas de dispersão não mantêm os elementos em uma ordem lógica ou sequencial (como ordem crescente das chaves ou ordem de inserção, do ponto de vista conceitual da estrutura). Isso dificulta operações que dependem de sequenciamento, como percorrer os elementos de forma ordenada ou realizar buscas por intervalo.
 
-## Em Python: Dicionários (dict)
+### Em Python: Dicionários (dict)
 
 O Python possui uma estrutura de dados nativa que implementa o conceito de tabelas de dispersão: o Dicionário. Um dicionário é delimitado por chaves {}. Cada elemento é composto por um par chave: valor. Um exemplo de uso seria usar um dicionário para armazenar as notas de alunos, apresentado a seguir:
 
@@ -99,7 +99,7 @@ alunos = {
 
 As **chaves** devem ser imutáveis (como int, float, str ou tuple), enquanto os **valores** podem ser de qualquer tipo.
 
-### Operações básicas
+#### Operações básicas
 
 - Acesso: Para recuperar um valor, utilizamos a chave entre colchetes, similar ao índice de uma lista.
 
@@ -123,7 +123,7 @@ print(d["Ana"]) # Saída: 8.5
 del d["Ana"]
 ```
 
-### Verificação de erros
+#### Verificação de erros
 
 Para evitar o erro KeyError ao tentar acessar algo que talvez não exista, utilizamos o operador in. Ele verifica se a chave pertence ao dicionário.
 
@@ -148,7 +148,7 @@ Se "Cecília" não estiver presente no dicionário, o valor impresso será `None
 print(d.get("Cecília", "Aluno não encontrado!"))
 ```
 
-### Métodos úteis de interação
+#### Métodos úteis de interação
 
 Frequentemente precisamos percorrer o dicionário. O Python oferece métodos para acessar apenas as chaves, apenas os valores ou ambos.
 
