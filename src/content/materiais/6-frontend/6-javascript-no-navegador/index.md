@@ -5,8 +5,6 @@ category: Frontend
 order: 6
 ---
 
-# 6. JavaScript no Navegador: DOM, Eventos, Formulários, Validação e localStorage
-
 ## Objetivo da aula
 
 Entender como o JavaScript “entra” numa página web para **ler e modificar o DOM**, reagir a **eventos do usuário**, **manipular formulários**, aplicar **validação simples** e usar **localStorage** para persistência básica no navegador — tudo com JavaScript puro.
@@ -29,24 +27,7 @@ Entender como o JavaScript “entra” numa página web para **ler e modificar o
 
 ---
 
-## Sumário
-
-* [1. Onde o JavaScript entra na página (modelo mental)](#1-onde-o-javascript-entra-na-página-modelo-mental)
-* [2. DOM na prática: selecionar elementos](#2-dom-na-prática-selecionar-elementos)
-* [3. Alterar elementos (o básico que resolve 80% dos casos)](#3-alterar-elementos-o-básico-que-resolve-80-dos-casos)
-* [4. Eventos: como a página “escuta” o usuário](#4-eventos-como-a-página-escuta-o-usuário)
-* [5. Manipulação de formulários (com modelo mental sólido)](#5-manipulação-de-formulários-com-modelo-mental-sólido)
-* [6. Validação simples (sem complicar e sem bibliotecas)](#6-validação-simples-sem-complicar-e-sem-bibliotecas)
-* [7. localStorage (noções) — persistência simples no navegador](#7-localstorage-noções--persistência-simples-no-navegador)
-* [8. Boas práticas e “higiene” de código para DOM](#8-boas-práticas-e-higiene-de-código-para-dom)
-* [9. Erros comuns e confusões clássicas](#9-erros-comuns-e-confusões-clássicas)
-* [10. Glossário rápido](#10-glossário-rápido)
-* [11. Resumo final](#11-resumo-final)
-* [12. Projeto Prático](#12-projeto-prático)
-
----
-
-## Onde o JavaScript entra na página (modelo mental)
+# 6.1. Onde o JavaScript entra na página (modelo mental)
 
 Um jeito útil de pensar em uma página web é separar responsabilidades:
 
@@ -58,7 +39,7 @@ O JavaScript no navegador atua principalmente sobre a “representação viva”
 
 >Conceito-chave: o navegador não “enxerga” seu HTML como texto depois que a página carrega. Ele converte o HTML em uma **árvore de nós (nodes)** na memória. Essa árvore é o **DOM (Document Object Model)**.
 
-### Momento de execução: por que o DOM precisa existir antes
+## Momento de execução: por que o DOM precisa existir antes
 
 Se seu script roda cedo demais, ele tenta selecionar elementos que ainda **não foram criados** pelo navegador — e isso gera `null` e erros.
 
@@ -72,22 +53,22 @@ Existem duas formas comuns (e corretas) de garantir que o DOM exista antes do JS
 
 >Dica: em projetos pequenos, “script no fim do body” é simples e funciona bem. Em projetos maiores, `defer` ajuda a manter organização (scripts no `<head>`) sem quebrar o DOM.
 
-### Conceito de DOM: a página como uma árvore
+## Conceito de DOM: a página como uma árvore
 
 A árvore DOM tem nós como `document`, elementos (`<div>`, `<button>`…), texto, comentários etc. Em geral, você vai trabalhar com **elementos** (Element nodes).
 
-![alt text](/api/materiais-assets/6-frontend/6-javascript-no-navegador/assets/image.png)
+![Figura 1 — Árvore do DOM (HTML → nós → elementos)](/api/materiais-assets/6-frontend/6-javascript-no-navegador/assets/image.png)
 *Figura 1 — Árvore do DOM (HTML → nós → elementos)*
 
 ---
 
-## DOM na prática: selecionar elementos
+# 6.2. DOM na prática: selecionar elementos
 
 Selecionar um elemento é obter uma **referência** para ele em uma variável. A partir disso, você consegue ler propriedades e alterar seu estado (texto, classes, atributos etc.).
 
-### Seletores essenciais
+## Seletores essenciais
 
-#### `document.querySelector(...)`
+### `document.querySelector(...)`
 
 Retorna **o primeiro** elemento que bate com o seletor CSS informado.
 
@@ -97,20 +78,20 @@ Retorna **o primeiro** elemento que bate com o seletor CSS informado.
 
 Se não encontrar nada, retorna `null`.
 
-#### `document.querySelectorAll(...)`
+### `document.querySelectorAll(...)`
 
 Retorna uma **lista de elementos** que batem com o seletor. Essa lista é um **NodeList**.
 
 * Pode vir vazia (tamanho 0).
 * É comum iterar com `forEach`.
 
-#### `document.getElementById(...)` (visão geral)
+### `document.getElementById(...)` (visão geral)
 
 Retorna o elemento com aquele `id`. É direto e rápido, mas menos flexível que seletores CSS.
 
 >Conceito-chave: **um elemento** (`Element`) e **uma lista de elementos** (`NodeList`) são coisas diferentes. Erros comuns surgem quando você tenta usar métodos de elemento em uma lista.
 
-### Exemplo mínimo (HTML + JS) para dar contexto
+## Exemplo mínimo (HTML + JS) para dar contexto
 
 **HTML**
 
@@ -132,7 +113,7 @@ const $botoes = document.querySelectorAll(".acao");
 const $titulo2 = document.getElementById("titulo");
 ```
 
-### NodeList e iteração (sem complicar)
+## NodeList e iteração (sem complicar)
 
 Um `NodeList` não é um array “completo”, mas geralmente você consegue fazer:
 
@@ -142,7 +123,7 @@ $botoes.forEach(($btn) => {
 });
 ```
 
-### Boas práticas ao selecionar
+## Boas práticas ao selecionar
 
 * **Selecione uma vez e reutilize a referência.** Evite ficar repetindo `querySelector` em todo lugar.
 * **Nomes de variáveis claros.** Uma convenção comum é prefixar com `$` para lembrar que é referência de DOM:
@@ -153,12 +134,12 @@ $botoes.forEach(($btn) => {
 
 ---
 
-## Alterar elementos (o básico que resolve 80% dos casos)
+# 6.3. Alterar elementos (o básico que resolve 80% dos casos)
 
 Uma vez que você tem a referência de um elemento, a pergunta vira: **o que exatamente eu quero mudar no DOM?**
 Normalmente é uma dessas coisas: texto, atributos/propriedades, classes/estilos, inserir/remover nós.
 
-### Texto e conteúdo: `textContent` vs `innerHTML`
+## Texto e conteúdo: `textContent` vs `innerHTML`
 
 * `textContent`: altera **texto puro**. Seguro para conteúdo vindo do usuário.
 * `innerHTML`: interpreta o valor como **HTML** e recria nós por dentro do elemento.
@@ -177,7 +158,7 @@ $titulo.textContent = "Bem-vindo!";
 // $titulo.innerHTML = "<img src=x onerror=alert(1)>";
 ```
 
-### Atributos e propriedades (diferença importante)
+## Atributos e propriedades (diferença importante)
 
 * **Atributo**: o que está escrito no HTML (`<input type="email">`).
 * **Propriedade**: o estado “vivo” no objeto JS (o que o usuário digitou em `input.value`).
@@ -201,7 +182,7 @@ console.log($email.value);
 
 >Conceito-chave: `value` em input **não é texto dentro da tag**. É uma propriedade do elemento que muda conforme o usuário interage.
 
-### Classes e estilos
+## Classes e estilos
 
 A forma mais “limpa” de mudar aparência é alternar classes (o CSS faz o resto).
 
@@ -221,7 +202,7 @@ $box.style.borderRadius = "12px";
 
 >Dica: preferir classes mantém o estilo no CSS e evita “misturar responsabilidades”.
 
-### Criar e inserir elementos
+## Criar e inserir elementos
 
 Quando você precisa adicionar algo novo na página (uma mensagem, um item de lista, etc.):
 
@@ -238,7 +219,7 @@ $lista.append($item);
 // $lista.prepend($item);
 ```
 
-### Remover elementos
+## Remover elementos
 
 ```js
 const $aviso = document.querySelector(".aviso");
@@ -249,7 +230,7 @@ $aviso.remove();
 
 ---
 
-## Eventos: como a página “escuta” o usuário
+# 6.4. Eventos: como a página “escuta” o usuário
 
 Eventos são sinais do navegador dizendo: “algo aconteceu”.
 
@@ -260,7 +241,7 @@ Eventos são sinais do navegador dizendo: “algo aconteceu”.
 
 O JavaScript reage a eventos usando **listeners**.
 
-### `addEventListener`: assinatura e callback
+## `addEventListener`: assinatura e callback
 
 A ideia é: “quando acontecer X, execute Y”.
 
@@ -275,7 +256,7 @@ $btn.addEventListener("click", () => {
 
 >Conceito-chave: o navegador “guarda” a função callback. Ela não roda na hora; roda depois, quando o evento acontecer.
 
-### Eventos essenciais para esta aula
+## Eventos essenciais para esta aula
 
 * `click`: botões, links, qualquer elemento clicável
 * `submit`: formulários
@@ -284,7 +265,7 @@ $btn.addEventListener("click", () => {
   * `input` dispara enquanto digita (ótimo para limpar erro em tempo real)
   * `change` dispara quando o elemento “confirma” a mudança (depende do tipo: select, checkbox, ao sair do campo, etc.)
 
-### O objeto `event`
+## O objeto `event`
 
 O navegador passa um objeto com detalhes do evento.
 
@@ -299,7 +280,7 @@ document.querySelector("#area").addEventListener("click", (event) => {
 });
 ```
 
-#### `preventDefault` (crítico em `submit`)
+### `preventDefault` (crítico em `submit`)
 
 Quando você envia um formulário, o padrão do navegador é **recarregar** e tentar “enviar” para algum lugar. Em apps modernos, frequentemente você quer interceptar esse envio para validar e atualizar a UI.
 
@@ -309,18 +290,18 @@ $form.addEventListener("submit", (event) => {
 });
 ```
 
-### Noção de propagação (bubbling) — teaser
+## Noção de propagação (bubbling) — teaser
 
 Às vezes parece que um clique “subiu” para elementos pais. Isso acontece porque muitos eventos **propagam** do elemento mais interno para seus ancestrais (bubbling).
 
 >Atenção: isso é a raiz de situações em que um `click` em um botão também ativa um listener em um `div` pai. Nesta aula, basta saber que isso existe.
 
-![alt text](/api/materiais-assets/6-frontend/6-javascript-no-navegador/assets/image-1.png)
+![Figura 2 — Fluxo de evento: usuário clica → listener roda → DOM atualiza](/api/materiais-assets/6-frontend/6-javascript-no-navegador/assets/image-1.png)
 *Figura 2 — Fluxo de evento: usuário clica → listener roda → DOM atualiza*
 
 ---
 
-## Manipulação de formulários (com modelo mental sólido)
+# 6.5. Manipulação de formulários (com modelo mental sólido)
 
 Formulário é um “pacote” de dados que o usuário preenche. O navegador sabe coletar esses dados e, por padrão, sabe enviar e recarregar. Quando você usa JavaScript, você passa a controlar:
 
@@ -331,7 +312,7 @@ Formulário é um “pacote” de dados que o usuário preenche. O navegador sab
 
 >Conceito-chave: em formulários, você quase sempre trabalha com **propriedades** (como `value` e `checked`) e com o evento `submit`.
 
-### Acessar valores comuns
+## Acessar valores comuns
 
 * Texto: `input.value`
 * Checkbox: `checkbox.checked` (boolean)
@@ -345,7 +326,7 @@ const email = $emailInput.value.trim();
 const aceitou = $termosCheckbox.checked;
 ```
 
-### Reset e estados
+## Reset e estados
 
 * `form.reset()`: volta os campos ao estado inicial do HTML.
 * Desabilitar botão (noções): útil para evitar duplo clique e dar sensação de processamento mesmo sem async.
@@ -356,7 +337,7 @@ $btnSubmit.disabled = true;
 $btnSubmit.disabled = false;
 ```
 
-### Exemplo mínimo “padrão de mercado”
+## Exemplo mínimo “padrão de mercado”
 
 Um formulário simples que:
 
@@ -420,7 +401,7 @@ $form.addEventListener("submit", (event) => {
 
 ---
 
-## Validação simples (sem complicar e sem bibliotecas)
+# 6.6. Validação simples (sem complicar e sem bibliotecas)
 
 Validar é checar se os dados fazem sentido **antes** de seguir adiante.
 
@@ -429,9 +410,9 @@ Validar é checar se os dados fazem sentido **antes** de seguir adiante.
 
 >Atenção: “validar só no front” é como colocar um “porteiro simpático” na entrada, mas deixar a porta dos fundos aberta. Serve para orientar, não para garantir segurança.
 
-### Dois níveis (camadas) de validação
+## Dois níveis (camadas) de validação
 
-#### A) Validação nativa do HTML (suporte)
+### A) Validação nativa do HTML (suporte)
 
 * `required`
 * `type="email"`
@@ -439,7 +420,7 @@ Validar é checar se os dados fazem sentido **antes** de seguir adiante.
 
 Isso já impede algumas submissões e ajuda em navegadores e leitores de tela.
 
-#### B) Validação no JS (mensagens personalizadas e controle)
+### B) Validação no JS (mensagens personalizadas e controle)
 
 No JS, você decide:
 
@@ -448,7 +429,7 @@ No JS, você decide:
 * onde exibir
 * como guiar o usuário (foco no erro, limpar ao corrigir)
 
-### Regras simples comuns
+## Regras simples comuns
 
 * `required`: campo não pode estar vazio
 * tamanho mínimo: por exemplo, nome com pelo menos 3 caracteres
@@ -459,7 +440,7 @@ Uma checagem simples e honesta:
 * tem `@` e tem `.` depois do `@`
   Isso não cobre 100% dos e-mails válidos, mas evita erros mais básicos sem complicar.
 
-### Mensagens de erro: onde e como
+## Mensagens de erro: onde e como
 
 Em UX, existem duas estratégias comuns:
 
@@ -484,12 +465,12 @@ Além disso:
 4. se achar erro: mostra mensagem + foca o campo + encerra
 5. se tudo ok: segue e mostra sucesso
 
-![alt text](/api/materiais-assets/6-frontend/6-javascript-no-navegador/assets/image-2.png)
+![Figura 3 — Fluxo de submit: preencher → submit → preventDefault → validar → mensagens](/api/materiais-assets/6-frontend/6-javascript-no-navegador/assets/image-2.png)
 
 *Figura 3 — Fluxo de submit: preencher → submit → preventDefault → validar → mensagens*
     
 ---
-### Exemplo mínimo: validação com mensagens e foco
+## Exemplo mínimo: validação com mensagens e foco
 
 ```js
 function emailPareceValido(email) {
@@ -537,7 +518,7 @@ $form.addEventListener("submit", (event) => {
 });
 ```
 
-### Limpar erro quando o usuário corrige (usando `input`)
+## Limpar erro quando o usuário corrige (usando `input`)
 
 ```js
 function limparMensagemSeEstiverErrado() {
@@ -555,17 +536,17 @@ $email.addEventListener("input", limparMensagemSeEstiverErrado);
 
 ---
 
-## localStorage (noções) — persistência simples no navegador
+# 6.7. localStorage (noções) — persistência simples no navegador
 
 Até aqui, tudo que você faz some ao recarregar a página. O `localStorage` é um mecanismo simples para guardar dados **no dispositivo** do usuário.
 
-### O que é
+## O que é
 
 * Armazenamento **chave/valor** persistente no navegador.
 * Os dados ficam associados à **origem** (domínio + protocolo + porta).
   Ex.: `https://meusite.com` não acessa dados de `https://outrosite.com`.
 
-### Limitações (por que não é “um banco de dados”)
+## Limitações (por que não é “um banco de dados”)
 
 * Tamanho limitado (varia por navegador, mas é pequeno comparado a bancos reais).
 * Não é ideal para muitos dados, nem para consultas complexas.
@@ -573,7 +554,7 @@ Até aqui, tudo que você faz some ao recarregar a página. O `localStorage` é 
 
 >Atenção: **não guarde senha**, token sensível ou dados privados no `localStorage`. Ele não foi projetado para confidencialidade.
 
-### API básica
+## API básica
 
 * `localStorage.setItem(chave, valor)`
 * `localStorage.getItem(chave)` → retorna string ou `null`
@@ -586,7 +567,7 @@ localStorage.setItem("nomeUsuario", "Gabriel");
 const nome = localStorage.getItem("nomeUsuario"); // "Gabriel"
 ```
 
-### Strings apenas: por que `JSON.stringify` / `JSON.parse`
+## Strings apenas: por que `JSON.stringify` / `JSON.parse`
 
 O `localStorage` guarda **apenas strings**. Se você quiser guardar um objeto/array, precisa converter para string.
 
@@ -600,7 +581,7 @@ const obj = raw ? JSON.parse(raw) : null;
 
 >Conceito-chave: `stringify` transforma objeto → string. `parse` transforma string → objeto.
 
-### Caso de uso didático: lembrar o nome do usuário no formulário
+## Caso de uso didático: lembrar o nome do usuário no formulário
 
 Você pode salvar o nome e preencher automaticamente ao abrir a página.
 
@@ -617,21 +598,21 @@ function salvarNome(nome) {
 }
 ```
 
-### Diferença para `sessionStorage` (apenas mencionar)
+## Diferença para `sessionStorage` (apenas mencionar)
 
 * `localStorage`: persiste até o usuário limpar ou você remover.
 * `sessionStorage`: dura apenas enquanto a aba/janela estiver aberta.
 
-![alt text](/api/materiais-assets/6-frontend/6-javascript-no-navegador/assets/image-3.png)
+![Figura 4 — Diagrama localStorage: chave/valor + JSON stringify/parse](/api/materiais-assets/6-frontend/6-javascript-no-navegador/assets/image-3.png)
 *Figura 4 — Diagrama localStorage: chave/valor + JSON stringify/parse*
 
 ---
 
-## Boas práticas e “higiene” de código para DOM
+# 6.8. Boas práticas e “higiene” de código para DOM
 
 Conforme a página cresce, o risco é transformar o código em um “espaguete” de listeners e alterações diretas. Algumas práticas simples deixam tudo mais legível.
 
-### Separe responsabilidades (mesmo sem arquitetura formal)
+## Separe responsabilidades (mesmo sem arquitetura formal)
 
 Uma organização saudável para arquivos pequenos:
 
@@ -641,13 +622,13 @@ Uma organização saudável para arquivos pequenos:
 
 Isso evita “lógica demais dentro do listener”.
 
-### Evite
+## Evite
 
 * Repetir `querySelector` toda hora
 * Usar `innerHTML` quando `textContent` resolve
 * Enfiar regras de validação, render e armazenamento dentro de um único callback gigante
 
-### Debug (jeito profissional de achar problemas)
+## Debug (jeito profissional de achar problemas)
 
 * Use `console.log` de forma estratégica:
 
@@ -657,7 +638,7 @@ Isso evita “lógica demais dentro do listener”.
 
 >Dica: o erro mais comum em DOM é “não selecionei o que eu achava que selecionei”. Conferir referências no console economiza tempo.
 
-### Erros comuns de seleção
+## Erros comuns de seleção
 
 Se `querySelector` retorna `null`, normalmente é:
 
@@ -667,7 +648,7 @@ Se `querySelector` retorna `null`, normalmente é:
 
 ---
 
-## Erros comuns e confusões clássicas
+# 6.9. Erros comuns e confusões clássicas
 
 * **Script roda antes do DOM existir**
   Sintoma: `querySelector(...)` retorna `null` e você vê erro ao tentar usar `.addEventListener` ou `.textContent`.
@@ -704,7 +685,7 @@ Se `querySelector` retorna `null`, normalmente é:
 
 ---
 
-## Glossário rápido
+# 6.10. Glossário rápido
 
 * **DOM**: representação em árvore do documento HTML na memória do navegador.
 * **Nó (node)**: unidade da árvore DOM (elemento, texto, etc.).
@@ -725,13 +706,13 @@ Se `querySelector` retorna `null`, normalmente é:
 
 ---
 
-## Resumo final
+# 6.11. Resumo final
 
 Nesta aula, você consolidou o modelo mental do JavaScript no navegador: o HTML vira uma **árvore DOM**, e o JavaScript trabalha apontando para nós dessa árvore para **ler e modificar** o que o usuário vê. Com **eventos** e `addEventListener`, a página deixa de ser estática e passa a **reagir**: clique, envio de formulário, digitação. Em formulários, o padrão é controlar o `submit` com `preventDefault`, **validar** com regras simples (HTML + JS) e oferecer mensagens claras. Para persistência básica, `localStorage` permite guardar pequenas preferências (como nome ou tema), lembrando que ele guarda **strings** e não é lugar para dados sensíveis.
 
 ---
 
-## Projeto Prático
+# 6.12. Projeto Prático
 
 Para consolidar o aprendizado desta aula, confira a implementação prática no repositório **to-do**:
 
