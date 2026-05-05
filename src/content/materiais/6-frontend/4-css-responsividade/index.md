@@ -5,8 +5,6 @@ category: Frontend
 order: 4
 ---
 
-# 4. CSS (Layout Responsivo): Flexbox, Grid e Media Queries
-
 **Objetivo da aula**
 Entender como construir layouts que se adaptam bem a diferentes tamanhos de tela usando CSS puro, com foco em *modelo mental* (como pensar layout) e não em decorar propriedades.
 
@@ -27,54 +25,7 @@ Entender como construir layouts que se adaptam bem a diferentes tamanhos de tela
 
 ---
 
-## Sumário
-
-* [1. O que é layout responsivo (e o problema que ele resolve)](#1-o-que-é-layout-responsivo-e-o-problema-que-ele-resolve)
-
-  * [1.1 Evolução: desktop fixo → múltiplos tamanhos → mobile-first](#11-evolução-desktop-fixo--múltiplos-tamanhos--mobile-first)
-  * [1.2 Conceitos essenciais: viewport, “quebra” no celular, responsivo vs adaptativo](#12-conceitos-essenciais-viewport-quebra-no-celular-responsivo-vs-adaptativo)
-  * [1.3 Princípios práticos: fluidez e conteúdo guiando o layout](#13-princípios-práticos-fluidez-e-conteúdo-guiando-o-layout)
-  * [1.4 As três ferramentas: Flexbox (1D), Grid (2D), Media Queries](#14-as-três-ferramentas-flexbox-1d-grid-2d-media-queries)
-* [2. Modelo mental de Flexbox (layout principal)](#2-modelo-mental-de-flexbox-layout-principal)
-
-  * [2.1 Quando usar Flexbox](#21-quando-usar-flexbox)
-  * [2.2 Container vs itens; main axis vs cross axis](#22-container-vs-itens-main-axis-vs-cross-axis)
-  * [2.3 Propriedades do container](#23-propriedades-do-container)
-  * [2.4 Propriedades dos itens](#24-propriedades-dos-itens)
-  * [2.5 Pitfalls clássicos](#25-pitfalls-clássicos)
-  * [2.6 Exemplo padrão de mercado: header e cards com wrap](#26-exemplo-padrão-de-mercado-header-e-cards-com-wrap)
-* [3. Modelo mental de Grid (layout mais complexo)](#3-modelo-mental-de-grid-layout-mais-complexo)
-
-  * [3.1 Quando usar Grid](#31-quando-usar-grid)
-  * [3.2 Conceitos: tracks, linhas, áreas; 2D vs 1D](#32-conceitos-tracks-linhas-áreas-2d-vs-1d)
-  * [3.3 Propriedades essenciais do container](#33-propriedades-essenciais-do-container)
-  * [3.4 Posicionamento e áreas](#34-posicionamento-e-áreas)
-  * [3.5 Exemplo padrão de mercado: sidebar + conteúdo e grid de cards responsivo](#35-exemplo-padrão-de-mercado-sidebar--conteúdo-e-grid-de-cards-responsivo)
-* [4. Responsividade na prática: Mobile-first e Media Queries](#4-responsividade-na-prática-mobile-first-e-media-queries)
-
-  * [4.1 O que é mobile-first](#41-o-que-é-mobile-first)
-  * [4.2 Sintaxe e lógica: min-width vs max-width](#42-sintaxe-e-lógica-min-width-vs-max-width)
-  * [4.3 Breakpoints vêm do conteúdo](#43-breakpoints-vêm-do-conteúdo)
-  * [4.4 O que mudar em breakpoints](#44-o-que-mudar-em-breakpoints)
-  * [4.5 Acessibilidade e responsividade](#45-acessibilidade-e-responsividade)
-  * [4.6 Exemplo mínimo com 2 breakpoints (1 → 2 → 3 colunas)](#46-exemplo-mínimo-com-2-breakpoints-1--2--3-colunas)
-* [5. Boas práticas de layout (para não virar “CSS de gambiarra”)](#5-boas-práticas-de-layout-para-não-virar-css-de-gambiarra)
-
-  * [5.1 Comece simples: fluxo normal + max-width + padding](#51-comece-simples-fluxo-normal--max-width--padding)
-  * [5.2 Evitar height fixa (quando possível)](#52-evitar-height-fixa-quando-possível)
-  * [5.3 Preferências que ajudam o layout “respirar”](#53-preferências-que-ajudam-o-layout-respirar)
-  * [5.4 Padronização com tokens simples](#54-padronização-com-tokens-simples)
-  * [5.5 Debug de layout: pensar em caixas](#55-debug-de-layout-pensar-em-caixas)
-  * [5.6 Performance e manutenção](#56-performance-e-manutenção)
-  * [5.7 Responsividade sem excessos](#57-responsividade-sem-excessos)
-* [Erros comuns e confusões clássicas](#erros-comuns-e-confusões-clássicas)
-* [Glossário rápido](#glossário-rápido)
-* [Resumo final](#resumo-final)
-* [Projeto Prático](#projeto-prático)
-
----
-
-## O que é layout responsivo (e o problema que ele resolve)
+# 4.1. O que é layout responsivo (e o problema que ele resolve)
 
 Layout responsivo é a capacidade de uma interface **reorganizar e redimensionar** seus elementos para permanecer legível e utilizável em diferentes telas — de um celular pequeno a um monitor ultrawide.
 
@@ -82,7 +33,7 @@ Imagine um site pensado como uma folha A4: largura fixa, tudo “encaixado” mi
 
 >**Conceito-chave:** responsividade não é “fazer caber”. É **preservar hierarquia visual, leitura e interação** sob diferentes restrições de espaço.
 
-### Evolução: desktop fixo → múltiplos tamanhos → mobile-first
+## Evolução: desktop fixo → múltiplos tamanhos → mobile-first
 
 * **Era do desktop fixo:** layouts com larguras fixas (`px`), geralmente centrados, assumindo monitores similares.
 * **Explosão de tamanhos:** notebooks, tablets, celulares grandes e pequenos, telas retina, TVs.
@@ -90,7 +41,7 @@ Imagine um site pensado como uma folha A4: largura fixa, tudo “encaixado” mi
 
 A motivação do mobile-first é simples: se você consegue organizar bem o conteúdo com pouco espaço, você ganha um layout mais robusto e fácil de evoluir.
 
-### Conceitos essenciais: viewport, “quebra” no celular, responsivo vs adaptativo
+## Conceitos essenciais: viewport, “quebra” no celular, responsivo vs adaptativo
 
 **Viewport** é a “janela” na qual o navegador renderiza a página. Em celulares, se você não informa corretamente o viewport, o navegador pode simular uma largura maior (como se fosse desktop) e depois reduzir visualmente, bagunçando escalas e quebras de linha.
 
@@ -112,7 +63,7 @@ Isso diz: “use a largura real do dispositivo”.
 
 Na prática, projetos reais misturam os dois: base fluida + alguns pontos de ajuste.
 
-### Princípios práticos: fluidez e conteúdo guiando o layout
+## Princípios práticos: fluidez e conteúdo guiando o layout
 
 Dois princípios evitam muita dor:
 
@@ -132,7 +83,7 @@ Dois princípios evitam muita dor:
 
 >**Dica:** pense como um designer de sistemas: você não desenha uma tela; você desenha **regras** para uma família de telas.
 
-### As três ferramentas: Flexbox (1D), Grid (2D), Media Queries
+## As três ferramentas: Flexbox (1D), Grid (2D), Media Queries
 
 * **Flexbox (1D):** excelente para distribuir itens em **uma dimensão por vez** (linha *ou* coluna). É o “motor” de alinhamento e espaçamento em componentes.
 * **Grid (2D):** ideal para páginas e seções onde você controla **linhas e colunas simultaneamente**.
@@ -140,11 +91,11 @@ Dois princípios evitam muita dor:
 
 ---
 
-## Modelo mental de Flexbox (layout principal)
+# 4.2. Modelo mental de Flexbox (layout principal)
 
 Flexbox é como organizar objetos em uma prateleira: você decide se a prateleira é horizontal ou vertical, quanto espaço há entre os itens, como eles se alinham e se podem “quebrar” para outra linha.
 
-### Quando usar Flexbox
+## Quando usar Flexbox
 
 Use Flexbox quando você precisa:
 
@@ -156,7 +107,7 @@ Use Flexbox quando você precisa:
 
 >**Conceito-chave:** Flexbox resolve **organização local** (componentes). Para **layout global** (página inteira), Grid costuma ser mais direto.
 
-### Container vs itens; main axis vs cross axis
+## Container vs itens; main axis vs cross axis
 
 No Flexbox há dois papéis:
 
@@ -172,13 +123,13 @@ A propriedade que muda a direção do eixo principal é `flex-direction`.
 
 >**Atenção:** `justify-content` e `align-items` sempre dependem do eixo. Quem confunde eixos confunde tudo no Flexbox.
 
-![Diagrama ilustrando os conceitos de Flexbox: container com eixo principal (main axis) horizontal e eixo transversal (cross axis) vertical, mostrando propriedades justify-content e align-items controlando o posicionamento dos flex items](/api/materiais-assets/6-frontend/4-css-responsividade/assets/image.png){width=800px}
+![Diagrama ilustrando os conceitos de Flexbox: container com eixo principal (main axis) horizontal e eixo transversal (cross axis) vertical, mostrando propriedades justify-content e align-items controlando o posicionamento dos flex items](/api/materiais-assets/6-frontend/4-css-responsividade/assets/image.png)
 *Figura 1 — Flexbox: eixos e alinhamentos*
 ---
 
-### Propriedades do container
+## Propriedades do container
 
-#### `display: flex`
+### `display: flex`
 
 Ativa o comportamento flex no container. A partir daí, os filhos diretos viram flex items.
 
@@ -188,7 +139,7 @@ Ativa o comportamento flex no container. A partir daí, os filhos diretos viram 
 }
 ```
 
-#### `justify-content`
+### `justify-content`
 
 Controla **distribuição ao longo do main axis**. Valores comuns:
 
@@ -199,7 +150,7 @@ Controla **distribuição ao longo do main axis**. Valores comuns:
 
 >**Dica:** `space-between` é um clássico para “logo à esquerda e menu à direita”.
 
-#### `align-items` vs `align-content` (diferença importante)
+### `align-items` vs `align-content` (diferença importante)
 
 * **`align-items`** alinha **os itens dentro de uma linha** (cross axis). Funciona na maioria dos casos.
 * **`align-content`** alinha **o conjunto de linhas** quando há múltiplas linhas (ou colunas) — isto é, quando existe `flex-wrap` e sobra espaço no cross axis.
@@ -211,7 +162,7 @@ Um jeito de lembrar:
 
 >**Atenção:** muita gente tenta usar `align-content` achando que é “centralizar verticalmente”. Se não há múltiplas linhas, ele pode não fazer nada.
 
-#### `gap` (espaçamento sem gambiarra)
+### `gap` (espaçamento sem gambiarra)
 
 `gap` define espaçamento **entre itens** de forma consistente, sem precisar “espalhar” margens nos filhos.
 
@@ -224,7 +175,7 @@ Um jeito de lembrar:
 
 >**Conceito-chave:** `gap` é layout declarativo: o espaçamento pertence ao *container*, não a cada item.
 
-#### `flex-wrap`
+### `flex-wrap`
 
 Define se os itens podem quebrar para a linha seguinte.
 
@@ -241,9 +192,9 @@ Isso é uma ferramenta poderosa de responsividade “natural”, porque muitas i
 }
 ```
 
-### Propriedades dos itens
+## Propriedades dos itens
 
-#### `flex` (grow, shrink, basis)
+### `flex` (grow, shrink, basis)
 
 `flex` é um atalho para três ideias:
 
@@ -258,7 +209,7 @@ Exemplo de leitura:
 
 >**Conceito-chave:** Flexbox não é “definir larguras”; é **negociar espaço**.
 
-#### `order`
+### `order`
 
 Permite mudar a ordem visual dos itens.
 
@@ -268,7 +219,7 @@ Permite mudar a ordem visual dos itens.
 
 >**Atenção:** `order` muda a ordem visual, mas a ordem no HTML continua a mesma. Isso impacta leitura por teclado e tecnologias assistivas. Use com responsabilidade.
 
-#### `align-self`
+### `align-self`
 
 Sobrescreve `align-items` para um item específico.
 
@@ -276,7 +227,7 @@ Sobrescreve `align-items` para um item específico.
 .item { align-self: flex-end; }
 ```
 
-### Pitfalls clássicos
+## Pitfalls clássicos
 
 * **Confundir `justify-content` com `align-items`**
   Lembre: depende do eixo principal (`flex-direction`).
@@ -287,7 +238,7 @@ Sobrescreve `align-items` para um item específico.
 * **Esquecer `gap` e criar “margem em todo lugar”**
   Margens distribuídas são difíceis de manter e geram inconsistência.
 
-### Exemplo padrão de mercado: header e cards com wrap
+## Exemplo padrão de mercado: header e cards com wrap
 
 A ideia aqui é mostrar dois padrões comuns:
 
@@ -351,11 +302,11 @@ A ideia aqui é mostrar dois padrões comuns:
 
 ---
 
-## Modelo mental de Grid (layout mais complexo)
+# 4.3. Modelo mental de Grid (layout mais complexo)
 
 Se Flexbox é “prateleira”, Grid é “papel quadriculado”: você define linhas e colunas e posiciona elementos em uma malha bidimensional.
 
-### Quando usar Grid
+## Quando usar Grid
 
 Use Grid quando você precisa:
 
@@ -366,7 +317,7 @@ Use Grid quando você precisa:
 
 >**Conceito-chave:** Grid é uma linguagem para **macro-layout**. Você descreve a grade; os elementos “encaixam” nela.
 
-### Conceitos: tracks, linhas, áreas; 2D vs 1D
+## Conceitos: tracks, linhas, áreas; 2D vs 1D
 
 * **Grid container:** `display: grid;`
 * **Grid items:** filhos diretos do container
@@ -379,18 +330,18 @@ A diferença fundamental para Flexbox:
 * **Flexbox:** organiza itens em uma dimensão por vez (1D)
 * **Grid:** organiza itens em duas dimensões (2D), permitindo planejamento de áreas
 
-![Diagrama mostrando a estrutura do CSS Grid: linhas numeradas delimitando tracks (faixas de colunas e linhas), com áreas nomeadas destacadas formando regiões retangulares do layout](/api/materiais-assets/6-frontend/4-css-responsividade/assets/image-1.png){width=800px}
+![Diagrama mostrando a estrutura do CSS Grid: linhas numeradas delimitando tracks (faixas de colunas e linhas), com áreas nomeadas destacadas formando regiões retangulares do layout](/api/materiais-assets/6-frontend/4-css-responsividade/assets/image-1.png)
 
 *Figura 2 — Grid: linhas, colunas e áreas*
 
 
-### Propriedades essenciais do container
+## Propriedades essenciais do container
 
-#### `display: grid`
+### `display: grid`
 
 Ativa Grid no container.
 
-#### `grid-template-columns` / `grid-template-rows`
+### `grid-template-columns` / `grid-template-rows`
 
 Definem quantas colunas/linhas e seus tamanhos.
 
@@ -401,7 +352,7 @@ Definem quantas colunas/linhas e seus tamanhos.
 }
 ```
 
-#### `gap`
+### `gap`
 
 Espaço entre tracks. (Mais limpo do que margens nos itens.)
 
@@ -409,7 +360,7 @@ Espaço entre tracks. (Mais limpo do que margens nos itens.)
 .layout { gap: 16px; }
 ```
 
-#### `repeat()`
+### `repeat()`
 
 Evita repetição e deixa o CSS mais legível.
 
@@ -419,14 +370,14 @@ Evita repetição e deixa o CSS mais legível.
 }
 ```
 
-#### `fr` (unidade de fração)
+### `fr` (unidade de fração)
 
 `fr` é “parte do espaço disponível”.
 `1fr 2fr` significa: “divida o espaço sobrando em 3 partes; a segunda coluna leva 2”.
 
 >**Conceito-chave:** `fr` é um modelo mental: **proporção do espaço livre**, não um valor absoluto.
 
-#### `minmax()` (responsividade sem quebrar)
+### `minmax()` (responsividade sem quebrar)
 
 `minmax(min, max)` define um intervalo: a track não fica menor que `min`, nem maior que `max`.
 
@@ -442,7 +393,7 @@ Um uso clássico para cards:
 
 Aqui você diz: “cada coluna deve ter no mínimo 220px; se houver espaço, ela cresce”.
 
-#### `auto-fit` vs `auto-fill` (com intuição e cuidado)
+### `auto-fit` vs `auto-fill` (com intuição e cuidado)
 
 Ambos aparecem com `repeat()` quando você quer “quantas colunas couberem”.
 
@@ -458,9 +409,9 @@ Na prática:
 
 >**Dica:** se você usou `auto-fill` e achou que ficou “um buraco” estranho, experimente `auto-fit`.
 
-### Posicionamento e áreas
+## Posicionamento e áreas
 
-#### `grid-column` / `grid-row` (visão geral)
+### `grid-column` / `grid-row` (visão geral)
 
 Permitem dizer onde um item começa e termina.
 
@@ -472,7 +423,7 @@ Permitem dizer onde um item começa e termina.
 
 Você não precisa decorar números para tudo, mas entender o mecanismo ajuda a debugar.
 
-#### `grid-template-areas` (um “mapa” do layout)
+### `grid-template-areas` (um “mapa” do layout)
 
 Define um desenho textual de áreas. Excelente para layouts de página.
 
@@ -491,7 +442,7 @@ Define um desenho textual de áreas. Excelente para layouts de página.
 
 >**Conceito-chave:** áreas funcionam como um “contrato” do layout. Você lê o CSS e entende a página sem imaginar números.
 
-### Exemplo padrão de mercado: sidebar + conteúdo e grid de cards responsivo
+## Exemplo padrão de mercado: sidebar + conteúdo e grid de cards responsivo
 
 **HTML mínimo**
 
@@ -552,11 +503,11 @@ Define um desenho textual de áreas. Excelente para layouts de página.
 
 ---
 
-## Responsividade na prática: Mobile-first e Media Queries
+# 4.4. Responsividade na prática: Mobile-first e Media Queries
 
 Media queries são “pontos de ajuste” onde você muda regras de layout. O erro comum é usar media queries para consertar um layout rígido. O uso maduro é: **base fluida + ajustes pontuais**.
 
-### O que é mobile-first
+## O que é mobile-first
 
 Mobile-first significa:
 
@@ -567,11 +518,11 @@ Isso costuma resultar em CSS mais curto, porque telas pequenas exigem menos “r
 
 >**Conceito-chave:** mobile-first não é “design para celular”. É **estratégia de robustez**: comece pela maior restrição.
 
-![Diagrama ilustrando a abordagem mobile-first: layout simples e funcional em telas pequenas, com incrementos visuais e estruturais para telas maiores](/api/materiais-assets/6-frontend/4-css-responsividade/assets/image-2.png){width=800px}
+![Diagrama ilustrando a abordagem mobile-first: layout simples e funcional em telas pequenas, com incrementos visuais e estruturais para telas maiores](/api/materiais-assets/6-frontend/4-css-responsividade/assets/image-2.png)
 *Figura 3 — Mobile-first: base + incrementos*
 
 
-### Sintaxe e lógica: min-width vs max-width
+## Sintaxe e lógica: min-width vs max-width
 
 **Sintaxe essencial (mobile-first):**
 
@@ -586,7 +537,7 @@ Isso costuma resultar em CSS mais curto, porque telas pequenas exigem menos “r
 
 >**Dica:** com `min-width`, você lê o CSS como evolução: base → melhora → melhora.
 
-### Breakpoints vêm do conteúdo
+## Breakpoints vêm do conteúdo
 
 Breakpoints não deveriam existir porque “o iPhone X tem tal largura”. Eles existem porque:
 
@@ -605,7 +556,7 @@ Como referência (não regra), é comum ver algo na linha de:
 
 >**Atenção:** breakpoints por dispositivo específico envelhecem rápido. Breakpoints por conteúdo envelhecem bem.
 
-### O que mudar em breakpoints
+## O que mudar em breakpoints
 
 Mudanças típicas (e justificáveis) em breakpoints:
 
@@ -616,7 +567,7 @@ Mudanças típicas (e justificáveis) em breakpoints:
 
 >**Atenção:** “sumir com conteúdo” não é responsividade; é perda de informação. Se algo vai ocultar, tenha um motivo forte (priorização) e mantenha acesso por navegação alternativa.
 
-### Acessibilidade e responsividade
+## Acessibilidade e responsividade
 
 Dois pontos que evitam problemas:
 
@@ -625,7 +576,7 @@ Dois pontos que evitam problemas:
 
 >**Conceito-chave:** acessibilidade não é um extra; ela é um “teste de estresse” do seu layout.
 
-### Exemplo mínimo com 2 breakpoints (1 → 2 → 3 colunas)
+## Exemplo mínimo com 2 breakpoints (1 → 2 → 3 colunas)
 
 Aqui faz sentido usar **Grid**, porque a intenção é diretamente “controlar colunas”.
 
@@ -676,16 +627,16 @@ Aqui faz sentido usar **Grid**, porque a intenção é diretamente “controlar 
 
 >**Dica:** perceba que os breakpoints mudam o que é estrutural (número de colunas) e também refinam “sensação de espaço” (gap/padding). Isso é mais comum do que só “trocar colunas”.
 
-![Demonstração visual de grid responsivo em três breakpoints: mobile com cards em 1 coluna, tablet com 2 colunas e desktop com 3 colunas, mantendo gap e padding consistentes](/api/materiais-assets/6-frontend/4-css-responsividade/assets/image-3.png){width=800px}
+![Demonstração visual de grid responsivo em três breakpoints: mobile com cards em 1 coluna, tablet com 2 colunas e desktop com 3 colunas, mantendo gap e padding consistentes](/api/materiais-assets/6-frontend/4-css-responsividade/assets/image-3.png)
 *Figura 4 — Cards responsivos mudando colunas por breakpoint*
 
 ---
 
-## Boas práticas de layout (para não virar “CSS de gambiarra”)
+# 4.5. Boas práticas de layout (para não virar “CSS de gambiarra”)
 
 Boas práticas não são “regras morais”; elas reduzem custo de manutenção. Layout costuma mudar ao longo do semestre/projeto — e CSS frágil vira retrabalho.
 
-### Comece simples: fluxo normal + max-width + padding
+## Comece simples: fluxo normal + max-width + padding
 
 Antes de Flex e Grid, existe o **fluxo normal**: elementos em bloco empilham, inline seguem na linha. Muitos layouts começam bem assim, com um container central.
 
@@ -699,7 +650,7 @@ Antes de Flex e Grid, existe o **fluxo normal**: elementos em bloco empilham, in
 
 >**Dica:** `max-width + margin: 0 auto` resolve mais do que parece. É o “esqueleto” de muita interface real.
 
-### Evitar height fixa (quando possível)
+## Evitar height fixa (quando possível)
 
 Altura fixa (`height: 300px`) costuma quebrar por:
 
@@ -716,7 +667,7 @@ Prefira:
 
 >**Atenção:** altura fixa é uma aposta de que o conteúdo nunca mudará. Em software, essa aposta geralmente perde.
 
-### Preferências que ajudam o layout “respirar”
+## Preferências que ajudam o layout “respirar”
 
 * **Containers com `max-width`** para leitura confortável em telas grandes
 * **`gap` no container** em vez de margens espalhadas
@@ -728,7 +679,7 @@ Prefira:
 
   * evite `width` fixa em cards; prefira `minmax`, `flex-basis`, `max-width`
 
-### Padronização com tokens simples
+## Padronização com tokens simples
 
 Em projetos reais, consistência de espaçamento evita “cada tela com um valor diferente”.
 
@@ -748,7 +699,7 @@ Uma abordagem simples (opcional) é usar variáveis CSS:
 
 >**Conceito-chave:** tokens são um jeito de codificar *decisões de design* e diminuir entropia.
 
-### Debug de layout: pensar em caixas
+## Debug de layout: pensar em caixas
 
 Quando algo “não alinha”, raramente é “o Flexbox está errado”. Normalmente é:
 
@@ -775,7 +726,7 @@ Checklist mental rápido:
 * Há `gap` e/ou margens competindo?
 * Existe `width`/`height` fixa sabotando a adaptação?
 
-### Performance e manutenção
+## Performance e manutenção
 
 CSS também “escala mal” se você não tiver disciplina:
 
@@ -785,7 +736,7 @@ CSS também “escala mal” se você não tiver disciplina:
   Ele é o equivalente a “forçar a porta”: resolve agora, complica depois. Use como último recurso (ex.: sobrescrever CSS legado ou terceiros — mas aqui estamos em CSS puro, então a necessidade deve ser rara).
 * Prefira regras reutilizáveis e consistentes ao invés de exceções por componente.
 
-### Responsividade sem excessos
+## Responsividade sem excessos
 
 Antes de criar 10 media queries, tente resolver com:
 
@@ -798,7 +749,7 @@ Antes de criar 10 media queries, tente resolver com:
 
 ---
 
-## Erros comuns e confusões clássicas
+# 4.6. Erros comuns e confusões clássicas
 
 * **“Usar Grid para tudo” sem entender o problema**
   Grid é poderoso, mas Flexbox é mais simples e adequado para muitos componentes (menus, alinhamentos locais, toolbars).
@@ -821,7 +772,7 @@ Antes de criar 10 media queries, tente resolver com:
 
 ---
 
-## Glossário rápido
+# 4.7. Glossário rápido
 
 * **Flex container:** elemento com `display: flex`, que controla organização dos filhos.
 * **Flex item:** filho direto de um flex container.
@@ -840,7 +791,7 @@ Antes de criar 10 media queries, tente resolver com:
 
 ---
 
-## Resumo final
+# 4.8. Resumo final
 
 Layout responsivo é, sobretudo, **pensar em regras sob restrição**: telas variam, conteúdo varia, usuários mudam configurações. Você ganha robustez quando:
 
@@ -850,7 +801,7 @@ Layout responsivo é, sobretudo, **pensar em regras sob restrição**: telas var
 * prefere soluções fluídas (`wrap`, `minmax`, unidades relativas) antes de “remendar” com dezenas de breakpoints,
 * mantém consistência com `gap`, containers com `max-width`, e CSS legível e pouco específico.
 
-## Projeto Prático
+# 4.9. Projeto Prático
 
 Para consolidar o aprendizado desta aula, confira a implementação prática no repositório **to-do**:
 
