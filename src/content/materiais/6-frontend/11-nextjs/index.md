@@ -5,8 +5,6 @@ category: Frontend
 order: 11
 ---
 
-# 11. Next.js (Moderno – App Router)
-
 ## Objetivo da aula
 
 Apresentar o **Next.js moderno**, com foco no **App Router**, explicando por que ele existe, quais problemas resolve em relação ao React “puro” e como pensar aplicações modernas que combinam **renderização no servidor**, **roteamento por pastas**, **data fetching eficiente** e **SEO básico**, sem perder clareza arquitetural.
@@ -30,25 +28,9 @@ Apresentar o **Next.js moderno**, com foco no **App Router**, explicando por que
 
 ---
 
-## Sumário
+# 11.1. React x Next.js: qual problema o Next resolve?
 
-* [1. React x Next.js: qual problema o Next resolve?](#1-react-x-nextjs-qual-problema-o-next-resolve)
-* [2. App Router e roteamento por pastas (app/)](#2-app-router-e-roteamento-por-pastas-app)
-* [3. Server Components x Client Components](#3-server-components-x-client-components)
-* [4. Data fetching no App Router](#4-data-fetching-no-app-router)
-* [5. SEO básico no Next](#5-seo-básico-no-next)
-* [6. Deploy (conceito) e ambiente de produção](#6-deploy-conceito-e-ambiente-de-produção)
-* [7. Boas práticas de organização e mentalidade](#7-boas-práticas-de-organização-e-mentalidade-de-projeto)
-* [8. Próximos passos](#8-próximos-passos)
-* [Erros comuns e confusões clássicas](#erros-comuns-e-confusões-clássicas)
-* [Glossário rápido](#glossário-rápido)
-* [Resumo final](#resumo-final)
-
----
-
-## React x Next.js: qual problema o Next resolve?
-
-### React como biblioteca de UI
+## React como biblioteca de UI
 
 O React, por si só, é **uma biblioteca para construir interfaces**. Ele resolve muito bem o problema de **componentização** e **atualização eficiente da UI**, mas deixa várias decisões importantes nas mãos do desenvolvedor:
 
@@ -60,7 +42,7 @@ O React, por si só, é **uma biblioteca para construir interfaces**. Ele resolv
 
 Em aplicações reais, essas decisões não são triviais. Por isso, projetos em React “puro” acabam acumulando **camadas de configuração**, bibliotecas adicionais e padrões próprios.
 
-### Next.js como framework
+## Next.js como framework
 
 O Next.js surge como um **framework**: ele usa React por baixo, mas entrega **convenções prontas** para problemas recorrentes.
 
@@ -75,13 +57,13 @@ De forma resumida, o Next oferece:
 **Dica**
 Frameworks reduzem liberdade em troca de **consistência e previsibilidade**. Isso costuma ser positivo em times e projetos médios ou grandes.
 
-### Quando usar Next.js
+## Quando usar Next.js
 
 * **Sites públicos** que precisam ser indexados (marketing, blogs, documentação)
 * **Aplicações com páginas indexáveis**, mesmo que tenham interatividade
 * **Dashboards** também podem usar Next, embora o SEO seja menos crítico
 
-### Conceitos de renderização (visão geral)
+## Conceitos de renderização (visão geral)
 
 * **CSR (Client-Side Rendering)**: o navegador baixa JS e constrói a página
 * **SSR (Server-Side Rendering)**: o servidor envia HTML já pronto
@@ -95,13 +77,13 @@ Cada abordagem envolve trade-offs entre:
 * Carga no servidor
 
 ---
-![alt text](/api/materiais-assets/6-frontend/11-nextjs/assets/image.png)
+![Figura 1 — React x Next.js](/api/materiais-assets/6-frontend/11-nextjs/assets/image.png)
 *Figura 1 — React x Next.js*
 ---
 
-## App Router e roteamento por pastas (app/)
+# 11.2. App Router e roteamento por pastas (app/)
 
-### Estrutura base
+## Estrutura base
 
 No Next moderno, tudo começa na pasta **app/**.
 
@@ -112,7 +94,7 @@ Arquivos fundamentais:
 
 O layout define **estrutura persistente** (header, footer), enquanto `page.tsx` define o conteúdo da rota.
 
-### Rotas por pastas
+## Rotas por pastas
 
 Cada pasta vira um segmento da URL:
 
@@ -125,26 +107,26 @@ app/
 
 Rotas aninhadas funcionam da mesma forma, refletindo a hierarquia.
 
-### Layouts e composição
+## Layouts e composição
 
 Layouts podem ser **aninhados**, permitindo UI persistente em partes da aplicação.
 
 **Conceito-chave**
 Layouts não são apenas “templates”; eles representam **fronteiras de renderização e estado visual persistente**.
 
-### Not found e erros
+## Not found e erros
 
 * `not-found.tsx`: página 404 customizada
 * `error.tsx`: tratamento de erros da rota
 
 São arquivos especiais, reconhecidos pelo framework.
 
-### Route groups
+## Route groups
 
 Pastas entre parênteses, como `(auth)` ou `(dashboard)`, **não aparecem na URL**.
 Servem apenas para **organizar o código**.
 
-### Exemplo de árvore e URLs
+## Exemplo de árvore e URLs
 
 ```
 app/
@@ -159,33 +141,33 @@ app/
 ```
 
 ---
-![alt text](/api/materiais-assets/6-frontend/11-nextjs/assets/image-1.png)
+![Figura 2 — app/ → URLs](/api/materiais-assets/6-frontend/11-nextjs/assets/image-1.png)
 *Figura 2 — app/ → URLs*
 
 ---
 
-## Server Components x Client Components
+# 11.3. Server Components x Client Components
 
-### Modelo mental
+## Modelo mental
 
 No **App Router**, todo componente é **Server Component por padrão**.
 
 * **Server Component**: roda no servidor
 * **Client Component**: roda no navegador (precisa de `"use client"`)
 
-### O que pode em Server Components
+## O que pode em Server Components
 
 * Buscar dados no servidor
 * Acessar recursos sensíveis (conceito)
 * Renderizar HTML já com dados
 
-### O que exige Client Components
+## O que exige Client Components
 
 * `useState`, `useEffect`
 * Eventos (`onClick`, `onChange`)
 * APIs do browser (`window`, `localStorage`)
 
-### A fronteira
+## A fronteira
 
 Um Server Component pode **renderizar** um Client Component, passando props **serializáveis**.
 
@@ -209,14 +191,14 @@ export default async function Page() {
 **Atenção**
 Um Client Component **não pode importar** um Server Component.
 
-### Boas práticas
+## Boas práticas
 
 * Client Components pequenos
 * Buscar dados no servidor sempre que possível
 * Usar Client apenas para interatividade
 
 ---
-![alt text](/api/materiais-assets/6-frontend/11-nextjs/assets/image-2.png)
+![Figura 3 — Server x Client Components](/api/materiais-assets/6-frontend/11-nextjs/assets/image-2.png)
 *Figura 3 — Server x Client Components*
 
 * **Objetivo**: Mostrar onde cada componente roda.
@@ -224,9 +206,9 @@ Um Client Component **não pode importar** um Server Component.
 
 ---
 
-## Data fetching no App Router
+# 11.4. Data fetching no App Router
 
-### Fetch no servidor
+## Fetch no servidor
 
 Server Components podem ser `async`:
 
@@ -246,26 +228,26 @@ Benefícios:
 **Conceito-chave**
 Menos trabalho no cliente significa **melhor performance percebida**, mesmo que o servidor faça mais.
 
-### Cache e revalidação (visão geral)
+## Cache e revalidação (visão geral)
 
 * Fetch é cacheado por padrão
 * `revalidate` permite atualizar dados periodicamente
 * Útil para dados que mudam, mas não a cada requisição
 
-### Fetch no cliente
+## Fetch no cliente
 
 Quando depende do browser ou interação do usuário:
 
 * `useEffect`
 * estados de loading e erro
 
-### Padrão recomendado
+## Padrão recomendado
 
 > Buscar dados no servidor por padrão.
 > Usar fetch no cliente apenas quando necessário.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/11-nextjs/assets/image-3.png)
+![Figura 4 — Fluxo de data fetching](/api/materiais-assets/6-frontend/11-nextjs/assets/image-3.png)
 *Figura 4 — Fluxo de data fetching*
 
 * **Objetivo**: Mostrar server fetch → HTML → hidratação.
@@ -273,13 +255,13 @@ Quando depende do browser ou interação do usuário:
 
 ---
 
-## SEO básico no Next
+# 11.5. SEO básico no Next
 
-### Por que SEO entra aqui
+## Por que SEO entra aqui
 
 Next.js gera **HTML real**, não apenas um container vazio. Isso facilita o trabalho de crawlers.
 
-### Metadata no App Router
+## Metadata no App Router
 
 Cada página pode exportar metadata:
 
@@ -292,7 +274,7 @@ export const metadata = {
 
 Também pode ser dinâmica (conceito).
 
-### Boas práticas
+## Boas práticas
 
 * Títulos únicos
 * Descrições claras
@@ -303,7 +285,7 @@ Também pode ser dinâmica (conceito).
 Next ajuda no SEO, mas **conteúdo e estrutura** continuam sendo decisivos.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/11-nextjs/assets/image-4.png)
+![Figura 5 — Metadata e SEO](/api/materiais-assets/6-frontend/11-nextjs/assets/image-4.png)
 *Figura 5 — Metadata e SEO*
 
 * **Objetivo**: Mostrar relação entre página, metadata e crawler.
@@ -311,9 +293,9 @@ Next ajuda no SEO, mas **conteúdo e estrutura** continuam sendo decisivos.
 
 ---
 
-## Deploy (conceito) e ambiente de produção
+# 11.6. Deploy (conceito) e ambiente de produção
 
-### O que é deploy
+## O que é deploy
 
 Processo de:
 
@@ -321,24 +303,24 @@ Processo de:
 2. Geração de artefatos
 3. Execução em servidor ou edge
 
-### Ambientes
+## Ambientes
 
 * **Dev**: desenvolvimento local
 * **Staging**: validação
 * **Prod**: usuários finais
 
-### Onde hospedar
+## Onde hospedar
 
 * Plataformas especializadas
 * Infra própria
 * O conceito é o mesmo
 
-### Variáveis de ambiente
+## Variáveis de ambiente
 
 * Configurações externas ao código
 * Secrets devem existir **apenas no servidor**
 
-### Observabilidade
+## Observabilidade
 
 * Logs
 * Erros
@@ -346,7 +328,7 @@ Processo de:
 
 ---
 
-## Boas práticas de organização e mentalidade de projeto
+# 11.7. Boas práticas de organização e mentalidade de projeto
 
 Separar responsabilidades:
 
@@ -365,7 +347,7 @@ Next.js exige **escolhas conscientes**: decidir o que roda no servidor e o que r
 
 ---
 
-## Próximos passos
+# 11.8. Próximos passos
 
 * Server Actions
 * Autenticação
@@ -375,7 +357,7 @@ Next.js exige **escolhas conscientes**: decidir o que roda no servidor e o que r
 
 ---
 
-## Erros comuns e confusões clássicas
+# 11.9. Erros comuns e confusões clássicas
 
 * Usar `useState` em Server Component
 * Esquecer `"use client"`
@@ -388,7 +370,7 @@ Next.js exige **escolhas conscientes**: decidir o que roda no servidor e o que r
 
 ---
 
-## Glossário rápido
+# 11.10. Glossário rápido
 
 * **Framework**: conjunto de regras e ferramentas
 * **CSR**: renderização no cliente
@@ -405,6 +387,6 @@ Next.js exige **escolhas conscientes**: decidir o que roda no servidor e o que r
 
 ---
 
-## Resumo final
+# 11.11. Resumo final
 
 O Next.js moderno não é apenas “React com mais coisas”. Ele representa uma **mudança de mentalidade**: pensar primeiro no servidor, usar o cliente apenas quando necessário, confiar em convenções e estruturar aplicações com clareza arquitetural. Entender isso é o passo fundamental para construir aplicações web modernas, escaláveis e bem organizadas.

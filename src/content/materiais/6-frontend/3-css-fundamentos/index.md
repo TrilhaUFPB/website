@@ -5,8 +5,6 @@ category: Frontend
 order: 3
 ---
 
-# 3. CSS: Fundamentos
-
 **Objetivo da aula**
 
 Entender o CSS “raiz” (puro), como ele é aplicado pelo navegador e como você controla aparência e layout básico de elementos usando regras, seletores, cascata, herança, especificidade, box model, unidades e `display`.
@@ -34,32 +32,11 @@ Entender o CSS “raiz” (puro), como ele é aplicado pelo navegador e como voc
 
 ---
 
-## Sumário
-
-1. [O que é CSS e por que ele existe](#1-o-que-é-css-e-por-que-ele-existe)
-   1.1 [Separação de responsabilidades](#11-separação-de-responsabilidades-conteúdo-x-apresentação)
-   1.2 [Como o navegador combina HTML + CSS](#12-como-o-navegador-combina-html--css-visão-geral-dom-cssom-e-renderização)
-   1.3 [Regra CSS: seletor + declarações](#13-a-ideia-de-regra-css-seletor--declarações)
-   1.4 [Cascata, especificidade e herança](#14-conceitos-base-cascata-especificidade-e-herança)
-2. [Como aplicar CSS (arquivo externo)](#2-como-aplicar-css-arquivo-externo)
-3. [Seletores fundamentais (tag, classe, id)](#3-seletores-fundamentais-tag-classe-id--e-o-jeito-certo-de-usar)
-4. [Box Model (o coração do CSS)](#4-box-model-o-coração-do-css)
-5. [Propriedades essenciais](#5-propriedades-essenciais-com-agrupamento-didático)
-6. [Tipografia básica](#6-tipografia-básica-o-que-você-precisa-saber-já)
-7. [Unidades (px, %, rem)](#7-unidades-px--rem--com-intuição-forte)
-8. [display e fluxo básico](#8-display-e-fluxo-básico-layout-sem-magia)
-9. [Erros comuns e confusões clássicas](#9-erros-comuns-e-confusões-clássicas)
-10. [Glossário rápido](#10-glossário-rápido)
-11. [Resumo final](#11-resumo-final)
-12. [Projeto Prático](#12-projeto-prático)
-
----
-
-## O que é CSS e por que ele existe
+# 3.1. O que é CSS e por que ele existe
 
 CSS (Cascading Style Sheets) é a linguagem que descreve **como** os elementos do HTML devem **aparecer**: cores, fontes, espaçamentos, bordas e também regras de layout (como os elementos se comportam no fluxo da página).
 
-### Separação de responsabilidades (conteúdo x apresentação)
+## Separação de responsabilidades (conteúdo x apresentação)
 
 Pense no HTML como o **roteiro** e a **estrutura**: títulos, parágrafos, listas, formulários. Ele diz “o que é”.
 Já o CSS é a **direção de arte**: “como isso deve parecer”.
@@ -75,7 +52,7 @@ Essa separação tem vantagens práticas enormes:
 
 ---
 
-### Como o navegador combina HTML + CSS (visão geral: DOM, CSSOM e renderização)
+## Como o navegador combina HTML + CSS (visão geral: DOM, CSSOM e renderização)
 
 Quando você abre uma página, o navegador não “desenha” diretamente o HTML. Ele constrói representações internas:
 
@@ -88,12 +65,12 @@ Quando você abre uma página, o navegador não “desenha” diretamente o HTML
 
 **Dica**: quando você altera CSS, às vezes o navegador só repinta; outras vezes precisa recalcular layout. Por isso certas mudanças “custam” mais (não é para você otimizar agora — é para entender por que DevTools é importante depois).
 
-![DOM, CSSOM e Render Tree: fluxo do HTML e CSS até a renderização final na tela](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image.png){width=700px}
+![DOM, CSSOM e Render Tree: fluxo do HTML e CSS até a renderização final na tela](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image.png)
 *Figura 1 — Do HTML/CSS até a tela (pipeline mental)*
 
 ---
 
-### A ideia de regra CSS: seletor + declarações
+## A ideia de regra CSS: seletor + declarações
 
 Uma regra CSS tem dois blocos:
 
@@ -118,11 +95,11 @@ Aqui:
 
 ---
 
-### Conceitos-base: Cascata, Especificidade e Herança
+## Conceitos-base: Cascata, Especificidade e Herança
 
 Esses três conceitos explicam por que “o CSS que você escreveu” às vezes não aparece como você esperava.
 
-#### Cascata
+### Cascata
 
 É o mecanismo que resolve conflitos quando **múltiplas regras** tentam definir a **mesma propriedade** para o mesmo elemento.
 
@@ -133,7 +110,7 @@ Na prática, a cascata considera:
 3. **especificidade** do seletor
 4. ordem de aparição (regra mais abaixo geralmente vence se todo o resto empatar)
 
-#### Especificidade
+### Especificidade
 
 É uma “pontuação” do seletor: quanto mais específico, maior prioridade.
 Em termos intuitivos:
@@ -149,7 +126,7 @@ Exemplo conceitual:
 
 **Atenção**: especificidade alta demais vira armadilha. Você começa a “brigar” com seu próprio CSS.
 
-#### Herança
+### Herança
 
 Algumas propriedades passam do elemento “pai” para os “filhos”, principalmente as ligadas a texto (como `color`, `font-family`). Outras não herdam (como `margin`, `border`).
 
@@ -168,12 +145,12 @@ Exemplo narrativo: se você define `color` no `body`, todo texto dentro herda, a
 (2) uma regra mais forte venceu (especificidade/ordem), ou
 (3) a propriedade não herda como você imaginou.
 
-![Diagrama mostrando como especificidade e cascata resolvem conflitos de estilos CSS](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image-1.png){width=700px}
+![Diagrama mostrando como especificidade e cascata resolvem conflitos de estilos CSS](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image-1.png)
 *Figura 2 — “Quem vence?” (cascata e especificidade)*
 
 ---
 
-## Como aplicar CSS (arquivo externo)
+# 3.2. Como aplicar CSS (arquivo externo)
 
 O jeito padrão é criar um arquivo `.css` e “linkar” no HTML:
 
@@ -183,13 +160,13 @@ O jeito padrão é criar um arquivo `.css` e “linkar” no HTML:
 </head>
 ```
 
-### Por que fica no `<head>`?
+## Por que fica no `<head>`?
 
 Porque o CSS é necessário para o navegador calcular layout e pintar a página corretamente. Colocar no `<head>` ajuda o navegador a descobrir cedo quais estilos aplicar.
 
 **Dica**: CSS normalmente é **render-blocking** (o navegador pode atrasar a pintura até obter estilos). Isso evita “piscadas” de layout sem estilo.
 
-### Ordem de carregamento e prioridade (múltiplos arquivos)
+## Ordem de carregamento e prioridade (múltiplos arquivos)
 
 Você pode ter mais de um `<link>`:
 
@@ -201,7 +178,7 @@ Você pode ter mais de um `<link>`:
 
 Regra prática: **se dois seletores tiverem o mesmo peso**, o que vier **por último** tende a vencer (ordem no HTML e, dentro do arquivo, ordem das regras).
 
-### Boas práticas simples de organização
+## Boas práticas simples de organização
 
 * `base.css`: estilos gerais (tipografia global, cores básicas, ajustes de corpo).
 * `components.css`: padrões reutilizáveis (botões, cards).
@@ -219,7 +196,7 @@ body { margin: 0; }
 
 **Atenção**: “resetar tudo” sem entender pode apagar estilos úteis (como espaçamento de listas) e te fazer gastar tempo recolocando o que o browser já fazia bem.
 
-### Evitar `style=""` inline — e por quê
+## Evitar `style=""` inline — e por quê
 
 Inline style:
 
@@ -236,11 +213,11 @@ Problemas reais:
 
 ---
 
-## Seletores fundamentais (tag, classe, id) => e o jeito certo de usar
+# 3.3. Seletores fundamentais (tag, classe, id) => e o jeito certo de usar
 
 Seletores são a “ponte” entre regras e elementos.
 
-### Seletores de tipo (tag)
+## Seletores de tipo (tag)
 
 Seleciona todos os elementos daquela tag:
 
@@ -250,7 +227,7 @@ p { line-height: 1.6; }
 
 Bom para padrões gerais de tipografia e consistência.
 
-### Seletor de classe (`.`)
+## Seletor de classe (`.`)
 
 Seleciona elementos com a classe:
 
@@ -260,7 +237,7 @@ Seleciona elementos com a classe:
 
 Use classe quando você quer **reutilizar estilo** em múltiplos lugares.
 
-### Seletor de id (`#`)
+## Seletor de id (`#`)
 
 Seleciona o elemento com aquele id:
 
@@ -274,7 +251,7 @@ Use id como **identificador único**. Em CSS, id é poderoso (especificidade alt
 
 ---
 
-### Seletores combinados simples (descendente)
+## Seletores combinados simples (descendente)
 
 Seleciona `p` que esteja dentro de `.card`:
 
@@ -284,7 +261,7 @@ Seleciona `p` que esteja dentro de `.card`:
 
 **Atenção**: seletores “profundos” (`.a .b .c p span`) criam dependência frágil da estrutura do HTML. Se você muda uma `div`, o estilo “quebra” silenciosamente.
 
-### Agrupamento e encadeamento
+## Agrupamento e encadeamento
 
 **Agrupamento** (mesma regra para seletores diferentes):
 
@@ -300,7 +277,7 @@ h1, h2, h3 { font-family: system-ui, sans-serif; }
 
 Aqui seleciona elementos que tenham **as duas classes** `button` e `primary`.
 
-### Boas práticas de naming (semântica)
+## Boas práticas de naming (semântica)
 
 Prefira nomes que descrevem papel/semântica visual, não “como parece hoje”.
 
@@ -309,7 +286,7 @@ Prefira nomes que descrevem papel/semântica visual, não “como parece hoje”
 
 **Conceito-chave**: seu CSS é um vocabulário. Bons nomes tornam o código legível e escalável.
 
-### Pseudo-classes essenciais: `:hover` e `:focus`
+## Pseudo-classes essenciais: `:hover` e `:focus`
 
 Pseudo-classes permitem estados visuais sem JavaScript.
 
@@ -322,12 +299,12 @@ button:focus { outline: 2px solid #000; }
 
 **Atenção**: `:focus` não é “detalhe estético”: é acessibilidade (teclado). Evite remover outline sem oferecer alternativa clara.
 
-![Ilustração dos tipos de seletores CSS: tag, classe, id e combinadores](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image-2.png){width=700px}
+![Ilustração dos tipos de seletores CSS: tag, classe, id e combinadores](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image-2.png)
 *Figura 3 — Tipos de seletores (mapa rápido)*
 
 ---
 
-## Box Model
+# 3.4. Box Model
 
 Todo elemento renderizado é uma caixa retangular. Essa caixa tem camadas:
 
@@ -336,7 +313,7 @@ Todo elemento renderizado é uma caixa retangular. Essa caixa tem camadas:
 * **border**: a borda
 * **margin**: espaço externo (separa do resto)
 
-### Dimensões reais: `width/height` vs espaço ocupado
+## Dimensões reais: `width/height` vs espaço ocupado
 
 Quando você define:
 
@@ -348,7 +325,7 @@ Pergunta crucial: a caixa ocupa 200px ou mais?
 
 Depende do `box-sizing`.
 
-### `box-sizing`: `content-box` vs `border-box`
+## `box-sizing`: `content-box` vs `border-box`
 
 * `content-box` (padrão): `width` mede só o **content**. Padding e borda aumentam o tamanho final.
 * `border-box`: `width` inclui content + padding + border. Resultado mais previsível para layout.
@@ -361,7 +338,7 @@ Muito comum:
 
 **Dica**: `border-box` reduz “conta de padeiro” de layout.
 
-### Colapso de margens (introdução)
+## Colapso de margens (introdução)
 
 Margens verticais (top/bottom) de elementos em fluxo normal podem “colapsar” em certas situações: em vez de somar, a maior prevalece.
 
@@ -373,7 +350,7 @@ Exemplo narrativo típico:
 
 **Atenção**: isso confunde no início porque você “mexeu em um elemento” e o espaço parece mudar “no outro”. Não é bug: é regra do fluxo normal.
 
-### `overflow`: quando o conteúdo “vaza” da caixa
+## `overflow`: quando o conteúdo “vaza” da caixa
 
 * `overflow: visible` (padrão em muitos casos): deixa vazar
 * `overflow: hidden`: corta
@@ -381,7 +358,7 @@ Exemplo narrativo típico:
 
 Isso é parte do box model porque trata a relação “conteúdo vs caixa”.
 
-### Como diagnosticar box model 
+## Como diagnosticar box model 
 
 Quando algo não encaixa, pense em camadas:
 
@@ -395,16 +372,16 @@ Ferramentas mentais simples:
 * aplicar `outline: 1px solid` temporariamente (não altera layout como `border` pode alterar)
 * usar DevTools para ver a “caixa” destacada (content/padding/border/margin)
 
-![Diagrama das camadas do box model: content, padding, border e margin em seções concêntricas](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image-3.png){width=700px}
+![Diagrama das camadas do box model: content, padding, border e margin em seções concêntricas](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image-3.png)
 *Figura 4 — Box model em camadas*
 
 ---
 
-## Propriedades essenciais 
+# 3.5. Propriedades essenciais
 
 A ideia aqui é criar “pacotes” mentais: cor, tamanho, espaçamento, bordas e acabamento.
 
-### Cores
+## Cores
 
 * `color`: cor do texto
 * `background-color`: cor de fundo
@@ -422,7 +399,7 @@ Diferença importante:
 
 **Dica**: se você quer fundo translúcido, prefira `rgba` no background ao invés de `opacity` no container (para não “lavar” o texto junto).
 
-### Tamanhos
+## Tamanhos
 
 * `width`, `height`
 * `max-width`, `min-height` etc.
@@ -436,7 +413,7 @@ Exemplo mínimo:
 .container { max-width: 960px; margin: 0 auto; }
 ```
 
-### Espaçamento
+## Espaçamento
 
 * `margin`: espaço externo
 * `padding`: espaço interno
@@ -459,7 +436,7 @@ Exemplo mínimo:
 **`gap` (menção)**
 `gap` é “espaço entre itens” em layouts com flex/grid. Aqui é só para você reconhecer quando vir; flex/grid fica para outra aula.
 
-### Bordas
+## Bordas
 
 * `border`: espessura + estilo + cor
 * `border-radius`: arredondamento
@@ -475,7 +452,7 @@ Exemplo:
 }
 ```
 
-### Sombra (acabamento leve)
+## Sombra (acabamento leve)
 
 `box-shadow` dá profundidade, mas use com parcimônia (sombra forte vira “lama visual”).
 
@@ -487,11 +464,11 @@ Exemplo mínimo:
 
 ---
 
-## Tipografia básica 
+# 3.6. Tipografia básica
 
 Texto é onde a maioria das interfaces “vive”. Tipografia ruim derruba a percepção de qualidade.
 
-### `font-family` e fallback fonts
+## `font-family` e fallback fonts
 
 Você declara uma lista: se a primeira não existir, usa a próxima.
 
@@ -505,7 +482,7 @@ body {
 
 Ideia: terminar com uma família genérica (`sans-serif`, `serif`, `monospace`) para garantir previsibilidade.
 
-### `font-size`, `font-weight`, `line-height`
+## `font-size`, `font-weight`, `line-height`
 
 * `font-size`: tamanho do texto
 * `font-weight`: peso (ex.: 400 normal, 700 bold — valores variam conforme fonte)
@@ -522,12 +499,12 @@ Exemplo:
 p { font-size: 1rem; line-height: 1.6; }
 ```
 
-### Alinhamento e detalhes
+## Alinhamento e detalhes
 
 * `text-align: left/center/right/justify` (cuidado com justify em telas estreitas)
 * `letter-spacing`: use com cautela; pequenas mudanças podem prejudicar legibilidade
 
-### Noção de “escala tipográfica”
+## Noção de “escala tipográfica”
 
 Em vez de tamanhos aleatórios, você define uma progressão coerente:
 
@@ -537,16 +514,16 @@ Em vez de tamanhos aleatórios, você define uma progressão coerente:
 
 Isso cria hierarquia visual sem “gritar” com o usuário.
 
-![Comparação visual de diferentes valores de line-height e seu impacto na legibilidade do texto](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image-4.png){width=700px}
+![Comparação visual de diferentes valores de line-height e seu impacto na legibilidade do texto](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image-4.png)
 *Figura 5 — `line-height` e legibilidade*
 
 ---
 
-## Unidades (px, %, rem)
+# 3.7. Unidades (px, %, rem)
 
 Unidades não são só “medida”: elas carregam uma filosofia de layout.
 
-### `px` (pixel CSS no mundo moderno)
+## `px` (pixel CSS no mundo moderno)
 
 Hoje, “1px” em CSS é um **pixel CSS**, não necessariamente um pixel físico do monitor. Em telas de alta densidade, vários pixels físicos podem representar 1px CSS.
 
@@ -556,7 +533,7 @@ Uso típico:
 * sombras
 * ajustes muito específicos (com parcimônia)
 
-### `%` (relativo a quê?)
+## `%` (relativo a quê?)
 
 `%` depende da propriedade e do contexto. Em geral:
 
@@ -566,7 +543,7 @@ Uso típico:
 
 **Conceito-chave**: `%` é “porcentagem de uma referência”. Sempre pergunte: referência de quê?
 
-### `rem` (relativo à raiz)
+## `rem` (relativo à raiz)
 
 `rem` é relativo ao `font-size` do elemento raiz (`html`).
 Se `html` tiver `font-size: 16px` (comum), então:
@@ -579,7 +556,7 @@ Por que isso é útil?
 
 * Acessibilidade: se o usuário aumenta a fonte base, o layout escala de forma mais coerente.
 
-### Recomendação prática (regra de bolso)
+## Recomendação prática (regra de bolso)
 
 * **rem**: tipografia e espaçamentos principais (consistência e escalabilidade)
 * **px**: detalhes finos (bordas, sombras, pequenos ajustes)
@@ -595,16 +572,16 @@ Por que isso é útil?
 
 ---
 
-## display e fluxo básico (layout sem magia)
+# 3.8. display e fluxo básico (layout sem magia)
 
-### Fluxo normal (document flow)
+## Fluxo normal (document flow)
 
 Por padrão, os elementos seguem o fluxo do documento:
 
 * elementos de bloco “empilham” verticalmente
 * elementos inline fluem dentro de uma linha, como palavras
 
-### `display: block`, `inline`, `inline-block`
+## `display: block`, `inline`, `inline-block`
 
 **block**
 
@@ -625,7 +602,7 @@ Por padrão, os elementos seguem o fluxo do documento:
 
 **Dica**: `inline-block` é um “híbrido” útil quando você quer itens lado a lado com tamanho controlável, sem entrar em flex/grid ainda.
 
-### “Por que meu elemento não aceita `width`?”
+## “Por que meu elemento não aceita `width`?”
 
 Caso clássico: você tentou dar `width` em um elemento `inline` (ex.: `span`, `a`).
 
@@ -635,23 +612,23 @@ Solução: trocar display:
 a { display: inline-block; width: 200px; }
 ```
 
-### `display: none` (e a diferença entre “sumir” e “invisível”)
+## `display: none` (e a diferença entre “sumir” e “invisível”)
 
 * `display: none`: remove do fluxo, não ocupa espaço.
 * `visibility: hidden` (nota): some visualmente, mas ainda ocupa espaço.
 
 **Atenção**: `display: none` também tira o elemento da árvore de renderização; não é só “ficar transparente”.
 
-### Teaser: posicionamento
+## Teaser: posicionamento
 
 Existe `position: relative/absolute/fixed/sticky`, mas isso merece uma aula própria. Por enquanto: lembre que `display` e fluxo normal explicam a maior parte das dúvidas iniciais.
 
-![Visualização do fluxo normal: elementos block empilhados verticalmente e inline fluindo em linhas](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image-5.png){width=700px}
+![Visualização do fluxo normal: elementos block empilhados verticalmente e inline fluindo em linhas](/api/materiais-assets/6-frontend/3-css-fundamentos/assets/image-5.png)
 *Figura 6 — Fluxo normal e tipos de display*
 
 ---
 
-## Erros comuns e confusões clássicas 
+# 3.9. Erros comuns e confusões clássicas
 
 1. **Usar `id` para tudo**
    Você cria especificidade alta demais e depois precisa “forçar” ainda mais para sobrescrever.
@@ -682,7 +659,7 @@ Existe `position: relative/absolute/fixed/sticky`, mas isso merece uma aula pró
 
 ---
 
-## Glossário rápido
+# 3.10. Glossário rápido
 
 * **Regra CSS**: seletor + bloco de declarações (propriedades/valores).
 * **Cascata**: mecanismo que decide qual regra vence quando há conflito.
@@ -703,13 +680,13 @@ Existe `position: relative/absolute/fixed/sticky`, mas isso merece uma aula pró
 
 ---
 
-## Resumo final
+# 3.11. Resumo final
 
 CSS é a linguagem que transforma a estrutura do HTML em uma interface legível e consistente. Para dominar o básico de verdade, você precisa entender três “regras do jogo” (cascata, especificidade e herança), a anatomia de toda caixa na tela (box model) e o comportamento padrão do layout (fluxo normal e `display`). Com esses fundamentos, as propriedades essenciais (cores, tamanhos, espaçamentos, bordas, tipografia e unidades) deixam de ser tentativa-e-erro e viram decisões conscientes — exatamente o que separa “fiz funcionar” de “sei o que estou fazendo”. 
 
 ---
 
-## Projeto Prático
+# 3.12. Projeto Prático
 
 Para consolidar o aprendizado desta aula, confira a implementação prática no repositório **to-do**:
 

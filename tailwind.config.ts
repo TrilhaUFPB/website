@@ -13,6 +13,7 @@ const config: Config = {
       fontFamily: {
         poppins: ["var(--font-poppins)", "sans-serif"],
         spaceGrotesk: ["var(--font-space-grotesk)", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
       },
       colors: {
         background: "hsl(var(--background))",

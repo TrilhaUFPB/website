@@ -5,8 +5,6 @@ category: Frontend
 order: 9
 ---
 
-# 9. React (Fundamentos)
-
 ## Objetivo da aula
 
 Construir um modelo mental sólido de como o React cria e atualiza interfaces, e como escrever componentes modernos (Function Components + Hooks) em **TypeScript**, usando **props**, **state**, **eventos**, **formulários controlados** e **listas** — com foco em clareza, legibilidade e previsibilidade do fluxo de dados.
@@ -30,30 +28,13 @@ Construir um modelo mental sólido de como o React cria e atualiza interfaces, e
 
 ---
 
-## Sumário
-
-1. [O que é React (modelo mental)](#1-o-que-é-react-modelo-mental)
-2. [Componentes (Function Components)](#2-componentes-function-components)
-3. [JSX e TSX (o “HTML dentro do JS” sem mito)](#3-jsx-e-tsx-o-html-dentro-do-js-sem-mito)
-4. [Props (entrada do componente)](#4-props-entrada-do-componente)
-5. [State (useState) — quando a UI precisa “lembrar”](#5-state-usestate--quando-a-ui-precisa-lembrar)
-6. [Eventos no React (comparando com DOM)](#6-eventos-no-react-comparando-com-dom)
-7. [Formulários controlados (o padrão “profissional”)](#7-formulários-controlados-o-padrão-profissional)
-8. [Renderização de listas (map) e keys](#8-renderização-de-listas-map-e-keys)
-9. [Boas práticas de estrutura e legibilidade](#9-boas-práticas-de-estrutura-e-legibilidade)
-10. [Erros comuns e confusões clássicas](#10-erros-comuns-e-confusões-clássicas)
-11. [Glossário rápido](#11-glossário-rápido)
-12. [Resumo final](#12-resumo-final)
-
----
-
 <a id="1-o-que-é-react-modelo-mental"></a>
 
-## O que é React (modelo mental)
+# 9.1. O que é React (modelo mental)
 
 React é uma forma de construir interfaces em que você descreve **como a UI deve ser** para um certo estado, e deixa o React cuidar do “como atualizar” quando esse estado muda.
 
-### UI como função do estado (UI = f(state))
+## UI como função do estado (UI = f(state))
 
 A ideia central é simples e poderosa:
 
@@ -66,7 +47,7 @@ Isso muda o estilo mental: em vez de “cliquei aqui, então esconda esse elemen
 **Conceito-chave**
 No React, você não “manda a tela mudar”. Você **muda o state**, e a tela é **derivada** desse state.
 
-### Componentes como “peças” reutilizáveis
+## Componentes como “peças” reutilizáveis
 
 Um componente é uma peça de UI que encapsula:
 
@@ -76,7 +57,7 @@ Um componente é uma peça de UI que encapsula:
 
 Pense em LEGO: você não molda o castelo de uma vez; você monta com blocos que você entende, testa e combina.
 
-### Renderização declarativa vs manipulação manual do DOM
+## Renderização declarativa vs manipulação manual do DOM
 
 No DOM “manual” (sem React), é comum:
 
@@ -93,7 +74,7 @@ No React (declarativo), você:
 **Dica**
 “Declarativo” não significa “mágico”. Significa que você descreve *o resultado*, e o React administra os passos intermediários.
 
-### Virtual DOM e reconciliação (visão geral leve)
+## Virtual DOM e reconciliação (visão geral leve)
 
 Quando o state muda, o React:
 
@@ -104,7 +85,7 @@ Quando o state muda, o React:
 
 Essa comparação e atualização é chamada de **reconciliação**. Você não precisa dos detalhes internos agora; o importante é entender **por que você escreve UI como função do estado** e **por que o React consegue atualizar eficientemente**.
 
-### Fluxo de dados: de cima para baixo (props)
+## Fluxo de dados: de cima para baixo (props)
 
 Em React, dados geralmente fluem:
 
@@ -113,16 +94,16 @@ Em React, dados geralmente fluem:
 Isso dá previsibilidade: você sabe onde um dado nasceu e por quais componentes ele passa.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/9-react-fundamentos/assets/image.png)
+![Figura 1 — Fluxo de dados (Parent → props → Child)](/api/materiais-assets/6-frontend/9-react-fundamentos/assets/image.png)
 *Figura 1 — Fluxo de dados (Parent → props → Child)*
 
 ---
 
 <a id="2-componentes-function-components"></a>
 
-## Componentes (Function Components)
+# 9.2. Componentes (Function Components)
 
-### O que é um componente: função que retorna UI
+## O que é um componente: função que retorna UI
 
 Um Function Component é literalmente uma função que retorna elementos React (via JSX/TSX). Na prática, ele também:
 
@@ -130,9 +111,9 @@ Um Function Component é literalmente uma função que retorna elementos React (
 * pode ter **state** (memória interna),
 * pode reagir a **eventos**.
 
-### Convenções
+## Convenções
 
-#### PascalCase
+### PascalCase
 
 Componentes começam com letra maiúscula:
 
@@ -140,7 +121,7 @@ Componentes começam com letra maiúscula:
 
 Isso não é só estilo: em JSX, tags com letra minúscula são tratadas como elementos HTML (`div`, `button`), e tags com maiúscula são tratadas como componentes.
 
-#### export/import
+### export/import
 
 Para reutilizar componentes, você exporta e importa:
 
@@ -164,7 +145,7 @@ export function App() {
 }
 ```
 
-### Responsabilidade e composição
+## Responsabilidade e composição
 
 Um componente bom costuma ser:
 
@@ -176,7 +157,7 @@ Em vez de um “componente gigante” que faz tudo, você organiza em camadas: c
 **Dica**
 Se você precisa rolar muito para entender um componente, é sinal de que ele pode ser dividido.
 
-### Exemplo mínimo de componente (TSX) e explicação linha a linha
+## Exemplo mínimo de componente (TSX) e explicação linha a linha
 
 ```tsx
 // Greeting.tsx
@@ -201,9 +182,9 @@ Um componente não “imprime” na tela por conta própria. Ele **retorna uma d
 
 <a id="3-jsx-e-tsx-o-html-dentro-do-js-sem-mito"></a>
 
-## JSX e TSX (o “HTML dentro do JS” sem mito)
+# 9.3. JSX e TSX (o “HTML dentro do JS” sem mito)
 
-### JSX como sintaxe (não é string, não é HTML)
+## JSX como sintaxe (não é string, não é HTML)
 
 JSX parece HTML, mas não é:
 
@@ -216,7 +197,7 @@ TSX é JSX + TypeScript: permite que o TypeScript entenda tipos enquanto você e
 **Conceito-chave**
 JSX é uma forma de escrever **árvores de elementos** em um formato legível.
 
-### Por que `className` e não `class`
+## Por que `className` e não `class`
 
 Em JavaScript, `class` é palavra reservada. O React usa:
 
@@ -225,16 +206,16 @@ Em JavaScript, `class` é palavra reservada. O React usa:
 
 Isso alinha os nomes com propriedades do DOM/JS e evita conflitos.
 
-### Expressões dentro de `{}`
+## Expressões dentro de `{}`
 
-#### Renderizar variáveis
+### Renderizar variáveis
 
 ```tsx
 const user = "Gabriel";
 return <h1>Bem-vindo, {user}</h1>;
 ```
 
-#### Ternário e `&&` (com cuidado)
+### Ternário e `&&` (com cuidado)
 
 ```tsx
 return <p>{isAdmin ? "Acesso total" : "Acesso limitado"}</p>;
@@ -247,7 +228,7 @@ return <p>{hasError && "Ocorreu um erro."}</p>;
 **Atenção**
 Com `&&`, o lado esquerdo precisa ser um boolean “limpo”. Se você usar um número, `0 && "texto"` resulta em `0` (e pode aparecer na tela). Prefira booleans.
 
-### Atributos e tipos: string vs expressão
+## Atributos e tipos: string vs expressão
 
 * String literal: `title="Olá"`
 * Expressão: `title={message}` ou `disabled={isDisabled}`
@@ -256,9 +237,9 @@ Com `&&`, o lado esquerdo precisa ser um boolean “limpo”. Se você usar um n
 <button disabled={isSaving}>Salvar</button>
 ```
 
-### Regras do JSX
+## Regras do JSX
 
-#### Um único “root”
+### Um único “root”
 
 Você precisa retornar um único elemento raiz:
 
@@ -271,7 +252,7 @@ return (
 );
 ```
 
-#### Fragment
+### Fragment
 
 Quando você não quer criar um `div` extra:
 
@@ -284,7 +265,7 @@ return (
 );
 ```
 
-### O que vira “JS de verdade” (visão geral)
+## O que vira “JS de verdade” (visão geral)
 
 Você pode imaginar que:
 
@@ -298,9 +279,9 @@ vira algo como “crie um elemento React do tipo `h1` com esse conteúdo”. Voc
 
 <a id="4-props-entrada-do-componente"></a>
 
-## Props (entrada do componente)
+# 9.4. Props (entrada do componente)
 
-### Props como parâmetros
+## Props como parâmetros
 
 Props são os “argumentos” de um componente. Se o componente é uma função, props são os parâmetros.
 
@@ -310,7 +291,7 @@ Isso é ótimo porque:
 * reduz dependências escondidas,
 * incentiva componentes reutilizáveis.
 
-### Por que props não devem ser mutadas
+## Por que props não devem ser mutadas
 
 Props representam dados **recebidos**. Se você as muta, você:
 
@@ -321,7 +302,7 @@ Props representam dados **recebidos**. Se você as muta, você:
 **Atenção**
 Se você precisa “alterar algo”, normalmente isso é **state** (local) ou uma ação solicitada ao pai via callback.
 
-### Tipagem de props em TypeScript
+## Tipagem de props em TypeScript
 
 Um padrão comum:
 
@@ -344,7 +325,7 @@ export function Card({ title, description }: CardProps) {
 * `description?: string` significa “pode não vir”.
 * destructuring torna o uso mais legível.
 
-### Props `children` (noção)
+## Props `children` (noção)
 
 `children` é o conteúdo entre a abertura e fechamento do componente:
 
@@ -372,12 +353,12 @@ Uso:
 </Panel>
 ```
 
-### Padrões comuns
+## Padrões comuns
 
 * **Props de conteúdo**: `title`, `subtitle`, `label`
 * **Props de comportamento**: `onClick`, `onSubmit`, `onChange`
 
-#### Exemplo mínimo: Card + Button com `onClick` tipado
+### Exemplo mínimo: Card + Button com `onClick` tipado
 
 ```tsx
 type ButtonProps = {
@@ -413,9 +394,9 @@ Quando você passa uma função por props, você está criando um “fio” de c
 
 <a id="5-state-usestate--quando-a-ui-precisa-lembrar"></a>
 
-## State (useState) — quando a UI precisa “lembrar”
+# 9.5. State (useState) — quando a UI precisa “lembrar”
 
-### O que é state e por que existe
+## O que é state e por que existe
 
 State é a memória do componente: dados que:
 
@@ -429,7 +410,7 @@ Exemplos típicos:
 * se um painel está aberto,
 * qual item está selecionado.
 
-### `useState`: valor atual + setter
+## `useState`: valor atual + setter
 
 O `useState` te dá dois valores:
 
@@ -456,20 +437,20 @@ export function Counter() {
 **Conceito-chave**
 O componente “roda de novo” (re-render) porque o state mudou — não porque você “mandou redesenhar”.
 
-### Regras importantes
+## Regras importantes
 
-#### Nunca mutar state diretamente
+### Nunca mutar state diretamente
 
 Se o state é um objeto/array, você não deve fazer `push`, `sort` mutável, ou alterar propriedades diretamente. O React precisa de uma **nova referência** para entender que mudou.
 
 **Atenção**
 Mesmo que “pareça funcionar”, mutação costuma gerar bugs intermitentes e difíceis de rastrear.
 
-#### Atualizações podem ser agrupadas (noção)
+### Atualizações podem ser agrupadas (noção)
 
 O React pode agrupar atualizações de state para evitar renders desnecessários. Então, não assuma que o state muda “instantaneamente” linha a linha como uma variável comum.
 
-#### Functional update quando depende do anterior
+### Functional update quando depende do anterior
 
 Se o próximo valor depende do valor anterior, prefira:
 
@@ -479,9 +460,9 @@ setCount((prev) => prev + 1);
 
 Isso evita problemas quando múltiplas atualizações são agrupadas.
 
-### Exemplos mínimos
+## Exemplos mínimos
 
-#### Contador (bem explicado)
+### Contador (bem explicado)
 
 ```tsx
 import { useState } from "react";
@@ -503,7 +484,7 @@ export function Counter() {
 }
 ```
 
-#### Toggle (mostrar/esconder)
+### Toggle (mostrar/esconder)
 
 ```tsx
 import { useState } from "react";
@@ -524,16 +505,16 @@ export function ToggleDetails() {
 ```
 
 ---
-![alt text](/api/materiais-assets/6-frontend/9-react-fundamentos/assets/image-1.png)
+![Figura 2 — Ciclo de render: state muda → re-render → UI atualiza](/api/materiais-assets/6-frontend/9-react-fundamentos/assets/image-1.png)
 *Figura 2 — Ciclo de render: state muda → re-render → UI atualiza*
 
 ---
 
 <a id="6-eventos-no-react-comparando-com-dom"></a>
 
-## Eventos no React (comparando com DOM)
+# 9.6. Eventos no React (comparando com DOM)
 
-### `onClick`, `onChange`, `onSubmit`
+## `onClick`, `onChange`, `onSubmit`
 
 React usa props para eventos:
 
@@ -543,11 +524,11 @@ React usa props para eventos:
 
 Isso se parece com DOM, mas a forma de organizar é mais consistente: você passa uma função e o React chama quando o evento ocorre.
 
-### Synthetic events (visão geral)
+## Synthetic events (visão geral)
 
 O React fornece eventos que parecem eventos do DOM, mas são “normalizados” para funcionar de forma consistente entre navegadores (historicamente importante). Hoje, a diferença raramente importa no básico, mas o termo aparece na documentação.
 
-### Tipar eventos com TypeScript (sem exagero)
+## Tipar eventos com TypeScript (sem exagero)
 
 Em muitos casos, o TypeScript infere o tipo automaticamente. Quando você precisar explicitar, use os tipos do React:
 
@@ -555,7 +536,7 @@ Em muitos casos, o TypeScript infere o tipo automaticamente. Quando você precis
 * `React.ChangeEvent<HTMLInputElement>`
 * `React.FormEvent<HTMLFormElement>`
 
-#### Exemplo: clique com state + submit com preventDefault
+### Exemplo: clique com state + submit com preventDefault
 
 ```tsx
 import { useState } from "react";
@@ -592,11 +573,11 @@ Em um `<form>`, um `<button>` sem `type` pode se comportar como submit por padr�
 
 <a id="7-formulários-controlados-o-padrão-profissional"></a>
 
-## Formulários controlados (o padrão “profissional”)
+# 9.7. Formulários controlados (o padrão “profissional”)
 
 Imagine um formulário de cadastro. Se a UI deve refletir o estado, então o valor do input também precisa estar em algum lugar previsível. É aí que entra o padrão de formulário controlado.
 
-### Controlado vs não-controlado
+## Controlado vs não-controlado
 
 * **Não-controlado**: o valor “mora” no DOM; você lê depois (ex: via `ref` ou `FormData`).
 * **Controlado**: o valor “mora” no state; o input apenas **reflete** esse state.
@@ -608,7 +589,7 @@ No React, o padrão controlado é muito comum porque:
 * evita inconsistências,
 * mantém o modelo mental “UI = f(state)” coerente.
 
-### Input controlado: `value` + `onChange`
+## Input controlado: `value` + `onChange`
 
 O padrão:
 
@@ -675,7 +656,7 @@ export function SignupForm() {
 **Dica**
 Comece simples: “um state por campo” é ótimo para formulários pequenos e didáticos. Estado em objeto faz sentido quando o formulário cresce — mas introduz detalhes (merge, imutabilidade) que aumentam o custo mental.
 
-### Trade-off: estado por campo vs estado como objeto
+## Trade-off: estado por campo vs estado como objeto
 
 * **Por campo**: mais verboso, mais explícito, mais fácil de raciocinar.
 * **Objeto único**: menos `useState`, mas exige cuidado com updates imutáveis.
@@ -684,7 +665,7 @@ Comece simples: “um state por campo” é ótimo para formulários pequenos e 
 Form controlado é basicamente um ciclo fechado: UI mostra `value`; evento muda state; state redefine `value`.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/9-react-fundamentos/assets/image-2.png)
+![Figura 3 — Form controlado: input → onChange → setState → value atualiza](/api/materiais-assets/6-frontend/9-react-fundamentos/assets/image-2.png)
 
 *Figura 3 — Form controlado: input → onChange → setState → value atualiza*
 
@@ -692,9 +673,9 @@ Form controlado é basicamente um ciclo fechado: UI mostra `value`; evento muda 
 
 <a id="8-renderização-de-listas-map-e-keys"></a>
 
-## Renderização de listas (map) e keys
+# 9.8. Renderização de listas (map) e keys
 
-### Renderizar arrays com `.map`
+## Renderizar arrays com `.map`
 
 Quando você tem uma lista de dados, a UI geralmente é “um item visual para cada item do array”. O `.map` expressa isso diretamente.
 
@@ -723,7 +704,7 @@ export function TodoList({ items }: TodoListProps) {
 }
 ```
 
-### `key`: por que existe
+## `key`: por que existe
 
 `key` é a forma de o React identificar **a identidade** de cada item renderizado numa lista.
 
@@ -736,14 +717,14 @@ Sem identidade, quando uma lista muda (insere, remove, reordena), o React pode:
 **Conceito-chave**
 `key` não é “um índice qualquer”. É uma etiqueta de identidade para o React rastrear cada item ao longo do tempo.
 
-### Por que não usar `index` quando a lista muda
+## Por que não usar `index` quando a lista muda
 
 Se você usa `index` como `key` e insere um item no topo, todos os índices mudam. O React “acha” que os itens trocaram de identidade — e aí o reaproveitamento fica errado.
 
 **Atenção**
 `index` como key só é aceitável quando a lista é **estática** (não muda ordem, não insere/remove) — o que é mais raro do que parece.
 
-### Estados comuns: lista vazia, loading, error (noção, sem fetch)
+## Estados comuns: lista vazia, loading, error (noção, sem fetch)
 
 Mesmo sem buscar dados nesta aula, é importante reconhecer padrões:
 
@@ -753,7 +734,7 @@ Mesmo sem buscar dados nesta aula, é importante reconhecer padrões:
 
 Esses estados são só variações de UI = f(state).
 
-### Exemplo mínimo: lista com `id` + botão para adicionar item (sem persistência)
+## Exemplo mínimo: lista com `id` + botão para adicionar item (sem persistência)
 
 ```tsx
 import { useState } from "react";
@@ -796,7 +777,7 @@ export function SimpleList() {
 ```
 
 ---
-![alt text](/api/materiais-assets/6-frontend/9-react-fundamentos/assets/image-3.png)
+![Figura 4 — Lista: array → map → elementos com key (identidade)](/api/materiais-assets/6-frontend/9-react-fundamentos/assets/image-3.png)
 
 *Figura 4 — Lista: array → map → elementos com key (identidade)*
 
@@ -804,15 +785,15 @@ export function SimpleList() {
 
 <a id="9-boas-práticas-de-estrutura-e-legibilidade"></a>
 
-## Boas práticas de estrutura e legibilidade
+# 9.9. Boas práticas de estrutura e legibilidade
 
-### Componentes pequenos
+## Componentes pequenos
 
 * Menos linhas por componente facilita entendimento.
 * Menos responsabilidades reduz efeito colateral.
 * Componentes menores se tornam “vocabulário” do seu app.
 
-### Nomear handlers: `handleSubmit`, `handleChange`
+## Nomear handlers: `handleSubmit`, `handleChange`
 
 Nomes consistentes viram documentação:
 
@@ -822,7 +803,7 @@ Nomes consistentes viram documentação:
 
 Isso deixa o JSX mais limpo, porque a intenção aparece no nome.
 
-### Evitar lógica pesada dentro do JSX
+## Evitar lógica pesada dentro do JSX
 
 JSX é ótimo para estrutura, mas lógica complexa dentro dele vira ruído.
 
@@ -847,7 +828,7 @@ Para condições maiores:
 **Dica**
 Uma boa regra prática: se você precisa “ler em voz alta” uma expressão dentro de `{}`, talvez ela devesse virar uma variável nomeada.
 
-### Padrões de pasta (visão geral)
+## Padrões de pasta (visão geral)
 
 Sem impor framework, um arranjo comum é:
 
@@ -859,7 +840,7 @@ O importante é separar:
 * **peças reutilizáveis** (genéricas)
 * de **composição de telas** (específica do contexto).
 
-### Estilos (sem ensinar, apenas mencionar)
+## Estilos (sem ensinar, apenas mencionar)
 
 Existem várias formas:
 
@@ -874,7 +855,7 @@ Nos exemplos desta aula, manteremos neutro: foco no React/TS, não no styling.
 
 <a id="10-erros-comuns-e-confusões-clássicas"></a>
 
-## Erros comuns e confusões clássicas
+# 9.10. Erros comuns e confusões clássicas
 
 * **Esquecer `key`** em listas, ou usar uma `key` que não é estável.
 * **Usar índice como `key`** em lista que insere/remove/reordena (bug de identidade).
@@ -899,7 +880,7 @@ A maioria desses problemas não é “erro de sintaxe”; é erro de **modelo me
 
 <a id="11-glossário-rápido"></a>
 
-## Glossário rápido
+# 9.11. Glossário rápido
 
 * **Componente**: função que recebe props e retorna uma descrição de UI (elementos React).
 * **JSX/TSX**: sintaxe que permite escrever árvores de UI dentro do JavaScript/TypeScript.
@@ -917,7 +898,7 @@ A maioria desses problemas não é “erro de sintaxe”; é erro de **modelo me
 
 <a id="12-resumo-final"></a>
 
-## Resumo final
+# 9.12. Resumo final
 
 React é mais fácil quando você aceita o contrato principal: **a UI é uma função do estado**. Componentes são funções que retornam UI; **props** levam dados do pai para o filho; **state** permite que a UI “lembre” e reaja a interações; eventos disparam handlers que mudam state; formulários controlados tornam inputs previsíveis; listas são renderizadas com `map` e precisam de **keys estáveis** para preservar identidade.
 

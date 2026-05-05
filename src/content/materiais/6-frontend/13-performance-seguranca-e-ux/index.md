@@ -5,8 +5,6 @@ category: Frontend
 order: 13
 ---
 
-# 13. Performance, Segurança e UX (Web)
-
 ## Objetivo da aula
 
 Entender **como performance, segurança e UX se combinam** para formar a “qualidade percebida” de um produto web — e aprender um **checklist prático** para construir interfaces rápidas, confiáveis, encontráveis (SEO) e seguras no dia a dia.
@@ -30,26 +28,7 @@ Entender **como performance, segurança e UX se combinam** para formar a “qual
 
 ---
 
-## Sumário
-
-* [1. Por que Performance + Segurança + UX andam juntos](#1-por-que-performance--segurança--ux-andam-juntos)
-* [2. Performance (fundamentos práticos)](#2-performance-fundamentos-práticos)
-
-  * [2.1 O que significa “rápido” na Web](#21-o-que-significa-rápido-na-web)
-  * [2.2 Principais gargalos do front-end](#22-principais-gargalos-do-front-end)
-  * [2.3 Boas práticas de performance (sem depender de framework)](#23-boas-práticas-de-performance-sem-depender-de-framework)
-  * [2.4 Medir antes de “otimizar no escuro”](#24-medir-antes-de-otimizar-no-escuro)
-* [3. SEO essencial (o mínimo bem feito)](#3-seo-essencial-o-mínimo-bem-feito)
-* [4. Segurança: noções de XSS (defensivo e conceitual)](#4-segurança-noções-de-xss-defensivo-e-conceitual)
-* [5. Feedback visual: loading, erro, sucesso (UX aplicada)](#5-feedback-visual-loading-erro-sucesso-ux-aplicada)
-* [6. UX (fundamentos que todo dev precisa)](#6-ux-fundamentos-que-todo-dev-precisa)
-* [Glossário rápido](#glossário-rápido)
-* [Resumo final](#resumo-final)
-* [Referências](#referências)
-
----
-
-## Por que Performance + Segurança + UX andam juntos
+# 13.1. Por que Performance + Segurança + UX andam juntos
 
 Um usuário não separa mentalmente “front-end”, “rede”, “servidor”, “segurança” e “design”. Ele percebe algo mais simples: **qualidade**.
 Se a página demora, trava, “pula” elementos, falha silenciosamente, ou parece suspeita, o diagnóstico do usuário é o mesmo: “o site é ruim”.
@@ -61,11 +40,11 @@ Pense no caminho real: alguém clica num link no celular, em 4G instável, com 1
 * Se aparece um erro genérico (“deu errado”) sem orientação, a pessoa desiste.
 * Se uma falha de segurança faz o site “agir estranho”, a pessoa não volta mais — e ainda alerta outros.
 
-### O mesmo usuário sente tudo como “qualidade”
+## O mesmo usuário sente tudo como “qualidade”
 
 Performance influencia UX (tempo de resposta percebido), e UX influencia performance percebida (feedback que reduz ansiedade). Segurança, por sua vez, protege o usuário e protege o produto: incidentes de segurança viram perda de confiança, reputação, e, frequentemente, trabalho extra de engenharia.
 
-### Trade-offs reais
+## Trade-offs reais
 
 No mundo real, você vive equilibrando escolhas:
 
@@ -78,16 +57,16 @@ No mundo real, você vive equilibrando escolhas:
 
 ---
 
-## Performance (fundamentos práticos)
+# 13.2. Performance (fundamentos práticos)
 
-![alt text](/api/materiais-assets/6-frontend/13-performance-seguranca-e-ux/assets/image.png)
-### Figura 1 — Performance pipeline (visão geral)
+![Figura 1 — Performance pipeline (visão geral)](/api/materiais-assets/6-frontend/13-performance-seguranca-e-ux/assets/image.png)
+*Figura 1 — Performance pipeline (visão geral)*
 
 ---
 
-### O que significa “rápido” na Web
+## O que significa “rápido” na Web
 
-#### Latência e rede (TTFB como conceito)
+### Latência e rede (TTFB como conceito)
 
 Mesmo com “internet boa”, a web é uma conversa: você pede, o servidor responde, e isso leva tempo.
 **TTFB (Time To First Byte)** é o conceito de quanto tempo demora desde o request até chegar o **primeiro byte** da resposta. Não é “a página carregou”, mas é um sinal de **latência + processamento do servidor + caminho de rede**.
@@ -99,7 +78,7 @@ Um site pode ser lento por:
 * resposta pesada,
 * muitos redirecionamentos.
 
-#### Peso de recursos (JS/CSS/imagens)
+### Peso de recursos (JS/CSS/imagens)
 
 Depois do HTML, a página geralmente busca **CSS, JS, fontes e imagens**. O tempo total depende de:
 
@@ -109,7 +88,7 @@ Depois do HTML, a página geralmente busca **CSS, JS, fontes e imagens**. O temp
 
 Em muitos sites, o maior peso não é “código”, mas **imagens** (hero enorme, banners, carrosséis) — e isso vira gargalo real.
 
-#### Renderização e bloqueios
+### Renderização e bloqueios
 
 Dois pontos confundem iniciantes:
 
@@ -118,7 +97,7 @@ Dois pontos confundem iniciantes:
 
 >**Dica**: quando alguém diz “o site está travando”, muitas vezes o problema não é a rede — é **JS ocupando a main thread**.
 
-#### Performance percebida: “aparecer algo útil” vs “estar 100% pronto”
+### Performance percebida: “aparecer algo útil” vs “estar 100% pronto”
 
 Usuários toleram carregamento se enxergarem progresso. Em geral:
 
@@ -129,7 +108,7 @@ Usuários toleram carregamento se enxergarem progresso. Em geral:
 
 ---
 
-### Principais gargalos do front-end
+## Principais gargalos do front-end
 
 1. **Imagens não otimizadas (o maior vilão em muitos sites)**
    Problemas típicos:
@@ -163,11 +142,11 @@ Usuários toleram carregamento se enxergarem progresso. Em geral:
 
 ---
 
-### Boas práticas de performance (sem depender de framework)
+## Boas práticas de performance (sem depender de framework)
 
 A ideia aqui é **mentalidade + hábitos**. Framework ajuda, mas não substitui.
 
-#### Imagens
+### Imagens
 
 * **Formatos modernos (conceito):** usar formatos mais eficientes reduz bytes transferidos sem perder qualidade perceptível (quando suportado).
 * **Tamanhos corretos e responsive images (conceito):** entregue uma imagem proporcional ao tamanho em que ela será exibida, e permita versões diferentes por viewport (mobile vs desktop).
@@ -181,14 +160,14 @@ Exemplo mínimo (apenas para fixar o conceito de lazy em imagens):
 
 >**Dica**: definir `width` e `height` ajuda a reservar espaço e reduzir “pulos” visuais (estabilidade).
 
-#### CSS
+### CSS
 
 * **Evitar CSS global enorme:** quanto maior e mais genérico, maior a chance de conflitos, e maior o custo de manutenção.
 * **Critical CSS (noção):** priorizar o CSS necessário para a “primeira dobra” ajuda a mostrar algo útil mais cedo, deixando o resto para depois.
 
 O objetivo não é “micro-otimizar”, e sim reduzir o tempo até a interface ser legível.
 
-#### JavaScript
+### JavaScript
 
 * **Carregar o necessário:** separar o que é essencial no início do que pode vir depois (por rota, por componente, por interação).
 * **Evitar trabalho pesado no main thread:** parsing, loops grandes, transformações complexas e bibliotecas pesadas podem travar interação.
@@ -197,18 +176,18 @@ O objetivo não é “micro-otimizar”, e sim reduzir o tempo até a interface 
 >**Conceito-chave**: main thread é um “caixa único”
 > Se você coloca muita coisa na fila (JS pesado), a interface “para de responder” mesmo com rede ótima.
 
-#### Rede/cache
+### Rede/cache
 
 * **Cache-Control (noção):** cache bem configurado evita downloads repetidos (especialmente para assets versionados como `app.9f3a2.js`).
 * **Evitar “chatty APIs”:** prefira endpoints que entregam os dados necessários de forma coerente (menos ida e volta), e evite cascatas sequenciais quando possível.
 
 ---
 
-### Medir antes de “otimizar no escuro”
+## Medir antes de “otimizar no escuro”
 
 Ferramentas ajudam a responder: “onde está o tempo?” e “qual mudança realmente melhorou?”.
 
-#### Ferramentas e abordagens (conceito)
+### Ferramentas e abordagens (conceito)
 
 * **DevTools Performance:** ajuda a ver trabalho de CPU, frames, long tasks, renderizações, e gargalos de main thread.
 * **Lighthouse:** roda auditorias e gera relatório com indicadores e recomendações; pode ser usado no DevTools, CLI ou CI. ([Chrome for Developers][2])
@@ -219,16 +198,16 @@ Ferramentas ajudam a responder: “onde está o tempo?” e “qual mudança rea
 
 ---
 
-## SEO essencial (o mínimo bem feito)
+# 13.3. SEO essencial (o mínimo bem feito)
 
 SEO não é “hack”. Em essência, é:
 
 1. tornar a página **compreensível para crawlers** (estrutura e metadados), e
 2. tornar a página **útil e clara para pessoas** (conteúdo e navegação).
 
-### Elementos essenciais
+## Elementos essenciais
 
-#### `title` e `meta description` (únicos por página)
+### `title` e `meta description` (únicos por página)
 
 * **Title**: precisa ser específico e descrever o conteúdo da página (não “Home” em todo lugar).
 * **Meta description**: ajuda a formar o snippet; boas práticas incluem ser relevante e **única por página**. ([Google for Developers][3])
@@ -242,12 +221,12 @@ Exemplo mínimo:
 </head>
 ```
 
-#### Headings semânticos (H1/H2)
+### Headings semânticos (H1/H2)
 
 * **H1** deve representar o tema principal da página.
 * **H2/H3** organizam seções e facilitam leitura, acessibilidade e entendimento por mecanismos.
 
-#### Links com texto descritivo
+### Links com texto descritivo
 
 “clique aqui” é ruim porque não descreve destino. Prefira:
 
@@ -255,7 +234,7 @@ Exemplo mínimo:
 * “política de privacidade”
 * “detalhes do plano”
 
-#### Imagens com `alt`
+### Imagens com `alt`
 
 O `alt` não é “encheção”; ele:
 
@@ -263,16 +242,16 @@ O `alt` não é “encheção”; ele:
 * ajuda contexto quando a imagem não carrega,
 * pode contribuir para entendimento do conteúdo.
 
-#### Canonical (noção)
+### Canonical (noção)
 
 Quando existem múltiplas URLs com conteúdo muito similar, `rel="canonical"` sugere qual versão é a principal, reduzindo confusão e duplicação.
 
-#### Sitemap/robots (noção)
+### Sitemap/robots (noção)
 
 * **Sitemap**: lista URLs importantes para descoberta.
 * **robots.txt**: orienta rastreamento (não é “segurança”).
 
-### SEO e renderização (visão geral)
+## SEO e renderização (visão geral)
 
 Crawlers evoluíram, mas o princípio continua sólido: **HTML já renderizado com conteúdo relevante** facilita indexação.
 
@@ -282,11 +261,11 @@ Crawlers evoluíram, mas o princípio continua sólido: **HTML já renderizado c
 >**Dica**: pense em “funciona minimamente sem JS?”
 > Nem sempre precisa ser perfeito, mas se sem JS vira uma página completamente vazia, SEO e acessibilidade sofrem.
 
-### Dados estruturados (apenas noção)
+## Dados estruturados (apenas noção)
 
 São marcações que ajudam buscadores a entender entidades (produto, artigo, evento). Não é obrigatório para o básico, mas pode melhorar apresentação em resultados.
 
-### Erros comuns
+## Erros comuns
 
 * páginas sem H1,
 * title genérico e repetido,
@@ -295,14 +274,14 @@ São marcações que ajudam buscadores a entender entidades (produto, artigo, ev
 * imagens sem `alt`,
 * links sem texto descritivo.
 
-![alt text](/api/materiais-assets/6-frontend/13-performance-seguranca-e-ux/assets/image-3.png)
-### Figura 4 — SEO essencial (do conteúdo ao crawler)
+![Figura 4 — SEO essencial (do conteúdo ao crawler)](/api/materiais-assets/6-frontend/13-performance-seguranca-e-ux/assets/image-3.png)
+*Figura 4 — SEO essencial (do conteúdo ao crawler)*
 
 ---
 
-## Segurança: noções de XSS (defensivo e conceitual)
+# 13.4. Segurança: noções de XSS (defensivo e conceitual)
 
-### O que é XSS (sem ensinar ataque)
+## O que é XSS (sem ensinar ataque)
 
 XSS (Cross-Site Scripting) é uma classe de problema em que **conteúdo não confiável** acaba sendo interpretado como **código** no navegador. A forma mental correta é:
 
@@ -310,13 +289,13 @@ XSS (Cross-Site Scripting) é uma classe de problema em que **conteúdo não con
 
 O ponto crítico é a **mistura indevida de dados com marcação/código**.
 
-### Onde o risco aparece
+## Onde o risco aparece
 
 * **`innerHTML`**: injeta strings como HTML. Se essa string contém conteúdo não confiável, você pode criar execução inesperada.
 * **Renderizar conteúdo vindo de API sem sanitização**: “mas veio do meu servidor” não garante que é confiável (pode ter sido alimentado por usuários, parceiros, integrações).
 * **Interpolação em atributos perigosos (noção)**: certos atributos e contextos exigem cuidado extra (URLs, estilos inline, handlers, etc.). O problema é menos “o atributo em si” e mais **o contexto de interpretação**.
 
-### Princípios de prevenção (o que um dev front precisa saber)
+## Princípios de prevenção (o que um dev front precisa saber)
 
 1. **Escape por padrão**
    Frameworks modernos costumam escapar strings automaticamente quando você renderiza texto. Isso é bom e deve ser preservado.
@@ -344,43 +323,43 @@ element.innerHTML = textoVindoDoUsuario;
 >**Atenção**: validação no front não é segurança completa
 > O front-end melhora UX e reduz lixo, mas segurança real precisa de validação e controles no back-end também.
 
-### Checklist “coisas para não fazer”
+## Checklist “coisas para não fazer”
 
 * nunca inserir HTML de usuário diretamente na página;
 * cuidado com renderizadores de Markdown/HTML: trate como entrada potencialmente não confiável;
 * cuidado com dados de terceiros (integrações, widgets, feeds): “terceiro” não é “confiável”.
 
-![alt text](/api/materiais-assets/6-frontend/13-performance-seguranca-e-ux/assets/image-2.png) 
+![Figura 3 — XSS defensivo (cadeia de confiança)](/api/materiais-assets/6-frontend/13-performance-seguranca-e-ux/assets/image-2.png) 
 
-### Figura 3 — XSS defensivo (cadeia de confiança)
+*Figura 3 — XSS defensivo (cadeia de confiança)*
 
 ---
 
-## Feedback visual: loading, erro, sucesso (UX aplicada)
+# 13.5. Feedback visual: loading, erro, sucesso (UX aplicada)
 
 Feedback visual é parte de performance percebida: ele responde à pergunta emocional do usuário — **“o sistema me ouviu?”**.
 
-### Por que feedback é parte de performance percebida
+## Por que feedback é parte de performance percebida
 
 Quando você clica e nada muda, o cérebro interpreta como atraso ou falha. A pessoa clica de novo, duplica ações, cria inconsistência (“enviei duas vezes?”) e fica frustrada.
 
-### Loading states
+## Loading states
 
-#### Spinner vs skeleton: quando usar cada
+### Spinner vs skeleton: quando usar cada
 
 * **Spinner**: bom para operações curtas e indefinidas (“carregando algo pequeno”). Em excesso, passa sensação de espera sem progresso.
 * **Skeleton**: melhor quando você sabe a estrutura do conteúdo e quer mostrar “o layout já está vindo”. Ajuda leitura e reduz ansiedade.
 
 >**Dica**: skeleton funciona bem quando a tela tem “forma” (cards, lista, perfil). Spinner funciona melhor quando é uma ação pequena (ex.: validar um cupom).
 
-#### Evitar “flicker”
+### Evitar “flicker”
 
 Se algo carrega rápido demais, mostrar loading por 80ms e sumir cria “pisca-pisca” (flicker). Uma prática comum é:
 
 * só mostrar loading se passar de um pequeno limiar (ex.: 200–300ms),
 * ou manter por um tempo mínimo (sem exagerar) para estabilidade visual.
 
-### Estados de erro
+## Estados de erro
 
 Uma boa mensagem de erro tem três características:
 
@@ -399,7 +378,7 @@ Exemplo de erro acionável (curto):
 * botão “tentar novamente” quando o usuário controla o momento,
 * fallback (“mostrar dados em cache”) quando possível.
 
-### Estados de sucesso
+## Estados de sucesso
 
 Sucesso deve ser **objetivo**:
 
@@ -409,12 +388,12 @@ Sucesso deve ser **objetivo**:
 
 Evite exagero visual para ações frequentes (poluição e fadiga). Reserve toasts/alerts fortes para eventos relevantes.
 
-### Microinterações
+## Microinterações
 
 * **disabled states**: botão desabilitado evita múltiplos envios e comunica “estou trabalhando”.
 * **foco e teclado (noção)**: usuários navegam por teclado e leitores de tela; foco visível é parte de UX e acessibilidade.
 
-#### Padrões de UI “de mercado” (exemplos pequenos)
+### Padrões de UI “de mercado” (exemplos pequenos)
 
 **Botão com estado de loading:**
 
@@ -437,17 +416,17 @@ Evite exagero visual para ações frequentes (poluição e fadiga). Reserve toas
 * usar para confirmar ações (ex.: “item removido”) com duração curta;
 * oferecer desfazer quando a ação é destrutiva (“desfazer”).
 
-![alt text](/api/materiais-assets/6-frontend/13-performance-seguranca-e-ux/assets/image-1.png)
+![Figura 2 — Estados de UI (transições)](/api/materiais-assets/6-frontend/13-performance-seguranca-e-ux/assets/image-1.png)
 
-### Figura 2 — Estados de UI (transições)
+*Figura 2 — Estados de UI (transições)*
 
 ---
 
-## UX (fundamentos que todo dev precisa)
+# 13.6. UX (fundamentos que todo dev precisa)
 
 UX não é “deixar bonito”. UX é **reduzir fricção**: menos esforço para concluir tarefas, menos dúvida, menos surpresa.
 
-### Princípios práticos
+## Princípios práticos
 
 * **Consistência**: padrões repetidos viram aprendizado. Se cada tela age de um jeito, o usuário nunca “domina” o sistema.
 * **Previsibilidade**: ações devem ter consequências esperadas. Se clicar em “salvar” às vezes fecha a tela e às vezes não, parece bug.
@@ -462,7 +441,7 @@ UX não é “deixar bonito”. UX é **reduzir fricção**: menos esforço para
 >**Conceito-chave**: acessibilidade é UX sob condições “difíceis”
 > Usuário com sol na tela, com mão tremendo no ônibus, com teclado, com leitor de tela — todos se beneficiam de interfaces mais claras.
 
-### UX em formulários
+## UX em formulários
 
 Formulários são onde a maioria dos produtos “perde” usuário.
 
@@ -470,7 +449,7 @@ Formulários são onde a maioria dos produtos “perde” usuário.
 * **Mensagens específicas**: “inválido” é vago. Diga o critério (“mínimo 8 caracteres”, “inclua @”).
 * **Preservar dados se der erro**: perder o que foi digitado após falha de rede parece punição.
 
-### UX e performance
+## UX e performance
 
 * **tempo de resposta percebido**: 300ms sem feedback pode parecer travamento; 800ms com feedback claro parece “em andamento”.
 * **mostrar progresso**: quando a operação é longa, “etapas” e barra de progresso reduzem ansiedade.
@@ -480,7 +459,7 @@ Formulários são onde a maioria dos produtos “perde” usuário.
 
 ---
 
-## Glossário rápido
+# 13.7. Glossário rápido
 
 * **Latência:** atraso de comunicação entre cliente e servidor (tempo de ida e volta).
 * **Cache:** reaproveitamento de respostas/arquivos para evitar downloads repetidos.
@@ -499,13 +478,13 @@ Formulários são onde a maioria dos produtos “perde” usuário.
 
 ---
 
-## Resumo final
+# 13.8. Resumo final
 
 Qualidade na Web é a soma do que o usuário sente: **rapidez**, **confiabilidade**, **clareza** e **segurança**. Performance não é só “carregar rápido”; é entregar utilidade cedo, manter a interface estável e interações responsivas. SEO não é truque; é estrutura e conteúdo compreensíveis. Segurança (XSS) é, antes de tudo, disciplina: tratar entradas como não confiáveis e renderizar com responsabilidade. E UX é o “cola-tudo”: feedback, consistência e acessibilidade transformam tecnologia em experiência.
 
 ---
 
-## Referências
+# 13.9. Referências
 
 * Google Search Central — SEO Starter Guide (títulos e fundamentos). ([Google for Developers][5])
 * Google Search Central — boas práticas de snippets e meta descriptions (descrições únicas e relevantes). ([Google for Developers][3])

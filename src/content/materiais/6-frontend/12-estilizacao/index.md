@@ -5,8 +5,6 @@ category: Frontend
 order: 12
 ---
 
-# 12. Estilização em React/Next (App Router)
-
 ## Objetivo da aula
 
 Entender, com modelo mental claro, **como** e **por que** diferentes abordagens de estilização existem no ecossistema React/Next.js (App Router), e **como escolher** uma estratégia que preserve consistência visual, produtividade e manutenção ao longo do tempo.
@@ -27,28 +25,7 @@ Entender, com modelo mental claro, **como** e **por que** diferentes abordagens 
 
 ---
 
-## Sumário
-
-* [1. Panorama: formas de estilizar em React/Next](#1-panorama-formas-de-estilizar-em-reactnext)
-* [2. CSS Modules (escopo local e previsível)](#2-css-modules-escopo-local-e-previsivel)
-* [3. Tailwind (utility-first com consistência via design system)](#3-tailwind-utility-first-com-consistencia-via-design-system)
-* [4. Bibliotecas de UI: shadcn, MUI e Chakra](#4-bibliotecas-de-ui-shadcn-mui-e-chakra)
-
-  * [4.1 shadcn/ui](#41-shadcnui)
-  * [4.2 MUI (Material UI)](#42-mui-material-ui)
-  * [4.3 Chakra UI](#43-chakra-ui)
-  * [4.4 Comparativo honesto](#44-comparativo-honesto)
-* [5. Consistência visual](#5-consistencia-visual)
-* [6. Organização de projeto](#6-organizacao-de-projeto-estilos-sem-virar-bagunca)
-* [7. Guia de decisão](#7-guia-de-decisao-como-escolher-abordagem-no-seu-projeto)
-* [Erros comuns e confusões clássicas](#erros-comuns-e-confusoes-classicas)
-* [Glossário rápido](#glossario-rapido)
-* [Resumo final](#resumo-final)
-* [Referências](#referencias)
-
----
-
-## Panorama: formas de estilizar em React/Next
+# 12.1. Panorama: formas de estilizar em React/Next
 
 Em projetos pequenos, estilizar parece simples: “escreve um CSS e aplica uma classe”. Só que, conforme o projeto cresce, surge o problema real: **consistência + produtividade + manutenção**. E isso é menos sobre “deixar bonito” e mais sobre **governança**: como evitar que cada tela vire um universo paralelo de cores, espaçamentos e botões?
 
@@ -61,7 +38,7 @@ Imagine um time que começa com 2 pessoas. Em poucas semanas já existem:
 
 As abordagens comuns para atacar isso em React/Next:
 
-### CSS “tradicional”
+## CSS “tradicional”
 
 Você cria arquivos `.css` globais e aplica classes no HTML. Funciona, mas em escala tende a sofrer com:
 
@@ -69,19 +46,19 @@ Você cria arquivos `.css` globais e aplica classes no HTML. Funciona, mas em es
 * dependência forte da ordem de import/cascade
 * regras “vazando” para componentes que não deveriam ser afetados
 
-### CSS Modules (escopo local)
+## CSS Modules (escopo local)
 
 Você escreve CSS normal, mas com **escopo por arquivo** (por componente). Isso reduz conflitos e torna o comportamento mais previsível, sem exigir um runtime.
 
-### Utility-first (Tailwind)
+## Utility-first (Tailwind)
 
 Em vez de inventar infinitas classes semânticas (`.card`, `.card2`, `.cardNew`), você compõe UI com **utilitários atômicos** (`p-4`, `rounded-lg`, `text-sm`), usando uma **escala** (spacing, fonte, cores) para manter consistência.
 
-### Component libraries (shadcn/ui, MUI, Chakra)
+## Component libraries (shadcn/ui, MUI, Chakra)
 
 Você adota um conjunto de componentes prontos (ou semi-prontos) com acessibilidade e padrões já embutidos. Isso acelera o time, mas muda o tipo de trabalho: você passa a gerenciar **tema, customização e consistência** em cima da biblioteca.
 
-### Trade-offs (o que você troca por quê)
+## Trade-offs (o que você troca por quê)
 
 Você sempre paga um preço — a pergunta é **qual preço você prefere pagar**.
 
@@ -96,20 +73,20 @@ Você sempre paga um preço — a pergunta é **qual preço você prefere pagar*
 Arquitetura é como você organiza complexidade para mudanças futuras. Estilo, em produto real, é exatamente isso: **um conjunto de decisões que precisam continuar funcionando quando tudo muda** (time cresce, features acumulam, design evolui).
 
 ---
-![alt text](/api/materiais-assets/6-frontend/12-estilizacao/assets/image.png)
+![Figura 1 — Global CSS vs CSS Modules (escopo e conflito de classes)](/api/materiais-assets/6-frontend/12-estilizacao/assets/image.png)
 *Figura 1 — Global CSS vs CSS Modules (escopo e conflito de classes)*
 
 ---
 
-## CSS Modules (escopo local e previsível)
+# 12.2. CSS Modules (escopo local e previsível)
 
-### O que é
+## O que é
 
 CSS Modules é **CSS normal**, porém com um detalhe importante: as classes do arquivo viram **um objeto importado** e são transformadas em nomes únicos (geralmente com hash) no build.
 
 Isso permite que você escreva `.container`, `.title`, `.button` **sem medo** de colidir com outra `.button` de outro lugar.
 
-### Modelo mental: por que o “hash” existe?
+## Modelo mental: por que o “hash” existe?
 
 Pense assim:
 
@@ -117,7 +94,7 @@ Pense assim:
 * No CSS Module, `.button` é um **apelido privado**: quando o projeto compila, ele vira algo como `button__a1b2c3`.
   Não é “mágica”; é só uma estratégia de nomes únicos para garantir escopo.
 
-### Uso típico em React/Next
+## Uso típico em React/Next
 
 O padrão mais comum é:
 
@@ -165,9 +142,9 @@ export function Button({ variant = "primary", children }: ButtonProps) {
 **Dica**
 CSS Modules brilha quando você quer **CSS de verdade** (pseudo-classes, seletores, media queries) com **escopo previsível**, sem discutir com cascade global.
 
-### Composição e padrões (sem virar gambiarra)
+## Composição e padrões (sem virar gambiarra)
 
-#### 1) “Classes utilitárias locais”
+### 1) “Classes utilitárias locais”
 
 Em vez de repetir regras, crie pequenos blocos locais úteis:
 
@@ -191,7 +168,7 @@ function Card({ elevated }: { elevated?: boolean }) {
 }
 ```
 
-#### 2) Variantes simples sem acoplar demais
+### 2) Variantes simples sem acoplar demais
 
 Variantes (“primary/secondary”, “sm/md/lg”) são inevitáveis. O erro é deixar isso espalhar sem padrão.
 
@@ -220,7 +197,7 @@ function Badge({ intent = "info" }: { intent?: "info" | "danger" }) {
 **Conceito-chave**
 A “unidade” de organização em CSS Modules é o **componente**. Se você sente vontade de criar um arquivo de Module gigantesco “para tudo”, você está voltando ao problema do CSS global — só que com outro nome.
 
-### Global CSS vs Modules: quando usar cada um
+## Global CSS vs Modules: quando usar cada um
 
 * **Global (pouco e bem definido)**:
 
@@ -236,14 +213,14 @@ A “unidade” de organização em CSS Modules é o **componente**. Se você se
 **Atenção**
 Global CSS tende a virar “lixo radioativo”: mexer em um lugar quebra outro. Use global como **infraestrutura** (base), e Modules como **implementação de componentes**.
 
-### Boas práticas
+## Boas práticas
 
 * **Naming semântico**: prefira `.header`, `.title`, `.actions` em vez de `.blueText`, `.margin10`.
 * Evite seletores profundos do tipo `.card .header .title span`
   Isso amarra estilo à estrutura e torna refatoração dolorosa.
 * Prefira **classes explícitas** nos pontos importantes do componente.
 
-### Erros comuns (e por que acontecem)
+## Erros comuns (e por que acontecem)
 
 * **“Por que minha classe não pega?”**
 
@@ -258,9 +235,9 @@ Global CSS tende a virar “lixo radioativo”: mexer em um lugar quebra outro. 
 
 ---
 
-## Tailwind (utility-first com consistência via design system)
+# 12.3. Tailwind (utility-first com consistência via design system)
 
-### O que é Tailwind (modelo mental)
+## O que é Tailwind (modelo mental)
 
 Tailwind é uma biblioteca de classes utilitárias. Mas a parte importante não é “ter muitas classes”; é que essas classes representam uma **escala consistente**.
 
@@ -279,31 +256,31 @@ Tailwind te empurra para o “sistema” porque:
 Tailwind não é um “atalho para escrever menos”. É um jeito de codificar **um design system mínimo** diretamente na forma como você escreve UI.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/12-estilizacao/assets/image-2.png)
+![Figura 2 — Tailwind como sistema (tokens/escala → utilitários → componentes)](/api/materiais-assets/6-frontend/12-estilizacao/assets/image-2.png)
 *Figura 2 — Tailwind como sistema (tokens/escala → utilitários → componentes)*
 
 ---
 
-### Como pensar classes: um roteiro mental
+## Como pensar classes: um roteiro mental
 
-#### 1) Layout primeiro (estrutura)
+### 1) Layout primeiro (estrutura)
 
 * display: `flex`, `grid`
 * alinhamento e espaçamento: `items-center`, `justify-between`, `gap-4`
 * dimensionamento: `w-full`, `max-w-md`
 
-#### 2) Tipografia (hierarquia)
+### 2) Tipografia (hierarquia)
 
 * tamanho e peso: `text-sm`, `text-lg`, `font-medium`
 * legibilidade: `leading-6`, `tracking-tight`
 
-#### 3) Cores e estados (feedback)
+### 3) Cores e estados (feedback)
 
 * base: `bg-...`, `text-...`, `border-...`
 * interação: `hover:...`, `active:...`
 * foco/acessibilidade: `focus-visible:...`
 
-#### 4) Responsividade (mobile-first)
+### 4) Responsividade (mobile-first)
 
 Em Tailwind, você geralmente escreve o estilo base (mobile) e “sobe” com breakpoints.
 
@@ -328,7 +305,7 @@ export function Header() {
 
 ---
 
-### Organização e legibilidade (sem “className gigante”)
+## Organização e legibilidade (sem “className gigante”)
 
 Existe um risco real no Tailwind: o componente vira um parágrafo de classes. O antídoto não é “voltar ao CSS global”, e sim **organizar abstrações na hora certa**.
 
@@ -392,7 +369,7 @@ O objetivo não é “esconder Tailwind”. O objetivo é **centralizar decisõe
 
 ---
 
-### Customização: theme/tokens e dark mode (noção)
+## Customização: theme/tokens e dark mode (noção)
 
 A ideia-chave é: **você decide escalas e semântica**, e o time usa isso como contrato.
 
@@ -404,14 +381,14 @@ O erro comum é tratar Tailwind como “atalho” e começar a usar valores arbi
 
 ---
 
-### Boas práticas com Tailwind
+## Boas práticas com Tailwind
 
 * Prefira **escala** ao invés de valores “quebrados”
 * Padronize componentes-base (botão, input, card)
 * Garanta estados de foco visíveis (teclado) e contraste adequado
 * Defina uma regra clara para CSS global (se existir): base/tokens, não “layout da página X”
 
-### Erros comuns
+## Erros comuns
 
 * Inconsistência por “valores quebrados” (cada dev inventa uma distância/tamanho)
 * Misturar Tailwind e CSS global sem estratégia
@@ -420,13 +397,13 @@ O erro comum é tratar Tailwind como “atalho” e começar a usar valores arbi
 
 ---
 
-## Bibliotecas de UI: shadcn, MUI e Chakra (quando e por quê)
+# 12.4. Bibliotecas de UI: shadcn, MUI e Chakra (quando e por quê)
 
 Biblioteca de UI é como adotar uma “fábrica” de componentes. Você ganha velocidade e padrões, mas precisa aceitar uma governança: tema, customização e consistência não acontecem sozinhos.
 
-### shadcn/ui
+## shadcn/ui
 
-#### O que é (e o que não é)
+### O que é (e o que não é)
 
 * **É:** um conjunto de componentes que você **gera/copia para dentro do seu repositório** e passa a manter como código do projeto (geralmente construídos sobre primitives de acessibilidade e usando Tailwind).
 * **Não é:** uma dependência “mágica” que você atualiza e pronto. Como o código vira seu, você é responsável por entender e manter.
@@ -452,7 +429,7 @@ Detalhes de instalação, comandos e estrutura exata podem mudar. Trate a docume
 
 ---
 
-### MUI (Material UI)
+## MUI (Material UI)
 
 Filosofia:
 
@@ -481,7 +458,7 @@ APIs e detalhes de integração em Next (App Router) variam por versão. Confirm
 
 ---
 
-### Chakra UI
+## Chakra UI
 
 Filosofia:
 
@@ -510,7 +487,7 @@ Detalhes de API/config podem mudar. Confirme na doc oficial.
 
 ---
 
-### Comparativo honesto (sem fanboy)
+## Comparativo honesto (sem fanboy)
 
 Quando escolher cada uma:
 
@@ -536,11 +513,11 @@ Misturar 3 abordagens sem estratégia quase sempre piora. A inconsistência vira
 
 ---
 
-## Consistência visual (o que separa projeto amador de projeto profissional)
+# 12.5. Consistência visual (o que separa projeto amador de projeto profissional)
 
 Consistência visual não é “tudo igualzinho”; é **um conjunto de decisões coerentes** que o usuário aprende sem perceber.
 
-### Design tokens (conceito)
+## Design tokens (conceito)
 
 Tokens são valores nomeados que representam decisões de design.
 
@@ -560,7 +537,7 @@ Tokens são valores nomeados que representam decisões de design.
 **Conceito-chave**
 Token é um contrato. Se amanhã “primary” mudar de tom, você não quer caçar 200 hexadecimais no projeto.
 
-### Componentização: primitives e variantes
+## Componentização: primitives e variantes
 
 Em projeto real, você quer “primitivos” confiáveis:
 
@@ -578,7 +555,7 @@ A consistência vem quando:
 * variantes → são combinadas de forma previsível
 * telas → só “montam” blocos, sem inventar estilo do zero
 
-### Acessibilidade como parte da consistência
+## Acessibilidade como parte da consistência
 
 Consistência também é comportamento:
 
@@ -589,7 +566,7 @@ Consistência também é comportamento:
 **Atenção**
 Remover foco (outline) “porque é feio” é um clássico. Em produto profissional, foco é parte do UX — e parte da acessibilidade.
 
-### Evitar “pixel chasing”
+## Evitar “pixel chasing”
 
 “Pixel chasing” é ajustar caso a caso até “parecer certo”, sem sistema.
 
@@ -597,12 +574,12 @@ Remover foco (outline) “porque é feio” é um clássico. Em produto profissi
 * Ajuste pontual cria exceções; exceções viram padrão; o padrão vira caos
 
 ---
-![alt text](/api/materiais-assets/6-frontend/12-estilizacao/assets/image-1.png)
+![Figura 4 — Consistência: tokens → componentes base → variantes → telas](/api/materiais-assets/6-frontend/12-estilizacao/assets/image-1.png)
 *Figura 4 — Consistência: tokens → componentes base → variantes → telas*
 
 ---
 
-## Organização de projeto (estilos sem virar bagunça)
+# 12.6. Organização de projeto (estilos sem virar bagunça)
 
 Organização é o que impede que a estilização vire um campo minado.
 
@@ -622,27 +599,27 @@ Uma estrutura simples e escalável:
 
   * helpers de `className`, mapeamento de variantes, utilitários
 
-### Estratégias por stack
+## Estratégias por stack
 
-#### Com CSS Modules
+### Com CSS Modules
 
 * `globals.css` pequeno e “infra”
 * cada componente com seu `Component.module.css`
 * tokens em variáveis CSS globais (opcional), consumidos nos Modules
 
-#### Com Tailwind
+### Com Tailwind
 
 * tokens e padrões vivem no “sistema” (escala) e em componentes-base
 * evite CSS global para layout de páginas; prefira compor com utilitários
 * variantes centralizadas (mapeamento de classes) em `/components/ui` ou `/lib`
 
-#### Com UI libs (MUI/Chakra)
+### Com UI libs (MUI/Chakra)
 
 * tema centralizado (um lugar só)
 * customizações e overrides também centralizados
 * crie wrappers/base components quando necessário para padronizar uso
 
-### Convenções que evitam caos
+## Convenções que evitam caos
 
 * Defina um padrão único para variantes (`intent`, `size`, `state`)
 * Nomeie componentes-base de forma clara (o que é “ui” vs “feature”)
@@ -657,11 +634,11 @@ Quando alguém novo entra no time, ele deve conseguir responder em 5 minutos:
 
 ---
 
-## Guia de decisão (como escolher abordagem no seu projeto)
+# 12.7. Guia de decisão (como escolher abordagem no seu projeto)
 
 Escolha baseada em critérios práticos:
 
-### Critérios
+## Critérios
 
 * **Time pequeno vs grande**
 
@@ -678,7 +655,7 @@ Escolha baseada em critérios práticos:
 
   * quanto mais tempo o projeto vive, mais importante é consistência e governança
 
-### Recomendações realistas
+## Recomendações realistas
 
 * Projetos pequenos:
 
@@ -694,12 +671,12 @@ Escolha baseada em critérios práticos:
 Misturar 3 abordagens sem estratégia costuma piorar: você ganha complexidade de todas e consistência de nenhuma.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/12-estilizacao/assets/image-3.png)
+![Figura 3 — Matriz de decisão: CSS Modules vs Tailwind vs UI Library](/api/materiais-assets/6-frontend/12-estilizacao/assets/image-3.png)
 *Figura 3 — Matriz de decisão: CSS Modules vs Tailwind vs UI Library*
 
 ---
 
-## D. Erros comuns e confusões clássicas
+# 12.8. Erros comuns e confusões clássicas
 
 * **Global CSS virando “lixo radioativo”**
 
@@ -728,7 +705,7 @@ Misturar 3 abordagens sem estratégia costuma piorar: você ganha complexidade d
 
 ---
 
-## Glossário rápido
+# 12.9. Glossário rápido
 
 * **Escopo**: “onde” um estilo vale; local (componente) vs global (app).
 * **Cascade (cascata)**: regra de prioridade do CSS baseada em origem, especificidade e ordem.
@@ -742,7 +719,7 @@ Misturar 3 abordagens sem estratégia costuma piorar: você ganha complexidade d
 
 ---
 
-## Resumo final
+# 12.10. Resumo final
 
 Estilização em React/Next não é só “colocar CSS”: é decidir **como o time vai produzir UI de forma consistente** ao longo do tempo.
 CSS Modules te dá **escopo local e previsibilidade** com CSS tradicional. Tailwind te dá **um sistema** (escala → utilitários → componentes) que favorece consistência e velocidade quando bem disciplinado. Bibliotecas de UI aceleram muito, mas cobram organização em tema e governança — e misturar filosofias sem estratégia costuma gerar “Frankenstein UI”.
@@ -750,7 +727,7 @@ O sinal de maturidade é claro: **tokens bem definidos, componentes-base sólido
 
 ---
 
-## Referências
+# 12.11. Referências
 
 * Next.js — Styling (CSS, CSS Modules): [https://nextjs.org/docs/app/building-your-application/styling](https://nextjs.org/docs/app/building-your-application/styling)
 * Tailwind CSS — Documentação: [https://tailwindcss.com/docs](https://tailwindcss.com/docs)

@@ -5,8 +5,6 @@ category: Frontend
 order: 10
 ---
 
-# 10. React (Intermediário) com TypeScript
-
 ## Objetivo da aula
 
 Aprofundar o modelo mental do React moderno (Function Components + Hooks) para lidar com **efeitos**, **dados remotos**, **estados de loading/erro**, **compartilhamento de dados com Context**, **organização de projeto** e **formulários mais complexos** — com TypeScript, sem bibliotecas externas de estado ou formulários.
@@ -29,23 +27,7 @@ Aprofundar o modelo mental do React moderno (Function Components + Hooks) para l
 
 ---
 
-## Sumário
-
-* [1. O “degrau” intermediário no React: estado, efeitos e dados remotos](#1-o-degrau-intermediário-no-react-estado-efeitos-e-dados-remotos)
-* [2. useEffect (o hook de efeitos) — modelo mental certo](#2-useeffect-o-hook-de-efeitos--modelo-mental-certo)
-* [3. Consumo de APIs no React (fetch + useEffect)](#3-consumo-de-apis-no-react-fetch--useeffect)
-* [4. Loading e erro (estados de UI “de verdade”)](#4-loading-e-erro-estados-de-ui-de-verdade)
-* [5. useContext (compartilhar dados sem prop drilling)](#5-usecontext-compartilhar-dados-sem-prop-drilling)
-* [6. Organização de projeto (estrutura simples e escalável)](#6-organização-de-projeto-estrutura-simples-e-escalável)
-* [7. Formulários mais complexos (sem libs, mas com padrão bom)](#7-formulários-mais-complexos-sem-libs-mas-com-padrão-bom)
-* [8. Próximos passos (contexto, sem ensinar agora)](#8-próximos-passos-contexto-sem-ensinar-agora)
-* [Erros comuns e confusões clássicas](#erros-comuns-e-confusões-clássicas)
-* [Glossário rápido](#glossário-rápido)
-* [Resumo final](#resumo-final)
-
----
-
-## O “degrau” intermediário no React: estado, efeitos e dados remotos
+# 10.1. O “degrau” intermediário no React: estado, efeitos e dados remotos
 
 Até aqui, o React pode ter parecido um “motor de UI” relativamente fechado:
 
@@ -54,14 +36,14 @@ Até aqui, o React pode ter parecido um “motor de UI” relativamente fechado:
 * O resultado é uma descrição da UI (JSX).
 * Quando state/props mudam, o componente renderiza novamente.
 
-### Relembrando o modelo mental: render → state/props → UI
+## Relembrando o modelo mental: render → state/props → UI
 
 O ponto central é que o **render** deve ser **puro**: dado o mesmo state/props, você quer a mesma UI. Isso ajuda o React a manter consistência, otimizar atualizações e evitar comportamentos imprevisíveis.
 
 >**Conceito-chave**
 > **Render não é “um lugar para fazer coisas”**. Render é para **descrever a UI**. Coisas que “mexem no mundo” (rede, storage, timers) entram em outra categoria.
 
-### O novo problema: sincronizar UI com “mundo externo”
+## O novo problema: sincronizar UI com “mundo externo”
 
 Em aplicações reais, o componente precisa conversar com algo fora do React:
 
@@ -75,13 +57,13 @@ Essas ações têm duas características importantes:
 1. Elas são **efeitos colaterais** (não são só “calcular UI”).
 2. Elas têm **tempo**: começam, terminam, podem falhar, podem precisar ser canceladas.
 
-### Introduzindo: `useEffect` como “ponto de sincronização”
+## Introduzindo: `useEffect` como “ponto de sincronização”
 
 `useEffect` existe para você dizer: “Depois que o React desenhar/confirmar esta UI, sincronize com o mundo externo”.
 
 Em outras palavras: **render descreve**, **effect sincroniza**.
 
-### Introduzindo: Context como “distribuição de dados” sem prop drilling
+## Introduzindo: Context como “distribuição de dados” sem prop drilling
 
 Quando muitos componentes precisam de um mesmo dado (tema, usuário autenticado, idioma), passar props “no meio do caminho” vira ruído. Context cria um canal onde um valor pode ser lido por qualquer componente dentro de uma subárvore.
 
@@ -90,9 +72,9 @@ Quando muitos componentes precisam de um mesmo dado (tema, usuário autenticado,
 
 ---
 
-## useEffect (o hook de efeitos) — modelo mental certo
+# 10.2. useEffect (o hook de efeitos) — modelo mental certo
 
-### O que é “efeito”
+## O que é “efeito”
 
 Um **efeito** é um código que roda **depois do render** para **sincronizar** o componente com algo externo ao React.
 
@@ -103,7 +85,7 @@ Exemplos clássicos:
 * Fazer `fetch` de dados
 * Registrar/desregistrar um event listener
 
-### Assinatura
+## Assinatura
 
 ```tsx
 useEffect(() => {
@@ -114,7 +96,7 @@ useEffect(() => {
 }, [deps]);
 ```
 
-### Dependências: por que existem
+## Dependências: por que existem
 
 A lista de dependências não é “um detalhe chato”. Ela é a forma do React garantir **consistência**: se o efeito usa valores que mudam, o efeito precisa ser reexecutado para sincronizar de novo.
 
@@ -126,9 +108,9 @@ Uma forma útil de pensar:
 * Se o efeito usa `userId`, e `userId` muda, você quer sincronizar de novo.
 * Se o efeito usa uma função criada inline, e ela muda a cada render, você pode causar reexecuções desnecessárias.
 
-### Padrões comuns
+## Padrões comuns
 
-#### 1) Rodar “uma vez” (deps vazias)
+### 1) Rodar “uma vez” (deps vazias)
 
 ```tsx
 useEffect(() => {
@@ -144,7 +126,7 @@ Isso é útil para:
 >**Atenção**
 > “Rodar uma vez” funciona porque você está dizendo que o efeito **não depende** de nada que varie. Se na prática ele depende (por exemplo, de `props`), a deps vazia vira fonte de bug sutil.
 
-#### 2) Rodar quando algo muda (deps específicas)
+### 2) Rodar quando algo muda (deps específicas)
 
 ```tsx
 useEffect(() => {
@@ -152,7 +134,7 @@ useEffect(() => {
 }, [userId]);
 ```
 
-### Cleanup: por que existe
+## Cleanup: por que existe
 
 O cleanup serve para:
 
@@ -165,7 +147,7 @@ O cleanup roda:
 * **antes** do efeito rodar novamente (quando deps mudam)
 * ao **desmontar** o componente
 
-#### Exemplo mínimo: `document.title`
+### Exemplo mínimo: `document.title`
 
 ```tsx
 import { useEffect } from "react";
@@ -181,7 +163,7 @@ export function TitleSync({ pageTitle }: Props) {
 }
 ```
 
-#### Exemplo mínimo: timer com cleanup (`setInterval`)
+### Exemplo mínimo: timer com cleanup (`setInterval`)
 
 ```tsx
 import { useEffect, useState } from "react";
@@ -204,13 +186,13 @@ export function Clock() {
 }
 ```
 
-### Armadilhas clássicas (com honestidade)
+## Armadilhas clássicas (com honestidade)
 
-#### Loop infinito por deps erradas
+### Loop infinito por deps erradas
 
 Se o efeito faz `setState`, isso causa re-render. Se o efeito depende desse state e não foi planejado, pode virar ciclo.
 
-#### Depender de função/objeto instável
+### Depender de função/objeto instável
 
 Objetos e funções criados inline mudam de referência a cada render:
 
@@ -223,7 +205,7 @@ Se `options` estiver em deps, o efeito roda sempre. A solução costuma envolver
 * mover criação para dentro do effect (quando possível), ou
 * estabilizar referências (com `useMemo/useCallback`) — **não vamos ensinar agora**, mas é o próximo degrau.
 
-#### “Desligar” o lint e criar bug
+### “Desligar” o lint e criar bug
 
 O lint (`react-hooks/exhaustive-deps`) geralmente está apontando um problema real: você está usando algo que pode mudar e não declarou. Desligar o lint pode “silenciar” o sintoma, mas mantém o bug.
 
@@ -235,9 +217,9 @@ O lint (`react-hooks/exhaustive-deps`) geralmente está apontando um problema re
 *Figura 1 — Linha do tempo do `useEffect` (render → commit → effect → cleanup)*
 
 
-## Consumo de APIs no React (fetch + useEffect)
+# 10.3. Consumo de APIs no React (fetch + useEffect)
 
-### Modelo mental (o ciclo completo)
+## Modelo mental (o ciclo completo)
 
 Imagine uma tela que busca usuários ao abrir:
 
@@ -251,7 +233,7 @@ Imagine uma tela que busca usuários ao abrir:
 >**Conceito-chave**
 > Consumir API não é “pegar dados” — é **modelar estados** ao longo do tempo.
 
-### Por que não chamar `fetch` no corpo do componente
+## Por que não chamar `fetch` no corpo do componente
 
 O corpo do componente roda em todo render. Se você fizer:
 
@@ -268,7 +250,7 @@ Você pode disparar requests repetidos:
 
 O lugar apropriado para sincronizar com rede é o `useEffect`.
 
-### Tipagem com TypeScript: defina o tipo do payload
+## Tipagem com TypeScript: defina o tipo do payload
 
 Mesmo quando a API devolve JSON, quem define o contrato no seu código é você.
 
@@ -280,13 +262,13 @@ export type User = {
 };
 ```
 
-### Status HTTP vs erro de rede
+## Status HTTP vs erro de rede
 
 `fetch` só rejeita a promise em erros de rede (ex.: sem internet). Para HTTP 404/500, ele resolve normalmente — por isso você precisa checar `response.ok`.
 
-### Exemplo mínimo “padrão de mercado”: service separado + componente com `data/loading/error`
+## Exemplo mínimo “padrão de mercado”: service separado + componente com `data/loading/error`
 
-#### `services/usersService.ts`
+### `services/usersService.ts`
 
 ```ts
 import type { User } from "../types/user";
@@ -308,7 +290,7 @@ export async function getUsers(signal?: AbortSignal): Promise<User[]> {
 }
 ```
 
-#### `types/user.ts`
+### `types/user.ts`
 
 ```ts
 export type User = {
@@ -318,7 +300,7 @@ export type User = {
 };
 ```
 
-#### `screens/UsersList.tsx`
+### `screens/UsersList.tsx`
 
 ```tsx
 import { useEffect, useState } from "react";
@@ -390,7 +372,7 @@ export function UsersList() {
 }
 ```
 
-### Cancelamento (noção): `AbortController`
+## Cancelamento (noção): `AbortController`
 
 O objetivo do cancelamento aqui é evitar duas situações ruins:
 
@@ -401,14 +383,14 @@ O objetivo do cancelamento aqui é evitar duas situações ruins:
 > Cancelamento não “salva performance” por mágica. Ele evita inconsistências e avisos (“setState on unmounted component”) e melhora previsibilidade quando há múltiplos requests.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/10-react-intermediario/assets/image-1.png)
+![Figura 2 — Fluxo de API: UI → service(fetch) → response → state → render](/api/materiais-assets/6-frontend/10-react-intermediario/assets/image-1.png)
 *Figura 2 — Fluxo de API: UI → service(fetch) → response → state → render*
 
 ---
 
-## Loading e erro (estados de UI “de verdade”)
+# 10.4. Loading e erro (estados de UI “de verdade”)
 
-### A tríade de estados
+## A tríade de estados
 
 Na prática, telas com dados remotos vivem nesses estados:
 
@@ -418,7 +400,7 @@ Na prática, telas com dados remotos vivem nesses estados:
 
 Um ponto importante: `success` não é “tenho algo para mostrar”. Às vezes `success` significa “tenho uma lista vazia”. Isso entra como **empty state**.
 
-### Estados adicionais úteis
+## Estados adicionais úteis
 
 * **empty state**: request foi ok, mas veio vazio (ex.: `[]`)
 * **retry**: ação explícita para tentar de novo
@@ -426,7 +408,7 @@ Um ponto importante: `success` não é “tenho algo para mostrar”. Às vezes 
 >**Conceito-chave**
 > Loading/erro não são “detalhes de UI”. Eles são parte do **modelo de estado** da tela.
 
-### Boas práticas (mundo real)
+## Boas práticas (mundo real)
 
 * Evitar “flash” de loading (carrega e some instantâneo):
 
@@ -438,14 +420,14 @@ Um ponto importante: `success` não é “tenho algo para mostrar”. Às vezes 
 
   * usuário vê uma mensagem simples; você mantém `console.error(err)` para diagnóstico.
 
-### Skeleton vs spinner (conceito)
+## Skeleton vs spinner (conceito)
 
 * **Spinner**: comunica “estou esperando”, mas não mostra estrutura.
 * **Skeleton**: mostra “o formato” do conteúdo e tende a parecer mais estável.
 
 Aqui, o ponto não é implementar um skeleton completo, e sim entender a intenção.
 
-### Erro com ação (tentar novamente)
+## Erro com ação (tentar novamente)
 
 O padrão mais útil é oferecer um caminho de recuperação:
 
@@ -457,9 +439,9 @@ O padrão mais útil é oferecer um caminho de recuperação:
 
 ---
 
-## useContext (compartilhar dados sem prop drilling)
+# 10.5. useContext (compartilhar dados sem prop drilling)
 
-### Problema: prop drilling
+## Problema: prop drilling
 
 Prop drilling acontece quando um dado precisa atravessar vários componentes que não usam esse dado, apenas repassam:
 
@@ -467,21 +449,21 @@ Prop drilling acontece quando um dado precisa atravessar vários componentes que
 
 Se só o `UserBadge` precisa do usuário, os intermediários viram “correio” de props.
 
-### O que é Context
+## O que é Context
 
 Context é um canal de valores “globais” dentro de uma subárvore de componentes. Você cria um Context, fornece um valor com `Provider`, e lê com `useContext`.
 
-### As partes do Context
+## As partes do Context
 
 * `createContext`: cria o canal
 * `Provider`: define o valor para a subárvore
 * `useContext`: lê o valor
 
-### Tipagem com TS: default `null` e padrão de custom hook
+## Tipagem com TS: default `null` e padrão de custom hook
 
 Em TS, é comum permitir que o Context exista sem valor (antes de um Provider), então o tipo inclui `null`. Para evitar `null` espalhado pelo app, um padrão bem usado é criar um hook que valida:
 
-#### `contexts/ThemeContext.tsx`
+### `contexts/ThemeContext.tsx`
 
 ```tsx
 import { createContext, useContext, useMemo, useState } from "react";
@@ -518,7 +500,7 @@ export function useTheme() {
 }
 ```
 
-#### Consumindo em dois componentes
+### Consumindo em dois componentes
 
 ```tsx
 import { useTheme } from "../contexts/ThemeContext";
@@ -552,7 +534,7 @@ export function App() {
 }
 ```
 
-### Boas práticas e limites
+## Boas práticas e limites
 
 Context é ótimo para:
 
@@ -570,20 +552,20 @@ Context é perigoso quando:
 > Cada mudança no `value` do Provider tende a causar re-render nos consumidores. Em apps grandes, isso é um fator real. Uma estratégia comum é **dividir contextos por domínio** (AuthContext, ThemeContext, SettingsContext) em vez de um só.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/10-react-intermediario/assets/image-2.png)
+![Figura 3 — Context: Provider no topo → consumo em filhos (sem prop drilling)](/api/materiais-assets/6-frontend/10-react-intermediario/assets/image-2.png)
 *Figura 3 — Context: Provider no topo → consumo em filhos (sem prop drilling)*
 
 ---
 
-## Organização de projeto (estrutura simples e escalável)
+# 10.6. Organização de projeto (estrutura simples e escalável)
 
 Organizar projeto não é “estética de pastas”: é uma forma de reduzir acoplamento e evitar que mudanças pequenas virem mudanças espalhadas.
 
-### Objetivo: reduzir acoplamento e melhorar manutenção
+## Objetivo: reduzir acoplamento e melhorar manutenção
 
 Uma regra prática: **componentes de UI** deveriam ser o mais “burrinhos” possível sobre detalhes externos (ex.: URLs de API). Isso torna testes, refactors e reuso muito mais simples.
 
-### Sugestão de estrutura (sem impor framework)
+## Sugestão de estrutura (sem impor framework)
 
 Uma estrutura simples e comum:
 
@@ -597,7 +579,7 @@ src/
   utils/        (funções pequenas e genéricas)
 ```
 
-### Regras práticas
+## Regras práticas
 
 * **Componente não deve conhecer detalhes de fetch**
 
@@ -612,14 +594,14 @@ src/
 
   * “como buscar” (service) ≠ “como mostrar” (component)
 
-### Naming e padrões
+## Naming e padrões
 
 * Componentes: `PascalCase` (`UsersList`, `UserCard`)
 * Hooks: `useX` (`useTheme`, `useAuth`)
 * Handlers: `handleX` (`handleSubmit`, `handleRetry`)
 * Services: verbos (`getUsers`, `createUser`, `updateProfile`)
 
-### Evitar
+## Evitar
 
 * Uma `utils/` gigante com coisas sem critério (vira “porão do projeto”).
 * Lógica de negócio espalhada dentro do JSX (dificulta leitura e manutenção).
@@ -627,9 +609,9 @@ src/
 
 ---
 
-## Formulários mais complexos (sem libs, mas com padrão bom)
+# 10.7. Formulários mais complexos (sem libs, mas com padrão bom)
 
-### Relembrando: formulários controlados
+## Relembrando: formulários controlados
 
 Um input controlado é aquele cujo valor vem do state, e mudanças atualizam o state via `onChange`.
 
@@ -641,21 +623,21 @@ Em formulários simples isso é trivial. O “complexo” aparece quando precisa
 * campos que dependem de outros (ex.: confirmar senha depende da senha)
 * estado de envio (submit em andamento) e erro de envio
 
-### Modelos de estado
+## Modelos de estado
 
-#### A) Um state por campo
+### A) Um state por campo
 
 Prós: direto, explícito.
 Contras: verboso conforme cresce.
 
-#### B) Um state objeto `form`
+### B) Um state objeto `form`
 
 Prós: compacto e escalável.
 Contras: exige disciplina para atualizar corretamente sem mutações.
 
 Aqui vamos usar o modelo B.
 
-### Validação: função pura `validate(form) → errors`
+## Validação: função pura `validate(form) → errors`
 
 Em vez de validação espalhada em vários lugares, centralize:
 
@@ -671,14 +653,14 @@ Assim:
 * se um campo não tem erro, ele nem aparece no objeto
 * TS ajuda a manter os nomes dos campos coerentes
 
-### Exemplo mínimo “padrão de mercado”: cadastro com 4 campos
+## Exemplo mínimo “padrão de mercado”: cadastro com 4 campos
 
 * nome
 * email
 * senha
 * confirmar senha
 
-#### `screens/SignUpForm.tsx`
+### `screens/SignUpForm.tsx`
 
 ```tsx
 import { useState } from "react";
@@ -830,7 +812,7 @@ export function SignUpForm() {
 }
 ```
 
-### Comentários práticos
+## Comentários práticos
 
 * `validate` é uma função pura: facilita consistência e refactor.
 * Erros por campo ficam centralizados em `errors`.
@@ -841,11 +823,11 @@ export function SignUpForm() {
 > Um bom formulário separa claramente: **erros de validação** (o usuário corrige) vs **erro de envio** (o usuário tenta de novo).
 
 ---
-![alt text](/api/materiais-assets/6-frontend/10-react-intermediario/assets/image-4.png)
+![Figura 4 — Form complexo: inputs → state(form) → validate → errors → UI](/api/materiais-assets/6-frontend/10-react-intermediario/assets/image-4.png)
 *Figura 4 — Form complexo: inputs → state(form) → validate → errors → UI*
 ---
 
-## Próximos passos (contexto, sem ensinar agora)
+# 10.8. Próximos passos (contexto, sem ensinar agora)
 
 Depois desse degrau, é natural que apareçam novas necessidades:
 
@@ -860,7 +842,7 @@ Depois desse degrau, é natural que apareçam novas necessidades:
 
 ---
 
-## Erros comuns e confusões clássicas
+# 10.9. Erros comuns e confusões clássicas
 
 * **Chamar `fetch` no corpo do componente** e disparar requests em todo re-render.
 * **Não checar `response.ok`** e tratar 404/500 como se fosse sucesso.
@@ -880,7 +862,7 @@ Depois desse degrau, é natural que apareçam novas necessidades:
 
 ---
 
-## Glossário rápido
+# 10.10. Glossário rápido
 
 * **Efeito (effect):** código que roda após o render para sincronizar com o mundo externo (rede, DOM, timers).
 * **Dependência (deps):** lista de valores externos usados pelo effect que determinam quando ele precisa rodar novamente.
@@ -897,6 +879,6 @@ Depois desse degrau, é natural que apareçam novas necessidades:
 
 ---
 
-## Resumo final
+# 10.11. Resumo final
 
 O “intermediário” em React começa quando a UI deixa de ser só uma função de `state/props` e passa a precisar de **tempo** e **mundo externo**. `useEffect` é o ponto de sincronização: ele roda depois do render, segue regras de dependências para manter consistência e usa cleanup para evitar vazamentos e estados inválidos. Consumir APIs com qualidade não é apenas fazer `fetch`: é modelar corretamente `loading/error/success/empty`, separar responsabilidades com uma camada de services e tratar diferenças entre falhas HTTP e de rede. `useContext` resolve prop drilling e padroniza dados “globais do domínio”, mas tem limites — especialmente quando o valor muda com alta frequência. Por fim, formulários mais complexos exigem disciplina: estado bem modelado, validação centralizada e estados de submissão/erro claros. Com esses fundamentos, o próximo degrau (roteamento, libs de forms, estado global e performance) fica muito mais consciente e menos “mágico”.

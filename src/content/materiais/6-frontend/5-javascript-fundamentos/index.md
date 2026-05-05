@@ -7,8 +7,6 @@ order: 5
 
 <a id="topo"></a>
 
-# 5. JavaScript (Fundamentos) 
-
 ## Objetivo da aula
 
 Construir um **modelo mental correto** de como o JavaScript executa código no navegador e como pensamos em **valores, tipos, variáveis, decisões, repetições, funções e dados** (arrays e objetos). A meta não é decorar sintaxe, e sim entender “o que acontece na cabeça do JS” quando seu programa roda.
@@ -32,27 +30,9 @@ Construir um **modelo mental correto** de como o JavaScript executa código no n
 
 ---
 
-## Sumário
-
-* [1. O que é JavaScript no contexto da Web](#sec1)
-* [2. Variáveis: let e const (e por que var não é foco)](#sec2)
-* [3. Tipos básicos (com intuição forte)](#sec3)
-* [4. Condicionais e loops](#sec4)
-* [5. Funções (o conceito central)](#sec5)
-* [6. Arrays e objetos](#sec6)
-* [7. Métodos de array: map e filter](#sec7)
-* [8. Escopo (noção)](#sec8)
-* [9. O que vem depois](#sec9)
-* [10. Erros comuns e confusões clássicas](#sec10)
-* [11. Glossário rápido](#sec11)
-* [12. Resumo final](#sec12)
-* [13. Projeto Prático](#sec13)
-
----
-
 <a id="sec1"></a>
 
-## 1) O que é JavaScript no contexto da Web
+# 5.1. O que é JavaScript no contexto da Web
 
 Quando você abre uma página, o navegador lida com três “camadas” principais:
 
@@ -62,7 +42,7 @@ Quando você abre uma página, o navegador lida com três “camadas” principa
 
 Pense assim: o HTML é o “esqueleto”, o CSS é “pele/roupa”, e o JavaScript é o “sistema nervoso” que toma decisões.
 
-### Onde o JS roda
+## Onde o JS roda
 
 Nesta aula, o foco é **JavaScript no navegador**. Isso significa:
 
@@ -71,7 +51,7 @@ Nesta aula, o foco é **JavaScript no navegador**. Isso significa:
 
 >**Dica (modelo mental):** imagine um leitor extremamente literal que percorre o arquivo de cima para baixo, avaliando expressões e executando comandos. Quando ele encontra uma função, ele “aprende” aquela função, mas só executa o corpo quando alguém chama.
 
-### Modelo mental de execução: arquivo → motor JS → instruções
+## Modelo mental de execução: arquivo → motor JS → instruções
 
 A execução, nesta fase, deve ser vista como:
 
@@ -79,7 +59,7 @@ A execução, nesta fase, deve ser vista como:
 2. Ele avalia declarações e cria “nomes” (variáveis/funções) conforme as regras.
 3. Ele executa instruções em ordem, linha a linha, **tomando desvios** quando há condicionais e **repetindo** quando há loops.
 
-### Console como ferramenta de observação
+## Console como ferramenta de observação
 
 O **console** é como um “monitor” do estado do programa:
 
@@ -90,16 +70,16 @@ O **console** é como um “monitor” do estado do programa:
 
 ---
 
-![alt text](/api/materiais-assets/6-frontend/5-javascript-fundamentos/assets/image.png)
+![Figura 1 — Fluxo de execução: sequência, decisão e repetição](/api/materiais-assets/6-frontend/5-javascript-fundamentos/assets/image.png)
 *Figura 1 — Fluxo de execução: sequência, decisão e repetição*
 
 ---
 
 <a id="sec2"></a>
 
-## 2) Variáveis: let e const (e por que var não é foco)
+# 5.2. Variáveis: let e const (e por que var não é foco)
 
-### O que é uma variável
+## O que é uma variável
 
 Uma variável é um **nome** associado a um **valor**.
 
@@ -108,7 +88,7 @@ Uma variável é um **nome** associado a um **valor**.
 
 Uma boa metáfora: **variável é um post-it com um nome**, apontando para um valor.
 
-### Declaração, atribuição e reatribuição
+## Declaração, atribuição e reatribuição
 
 * **Declarar**: criar o nome.
 * **Atribuir**: dar um valor.
@@ -124,7 +104,7 @@ pontos = 15;         // reatribuição (ok com let)
 
 >**Conceito-chave:** declarar não é o mesmo que atribuir. Uma variável pode existir e ainda não ter um valor útil para seu programa.
 
-### let vs const
+## let vs const
 
 * `let` permite **reatribuição**.
 * `const` **não permite reatribuição**.
@@ -139,7 +119,7 @@ const pi = 3.14159;
 pi = 3.14; // erro: não pode reatribuir uma const
 ```
 
-#### A confusão clássica: “const não muda” ≠ “objeto é imutável”
+### A confusão clássica: “const não muda” ≠ “objeto é imutável”
 
 `const` impede trocar **para onde o nome aponta**. Mas se esse “para onde” é um **objeto ou array**, o conteúdo **pode** ser mutável.
 
@@ -155,11 +135,11 @@ user = { name: "Ana", age: 21 }; // erro
 
 >**Atenção:** `const` não cria imutabilidade automática. Ele congela a **referência**, não o conteúdo.
 
-### Por que `var` não é foco
+## Por que `var` não é foco
 
 `var` existe por razões históricas. Ele tem regras diferentes de escopo e comportamento que costumam confundir iniciantes. Como `let` e `const` são o padrão moderno no navegador, esta base se concentra neles.
 
-### Boas práticas de uso
+## Boas práticas de uso
 
 * Prefira `const` por padrão.
 * Use `let` quando você **realmente precisar** reatribuir.
@@ -171,7 +151,7 @@ user = { name: "Ana", age: 21 }; // erro
 
 <a id="sec3"></a>
 
-## 3) Tipos básicos (com intuição forte)
+# 5.3. Tipos básicos (com intuição forte)
 
 Programar é manipular valores. Valores vêm em tipos diferentes porque o motor precisa saber:
 
@@ -179,7 +159,7 @@ Programar é manipular valores. Valores vêm em tipos diferentes porque o motor 
 * como comparar,
 * como operar (somar, concatenar, etc.).
 
-### Tipos fundamentais desta aula
+## Tipos fundamentais desta aula
 
 * `number` — números (inteiros e decimais).
 * `string` — texto.
@@ -197,7 +177,7 @@ const resposta = null;            // null
 let cidade;                       // undefined (ainda não atribuído)
 ```
 
-### typeof (e uma peculiaridade importante)
+## typeof (e uma peculiaridade importante)
 
 O operador `typeof` diz o “tipo” de um valor:
 
@@ -210,7 +190,7 @@ typeof undefined;  // "undefined"
 
 >**Atenção:** `typeof null` retorna `"object"` por um motivo histórico da linguagem. Nesta aula, guarde a regra prática: **null é “sem valor”, escolhido de propósito**.
 
-### Conversões e coerção (visão geral)
+## Conversões e coerção (visão geral)
 
 JavaScript às vezes tenta “ajudar” convertendo tipos automaticamente (**coerção implícita**). Isso pode ser perigoso porque você perde previsibilidade.
 
@@ -223,7 +203,7 @@ Exemplo clássico:
 
 >**Conceito-chave:** coerção implícita muda o sentido do seu código. O mesmo símbolo pode significar coisas diferentes dependendo dos tipos.
 
-### Comparação: `==` vs `===`
+## Comparação: `==` vs `===`
 
 * `==` tenta comparar “fazendo coerções”.
 * `===` compara **sem coerção** (tipo e valor).
@@ -237,7 +217,7 @@ Recomendação prática: use `===` como padrão.
 
 >**Dica:** `===` reduz surpresas. Você lê o código e confia mais no que ele diz.
 
-### Truthy e Falsy
+## Truthy e Falsy
 
 Em contextos de condição (`if`, `while`), o JS interpreta valores como “verdadeiro” ou “falso” mesmo sem serem booleans.
 Os principais **falsy** são:
@@ -265,7 +245,7 @@ if ([]) {
 
 >**Atenção:** “vazio” não significa “falso”. `[]` e `{}` são valores existentes, então são truthy.
 
-### Mini-tabela: tipo → exemplo → armadilha comum
+## Mini-tabela: tipo → exemplo → armadilha comum
 
 | Tipo        | Exemplo            | Armadilha comum                                                 |
 | ----------- | ------------------ | --------------------------------------------------------------- |
@@ -276,18 +256,18 @@ if ([]) {
 | `undefined` | variável sem valor | acessar propriedade inexistente e receber `undefined`           |
 
 ---
-![alt text](/api/materiais-assets/6-frontend/5-javascript-fundamentos/assets/image-1.png)
+![Figura 2 — Tipos: primitivos vs referência (visão inicial)](/api/materiais-assets/6-frontend/5-javascript-fundamentos/assets/image-1.png)
 *Figura 2 — Tipos: primitivos vs referência (visão inicial)*
 
 ---
 
 <a id="sec4"></a>
 
-## 4) Condicionais (decisão) e loops (repetição)
+# 5.4. Condicionais (decisão) e loops (repetição)
 
 Programas úteis tomam decisões e repetem tarefas. A diferença entre um código “estático” e um programa é justamente o fluxo.
 
-### if / else if / else
+## if / else if / else
 
 O `if` avalia uma condição. Se for truthy, executa o bloco.
 
@@ -317,7 +297,7 @@ if (nota >= 9) {
 
 >**Conceito-chave:** o JS escolhe **um caminho**. Em uma cadeia `if / else if / else`, apenas um bloco roda.
 
-### switch (visão geral)
+## switch (visão geral)
 
 `switch` é útil quando você compara o mesmo valor contra muitas opções fixas.
 
@@ -338,7 +318,7 @@ switch (dia) {
 
 >**Atenção:** o `break` evita que o código “caia” no próximo caso. Sem `break`, o fluxo continua.
 
-### Operadores lógicos: `&&`, `||`, `!`
+## Operadores lógicos: `&&`, `||`, `!`
 
 * `&&` (E): verdadeiro se ambos forem truthy.
 * `||` (OU): verdadeiro se pelo menos um for truthy.
@@ -359,11 +339,11 @@ if (logado && isAdmin) {
 
 ---
 
-### Loops: quando repetir é a regra
+## Loops: quando repetir é a regra
 
 Loops são para executar um bloco várias vezes, controlando início, condição e atualização.
 
-#### `for` (contagem)
+### `for` (contagem)
 
 Ideal quando você sabe quantas vezes quer repetir.
 
@@ -381,7 +361,7 @@ O modelo mental do `for` é:
 4. atualiza (`i++`)
 5. volta ao passo 2
 
-#### `while` (condição)
+### `while` (condição)
 
 Ideal quando você quer “enquanto isso for verdade”.
 
@@ -393,7 +373,7 @@ while (tentativas < 3) {
 }
 ```
 
-#### `for...of` (percorrer valores de arrays)
+### `for...of` (percorrer valores de arrays)
 
 Muito útil para iterar sobre valores de um array sem lidar diretamente com índices.
 
@@ -407,7 +387,7 @@ for (const nome of nomes) {
 
 >**Conceito-chave:** loops são sobre **controle de estado**: algo muda a cada repetição (contador, item atual, condição).
 
-### Atenções essenciais
+## Atenções essenciais
 
 * **Loop infinito**: acontece quando a condição nunca fica falsa.
 * **Atualização esquecida**: `i` não muda, condição nunca muda.
@@ -419,7 +399,7 @@ for (const nome of nomes) {
 
 <a id="sec5"></a>
 
-## 5) Funções (o conceito central)
+# 5.5. Funções (o conceito central)
 
 Funções são o mecanismo mais importante para organizar lógica:
 
@@ -433,7 +413,7 @@ Uma função é como uma “máquina”:
 * **processamento**: corpo
 * **saída**: retorno
 
-### Declaração vs expressão de função
+## Declaração vs expressão de função
 
 **Declaração**:
 
@@ -453,7 +433,7 @@ const soma = function (a, b) {
 
 >**Dica:** existe uma diferença de comportamento na forma como o JS “enxerga” essas funções antes de executar tudo (hoisting), mas por enquanto foque em: ambas criam funções, só que uma é declaração e outra é valor atribuído a uma variável.
 
-### Parâmetros e retorno
+## Parâmetros e retorno
 
 Parâmetros são nomes locais que recebem valores na chamada.
 
@@ -478,7 +458,7 @@ const r = loga("oi"); // r é undefined
 
 >**Conceito-chave:** `return` encerra a função e define o valor devolvido. Sem `return`, o retorno é `undefined`.
 
-### Funções puras vs efeito colateral (noção)
+## Funções puras vs efeito colateral (noção)
 
 * **Função pura**: depende só das entradas e não altera nada fora dela.
 * **Efeito colateral**: mexe em algo externo (ex.: logar no console, modificar um objeto fora).
@@ -497,7 +477,7 @@ function registraNoConsole(valor) {
 
 >**Dica:** funções puras facilitam testes e raciocínio. Efeitos colaterais são necessários, mas devem ser usados com consciência.
 
-### Arrow functions
+## Arrow functions
 
 Arrow functions são uma forma mais curta de escrever funções, muito usadas para callbacks.
 
@@ -529,11 +509,11 @@ const dobro = (x) => x * 2;
 
 <a id="sec6"></a>
 
-## 6) Arrays e objetos (estruturas de dados do dia a dia)
+# 5.6. Arrays e objetos (estruturas de dados do dia a dia)
 
 Programas reais quase nunca trabalham só com um valor solto. Você trabalha com coleções e entidades.
 
-### Array: lista ordenada
+## Array: lista ordenada
 
 Um array é uma lista, onde cada item tem um índice (posição).
 
@@ -554,7 +534,7 @@ notas[1] = 10; // agora [7, 10, 9]
 
 >**Conceito-chave:** índice começa em 0. `length` é “quantos itens existem”, não o último índice.
 
-### Objeto: pares chave-valor
+## Objeto: pares chave-valor
 
 Um objeto modela uma “coisa” com propriedades.
 
@@ -576,7 +556,7 @@ const campo = "name";
 user[campo]; // "Ana"
 ```
 
-### Modelo mental importante: primitivos vs referências (noção)
+## Modelo mental importante: primitivos vs referências (noção)
 
 * Primitivos (number, string, boolean, null, undefined) são “copiados” facilmente.
 * Arrays e objetos são manipulados por **referência**: variáveis podem apontar para o mesmo lugar.
@@ -594,7 +574,7 @@ original.count; // 2  (mesma referência)
 
 >**Atenção:** isso não é “bug do JS”. É um modelo comum em várias linguagens: objetos têm identidade e podem ser compartilhados.
 
-### Mutabilidade em arrays/objetos
+## Mutabilidade em arrays/objetos
 
 Arrays/objetos geralmente são mutáveis: você consegue mudar por dentro.
 
@@ -606,7 +586,7 @@ Isso é poderoso, mas pode gerar efeitos inesperados se várias partes do códig
 
 <a id="sec7"></a>
 
-## 7) Métodos de array (map, filter) — pensar em transformação de dados
+# 5.7. Métodos de array (map, filter) — pensar em transformação de dados
 
 Quando você tem uma lista, as operações mais comuns são:
 
@@ -615,20 +595,20 @@ Quando você tem uma lista, as operações mais comuns são:
 
 Loops fazem isso, mas `map` e `filter` expressam melhor a intenção.
 
-### Por que existem (visão declarativa)
+## Por que existem (visão declarativa)
 
 Em vez de dizer “como” passo a passo (controle de índice, contador), você descreve “o que” quer:
 
 * `map`: “para cada item, gere um novo item”
 * `filter`: “mantenha apenas os itens que passam no critério”
 
-### Callback: função como argumento (com calma)
+## Callback: função como argumento (com calma)
 
 Tanto `map` quanto `filter` recebem uma função (callback). Essa função é chamada para cada item.
 
 Você entrega “uma regra” e o JS aplica na coleção.
 
-### map
+## map
 
 * percorre o array
 * aplica a callback a cada item
@@ -644,7 +624,7 @@ const dobrados = nums.map((n) => n * 2);
 
 >**Conceito-chave:** `map` transforma; o tamanho do array resultante costuma ser o mesmo do original.
 
-### filter
+## filter
 
 * percorre o array
 * a callback devolve `true` ou `false`
@@ -657,7 +637,7 @@ const maiores = idades.filter((i) => i >= 18);
 // maiores = [18, 21]
 ```
 
-### Comparando com loop tradicional (sem demonizar loop)
+## Comparando com loop tradicional (sem demonizar loop)
 
 Você poderia fazer com `for`, e isso não é “errado”. A questão é legibilidade:
 
@@ -666,7 +646,7 @@ Você poderia fazer com `for`, e isso não é “errado”. A questão é legibi
 
 >**Dica:** escolha a ferramenta que melhor comunica sua intenção para quem vai ler o código (incluindo você no futuro).
 
-### Regras de ouro
+## Regras de ouro
 
 * `map` e `filter` **não mutam** o array original (eles criam um novo).
 * Evite efeitos colaterais dentro do callback (ex.: alterar variáveis externas sem necessidade).
@@ -674,14 +654,14 @@ Você poderia fazer com `for`, e isso não é “errado”. A questão é legibi
 >**Atenção:** um erro comum é usar `map` “para fazer algo” (como logar) e não retornar nada. Aí você ganha um array cheio de `undefined`.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/5-javascript-fundamentos/assets/image-2.png)
+![Figura 3 — map e filter: array entra → callback → novo array sai](/api/materiais-assets/6-frontend/5-javascript-fundamentos/assets/image-2.png)
 *Figura 3 — map e filter: array entra → callback → novo array sai*
 
 ---
 
 <a id="sec8"></a>
 
-## 8) Escopo (noção) — onde as variáveis “existem”
+# 5.8. Escopo (noção) — onde as variáveis “existem”
 
 Escopo é o conjunto de regras que definem:
 
@@ -689,12 +669,12 @@ Escopo é o conjunto de regras que definem:
 * por quanto tempo ele existe,
 * e quais partes do código “enxergam” aquela variável.
 
-### Escopo global vs local
+## Escopo global vs local
 
 * **Global**: declarado fora de funções/blocos, “visível” em muitas partes.
 * **Local**: declarado dentro de uma função ou bloco, “visível” apenas ali.
 
-### let/const têm escopo de bloco
+## let/const têm escopo de bloco
 
 Bloco é um par de chaves `{ ... }` associado a estruturas como `if`, `for`, `while`.
 
@@ -708,7 +688,7 @@ if (true) {
 
 Isso é bom porque evita “vazamento” de variáveis.
 
-### Por que isso importa
+## Por que isso importa
 
 * Evita colisões de nomes (“duas coisas chamadas `total` se atropelando”).
 * Limita o impacto de uma variável ao lugar onde ela faz sentido.
@@ -719,7 +699,7 @@ Isso é bom porque evita “vazamento” de variáveis.
 >**Atenção:** “closure” (fechamento) existe e é fundamental, mas não entra nesta aula. Você vai ver depois como funções podem “lembrar” variáveis do ambiente onde foram criadas.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/5-javascript-fundamentos/assets/image-3.png)
+![Figura 4 — Escopo: global → função → bloco](/api/materiais-assets/6-frontend/5-javascript-fundamentos/assets/image-3.png)
 *Figura 4 — Escopo: global → função → bloco*
 
 
@@ -727,7 +707,7 @@ Isso é bom porque evita “vazamento” de variáveis.
 
 <a id="sec9"></a>
 
-## 9) O que vem depois (contexto sem aprofundar)
+# 5.9. O que vem depois (contexto sem aprofundar)
 
 Com esses fundamentos, você está pronto para duas grandes frentes:
 
@@ -746,7 +726,7 @@ Além disso, você vai aprender a ler melhor erros:
 
 <a id="sec10"></a>
 
-## 10) Erros comuns e confusões clássicas
+# 5.10. Erros comuns e confusões clássicas
 
 1. **Usar `==` e cair em coerção inesperada**
    `0 == false` dá `true`, `"0" == 0` dá `true`. Isso “parece conveniente” até quebrar uma regra do seu sistema.
@@ -783,7 +763,7 @@ Além disso, você vai aprender a ler melhor erros:
 
 <a id="sec11"></a>
 
-## 11) Glossário rápido
+# 5.11. Glossário rápido
 
 * **Variável:** nome associado a um valor.
 * **Atribuição:** colocar um valor em uma variável (`x = 10`).
@@ -806,13 +786,13 @@ Além disso, você vai aprender a ler melhor erros:
 
 <a id="secF"></a>
 
-## 12) Resumo final
+# 5.12. Resumo final
 
 JavaScript, no navegador, é a camada de **comportamento** da Web: ele executa instruções, toma decisões e transforma dados. Você viu que `let` e `const` não são só sintaxe — são sinais de intenção e têm impacto no raciocínio sobre reatribuição e referências. Tipos básicos e comparações (`===`) evitam coerções traiçoeiras. Condicionais e loops controlam o fluxo; funções organizam lógica e tornam o código reutilizável. Arrays e objetos modelam o mundo real, e entender **referências e mutabilidade** é essencial para prever efeitos do seu código. Por fim, `map` e `filter` ajudam a pensar coleções como transformações claras — um passo importante para escrever código legível e confiável.
 
 ---
 
-## 13) Projeto Prático
+# 5.13. Projeto Prático
 
 Para consolidar o aprendizado desta aula, confira a implementação prática no repositório **to-do**:
 

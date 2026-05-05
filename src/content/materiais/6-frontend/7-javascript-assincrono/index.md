@@ -5,8 +5,6 @@ category: Frontend
 order: 7
 ---
 
-# 7. JavaScript Assíncrono (no navegador)
-
 ## Objetivo da aula
 
 Entender, com rigor conceitual e visão prática, como o JavaScript lida com operações que demoram (principalmente rede) sem travar a interface do navegador, usando **Promises**, **async/await** e **fetch**, além de construir um modelo mental correto para **tratamento de erros** e **boas práticas** do mundo real.
@@ -29,56 +27,9 @@ Entender, com rigor conceitual e visão prática, como o JavaScript lida com ope
 
 ---
 
-## Sumário
+# 7.1. Por que assincronicidade existe no JavaScript
 
-* [1. Por que assincronicidade existe no JavaScript](#1-por-que-assincronicidade-existe-no-javascript)
-
-  * [1.1 Operações que demoram e a UI responsiva](#11-operações-que-demoram-e-a-ui-responsiva)
-  * [1.2 Modelo mental: “iniciar agora, continuar depois”](#12-modelo-mental-iniciar-agora-continuar-depois)
-  * [1.3 Event loop (visão geral)](#13-event-loop-visão-geral)
-* [2. Promises (fundamento)](#2-promises-fundamento)
-
-  * [2.1 O que é uma Promise](#21-o-que-é-uma-promise)
-  * [2.2 Estados: pending, fulfilled, rejected](#22-estados-pending-fulfilled-rejected)
-  * [2.3 then/catch/finally e encadeamento](#23-thencatchfinally-e-encadeamento)
-  * [2.4 Resolver vs rejeitar (e lançar erro)](#24-resolver-vs-rejeitar-e-lançar-erro)
-  * [2.5 Promise.all (visão geral)](#25-promiseall-visão-geral)
-* [3. async/await (sintaxe mais legível)](#3-asyncawait-sintaxe-mais-legível)
-
-  * [3.1 O que async faz](#31-o-que-async-faz)
-  * [3.2 await e a “pausa” que não bloqueia a página](#32-await-e-a-pausa-que-não-bloqueia-a-página)
-  * [3.3 try/catch/finally com await](#33-trycatchfinally-com-await)
-  * [3.4 Armadilhas comuns](#34-armadilhas-comuns)
-* [4. fetch (rede no navegador)](#4-fetch-rede-no-navegador)
-
-  * [4.1 fetch retorna Promise de Response](#41-fetch-retorna-promise-de-response)
-  * [4.2 Response: ok, status, headers](#42-response-ok-status-headers)
-  * [4.3 Parsing: json() e text()](#43-parsing-json-e-text)
-  * [4.4 GET e POST com JSON](#44-get-e-post-com-json)
-  * [4.5 Erro de rede vs erro HTTP](#45-erro-de-rede-vs-erro-http)
-* [5. Consumir APIs (modelo mental de cliente)](#5-consumir-apis-modelo-mental-de-cliente)
-
-  * [5.1 O que é uma API no contexto web](#51-o-que-é-uma-api-no-contexto-web)
-  * [5.2 Request/Response com JSON](#52-requestresponse-com-json)
-  * [5.3 Query string e path params](#53-query-string-e-path-params)
-  * [5.4 CORS: por que acontece e limites](#54-cors-por-que-acontece-e-limites)
-  * [5.5 Boas práticas de organização](#55-boas-práticas-de-organização)
-* [6. Tratamento de erro básico](#6-tratamento-de-erro-básico)
-
-  * [6.1 O que pode dar errado](#61-o-que-pode-dar-errado)
-  * [6.2 Estratégia mínima de erros](#62-estratégia-mínima-de-erros)
-  * [6.3 finally e estados de UX](#63-finally-e-estados-de-ux)
-  * [6.4 Exemplo “padrão de mercado”](#64-exemplo-padrão-de-mercado)
-* [7. Boas práticas e limites do mundo real](#7-boas-práticas-e-limites-do-mundo-real)
-* [8. Erros comuns e confusões clássicas](#8-erros-comuns-e-confusões-clássicas)
-* [9. Glossário rápido](#9-glossário-rápido)
-* [10. Resumo final](#10-resumo-final)
-
----
-
-## Por que assincronicidade existe no JavaScript
-
-### Operações que demoram e a UI responsiva
+## Operações que demoram e a UI responsiva
 
 No navegador, o JavaScript divide um espaço delicado com a experiência do usuário: cliques, rolagem, animações, digitação, renderização de layout. Tudo isso precisa continuar fluindo enquanto o seu código roda.
 
@@ -93,7 +44,7 @@ Se o JavaScript “parasse o mundo” esperando uma resposta de rede, a página 
 
 >**Conceito-chave:** o navegador precisa manter a **interatividade**. O JavaScript foi desenhado para iniciar uma operação e continuar executando outras coisas enquanto essa operação termina “em paralelo” (do ponto de vista do programador).
 
-### Modelo mental: “iniciar agora, continuar depois”
+## Modelo mental: “iniciar agora, continuar depois”
 
 Pense em uma pizzaria (seu código) que faz pedidos para uma cozinha (rede/IO). Se a atendente ficasse parada olhando o forno até a pizza ficar pronta, ninguém mais seria atendido. O correto é:
 
@@ -103,7 +54,7 @@ Pense em uma pizzaria (seu código) que faz pedidos para uma cozinha (rede/IO). 
 
 Assincronicidade, no JavaScript do navegador, é exatamente isso: “**iniciar agora, continuar depois**”.
 
-### Event loop (visão geral)
+## Event loop (visão geral)
 
 O coração do modelo é entender como o JavaScript decide **o que roda agora** e **o que fica para depois**. Em alto nível:
 
@@ -116,14 +67,14 @@ Além disso, o navegador intercala momentos de renderização/repintura entre ci
 >**Dica:** quando você “espera” uma Promise com `await`, você não está “congelando” o navegador. Você está dizendo: *“quando isso resolver, continue daqui; por enquanto, devolva o controle para o event loop”*.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/7-javascript-assincrono/assets/image.png)
+![Figura 1 — Event Loop no navegador (call stack + task queue + microtask queue)](/api/materiais-assets/6-frontend/7-javascript-assincrono/assets/image.png)
 *Figura 1 — Event Loop no navegador (call stack + task queue + microtask queue)*
 
 ---
 
-## Promises (fundamento)
+# 7.2. Promises (fundamento)
 
-### O que é uma Promise
+## O que é uma Promise
 
 Uma **Promise** é como um **recibo**: ela representa um resultado que ainda não está disponível, mas estará no futuro — ou falhará.
 
@@ -133,7 +84,7 @@ Uma **Promise** é como um **recibo**: ela representa um resultado que ainda nã
 
 >**Conceito-chave:** uma Promise não é o valor. Ela é um **objeto que representa o compromisso** de entregar um valor (ou um erro) mais adiante.
 
-### Estados: pending, fulfilled, rejected
+## Estados: pending, fulfilled, rejected
 
 Toda Promise vive em um destes estados:
 
@@ -144,12 +95,12 @@ Toda Promise vive em um destes estados:
 Esses estados são **imutáveis**: uma Promise pendente vira fulfilled ou rejected **uma única vez**.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/7-javascript-assincrono/assets/image-1.png)
+![Figura 2 — Estados de uma Promise](/api/materiais-assets/6-frontend/7-javascript-assincrono/assets/image-1.png)
 *Figura 2 — Estados de uma Promise*
 
 ---
 
-### then/catch/finally e encadeamento
+## then/catch/finally e encadeamento
 
 O trio clássico:
 
@@ -198,7 +149,7 @@ Repare no modelo mental:
 * Os `then/catch/finally` registram “continuações”.
 * Quando a Promise resolve/rejeita, essas continuações vão para a **microtask queue** e rodam quando a call stack estiver livre.
 
-### Resolver vs rejeitar (e lançar erro)
+## Resolver vs rejeitar (e lançar erro)
 
 Aqui mora uma confusão comum: **“retornar um valor”** e **“lançar um erro”** têm efeitos diferentes na cadeia.
 
@@ -219,7 +170,7 @@ Promise.resolve(5)
 
 >**Atenção:** “rejeitar” (`reject`) e “lançar erro” (`throw`) se comportam de forma muito parecida do ponto de vista de quem consome: ambos levam ao `catch`. A diferença é onde isso acontece: `reject` decide o estado final da Promise; `throw` transforma um passo do encadeamento em falha.
 
-### Promise.all (visão geral)
+## Promise.all (visão geral)
 
 `Promise.all([...])` serve para quando você tem várias operações assíncronas independentes e quer:
 
@@ -244,11 +195,11 @@ Promise.all([p1, p2, p3])
 
 ---
 
-## async/await (sintaxe mais legível)
+# 7.3. async/await (sintaxe mais legível)
 
 Promises funcionam muito bem, mas `then` encadeado pode ficar verboso em lógicas mais longas, principalmente com várias validações e retornos intermediários. `async/await` existe para escrever **código assíncrono com cara de código sequencial**, mantendo o mesmo mecanismo (Promises) por baixo.
 
-### O que async faz
+## O que async faz
 
 Uma função marcada com `async` tem uma regra simples e poderosa:
 
@@ -266,7 +217,7 @@ async function f() {
 f().then((v) => console.log(v)); // 42
 ```
 
-### await e a “pausa” que não bloqueia a página
+## await e a “pausa” que não bloqueia a página
 
 `await` só pode ser usado dentro de função `async`. Ele significa:
 
@@ -282,7 +233,7 @@ A palavra “esperar” engana: **não é um bloqueio do thread inteiro**. O que
 
 >**Conceito-chave:** `await` não congela o navegador. Ele congela **apenas o trecho daquela função** — a execução do resto do programa (incluindo UI) continua.
 
-### try/catch/finally com await
+## try/catch/finally com await
 
 Como `await` pode “lançar” um erro quando a Promise rejeita, o padrão natural é:
 
@@ -303,7 +254,7 @@ async function carregarAlgo() {
 }
 ```
 
-### Comparação didática: then/catch vs async/await (mesma lógica)
+## Comparação didática: then/catch vs async/await (mesma lógica)
 
 **Versão com `then/catch`:**
 
@@ -334,7 +285,7 @@ async function executar() {
 
 Ambas são Promises por baixo. A diferença é a legibilidade e o local onde o erro “aparece”: com `await`, o erro se comporta como exceção naquele ponto.
 
-### Armadilhas comuns
+## Armadilhas comuns
 
 >**Atenção:** quase todos os “bugs estranhos” com async/await vêm de três descuidos.
 
@@ -353,9 +304,9 @@ Ambas são Promises por baixo. A diferença é a legibilidade e o local onde o e
 
 ---
 
-## fetch (rede no navegador)
+# 7.4. fetch (rede no navegador)
 
-### fetch retorna Promise de Response
+## fetch retorna Promise de Response
 
 `fetch(url, options?)` é a API nativa do navegador para fazer requisições HTTP. O retorno é:
 
@@ -363,7 +314,7 @@ Ambas são Promises por baixo. A diferença é a legibilidade e o local onde o e
 
 Isso é crucial: você não recebe o corpo imediatamente; primeiro recebe a “caixa” (Response) com metadados (status, headers) e métodos para ler o corpo.
 
-### Response: ok, status, headers
+## Response: ok, status, headers
 
 Um `Response` traz:
 
@@ -374,7 +325,7 @@ Um `Response` traz:
 
 >**Conceito-chave:** `fetch` considera que recebeu uma resposta HTTP “comunicável” mesmo que seja 404/500. Isso **não é erro de rede**; é uma resposta válida do servidor — só que indicando falha do ponto de vista do negócio.
 
-### Parsing: json() e text()
+## Parsing: json() e text()
 
 Para ler o corpo, você usa métodos que também são assíncronos:
 
@@ -383,7 +334,7 @@ Para ler o corpo, você usa métodos que também são assíncronos:
 
 >**Atenção:** `response.json()` **retorna Promise**. Esquecer o `await` aqui é um erro clássico.
 
-### GET e POST com JSON
+## GET e POST com JSON
 
 **GET básico (com checagem de ok e parsing):**
 
@@ -424,7 +375,7 @@ async function criarUsuario(novoUsuario) {
 
 >**Dica:** `Content-Type: application/json` diz ao servidor como interpretar o corpo. E `JSON.stringify` transforma objeto JS em texto JSON.
 
-### Diferença essencial: erro de rede vs erro HTTP
+## Diferença essencial: erro de rede vs erro HTTP
 
 Essa distinção precisa ficar gravada:
 
@@ -434,14 +385,14 @@ Essa distinção precisa ficar gravada:
 >**Conceito-chave:** “404” é o servidor falando com você. “Falha de rede” é você não conseguir falar com o servidor.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/7-javascript-assincrono/assets/image-2.png)
+![Figura 3 — Fluxo do fetch: request → response → ok? → parse json → render](/api/materiais-assets/6-frontend/7-javascript-assincrono/assets/image-2.png)
 *Figura 3 — Fluxo do fetch: request → response → ok? → parse json → render*
 
 ---
 
-## Consumir APIs (modelo mental de cliente)
+# 7.5. Consumir APIs (modelo mental de cliente)
 
-### O que é uma API no contexto web
+## O que é uma API no contexto web
 
 No contexto de front-end, uma **API** é um conjunto de endpoints (URLs) que aceitam requisições e devolvem respostas, normalmente em **JSON**.
 
@@ -452,7 +403,7 @@ Você, no navegador, está do lado “cliente”:
 
 Imagine que você precisa buscar uma lista de usuários para preencher uma tabela: a UI depende de um dado que está fora da página. Você dispara a request, mostra loading, recebe a resposta, valida, parseia, renderiza.
 
-### Request/Response com JSON (reforço)
+## Request/Response com JSON (reforço)
 
 JSON é só texto com estrutura. O ciclo típico:
 
@@ -466,7 +417,7 @@ E não confunda:
 
 >**Dica:** APIs frequentemente retornam mensagens no corpo em caso de erro (ex.: `{ "message": "Email já cadastrado" }`). Mesmo assim, você ainda precisa checar `response.ok` antes de tentar assumir sucesso.
 
-### Query string e path params (visão geral)
+## Query string e path params (visão geral)
 
 Dois jeitos comuns de passar parâmetros em APIs:
 
@@ -482,7 +433,7 @@ Dois jeitos comuns de passar parâmetros em APIs:
 
 No `fetch`, ambos viram apenas URLs diferentes.
 
-### CORS: por que acontece e limites
+## CORS: por que acontece e limites
 
 CORS (**Cross-Origin Resource Sharing**) é uma política de segurança do navegador. Ela existe para impedir que uma página em uma origem (origin) faça requisições “livres” para outra origem sem autorização.
 
@@ -501,7 +452,7 @@ O que você percebe na prática:
 
 >**Atenção:** CORS é resolvido **no servidor** (configurando headers como `Access-Control-Allow-Origin`), ou via um intermediário controlado (proxy). Do lado do front-end, você não “conserta CORS” com uma linha de código segura.
 
-### Boas práticas: organização mínima sem virar framework
+## Boas práticas: organização mínima sem virar framework
 
 Duas ideias simples melhoram muito a qualidade do código:
 
@@ -519,9 +470,9 @@ Duas ideias simples melhoram muito a qualidade do código:
 
 ---
 
-## Tratamento de erro básico
+# 7.6. Tratamento de erro básico
 
-### O que pode dar errado
+## O que pode dar errado
 
 Em rede e parsing, “dar errado” tem várias caras. O importante é reconhecer as categorias:
 
@@ -534,7 +485,7 @@ Em rede e parsing, “dar errado” tem várias caras. O importante é reconhece
 * **JSON inválido**: a resposta veio com corpo que não é JSON (ou veio truncada).
 * **Timeout** (noção): a resposta demora demais e você decide abortar/encerrar a tentativa.
 
-### Estratégia mínima de erros (sem paranoia, mas correta)
+## Estratégia mínima de erros (sem paranoia, mas correta)
 
 Um tratamento saudável costuma ter três camadas:
 
@@ -544,7 +495,7 @@ Um tratamento saudável costuma ter três camadas:
 
 >**Atenção:** “engolir” erro (capturar e não sinalizar nada) é uma das piores experiências: nem o usuário entende, nem o dev consegue investigar.
 
-### finally e noções de UX: loading, empty, error
+## finally e noções de UX: loading, empty, error
 
 Mesmo sem “virar projeto”, é importante nomear três estados básicos de UI:
 
@@ -555,11 +506,11 @@ Mesmo sem “virar projeto”, é importante nomear três estados básicos de UI
 `finally` é o aliado natural para garantir que você finalize o loading independentemente de sucesso/erro.
 
 ---
-![alt text](/api/materiais-assets/6-frontend/7-javascript-assincrono/assets/image-3.png)
+![Figura 4 — Fluxo de tratamento de erro: try → catch → finally (com estados de UI)](/api/materiais-assets/6-frontend/7-javascript-assincrono/assets/image-3.png)
 *Figura 4 — Fluxo de tratamento de erro: try → catch → finally (com estados de UI)*
 ---
 
-### Exemplo “padrão de mercado” (função async completa, curta e realista)
+## Exemplo “padrão de mercado” (função async completa, curta e realista)
 
 Abaixo está um exemplo que combina o essencial: iniciar loading, fazer request, validar status, parsear JSON, retornar dados, tratar erros e finalizar.
 
@@ -626,9 +577,9 @@ async function carregarUsuarios() {
 
 ---
 
-## Boas práticas e limites do mundo real (visão geral útil)
+# 7.7. Boas práticas e limites do mundo real (visão geral útil)
 
-### Paralelizar quando possível (evitar “cascata” desnecessária)
+## Paralelizar quando possível (evitar “cascata” desnecessária)
 
 Um erro comum de performance é fazer requisições independentes em sequência por puro hábito.
 
@@ -647,7 +598,7 @@ async function carregarTudo() {
 
 >**Conceito-chave:** “cascata” (uma chamada esperando a outra sem necessidade) aumenta latência total e deixa o usuário esperando mais.
 
-### Cancelamento (teaser): AbortController
+## Cancelamento (teaser): AbortController
 
 No navegador, você pode querer cancelar uma requisição quando:
 
@@ -659,7 +610,7 @@ A ideia existe via **AbortController**, mas o ponto aqui é conceitual: **nem to
 
 >**Dica:** cancelamento é também uma forma de evitar “respostas atrasadas” atualizando a UI no momento errado.
 
-### Timeouts: noção importante
+## Timeouts: noção importante
 
 `fetch` não oferece um “timeout simples” embutido do tipo `fetch(url, { timeout: 5000 })`. Se você precisa de timeout, a abordagem usual é:
 
@@ -668,7 +619,7 @@ A ideia existe via **AbortController**, mas o ponto aqui é conceitual: **nem to
 
 Aqui, a mensagem é: **timeout é uma política da aplicação**, não uma garantia automática do `fetch`.
 
-### Segurança e privacidade
+## Segurança e privacidade
 
 * **Não exponha tokens/segredos** em código público (qualquer pessoa pode ver no DevTools).
 * Se algo é sensível (chave privada, segredos de servidor), **não pertence ao front-end**.
@@ -676,7 +627,7 @@ Aqui, a mensagem é: **timeout é uma política da aplicação**, não uma garan
 
 >**Atenção:** “colocar segredo no front” não é segurança; é só esconder mal. Se o código roda no navegador, o usuário pode inspecionar.
 
-### Rate limits e “erros de negócio”
+## Rate limits e “erros de negócio”
 
 APIs podem limitar chamadas (rate limit). Às vezes isso aparece como:
 
@@ -687,7 +638,7 @@ O tratamento não é “tentar infinitamente”: é lidar como uma condição do
 
 ---
 
-## Erros comuns e confusões clássicas
+# 7.8. Erros comuns e confusões clássicas
 
 * **“fetch rejeita em 404/500”**
   Não rejeita. Ele resolve com `Response`. Você precisa checar `response.ok` (ou `status`) e então lançar um erro.
@@ -718,7 +669,7 @@ O tratamento não é “tentar infinitamente”: é lidar como uma condição do
 
 ---
 
-## Glossário rápido
+# 7.9. Glossário rápido
 
 * **Event loop:** mecanismo que coordena execução de código, filas de tarefas e momentos de renderização no navegador.
 * **Call stack:** pilha onde funções em execução ficam; se ela não esvazia, nada “depois” acontece.
@@ -738,6 +689,6 @@ O tratamento não é “tentar infinitamente”: é lidar como uma condição do
 
 ---
 
-## Resumo final
+# 7.10. Resumo final
 
 Assincronicidade existe no JavaScript do navegador para que operações lentas (principalmente rede) não travem a página. O **event loop** coordena quando o código roda: a **call stack** executa o que está “agora”, enquanto tarefas futuras ficam em filas; continuações de **Promises** têm prioridade via **microtask queue**. **Promises** são o fundamento: um “recibo” de um valor futuro, com estados bem definidos e encadeamento via `then/catch/finally`. **async/await** não muda o mecanismo — apenas torna a leitura mais linear, suspendendo a função sem bloquear a UI. Com **fetch**, você faz HTTP no navegador, entendendo que `fetch` rejeita em erro de rede, mas **não** em erro HTTP (404/500): por isso a checagem `response.ok` é obrigatória no caminho feliz. No mundo real, tratar erro com clareza (para usuário e para dev), cuidar de loading/empty/error states, entender CORS, e evitar cascatas desnecessárias (paralelizando com `Promise.all`) são diferenças entre um código “funciona na minha máquina” e um front-end robusto.
