@@ -110,6 +110,8 @@ Em sistemas distribuídos (como microserviços ou bancos replicados), o Teorema 
 - **CP (Consistência):** Se a rede cair, eu travo o sistema (erro) para não entregar dado velho. (Ex: Transferência Bancária).
 - **AP (Disponibilidade):** Se a rede cair, eu respondo com o que tenho, mesmo que desatualizado. (Ex: Feed do Instagram, Likes).
 
+Um cuidado importante é que CAP não significa escolher livremente "duas letras" em qualquer situação. Em sistemas distribuídos reais, falhas de rede podem acontecer, então a tolerância à partição precisa ser considerada. A escolha prática aparece quando a rede falha e o sistema precisa decidir entre bloquear respostas para preservar consistência ou responder mesmo correndo o risco de entregar dados temporariamente desatualizados.
+
 ## Fontes
 
 - [Google SRE Book - Service Level Objectives](https://sre.google/sre-book/service-level-objectives/)
@@ -137,6 +139,8 @@ Para resolver isso, usamos o conceito de **Bounded Contexts** (Contextos Delimit
 3. **Contexto Financeiro:** Cliente é um CNPJ com status de inadimplência.
 
 Em vez de criar uma classe `Cliente` gigante com 200 campos (`limite_credito`, `lista_tickets`, `historico_leads`), você cria modelos separados para cada contexto.
+
+Um Bounded Context não precisa virar um microserviço. Ele pode ser apenas um módulo dentro de um monólito modular. Primeiro você separa o modelo mental e as responsabilidades. Só depois, se houver necessidade real de escala, autonomia de time ou deploy independente, você considera separar fisicamente.
 
 
 
@@ -265,6 +269,20 @@ Todo o código (Frontend, Backend, Jobs) roda no mesmo processo ou deploy.
 - **Vantagens:** Simples de desenvolver, testar e deployar no início. Zero latência de rede.
 - **Desvantagens:** Se crescer muito, vira um pesadelo de manutenção. "Spaghetti Code".
 
+## Monólito Modular
+
+É um monólito no deploy, mas organizado internamente em módulos bem separados.
+
+Por exemplo, a divisão poderia ficar assim.
+- módulo de usuários
+- módulo de pedidos
+- módulo de pagamentos
+- módulo de relatórios
+
+Todos rodam no mesmo processo e sobem juntos, mas cada módulo tem responsabilidades claras e evita acessar detalhes internos dos outros.
+
+Essa costuma ser a melhor escolha para muitos sistemas. Você mantém a simplicidade operacional do monólito, mas reduz o risco de virar uma "bola de lama".
+
 ## Microserviços (A Distribuição)
 
 Sistemas pequenos e autônomos que se conversam via rede (HTTP/gRPC).
@@ -301,6 +319,7 @@ Não use microserviços se você não tiver:
 1. **Provisionamento Rápido:** Consegue subir um servidor novo em minutos?
 2. **Monitoramento Básico:** Sabe quando e porque o serviço caiu sem logar na máquina?
 3. **Automação de Deploy (CI/CD):** Se o deploy é manual, microserviços serão um inferno.
+4. **Limites de domínio e dados claros**. Cada serviço sabe exatamente pelo que é responsável? Se todos os serviços acessam o mesmo banco e mudam as mesmas tabelas, você provavelmente criou um monólito distribuído.
 
 ## Fontes
 
@@ -325,6 +344,14 @@ O cliente espera a resposta.
 O cliente manda uma mensagem e não espera.
 - **Protocolos:** AMQP (RabbitMQ), Kafka.
 - **Vantagem:** Se o serviço de Email cair, o Checkout continua vendendo. A mensagem espera na fila.
+
+O custo é que o sistema passa a trabalhar com **consistência eventual**. O pedido pode ser criado agora, mas o email de confirmação, a nota fiscal ou a atualização de relatório podem acontecer alguns segundos depois.
+
+Isso exige cuidado com estes pontos.
+- retries
+- idempotência
+- mensagens duplicadas
+- mensagens que falham várias vezes e precisam ir para uma fila de erro
 
 
 
@@ -411,6 +438,15 @@ src/
 2. **Dependência:** O `Controller` depende do `UseCase`. O `Repository` (implementação) depende da `Interface` definida no Core.
     - O Core **não depende** do Repository concreto. Ele depende de uma abstração. Isso é a **Inversão de Dependência**.
 
+## Ports & Adapters (Hexagonal Architecture)
+
+A ideia é parecida com Clean Architecture. O domínio fica no centro, e o mundo externo fica nas bordas.
+
+- **Ports** são interfaces que dizem o que o domínio precisa, como `PaymentGateway`, `UserRepository` e `EmailSender`.
+- **Adapters** são implementações reais dessas interfaces, como `StripePaymentGateway`, `PostgresUserRepository` e `SendgridEmailSender`.
+
+Assim, sua regra de negócio não depende diretamente de Stripe, PostgreSQL ou SendGrid. Ela depende de contratos internos, e os detalhes externos ficam plugados ao redor.
+
 ## Fontes
 
 - [The Clean Code Blog - The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
@@ -470,6 +506,8 @@ Um ADR não é estático. Ele tem status:
 1. **Proposed:** Estamos discutindo.
 2. **Accepted:** Decidimos e vamos implementar.
 3. **Deprecated:** A decisão era boa em 2020, mas agora em 2025 mudamos para outra coisa (que terá um novo ADR).
+
+Quando uma decisão muda, normalmente você não reescreve o ADR antigo como se ele nunca tivesse existido. Você cria um novo ADR explicando a nova decisão e marca o anterior como substituído ou obsoleto. Isso preserva o histórico do raciocínio do time.
 
 
 
