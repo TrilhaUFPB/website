@@ -5,7 +5,7 @@ category: Backend
 order: 1
 ---
 
-# 1. Introdução
+# 1 Introdução
 
 Este material tem como objetivo construir uma base sólida e prática sobre **backend e APIs**, partindo do zero até tópicos de **arquitetura, concorrência, segurança e operação** que aparecem no dia a dia de sistemas reais.
 

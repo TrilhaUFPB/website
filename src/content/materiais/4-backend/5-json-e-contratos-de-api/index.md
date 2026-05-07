@@ -157,9 +157,9 @@ Note que `False` (Python) virou `false` (JSON). Essa conversão de tipos é auto
 
 ## Fontes
 
-- **[JSON.org]:** Especificação oficial (json.org)
-- **[MDN]:** Trabalhando com JSON (developer.mozilla.org)
-- **[FAST]:** FastAPI e JSON (fastapi.tiangolo.com)
+- [JSON.org - Especificação oficial](https://www.json.org/json-en.html)
+- [MDN - Trabalhando com JSON](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON)
+- [FastAPI - JSON Compatible Encoder](https://fastapi.tiangolo.com/tutorial/encoder/)
 
 ---
 # 5.2 Tipos, estruturas e armadilhas comuns
@@ -255,9 +255,9 @@ Vamos ver um JSON mal formatado e como corrigi-lo.
 
 ## Fontes
 
-- **[MDN]:** JSON Data Types
-- **[ISO]:** ISO 8601 Date and Time Format
-- **[Google Style]:** JSON Style Guide (Google)
+- [JSON.org - Tipos de dados do JSON](https://www.json.org/json-en.html)
+- [ISO - ISO 8601 Date and Time Format](https://www.iso.org/iso-8601-date-and-time-format.html)
+- [Google - JSON Style Guide](https://google.github.io/styleguide/jsoncstyleguide.html)
 
 ---
 # 5.3 Serialização e deserialização
@@ -353,8 +353,8 @@ Se o JSON de entrada estiver errado (ex: `preco` for "abc"), o processo de deser
 
 ## Fontes
 
-- **[FAST]:** Pydantic e Validação
-- **[OWASP]:** Deserialization Cheat Sheet
+- [Pydantic - Models](https://docs.pydantic.dev/latest/concepts/models/)
+- [OWASP Cheat Sheet - Deserialization](https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html)
 
 ---
 # 5.4 Contratos de entrada e saída
@@ -470,9 +470,10 @@ _Implementação de DTOs usando Pydantic_
 
 ## Fontes
 
-- **[Fowler]:** Data Transfer Object (DTO) pattern
-- **[FAST]:** Request Body e Response Model
-- **[OWASP]:** Mass Assignment Prevention
+- [Martin Fowler - Data Transfer Object](https://martinfowler.com/eaaCatalog/dataTransferObject.html)
+- [FastAPI - Request Body](https://fastapi.tiangolo.com/tutorial/body/)
+- [FastAPI - Response Model](https://fastapi.tiangolo.com/tutorial/response-model/)
+- [OWASP Cheat Sheet - Mass Assignment](https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html)
 
 ---
 # 5.5 Evolução de contratos e compatibilidade
@@ -557,8 +558,8 @@ Em backend, "mudar rapidinho" um nome de campo pode derrubar o aplicativo móvel
 
 ## Fontes
 
-- **[SemVer]:** Semantic Versioning
-- **[Google]:** API Design Guide - Compatibility
+- [SemVer - Semantic Versioning](https://semver.org/)
+- [Google Cloud - API Design Guide: Compatibility](https://cloud.google.com/apis/design/compatibility)
 
 ---
 # 5.6 OpenAPI como contrato formal
@@ -651,9 +652,9 @@ paths:
 
 ## Fontes
 
-- **[OpenAPI]:** Openapis.org
-- **[Swagger]:** Swagger.io
-- **[FAST]:** FastAPI e OpenAPI
+- [OpenAPI Initiative](https://www.openapis.org/)
+- [Swagger - OpenAPI Specification](https://swagger.io/specification/)
+- [FastAPI - OpenAPI](https://fastapi.tiangolo.com/tutorial/metadata/)
 
 ---
 # 5.7 Modelagem consistente de erros
@@ -752,6 +753,6 @@ O FastAPI já faz algo muito similar a isso automaticamente para erros de valida
 
 ## Fontes
 
-- **[RFC 7807]:** Problem Details for HTTP APIs
-- **[MDN]:** HTTP Status Codes
-- **[Google]:** API Errors Design
+- [RFC 7807 - Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/html/rfc7807)
+- [MDN - HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+- [Google Cloud - API Errors Design](https://cloud.google.com/apis/design/errors)

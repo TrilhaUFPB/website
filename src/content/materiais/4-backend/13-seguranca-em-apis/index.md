@@ -130,13 +130,10 @@ A utilidade do modelo é transformar uma discussão vaga de segurança em decis�
 
 ## Fontes
 
-[https://owasp.org/www-community/Threat_Modeling](https://owasp.org/www-community/Threat_Modeling)
-[https://owasp.org/www-community/Threat_Modeling_Process](https://owasp.org/www-community/Threat_Modeling_Process)
-[https://owasp.org/www-project-threat-modelling-guide/](https://owasp.org/www-project-threat-modelling-guide/)
-[https://owasp.org/www-project-threat-modeling/](https://owasp.org/www-project-threat-modeling/)
-
-
-
+- [OWASP - Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
+- [OWASP - Threat Modeling Process](https://owasp.org/www-community/Threat_Modeling_Process)
+- [OWASP - Www Project Threat Modelling Guide](https://owasp.org/www-project-threat-modelling-guide/)
+- [OWASP - Www Project Threat Modeling](https://owasp.org/www-project-threat-modeling/)
 
 ---
 # 13.2 OWASP API Security Top 10
@@ -244,9 +241,7 @@ Isso orienta onde colocar atenção mesmo em projetos pequenos:
 
 ## Fontes
 
-[https://owasp.org/API-Security/editions/2023/en/0x11-t10/](https://owasp.org/API-Security/editions/2023/en/0x11-t10/)
-
-
+- [OWASP - 0x11 T10](https://owasp.org/API-Security/editions/2023/en/0x11-t10/)
 
 ---
 # 13.3 Princípios básicos de segurança
@@ -310,7 +305,5 @@ Isso envolve impor limites de consumo, tratar payloads grandes, controlar concor
 
 ## Fontes
 
-[https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)
-
-[https://owasp.org/www-project-application-security-verification-standard/](https://owasp.org/www-project-application-security-verification-standard/)
-
+- [OWASP Cheat Sheet - REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)
+- [OWASP - Www Project Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)

@@ -125,16 +125,11 @@ Repare no que esse par de mensagens já comunica, mesmo sem você conhecer o bac
 
 ## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
+- [MDN - HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)
+- [MDN - Guides Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview)
+- [MDN - Guides Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
+- [MDN - HTTP](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP)
+- [RFC Editor - RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html)
 
 ---
 
@@ -289,23 +284,14 @@ O que muda em relação ao primeiro exemplo:
 
 ## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Host](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Host)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Accept](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Accept)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Content-Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Content-Type)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
-
+- [MDN - HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)
+- [MDN - Guides Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
+- [MDN - Reference Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods)
+- [MDN - Reference Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers)
+- [MDN - Host](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Host)
+- [MDN - Accept](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Accept)
+- [MDN - Content Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Content-Type)
+- [RFC Editor - RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html)
 
 ---
 # 4.3 Estrutura de uma resposta HTTP
@@ -440,19 +426,12 @@ Aqui não existe corpo. O status já comunica que a operação deu certo e que n
 
 ## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Status](https://developer.mozilla.org/pt-BR/docs/Glossary/Status)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
-
+- [MDN - Guides Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
+- [MDN - HTTP Status](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status)
+- [MDN - HTTP Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers)
+- [MDN - Content Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
+- [MDN - Glossary Status](https://developer.mozilla.org/pt-BR/docs/Glossary/Status)
+- [RFC Editor - RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html)
 
 ---
 # 4.4 Métodos HTTP e semântica
@@ -587,19 +566,12 @@ A intenção é mudar apenas um campo sem reenviar todo o recurso.
 
 ## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Idempotent](https://developer.mozilla.org/pt-BR/docs/Glossary/Idempotent)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Safe](https://developer.mozilla.org/pt-BR/docs/Glossary/Safe)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
-[https://www.rfc-editor.org/rfc/rfc5789](https://www.rfc-editor.org/rfc/rfc5789)
-
-
+- [MDN - HTTP Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods)
+- [MDN - Reference Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods)
+- [MDN - Idempotent](https://developer.mozilla.org/pt-BR/docs/Glossary/Idempotent)
+- [MDN - Safe](https://developer.mozilla.org/pt-BR/docs/Glossary/Safe)
+- [RFC Editor - RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html)
+- [RFC Editor - RFC 5789](https://www.rfc-editor.org/rfc/rfc5789)
 
 ---
 # 4.5 Códigos de status HTTP
@@ -821,17 +793,11 @@ Esse exemplo é útil porque mostra que o status pode refletir um problema na ca
 
 ## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Status](https://developer.mozilla.org/pt-BR/docs/Glossary/Status)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
-
+- [MDN - HTTP Status](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status)
+- [MDN - Reference Status](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status)
+- [MDN - HTTP Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods)
+- [MDN - Glossary Status](https://developer.mozilla.org/pt-BR/docs/Glossary/Status)
+- [RFC Editor - RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html)
 
 ---
 # 4.6 Cabeçalhos fundamentais para APIs
@@ -1020,28 +986,17 @@ Repare que o cliente consegue confirmar que o conteúdo é o mesmo sem receber o
 
 ## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Host](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Host)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Authorization](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Authorization)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Location](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Location)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
+- [MDN - HTTP Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers)
+- [MDN - Host](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Host)
+- [MDN - Accept](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept)
+- [MDN - Content Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
+- [MDN - Authorization](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Authorization)
+- [MDN - Location](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Location)
+- [MDN - Cache Control](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control)
+- [MDN - ETag](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag)
+- [MDN - If None Match](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match)
+- [MDN - 304](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304)
+- [RFC Editor - RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html)
 
 ---
 # 4.7 Negociação de conteúdo
@@ -1210,23 +1165,15 @@ Aqui, o dado principal do erro é o código `error`. A mensagem pode variar por 
 
 ## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Content_negotiation](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Content_negotiation)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Language](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Language)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Encoding](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Encoding)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Language](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Language)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Encoding](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Encoding)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/406](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/406)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
+- [MDN - Content Negotiation](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Content_negotiation)
+- [MDN - Accept](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept)
+- [MDN - Content Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
+- [MDN - Accept Language](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Language)
+- [MDN - Accept Encoding](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Encoding)
+- [MDN - Content Language](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Language)
+- [MDN - Content Encoding](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Encoding)
+- [MDN - 406](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/406)
+- [RFC Editor - RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html)
 
 ---
 # 4.8 Caching em APIs HTTP
@@ -1405,19 +1352,12 @@ Aqui a regra é clara: não guarde.
 
 ## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304)
-
-[https://www.rfc-editor.org/rfc/rfc9111.html](https://www.rfc-editor.org/rfc/rfc9111.html)
-
-
+- [MDN - HTTP Caching](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching)
+- [MDN - Cache Control](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control)
+- [MDN - ETag](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag)
+- [MDN - If None Match](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match)
+- [MDN - 304](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304)
+- [RFC Editor - RFC 9111](https://www.rfc-editor.org/rfc/rfc9111.html)
 
 ---
 # 4.9 Cookies, sessões e APIs
@@ -1561,15 +1501,13 @@ A abordagem comum é manter dados sensíveis no servidor e usar o cookie apenas 
 - Eu sei que cookies de autenticação exigem HTTPS e atributos de segurança.
 
 ## Fontes
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies)
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Set-Cookie](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Set-Cookie)
+- [MDN - HTTP Cookies](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies)
+- [MDN - Set Cookie](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Set-Cookie)
+- [MDN - Cookie](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cookie)
+- [MDN - Types of Attacks](https://developer.mozilla.org/pt-BR/docs/Web/Security/Types_of_attacks)
+- [RFC Editor - RFC 6265](https://www.rfc-editor.org/rfc/rfc6265)
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cookie](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cookie)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/Security/Types_of_attacks](https://developer.mozilla.org/pt-BR/docs/Web/Security/Types_of_attacks)
-
-[https://www.rfc-editor.org/rfc/rfc6265](https://www.rfc-editor.org/rfc/rfc6265)
 ---
 # 4.10 CORS e políticas de mesma origem
 
@@ -1713,24 +1651,16 @@ A partir daí, o navegador autoriza a requisição real.
 - Eu entendo por que existe preflight com OPTIONS em alguns casos.
 - Eu sei que credenciais entre origens exigem configurações específicas.
 
-## Fontes (para leitura)
+## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/Security/Same-origin_policy](https://developer.mozilla.org/pt-BR/docs/Web/Security/Same-origin_policy)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods/OPTIONS](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods/OPTIONS)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Origin](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Methods)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Headers)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
-
-[https://www.rfc-editor.org/rfc/rfc6454](https://www.rfc-editor.org/rfc/rfc6454)
-
+- [MDN - CORS](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS)
+- [MDN - Same Origin Policy](https://developer.mozilla.org/pt-BR/docs/Web/Security/Same-origin_policy)
+- [MDN - OPTIONS](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods/OPTIONS)
+- [MDN - Access Control Allow Origin](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+- [MDN - Access Control Allow Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Methods)
+- [MDN - Access Control Allow Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Headers)
+- [MDN - Access Control Allow Credentials](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+- [RFC Editor - RFC 6454](https://www.rfc-editor.org/rfc/rfc6454)
 
 ---
 # 4.11 HTTP/1.1, HTTP/2 e HTTP/3
@@ -1846,20 +1776,13 @@ Se você está apenas começando, o mais produtivo é dominar bem a semântica e
 - Eu sei que a API pode estar atrás de proxy, e a versão externa pode ser diferente da interna.
 - Eu sei quando vale a pena olhar para versões como otimização, não como requisito de design.
 
-## Fontes (para leitura)
+## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Basics_of_HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Basics_of_HTTP)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Versioning](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Versioning)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_2](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_2)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_3](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_3)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
-[https://www.rfc-editor.org/rfc/rfc9114.html](https://www.rfc-editor.org/rfc/rfc9114.html)
-
-[https://www.rfc-editor.org/rfc/rfc9000.html](https://www.rfc-editor.org/rfc/rfc9000.html)
+- [MDN - HTTP Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview)
+- [MDN - Basics of HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Basics_of_HTTP)
+- [MDN - Versioning](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Versioning)
+- [MDN - HTTP 2](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_2)
+- [MDN - HTTP 3](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_3)
+- [RFC Editor - RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html)
+- [RFC Editor - RFC 9114](https://www.rfc-editor.org/rfc/rfc9114.html)
+- [RFC Editor - RFC 9000](https://www.rfc-editor.org/rfc/rfc9000.html)

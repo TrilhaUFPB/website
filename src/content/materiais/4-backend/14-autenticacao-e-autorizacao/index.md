@@ -98,15 +98,10 @@ Esse exemplo também mostra por que autorização precisa ser pensada por recurs
 
 ## Fontes
 
-[https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
-
-[https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
-
-[https://owasp.org/www-community/Access_Control](https://owasp.org/www-community/Access_Control)
-
-[https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html)
-
-
+- [OWASP Cheat Sheet - Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
+- [OWASP Cheat Sheet - Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
+- [OWASP - Access Control](https://owasp.org/www-community/Access_Control)
+- [OWASP Cheat Sheet - Web Service Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html)
 
 ---
 # 14.2 Identidade de usuário e de serviço
@@ -187,14 +182,10 @@ Essa separação impede que um serviço interno vire um atalho para acessar dado
 
 ## Fontes
 
-[https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
-
-[https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
-
-[https://owasp.org/www-community/Access_Control](https://owasp.org/www-community/Access_Control)
-
-[https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html)
-
+- [OWASP Cheat Sheet - Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
+- [OWASP Cheat Sheet - Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
+- [OWASP - Access Control](https://owasp.org/www-community/Access_Control)
+- [OWASP Cheat Sheet - Web Service Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html)
 
 ---
 # 14.3 Papéis, permissões e escopos
@@ -299,8 +290,6 @@ O que isso ilustra: permissões e escopos servem para restringir ações, mas a 
 
 ## Fontes
 
-[https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
-
-[https://owasp.org/www-community/Access_Control](https://owasp.org/www-community/Access_Control)
-
-[https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html)
+- [OWASP Cheat Sheet - Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
+- [OWASP - Access Control](https://owasp.org/www-community/Access_Control)
+- [OWASP Cheat Sheet - Web Service Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html)

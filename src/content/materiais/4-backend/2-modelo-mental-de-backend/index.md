@@ -12,7 +12,7 @@ Backend existe porque, na Web, quase tudo acontece como uma **conversa entre dua
 - o **cliente**, que inicia a interação (ex.: navegador, app mobile, outra API)
 - o **servidor**, que recebe a solicitação, executa o trabalho necessário e devolve uma resposta
 
-Esse modelo é a base de como páginas e APIs funcionam no dia a dia: você clica, envia um formulário, faz uma busca  e uma requisição é enviada para algum servidor, que responde com dados ou com uma página. ([MDN Web Docs][1])
+Esse modelo é a base de como páginas e APIs funcionam no dia a dia: você clica, envia um formulário, faz uma busca  e uma requisição é enviada para algum servidor, que responde com dados ou com uma página. ([MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview))
 
 ## O que é cliente e o que é servidor
 
@@ -35,7 +35,7 @@ Na prática, “cliente” costuma ser o navegador, mas também pode ser um app 
 - **acessa dados** (quando preciso)
 - **retorna uma resposta**
 
-Servidor não é apenas um computador: normalmente existe um **software servidor** rodando, responsável por responder às requisições (por exemplo, um servidor web). ([MDN Web Docs][2])
+Servidor não é apenas um computador: normalmente existe um **software servidor** rodando, responsável por responder às requisições (por exemplo, um servidor web). ([MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server))
 
 ## Responsabilidades: o que pertence a cada lado
 
@@ -68,7 +68,7 @@ Entender os limites evita frustrações e te dá maturidade técnica desde cedo.
 
 ### 1) A rede falha
 
-Entre cliente e servidor existe rede: latência, timeout, perda de conexão e instabilidade acontecem. Por isso o cliente precisa saber lidar com “tentar novamente”, “aguarde”, “não foi possível conectar”, etc. ([MDN Web Docs][3])
+Entre cliente e servidor existe rede: latência, timeout, perda de conexão e instabilidade acontecem. Por isso o cliente precisa saber lidar com “tentar novamente”, “aguarde”, “não foi possível conectar”, etc. ([MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Session))
 
 ### 2) O cliente não é confiável
 
@@ -79,11 +79,11 @@ O usuário controla o ambiente do cliente. Mesmo que exista validação na inter
 
 ### 3) Estado não “vem de graça”
 
-No fluxo tradicional, cada requisição é um evento separado. Se você quer lembrar algo (ex.: sessão, login), isso exige mecanismos adicionais (cookies/tokens), que serão vistos mais à frente. ([MDN Web Docs][4])
+No fluxo tradicional, cada requisição é um evento separado. Se você quer lembrar algo (ex.: sessão, login), isso exige mecanismos adicionais (cookies/tokens), que serão vistos mais à frente. ([MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview))
 
 ### 4) No fluxo tradicional, o servidor responde a pedidos
 
-No modelo clássico, o cliente inicia a requisição e espera resposta; o servidor responde a esse pedido. (Quando você precisa de comunicação contínua/tempo real, entram outros estilos, que aparecem na Parte II.) ([MDN Web Docs][5])
+No modelo clássico, o cliente inicia a requisição e espera resposta; o servidor responde a esse pedido. (Quando você precisa de comunicação contínua/tempo real, entram outros estilos, que aparecem na Parte II.) ([MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP))
 
 ## Exemplo guiado: inscrição no Trilha
 
@@ -153,31 +153,15 @@ Uma pessoa quer **se inscrever no Trilha** preenchendo:
 - [ ] Eu consigo listar pelo menos 3 falhas reais de rede e o impacto na experiência.
 - [ ] Eu consigo justificar por que o servidor é a “fonte de verdade”.
 
-## Fontes (para leitura)
+## Fontes
 
-**Leituras principais (fundamentos):** ([MDN Web Docs][1])
-
-```text
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview
-https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview
-https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Session
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server
-https://developer.mozilla.org/pt-BR/docs/Web/HTTP
-```
-
-**Leitura complementar (para reforçar “lado servidor” e por que ele existe):** ([MDN Web Docs][6])
-
-```text
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Introduction
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps
-```
-
-[1]: https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview?utm_source=chatgpt.com "Visão geral do cliente-servidor - MDN Web Docs - Mozilla"
-[2]: https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server?utm_source=chatgpt.com "O que é um servidor web (web server)? - MDN Web Docs"
-[3]: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Session?utm_source=chatgpt.com "Uma típica sessão HTTP - MDN Web Docs - Mozilla"
-[4]: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview?utm_source=chatgpt.com "Uma visão geral do HTTP - MDN Web Docs"
-[5]: https://developer.mozilla.org/pt-BR/docs/Web/HTTP?utm_source=chatgpt.com "HTTP - MDN Web Docs - Mozilla"
-[6]: https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Introduction?utm_source=chatgpt.com "Introdução ao lado servidor - Aprendendo desenvolvimento web"
+- [MDN - Client Server Overview](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview)
+- [MDN - Guides Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview)
+- [MDN - Session](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Session)
+- [MDN - What Is a Web Server](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server)
+- [MDN - HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)
+- [MDN - Introduction](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Introduction)
+- [MDN - First Steps](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps)
 
 ---
 
@@ -339,20 +323,16 @@ o navegador (cliente) vai enviar uma requisição para exatamente esse host e po
 - [ ] Eu estou acessando exatamente o mesmo host e porta no navegador?
 - [ ] Se deu “porta em uso”, eu parei o processo antigo ou troquei a porta?
 
-## Fontes (para leitura)
+## Fontes
 
-**MDN (fundamentos e glossário):**
-
-```text
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server
-https://developer.mozilla.org/pt-BR/docs/Glossary/Port
-https://developer.mozilla.org/pt-BR/docs/Glossary/IP_Address
-https://developer.mozilla.org/pt-BR/docs/Glossary/Origin
-https://developer.mozilla.org/pt-BR/docs/Web/API/URL
-https://developer.mozilla.org/pt-BR/docs/Web/API/URL/host
-https://developer.mozilla.org/pt-BR/docs/Web/API/URL/hostname
-https://developer.mozilla.org/pt-BR/docs/Web/API/URL/port
-```
+- [MDN - What Is a Web Server](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server)
+- [MDN - Port](https://developer.mozilla.org/pt-BR/docs/Glossary/Port)
+- [MDN - IP Address](https://developer.mozilla.org/pt-BR/docs/Glossary/IP_Address)
+- [MDN - Origin](https://developer.mozilla.org/pt-BR/docs/Glossary/Origin)
+- [MDN - URL](https://developer.mozilla.org/pt-BR/docs/Web/API/URL)
+- [MDN - Host](https://developer.mozilla.org/pt-BR/docs/Web/API/URL/host)
+- [MDN - Hostname](https://developer.mozilla.org/pt-BR/docs/Web/API/URL/hostname)
+- [MDN - Port](https://developer.mozilla.org/pt-BR/docs/Web/API/URL/port)
 
 ---
 
@@ -545,22 +525,17 @@ Mudanças com alto risco de quebra:
 
 ## Fontes
 
-Leituras principais:
-
-```text
-[MAPI] Mastering API Architecture (O'Reilly)
-  Parte I (Designing, Building, and Testing APIs)
-    Capítulo 1: Design, Build, and Specify APIs
-      - Summary (Key takeaways): consistência para consumidores; OpenAPI como forma de compartilhar estrutura; versionamento como decisão de produto
-      - Seção: Specifying REST APIs Using OpenAPI (como usar especificação para documentar e alinhar expectativas de request/response)
-      - Seções: Code Generation; OpenAPI Validation (uso prático do OpenAPI para automatizar e validar o contrato)
-
-[LAPI] Learning API Styles (O'Reilly)
-  Capítulo 5: REST
-    - Seção: OpenAPI Specification (API specification como contract; OAS como padrão para documentar APIs HTTP; ferramentas e uso em frameworks)
-  Capítulo 2: Design Patterns
-    - Seção: API Versioning (estratégias de versionamento, incluindo path, query parameter e header; impactos em debugging e roteamento)
-```
+- Mastering API Architecture (O'Reilly)
+  - Parte I (Designing, Building, and Testing APIs)
+  - Capítulo 1: Design, Build, and Specify APIs
+  - Summary (Key takeaways): consistência para consumidores; OpenAPI como forma de compartilhar estrutura; versionamento como decisão de produto
+  - Seção: Specifying REST APIs Using OpenAPI (como usar especificação para documentar e alinhar expectativas de request/response)
+  - Seções: Code Generation; OpenAPI Validation (uso prático do OpenAPI para automatizar e validar o contrato)
+- Learning API Styles (O'Reilly)
+  - Capítulo 5: REST
+  - Seção: OpenAPI Specification (API specification como contract; OAS como padrão para documentar APIs HTTP; ferramentas e uso em frameworks)
+  - Capítulo 2: Design Patterns
+  - Seção: API Versioning (estratégias de versionamento, incluindo path, query parameter e header; impactos em debugging e roteamento)
 
 ---
 
@@ -774,35 +749,17 @@ class InscricaoRepository:
 
 ## Fontes
 
-Leituras principais:
-
-```text
-[MAPI] Mastering API Architecture (O’Reilly)
-- Introdução: From Tiered Architecture to Modeling APIs
-- Part I (Designing, Building, and Testing APIs)
+- Mastering API Architecture (O’Reilly)
+  - Introdução: From Tiered Architecture to Modeling APIs
+  - Part I (Designing, Building, and Testing APIs)
   - Chapter 1: Design, Build, and Specify APIs (visão de produtor/consumidor e estruturação de APIs)
-```
-
-complementar:
-
-```text
-[LAPI] Learning API Styles (O’Reilly)
-- Chapter 3: TCP (base de conexão e modelo em camadas)
-- Chapter 4: HTTP (mensagens, headers, request/response)
-- Chapter 5: REST (uniform interface e mensagens auto descritivas, úteis para separar transporte do domínio)
-```
-
-FastAPI:
-
-```text
-[FAST] FastAPI
-- Bigger Applications (organização do projeto e separação de responsabilidades):
-  https://fastapi.tiangolo.com/tutorial/bigger-applications/
-- Dependencies (injeção e composição de camadas, útil para services e repositories):
-  https://fastapi.tiangolo.com/tutorial/dependencies/
-- SQL (exemplos de persistência separada da rota):
-  https://fastapi.tiangolo.com/tutorial/sql-databases/
-```
+- Learning API Styles (O’Reilly)
+  - Chapter 3: TCP (base de conexão e modelo em camadas)
+  - Chapter 4: HTTP (mensagens, headers, request/response)
+  - Chapter 5: REST (uniform interface e mensagens auto descritivas, úteis para separar transporte do domínio)
+- [FastAPI - Bigger Applications](https://fastapi.tiangolo.com/tutorial/bigger-applications/) (organização do projeto e separação de responsabilidades)
+- [FastAPI - Dependencies](https://fastapi.tiangolo.com/tutorial/dependencies/) (injeção e composição de camadas, útil para services e repositories)
+- [FastAPI - SQL Databases](https://fastapi.tiangolo.com/tutorial/sql-databases/) (exemplos de persistência separada da rota)
 
 # 2.5 Arquitetura em camadas (visão conceitual)
 
@@ -1040,20 +997,15 @@ Isso reduz o tipo de mudança que vira efeito cascata.
 - [ ] Casos de uso orquestram o fluxo e chamam dependências.
 - [ ] Eu consigo testar domínio e aplicação sem subir servidor.
 
-## Fontes (para leitura)
+## Fontes
 
-Leituras principais:
-
-```text
-[MAPI] Mastering API Architecture (O'Reilly)
-- Introdução: From Tiered Architecture to Modeling APIs (três camadas e modelo mental para processar requisições)
-- Introdução: trecho do case study que descreve API Controller como ponto de entrada e roteamento interno
-
-[LAPI] Learning API Styles (O'Reilly)
-- Capítulo 5: REST
+- Mastering API Architecture (O'Reilly)
+  - Introdução: From Tiered Architecture to Modeling APIs (três camadas e modelo mental para processar requisições)
+  - Introdução: trecho do case study que descreve API Controller como ponto de entrada e roteamento interno
+- Learning API Styles (O'Reilly)
+  - Capítulo 5: REST
   - seção Origins of REST (motivação: consistência, escalabilidade e intermediários)
   - lista de REST constraints, item 5 Layered system (camadas como forma de encapsular comportamento e permitir gateways/proxies)
-```
 
 # 2.6 Anti-padrões comuns em backend iniciante
 
@@ -1288,24 +1240,17 @@ O ganho prático:
 - [ ] Eu tenho convenções claras de nomes e rotas.
 - [ ] Eu penso em limites básicos e comportamento defensivo.
 
-## Fontes (para leitura)
+## Fontes
 
-Leituras principais:
-
-```text
-[MAPI] Mastering API Architecture (O'Reilly)
-- Part I (Designing, Building, and Testing APIs)
+- Mastering API Architecture (O'Reilly)
+  - Part I (Designing, Building, and Testing APIs)
   - Chapter 1: Design, Build, and Specify APIs
-    - estratégias para consistência e evitar incompatibilidades
-    - padrões e escolhas para reduzir risco de breaking changes
+  - estratégias para consistência e evitar incompatibilidades
+  - padrões e escolhas para reduzir risco de breaking changes
   - Chapter 2: Testing APIs
-    - como evitar inconsistência, breaking changes acidentais e feedback ruim para entradas inválidas
-```
-
-```text
-[LAPI] Learning API Styles (O'Reilly)
-- Chapter 2: Design Patterns
+  - como evitar inconsistência, breaking changes acidentais e feedback ruim para entradas inválidas
+- Learning API Styles (O'Reilly)
+  - Chapter 2: Design Patterns
   - API Naming (consistência de nomes e convenções)
   - API Versioning (contrato e estratégias de versionamento)
   - Best practices e seções de qualidade: input validation e comunicação de erros com códigos padrão
-```

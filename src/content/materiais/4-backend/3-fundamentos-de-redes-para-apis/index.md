@@ -90,17 +90,13 @@ Se o árbitro usar o IP errado, os dados vão para a máquina errada e o servido
 - Eu consigo ler `192.168.0.50:9000` e dizer qual parte é a máquina e qual parte é o serviço.
 - Eu consigo explicar por que IP certo com porta errada não funciona.
 
-## Fontes (para leitura)
+## Fontes
 
-Tanenbaum, Redes de Computadores (4ª edição):
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/IP_Address](https://developer.mozilla.org/pt-BR/docs/Glossary/IP_Address)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Port](https://developer.mozilla.org/pt-BR/docs/Glossary/Port)
-
-[https://docs.python.org/pt-br/3/howto/sockets.html](https://docs.python.org/pt-br/3/howto/sockets.html)
-
-[https://docs.python.org/3/library/socket.html](https://docs.python.org/3/library/socket.html)
+- Tanenbaum, Redes de Computadores (4ª edição)
+- [MDN - IP Address](https://developer.mozilla.org/pt-BR/docs/Glossary/IP_Address)
+- [MDN - Port](https://developer.mozilla.org/pt-BR/docs/Glossary/Port)
+- [Python Docs - Sockets](https://docs.python.org/pt-br/3/howto/sockets.html)
+- [Python Docs - Socket](https://docs.python.org/3/library/socket.html)
 
 ---
 
@@ -238,17 +234,12 @@ Esse exemplo também explica um sintoma comum em times: pessoas relatando result
 
 ## Fontes
 
-Tanenbaum, Redes de Computadores (4ª edição):
-
-[https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_domain_name](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_domain_name)
-
-[https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Domain](https://developer.mozilla.org/pt-BR/docs/Glossary/Domain)
-
-[https://www.rfc-editor.org/rfc/rfc1034](https://www.rfc-editor.org/rfc/rfc1034)
-
-[https://www.cloudflare.com/pt-br/learning/dns/what-is-dns/](https://www.cloudflare.com/pt-br/learning/dns/what-is-dns/)
+- Tanenbaum, Redes de Computadores (4ª edição)
+- [MDN - What Is a Domain Name](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_domain_name)
+- [MDN - How the Web Works](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works)
+- [MDN - Domain](https://developer.mozilla.org/pt-BR/docs/Glossary/Domain)
+- [RFC Editor - RFC 1034](https://www.rfc-editor.org/rfc/rfc1034)
+- [Cloudflare - What Is DNS](https://www.cloudflare.com/pt-br/learning/dns/what-is-dns/)
 
 ---
 
@@ -388,17 +379,12 @@ Agora um segundo cenário: o cliente envia a requisição, o servidor processa e
 
 ## Fontes
 
-Tanenbaum, Redes de Computadores (4ª edição):
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/TCP](https://developer.mozilla.org/pt-BR/docs/Glossary/TCP)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Transmission_Control_Protocol](https://developer.mozilla.org/pt-BR/docs/Glossary/Transmission_Control_Protocol)
-
-[https://www.rfc-editor.org/rfc/rfc9293](https://www.rfc-editor.org/rfc/rfc9293)
-
-[https://www.cloudflare.com/pt-br/learning/ddos/glossary/tcp-ip/](https://www.cloudflare.com/pt-br/learning/ddos/glossary/tcp-ip/)
-
-[https://docs.python.org/3/library/socket.html](https://docs.python.org/3/library/socket.html)
+- Tanenbaum, Redes de Computadores (4ª edição)
+- [MDN - TCP](https://developer.mozilla.org/pt-BR/docs/Glossary/TCP)
+- [MDN - Transmission Control Protocol](https://developer.mozilla.org/pt-BR/docs/Glossary/Transmission_Control_Protocol)
+- [RFC Editor - RFC 9293](https://www.rfc-editor.org/rfc/rfc9293)
+- [Cloudflare - TCP IP](https://www.cloudflare.com/pt-br/learning/ddos/glossary/tcp-ip/)
+- [Python Docs - Socket](https://docs.python.org/3/library/socket.html)
 
 ---
 
@@ -535,14 +521,14 @@ Esse exemplo também mostra por que apenas adicionar validações na aplicação
 - Eu sei o que é um certificado e por que o cliente valida domínio, expiração e cadeia de confiança.
 - Eu entendo por que HTTP em rede pública é um risco real, mesmo quando tudo funciona.
 
-## Fontes (para leitura)
+## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Glossary/HTTPS](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTPS)
-[https://developer.mozilla.org/pt-BR/docs/Glossary/TLS](https://developer.mozilla.org/pt-BR/docs/Glossary/TLS)
-[https://developer.mozilla.org/pt-BR/docs/Web/Security/Transport_Layer_Security](https://developer.mozilla.org/pt-BR/docs/Web/Security/Transport_Layer_Security)
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview)
-[https://www.rfc-editor.org/rfc/rfc8446](https://www.rfc-editor.org/rfc/rfc8446)
-[https://www.cloudflare.com/pt-br/learning/ssl/what-is-tls/](https://www.cloudflare.com/pt-br/learning/ssl/what-is-tls/)
+- [MDN - HTTPS](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTPS)
+- [MDN - TLS](https://developer.mozilla.org/pt-BR/docs/Glossary/TLS)
+- [MDN - Transport Layer Security](https://developer.mozilla.org/pt-BR/docs/Web/Security/Transport_Layer_Security)
+- [MDN - HTTP Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview)
+- [RFC Editor - RFC 8446](https://www.rfc-editor.org/rfc/rfc8446)
+- [Cloudflare - What Is TLS](https://www.cloudflare.com/pt-br/learning/ssl/what-is-tls/)
 
 ---
 
@@ -670,19 +656,14 @@ Esse tipo de detalhe explica por que, às vezes, você vê uma URL no navegador 
 - Eu entendo por que às vezes aparecem sequências como `%20` em URLs.
 - Eu consigo ler `&` e `=` em query string sem me confundir.
 
-## Fontes (para leitura)
+## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/API/URL](https://developer.mozilla.org/pt-BR/docs/Web/API/URL)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/API/URLSearchParams](https://developer.mozilla.org/pt-BR/docs/Web/API/URLSearchParams)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/URL](https://developer.mozilla.org/pt-BR/docs/Glossary/URL)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/URI](https://developer.mozilla.org/pt-BR/docs/Glossary/URI)
-
-[https://www.rfc-editor.org/rfc/rfc3986](https://www.rfc-editor.org/rfc/rfc3986)
+- [MDN - What Is a URL](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL)
+- [MDN - URL](https://developer.mozilla.org/pt-BR/docs/Web/API/URL)
+- [MDN - URLSearchParams](https://developer.mozilla.org/pt-BR/docs/Web/API/URLSearchParams)
+- [MDN - URL](https://developer.mozilla.org/pt-BR/docs/Glossary/URL)
+- [MDN - URI](https://developer.mozilla.org/pt-BR/docs/Glossary/URI)
+- [RFC Editor - RFC 3986](https://www.rfc-editor.org/rfc/rfc3986)
 
 ---
 
@@ -822,23 +803,16 @@ Esse é o benefício prático: você mantém um ponto de entrada estável e ganh
 - Eu entendo por que a aplicação pode não ver o IP real do cliente e por que existem headers de forwarding.
 - Eu consigo imaginar uma cadeia com reverse proxy na borda e load balancer atrás, antes das instâncias.
 
-## Fontes (para leitura)
+## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Proxy_server](https://developer.mozilla.org/pt-BR/docs/Glossary/Proxy_server)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_proxy](https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_proxy)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/X-Forwarded-For](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/X-Forwarded-For)
-
-[https://www.cloudflare.com/pt-br/learning/cdn/glossary/reverse-proxy/](https://www.cloudflare.com/pt-br/learning/cdn/glossary/reverse-proxy/)
-
-[https://www.cloudflare.com/pt-br/learning/performance/what-is-load-balancing/](https://www.cloudflare.com/pt-br/learning/performance/what-is-load-balancing/)
-
-[https://nginx.org/en/docs/http/ngx_http_proxy_module.html](https://nginx.org/en/docs/http/ngx_http_proxy_module.html)
-
-[https://www.haproxy.com/documentation/haproxy-configuration-tutorials/load-balancing/](https://www.haproxy.com/documentation/haproxy-configuration-tutorials/load-balancing/)
+- [MDN - Proxy Server](https://developer.mozilla.org/pt-BR/docs/Glossary/Proxy_server)
+- [MDN - Reverse Proxy](https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_proxy)
+- [MDN - Forwarded](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded)
+- [MDN - X Forwarded for](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/X-Forwarded-For)
+- [Cloudflare - Reverse Proxy](https://www.cloudflare.com/pt-br/learning/cdn/glossary/reverse-proxy/)
+- [Cloudflare - What Is Load Balancing](https://www.cloudflare.com/pt-br/learning/performance/what-is-load-balancing/)
+- [nginx.org - Ngx HTTP Proxy Module](https://nginx.org/en/docs/http/ngx_http_proxy_module.html)
+- [haproxy.com - Load Balancing](https://www.haproxy.com/documentation/haproxy-configuration-tutorials/load-balancing/)
 
 ---
 
@@ -964,20 +938,13 @@ Esse tipo de problema parece misterioso no começo, mas fica previsível quando 
 - Eu sei que intermediários podem mudar o que a aplicação enxerga e que isso exige configuração.
 - Eu entendo que falhas podem acontecer antes de a requisição chegar na aplicação.
 
-## Fontes (para leitura)
+## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview)
-
-[https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Localhost](https://developer.mozilla.org/pt-BR/docs/Glossary/Localhost)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Port](https://developer.mozilla.org/pt-BR/docs/Glossary/Port)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_pr](https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_pr)
-oxy
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded)
-
-[https://docs.python.org/pt-br/3/howto/sockets.html](https://docs.python.org/pt-br/3/howto/sockets.html)
-
-[https://fastapi.tiangolo.com/deployment/concepts/](https://fastapi.tiangolo.com/deployment/concepts/)
+- [MDN - Client Server Overview](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview)
+- [MDN - How the Web Works](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works)
+- [MDN - Localhost](https://developer.mozilla.org/pt-BR/docs/Glossary/Localhost)
+- [MDN - Port](https://developer.mozilla.org/pt-BR/docs/Glossary/Port)
+- [MDN - Reverse Proxy](https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_proxy)
+- [MDN - Forwarded](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded)
+- [Python Docs - Sockets](https://docs.python.org/pt-br/3/howto/sockets.html)
+- [FastAPI - Deployment Concepts](https://fastapi.tiangolo.com/deployment/concepts/)

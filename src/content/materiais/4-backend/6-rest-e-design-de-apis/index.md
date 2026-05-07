@@ -61,9 +61,9 @@ A maioria das APIs que se dizem REST hoje em dia não implementam 100% da teoria
 
 ## Fontes
 
-- **[Fielding]:** [Architectural Styles and the Design of Network-based Software Architectures (Tese Original)](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
-- **[Red Hat]:** [O que é uma API REST?](https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api)
-- **[Oracle]:** [Definição de REST](https://www.oracle.com/br/cloud/what-is-rest/)
+- [Fielding - Architectural Styles and the Design of Network-based Software Architectures (Tese Original)](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+- [Red Hat - O que é uma API REST?](https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api)
+- [Oracle - Definição de REST](https://www.oracle.com/br/cloud/what-is-rest/)
 
 ---
 # 6.2 Restrições do REST
@@ -137,9 +137,9 @@ Muitos desenvolvedores violam o REST criando APIs que dependem de "sessão no se
 
 ## Fontes
 
-- **[RestfulAPI]:** [What is REST](https://restfulapi.net/)
-- **[MDN]:** [HTTP Caching](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching)
-- **[AWS]:** [Statelessness in REST](https://aws.amazon.com/what-is/restful-api/)
+- [RestfulAPI - What is REST](https://restfulapi.net/)
+- [MDN - HTTP Caching](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching)
+- [AWS - Statelessness in REST](https://aws.amazon.com/what-is/restful-api/)
 
 ---
 # 6.3 Recursos, coleções e identificadores
@@ -250,8 +250,8 @@ def get_product(product_id: int):
 
 ## Fontes
 
-- **[Microsoft]:** [REST API Design Guidelines - Resources](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#organize-the-api-design-around-resources)
-- **[Google AIP]:** [Resource Names](https://google.aip.dev/122)
+- [Microsoft - REST API Design Guidelines - Resources](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#organize-the-api-design-around-resources)
+- [Google AIP - Resource Names](https://google.aip.dev/122)
 
 ---
 # 6.3.1 Anatomia Prática de uma Requisição REST
@@ -496,8 +496,8 @@ app.include_router(router)
 
 ## Fontes
 
-- **[RestfulAPI]:** [Resource Naming](https://restfulapi.net/resource-naming/)
-- **[Zalando]:** [RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/#naming)
+- [RestfulAPI - Resource Naming](https://restfulapi.net/resource-naming/)
+- [Zalando - RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/#naming)
 
 ---
 # 6.5 CRUD mapeado para HTTP
@@ -605,8 +605,8 @@ def delete_item(item_id: int):
 
 ## Fontes
 
-- **[MDN]:** [HTTP Request Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
-- **[RFC 7231]:** [Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content](https://datatracker.ietf.org/doc/html/rfc7231#section-4)
+- [MDN - HTTP Request Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+- [RFC 7231 - Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content](https://datatracker.ietf.org/doc/html/rfc7231#section-4)
 
 ---
 # 6.6 Filtros, paginação e ordenação
@@ -676,8 +676,8 @@ Seus metadados de paginação devem ir no corpo da resposta (envelope) ou nos He
 
 ## Fontes
 
-- **[Stripe]:** [API Pagination Design](https://stripe.com/docs/api/pagination)
-- **[Microsoft]:** [Paging and Filtering Best Practices](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#filtering-and-pagination)
+- [Stripe - API Pagination Design](https://stripe.com/docs/api/pagination)
+- [Microsoft - Paging and Filtering Best Practices](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#filtering-and-pagination)
 
 ---
 # 6.7 Atualizações parciais e PATCH
@@ -744,9 +744,9 @@ Aceite um JSON parcial, valide apenas os campos que vieram, e atualize no banco 
 
 ## Fontes
 
-- **[RFC 7396]:** [JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7396)
-- **[RFC 5789]:** [PATCH Method for HTTP](https://datatracker.ietf.org/doc/html/rfc5789)
-- **[William Durand]:** [Please don't use PUT (Use PATCH)](https://williamdurand.fr/2014/02/14/please-do-not-use-put-always-use-patch/)
+- [RFC 7396 - JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7396)
+- [RFC 5789 - PATCH Method for HTTP](https://datatracker.ietf.org/doc/html/rfc5789)
+- [William Durand - Please don't use PUT (Use PATCH)](https://williamdurand.fr/2014/02/14/please-do-not-use-put-always-use-patch/)
 
 ---
 # 6.8 Idempotência e retries
@@ -797,9 +797,9 @@ Dessa forma, o cliente pode tentar de novo (retry) quantas vezes quiser sem medo
 
 ## Fontes
 
-- **[Stripe]:** [Designing robust APIs with Idempotency](https://stripe.com/blog/idempotency)
-- **[MDN]:** [Idempotent Methods](https://developer.mozilla.org/en-US/docs/Glossary/Idempotent)
-- **[RFC 7231]:** [Idempotent Methods definition](https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2)
+- [Stripe - Designing robust APIs with Idempotency](https://stripe.com/blog/idempotency)
+- [MDN - Idempotent Methods](https://developer.mozilla.org/en-US/docs/Glossary/Idempotent)
+- [RFC 7231 - Idempotent Methods definition](https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2)
 
 ---
 # 6.9 Versionamento de APIs
@@ -861,9 +861,10 @@ Para a maioria dos projetos, a simplicidade do `/v1/` na URL vence qualquer argu
 
 ## Fontes
 
-- **[Microsoft]:** [API Versioning](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#versioning-a-restful-web-api)
-- **[Stripe]:** [Versioning Strategy (Eles usam Data)](https://stripe.com/docs/api/versioning)
-- **[RestfulAPI]:** [Versioning REST APIs](https://restfulapi.net/versioning/)
+- [Microsoft - API Versioning](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#versioning-a-restful-web-api)
+- [Stripe - Versioning Strategy (Eles usam Data)](https://stripe.com/docs/api/versioning)
+- [RestfulAPI - Versioning REST APIs](https://restfulapi.net/versioning/)
+
 ---
 # 6.10 HATEOAS
 
@@ -928,9 +929,9 @@ Para seu backend interno do app mobile: Provavelmente não (Overengineering). O 
 
 ## Fontes
 
-- **[Fielding]:** [REST APIs must be hypertext-driven](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
-- **[Spring]:** [Understanding HATEOAS](https://spring.io/understanding/HATEOAS)
-- **[PayPal]:** [HATEOAS in PayPal API](https://developer.paypal.com/api/rest/responses/#hateoas-links)
+- [Fielding - REST APIs must be hypertext-driven](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
+- [Spring - Understanding HATEOAS](https://spring.io/understanding/HATEOAS)
+- [PayPal - HATEOAS in PayPal API](https://developer.paypal.com/api/rest/responses/#hateoas-links)
 
 ---
 # 6.11 Checklist de design REST
@@ -969,11 +970,11 @@ Este checklist não garante que sua API é perfeita, mas garante que ela está n
 
 
 
-## Fontes Gerais de Design
+## Fontes
 
-- **[Microsoft]:** [REST API Design Guidelines](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
-- **[Google]:** [Google Cloud API Design Guide](https://cloud.google.com/apis/design)
-- **[Zalando]:** [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
+- [Microsoft - REST API Design Guidelines](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
+- [Google - Google Cloud API Design Guide](https://cloud.google.com/apis/design)
+- [Zalando - Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
 
 ---
 # 6.12 Implementação Prática com FastAPI

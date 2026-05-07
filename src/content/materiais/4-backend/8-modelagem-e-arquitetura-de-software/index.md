@@ -110,6 +110,11 @@ Em sistemas distribuídos (como microserviços ou bancos replicados), o Teorema 
 - **CP (Consistência):** Se a rede cair, eu travo o sistema (erro) para não entregar dado velho. (Ex: Transferência Bancária).
 - **AP (Disponibilidade):** Se a rede cair, eu respondo com o que tenho, mesmo que desatualizado. (Ex: Feed do Instagram, Likes).
 
+## Fontes
+
+- [Google SRE Book - Service Level Objectives](https://sre.google/sre-book/service-level-objectives/)
+- [Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services](https://dl.acm.org/doi/10.1145/564585.564601)
+
 ---
 # 8.2 Limites, contexto e responsabilidades
 
@@ -170,6 +175,10 @@ class LegadoAdapter:
 ```
 
 Graças à ACL, sua regra de negócio só conhece `Pedido` e nem sabe que o XML existe. Se o legado mudar, você só arruma o `Adapter`.
+
+## Fontes
+
+- [Martin Fowler - Bounded Context](https://martinfowler.com/bliki/BoundedContext.html)
 
 ---
 # 8.3 Coesão e acoplamento
@@ -293,6 +302,11 @@ Não use microserviços se você não tiver:
 2. **Monitoramento Básico:** Sabe quando e porque o serviço caiu sem logar na máquina?
 3. **Automação de Deploy (CI/CD):** Se o deploy é manual, microserviços serão um inferno.
 
+## Fontes
+
+- [Martin Fowler - Microservices](https://martinfowler.com/articles/microservices.html)
+- [Martin Fowler - Strangler Fig Application](https://martinfowler.com/bliki/StranglerFigApplication.html)
+
 ---
 # 8.5 Comunicação síncrona e assíncrona
 
@@ -346,6 +360,10 @@ def criar_pedido(pedido):
 # O pedido está salvo com segurança. O envio acontece depois, garantido.
 ```
 
+## Fontes
+
+- [Microservices.io - Transactional Outbox](https://microservices.io/patterns/data/transactional-outbox.html)
+
 ---
 # 8.6 Padrões arquiteturais em APIs
 
@@ -393,6 +411,10 @@ src/
 2. **Dependência:** O `Controller` depende do `UseCase`. O `Repository` (implementação) depende da `Interface` definida no Core.
     - O Core **não depende** do Repository concreto. Ele depende de uma abstração. Isso é a **Inversão de Dependência**.
 
+## Fontes
+
+- [The Clean Code Blog - The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+
 ---
 # 8.7 Modelos de documentação arquitetural (C4)
 
@@ -427,6 +449,10 @@ Como documentar arquitetura sem criar diagramas gigantes que ninguém entende? O
 
 Diagramas no Visio/Draw.io morrem. O ideal é usar **Diagrams as Code**.
 Ferramentas como **Structurizr** permitem escrever o modelo C4 em código (DSL) e gerar os desenhos automaticamente. Assim, a arquitetura fica versionada no Git.
+
+## Fontes
+
+- [C4 Model](https://c4model.com/)
 
 ---
 # 8.8 Registros de decisão arquitetural (ADR)
@@ -477,3 +503,7 @@ Vamos usar PostgreSQL versão 15.
 *   (+) Ecossistema maduro e hospedagem barata (RDS, CloudSQL).
 *   (-) Escalar escrita horizontalmente (Sharding) será mais difícil que um NoSQL, mas nossa volumetria prevista para 2 anos não exige isso.
 ```
+
+## Fontes
+
+- [Architecture Decision Records](https://adr.github.io/)

@@ -77,6 +77,11 @@ def read_current_user(credentials: HTTPBasicCredentials = Depends(security)):
     return {"username": credentials.username}
 ```
 
+## Fontes
+
+- [RFC 7617 - The Basic HTTP Authentication Scheme](https://datatracker.ietf.org/doc/html/rfc7617)
+- [MDN - HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Authentication)
+
 ---
 # 15.2 API Keys
 
@@ -150,6 +155,10 @@ async def secure_endpoint(user_data: dict = Security(get_api_key)):
     return {"msg": "Acesso permitido", "user": user_data["user"]}
 ```
 
+## Fontes
+
+- [OWASP Cheat Sheet - REST Security](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)
+
 ---
 # 15.3 Sessões e cookies
 
@@ -196,6 +205,11 @@ response.set_cookie(
     samesite="Lax"  # Anti-CSRF
 )
 ```
+
+## Fontes
+
+- [MDN - HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies)
+- [RFC 6265 - HTTP State Management Mechanism](https://datatracker.ietf.org/doc/html/rfc6265)
 
 ---
 # 15.4 JSON Web Tokens (JWT)
@@ -282,6 +296,11 @@ def verify_token(token: str):
         return "Token Inválido"
 ```
 
+## Fontes
+
+- [RFC 7519 - JSON Web Token](https://datatracker.ietf.org/doc/html/rfc7519)
+- [OWASP Cheat Sheet - JSON Web Token for Java](https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html)
+
 ---
 # 15.5 OAuth 2.0
 
@@ -345,6 +364,12 @@ Um atacante pode iniciar um fluxo de login e enganar você para logar na conta *
 
 Não tente implementar OAuth 2.0 do zero. Use bibliotecas como `Authlib` ou `python-social-auth`.
 
+## Fontes
+
+- [RFC 6749 - The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749)
+- [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html)
+- [RFC 9700 - Best Current Practice for OAuth 2.0 Security](https://datatracker.ietf.org/doc/html/rfc9700)
+
 ---
 # 15.6 Mutual TLS (mTLS)
 
@@ -384,6 +409,11 @@ O mTLS adiciona um peso no "Handshake" inicial (troca de chaves). Em conexões d
 **Quando usar?**
 - **Zero Trust:** "Nunca confie, sempre verifique". Mesmo dentro da rede interna.
 - **Service Mesh:** Ferramentas como Istio implementam mTLS automaticamente, tirando essa complexidade do código da aplicação.
+
+## Fontes
+
+- [RFC 8446 - The Transport Layer Security Protocol Version 1.3](https://datatracker.ietf.org/doc/html/rfc8446)
+- [Istio - Mutual TLS Migration](https://istio.io/latest/docs/tasks/security/authentication/mtls-migration/)
 
 ---
 # 15.7 Matriz de Decisão: Qual autenticação escolher?

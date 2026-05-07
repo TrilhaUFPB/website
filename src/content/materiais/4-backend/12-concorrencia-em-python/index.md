@@ -58,17 +58,11 @@ A partir do Python 3.13, existe uma build opcional chamada free-threaded, na qua
 
 ## Fontes
 
-[https://docs.python.org/3/howto/free-threading-python.html](https://docs.python.org/3/howto/free-threading-python.html)
-
-[https://peps.python.org/pep-0703/](https://peps.python.org/pep-0703/)
-
-[https://docs.python.org/3/library/threading.html](https://docs.python.org/3/library/threading.html)
-
-[https://docs.python.org/3/library/multiprocessing.html](https://docs.python.org/3/library/multiprocessing.html)
-
-[https://pages.cs.wisc.edu/~remzi/OSTEP/](https://pages.cs.wisc.edu/~remzi/OSTEP/)
-
-
+- [Python Docs - Free Threading Python](https://docs.python.org/3/howto/free-threading-python.html)
+- [Python PEP - PEP 703](https://peps.python.org/pep-0703/)
+- [Python Docs - Threading](https://docs.python.org/3/library/threading.html)
+- [Python Docs - Multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
+- [OSTEP - OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)
 
 ---
 # 12.2 Threading
@@ -163,12 +157,9 @@ O cuidado essencial é evitar compartilhar estado mutável entre threads sem pro
 
 ## Fontes
 
-[https://docs.python.org/3/library/threading.html](https://docs.python.org/3/library/threading.html)
-
-[https://docs.python.org/3/library/_thread.html](https://docs.python.org/3/library/_thread.html)
-
-[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
-
+- [Python Docs - Threading](https://docs.python.org/3/library/threading.html)
+- [Python Docs - Thread](https://docs.python.org/3/library/_thread.html)
+- [OSTEP - Threads Intro](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
 
 ---
 # 12.3 Multiprocessing
@@ -238,15 +229,10 @@ A leitura que você deve fazer aqui é: o trabalho foi dividido em vários proce
 
 ## Fontes
 
-[https://docs.python.org/3/library/multiprocessing.html](https://docs.python.org/3/library/multiprocessing.html)
-
-[https://docs.python.org/3/library/concurrent.futures.html](https://docs.python.org/3/library/concurrent.futures.html)
-
-[https://pages.cs.wisc.edu/~remzi/OSTEP/](https://pages.cs.wisc.edu/~remzi/OSTEP/)
-
-[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
-
-
+- [Python Docs - Multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
+- [Python Docs - Concurrent.futures](https://docs.python.org/3/library/concurrent.futures.html)
+- [OSTEP - OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)
+- [OSTEP - Threads Intro](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
 
 ---
 # 12.4 Asyncio e event loop
@@ -327,16 +313,10 @@ Outro erro comum é achar que `async` significa mais rápido sempre. Ele signifi
 
 ## Fontes
 
-[https://docs.python.org/3/library/asyncio.html](https://docs.python.org/3/library/asyncio.html)
-
-[https://docs.python.org/3/library/asyncio-task.html](https://docs.python.org/3/library/asyncio-task.html)
-
-[https://docs.python.org/3/library/asyncio-eventloop.html](https://docs.python.org/3/library/asyncio-eventloop.html)
-
-[https://fastapi.tiangolo.com/async/](https://fastapi.tiangolo.com/async/)
-
-
-
+- [Python Docs - Asyncio](https://docs.python.org/3/library/asyncio.html)
+- [Python Docs - Asyncio Task](https://docs.python.org/3/library/asyncio-task.html)
+- [Python Docs - Asyncio Eventloop](https://docs.python.org/3/library/asyncio-eventloop.html)
+- [FastAPI - Async](https://fastapi.tiangolo.com/async/)
 
 ---
 # 12.5 Erros comuns em código concorrente
@@ -530,12 +510,8 @@ Um erro comum é alterar uma variável global em um worker e esperar que o proce
 
 ## Fontes
 
-[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
-
-[https://docs.python.org/3/library/threading.html](https://docs.python.org/3/library/threading.html)
-
-[https://docs.python.org/3/library/multiprocessing.html](https://docs.python.org/3/library/multiprocessing.html)
-
-[https://docs.python.org/3/library/asyncio.html](https://docs.python.org/3/library/asyncio.html)
-
-[https://docs.python.org/3/library/asyncio-task.html](https://docs.python.org/3/library/asyncio-task.html)
+- [OSTEP - Threads Intro](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
+- [Python Docs - Threading](https://docs.python.org/3/library/threading.html)
+- [Python Docs - Multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
+- [Python Docs - Asyncio](https://docs.python.org/3/library/asyncio.html)
+- [Python Docs - Asyncio Task](https://docs.python.org/3/library/asyncio-task.html)

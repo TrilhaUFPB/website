@@ -103,6 +103,11 @@ Se um cliente exceder 100 req/s, o Traefik barra a requisição ANTES dela chega
 - **Traefik:** Nativo para containers. Configuração dinâmica.
 - **AWS API Gateway:** Gerenciado, serverless. Cobra por requisição.
 
+## Fontes
+
+- [Traefik Documentation](https://doc.traefik.io/traefik/)
+- [AWS API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html)
+
 ---
 # 9.2 Comunicação entre serviços
 
@@ -183,6 +188,11 @@ except Exception as e:
 
 **Dica:** Use REST para borda (falar com frontend) e gRPC para o miolo (serviço falando com serviço) devido à eficiência do formato binário.
 
+## Fontes
+
+- [HashiCorp Consul - Service Discovery](https://developer.hashicorp.com/consul/docs/discover)
+- [Kubernetes - Services](https://kubernetes.io/docs/concepts/services-networking/service/)
+
 ---
 # 9.3 Service Mesh
 
@@ -245,6 +255,10 @@ spec:
 ```
 
 Com esse arquivo aplicado no Kubernetes, o desenvolvedor Python não precisa programar lógica de retry nem de balanceamento de carga. O Mesh cuida disso.
+
+## Fontes
+
+- [Istio - What is Istio?](https://istio.io/latest/docs/overview/what-is-istio/)
 
 ---
 # 9.4 Estratégias de deploy e release
@@ -321,3 +335,8 @@ Você tem o ambiente **Blue** (Atual) e sobe um **Green** (Novo) idêntico. O ro
 Manda 1% do tráfego para a versão nova. Se não tiver erros (monitoramento automático), aumenta para 10%, 50%, 100%.
 - **Pró:** Risco mínimo para o usuário final.
 - **Contra:** Complexo de configurar roteamento.
+
+## Fontes
+
+- [Kubernetes - Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+- [AWS - Blue/Green Deployments](https://docs.aws.amazon.com/whitepapers/latest/blue-green-deployments/welcome.html)

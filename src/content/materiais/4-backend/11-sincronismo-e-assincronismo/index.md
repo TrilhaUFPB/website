@@ -86,16 +86,10 @@ A diferença principal não é o formato do HTTP. É a expectativa de tempo e a 
 
 ## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous)
-
-[https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication](https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication)
-
-[https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply](https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply)
-
-
-
+- [MDN - Synchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous)
+- [MDN - Asynchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous)
+- [Microsoft Learn - Interservice Communication](https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication)
+- [Microsoft Learn - Async Request Reply](https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply)
 
 ---
 # 11.2 Execução síncrona e assíncrona
@@ -206,12 +200,9 @@ Em carga alta, a rota assíncrona tende a escalar melhor quando a maior parte do
 
 ## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous)
-
-[https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Asynchronous](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Asynchronous)
-
+- [MDN - Synchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous)
+- [MDN - Asynchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous)
+- [MDN - Asynchronous](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Asynchronous)
 
 ---
 # 11.3 Trade-offs arquiteturais
@@ -271,15 +262,10 @@ A diferença não é o HTTP em si. É o compromisso que você está assumindo co
 
 ## Fontes
 
-[https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication](https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication)
-
-[https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply](https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous)
-
-
+- [Microsoft Learn - Interservice Communication](https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication)
+- [Microsoft Learn - Async Request Reply](https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply)
+- [MDN - Synchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous)
+- [MDN - Asynchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous)
 
 ---
 # 11.4 Padrões práticos de execução
@@ -364,7 +350,5 @@ Isso reduz pressão na API porque você não segura uma conexão aberta enquanto
 
 ## Fontes
 
-[https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply](https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply)
-
-[https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication](https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication)
-
+- [Microsoft Learn - Async Request Reply](https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply)
+- [Microsoft Learn - Interservice Communication](https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication)

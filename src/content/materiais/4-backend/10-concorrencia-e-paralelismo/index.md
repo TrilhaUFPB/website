@@ -72,13 +72,10 @@ O objetivo, em ambos os casos, é manter o servidor responsivo e previsível mes
 
 ## Fontes
 
-[https://go.dev/blog/waza-talk](https://go.dev/blog/waza-talk)
-
-[https://go.dev/talks/2012/waza.slide](https://go.dev/talks/2012/waza.slide)
-
-[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
-
-[https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf)
+- [Go - Waza Talk](https://go.dev/blog/waza-talk)
+- [Go - Waza.slide](https://go.dev/talks/2012/waza.slide)
+- [OSTEP - Threads Intro](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
+- [CMU - 23 Concprog](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf)
 
 ---
 # 10.2 Workloads CPU-bound e I/O-bound
@@ -169,13 +166,9 @@ Esse exemplo deixa claro o ponto principal: os dois endpoints podem ter a mesma 
 
 ## Fontes
 
-[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
-
-[https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf)
-
-[https://www.kegel.com/c10k.html](https://www.kegel.com/c10k.html)
-
-
+- [OSTEP - Threads Intro](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
+- [CMU - 23 Concprog](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf)
+- [Kegel - C10K Problem](https://www.kegel.com/c10k.html)
 
 ---
 # 10.3 Impactos em servidores web
@@ -231,12 +224,9 @@ A conclusão prática é que o servidor web precisa ser pensado como uma máquin
 
 ## Fontes
 
-[https://www.kegel.com/c10k.html](https://www.kegel.com/c10k.html)
-
-[https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf)
-
-[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
-
+- [Kegel - C10K Problem](https://www.kegel.com/c10k.html)
+- [CMU - 23 Concprog](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf)
+- [OSTEP - Threads Intro](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
 
 ---
 # 10.4 Backpressure e sistemas sob carga
@@ -301,7 +291,5 @@ Isso também melhora o processo de encontrar onde estão os erros. Quando o serv
 
 ## Fontes
 
-[https://sre.google/sre-book/handling-overload/](https://sre.google/sre-book/handling-overload/)
-
-[https://sre.google/sre-book/addressing-cascading-failures/](https://sre.google/sre-book/addressing-cascading-failures/)
-
+- [Google SRE - Handling Overload](https://sre.google/sre-book/handling-overload/)
+- [Google SRE - Addressing Cascading Failures](https://sre.google/sre-book/addressing-cascading-failures/)

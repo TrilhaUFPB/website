@@ -214,6 +214,11 @@ Enquanto JSON-RPC é texto (legível), o **gRPC** (do Google) usa **Protobuf**, 
 
 No mundo Python, o gRPC é amplamente usado, mas requer uma biblioteca separada (`grpcio`) e arquivos `.proto` para definir os contratos. Ele foge um pouco do escopo "Web API padrão", mas é vital conhecer sua existência.
 
+## Fontes
+
+- [JSON-RPC 2.0 Specification](https://www.jsonrpc.org/specification)
+- [gRPC - Introduction](https://grpc.io/docs/what-is-grpc/introduction/)
+
 ---
 # 7.4 GraphQL
 
@@ -314,6 +319,11 @@ query {
 - **Sim:** Você está agregando dados de muitos microserviços.
 - **Cuidado:** O cache HTTP não funciona bem (tudo é POST no mesmo endpoint). Consultas muito complexas podem derrubar o banco de dados ([Problema N+1](https://dev.to/danielcamucatto/entendendo-o-problema-n1-um-guia-pratico-para-desenvolvedores-4ocb)).
 
+## Fontes
+
+- [GraphQL - Learn](https://graphql.org/learn/)
+- [Strawberry GraphQL - FastAPI integration](https://strawberry.rocks/docs/integrations/fastapi)
+
 ---
 # 7.5 WebSockets e Server-Sent Events
 
@@ -400,6 +410,11 @@ async def stream_events():
 
 - **WebSockets:** Jogos multiplayer, Chats, Edição colaborativa (Google Docs).
 - **SSE:** Dashboards, Notificações, Status de progresso, Tickers financeiros.
+
+## Fontes
+
+- [MDN - The WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
+- [MDN - Server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)
 
 ---
 # 7.6 Webhooks
@@ -545,6 +560,11 @@ Como seu endpoint de webhook é público, qualquer um pode mandar um POST falso 
 2. **HTTPS:** Obrigatório.
 3. **Idempotência:** Se o Stripe te mandar o mesmo aviso duas vezes (por erro de rede), seu código deve ser esperto o suficiente para não cobrar o cliente duas vezes ou enviar dois produtos.
 
+## Fontes
+
+- [Stripe Docs - Webhooks](https://docs.stripe.com/webhooks)
+- [GitHub Docs - Webhooks](https://docs.github.com/en/webhooks)
+
 ---
 # 7.7 Mensageria e sistemas orientados a eventos
 
@@ -639,6 +659,11 @@ Isso é a essência da arquitetura orientada a eventos: **Desacoplamento tempora
 - **Apache Kafka:** Para streaming de eventos em escala massiva (Big Data).
 - **Redis (Pub/Sub):** Simples e muito rápido, bom para comunicações efêmeras.
 - **Celery (Python):** A biblioteca padrão do Python para gerenciar Workers e Filas.
+
+## Fontes
+
+- [RabbitMQ Tutorials](https://www.rabbitmq.com/tutorials)
+- [Apache Kafka - Introduction](https://kafka.apache.org/intro/)
 
 ---
 # 7.8 Critérios para escolha do estilo de API
