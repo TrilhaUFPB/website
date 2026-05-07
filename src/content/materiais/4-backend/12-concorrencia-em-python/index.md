@@ -122,7 +122,7 @@ t1.join()
 t2.join()
 
 print(contador)
-````
+```
 
 Em um mundo perfeito, o resultado seria sempre 200.000. Porém,  na prática você pode ver valores menores.
 
@@ -225,7 +225,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-````
+```
 
 A leitura que você deve fazer aqui é: o trabalho foi dividido em vários processos e cada processo executa a função em uma parte das entradas. Como o trabalho é computacional, isso é o tipo de cenário em que multiprocessing tende a trazer ganho.
 
@@ -307,7 +307,7 @@ async def main():
     print(cursos, inscricoes)
 
 asyncio.run(main())
-````
+```
 
 A leitura correta é: as duas funções ficam muito tempo esperando, então faz sentido coordenar essas esperas no event loop. Em vez de esperar uma terminar para começar a outra, elas progridem em conjunto e o tempo total tende a ficar próximo do tempo da espera mais longa.
 
@@ -373,7 +373,7 @@ t1.join()   # espera a primeira thread terminar
 t2.join()   # espera a segunda thread terminar
 
 print(contador)
-````
+```
 
 O que você esperaria: `200_000`.
 O que pode acontecer: um valor menor, porque algumas atualizações foram perdidas por disputa.
@@ -446,7 +446,7 @@ t1.start()
 t2.start()
 t1.join()
 t2.join()
-````
+```
 
 Se o timing bater do jeito ruim, `tarefa_1` fica esperando `lock_b` e `tarefa_2` fica esperando `lock_a`, e o programa não termina.
 
@@ -474,7 +474,7 @@ async def main():
     print(resultados)
 
 asyncio.run(main())
-````
+```
 
 Apesar de parecer duas tarefas em paralelo, elas não progridem bem porque o `time.sleep` trava tudo.
 

@@ -91,7 +91,7 @@ Um cliente quer listar cursos. Ele faz uma requisição pedindo JSON:
 GET /cursos?pagina=1 HTTP/1.1
 Host: api.exemplo.com
 Accept: application/json
-````
+```
 
 O servidor responde com sucesso e devolve JSON:
 
@@ -342,7 +342,7 @@ Exemplo de linha inicial:
 
 ```text
 HTTP/1.1 200 OK
-````
+```
 
 O que importa mais na prática é o status code, porque ele é o sinal que ferramentas e clientes usam para decidir o que fazer. O texto do final é apenas um complemento legível.
 
@@ -752,7 +752,7 @@ Accept: application/json
   "email": "ana@exemplo.com",
   "curso_id": "curso_01"
 }
-````
+```
 
 Resposta:
 
@@ -928,7 +928,7 @@ GET /cursos?pagina=1 HTTP/1.1
 Host: api.exemplo.com
 Accept: application/json
 Authorization: Bearer <token>
-````
+```
 
 O que esses cabeçalhos deixam explícito:
 
@@ -1069,7 +1069,7 @@ O caso mais comum em APIs é JSON:
 
 ```http
 Accept: application/json
-````
+```
 
 Mas o cliente pode informar mais de um tipo, e até preferências. O servidor usa isso para escolher a melhor resposta possível dentro do que ele suporta.
 
@@ -1332,7 +1332,7 @@ Cache-Control: public, max-age=60
     { "id": "curso_02", "titulo": "Fundamentos de Redes" }
   ]
 }
-````
+```
 
 Nesse caso, clientes e intermediários podem reutilizar a resposta por 60 segundos sem perguntar de novo ao backend.
 
@@ -1513,7 +1513,7 @@ Accept: application/json
   "email": "ana@exemplo.com",
   "senha": "********"
 }
-````
+```
 
 O servidor valida e cria uma sessão. Na resposta ele envia um cookie com o id da sessão:
 
@@ -1652,7 +1652,7 @@ Você tem um front-end rodando em:
 
 ```text
 https://app.exemplo.com
-````
+```
 
 E uma API em:
 
@@ -1817,7 +1817,7 @@ Exemplo de requisição que, conceitualmente, é a mesma em qualquer versão:
 GET /cursos?pagina=1 HTTP/1.1
 Host: api.exemplo.com
 Accept: application/json
-````
+```
 
 Em HTTP/2 e HTTP/3, essa requisição não trafega como texto desse jeito na rede. Ela é representada internamente por frames e streams. Mas para você como desenvolvedor, ela continua sendo uma requisição com método, alvo e headers.
 

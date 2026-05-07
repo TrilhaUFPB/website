@@ -49,7 +49,7 @@ Requisição:
 GET /cursos HTTP/1.1
 Host: api.exemplo.com
 Accept: application/json
-````
+```
 
 Resposta:
 
@@ -134,7 +134,7 @@ No modelo síncrono, você faz um pedido, espera, depois faz o outro, espera de 
 3) buscar inscrições
 4) esperar resposta
 5) montar resposta final
-````
+```
 
 No modelo assíncrono, você pode iniciar os dois pedidos e só esperar quando realmente precisar juntar os resultados:
 

@@ -451,7 +451,7 @@ EXEMPLO DE REQUISIÇÃO FEITA PELO CLIENTE:
 
 GET /cursos HTTP/1.1
 Accept: application/json
-````
+```
 
 ```http
 EXEMPLO DE RESPOSTA FEITA PELO SERVIDOR:

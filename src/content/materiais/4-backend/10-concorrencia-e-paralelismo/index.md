@@ -56,7 +56,7 @@ Tempo:        t0   t1   t2   t3   t4
 Req A:       CPU  I/O  I/O  CPU  fim
 Req B:       I/O  CPU  I/O  CPU  fim
 Req C:       CPU  CPU  CPU  CPU  fim
-````
+```
 >I/O significa input/output, ou entrada e saída. Em backend, é qualquer parte do processamento em que o programa precisa esperar dados virem de fora ou precisa enviar dados para fora.
 
 Concorrência é o que permite que, enquanto A e B estão em espera (I/O), o servidor avance em outra coisa, em vez de ficar parado. Paralelismo é o que permite que C não bloqueie todo o sistema quando o trabalho é essencialmente CPU.

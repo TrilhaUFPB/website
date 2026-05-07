@@ -72,7 +72,7 @@ O notebook tem IP `192.168.0.50`. O servidor do placar está configurado para es
 
 ```text
 192.168.0.50:9000
-````
+```
 
 Quando um árbitro abre o app e envia uma atualização, o celular tenta falar com esse destino. O que acontece por baixo é:
 
@@ -562,7 +562,7 @@ Uma boa forma de entender URL é pensar que ela responde, ao mesmo tempo, estas 
 
 ```text
 https://api.exemplo.com:443/v1/cursos/curso_01?expand=modulos&pagina=2#topo
-````
+```
 
 Agora vamos separar isso em partes.
 

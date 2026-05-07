@@ -47,7 +47,7 @@ Requisição:
 ```http
 GET /inscricoes/123 HTTP/1.1
 Host: api.exemplo.com
-````
+```
 
 Resposta típica:
 
@@ -270,7 +270,7 @@ GET /cursos HTTP/1.1
 Host: api.exemplo.com
 Authorization: Bearer <token_com_cursos:read>
 Accept: application/json
-````
+```
 
 Aqui, cursos:read é suficiente.
 
