@@ -84,11 +84,11 @@ Se o árbitro usar o IP errado, os dados vão para a máquina errada e o servido
 
 ## Checklist rápido
 
-* Eu sei explicar IP como endereço que identifica uma máquina na rede.
-* Eu sei explicar porta como número que identifica o serviço dentro da máquina.
-* Eu sei explicar socket como a interface do sistema operacional que permite um processo se comunicar pela rede.
-* Eu consigo ler `192.168.0.50:9000` e dizer qual parte é a máquina e qual parte é o serviço.
-* Eu consigo explicar por que IP certo com porta errada não funciona.
+- Eu sei explicar IP como endereço que identifica uma máquina na rede.
+- Eu sei explicar porta como número que identifica o serviço dentro da máquina.
+- Eu sei explicar socket como a interface do sistema operacional que permite um processo se comunicar pela rede.
+- Eu consigo ler `192.168.0.50:9000` e dizer qual parte é a máquina e qual parte é o serviço.
+- Eu consigo explicar por que IP certo com porta errada não funciona.
 
 ## Fontes (para leitura)
 
@@ -240,15 +240,15 @@ Esse exemplo também explica um sintoma comum em times: pessoas relatando result
 
 Tanenbaum, Redes de Computadores (4ª edição):
 
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_domain_name
+[https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_domain_name](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_domain_name)
 
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works
+[https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works)
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Domain
+[https://developer.mozilla.org/pt-BR/docs/Glossary/Domain](https://developer.mozilla.org/pt-BR/docs/Glossary/Domain)
 
-https://www.rfc-editor.org/rfc/rfc1034
+[https://www.rfc-editor.org/rfc/rfc1034](https://www.rfc-editor.org/rfc/rfc1034)
 
-https://www.cloudflare.com/pt-br/learning/dns/what-is-dns/
+[https://www.cloudflare.com/pt-br/learning/dns/what-is-dns/](https://www.cloudflare.com/pt-br/learning/dns/what-is-dns/)
 
 ---
 
@@ -390,15 +390,15 @@ Agora um segundo cenário: o cliente envia a requisição, o servidor processa e
 
 Tanenbaum, Redes de Computadores (4ª edição):
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/TCP
+[https://developer.mozilla.org/pt-BR/docs/Glossary/TCP](https://developer.mozilla.org/pt-BR/docs/Glossary/TCP)
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Transmission_Control_Protocol
+[https://developer.mozilla.org/pt-BR/docs/Glossary/Transmission_Control_Protocol](https://developer.mozilla.org/pt-BR/docs/Glossary/Transmission_Control_Protocol)
 
-https://www.rfc-editor.org/rfc/rfc9293
+[https://www.rfc-editor.org/rfc/rfc9293](https://www.rfc-editor.org/rfc/rfc9293)
 
-https://www.cloudflare.com/pt-br/learning/ddos/glossary/tcp-ip/
+[https://www.cloudflare.com/pt-br/learning/ddos/glossary/tcp-ip/](https://www.cloudflare.com/pt-br/learning/ddos/glossary/tcp-ip/)
 
-https://docs.python.org/3/library/socket.html
+[https://docs.python.org/3/library/socket.html](https://docs.python.org/3/library/socket.html)
 
 ---
 
@@ -537,12 +537,12 @@ Esse exemplo também mostra por que apenas adicionar validações na aplicação
 
 ## Fontes (para leitura)
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/HTTPS  
-https://developer.mozilla.org/pt-BR/docs/Glossary/TLS  
-https://developer.mozilla.org/pt-BR/docs/Web/Security/Transport_Layer_Security  
-https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview  
-https://www.rfc-editor.org/rfc/rfc8446  
-https://www.cloudflare.com/pt-br/learning/ssl/what-is-tls/  
+[https://developer.mozilla.org/pt-BR/docs/Glossary/HTTPS](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTPS)
+[https://developer.mozilla.org/pt-BR/docs/Glossary/TLS](https://developer.mozilla.org/pt-BR/docs/Glossary/TLS)
+[https://developer.mozilla.org/pt-BR/docs/Web/Security/Transport_Layer_Security](https://developer.mozilla.org/pt-BR/docs/Web/Security/Transport_Layer_Security)
+[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview)
+[https://www.rfc-editor.org/rfc/rfc8446](https://www.rfc-editor.org/rfc/rfc8446)
+[https://www.cloudflare.com/pt-br/learning/ssl/what-is-tls/](https://www.cloudflare.com/pt-br/learning/ssl/what-is-tls/)
 
 ---
 
@@ -580,8 +580,8 @@ No exemplo, `https` é o scheme. Ele indica qual tipo de protocolo será usado p
 
 No exemplo, `api.exemplo.com:443` é a autoridade. Ela costuma ter:
 
-* host: `api.exemplo.com`
-* porta, quando aparece: `443`
+- host: `api.exemplo.com`
+- porta, quando aparece: `443`
 
 Na maioria dos casos a porta fica implícita. Em HTTPS, o padrão é 443. Em HTTP, o padrão é 80. Quando você não coloca a porta, o cliente assume o padrão do scheme.
 
@@ -603,10 +603,10 @@ No exemplo:
 expand=modulos&pagina=2
 ```
 
-* `expand=modulos` é um parâmetro
-* `pagina=2` é outro parâmetro
-* `&` separa parâmetros diferentes
-* `=` separa o nome e o valor
+- `expand=modulos` é um parâmetro
+- `pagina=2` é outro parâmetro
+- `&` separa parâmetros diferentes
+- `=` separa o nome e o valor
 
 Em APIs, query string é muito usada para filtros, paginação, ordenação e expansão de dados.
 
@@ -656,19 +656,19 @@ Esse tipo de detalhe explica por que, às vezes, você vê uma URL no navegador 
 
 ## Erros comuns de iniciante
 
-* Misturar o que deveria ser path com o que deveria ser query string, o que torna endpoints confusos e difíceis de evoluir.
-* Esquecer que `?` inicia a query string e que `&` separa parâmetros.
-* Colocar informação importante depois de `#` e esperar que o backend leia.
-* Enviar dados sensíveis em query string, como tokens. Mesmo com HTTPS, query string costuma parar em históricos, logs e ferramentas com mais facilidade do que headers.
-* Não codificar caracteres especiais, causando bugs difíceis de reproduzir.
+- Misturar o que deveria ser path com o que deveria ser query string, o que torna endpoints confusos e difíceis de evoluir.
+- Esquecer que `?` inicia a query string e que `&` separa parâmetros.
+- Colocar informação importante depois de `#` e esperar que o backend leia.
+- Enviar dados sensíveis em query string, como tokens. Mesmo com HTTPS, query string costuma parar em históricos, logs e ferramentas com mais facilidade do que headers.
+- Não codificar caracteres especiais, causando bugs difíceis de reproduzir.
 
 ## Checklist rápido
 
-* Eu consigo olhar uma URL e apontar scheme, host, porta, path, query string e fragment.
-* Eu sei quando faz sentido usar path e quando faz sentido usar query string.
-* Eu sei que fragment é uma parte usada pelo cliente e normalmente não chega ao backend.
-* Eu entendo por que às vezes aparecem sequências como `%20` em URLs.
-* Eu consigo ler `&` e `=` em query string sem me confundir.
+- Eu consigo olhar uma URL e apontar scheme, host, porta, path, query string e fragment.
+- Eu sei quando faz sentido usar path e quando faz sentido usar query string.
+- Eu sei que fragment é uma parte usada pelo cliente e normalmente não chega ao backend.
+- Eu entendo por que às vezes aparecem sequências como `%20` em URLs.
+- Eu consigo ler `&` e `=` em query string sem me confundir.
 
 ## Fontes (para leitura)
 
@@ -816,11 +816,11 @@ Esse é o benefício prático: você mantém um ponto de entrada estável e ganh
 
 ## Checklist rápido
 
-* Eu sei que proxy é um intermediário usado pelo cliente para acessar destinos.
-* Eu sei que reverse proxy é um intermediário na entrada do serviço, controlado por quem opera a API.
-* Eu sei que load balancer distribui requisições entre múltiplas instâncias e melhora disponibilidade.
-* Eu entendo por que a aplicação pode não ver o IP real do cliente e por que existem headers de forwarding.
-* Eu consigo imaginar uma cadeia com reverse proxy na borda e load balancer atrás, antes das instâncias.
+- Eu sei que proxy é um intermediário usado pelo cliente para acessar destinos.
+- Eu sei que reverse proxy é um intermediário na entrada do serviço, controlado por quem opera a API.
+- Eu sei que load balancer distribui requisições entre múltiplas instâncias e melhora disponibilidade.
+- Eu entendo por que a aplicação pode não ver o IP real do cliente e por que existem headers de forwarding.
+- Eu consigo imaginar uma cadeia com reverse proxy na borda e load balancer atrás, antes das instâncias.
 
 ## Fontes (para leitura)
 
@@ -966,18 +966,18 @@ Esse tipo de problema parece misterioso no começo, mas fica previsível quando 
 
 ## Fontes (para leitura)
 
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview
+[https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview)
 
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works
+[https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works)
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Localhost
+[https://developer.mozilla.org/pt-BR/docs/Glossary/Localhost](https://developer.mozilla.org/pt-BR/docs/Glossary/Localhost)
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Port
+[https://developer.mozilla.org/pt-BR/docs/Glossary/Port](https://developer.mozilla.org/pt-BR/docs/Glossary/Port)
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_pr
+[https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_pr](https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_pr)
 oxy
-https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded
+[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded)
 
-https://docs.python.org/pt-br/3/howto/sockets.html
+[https://docs.python.org/pt-br/3/howto/sockets.html](https://docs.python.org/pt-br/3/howto/sockets.html)
 
-https://fastapi.tiangolo.com/deployment/concepts/
+[https://fastapi.tiangolo.com/deployment/concepts/](https://fastapi.tiangolo.com/deployment/concepts/)

@@ -57,9 +57,9 @@ Uma forma direta de aplicar modelo de ameaças é seguir quatro passos.
 
 Escolha um recorte pequeno e claro. Exemplo:
 
-* apenas o fluxo de inscrição em um curso
-* apenas o fluxo de listar cursos e ver detalhes
-* apenas o fluxo de upload de um arquivo
+- apenas o fluxo de inscrição em um curso
+- apenas o fluxo de listar cursos e ver detalhes
+- apenas o fluxo de upload de um arquivo
 
 Escopo pequeno evita que o modelo vire uma lista genérica que não muda nada no projeto.
 
@@ -67,10 +67,10 @@ Escopo pequeno evita que o modelo vire uma lista genérica que não muda nada no
 
 Neste passo você lista o que é valioso e por onde o sistema é acessado.
 
-* Ativos: quais dados ou recursos são críticos aqui
-* Pontos de entrada: quais endpoints e integrações recebem dados
-* Dependências externas: banco, serviços de e-mail, pagamentos, storage, etc.
-* Limites de confiança: onde você deixa de controlar o ambiente e precisa assumir risco
+- Ativos: quais dados ou recursos são críticos aqui
+- Pontos de entrada: quais endpoints e integrações recebem dados
+- Dependências externas: banco, serviços de e-mail, pagamentos, storage, etc.
+- Limites de confiança: onde você deixa de controlar o ambiente e precisa assumir risco
 
 ### 3) Levantar ameaças
 
@@ -78,12 +78,12 @@ Agora você olha para o mapa e pergunta: como alguém pode abusar disso?
 
 Um jeito eficiente de pensar é por categorias, como:
 
-* fingir ser outra pessoa ou outro serviço
-* alterar dados no caminho ou no armazenamento
-* negar que fez uma ação porque o sistema não registra direito
-* acessar dados que não deveria
-* derrubar o serviço consumindo recursos
-* conseguir privilégios além do permitido
+- fingir ser outra pessoa ou outro serviço
+- alterar dados no caminho ou no armazenamento
+- negar que fez uma ação porque o sistema não registra direito
+- acessar dados que não deveria
+- derrubar o serviço consumindo recursos
+- conseguir privilégios além do permitido
 
 Você não precisa conhecer nomes de técnicas. O importante é treinar o olhar para essas intenções.
 
@@ -93,8 +93,8 @@ Para cada ameaça importante, você escolhe um controle.
 
 Dois cuidados aqui:
 
-* Mitigação tem custo. Não adianta propor dez controles caros para um endpoint irrelevante.
-* Controle precisa ser verificável. Se você não consegue testar, monitorar ou auditar, ele vira sensação de segurança.
+- Mitigação tem custo. Não adianta propor dez controles caros para um endpoint irrelevante.
+- Controle precisa ser verificável. Se você não consegue testar, monitorar ou auditar, ele vira sensação de segurança.
 
 O resultado final é uma lista priorizada: o que será tratado agora, o que fica registrado para depois e o que é aceito como risco.
 
@@ -104,36 +104,36 @@ Considere uma API de inscrição em cursos. O recorte é: criar inscrição e co
 
 O que normalmente aparece rápido no modelo:
 
-* Ativo: registros de inscrição e dados pessoais do aluno
-* Ponto de entrada: endpoint que cria inscrição
-* Ameaças plausíveis:
+- Ativo: registros de inscrição e dados pessoais do aluno
+- Ponto de entrada: endpoint que cria inscrição
+- Ameaças plausíveis:
 
-  * criar inscrições em excesso para degradar o serviço
-  * consultar inscrições de outra pessoa
-  * enviar dados malformados para explorar falhas de validação
-* Mitigações típicas:
+  - criar inscrições em excesso para degradar o serviço
+  - consultar inscrições de outra pessoa
+  - enviar dados malformados para explorar falhas de validação
+- Mitigações típicas:
 
-  * limites de consumo por cliente
-  * checagem de permissão antes de retornar dados
-  * validação consistente do formato de entrada
-  * logs de auditoria para ações relevantes
+  - limites de consumo por cliente
+  - checagem de permissão antes de retornar dados
+  - validação consistente do formato de entrada
+  - logs de auditoria para ações relevantes
 
 A utilidade do modelo é transformar uma discussão vaga de segurança em decisões concretas e verificáveis.
 
 ## Checklist rápido
 
-* Eu consigo dizer qual é o escopo do que estou modelando.
-* Eu consigo listar ativos, pontos de entrada e dependências externas.
-* Eu consigo descrever ameaças como intenções do atacante, não como detalhes de implementação.
-* Eu consigo propor mitigigações que são testáveis e monitoráveis.
-* Eu termino com uma lista priorizada, não com uma lista infinita.
+- Eu consigo dizer qual é o escopo do que estou modelando.
+- Eu consigo listar ativos, pontos de entrada e dependências externas.
+- Eu consigo descrever ameaças como intenções do atacante, não como detalhes de implementação.
+- Eu consigo propor mitigigações que são testáveis e monitoráveis.
+- Eu termino com uma lista priorizada, não com uma lista infinita.
 
-## Fontes 
+## Fontes
 
-https://owasp.org/www-community/Threat_Modeling  
-https://owasp.org/www-community/Threat_Modeling_Process  
-https://owasp.org/www-project-threat-modelling-guide/  
-https://owasp.org/www-project-threat-modeling/  
+[https://owasp.org/www-community/Threat_Modeling](https://owasp.org/www-community/Threat_Modeling)
+[https://owasp.org/www-community/Threat_Modeling_Process](https://owasp.org/www-community/Threat_Modeling_Process)
+[https://owasp.org/www-project-threat-modelling-guide/](https://owasp.org/www-project-threat-modelling-guide/)
+[https://owasp.org/www-project-threat-modeling/](https://owasp.org/www-project-threat-modeling/)
 
 
 
@@ -242,9 +242,9 @@ Isso orienta onde colocar atenção mesmo em projetos pequenos:
 - Eu sei que consumo de recursos e abuso de fluxo são riscos de segurança, não só de performance.
 - Eu sei que integrações externas precisam de validação, limites e timeouts.
 
-## Fontes 
+## Fontes
 
-https://owasp.org/API-Security/editions/2023/en/0x11-t10/  
+[https://owasp.org/API-Security/editions/2023/en/0x11-t10/](https://owasp.org/API-Security/editions/2023/en/0x11-t10/)
 
 
 
@@ -308,9 +308,9 @@ Isso envolve impor limites de consumo, tratar payloads grandes, controlar concor
 - Eu não vazo detalhes internos nem segredos em erros e logs.
 - Eu defino limites para proteger disponibilidade.
 
-## Fontes 
+## Fontes
 
-https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html  
+[https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)
 
-https://owasp.org/www-project-application-security-verification-standard/  
+[https://owasp.org/www-project-application-security-verification-standard/](https://owasp.org/www-project-application-security-verification-standard/)
 

@@ -19,22 +19,22 @@ Este módulo (Seção 8) foi estruturado para te dar as ferramentas mentais de u
 
 ### As Fundações
 
-* **Seção 8.1:** Entenderemos a diferença entre o que o sistema *faz* (Funcional) e *como* ele se comporta (Não Funcional). Performance, segurança e escalabilidade nascem aqui.
-* **Seção 8.2:** Como definir fronteiras? Onde termina o módulo de "Vendas" e começa o de "Logística"? Vamos falar de **Bounded Contexts**.
-* **Seção 8.3:** Os dois conceitos mais importantes da engenharia de software: **Coesão** (fazer uma coisa bem feita) e **Acoplamento** (depender pouco dos outros).
+- **Seção 8.1:** Entenderemos a diferença entre o que o sistema *faz* (Funcional) e *como* ele se comporta (Não Funcional). Performance, segurança e escalabilidade nascem aqui.
+- **Seção 8.2:** Como definir fronteiras? Onde termina o módulo de "Vendas" e começa o de "Logística"? Vamos falar de **Bounded Contexts**.
+- **Seção 8.3:** Os dois conceitos mais importantes da engenharia de software: **Coesão** (fazer uma coisa bem feita) e **Acoplamento** (depender pouco dos outros).
 
 ### A Estrutura Macro (Deployment)
 
-* **Seção 8.4:** A eterna briga: **Monólito vs Microserviços**. Quando quebrar? Quando manter junto? Vamos desmistificar o hype.
-* **Seção 8.5:** Como as peças conversam? Síncrono (HTTP) ou Assíncrono (Filas)? Entenderemos os trade-offs de resiliência.
+- **Seção 8.4:** A eterna briga: **Monólito vs Microserviços**. Quando quebrar? Quando manter junto? Vamos desmistificar o hype.
+- **Seção 8.5:** Como as peças conversam? Síncrono (HTTP) ou Assíncrono (Filas)? Entenderemos os trade-offs de resiliência.
 
 ### A Estrutura Micro (Código)
 
-* **Seção 8.6:** Como organizar suas pastas e classes? Vamos ver **Clean Architecture** e **Ports & Adapters** para criar sistemas testáveis e independentes de framework.
+- **Seção 8.6:** Como organizar suas pastas e classes? Vamos ver **Clean Architecture** e **Ports & Adapters** para criar sistemas testáveis e independentes de framework.
 
 ### A Comunicação (Documentação)
 
-* **Seção 8.7 e 8.8:** Como explicar sua arquitetura para outros devs sem desenhar diagramas gigantes que ninguém lê? Conheceremos o **Modelo C4** e os **ADRs** (Registros de Decisão).
+- **Seção 8.7 e 8.8:** Como explicar sua arquitetura para outros devs sem desenhar diagramas gigantes que ninguém lê? Conheceremos o **Modelo C4** e os **ADRs** (Registros de Decisão).
 
 
 
@@ -58,18 +58,18 @@ Quando começamos a desenhar um sistema, a primeira pergunta é: "O que ele deve
 
 Descrevem as funções que o software deve executar. São testáveis diretamente pelo usuário final.
 
-*   **Exemplos:**
-    *   "O usuário deve conseguir fazer login com email e senha."
-    *   "O sistema deve gerar um PDF do boleto."
-    *   "O carrinho deve somar o valor total dos itens."
+- **Exemplos:**
+    - "O usuário deve conseguir fazer login com email e senha."
+    - "O sistema deve gerar um PDF do boleto."
+    - "O carrinho deve somar o valor total dos itens."
 
 ## Requisitos Não Funcionais (O "Como")
 
 Descrevem a qualidade e as restrições do sistema. Geralmente acabam com "idade" (Disponibilidade, Escalabilidade, Segurança).
 
-*   **Performance:** "A tela de login deve carregar em menos de 500ms."
-*   **Escalabilidade:** "O sistema deve suportar 10.000 usuários simultâneos na Black Friday."
-*   **Segurança:** "As senhas devem ser criptografadas com bcrypt."
+- **Performance:** "A tela de login deve carregar em menos de 500ms."
+- **Escalabilidade:** "O sistema deve suportar 10.000 usuários simultâneos na Black Friday."
+- **Segurança:** "As senhas devem ser criptografadas com bcrypt."
 
 
 
@@ -77,18 +77,18 @@ Descrevem a qualidade e as restrições do sistema. Geralmente acabam com "idade
 
 Para medir a qualidade (Requisitos Não Funcionais), usamos três métricas que muitas vezes são confundidas:
 
-1.  **SLA (Service Level Agreement):** O contrato com o cliente. Se não cumprir, paga multa.
-    *   Ex: "Garantimos 99.9% de disponibilidade no mês."
-2.  **SLO (Service Level Objective):** A meta interna do time de engenharia (mais rígida que o SLA).
-    *   Ex: "Vamos tentar manter 99.95% de disponibilidade."
-3.  **SLI (Service Level Indicator):** A métrica real medida agora.
-    *   Ex: "Neste momento, a disponibilidade está em 99.92%."
+1. **SLA (Service Level Agreement):** O contrato com o cliente. Se não cumprir, paga multa.
+    - Ex: "Garantimos 99.9% de disponibilidade no mês."
+2. **SLO (Service Level Objective):** A meta interna do time de engenharia (mais rígida que o SLA).
+    - Ex: "Vamos tentar manter 99.95% de disponibilidade."
+3. **SLI (Service Level Indicator):** A métrica real medida agora.
+    - Ex: "Neste momento, a disponibilidade está em 99.92%."
 
 **A Regra dos Noves (Disponibilidade):**
-*   99% = 3 dias fora do ar por ano.
-*   99.9% = 8 horas fora do ar por ano.
-*   99.99% = 52 minutos fora do ar por ano.
-*   99.999% = 5 minutos fora do ar por ano. (Nível Google/AWS).
+- 99% = 3 dias fora do ar por ano.
+- 99.9% = 8 horas fora do ar por ano.
+- 99.99% = 52 minutos fora do ar por ano.
+- 99.999% = 5 minutos fora do ar por ano. (Nível Google/AWS).
 
 Cada "9" extra custa exponencialmente mais caro em infraestrutura e complexidade.
 
@@ -102,13 +102,13 @@ Você nunca terá tudo. Arquitetura é sobre escolher o que sacrificar.
 
 Em sistemas distribuídos (como microserviços ou bancos replicados), o Teorema CAP diz que você só pode ter 2 de 3:
 
-1.  **C (Consistency):** Todos os nós veem os mesmos dados ao mesmo tempo.
-2.  **A (Availability):** Todo pedido recebe uma resposta (sem erro), mesmo que o dado esteja velho.
-3.  **P (Partition Tolerance):** O sistema continua funcionando se a rede entre os servidores cair.
+1. **C (Consistency):** Todos os nós veem os mesmos dados ao mesmo tempo.
+2. **A (Availability):** Todo pedido recebe uma resposta (sem erro), mesmo que o dado esteja velho.
+3. **P (Partition Tolerance):** O sistema continua funcionando se a rede entre os servidores cair.
 
 **Na prática, P é obrigatório na nuvem.** Então sua escolha real é entre **CP** ou **AP**:
-*   **CP (Consistência):** Se a rede cair, eu travo o sistema (erro) para não entregar dado velho. (Ex: Transferência Bancária).
-*   **AP (Disponibilidade):** Se a rede cair, eu respondo com o que tenho, mesmo que desatualizado. (Ex: Feed do Instagram, Likes).
+- **CP (Consistência):** Se a rede cair, eu travo o sistema (erro) para não entregar dado velho. (Ex: Transferência Bancária).
+- **AP (Disponibilidade):** Se a rede cair, eu respondo com o que tenho, mesmo que desatualizado. (Ex: Feed do Instagram, Likes).
 
 ---
 # 8.2 Limites, contexto e responsabilidades
@@ -127,9 +127,9 @@ Para resolver isso, usamos o conceito de **Bounded Contexts** (Contextos Delimit
 
 ### Exemplo: A entidade "Cliente"
 
-1.  **Contexto de Vendas:** Cliente é alguém com Potencial de Compra, Histórico de leads.
-2.  **Contexto de Suporte:** Cliente é alguém com um Ticket aberto e um nível de SLA.
-3.  **Contexto Financeiro:** Cliente é um CNPJ com status de inadimplência.
+1. **Contexto de Vendas:** Cliente é alguém com Potencial de Compra, Histórico de leads.
+2. **Contexto de Suporte:** Cliente é alguém com um Ticket aberto e um nível de SLA.
+3. **Contexto Financeiro:** Cliente é um CNPJ com status de inadimplência.
 
 Em vez de criar uma classe `Cliente` gigante com 200 campos (`limite_credito`, `lista_tickets`, `historico_leads`), você cria modelos separados para cada contexto.
 
@@ -139,9 +139,9 @@ Em vez de criar uma classe `Cliente` gigante com 200 campos (`limite_credito`, `
 
 Como esses contextos conversam?
 
-1.  **Partnership:** Dois times trabalham juntos e sincronizados. Se um muda a API, avisa o outro.
-2.  **Customer/Supplier:** Um time (Supplier) fornece uma API para o outro (Customer). O Supplier tem poder de veto.
-3.  **Anti-Corruption Layer (ACL):** O padrão mais importante para integrar com sistemas legados (messy).
+1. **Partnership:** Dois times trabalham juntos e sincronizados. Se um muda a API, avisa o outro.
+2. **Customer/Supplier:** Um time (Supplier) fornece uma API para o outro (Customer). O Supplier tem poder de veto.
+3. **Anti-Corruption Layer (ACL):** O padrão mais importante para integrar com sistemas legados (messy).
 
 ### Anti-Corruption Layer (ACL)
 
@@ -186,9 +186,9 @@ Mede o quanto um módulo depende de outro para funcionar. Se você muda A, e B q
 
 ### Tipos de Acoplamento (Do pior para o melhor)
 
-1.  **Content Coupling (Pior):** Um módulo mexe direto nos dados privados do outro (ex: acessar variável global ou banco direto).
-2.  **Control Coupling:** Um módulo manda flags (`true/false`) para controlar a lógica interna do outro.
-3.  **Data Coupling (Melhor):** Módulos trocam apenas os dados necessários via parâmetros de função.
+1. **Content Coupling (Pior):** Um módulo mexe direto nos dados privados do outro (ex: acessar variável global ou banco direto).
+2. **Control Coupling:** Um módulo manda flags (`true/false`) para controlar a lógica interna do outro.
+3. **Data Coupling (Melhor):** Módulos trocam apenas os dados necessários via parâmetros de função.
 
 ### Exemplo de Refatoração: Do Alto para o Baixo Acoplamento
 
@@ -237,8 +237,8 @@ Isso é ruim porque qualquer mudança no sistema (email, banco, regras de cpf) o
 ### O Conceito de "Connascence" (Conascença)
 
 É uma métrica moderna para acoplamento. Duas componentes têm connascence se, ao mudar um, você **precisa** mudar o outro para manter o sistema correto.
-*   **Connascence of Name:** Mudar o nome de uma função obriga a mudar quem chama. (Inevitável e aceitável).
-*   **Connascence of Meaning:** "O valor -1 significa erro". Se você mudar para `None`, quebra quem espera `-1`. (Perigoso).
+- **Connascence of Name:** Mudar o nome de uma função obriga a mudar quem chama. (Inevitável e aceitável).
+- **Connascence of Meaning:** "O valor -1 significa erro". Se você mudar para `None`, quebra quem espera `-1`. (Perigoso).
 
 ---
 # 8.4 Monólitos, monólitos modulares e microserviços
@@ -253,22 +253,22 @@ A decisão de "quebrar" um sistema é uma das mais caras e arriscadas. Não faç
 
 Todo o código (Frontend, Backend, Jobs) roda no mesmo processo ou deploy.
 
-* **Vantagens:** Simples de desenvolver, testar e deployar no início. Zero latência de rede.
-* **Desvantagens:** Se crescer muito, vira um pesadelo de manutenção. "Spaghetti Code".
+- **Vantagens:** Simples de desenvolver, testar e deployar no início. Zero latência de rede.
+- **Desvantagens:** Se crescer muito, vira um pesadelo de manutenção. "Spaghetti Code".
 
 ## Microserviços (A Distribuição)
 
 Sistemas pequenos e autônomos que se conversam via rede (HTTP/gRPC).
 
-* **Vantagens:** Escalabilidade independente, times independentes, tecnologias diferentes.
-* **Desvantagens:** **Complexidade brutal.** Latência de rede, falhas parciais, monitoramento difícil (Tracing).
+- **Vantagens:** Escalabilidade independente, times independentes, tecnologias diferentes.
+- **Desvantagens:** **Complexidade brutal.** Latência de rede, falhas parciais, monitoramento difícil (Tracing).
 
 ## O Pior dos Mundos: O Monólito Distribuído
 
 Acontece quando você tenta fazer microserviços mas cria **Alto Acoplamento**.
 
-* **Sintoma:** Para mudar uma funcionalidade, você precisa deployar o Serviço A, B e C juntos e na ordem certa.
-* **Resultado:** Você tem a complexidade dos microserviços e a rigidez do monólito.
+- **Sintoma:** Para mudar uma funcionalidade, você precisa deployar o Serviço A, B e C juntos e na ordem certa.
+- **Resultado:** Você tem a complexidade dos microserviços e a rigidez do monólito.
 
 
 
@@ -304,13 +304,13 @@ Como seus serviços conversam define a resiliência do sistema.
 
 ## Comunicação Síncrona (Request/Response)
 O cliente espera a resposta.
-*   **Protocolos:** HTTP (REST), gRPC.
-*   **Problema:** Acoplamento temporal. Se o Estoque cair, o Checkout cai.
+- **Protocolos:** HTTP (REST), gRPC.
+- **Problema:** Acoplamento temporal. Se o Estoque cair, o Checkout cai.
 
 ## Comunicação Assíncrona (Event-Driven)
 O cliente manda uma mensagem e não espera.
-*   **Protocolos:** AMQP (RabbitMQ), Kafka.
-*   **Vantagem:** Se o serviço de Email cair, o Checkout continua vendendo. A mensagem espera na fila.
+- **Protocolos:** AMQP (RabbitMQ), Kafka.
+- **Vantagem:** Se o serviço de Email cair, o Checkout continua vendendo. A mensagem espera na fila.
 
 
 
@@ -318,8 +318,8 @@ O cliente manda uma mensagem e não espera.
 
 O que acontece no assíncrono se o consumidor for mais lento que o produtor?
 Imagine que você gera 1000 pedidos/seg, mas só processa 100/seg.
-1.  **A fila cresce:** A memória do Broker enche.
-2.  **Backpressure (Contrapressão):** O sistema precisa saber dizer "Pare de mandar". O consumidor avisa o produtor para desacelerar, ou o Broker rejeita novas mensagens.
+1. **A fila cresce:** A memória do Broker enche.
+2. **Backpressure (Contrapressão):** O sistema precisa saber dizer "Pare de mandar". O consumidor avisa o produtor para desacelerar, ou o Broker rejeita novas mensagens.
 
 
 
@@ -329,9 +329,9 @@ Um problema clássico em sistemas distribuídos: Como salvar no Banco E mandar m
 Se você salvar no banco e a fila falhar, o sistema fica inconsistente.
 
 **Solução (Outbox):**
-1.  Na mesma transação do banco (ACID), você salva o Pedido na tabela `Orders` E o evento na tabela `Outbox` (mensagens a enviar).
-2.  Um processo separado (Worker) lê a tabela `Outbox` e envia para o RabbitMQ/Kafka.
-3.  Se enviar com sucesso, apaga da tabela `Outbox`.
+1. Na mesma transação do banco (ACID), você salva o Pedido na tabela `Orders` E o evento na tabela `Outbox` (mensagens a enviar).
+2. Um processo separado (Worker) lê a tabela `Outbox` e envia para o RabbitMQ/Kafka.
+3. Se enviar com sucesso, apaga da tabela `Outbox`.
 
 ```python
 # Pseudo-código Outbox
@@ -357,16 +357,16 @@ Não jogue código solto no `main.py`. Use padrões para organizar a casa.
 
 ## MVC (Model-View-Controller) vs Clean Architecture
 
-*   **MVC:** Ótimo para apps monolíticos web (Django, Rails). Mas tende a acoplar a regra de negócio com o framework. Os "Controllers" ficam gordos.
-*   **Clean Architecture:** Foca em isolar o domínio. Frameworks são detalhes.
+- **MVC:** Ótimo para apps monolíticos web (Django, Rails). Mas tende a acoplar a regra de negócio com o framework. Os "Controllers" ficam gordos.
+- **Clean Architecture:** Foca em isolar o domínio. Frameworks são detalhes.
 
 
 
 ## Clean Architecture: A Regra da Dependência
 
 A regra de ouro é: **Dependências só apontam para dentro.**
-*   O círculo de fora (Web, DB, UI) conhece o círculo de dentro (Regra de Negócio).
-*   O círculo de dentro **NÃO** conhece o de fora.
+- O círculo de fora (Web, DB, UI) conhece o círculo de dentro (Regra de Negócio).
+- O círculo de dentro **NÃO** conhece o de fora.
 
 Isso significa que sua classe `CriarUsuario` (Use Case) não pode importar `FastAPI` ou `SQLAlchemy`. Ela deve usar interfaces puras.
 
@@ -389,9 +389,9 @@ src/
 
 ### O Fluxo de Controle vs Fluxo de Dependência
 
-1.  **Controle:** O `Controller` (Web) chama o `UseCase` (Core), que chama o `Repository` (DB).
-2.  **Dependência:** O `Controller` depende do `UseCase`. O `Repository` (implementação) depende da `Interface` definida no Core.
-    *   O Core **não depende** do Repository concreto. Ele depende de uma abstração. Isso é a **Inversão de Dependência**.
+1. **Controle:** O `Controller` (Web) chama o `UseCase` (Core), que chama o `Repository` (DB).
+2. **Dependência:** O `Controller` depende do `UseCase`. O `Repository` (implementação) depende da `Interface` definida no Core.
+    - O Core **não depende** do Repository concreto. Ele depende de uma abstração. Isso é a **Inversão de Dependência**.
 
 ---
 # 8.7 Modelos de documentação arquitetural (C4)
@@ -402,24 +402,24 @@ Como documentar arquitetura sem criar diagramas gigantes que ninguém entende? O
 
 
 ## Nível 1: Context (O Mapa Mundi)
-*   **Foco:** Quem usa o sistema e com quem ele fala.
-*   **Público:** Todos (Clientes, POs, Devs).
-*   **Caixas:** "Sistema de Vendas", "Usuário", "Sistema de Email (Externo)".
+- **Foco:** Quem usa o sistema e com quem ele fala.
+- **Público:** Todos (Clientes, POs, Devs).
+- **Caixas:** "Sistema de Vendas", "Usuário", "Sistema de Email (Externo)".
 
 ## Nível 2: Container (O Mapa da Cidade)
-*   **Foco:** As unidades deployáveis.
-*   **Público:** Arquitetos e Devs.
-*   **Caixas:** "API Backend (Python)", "SPA (React)", "Banco de Dados (Postgres)", "Mobile App".
-*   **Linhas:** Protocolos (HTTPS, JDBC).
+- **Foco:** As unidades deployáveis.
+- **Público:** Arquitetos e Devs.
+- **Caixas:** "API Backend (Python)", "SPA (React)", "Banco de Dados (Postgres)", "Mobile App".
+- **Linhas:** Protocolos (HTTPS, JDBC).
 
 ## Nível 3: Component (O Mapa do Bairro)
-*   **Foco:** A organização interna de um Container (só Backend, por exemplo).
-*   **Público:** Devs do time.
-*   **Caixas:** "PaymentController", "FraudService", "UserRepository".
+- **Foco:** A organização interna de um Container (só Backend, por exemplo).
+- **Público:** Devs do time.
+- **Caixas:** "PaymentController", "FraudService", "UserRepository".
 
 ## Nível 4: Code (A Planta da Casa)
-*   **Foco:** Classes e Interfaces (UML).
-*   **Dica:** **Evite fazer.** Ele desatualiza no minuto seguinte. Só faça se a lógica for muito complexa e específica.
+- **Foco:** Classes e Interfaces (UML).
+- **Dica:** **Evite fazer.** Ele desatualiza no minuto seguinte. Só faça se a lógica for muito complexa e específica.
 
 
 
@@ -441,9 +441,9 @@ Sem documentação, isso vira "conhecimento tribal" ou crítica vazia. O ADR (Ar
 ## O Ciclo de Vida de um ADR
 
 Um ADR não é estático. Ele tem status:
-1.  **Proposed:** Estamos discutindo.
-2.  **Accepted:** Decidimos e vamos implementar.
-3.  **Deprecated:** A decisão era boa em 2020, mas agora em 2025 mudamos para outra coisa (que terá um novo ADR).
+1. **Proposed:** Estamos discutindo.
+2. **Accepted:** Decidimos e vamos implementar.
+3. **Deprecated:** A decisão era boa em 2020, mas agora em 2025 mudamos para outra coisa (que terá um novo ADR).
 
 
 

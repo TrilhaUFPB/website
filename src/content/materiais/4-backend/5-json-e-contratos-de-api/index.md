@@ -18,19 +18,19 @@ Em um sistema de backend, não basta conectar cabos; é preciso garantir que os 
 Este módulo (Seção 5) foi desenhado para te levar do "zero" ao "profissional" no que tange à troca de dados em APIs.
 
 ### A Base (O Formato)
-*   **Seção 5.1 e 5.2:** Vamos dominar o **JSON**. Ele parece simples, mas tem armadilhas de tipagem e estrutura que derrubam sistemas em produção. Você vai aprender a estruturar JSONs limpos e evitar erros comuns.
+- **Seção 5.1 e 5.2:** Vamos dominar o **JSON**. Ele parece simples, mas tem armadilhas de tipagem e estrutura que derrubam sistemas em produção. Você vai aprender a estruturar JSONs limpos e evitar erros comuns.
 
 ### A Mecânica (Serialização)
-*   **Seção 5.3:** Como seu código Python (dicionários, objetos, listas) vira texto para trafegar na rede? Vamos entender o processo de **Serialização e Deserialização**, o coração de qualquer framework web.
+- **Seção 5.3:** Como seu código Python (dicionários, objetos, listas) vira texto para trafegar na rede? Vamos entender o processo de **Serialização e Deserialização**, o coração de qualquer framework web.
 
 ### As Regras (Contratos)
-*   **Seção 5.4 e 5.5:** Aqui o nível sobe. Vamos falar sobre **Contratos de Interface**. Como garantir que o frontend mande o que o backend espera? O que acontece se eu mudar um campo na API? Como evoluir sem quebrar quem já usa? (Compatibilidade retroativa).
+- **Seção 5.4 e 5.5:** Aqui o nível sobe. Vamos falar sobre **Contratos de Interface**. Como garantir que o frontend mande o que o backend espera? O que acontece se eu mudar um campo na API? Como evoluir sem quebrar quem já usa? (Compatibilidade retroativa).
 
 ### A Formalização (OpenAPI)
-*   **Seção 5.6:** Você vai aprender sobre **OpenAPI (Swagger)**. Não apenas como uma "documentação bonitinha", mas como um contrato formal que pode gerar código e validar requisições automaticamente.
+- **Seção 5.6:** Você vai aprender sobre **OpenAPI (Swagger)**. Não apenas como uma "documentação bonitinha", mas como um contrato formal que pode gerar código e validar requisições automaticamente.
 
 ### O Tratamento de Problemas
-*   **Seção 5.7:** Por fim, vamos padronizar como sua API diz que algo deu errado. Modelagem de erros consistente é o que separa APIs amadoras de APIs profissionais.
+- **Seção 5.7:** Por fim, vamos padronizar como sua API diz que algo deu errado. Modelagem de erros consistente é o que separa APIs amadoras de APIs profissionais.
 
 
 
@@ -53,10 +53,10 @@ Hoje, estima-se que **mais de 90%** das APIs públicas na web utilizem JSON como
 
 Antes de entrar na estrutura, é importante conhecer os "dados de identidade" desse formato:
 
-*   **Extensão de arquivo:** `.json`
-*   **MIME Type (Media Type):** `application/json` (Isso é o que vai no header `Content-Type`)
-*   **Origem:** Derivado da sintaxe de objetos literais do JavaScript.
-*   **Padronização:** RFC 8259.
+- **Extensão de arquivo:** `.json`
+- **MIME Type (Media Type):** `application/json` (Isso é o que vai no header `Content-Type`)
+- **Origem:** Derivado da sintaxe de objetos literais do JavaScript.
+- **Padronização:** RFC 8259.
 
 Embora tenha "JavaScript" no nome, o JSON hoje é **agnóstico de linguagem**. Isso significa que Python, Java, Go, Ruby, C# e praticamente qualquer outra linguagem moderna conseguem ler e gerar JSON nativamente.
 
@@ -66,12 +66,12 @@ Embora tenha "JavaScript" no nome, o JSON hoje é **agnóstico de linguagem**. I
 
 O JSON é construído sobre duas estruturas fundamentais:
 
-1.  **Objetos:** Uma coleção de pares chave/valor.
-    *   Começa com `{` e termina com `}`.
-    *   As chaves são strings (sempre entre aspas duplas).
-    *   Os valores podem ser qualquer tipo suportado.
-2.  **Arrays (Listas):** Uma lista ordenada de valores.
-    *   Começa com `[` e termina com `]`.
+1. **Objetos:** Uma coleção de pares chave/valor.
+    - Começa com `{` e termina com `}`.
+    - As chaves são strings (sempre entre aspas duplas).
+    - Os valores podem ser qualquer tipo suportado.
+2. **Arrays (Listas):** Uma lista ordenada de valores.
+    - Começa com `[` e termina com `]`.
 
 ### Exemplo visual
 
@@ -107,9 +107,9 @@ Um ser humano consegue abrir um arquivo JSON e entender o conteúdo sem precisar
 O JSON foi popularizado no início dos anos 2000 por Douglas Crockford. Na época, o XML (com SOAP) era o padrão corporativo, mas era pesado e difícil de manipular no navegador (AJAX). O JSON surgiu como uma alternativa leve.
 
 Hoje, além de APIs, o JSON é usado para:
-*   **Arquivos de Configuração:** O famoso `package.json` (Node.js), `composer.json` (PHP) ou configurações do VS Code (`settings.json`).
-*   **Bancos de Dados NoSQL:** MongoDB e CouchDB armazenam dados em formatos que são essencialmente JSON (ou BSON).
-*   **Logs:** Logs estruturados em servidores geralmente são salvos linha a linha como JSON para facilitar a busca.
+- **Arquivos de Configuração:** O famoso `package.json` (Node.js), `composer.json` (PHP) ou configurações do VS Code (`settings.json`).
+- **Bancos de Dados NoSQL:** MongoDB e CouchDB armazenam dados em formatos que são essencialmente JSON (ou BSON).
+- **Logs:** Logs estruturados em servidores geralmente são salvos linha a linha como JSON para facilitar a busca.
 
 
 
@@ -117,9 +117,9 @@ Hoje, além de APIs, o JSON é usado para:
 
 Diferente do JavaScript, o JSON é **estrito**:
 
-*   **Aspas:** Chaves e Strings **devem** usar aspas duplas (`"`). Aspas simples (`'`) causam erro.
-*   **Vírgulas:** Não é permitido vírgula após o último elemento (trailing comma).
-*   **Comentários:** JSON **não suporta** comentários. Se você precisa comentar, o dado provavelmente não deveria estar ali ou você deveria usar um campo de documentação.
+- **Aspas:** Chaves e Strings **devem** usar aspas duplas (`"`). Aspas simples (`'`) causam erro.
+- **Vírgulas:** Não é permitido vírgula após o último elemento (trailing comma).
+- **Comentários:** JSON **não suporta** comentários. Se você precisa comentar, o dado provavelmente não deveria estar ali ou você deveria usar um campo de documentação.
 
 
 
@@ -147,19 +147,19 @@ Note que `False` (Python) virou `false` (JSON). Essa conversão de tipos é auto
 
 ## Checklist rápido
 
-*   [ ] Entendi que JSON é texto (string) usado para transportar dados.
-*   [ ] Sei que o MIME type correto é `application/json`.
-*   [ ] Sei diferenciar um Objeto (`{}`) de um Array (`[]`).
-*   [ ] Lembro que chaves precisam de aspas duplas.
-*   [ ] Sei que não posso deixar vírgula sobrando no final.
+- [ ] Entendi que JSON é texto (string) usado para transportar dados.
+- [ ] Sei que o MIME type correto é `application/json`.
+- [ ] Sei diferenciar um Objeto (`{}`) de um Array (`[]`).
+- [ ] Lembro que chaves precisam de aspas duplas.
+- [ ] Sei que não posso deixar vírgula sobrando no final.
 
 
 
 ## Fontes
 
-*   **[JSON.org]:** Especificação oficial (json.org)
-*   **[MDN]:** Trabalhando com JSON (developer.mozilla.org)
-*   **[FAST]:** FastAPI e JSON (fastapi.tiangolo.com)
+- **[JSON.org]:** Especificação oficial (json.org)
+- **[MDN]:** Trabalhando com JSON (developer.mozilla.org)
+- **[FAST]:** FastAPI e JSON (fastapi.tiangolo.com)
 
 ---
 # 5.2 Tipos, estruturas e armadilhas comuns
@@ -172,12 +172,12 @@ O JSON parece simples, mas a simplicidade esconde armadilhas que podem causar bu
 
 O padrão JSON define apenas 6 tipos de dados. Todo o resto é invenção ou convenção.
 
-1.  **String:** `"texto"` (Sempre aspas duplas).
-2.  **Number:** `10`, `10.5`, `-5` (Inteiros e flutuantes são o mesmo tipo).
-3.  **Boolean:** `true` ou `false` (Minúsculo).
-4.  **Null:** `null` (Representa ausência de valor).
-5.  **Object:** `{ ... }`.
-6.  **Array:** `[ ... ]`.
+1. **String:** `"texto"` (Sempre aspas duplas).
+2. **Number:** `10`, `10.5`, `-5` (Inteiros e flutuantes são o mesmo tipo).
+3. **Boolean:** `true` ou `false` (Minúsculo).
+4. **Null:** `null` (Representa ausência de valor).
+5. **Object:** `{ ... }`.
+6. **Array:** `[ ... ]`.
 
 
 
@@ -188,15 +188,15 @@ JSON **não tem** tipo `Date`.
 Se você precisa enviar uma data, deve convertê-la para String ou Number (timestamp).
 
 **Padrão recomendado:** ISO 8601 (String).
-*   Bom: `"2024-12-31T23:59:59Z"` (Legível, ordenável, com fuso horário).
-*   Ruim: `"31/12/2024"` (Ambíguo dependendo do país).
+- Bom: `"2024-12-31T23:59:59Z"` (Legível, ordenável, com fuso horário).
+- Ruim: `"31/12/2024"` (Ambíguo dependendo do país).
 
 ### 2) Números e Precisão
 Em JSON, todo número é tecnicamente um ponto flutuante de dupla precisão (como o `float` em Python ou `double` em C).
 
 **O Perigo:** IDs numéricos muito grandes (ex: IDs do Twitter/X ou de bancos bancários) podem perder precisão quando chegam no JavaScript do navegador.
-*   ID real: `9007199254740993`
-*   JavaScript lê como: `9007199254740992` (Arredondou!)
+- ID real: `9007199254740993`
+- JavaScript lê como: `9007199254740992` (Arredondou!)
 
 **Solução:** Se o número for um identificador grande ou valor monetário crítico, **envie como String**.
 ```json
@@ -206,8 +206,8 @@ Em JSON, todo número é tecnicamente um ponto flutuante de dupla precisão (com
 ### 3) Null vs Ausência de Chave
 Existe uma diferença semântica importante entre enviar `null` e não enviar a chave.
 
-*   `"apelido": null` -> "Eu sei que o campo existe, e o valor dele é vazio propositalmente (ex: limpei o apelido)."
-*   *(chave ausente)* -> "Não altere esse campo" ou "Dado desconhecido".
+- `"apelido": null` -> "Eu sei que o campo existe, e o valor dele é vazio propositalmente (ex: limpei o apelido)."
+- *(chave ausente)* -> "Não altere esse campo" ou "Dado desconhecido".
 
 Em atualizações parciais (PATCH), essa diferença define se você apaga um dado ou se apenas o ignora.
 
@@ -215,8 +215,8 @@ Em atualizações parciais (PATCH), essa diferença define se você apaga um dad
 Nunca confie em `floats` para dinheiro devido a erros de arredondamento binário (`0.1 + 0.2` muitas vezes não é exatamente `0.3` em computadores).
 
 **Solução:**
-*   Envie como inteiros (centavos): `1500` (para R$ 15,00).
-*   Ou envie como String: `"15.00"`.
+- Envie como inteiros (centavos): `1500` (para R$ 15,00).
+- Ou envie como String: `"15.00"`.
 
 
 
@@ -246,18 +246,18 @@ Vamos ver um JSON mal formatado e como corrigi-lo.
 
 ## Checklist rápido
 
-*   [ ] Estou usando ISO 8601 para datas?
-*   [ ] IDs gigantes e valores monetários estão protegidos (string ou inteiros)?
-*   [ ] Defini se listas vazias retornam `[]` ou `null`? (Prefira `[]`).
-*   [ ] Estou tratando a diferença entre `null` e "chave inexistente"?
+- [ ] Estou usando ISO 8601 para datas?
+- [ ] IDs gigantes e valores monetários estão protegidos (string ou inteiros)?
+- [ ] Defini se listas vazias retornam `[]` ou `null`? (Prefira `[]`).
+- [ ] Estou tratando a diferença entre `null` e "chave inexistente"?
 
 
 
 ## Fontes
 
-*   **[MDN]:** JSON Data Types
-*   **[ISO]:** ISO 8601 Date and Time Format
-*   **[Google Style]:** JSON Style Guide (Google)
+- **[MDN]:** JSON Data Types
+- **[ISO]:** ISO 8601 Date and Time Format
+- **[Google Style]:** JSON Style Guide (Google)
 
 ---
 # 5.3 Serialização e deserialização
@@ -270,13 +270,13 @@ O seu código não "fala" JSON nativamente. Ele fala objetos Python (dicionário
 
 ### Serialização (Marshalling)
 É o ato de transformar um objeto em memória (vivo) em uma sequência de bytes (texto) que pode ser salva ou transmitida.
-*   **De:** `Object` (Python/Memory)
-*   **Para:** `String` (JSON/Wire)
+- **De:** `Object` (Python/Memory)
+- **Para:** `String` (JSON/Wire)
 
 ### Deserialização (Unmarshalling)
 É o inverso. Pegar um texto recebido e reconstruir o objeto na memória.
-*   **De:** `String` (JSON/Wire)
-*   **Para:** `Object` (Python/Memory)
+- **De:** `String` (JSON/Wire)
+- **Para:** `Object` (Python/Memory)
 
 
 
@@ -293,8 +293,8 @@ Enviar campos desnecessários no JSON significa gastar CPU à toa serializando d
 
 Aqui existe uma briga clássica entre linguagens.
 
-*   **Python/Ruby:** Usam `snake_case` (`nome_usuario`).
-*   **JavaScript/JSON:** Costumam usar `camelCase` (`nomeUsuario`).
+- **Python/Ruby:** Usam `snake_case` (`nome_usuario`).
+- **JavaScript/JSON:** Costumam usar `camelCase` (`nomeUsuario`).
 
 **O que fazer?**
 O padrão de mercado para APIs REST JSON tende ao **snake_case** ou **camelCase**, mas a consistência é o mais importante.
@@ -309,9 +309,9 @@ Se seu backend é Python, é comum a API aceitar/retornar `snake_case` para evit
 Deserializar dados é perigoso. Você está pegando uma entrada externa e instanciando objetos na memória do seu servidor.
 
 **Riscos:**
-1.  **Injeção de Objetos:** Em algumas linguagens (como Java ou Python com `pickle`), deserializar cegamente pode permitir execução de código. **Com JSON padrão (`json.loads`), isso é seguro quanto à execução**, mas ainda exige validação.
-2.  **Negação de Serviço (DoS):** Um atacante pode enviar um JSON aninhado profundamente (ex: 10.000 arrays dentro de arrays) para estourar a pilha de memória do seu parser.
-3.  **Tipagem Incorreta:** Se você espera um número e recebe um objeto, seu código pode quebrar se não validar.
+1. **Injeção de Objetos:** Em algumas linguagens (como Java ou Python com `pickle`), deserializar cegamente pode permitir execução de código. **Com JSON padrão (`json.loads`), isso é seguro quanto à execução**, mas ainda exige validação.
+2. **Negação de Serviço (DoS):** Um atacante pode enviar um JSON aninhado profundamente (ex: 10.000 arrays dentro de arrays) para estourar a pilha de memória do seu parser.
+3. **Tipagem Incorreta:** Se você espera um número e recebe um objeto, seu código pode quebrar se não validar.
 
 
 
@@ -344,17 +344,17 @@ Se o JSON de entrada estiver errado (ex: `preco` for "abc"), o processo de deser
 
 ## Checklist rápido
 
-*   [ ] Entendi que objetos na memória precisam virar texto para viajar na rede.
-*   [ ] Defini uma convenção de nomenclatura (snake_case ou camelCase) para o projeto.
-*   [ ] Nunca confio cegamente no que foi deserializado (validação é obrigatória).
-*   [ ] Evito enviar campos inúteis para economizar processamento.
+- [ ] Entendi que objetos na memória precisam virar texto para viajar na rede.
+- [ ] Defini uma convenção de nomenclatura (snake_case ou camelCase) para o projeto.
+- [ ] Nunca confio cegamente no que foi deserializado (validação é obrigatória).
+- [ ] Evito enviar campos inúteis para economizar processamento.
 
 
 
 ## Fontes
 
-*   **[FAST]:** Pydantic e Validação
-*   **[OWASP]:** Deserialization Cheat Sheet
+- **[FAST]:** Pydantic e Validação
+- **[OWASP]:** Deserialization Cheat Sheet
 
 ---
 # 5.4 Contratos de entrada e saída
@@ -366,14 +366,14 @@ Uma API robusta funciona com base em contratos claros. "Contrato" aqui não é b
 ## Responsabilidades Distintas
 
 ### Contrato de Entrada (Input)
-*   **Objetivo:** Proteger o servidor.
-*   **Filosofia:** Seja rigoroso. Rejeite o que não entende.
-*   Se o contrato diz que o campo `idade` é inteiro positivo, rejeite strings, negativos ou nulos. Não tente "adivinhar" ou corrigir dados sujos silenciosamente.
+- **Objetivo:** Proteger o servidor.
+- **Filosofia:** Seja rigoroso. Rejeite o que não entende.
+- Se o contrato diz que o campo `idade` é inteiro positivo, rejeite strings, negativos ou nulos. Não tente "adivinhar" ou corrigir dados sujos silenciosamente.
 
 ### Contrato de Saída (Output)
-*   **Objetivo:** Proteger o cliente.
-*   **Filosofia:** Seja previsível e conservador.
-*   Garanta que a resposta sempre tenha o mesmo formato, mesmo em caso de erro ou dados parciais. O cliente não deve quebrar porque um campo opcional veio faltando sem aviso.
+- **Objetivo:** Proteger o cliente.
+- **Filosofia:** Seja previsível e conservador.
+- Garanta que a resposta sempre tenha o mesmo formato, mesmo em caso de erro ou dados parciais. O cliente não deve quebrar porque um campo opcional veio faltando sem aviso.
 
 
 
@@ -382,8 +382,8 @@ Uma API robusta funciona com base em contratos claros. "Contrato" aqui não é b
 > "Seja conservador no que você faz (envia), seja liberal no que você aceita dos outros."
 
 Na prática moderna de APIs REST/JSON, adaptamos isso:
-*   **Saída:** Extremamente conservadora (siga o contrato à risca).
-*   **Entrada:** Valide estritamente a estrutura (segurança), mas ignore campos extras desconhecidos (para permitir evolução do cliente sem quebrar o servidor).
+- **Saída:** Extremamente conservadora (siga o contrato à risca).
+- **Entrada:** Valide estritamente a estrutura (segurança), mas ignore campos extras desconhecidos (para permitir evolução do cliente sem quebrar o servidor).
 
 
 
@@ -417,8 +417,8 @@ O que o servidor promete devolver em caso de sucesso (201 Created):
 ```
 
 **Note a diferença:**
-1.  A `senha` entrou, mas **não saiu**. (Segurança básica).
-2.  Campos de sistema (`id`, `criado_em`, `status`) aparecem na saída, mas não são aceitos na entrada (o servidor decide esses valores, não o cliente).
+1. A `senha` entrou, mas **não saiu**. (Segurança básica).
+2. Campos de sistema (`id`, `criado_em`, `status`) aparecem na saída, mas não são aceitos na entrada (o servidor decide esses valores, não o cliente).
 
 
 
@@ -426,8 +426,8 @@ O que o servidor promete devolver em caso de sucesso (201 Created):
 
 Para implementar isso no código, usamos o padrão DTO (ou Schemas no Pydantic/FastAPI). Você cria classes diferentes para entrada e saída.
 
-*   `UserCreateRequest`: Contém senha. Não contém ID.
-*   `UserResponse`: Contém ID. Não contém senha.
+- `UserCreateRequest`: Contém senha. Não contém ID.
+- `UserResponse`: Contém ID. Não contém senha.
 
 Misturar os dois (usar a mesma classe para entrada e saída) é um erro clássico que leva a vazamento de senhas ou a permitir que usuários alterem seus próprios IDs ou permissões de administrador (Mass Assignment Vulnerability).
 
@@ -461,18 +461,18 @@ _Implementação de DTOs usando Pydantic_
 
 ## Checklist rápido
 
-*   [ ] Tenho modelos separados para Entrada e Saída?
-*   [ ] Removi dados sensíveis (senhas) do contrato de saída?
-*   [ ] Campos de controle (ID, data criação) são ignorados se enviados na entrada?
-*   [ ] O cliente sabe quais campos são opcionais e quais são obrigatórios?
+- [ ] Tenho modelos separados para Entrada e Saída?
+- [ ] Removi dados sensíveis (senhas) do contrato de saída?
+- [ ] Campos de controle (ID, data criação) são ignorados se enviados na entrada?
+- [ ] O cliente sabe quais campos são opcionais e quais são obrigatórios?
 
 
 
 ## Fontes
 
-*   **[Fowler]:** Data Transfer Object (DTO) pattern
-*   **[FAST]:** Request Body e Response Model
-*   **[OWASP]:** Mass Assignment Prevention
+- **[Fowler]:** Data Transfer Object (DTO) pattern
+- **[FAST]:** Request Body e Response Model
+- **[OWASP]:** Mass Assignment Prevention
 
 ---
 # 5.5 Evolução de contratos e compatibilidade
@@ -531,8 +531,8 @@ Usado para migrações complexas de banco de dados e APIs.
 
 Quando a mudança é drástica e impossível de ser retrocompatível, você cria uma nova versão da API.
 
-* `/v1/usuarios`
-* `/v2/usuarios`
+- `/v1/usuarios`
+- `/v2/usuarios`
 
 Isso permite que clientes antigos continuem na v1 enquanto novos usam a v2. (Veremos versionamento em detalhes na seção de REST).
 
@@ -548,17 +548,17 @@ Em backend, "mudar rapidinho" um nome de campo pode derrubar o aplicativo móvel
 
 ## Checklist rápido
 
-* [ ] A mudança que vou fazer quebra clientes antigos?
-* [ ] Posso resolver adicionando um campo novo em vez de mudar o existente?
-* [ ] Se for remover algo, avisei os consumidores com antecedência (Deprecation)?
-* [ ] Lembrei que apps mobile antigos continuam existindo?
+- [ ] A mudança que vou fazer quebra clientes antigos?
+- [ ] Posso resolver adicionando um campo novo em vez de mudar o existente?
+- [ ] Se for remover algo, avisei os consumidores com antecedência (Deprecation)?
+- [ ] Lembrei que apps mobile antigos continuam existindo?
 
 
 
 ## Fontes
 
-* **[SemVer]:** Semantic Versioning
-* **[Google]:** API Design Guide - Compatibility
+- **[SemVer]:** Semantic Versioning
+- **[Google]:** API Design Guide - Compatibility
 
 ---
 # 5.6 OpenAPI como contrato formal
@@ -572,10 +572,10 @@ A resposta é **OpenAPI** (antigamente conhecido como Swagger).
 ## O que é OpenAPI?
 
 É uma especificação (um padrão de arquivo JSON ou YAML) que descreve sua API inteira:
-*   Quais endpoints existem (`GET /users`, `POST /login`).
-*   Quais parâmetros eles aceitam.
-*   Qual o formato exato do JSON de entrada e saída.
-*   Quais códigos de erro podem retornar.
+- Quais endpoints existem (`GET /users`, `POST /login`).
+- Quais parâmetros eles aceitam.
+- Qual o formato exato do JSON de entrada e saída.
+- Quais códigos de erro podem retornar.
 
 Ele funciona como um "manual de instruções" legível por máquina.
 
@@ -600,13 +600,13 @@ Existem duas abordagens para criar esse contrato:
 
 ### Code-First (Abordagem do FastAPI)
 Você escreve o código Python (com Pydantic) e o framework **gera** o arquivo OpenAPI automaticamente para você.
-*   **Vantagem:** Muito rápido de desenvolver. O código e a documentação nunca ficam dessincronizados.
-*   **Uso:** Ideal para times ágeis e projetos onde o mesmo time faz front e back.
+- **Vantagem:** Muito rápido de desenvolver. O código e a documentação nunca ficam dessincronizados.
+- **Uso:** Ideal para times ágeis e projetos onde o mesmo time faz front e back.
 
 ### Schema-First (Design-First)
 Você escreve o arquivo OpenAPI (YAML) primeiro, discute e aprova ele. Só depois escreve o código.
-*   **Vantagem:** O contrato é independente da implementação. Permite que front e back trabalhem em paralelo desde o dia zero.
-*   **Uso:** Grandes corporações, APIs públicas críticas ou times muito separados.
+- **Vantagem:** O contrato é independente da implementação. Permite que front e back trabalhem em paralelo desde o dia zero.
+- **Uso:** Grandes corporações, APIs públicas críticas ou times muito separados.
 
 
 
@@ -643,17 +643,17 @@ paths:
 
 ## Checklist rápido
 
-*   [ ] Minha API possui uma documentação OpenAPI acessível?
-*   [ ] As descrições dos campos no OpenAPI estão claras para quem vai consumir?
-*   [ ] Estou usando o OpenAPI para garantir que front e back falem a mesma língua?
+- [ ] Minha API possui uma documentação OpenAPI acessível?
+- [ ] As descrições dos campos no OpenAPI estão claras para quem vai consumir?
+- [ ] Estou usando o OpenAPI para garantir que front e back falem a mesma língua?
 
 
 
 ## Fontes
 
-*   **[OpenAPI]:** Openapis.org
-*   **[Swagger]:** Swagger.io
-*   **[FAST]:** FastAPI e OpenAPI
+- **[OpenAPI]:** Openapis.org
+- **[Swagger]:** Swagger.io
+- **[FAST]:** FastAPI e OpenAPI
 
 ---
 # 5.7 Modelagem consistente de erros
@@ -675,8 +675,8 @@ Algumas APIs antigas retornam sempre status `200 OK`, mas no corpo do JSON manda
 ```
 **Não faça isso.**
 Isso quebra ferramentas de monitoramento, proxies e caches que dependem do código HTTP para saber se a requisição falhou.
-*   Se falhou, use **4xx** (erro do cliente) ou **5xx** (erro do servidor).
-*   Se deu certo, use **2xx**.
+- Se falhou, use **4xx** (erro do cliente) ou **5xx** (erro do servidor).
+- Se deu certo, use **2xx**.
 
 
 
@@ -697,11 +697,11 @@ A recomendação é retornar um JSON com campos padrão:
 ```
 
 ### Campos principais:
-*   **type:** Uma URI que identifica o tipo do erro (útil para o código do cliente reagir a erros específicos).
-*   **title:** Resumo curto e legível por humanos.
-*   **status:** O código HTTP (repetido aqui para facilitar).
-*   **detail:** Explicação específica daquela ocorrência (variável).
-*   **instance:** Onde o erro ocorreu (opcional).
+- **type:** Uma URI que identifica o tipo do erro (útil para o código do cliente reagir a erros específicos).
+- **title:** Resumo curto e legível por humanos.
+- **status:** O código HTTP (repetido aqui para facilitar).
+- **detail:** Explicação específica daquela ocorrência (variável).
+- **instance:** Onde o erro ocorreu (opcional).
 
 
 
@@ -736,22 +736,22 @@ O FastAPI já faz algo muito similar a isso automaticamente para erros de valida
 ## Segurança nos Erros
 
 **Cuidado:** Nunca vaze detalhes de infraestrutura no erro.
-*   **Errado:** `DatabaseConnectionError: Connection refused at 192.168.0.5` (Dá munição para hackers).
-*   **Certo:** `Erro interno ao processar pagamento. Tente novamente mais tarde.` (Logue o erro real internamente, mostre o genérico para fora).
+- **Errado:** `DatabaseConnectionError: Connection refused at 192.168.0.5` (Dá munição para hackers).
+- **Certo:** `Erro interno ao processar pagamento. Tente novamente mais tarde.` (Logue o erro real internamente, mostre o genérico para fora).
 
 
 
 ## Checklist rápido
 
-*   [ ] Meus erros usam os códigos HTTP corretos (400, 401, 403, 404, 500)?
-*   [ ] O formato do JSON de erro é igual em toda a API?
-*   [ ] Erros de validação retornam qual campo está errado?
-*   [ ] Garanti que stack traces e senhas de banco não vazam no JSON de erro?
+- [ ] Meus erros usam os códigos HTTP corretos (400, 401, 403, 404, 500)?
+- [ ] O formato do JSON de erro é igual em toda a API?
+- [ ] Erros de validação retornam qual campo está errado?
+- [ ] Garanti que stack traces e senhas de banco não vazam no JSON de erro?
 
 
 
 ## Fontes
 
-*   **[RFC 7807]:** Problem Details for HTTP APIs
-*   **[MDN]:** HTTP Status Codes
-*   **[Google]:** API Errors Design
+- **[RFC 7807]:** Problem Details for HTTP APIs
+- **[MDN]:** HTTP Status Codes
+- **[Google]:** API Errors Design

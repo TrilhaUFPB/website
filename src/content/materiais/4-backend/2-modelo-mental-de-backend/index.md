@@ -9,8 +9,8 @@ order: 2
 
 Backend existe porque, na Web, quase tudo acontece como uma **conversa entre duas partes**:
 
-* o **cliente**, que inicia a interação (ex.: navegador, app mobile, outra API)
-* o **servidor**, que recebe a solicitação, executa o trabalho necessário e devolve uma resposta
+- o **cliente**, que inicia a interação (ex.: navegador, app mobile, outra API)
+- o **servidor**, que recebe a solicitação, executa o trabalho necessário e devolve uma resposta
 
 Esse modelo é a base de como páginas e APIs funcionam no dia a dia: você clica, envia um formulário, faz uma busca  e uma requisição é enviada para algum servidor, que responde com dados ou com uma página. ([MDN Web Docs][1])
 
@@ -20,9 +20,9 @@ Esse modelo é a base de como páginas e APIs funcionam no dia a dia: você clic
 
 É o lado que:
 
-* **interage com o usuário**
-* **inicia requisições** (pedidos) para obter algo do servidor
-* **mostra o resultado** (tela, mensagem, lista, erro)
+- **interage com o usuário**
+- **inicia requisições** (pedidos) para obter algo do servidor
+- **mostra o resultado** (tela, mensagem, lista, erro)
 
 Na prática, “cliente” costuma ser o navegador, mas também pode ser um app mobile, um script, ou até outro serviço.
 
@@ -30,10 +30,10 @@ Na prática, “cliente” costuma ser o navegador, mas também pode ser um app 
 
 É o lado que:
 
-* **recebe requisições**
-* **processa a lógica necessária**
-* **acessa dados** (quando preciso)
-* **retorna uma resposta**
+- **recebe requisições**
+- **processa a lógica necessária**
+- **acessa dados** (quando preciso)
+- **retorna uma resposta**
 
 Servidor não é apenas um computador: normalmente existe um **software servidor** rodando, responsável por responder às requisições (por exemplo, um servidor web). ([MDN Web Docs][2])
 
@@ -45,19 +45,19 @@ Um erro comum de quem está começando é achar que cliente e servidor fazem a m
 
 Foco em **experiência** e **apresentação**:
 
-* Coletar entradas do usuário (formulário, cliques, navegação)
-* Validar o mínimo por UX (campos vazios, formato de e-mail, máscara)
-* Exibir estados e mensagens (carregando, sucesso, falha, tentar novamente)
-* Organizar o que veio do servidor para mostrar na tela
+- Coletar entradas do usuário (formulário, cliques, navegação)
+- Validar o mínimo por UX (campos vazios, formato de e-mail, máscara)
+- Exibir estados e mensagens (carregando, sucesso, falha, tentar novamente)
+- Organizar o que veio do servidor para mostrar na tela
 
 ### Responsabilidades do servidor
 
 Foco em **garantias** e **consistência**:
 
-* Aplicar validações definitivas (o que é aceito ou rejeitado de verdade)
-* Implementar regras de negócio (o que pode, quando pode, com quais condições)
-* Persistir e consultar dados (banco de dados, cache, etc.)
-* Retornar respostas previsíveis (sucesso vs erro, com informação útil)
+- Aplicar validações definitivas (o que é aceito ou rejeitado de verdade)
+- Implementar regras de negócio (o que pode, quando pode, com quais condições)
+- Persistir e consultar dados (banco de dados, cache, etc.)
+- Retornar respostas previsíveis (sucesso vs erro, com informação útil)
 
 > O cliente melhora a experiência.
 > O servidor garante a regra.
@@ -74,8 +74,8 @@ Entre cliente e servidor existe rede: latência, timeout, perda de conexão e in
 
 O usuário controla o ambiente do cliente. Mesmo que exista validação na interface, alguém pode enviar uma requisição na mão (sem passar pela tela). Portanto:
 
-* validação no cliente é **conveniência**
-* validação no servidor é **obrigação**
+- validação no cliente é **conveniência**
+- validação no servidor é **obrigação**
 
 ### 3) Estado não “vem de graça”
 
@@ -93,9 +93,9 @@ Agora que o conceito está claro, vamos aplicar em um cenário simples e realist
 
 Uma pessoa quer **se inscrever no Trilha** preenchendo:
 
-* nome
-* e-mail
-* curso/período (opcional, dependendo do seu processo)
+- nome
+- e-mail
+- curso/período (opcional, dependendo do seu processo)
 
 ### Fluxo (passo a passo)
 
@@ -111,17 +111,17 @@ Uma pessoa quer **se inscrever no Trilha** preenchendo:
 
 ### O que fica no cliente (e por quê)
 
-* Checar se campos obrigatórios estão vazios
-* Avisar que o e-mail está mal formatado (ex.: sem @)
-* Mostrar “enviando…” e bloquear o botão para evitar múltiplos cliques
-* Mostrar mensagem de sucesso/erro de forma amigável
+- Checar se campos obrigatórios estão vazios
+- Avisar que o e-mail está mal formatado (ex.: sem @)
+- Mostrar “enviando…” e bloquear o botão para evitar múltiplos cliques
+- Mostrar mensagem de sucesso/erro de forma amigável
 
 ### O que fica no servidor (e por quê)
 
-* Confirmar se o e-mail é válido de verdade (regras completas)
-* Impedir duplicidade: “já existe inscrição com esse e-mail”
-* Verificar regras do processo (ex.: período de inscrição aberto, número de vagas, critérios mínimos)
-* Registrar a inscrição e retornar um identificador/resultado
+- Confirmar se o e-mail é válido de verdade (regras completas)
+- Impedir duplicidade: “já existe inscrição com esse e-mail”
+- Verificar regras do processo (ex.: período de inscrição aberto, número de vagas, critérios mínimos)
+- Registrar a inscrição e retornar um identificador/resultado
 
 > Regra de negócio no cliente vira regra “de mentirinha”.
 > Regra de negócio no servidor vira regra “de verdade”.
@@ -130,28 +130,28 @@ Uma pessoa quer **se inscrever no Trilha** preenchendo:
 
 #### (1) Sucesso
 
-* Servidor aceita e registra
-* Cliente mostra confirmação e próximos passos
+- Servidor aceita e registra
+- Cliente mostra confirmação e próximos passos
 
 #### (2) Erro de validação
 
-* Ex.: faltou nome
-* Cliente mostra: “Preencha seu nome para continuar”
-* Mesmo assim, o servidor também precisa rejeitar, caso uma requisição chegue incompleta
+- Ex.: faltou nome
+- Cliente mostra: “Preencha seu nome para continuar”
+- Mesmo assim, o servidor também precisa rejeitar, caso uma requisição chegue incompleta
 
 #### (3) Conflito / duplicidade
 
-* Ex.: e-mail já cadastrado
-* Cliente mostra: “Já existe inscrição com esse e-mail. Quer recuperar/atualizar?”
+- Ex.: e-mail já cadastrado
+- Cliente mostra: “Já existe inscrição com esse e-mail. Quer recuperar/atualizar?”
 
 ---
 
 ## Checklist rápido (para você revisar seu próprio entendimento)
 
-* [ ] Eu consigo explicar, em uma frase, a diferença entre cliente e servidor.
-* [ ] Eu sei dizer por que validação no cliente não é suficiente.
-* [ ] Eu consigo listar pelo menos 3 falhas reais de rede e o impacto na experiência.
-* [ ] Eu consigo justificar por que o servidor é a “fonte de verdade”.
+- [ ] Eu consigo explicar, em uma frase, a diferença entre cliente e servidor.
+- [ ] Eu sei dizer por que validação no cliente não é suficiente.
+- [ ] Eu consigo listar pelo menos 3 falhas reais de rede e o impacto na experiência.
+- [ ] Eu consigo justificar por que o servidor é a “fonte de verdade”.
 
 ## Fontes (para leitura)
 
@@ -187,9 +187,9 @@ Na seção anterior, vimos que o servidor é o responsável por processar as reg
 
 Quando você coloca um backend no ar, você está lidando com três conceitos físicos que permitem que aquela "conversa" aconteça:
 
-* **processo**: o programa em execução (o código vivo)
-* **host**: “onde” ele está acessível (o endereço da máquina)
-* **porta**: “qual serviço” dentro daquele endereço (o canal de escuta)
+- **processo**: o programa em execução (o código vivo)
+- **host**: “onde” ele está acessível (o endereço da máquina)
+- **porta**: “qual serviço” dentro daquele endereço (o canal de escuta)
 
 Se você dominar esses três termos, você resolve a maior parte dos problemas clássicos de infraestrutura inicial, como “não abre no navegador”, “porta em uso” ou “funciona no meu PC mas não no celular”.
 
@@ -201,9 +201,9 @@ Um **processo** é uma instância de um programa em execução no sistema operac
 
 No contexto de backend, o seu código (rotas e lógica) normalmente é carregado por um **programa servidor** (por exemplo, um servidor HTTP/ASGI) que:
 
-* inicia a aplicação
-* fica escutando requisições
-* processa cada requisição e devolve respostas
+- inicia a aplicação
+- fica escutando requisições
+- processa cada requisição e devolve respostas
 
 Em outras palavras: backend no ar significa, na prática, que **existe um processo ativo** responsável por atender requests.
 
@@ -211,8 +211,8 @@ Em outras palavras: backend no ar significa, na prática, que **existe um proces
 
 No dia a dia, a palavra *servidor* pode se referir tanto a:
 
-* a **máquina** (física/virtual) onde o sistema roda
-* o **programa servidor** (o processo) que está rodando naquela máquina
+- a **máquina** (física/virtual) onde o sistema roda
+- o **programa servidor** (o processo) que está rodando naquela máquina
 
 Essa ambiguidade é comum e você vai ouvir os dois usos. O importante é aprender a reconhecer pelo contexto.
 
@@ -224,8 +224,8 @@ A **porta** serve para diferenciar serviços dentro de uma mesma máquina.
 
 Pense assim:
 
-* o **host** te leva até a máquina
-* a **porta** te leva até o serviço/processo certo *dentro* dela
+- o **host** te leva até a máquina
+- a **porta** te leva até o serviço/processo certo *dentro* dela
 
 Isso permite que a mesma máquina rode várias coisas ao mesmo tempo (por exemplo: um backend, um banco de dados, um painel de admin), cada uma em sua porta.
 
@@ -233,14 +233,14 @@ Isso permite que a mesma máquina rode várias coisas ao mesmo tempo (por exempl
 
 O **host** é o endereço pelo qual o servidor pode ser acessado. Ele pode ser:
 
-* um **domínio** (ex.: `api.meuprojeto.com`)
-* um **IP** (ex.: `192.168.0.10`)
-* um endereço local (ex.: `127.0.0.1`)
+- um **domínio** (ex.: `api.meuprojeto.com`)
+- um **IP** (ex.: `192.168.0.10`)
+- um endereço local (ex.: `127.0.0.1`)
 
 Em desenvolvimento, dois casos aparecem o tempo todo:
 
-* `127.0.0.1` / `localhost`: acessível **apenas na sua máquina**
-* `0.0.0.0`: significa que o servidor vai escutar em **todas as interfaces de rede** (isso abre a possibilidade de acesso externo, dependendo da rede e do firewall)
+- `127.0.0.1` / `localhost`: acessível **apenas na sua máquina**
+- `0.0.0.0`: significa que o servidor vai escutar em **todas as interfaces de rede** (isso abre a possibilidade de acesso externo, dependendo da rede e do firewall)
 
 ## Como ler host e porta em um endereço
 
@@ -252,9 +252,9 @@ http://127.0.0.1:8000
 
 Interpretação:
 
-* `http` → protocolo (você aprofunda no tópico 3)
-* `127.0.0.1` → host
-* `8000` → porta
+- `http` → protocolo (você aprofunda no tópico 3)
+- `127.0.0.1` → host
+- `8000` → porta
 
 Se a porta não aparece no endereço, normalmente é porque existe uma **porta padrão** para aquele protocolo (isso fica mais intuitivo depois, quando você estudar HTTP/HTTPS).
 
@@ -264,9 +264,9 @@ Se a porta não aparece no endereço, normalmente é porque existe uma **porta p
 
 Na maioria das vezes, é um destes casos:
 
-* o processo **não está rodando**
-* você está acessando **host/porta errados**
-* o processo está rodando, mas está “escutando” em outro endereço do que você imagina
+- o processo **não está rodando**
+- você está acessando **host/porta errados**
+- o processo está rodando, mas está “escutando” em outro endereço do que você imagina
 
 ### 2) “Porta já está em uso”
 
@@ -274,8 +274,8 @@ Uma porta só pode ser ocupada por um processo por vez.
 
 Se você tentar subir o backend na porta `8000` e já existir outro processo usando `8000`, o servidor não consegue iniciar daquele jeito. Soluções comuns:
 
-* encerrar o processo antigo
-* trocar a porta
+- encerrar o processo antigo
+- trocar a porta
 
 ### 3) “Funciona no meu PC, mas não no celular (mesma rede)”
 
@@ -283,10 +283,10 @@ Isso costuma acontecer quando você está usando `127.0.0.1`, que significa “s
 
 Para outro dispositivo acessar, normalmente você precisa:
 
-* fazer o servidor escutar em `0.0.0.0`
-* acessar usando o **IP real** do seu computador na rede (ex.: `192.168.x.x`)
-* garantir que firewall/rede permitem a conexão
-* Iniciar o processo do servidor
+- fazer o servidor escutar em `0.0.0.0`
+- acessar usando o **IP real** do seu computador na rede (ex.: `192.168.x.x`)
+- garantir que firewall/rede permitem a conexão
+- Iniciar o processo do servidor
 
 ### 4) “Eu confundi máquina com programa servidor”
 
@@ -300,9 +300,9 @@ Agora vamos aplicar os conceitos em um cenário simples.
 
 Você está construindo uma pequena API de lista de tarefas para testar no navegador:
 
-* listar tarefas
-* criar uma tarefa
-* marcar como concluída
+- listar tarefas
+- criar uma tarefa
+- marcar como concluída
 
 ### O que você espera ver quando sobe o backend
 
@@ -317,9 +317,9 @@ Uvicorn running on http://127.0.0.1:8000
 
 Essa linha te dá as três informações essenciais:
 
-* existe um **processo** rodando (o servidor)
-* ele está acessível no **host** `127.0.0.1`
-* e na **porta** `8000`
+- existe um **processo** rodando (o servidor)
+- ele está acessível no **host** `127.0.0.1`
+- e na **porta** `8000`
 
 ### Testando no navegador (mesma máquina)
 
@@ -334,10 +334,10 @@ o navegador (cliente) vai enviar uma requisição para exatamente esse host e po
 
 ## Checklist rápido (para depurar sem sofrer)
 
-* [ ] O processo do servidor está rodando (terminal não encerrou com erro)?
-* [ ] Eu sei qual host e porta ele está usando ?
-* [ ] Eu estou acessando exatamente o mesmo host e porta no navegador?
-* [ ] Se deu “porta em uso”, eu parei o processo antigo ou troquei a porta?
+- [ ] O processo do servidor está rodando (terminal não encerrou com erro)?
+- [ ] Eu sei qual host e porta ele está usando ?
+- [ ] Eu estou acessando exatamente o mesmo host e porta no navegador?
+- [ ] Se deu “porta em uso”, eu parei o processo antigo ou troquei a porta?
 
 ## Fontes (para leitura)
 
@@ -477,10 +477,10 @@ Content-Type: application/json
 
 Esse contrato diz:
 
-* existe um campo `items`
-* cada item tem `id`, `titulo`, `nivel`
-* o conteúdo é JSON
-* o status 200 indica sucesso
+- existe um campo `items`
+- cada item tem `id`, `titulo`, `nivel`
+- o conteúdo é JSON
+- o status 200 indica sucesso
 
 ### Parte 2: contrato de erro consistente
 
@@ -518,7 +518,7 @@ Você quer adicionar o campo `carga_horaria`.
 
 Mudança compatível:
 
-* adicionar um novo campo opcional normalmente não quebra clientes existentes
+- adicionar um novo campo opcional normalmente não quebra clientes existentes
 
 ```json
 {
@@ -531,17 +531,17 @@ Mudança compatível:
 
 Mudanças com alto risco de quebra:
 
-* renomear `titulo` para `nome`
-* trocar `items` por `data`
-* mudar tipos, por exemplo número para string
-* mudar semântica, por exemplo `nivel` passar a ter valores diferentes
+- renomear `titulo` para `nome`
+- trocar `items` por `data`
+- mudar tipos, por exemplo número para string
+- mudar semântica, por exemplo `nivel` passar a ter valores diferentes
 
 ## Checklist rápido (para revisar se sua API está sendo tratada como contrato)
 
-* [ ] Eu consigo descrever entradas e saídas sem falar de implementação interna.
-* [ ] A API tem padrões consistentes de sucesso e erro.
-* [ ] Mudanças planejadas evitam quebra de clientes.
-* [ ] Eu sei diferenciar mudanças compatíveis e mudanças que quebram contrato.
+- [ ] Eu consigo descrever entradas e saídas sem falar de implementação interna.
+- [ ] A API tem padrões consistentes de sucesso e erro.
+- [ ] Mudanças planejadas evitam quebra de clientes.
+- [ ] Eu sei diferenciar mudanças compatíveis e mudanças que quebram contrato.
 
 ## Fontes
 
@@ -570,9 +570,9 @@ Para manter o contrato da API estável (como vimos na seção anterior), o códi
 
 Por isso, por baixo dos panos, dividimos o processamento de uma requisição em pelo menos três preocupações distintas:
 
-* **Transporte**: como a requisição chega e como a resposta volta (HTTP, headers, status code, JSON).
-* **Regra de negócio**: o que o sistema realmente decide e garante (validações definitivas, permissões, regras do domínio).
-* **Persistência**: como os dados são lidos e gravados (banco, consultas, transações, cache).
+- **Transporte**: como a requisição chega e como a resposta volta (HTTP, headers, status code, JSON).
+- **Regra de negócio**: o que o sistema realmente decide e garante (validações definitivas, permissões, regras do domínio).
+- **Persistência**: como os dados são lidos e gravados (banco, consultas, transações, cache).
 
 Separar essas partes é o que permite que você troque o banco de dados sem reescrever a regra de negócio, ou adicione um novo endpoint sem duplicar a lógica de validação.
 
@@ -582,11 +582,11 @@ Separar essas partes é o que permite que você troque o banco de dados sem rees
 
 É a camada que lida com o mundo externo. Ela responde perguntas como:
 
-* Qual rota foi chamada?
-* Qual método HTTP foi usado?
-* Como ler o corpo da requisição?
-* Que status code devolver?
-* Como formatar a resposta em JSON?
+- Qual rota foi chamada?
+- Qual método HTTP foi usado?
+- Como ler o corpo da requisição?
+- Que status code devolver?
+- Como formatar a resposta em JSON?
 
 Ela não deveria decidir regras do domínio. O papel dela é traduzir o mundo HTTP para uma chamada interna e traduzir o resultado interno para HTTP de volta.
 
@@ -594,10 +594,10 @@ Ela não deveria decidir regras do domínio. O papel dela é traduzir o mundo HT
 
 É onde ficam as decisões que definem o comportamento do produto, por exemplo:
 
-* pode se inscrever fora do período?
-* pode se inscrever duas vezes com o mesmo e-mail?
-* existe limite de vagas?
-* o usuário tem permissão para fazer isso?
+- pode se inscrever fora do período?
+- pode se inscrever duas vezes com o mesmo e-mail?
+- existe limite de vagas?
+- o usuário tem permissão para fazer isso?
 
 Essa camada deve ser independente do transporte. A mesma regra deveria funcionar mesmo que amanhã você troque HTTP por outro estilo ou use a mesma lógica em uma fila de eventos.
 
@@ -605,10 +605,10 @@ Essa camada deve ser independente do transporte. A mesma regra deveria funcionar
 
 É a parte que fala com o armazenamento:
 
-* consultar dados por id
-* verificar existência
-* salvar uma entidade
-* garantir consistência (por exemplo, transações)
+- consultar dados por id
+- verificar existência
+- salvar uma entidade
+- garantir consistência (por exemplo, transações)
 
 Persistência não deveria conter regra de negócio. Ela deve expor operações de leitura e escrita e deixar as decisões para a camada de regra.
 
@@ -630,9 +630,9 @@ Quando a rota já monta SQL ou já conhece o formato das tabelas, qualquer mudan
 
 Cada parte passa a ter uma pergunta clara:
 
-* transporte: como traduzir HTTP para chamadas internas?
-* regra: o que é permitido e o que deve acontecer?
-* persistência: como ler e gravar isso?
+- transporte: como traduzir HTTP para chamadas internas?
+- regra: o que é permitido e o que deve acontecer?
+- persistência: como ler e gravar isso?
 
 ## Limites e problemas clássicos (quando tudo fica misturado)
 
@@ -674,14 +674,14 @@ HTTP response
 
 A rota deve:
 
-* ler o payload vindo do cliente
-* chamar a regra de negócio
-* devolver a resposta
+- ler o payload vindo do cliente
+- chamar a regra de negócio
+- devolver a resposta
 
 Ela não deve:
 
-* decidir regras do domínio
-* falar diretamente com banco
+- decidir regras do domínio
+- falar diretamente com banco
 
 ```python
 # transporte (rota HTTP)
@@ -702,13 +702,13 @@ def criar_inscricao(payload: dict):
 
 O service deve:
 
-* aplicar regras e validar invariantes do domínio
-* decidir se cria ou rejeita a inscrição
+- aplicar regras e validar invariantes do domínio
+- decidir se cria ou rejeita a inscrição
 
 Ele não deve:
 
-* conhecer detalhes de SQL
-* montar resposta HTTP (status code, headers, etc.)
+- conhecer detalhes de SQL
+- montar resposta HTTP (status code, headers, etc.)
 
 ```python
 # regra de negócio (service)
@@ -736,12 +736,12 @@ class InscricaoService:
 
 O repository deve:
 
-* consultar e salvar dados
-* esconder detalhes do banco
+- consultar e salvar dados
+- esconder detalhes do banco
 
 Ele não deve:
 
-* tomar decisões de regra de negócio
+- tomar decisões de regra de negócio
 
 ```python
 # persistência (repository)
@@ -758,21 +758,21 @@ class InscricaoRepository:
 
 ### O que você deve observar neste exemplo
 
-* A rota é curta e só encaminha.
-* As regras estão concentradas no service.
-* O repository é a única parte que conhece detalhes de persistência.
-* Se você trocar o banco, você muda o repository e mantém o resto.
-* Se você trocar o formato do HTTP, você muda a rota e mantém as regras.
+- A rota é curta e só encaminha.
+- As regras estão concentradas no service.
+- O repository é a única parte que conhece detalhes de persistência.
+- Se você trocar o banco, você muda o repository e mantém o resto.
+- Se você trocar o formato do HTTP, você muda a rota e mantém as regras.
 
 ## Checklist rápido (para revisar sua separação)
 
-* [ ] A rota HTTP está pequena e faz só tradução e encaminhamento.
-* [ ] As regras do domínio não dependem de HTTP, headers ou status code.
-* [ ] A regra de negócio não conhece detalhes de SQL ou tabelas.
-* [ ] A persistência não decide regras do produto.
-* [ ] Existe um ponto claro onde validar regra e um ponto claro onde salvar dados.
+- [ ] A rota HTTP está pequena e faz só tradução e encaminhamento.
+- [ ] As regras do domínio não dependem de HTTP, headers ou status code.
+- [ ] A regra de negócio não conhece detalhes de SQL ou tabelas.
+- [ ] A persistência não decide regras do produto.
+- [ ] Existe um ponto claro onde validar regra e um ponto claro onde salvar dados.
 
-## Fontes 
+## Fontes
 
 Leituras principais:
 
@@ -818,23 +818,23 @@ Em camadas, você divide o backend em partes com responsabilidades diferentes. U
 
 1. **Transporte (ou apresentação)**
 
-* Recebe HTTP, extrai dados, valida o básico, chama o caso de uso e monta a resposta.
-* Exemplo: handler, controller, router.
+- Recebe HTTP, extrai dados, valida o básico, chama o caso de uso e monta a resposta.
+- Exemplo: handler, controller, router.
 
 2. **Aplicação (casos de uso)**
 
-* Orquestra o que precisa acontecer para cumprir um objetivo.
-* Não decide formato HTTP, nem faz SQL direto. Ela coordena regras e dependências.
+- Orquestra o que precisa acontecer para cumprir um objetivo.
+- Não decide formato HTTP, nem faz SQL direto. Ela coordena regras e dependências.
 
 3. **Domínio (regras de negócio)**
 
-* Onde ficam regras que definem o que é permitido ou não no sistema.
-* Exemplo: validações de consistência, invariantes, decisões centrais.
+- Onde ficam regras que definem o que é permitido ou não no sistema.
+- Exemplo: validações de consistência, invariantes, decisões centrais.
 
 4. **Infraestrutura (persistência e integrações)**
 
-* Implementa detalhes de armazenamento e comunicação externa.
-* Exemplo: banco de dados, cache, fila, serviços externos.
+- Implementa detalhes de armazenamento e comunicação externa.
+- Exemplo: banco de dados, cache, fila, serviços externos.
 
 A regra mais importante é: **cada camada deve conhecer o mínimo possível das outras**. Normalmente, as dependências apontam para dentro: o domínio não depende de HTTP, nem de banco.
 
@@ -852,10 +852,10 @@ Regras de negócio e casos de uso ficam testáveis sem precisar subir servidor, 
 
 Você passa a saber onde procurar cada tipo de decisão:
 
-* regra do negócio: domínio
-* sequência do fluxo: aplicação
-* formato HTTP: transporte
-* SQL e integrações: infraestrutura
+- regra do negócio: domínio
+- sequência do fluxo: aplicação
+- formato HTTP: transporte
+- SQL e integrações: infraestrutura
 
 ## O erro mais comum: camadas só de pasta
 
@@ -863,10 +863,10 @@ Criar pastas chamadas controller, service e repository não garante camadas.
 
 Você só tem arquitetura em camadas de verdade quando:
 
-* regras de negócio não dependem de HTTP
-* regra do domínio não faz query no banco
-* handler HTTP não contém regra complexa
-* infraestrutura não decide regra de negócio
+- regras de negócio não dependem de HTTP
+- regra do domínio não faz query no banco
+- handler HTTP não contém regra complexa
+- infraestrutura não decide regra de negócio
 
 ## Exemplo: reserva de sala de estudos
 
@@ -876,8 +876,8 @@ Uma aplicação permite reservar uma sala de estudos por um horário.
 
 Regra do negócio (bem simples):
 
-* Não pode haver duas reservas no mesmo horário para a mesma sala.
-* Reserva precisa de sala_id, usuario_id, inicio, fim.
+- Não pode haver duas reservas no mesmo horário para a mesma sala.
+- Reserva precisa de sala_id, usuario_id, inicio, fim.
 
 ### Visão do fluxo por camadas
 
@@ -922,9 +922,9 @@ def criar_reserva_http(request_json):
 
 O que observar:
 
-* aqui não tem SQL
-* aqui não tem regra de conflito em detalhes
-* o handler apenas traduz HTTP para chamada de caso de uso e depois traduz o resultado
+- aqui não tem SQL
+- aqui não tem regra de conflito em detalhes
+- o handler apenas traduz HTTP para chamada de caso de uso e depois traduz o resultado
 
 ### Camada 2: aplicação (caso de uso)
 
@@ -952,9 +952,9 @@ def criar_reserva_use_case(sala_id, usuario_id, inicio, fim):
 
 O que observar:
 
-* o caso de uso define a sequência do fluxo
-* ele usa domínio para criar a entidade e infraestrutura para consultar e salvar
-* ele não sabe nada sobre HTTP
+- o caso de uso define a sequência do fluxo
+- ele usa domínio para criar a entidade e infraestrutura para consultar e salvar
+- ele não sabe nada sobre HTTP
 
 ### Camada 3: domínio (regras)
 
@@ -992,8 +992,8 @@ class Reserva:
 
 O que observar:
 
-* regra do tempo está aqui, não no handler
-* domínio não depende de banco nem de HTTP
+- regra do tempo está aqui, não no handler
+- domínio não depende de banco nem de HTTP
 
 ### Camada 4: infraestrutura (repositório)
 
@@ -1017,17 +1017,17 @@ reservas_repo = ReservasRepoSQL()
 
 O que observar:
 
-* infraestrutura implementa detalhes
-* não decide regra de negócio, só executa operações
+- infraestrutura implementa detalhes
+- não decide regra de negócio, só executa operações
 
 ## Resultado prático
 
 Com essa separação, fica claro onde cada decisão mora:
 
-* erro de intervalo inválido: domínio
-* erro de horário indisponível: aplicação (orquestra usando consulta)
-* código HTTP 409: transporte
-* query para detectar conflito: infraestrutura
+- erro de intervalo inválido: domínio
+- erro de horário indisponível: aplicação (orquestra usando consulta)
+- código HTTP 409: transporte
+- query para detectar conflito: infraestrutura
 
 Isso reduz o tipo de mudança que vira efeito cascata.
 
@@ -1035,10 +1035,10 @@ Isso reduz o tipo de mudança que vira efeito cascata.
 
 ## Checklist rápido
 
-* [ ] O handler HTTP não contém regra de negócio relevante.
-* [ ] Regras do domínio não dependem de HTTP ou banco.
-* [ ] Casos de uso orquestram o fluxo e chamam dependências.
-* [ ] Eu consigo testar domínio e aplicação sem subir servidor.
+- [ ] O handler HTTP não contém regra de negócio relevante.
+- [ ] Regras do domínio não dependem de HTTP ou banco.
+- [ ] Casos de uso orquestram o fluxo e chamam dependências.
+- [ ] Eu consigo testar domínio e aplicação sem subir servidor.
 
 ## Fontes (para leitura)
 
@@ -1071,9 +1071,9 @@ Nesta seção, a ideia é criar um radar para esses problemas. Você vai consegu
 
 **Como evitar:**
 
-* valide entrada no servidor
-* trate validação como parte do contrato
-* padronize o formato de erro para dados inválidos
+- valide entrada no servidor
+- trate validação como parte do contrato
+- padronize o formato de erro para dados inválidos
 
 ### 2) Colocar regra de negócio dentro da rota HTTP
 
@@ -1083,8 +1083,8 @@ Nesta seção, a ideia é criar um radar para esses problemas. Você vai consegu
 
 **Como evitar:**
 
-* mantenha a rota pequena e delegue para um service ou caso de uso
-* concentre regras em um lugar, não espalhadas em endpoints
+- mantenha a rota pequena e delegue para um service ou caso de uso
+- concentre regras em um lugar, não espalhadas em endpoints
 
 ### 3) Erros inconsistentes e difíceis de tratar
 
@@ -1094,9 +1094,9 @@ Nesta seção, a ideia é criar um radar para esses problemas. Você vai consegu
 
 **Como evitar:**
 
-* defina um formato de erro único para toda a API
-* use códigos de status coerentes com o tipo de falha
-* mantenha mensagens humanas, mas com um identificador estável de erro
+- defina um formato de erro único para toda a API
+- use códigos de status coerentes com o tipo de falha
+- mantenha mensagens humanas, mas com um identificador estável de erro
 
 ### 4) Usar status code como enfeite
 
@@ -1106,9 +1106,9 @@ Nesta seção, a ideia é criar um radar para esses problemas. Você vai consegu
 
 **Como evitar:**
 
-* 2xx para sucesso
-* 4xx para erro do cliente (dados inválidos, não autorizado, não encontrado)
-* 5xx para erro inesperado no servidor
+- 2xx para sucesso
+- 4xx para erro do cliente (dados inválidos, não autorizado, não encontrado)
+- 5xx para erro inesperado no servidor
 
 ### 5) Expor detalhes internos na resposta
 
@@ -1118,9 +1118,9 @@ Nesta seção, a ideia é criar um radar para esses problemas. Você vai consegu
 
 **Como evitar:**
 
-* logue detalhes internamente
-* responda externamente com erro padronizado e seguro
-* nunca envie informações que ajudem alguém a mapear a sua infraestrutura
+- logue detalhes internamente
+- responda externamente com erro padronizado e seguro
+- nunca envie informações que ajudem alguém a mapear a sua infraestrutura
 
 ### 6) Rotas e nomes sem padrão
 
@@ -1130,9 +1130,9 @@ Nesta seção, a ideia é criar um radar para esses problemas. Você vai consegu
 
 **Como evitar:**
 
-* defina convenções simples e siga sempre
-* use nomes consistentes, intuitivos e previsíveis
-* trate naming como parte do contrato
+- defina convenções simples e siga sempre
+- use nomes consistentes, intuitivos e previsíveis
+- trate naming como parte do contrato
 
 ### 7) Falta de limites básicos e de comportamento defensivo
 
@@ -1142,9 +1142,9 @@ Nesta seção, a ideia é criar um radar para esses problemas. Você vai consegu
 
 **Como evitar:**
 
-* imponha limites de tamanho e validações
-* tenha estratégia para requisições duplicadas
-* considere rate limiting e proteção de recursos desde cedo
+- imponha limites de tamanho e validações
+- tenha estratégia para requisições duplicadas
+- considere rate limiting e proteção de recursos desde cedo
 
 ## Exemplo: criação de usuário com erros previsíveis
 
@@ -1154,17 +1154,17 @@ Vamos ver primeiro a versão que viola a separação de responsabilidades e, em 
 
 Regras básicas do cenário:
 
-* email precisa ser único
-* senha precisa ter um mínimo
-* resposta de erro deve ser consistente
+- email precisa ser único
+- senha precisa ter um mínimo
+- resposta de erro deve ser consistente
 
 ### Versão ruim: tudo misturado e sem padrão
 
 O que acontece aqui:
 
-* regra, persistência e resposta HTTP estão no mesmo lugar
-* status code não ajuda
-* erros não têm formato fixo
+- regra, persistência e resposta HTTP estão no mesmo lugar
+- status code não ajuda
+- erros não têm formato fixo
 
 ```python
 def criar_usuario(request_json):
@@ -1188,10 +1188,10 @@ def criar_usuario(request_json):
 
 Ajustes principais:
 
-* transporte só traduz requisição e resposta
-* regras ficam no service
-* persistência fica no repository
-* erro tem sempre o mesmo formato
+- transporte só traduz requisição e resposta
+- regras ficam no service
+- persistência fica no repository
+- erro tem sempre o mesmo formato
 
 #### 1) Formato de erro padronizado
 
@@ -1273,20 +1273,20 @@ class UsuarioRepo:
 
 O ganho prático:
 
-* o cliente consegue tratar erros sem adivinhação
-* a regra está testável sem HTTP
-* a rota não vira um bloco gigante
-* você reduz acoplamento e inconsistência
+- o cliente consegue tratar erros sem adivinhação
+- a regra está testável sem HTTP
+- a rota não vira um bloco gigante
+- você reduz acoplamento e inconsistência
 
 ## Checklist rápido
 
-* [ ] Minhas rotas HTTP são pequenas e previsíveis.
-* [ ] Eu valido entradas no servidor.
-* [ ] Eu uso status code coerente com o tipo de falha.
-* [ ] Eu tenho um formato de erro único em toda a API.
-* [ ] Eu não exponho detalhes internos em respostas.
-* [ ] Eu tenho convenções claras de nomes e rotas.
-* [ ] Eu penso em limites básicos e comportamento defensivo.
+- [ ] Minhas rotas HTTP são pequenas e previsíveis.
+- [ ] Eu valido entradas no servidor.
+- [ ] Eu uso status code coerente com o tipo de falha.
+- [ ] Eu tenho um formato de erro único em toda a API.
+- [ ] Eu não exponho detalhes internos em respostas.
+- [ ] Eu tenho convenções claras de nomes e rotas.
+- [ ] Eu penso em limites básicos e comportamento defensivo.
 
 ## Fontes (para leitura)
 

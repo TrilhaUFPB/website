@@ -18,16 +18,16 @@ No desenvolvimento moderno (Cloud Native), o desenvolvedor backend não pode mai
 Vamos seguir o caminho de uma requisição, da internet até o servidor.
 
 ### A Porta de Entrada (Gateway)
-*   **Seção 9.1:** O **API Gateway**. Por que não devemos expor nossos microserviços diretamente? Como centralizar autenticação e rate limiting?
+- **Seção 9.1:** O **API Gateway**. Por que não devemos expor nossos microserviços diretamente? Como centralizar autenticação e rate limiting?
 
 ### Encontrando o Destino (Discovery)
-*   **Seção 9.2:** Em um cluster com 100 serviços que mudam de IP toda hora, como o Serviço A encontra o Serviço B? Bem-vindo ao **Service Discovery**.
+- **Seção 9.2:** Em um cluster com 100 serviços que mudam de IP toda hora, como o Serviço A encontra o Serviço B? Bem-vindo ao **Service Discovery**.
 
 ### Gerenciando o Tráfego (Mesh)
-*   **Seção 9.3:** Quando a comunicação fica complexa, precisamos de um "policial de trânsito". O **Service Mesh** move a lógica de retry, timeout e segurança para fora do seu código Python.
+- **Seção 9.3:** Quando a comunicação fica complexa, precisamos de um "policial de trânsito". O **Service Mesh** move a lógica de retry, timeout e segurança para fora do seu código Python.
 
 ### Entregando Valor (Deploy)
-*   **Seção 9.4:** Como atualizar o sistema sem tirar do ar? Vamos ver estratégias de **Blue/Green**, **Canary** e **Rolling Updates**.
+- **Seção 9.4:** Como atualizar o sistema sem tirar do ar? Vamos ver estratégias de **Blue/Green**, **Canary** e **Rolling Updates**.
 
 
 
@@ -49,8 +49,8 @@ Em uma arquitetura de microserviços (ou até monólitos distribuídos), você n
 ## Gateway vs Load Balancer
 
 Muitas pessoas confundem os dois.
-*   **Load Balancer (L4):** Distribui tráfego baseado em IP e Porta. É burro. Ele apenas repassa o pacote TCP. (Ex: AWS ELB).
-*   **API Gateway (L7):** Entende HTTP. Ele lê o path, os headers, o body. Ele pode tomar decisões inteligentes: "Se o header diz `Mobile`, manda para a API v2".
+- **Load Balancer (L4):** Distribui tráfego baseado em IP e Porta. É burro. Ele apenas repassa o pacote TCP. (Ex: AWS ELB).
+- **API Gateway (L7):** Entende HTTP. Ele lê o path, os headers, o body. Ele pode tomar decisões inteligentes: "Se o header diz `Mobile`, manda para a API v2".
 
 ## O que ele faz? (Patterns)
 
@@ -59,8 +59,8 @@ O frontend pede "Dados da Tela Inicial". O Gateway chama o Serviço de Usuário,
 
 ### Offloading (Alívio)
 Tirar responsabilidades "chatas" dos microserviços.
-*   **SSL Termination:** O Gateway cuida dos certificados HTTPS. Internamente, tudo roda em HTTP (mais leve).
-*   **Autenticação:** O Gateway verifica o JWT. Se for válido, passa a requisição para frente com um header `X-User-ID`. O microserviço confia cegamente.
+- **SSL Termination:** O Gateway cuida dos certificados HTTPS. Internamente, tudo roda em HTTP (mais leve).
+- **Autenticação:** O Gateway verifica o JWT. Se for válido, passa a requisição para frente com um header `X-User-ID`. O microserviço confia cegamente.
 
 ### Rate Limiting (Controle de Fluxo)
 Protege contra ataques DDoS ou uso abusivo.
@@ -99,9 +99,9 @@ Se um cliente exceder 100 req/s, o Traefik barra a requisição ANTES dela chega
 
 ## Ferramentas Famosas
 
-*   **Kong:** Open-source, robusto, baseado em Nginx. Extensível com plugins Lua.
-*   **Traefik:** Nativo para containers. Configuração dinâmica.
-*   **AWS API Gateway:** Gerenciado, serverless. Cobra por requisição.
+- **Kong:** Open-source, robusto, baseado em Nginx. Extensível com plugins Lua.
+- **Traefik:** Nativo para containers. Configuração dinâmica.
+- **AWS API Gateway:** Gerenciado, serverless. Cobra por requisição.
 
 ---
 # 9.2 Comunicação entre serviços
@@ -124,8 +124,8 @@ Quando o Serviço A precisa falar com o Serviço B, como eles se encontram e con
 
 ### Server-Side vs Client-Side Discovery
 
-* **Server-Side (AWS ELB, K8s Service):** O Cliente chama um endereço fixo (ex: `http://service-b`). O Load Balancer recebe e encaminha. O Cliente não sabe quem são as instâncias.
-* **Client-Side (Netflix Eureka, Consul):** O Cliente consulta o registro, recebe a lista de IPs `[10.1, 10.2, 10.3]` e ele mesmo escolhe um e chama. Mais complexo, mas mais flexível.
+- **Server-Side (AWS ELB, K8s Service):** O Cliente chama um endereço fixo (ex: `http://service-b`). O Load Balancer recebe e encaminha. O Cliente não sabe quem são as instâncias.
+- **Client-Side (Netflix Eureka, Consul):** O Cliente consulta o registro, recebe a lista de IPs `[10.1, 10.2, 10.3]` e ele mesmo escolhe um e chama. Mais complexo, mas mais flexível.
 
 
 
@@ -263,8 +263,8 @@ Trocar o código é fácil. O difícil é o banco.
 Se a Versão 2 do código renomeia uma coluna no banco, a Versão 1 (que ainda está rodando durante o deploy) vai quebrar.
 
 **Regra de Ouro:** Banco de dados deve ser sempre **Retrocompatível (Backward Compatible)**.
-1.  Nunca renomeie colunas. Crie uma nova, copie os dados, e depois de meses apague a velha.
-2.  Nunca adicione colunas `NOT NULL` sem valor default.
+1. Nunca renomeie colunas. Crie uma nova, copie os dados, e depois de meses apague a velha.
+2. Nunca adicione colunas `NOT NULL` sem valor default.
 
 
 
@@ -300,8 +300,8 @@ def get_recommendations(user_id: int):
 ```
 
 **Vantagens:**
-*   Se a V2 der erro, você desliga a flag no painel administrativo em 1 segundo. Não precisa fazer rollback do deploy (que demora minutos).
-*   Você pode fazer A/B Testing real.
+- Se a V2 der erro, você desliga a flag no painel administrativo em 1 segundo. Não precisa fazer rollback do deploy (que demora minutos).
+- Você pode fazer A/B Testing real.
 
 
 
@@ -309,15 +309,15 @@ def get_recommendations(user_id: int):
 
 ### Rolling Update (O Padrão K8s)
 Você tem 10 réplicas. Mata uma velha, sobe uma nova.
-*   **Pró:** Sem downtime, barato.
-*   **Contra:** Versões misturadas rodando juntas.
+- **Pró:** Sem downtime, barato.
+- **Contra:** Versões misturadas rodando juntas.
 
 ### Blue/Green Deployment
 Você tem o ambiente **Blue** (Atual) e sobe um **Green** (Novo) idêntico. O roteador troca 100% do tráfego de uma vez.
-*   **Pró:** Rollback instantâneo.
-*   **Contra:** Custa o dobro (infra duplicada).
+- **Pró:** Rollback instantâneo.
+- **Contra:** Custa o dobro (infra duplicada).
 
 ### Canary Release
 Manda 1% do tráfego para a versão nova. Se não tiver erros (monitoramento automático), aumenta para 10%, 50%, 100%.
-*   **Pró:** Risco mínimo para o usuário final.
-*   **Contra:** Complexo de configurar roteamento.
+- **Pró:** Risco mínimo para o usuário final.
+- **Contra:** Complexo de configurar roteamento.

@@ -56,17 +56,17 @@ A partir do Python 3.13, existe uma build opcional chamada free-threaded, na qua
 - Eu entendo por que threads ainda fazem sentido quando o tempo é dominado por espera de I/O.
 - Eu sei que o GIL não elimina problemas de dados compartilhados em concorrência.
 
-## Fontes 
+## Fontes
 
-https://docs.python.org/3/howto/free-threading-python.html  
+[https://docs.python.org/3/howto/free-threading-python.html](https://docs.python.org/3/howto/free-threading-python.html)
 
-https://peps.python.org/pep-0703/  
+[https://peps.python.org/pep-0703/](https://peps.python.org/pep-0703/)
 
-https://docs.python.org/3/library/threading.html  
+[https://docs.python.org/3/library/threading.html](https://docs.python.org/3/library/threading.html)
 
-https://docs.python.org/3/library/multiprocessing.html  
+[https://docs.python.org/3/library/multiprocessing.html](https://docs.python.org/3/library/multiprocessing.html)
 
-https://pages.cs.wisc.edu/~remzi/OSTEP/  
+[https://pages.cs.wisc.edu/~remzi/OSTEP/](https://pages.cs.wisc.edu/~remzi/OSTEP/)
 
 
 
@@ -161,13 +161,13 @@ No mundo real, a forma mais comum de usar threads em backend é para paralelizar
 
 O cuidado essencial é evitar compartilhar estado mutável entre threads sem proteção. Em APIs, isso costuma aparecer quando alguém coloca caches simples em variáveis globais, acumula métricas na mão, ou reutiliza objetos não thread-safe sem controle.
 
-## Fontes 
+## Fontes
 
-https://docs.python.org/3/library/threading.html  
+[https://docs.python.org/3/library/threading.html](https://docs.python.org/3/library/threading.html)
 
-https://docs.python.org/3/library/_thread.html  
+[https://docs.python.org/3/library/_thread.html](https://docs.python.org/3/library/_thread.html)
 
-https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf  
+[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
 
 
 ---
@@ -231,20 +231,20 @@ A leitura que você deve fazer aqui é: o trabalho foi dividido em vários proce
 
 ## Checklist rápido
 
-* Eu entendo que multiprocessing usa processos, não threads.
-* Eu sei que processos têm memória separada e não compartilham variáveis automaticamente.
-* Eu sei que multiprocessing é uma boa escolha para CPU-bound.
-* Eu entendo que comunicação entre processos tem custo e pode anular ganhos se as tarefas forem pequenas.
+- Eu entendo que multiprocessing usa processos, não threads.
+- Eu sei que processos têm memória separada e não compartilham variáveis automaticamente.
+- Eu sei que multiprocessing é uma boa escolha para CPU-bound.
+- Eu entendo que comunicação entre processos tem custo e pode anular ganhos se as tarefas forem pequenas.
 
-## Fontes 
+## Fontes
 
-https://docs.python.org/3/library/multiprocessing.html
+[https://docs.python.org/3/library/multiprocessing.html](https://docs.python.org/3/library/multiprocessing.html)
 
-https://docs.python.org/3/library/concurrent.futures.html
+[https://docs.python.org/3/library/concurrent.futures.html](https://docs.python.org/3/library/concurrent.futures.html)
 
-https://pages.cs.wisc.edu/~remzi/OSTEP/
+[https://pages.cs.wisc.edu/~remzi/OSTEP/](https://pages.cs.wisc.edu/~remzi/OSTEP/)
 
-https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf
+[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
 
 
 
@@ -319,21 +319,21 @@ Outro erro comum é achar que `async` significa mais rápido sempre. Ele signifi
 
 ## Checklist rápido
 
-* Eu sei que asyncio é focado em I/O-bound.
-* Eu sei que o event loop coordena várias tarefas em progresso.
-* Eu sei que `async def` define uma coroutine e `await` marca um ponto de espera cooperativa.
-* Eu entendo que CPU pesado dentro do event loop pode travar outras tarefas.
-* Eu sei que misturar código bloqueante com asyncio pode anular os benefícios.
+- Eu sei que asyncio é focado em I/O-bound.
+- Eu sei que o event loop coordena várias tarefas em progresso.
+- Eu sei que `async def` define uma coroutine e `await` marca um ponto de espera cooperativa.
+- Eu entendo que CPU pesado dentro do event loop pode travar outras tarefas.
+- Eu sei que misturar código bloqueante com asyncio pode anular os benefícios.
 
-## Fontes 
+## Fontes
 
-https://docs.python.org/3/library/asyncio.html
+[https://docs.python.org/3/library/asyncio.html](https://docs.python.org/3/library/asyncio.html)
 
-https://docs.python.org/3/library/asyncio-task.html
+[https://docs.python.org/3/library/asyncio-task.html](https://docs.python.org/3/library/asyncio-task.html)
 
-https://docs.python.org/3/library/asyncio-eventloop.html
+[https://docs.python.org/3/library/asyncio-eventloop.html](https://docs.python.org/3/library/asyncio-eventloop.html)
 
-https://fastapi.tiangolo.com/async/
+[https://fastapi.tiangolo.com/async/](https://fastapi.tiangolo.com/async/)
 
 
 
@@ -521,21 +521,21 @@ Um erro comum é alterar uma variável global em um worker e esperar que o proce
 
 ## Checklist rápido
 
-* Eu evito compartilhar estado mutável entre threads sem proteção.
-* Eu sei identificar e evitar padrões de deadlock.
-* Eu não uso threads esperando acelerar CPU pesado sem considerar processos.
-* Eu não uso chamadas bloqueantes dentro de coroutines em asyncio.
-* Eu evito concorrência sem limites que apenas cria fila e aumenta latência.
-* Eu lembro que processos têm memória separada e exigem comunicação explícita.
+- Eu evito compartilhar estado mutável entre threads sem proteção.
+- Eu sei identificar e evitar padrões de deadlock.
+- Eu não uso threads esperando acelerar CPU pesado sem considerar processos.
+- Eu não uso chamadas bloqueantes dentro de coroutines em asyncio.
+- Eu evito concorrência sem limites que apenas cria fila e aumenta latência.
+- Eu lembro que processos têm memória separada e exigem comunicação explícita.
 
-## Fontes 
+## Fontes
 
-https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf
+[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
 
-https://docs.python.org/3/library/threading.html
+[https://docs.python.org/3/library/threading.html](https://docs.python.org/3/library/threading.html)
 
-https://docs.python.org/3/library/multiprocessing.html
+[https://docs.python.org/3/library/multiprocessing.html](https://docs.python.org/3/library/multiprocessing.html)
 
-https://docs.python.org/3/library/asyncio.html
+[https://docs.python.org/3/library/asyncio.html](https://docs.python.org/3/library/asyncio.html)
 
-https://docs.python.org/3/library/asyncio-task.html
+[https://docs.python.org/3/library/asyncio-task.html](https://docs.python.org/3/library/asyncio-task.html)

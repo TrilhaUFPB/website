@@ -21,12 +21,12 @@ Antes do REST, sistemas distribuídos usavam protocolos complexos como SOAP e CO
 
 O REST abraça a Web. Ele diz: "A Web funciona bem. Vamos construir sistemas *como* a Web funciona."
 
-*   **RPC (SOAP/XML-RPC):** Foca em **ações** (verbos).
-    *   `POST /createUser`
-    *   `POST /deleteProduct`
-*   **REST:** Foca em **recursos** (substantivos).
-    *   `POST /users`
-    *   `DELETE /products/123`
+- **RPC (SOAP/XML-RPC):** Foca em **ações** (verbos).
+    - `POST /createUser`
+    - `POST /deleteProduct`
+- **REST:** Foca em **recursos** (substantivos).
+    - `POST /users`
+    - `DELETE /products/123`
 
 
 
@@ -35,17 +35,17 @@ O REST abraça a Web. Ele diz: "A Web funciona bem. Vamos construir sistemas *co
 Imagine a Web. Você acessa uma URL, recebe uma representação (HTML) do estado atual daquela página. Você clica num link, e transfere seu estado para outra página.
 
 Uma API REST faz a mesma coisa, mas para máquinas:
-1.  O cliente acessa um Recurso (`/pedidos/10`).
-2.  O servidor entrega uma **Representação** desse recurso (JSON).
-3.  Essa representação contém o **Estado** atual do pedido ("pendente").
-4.  O cliente envia uma mensagem para mudar esse estado (Transferência).
+1. O cliente acessa um Recurso (`/pedidos/10`).
+2. O servidor entrega uma **Representação** desse recurso (JSON).
+3. Essa representação contém o **Estado** atual do pedido ("pendente").
+4. O cliente envia uma mensagem para mudar esse estado (Transferência).
 
 
 
 ## REST vs RESTful
 
-*   **REST:** É a teoria, o conjunto de restrições arquiteturais definidas por Fielding.
-*   **RESTful:** É o adjetivo dado a sistemas que implementam (ou tentam implementar) essas restrições na prática.
+- **REST:** É a teoria, o conjunto de restrições arquiteturais definidas por Fielding.
+- **RESTful:** É o adjetivo dado a sistemas que implementam (ou tentam implementar) essas restrições na prática.
 
 A maioria das APIs que se dizem REST hoje em dia não implementam 100% da teoria (especialmente HATEOAS), mas seguem os princípios básicos de recursos e verbos HTTP. São chamadas de "APIs Pragmáticas REST".
 
@@ -53,17 +53,17 @@ A maioria das APIs que se dizem REST hoje em dia não implementam 100% da teoria
 
 ## Checklist rápido
 
-*   [ ] Entendi que REST não é uma tecnologia, mas um estilo de arquitetura.
-*   [ ] Entendi a diferença fundamental entre RPC (foco em ação) e REST (foco em recurso).
-*   [ ] Sei que o objetivo do REST é criar sistemas escaláveis como a Web.
+- [ ] Entendi que REST não é uma tecnologia, mas um estilo de arquitetura.
+- [ ] Entendi a diferença fundamental entre RPC (foco em ação) e REST (foco em recurso).
+- [ ] Sei que o objetivo do REST é criar sistemas escaláveis como a Web.
 
 
 
 ## Fontes
 
-*   **[Fielding]:** [Architectural Styles and the Design of Network-based Software Architectures (Tese Original)](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
-*   **[Red Hat]:** [O que é uma API REST?](https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api)
-*   **[Oracle]:** [Definição de REST](https://www.oracle.com/br/cloud/what-is-rest/)
+- **[Fielding]:** [Architectural Styles and the Design of Network-based Software Architectures (Tese Original)](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+- **[Red Hat]:** [O que é uma API REST?](https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api)
+- **[Oracle]:** [Definição de REST](https://www.oracle.com/br/cloud/what-is-rest/)
 
 ---
 # 6.2 Restrições do REST
@@ -76,25 +76,25 @@ Para um sistema ser considerado verdadeiramente REST, ele deve aderir a 6 restri
 
 Separação clara de responsabilidades.
 
-* O cliente não se preocupa com armazenamento de dados.
-* O servidor não se preocupa com interface de usuário ou estado da sessão do cliente.
-* **Benefício:** Evolução independente. Você pode trocar o front-end (React para Mobile) sem tocar no banco de dados.
+- O cliente não se preocupa com armazenamento de dados.
+- O servidor não se preocupa com interface de usuário ou estado da sessão do cliente.
+- **Benefício:** Evolução independente. Você pode trocar o front-end (React para Mobile) sem tocar no banco de dados.
 
 ## Stateless (Sem Estado)
 
 Esta é a restrição mais importante e mais difícil para iniciantes.
 **Regra:** Cada requisição do cliente para o servidor deve conter **todas** as informações necessárias para entender e processar o pedido.
 
-* O servidor não pode guardar "sessão do usuário" na memória entre requisições.
-* Se o usuário está logado, o token de autenticação deve ir em **toda** requisição.
-* **Benefício:** Escalabilidade horizontal. Qualquer servidor do cluster pode atender qualquer requisição, pois nenhum deles guarda estado "preso" na memória.
+- O servidor não pode guardar "sessão do usuário" na memória entre requisições.
+- Se o usuário está logado, o token de autenticação deve ir em **toda** requisição.
+- **Benefício:** Escalabilidade horizontal. Qualquer servidor do cluster pode atender qualquer requisição, pois nenhum deles guarda estado "preso" na memória.
 
 ## Cacheável (Cacheable)
 
 As respostas devem definir explicitamente se podem ou não ser cacheadas (pelo cliente ou por intermediários).
 
-* Se o dado não muda muito (ex: lista de produtos), o cliente não deve perguntar ao servidor toda vez.
-* **Benefício:** Reduz tráfego de rede e latência.
+- Se o dado não muda muito (ex: lista de produtos), o cliente não deve perguntar ao servidor toda vez.
+- **Benefício:** Reduz tráfego de rede e latência.
 
 ## Interface Uniforme (Uniform Interface)
 
@@ -102,16 +102,16 @@ O contrato entre cliente e servidor deve ser genérico e padronizado.
 Isso simplifica e desacopla a arquitetura.
 Inclui:
 
-* Identificação de recursos (URIs).
-* Manipulação via representações (JSON/XML).
-* Mensagens autodescritivas (Headers, Content-Type).
-* HATEOAS (Hypermedia as the Engine of Application State) -> Para mais detalhes, veja a seção 5.10.
+- Identificação de recursos (URIs).
+- Manipulação via representações (JSON/XML).
+- Mensagens autodescritivas (Headers, Content-Type).
+- HATEOAS (Hypermedia as the Engine of Application State) -> Para mais detalhes, veja a seção 5.10.
 
 ## Sistema em Camadas (Layered System)
 
 O cliente não precisa saber se está conectado diretamente ao servidor final ou a um intermediário (Load Balancer, CDN, Gateway).
 
-* **Benefício:** Segurança e balanceamento de carga transparentes.
+- **Benefício:** Segurança e balanceamento de carga transparentes.
 
 ## Código sob Demanda (Code on Demand) - *Opcional*
 
@@ -129,17 +129,17 @@ Muitos desenvolvedores violam o REST criando APIs que dependem de "sessão no se
 
 ## Checklist rápido
 
-* [ ] Minha API guarda estado de navegação do usuário na memória do servidor? (Se sim, não é REST).
-* [ ] As respostas da minha API informam cache?
-* [ ] Posso colocar um Load Balancer na frente sem quebrar a lógica?
+- [ ] Minha API guarda estado de navegação do usuário na memória do servidor? (Se sim, não é REST).
+- [ ] As respostas da minha API informam cache?
+- [ ] Posso colocar um Load Balancer na frente sem quebrar a lógica?
 
 
 
 ## Fontes
 
-* **[RestfulAPI]:** [What is REST](https://restfulapi.net/)
-* **[MDN]:** [HTTP Caching](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching)
-* **[AWS]:** [Statelessness in REST](https://aws.amazon.com/what-is/restful-api/)
+- **[RestfulAPI]:** [What is REST](https://restfulapi.net/)
+- **[MDN]:** [HTTP Caching](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching)
+- **[AWS]:** [Statelessness in REST](https://aws.amazon.com/what-is/restful-api/)
 
 ---
 # 6.3 Recursos, coleções e identificadores
@@ -153,23 +153,23 @@ Esqueça as tabelas do banco de dados por um momento. Pense no que sua API expõ
 
 Um recurso é qualquer coisa que possa ser nomeada e manipulada. É um conceito abstrato, não necessariamente uma linha no banco.
 
-* Um usuário (`joao`)
-* Uma coleção de usuários (`todos os usuários`)
-* Um resultado de busca
-* Um processo (ex: `inscrição`)
+- Um usuário (`joao`)
+- Uma coleção de usuários (`todos os usuários`)
+- Um resultado de busca
+- Um processo (ex: `inscrição`)
 
 ## Substantivos, não Verbos
 
 URLs RESTful devem ser baseadas em **substantivos** (coisas), nunca em verbos (ações). A ação é definida pelo método HTTP (GET, POST, DELETE), não pela URL.
 
-* **Errado\* (RPC):**
-  * `GET /getUsers`
-  * `POST /createUser`
-  * `POST /deleteUser?id=1`
-* **Certo\* (REST):**
-  * `GET /users`
-  * `POST /users`
-  * `DELETE /users/1`
+- **Errado\* (RPC):**
+  - `GET /getUsers`
+  - `POST /createUser`
+  - `POST /deleteUser?id=1`
+- **Certo\* (REST):**
+  - `GET /users`
+  - `POST /users`
+  - `DELETE /users/1`
 
 \* Note que certo e errado aqui é referente a estar de acordo com os padrões REST, mas não significa que a abordagem RPC não deva ser utilizada. Se quiser se aprofundar um pouco mais, você pode dar uma olhada nesse [artigo](https://medium.com/lfdev-blog/e-agora-api-rest-ou-rpc-c24664d4755b)
 
@@ -179,12 +179,12 @@ As URIs geralmente seguem um padrão hierárquico:
 
 1. **Coleção:** Uma lista de recursos.
 
-   * URI: `/produtos`
-   * Semântica: "O catálogo inteiro de produtos".
+   - URI: `/produtos`
+   - Semântica: "O catálogo inteiro de produtos".
 2. **Documento (Recurso Singular):** Um item específico dentro da coleção.
 
-   * URI: `/produtos/123`
-   * Semântica: "O produto com ID 123".
+   - URI: `/produtos/123`
+   - Semântica: "O produto com ID 123".
 
 
 
@@ -193,8 +193,8 @@ As URIs geralmente seguem um padrão hierárquico:
 Às vezes, um recurso só existe uma vez dentro de um contexto.
 Exemplo: "O perfil do usuário logado".
 
-* `/me` ou `/user/profile`
-  * Não precisa de ID, pois o token de autenticação já diz quem é o usuário.
+- `/me` ou `/user/profile`
+  - Não precisa de ID, pois o token de autenticação já diz quem é o usuário.
 
 
 
@@ -202,9 +202,9 @@ Exemplo: "O perfil do usuário logado".
 
 O identificador (ID) é crucial para alcançar um recurso específico.
 
-* **IDs Numéricos:** `/users/105` (Fácil, legível, mas expõe quantos usuários você tem).
-* **UUIDs:** `/users/a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11` (Seguro, único globalmente, mas feio na URL).
-* **Slugs:** `/artigos/como-aprender-backend` (Ótimo para SEO e legibilidade).
+- **IDs Numéricos:** `/users/105` (Fácil, legível, mas expõe quantos usuários você tem).
+- **UUIDs:** `/users/a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11` (Seguro, único globalmente, mas feio na URL).
+- **Slugs:** `/artigos/como-aprender-backend` (Ótimo para SEO e legibilidade).
 
 
 
@@ -242,16 +242,16 @@ def get_product(product_id: int):
 
 ## Checklist rápido
 
-* [ ] Minhas URLs usam apenas substantivos? (Nada de `/calcularFrete`).
-* [ ] Consigo distinguir claramente Coleções (`/users`) de Recursos (`/users/1`)?
-* [ ] Meus IDs são estáveis (não mudam com o tempo)?
+- [ ] Minhas URLs usam apenas substantivos? (Nada de `/calcularFrete`).
+- [ ] Consigo distinguir claramente Coleções (`/users`) de Recursos (`/users/1`)?
+- [ ] Meus IDs são estáveis (não mudam com o tempo)?
 
 
 
 ## Fontes
 
-* **[Microsoft]:** [REST API Design Guidelines - Resources](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#organize-the-api-design-around-resources)
-* **[Google AIP]:** [Resource Names](https://google.aip.dev/122)
+- **[Microsoft]:** [REST API Design Guidelines - Resources](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#organize-the-api-design-around-resources)
+- **[Google AIP]:** [Resource Names](https://google.aip.dev/122)
 
 ---
 # 6.3.1 Anatomia Prática de uma Requisição REST
@@ -268,17 +268,17 @@ Uma das dúvidas mais comuns é: "Coloco o dado na URL ou depois do `?`?"
 
 ### Path Params (Parâmetros de Caminho)
 
-* **O que são:** Parte da estrutura da URL.
-* **Quando usar:** Quando o valor é **obrigatório** para identificar o recurso. Se você tirar o parâmetro, a rota não faz sentido ou vira outra coisa.
-* **Exemplo:** `/users/123`.
-  * `123` é o ID. Sem ele, vira `/users` (que é a coleção inteira, não um item).
+- **O que são:** Parte da estrutura da URL.
+- **Quando usar:** Quando o valor é **obrigatório** para identificar o recurso. Se você tirar o parâmetro, a rota não faz sentido ou vira outra coisa.
+- **Exemplo:** `/users/123`.
+  - `123` é o ID. Sem ele, vira `/users` (que é a coleção inteira, não um item).
 
 ### Query Params (Parâmetros de Consulta)
 
-* **O que são:** Pares chave=valor após o `?`.
-* **Quando usar:** Quando o parâmetro é **opcional**, usado para filtrar, ordenar ou paginar. A rota base continua funcionando sem eles.
-* **Exemplo:** `/users?active=true&sort=name`.
-  * Se você remover `?active=true`, ainda acessa `/users`, apenas sem filtro.
+- **O que são:** Pares chave=valor após o `?`.
+- **Quando usar:** Quando o parâmetro é **opcional**, usado para filtrar, ordenar ou paginar. A rota base continua funcionando sem eles.
+- **Exemplo:** `/users?active=true&sort=name`.
+  - Se você remover `?active=true`, ainda acessa `/users`, apenas sem filtro.
 
 
 
@@ -313,15 +313,15 @@ No REST, os headers definem o "contrato" da comunicação. Não basta mandar dad
 
 ### `Content-Type: application/json`
 
-* **Quem manda:** Quem está enviando dados (Client no POST, Server na Resposta).
-* **O que diz:** "O pacote que estou te mandando agora é um JSON".
-* **Por que importa:** Sem isso, o servidor pode tentar ler os bytes como texto puro, XML ou form-data e falhar.
+- **Quem manda:** Quem está enviando dados (Client no POST, Server na Resposta).
+- **O que diz:** "O pacote que estou te mandando agora é um JSON".
+- **Por que importa:** Sem isso, o servidor pode tentar ler os bytes como texto puro, XML ou form-data e falhar.
 
 ### `Accept: application/json`
 
-* **Quem manda:** O Cliente (Navegador/App).
-* **O que diz:** "Por favor, me responda em JSON. Se você me mandar XML, eu não sei ler".
-* **Negociação de Conteúdo:** Se o servidor só fala XML e recebe esse header, ele deve retornar erro `406 Not Acceptable`.
+- **Quem manda:** O Cliente (Navegador/App).
+- **O que diz:** "Por favor, me responda em JSON. Se você me mandar XML, eu não sei ler".
+- **Negociação de Conteúdo:** Se o servidor só fala XML e recebe esse header, ele deve retornar erro `406 Not Acceptable`.
 
 
 
@@ -331,18 +331,18 @@ O FastAPI já cuida de boa parte do trabalho pesado com headers automaticamente.
 
 ### Resposta: `Content-Type` automático
 
-* **O que acontece:** Quando você retorna um `dict` ou um modelo Pydantic, o FastAPI automaticamente serializa para JSON e adiciona o header `Content-Type: application/json`.
-* **Você não precisa fazer nada:** Basta retornar o dado.
+- **O que acontece:** Quando você retorna um `dict` ou um modelo Pydantic, o FastAPI automaticamente serializa para JSON e adiciona o header `Content-Type: application/json`.
+- **Você não precisa fazer nada:** Basta retornar o dado.
 
 ### Requisição: Parsing automático do Body
 
-* **O que acontece:** Quando você declara um parâmetro com um [modelo Pydantic]() ou usa `Body()`, o FastAPI lê o header `Content-Type` da requisição e faz o parse do JSON automaticamente.
-* **Se o JSON for inválido:** Retorna `422 Unprocessable Entity` com detalhes do erro.
+- **O que acontece:** Quando você declara um parâmetro com um [modelo Pydantic]() ou usa `Body()`, o FastAPI lê o header `Content-Type` da requisição e faz o parse do JSON automaticamente.
+- **Se o JSON for inválido:** Retorna `422 Unprocessable Entity` com detalhes do erro.
 
 ### Header `Accept` não é validado por padrão
 
-* **Atenção:** O FastAPI **não** valida o header `Accept` automaticamente. Ele sempre responde JSON por padrão, independente do que o cliente pedir.
-* **Consequência:** Não retorna `406 Not Acceptable`. Se você precisa desse comportamento, terá que implementar manualmente.
+- **Atenção:** O FastAPI **não** valida o header `Accept` automaticamente. Ele sempre responde JSON por padrão, independente do que o cliente pedir.
+- **Consequência:** Não retorna `406 Not Acceptable`. Se você precisa desse comportamento, terá que implementar manualmente.
 
 ### Exemplo Prático
 
@@ -366,20 +366,20 @@ O HTTP tem dezenas de códigos, mas no dia a dia REST você usará estes 90% do 
 
 ### Sucesso
 
-* **200 OK:** "Deu certo" (Genérico). Usado em GET, PUT, PATCH.
-* **201 Created:** "Criei com sucesso". **Obrigatório** para POST de criação.
-* **204 No Content:** "Deu certo, mas não tenho nada para te devolver". Comum em DELETE.
+- **200 OK:** "Deu certo" (Genérico). Usado em GET, PUT, PATCH.
+- **201 Created:** "Criei com sucesso". **Obrigatório** para POST de criação.
+- **204 No Content:** "Deu certo, mas não tenho nada para te devolver". Comum em DELETE.
 
 ### Erro do Cliente (4xx)
 
-* **400 Bad Request:** "Sua requisição está mal formatada" (Ex: faltou o campo email no JSON).
-* **401 Unauthorized:** "Quem é você?" (Faltou token de login).
-* **403 Forbidden:** "Sei quem é, mas você não tem permissão".
-* **404 Not Found:** "O recurso não existe".
+- **400 Bad Request:** "Sua requisição está mal formatada" (Ex: faltou o campo email no JSON).
+- **401 Unauthorized:** "Quem é você?" (Faltou token de login).
+- **403 Forbidden:** "Sei quem é, mas você não tem permissão".
+- **404 Not Found:** "O recurso não existe".
 
 ### Erro do Servidor (5xx)
 
-* **500 Internal Server Error:** "Bug no servidor". Nunca deve ser retornado intencionalmente.
+- **500 Internal Server Error:** "Bug no servidor". Nunca deve ser retornado intencionalmente.
 
 
 
@@ -399,8 +399,8 @@ Desenhar URLs é uma arte. Uma URL bem desenhada é intuitiva: um desenvolvedor 
 
 ## Use Plural para Coleções
 Existe um debate eterno (Singular vs Plural), mas o **Plural** venceu na indústria.
-*   **Bom:** `/users`, `/products`, `/orders`
-*   **Ruim:** `/user`, `/product`, `/order`
+- **Bom:** `/users`, `/products`, `/orders`
+- **Ruim:** `/user`, `/product`, `/order`
 
 Por que? Porque `/users` (no plural) deixa claro que é uma coleção que contém vários itens.
 E quando você acessa `/users/1`, semanticamente você está dizendo "Da coleção de usuários, pegue o item 1".
@@ -408,12 +408,12 @@ E quando você acessa `/users/1`, semanticamente você está dizendo "Da coleç�
 ## Hierarquia e Aninhamento
 Use barras `/` para indicar hierarquia (pai/filho).
 
-*   **Cenário:** Pedidos pertencem a um Usuário.
-*   **Rota:** `GET /users/123/orders`
-    *   Significado: "Pegue todos os pedidos do usuário 123".
+- **Cenário:** Pedidos pertencem a um Usuário.
+- **Rota:** `GET /users/123/orders`
+    - Significado: "Pegue todos os pedidos do usuário 123".
 
-*   **Rota:** `GET /users/123/orders/5`
-    *   Significado: "Pegue o pedido 5 do usuário 123".
+- **Rota:** `GET /users/123/orders/5`
+    - Significado: "Pegue o pedido 5 do usuário 123".
 
 **Cuidado com aninhamento profundo:**
 Evite: `/users/1/orders/5/items/10/details`
@@ -422,15 +422,15 @@ Se o recurso é único globalmente, prefira achatar a URL:
 
 ## kebab-case nas URLs
 Para nomes compostos em URLs, o padrão da web é usar hífen (kebab-case).
-*   **Bom:** `/customer-orders`, `/api-keys`
-*   **Ruim:** `/customerOrders` (camelCase), `/customer_orders` (snake_case).
-*   **Por que?** Google e mecanismos de busca tratam o hífen como separador de palavras, mas o underscore não. Além disso, é mais fácil de ler.
+- **Bom:** `/customer-orders`, `/api-keys`
+- **Ruim:** `/customerOrders` (camelCase), `/customer_orders` (snake_case).
+- **Por que?** Google e mecanismos de busca tratam o hífen como separador de palavras, mas o underscore não. Além disso, é mais fácil de ler.
 
 ## Query Params para filtros
 Não crie rotas novas para filtrar coisas. Use a query string (depois do `?`).
 
-*   **Errado:** `/users/active` (Parece um ID "active" ou sub-recurso).
-*   **Certo:** `/users?status=active`
+- **Errado:** `/users/active` (Parece um ID "active" ou sub-recurso).
+- **Certo:** `/users?status=active`
 
 
 
@@ -487,17 +487,17 @@ app.include_router(router)
 
 ## Checklist rápido
 
-*   [ ] Estou usando plural nas coleções (`/users`)?
-*   [ ] Uso hífens para separar palavras na URL?
-*   [ ] Evitei verbos na URL?
-*   [ ] Meus filtros estão na query string (`?tipo=X`) e não no path?
+- [ ] Estou usando plural nas coleções (`/users`)?
+- [ ] Uso hífens para separar palavras na URL?
+- [ ] Evitei verbos na URL?
+- [ ] Meus filtros estão na query string (`?tipo=X`) e não no path?
 
 
 
 ## Fontes
 
-*   **[RestfulAPI]:** [Resource Naming](https://restfulapi.net/resource-naming/)
-*   **[Zalando]:** [RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/#naming)
+- **[RestfulAPI]:** [Resource Naming](https://restfulapi.net/resource-naming/)
+- **[Zalando]:** [RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/#naming)
 
 ---
 # 6.5 CRUD mapeado para HTTP
@@ -510,32 +510,32 @@ Mapeamento básico de operações de Banco de Dados (CRUD) para verbos HTTP:
 
 ## Create (Criar) -> POST
 Use **POST** em uma coleção para criar um novo item nela.
-*   **Rota:** `POST /users`
-*   **Comportamento:** O servidor gera o ID do novo recurso.
-*   **Retorno:** Status `201 Created` + Header `Location: /users/50` + JSON do criado.
+- **Rota:** `POST /users`
+- **Comportamento:** O servidor gera o ID do novo recurso.
+- **Retorno:** Status `201 Created` + Header `Location: /users/50` + JSON do criado.
 
 ## Read (Ler) -> GET
 Use **GET** para ler dados.
-*   **Coleção:** `GET /users` (Lista todos ou filtra).
-*   **Recurso:** `GET /users/50` (Pega detalhes de um).
-*   **Importante:** GET deve ser **Safe** (Seguro). Ele nunca deve alterar dados no servidor. Você pode rodar um GET 1000 vezes e o banco de dados continua igual.
+- **Coleção:** `GET /users` (Lista todos ou filtra).
+- **Recurso:** `GET /users/50` (Pega detalhes de um).
+- **Importante:** GET deve ser **Safe** (Seguro). Ele nunca deve alterar dados no servidor. Você pode rodar um GET 1000 vezes e o banco de dados continua igual.
 
 ## Update (Atualizar) -> PUT ou PATCH
 Aqui existe uma distinção crucial.
 
 ### PUT (Substituição Completa)
 Use **PUT** quando você está enviando o recurso **inteiro** para substituir o que está lá.
-*   **Rota:** `PUT /users/50`
-*   **Body:** `{ "nome": "Ana", "email": "ana@mail.com", "idade": 30 }`
-*   **Regra:** Se você esquecer de mandar o campo "idade", o servidor deve entender que a idade agora é `null` ou vazia. O PUT substitui tudo.
+- **Rota:** `PUT /users/50`
+- **Body:** `{ "nome": "Ana", "email": "ana@mail.com", "idade": 30 }`
+- **Regra:** Se você esquecer de mandar o campo "idade", o servidor deve entender que a idade agora é `null` ou vazia. O PUT substitui tudo.
 
 ### PATCH (Atualização Parcial)
 Veja a próxima seção (5.7) para detalhes. É usado para mudar apenas um campo.
 
 ## Delete (Apagar) -> DELETE
 Use **DELETE** para remover um recurso.
-*   **Rota:** `DELETE /users/50`
-*   **Retorno:** `204 No Content` (Sucesso, sem corpo) ou `200 OK` (se quiser retornar json).
+- **Rota:** `DELETE /users/50`
+- **Retorno:** `204 No Content` (Sucesso, sem corpo) ou `200 OK` (se quiser retornar json).
 
 
 
@@ -596,17 +596,17 @@ def delete_item(item_id: int):
 
 ## Checklist rápido
 
-*   [ ] O GET apenas lê dados (não muda nada)?
-*   [ ] O POST é usado para criar novos recursos na coleção?
-*   [ ] O DELETE realmente apaga (ou desativa) o recurso?
-*   [ ] Estou retornando 201 Created quando crio algo?
+- [ ] O GET apenas lê dados (não muda nada)?
+- [ ] O POST é usado para criar novos recursos na coleção?
+- [ ] O DELETE realmente apaga (ou desativa) o recurso?
+- [ ] Estou retornando 201 Created quando crio algo?
 
 
 
 ## Fontes
 
-*   **[MDN]:** [HTTP Request Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
-*   **[RFC 7231]:** [Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content](https://datatracker.ietf.org/doc/html/rfc7231#section-4)
+- **[MDN]:** [HTTP Request Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+- **[RFC 7231]:** [Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content](https://datatracker.ietf.org/doc/html/rfc7231#section-4)
 
 ---
 # 6.6 Filtros, paginação e ordenação
@@ -617,34 +617,34 @@ APIs reais lidam com muitos dados. Retornar `GET /users` e devolver 1 milhão de
 
 ## Filtros (Filtering)
 Use parâmetros de Query String (`?`) para filtrar.
-*   `GET /cars?color=red`
-*   `GET /cars?color=red&brand=ferrari`
+- `GET /cars?color=red`
+- `GET /cars?color=red&brand=ferrari`
 
 **Para operadores avançados:**
 Existem vários padrões, escolha um e seja consistente:
-*   `price[gte]=100` (Greater Than or Equal - estilo inspirado em MongoDB/Rails)
-*   `price_min=100` (Simples e legível)
+- `price[gte]=100` (Greater Than or Equal - estilo inspirado em MongoDB/Rails)
+- `price_min=100` (Simples e legível)
 
 ## Ordenação (Sorting)
 Permita que o cliente decida a ordem.
-*   Padrão comum: parâmetro `sort` ou `order_by`.
-*   Crescente: `?sort=price`
-*   Decrescente: `?sort=-price` (sinal de menos) ou `?sort=price,desc`
+- Padrão comum: parâmetro `sort` ou `order_by`.
+- Crescente: `?sort=price`
+- Decrescente: `?sort=-price` (sinal de menos) ou `?sort=price,desc`
 
 ## Paginação (Pagination)
 Nunca retorne listas ilimitadas. Pagine por padrão.
 
 ### Estilo 1: Offset/Limit (Página e Tamanho)
 O mais comum e fácil de implementar.
-*   `GET /users?page=1&limit=20` (Página 1, 20 itens)
-*   `GET /users?page=2&limit=20` (Pula 20, pega mais 20)
-*   **Problema:** Em bases gigantes, o banco sofre para fazer `OFFSET 1000000` (ele lê 1 milhão de linhas para jogar fora e pegar as próximas 10).
+- `GET /users?page=1&limit=20` (Página 1, 20 itens)
+- `GET /users?page=2&limit=20` (Pula 20, pega mais 20)
+- **Problema:** Em bases gigantes, o banco sofre para fazer `OFFSET 1000000` (ele lê 1 milhão de linhas para jogar fora e pegar as próximas 10).
 
 ### Estilo 2: Cursor (Token)
 Mais performático e robusto para feeds infinitos (como Instagram/Twitter).
-*   `GET /posts?limit=10` -> Retorna itens e um `next_cursor: "xyz"`
-*   `GET /posts?cursor=xyz`
-*   O cursor geralmente aponta para o ID ou Timestamp do último item visto. O banco vai direto ao ponto (`WHERE id > ultimo_id`).
+- `GET /posts?limit=10` -> Retorna itens e um `next_cursor: "xyz"`
+- `GET /posts?cursor=xyz`
+- O cursor geralmente aponta para o ID ou Timestamp do último item visto. O banco vai direto ao ponto (`WHERE id > ultimo_id`).
 
 
 
@@ -668,16 +668,16 @@ Seus metadados de paginação devem ir no corpo da resposta (envelope) ou nos He
 
 ## Checklist rápido
 
-*   [ ] Todas as minhas coleções têm paginação padrão (default limit)?
-*   [ ] Meus nomes de filtro batem com os nomes dos campos (`?status` filtra o campo `status`)?
-*   [ ] Decidi como indicar ordenação decrescente (ex: `-campo`)?
+- [ ] Todas as minhas coleções têm paginação padrão (default limit)?
+- [ ] Meus nomes de filtro batem com os nomes dos campos (`?status` filtra o campo `status`)?
+- [ ] Decidi como indicar ordenação decrescente (ex: `-campo`)?
 
 
 
 ## Fontes
 
-*   **[Stripe]:** [API Pagination Design](https://stripe.com/docs/api/pagination)
-*   **[Microsoft]:** [Paging and Filtering Best Practices](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#filtering-and-pagination)
+- **[Stripe]:** [API Pagination Design](https://stripe.com/docs/api/pagination)
+- **[Microsoft]:** [Paging and Filtering Best Practices](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#filtering-and-pagination)
 
 ---
 # 6.7 Atualizações parciais e PATCH
@@ -690,12 +690,12 @@ Muitas vezes o cliente quer mudar apenas o `status` de um pedido, sem precisar r
 
 A confusão é comum, mas a regra é técnica e semântica:
 
-*   **PUT:** É uma **substituição completa**.
-    *   Cliente: "Tome este objeto. O estado novo do recurso 50 deve ser EXATAMENTE este aqui."
-    *   Se o cliente mandar um JSON só com `{ "nome": "Novo" }` num PUT, o servidor deveria (teoricamente) apagar o resto dos campos e deixar só o nome. (Na prática, muitos frameworks fazem merge, violando a semântica estrita do PUT).
+- **PUT:** É uma **substituição completa**.
+    - Cliente: "Tome este objeto. O estado novo do recurso 50 deve ser EXATAMENTE este aqui."
+    - Se o cliente mandar um JSON só com `{ "nome": "Novo" }` num PUT, o servidor deveria (teoricamente) apagar o resto dos campos e deixar só o nome. (Na prática, muitos frameworks fazem merge, violando a semântica estrita do PUT).
 
-*   **PATCH:** É uma **modificação parcial**.
-    *   Cliente: "No recurso 50, mude apenas o campo 'nome' para 'Novo' e mantenha o resto como está."
+- **PATCH:** É uma **modificação parcial**.
+    - Cliente: "No recurso 50, mude apenas o campo 'nome' para 'Novo' e mantenha o resto como está."
 
 
 
@@ -705,13 +705,13 @@ Existem duas formas principais:
 
 ### JSON Merge Patch (RFC 7396) - O mais simples
 É o que a maioria usa. Você envia um JSON parcial.
-*   **Request:** `PATCH /users/1`
-*   **Body:** `{ "email": "novo@email.com" }`
+- **Request:** `PATCH /users/1`
+- **Body:** `{ "email": "novo@email.com" }`
 
 **O Problema do Null:**
 Como deletar um campo opcional?
-*   `{ "apelido": null }` -> Significa "defina apelido como nulo".
-*   `{ }` (sem a chave) -> Significa "não toque no apelido".
+- `{ "apelido": null }` -> Significa "defina apelido como nulo".
+- `{ }` (sem a chave) -> Significa "não toque no apelido".
 
 Para isso funcionar, seu backend precisa distinguir `null` de `undefined` (chave ausente).
 
@@ -736,17 +736,17 @@ Aceite um JSON parcial, valide apenas os campos que vieram, e atualize no banco 
 
 ## Checklist rápido
 
-*   [ ] Minha API suporta mudar apenas um campo sem enviar o objeto todo?
-*   [ ] Consigo limpar um campo enviando `null` no PATCH?
-*   [ ] Entendi que PUT substitui o objeto todo?
+- [ ] Minha API suporta mudar apenas um campo sem enviar o objeto todo?
+- [ ] Consigo limpar um campo enviando `null` no PATCH?
+- [ ] Entendi que PUT substitui o objeto todo?
 
 
 
 ## Fontes
 
-*   **[RFC 7396]:** [JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7396)
-*   **[RFC 5789]:** [PATCH Method for HTTP](https://datatracker.ietf.org/doc/html/rfc5789)
-*   **[William Durand]:** [Please don't use PUT (Use PATCH)](https://williamdurand.fr/2014/02/14/please-do-not-use-put-always-use-patch/)
+- **[RFC 7396]:** [JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7396)
+- **[RFC 5789]:** [PATCH Method for HTTP](https://datatracker.ietf.org/doc/html/rfc5789)
+- **[William Durand]:** [Please don't use PUT (Use PATCH)](https://williamdurand.fr/2014/02/14/please-do-not-use-put-always-use-patch/)
 
 ---
 # 6.8 Idempotência e retries
@@ -762,14 +762,14 @@ Se a sua API não for **Idempotente**, o cliente vai cobrar o cartão duas vezes
 
 Uma operação é idempotente se fazê-la **uma vez** ou **várias vezes** produz o mesmo efeito no estado do servidor.
 
-*   **Idempotente (Seguro):**
-    *   `GET /pedidos/10` -> Retorna o pedido. Se chamar 10 vezes, nada muda.
-    *   `PUT /pedidos/10` -> Atualiza o pedido para o estado X. Se chamar 10 vezes com o mesmo body, o pedido continua no estado X. (Na primeira atualiza, nas outras sobrescreve com o mesmo valor).
-    *   `DELETE /pedidos/10` -> Apaga. Se chamar de novo, dá 404, mas o estado do servidor é o mesmo (o pedido não existe mais).
+- **Idempotente (Seguro):**
+    - `GET /pedidos/10` -> Retorna o pedido. Se chamar 10 vezes, nada muda.
+    - `PUT /pedidos/10` -> Atualiza o pedido para o estado X. Se chamar 10 vezes com o mesmo body, o pedido continua no estado X. (Na primeira atualiza, nas outras sobrescreve com o mesmo valor).
+    - `DELETE /pedidos/10` -> Apaga. Se chamar de novo, dá 404, mas o estado do servidor é o mesmo (o pedido não existe mais).
 
-*   **NÃO Idempotente (Perigoso):**
-    *   `POST /pedidos` -> Cria um pedido novo. Se o cliente tentar de novo (retry), cria **outro** pedido duplicado.
-    *   `PATCH /pedidos/10` -> Depende. Se for "adicionar +1 item", não é idempotente. Se for "definir status=pago", é idempotente.
+- **NÃO Idempotente (Perigoso):**
+    - `POST /pedidos` -> Cria um pedido novo. Se o cliente tentar de novo (retry), cria **outro** pedido duplicado.
+    - `PATCH /pedidos/10` -> Depende. Se for "adicionar +1 item", não é idempotente. Se for "definir status=pago", é idempotente.
 
 
 
@@ -777,11 +777,11 @@ Uma operação é idempotente se fazê-la **uma vez** ou **várias vezes** produ
 
 Para operações críticas (pagamentos, criação de pedidos), usamos **Chaves de Idempotência**.
 
-1.  O cliente gera um ID único (UUID) para aquela ação: `Idempotency-Key: abc-123`.
-2.  O cliente envia o `POST /pagar` com esse Header.
-3.  O servidor recebe.
-    *   Se nunca viu a chave `abc-123`: Processa o pagamento e salva a chave + resposta no banco.
-    *   Se já viu a chave `abc-123`: **Não processa de novo**. Apenas retorna a resposta salva anteriormente.
+1. O cliente gera um ID único (UUID) para aquela ação: `Idempotency-Key: abc-123`.
+2. O cliente envia o `POST /pagar` com esse Header.
+3. O servidor recebe.
+    - Se nunca viu a chave `abc-123`: Processa o pagamento e salva a chave + resposta no banco.
+    - Se já viu a chave `abc-123`: **Não processa de novo**. Apenas retorna a resposta salva anteriormente.
 
 Dessa forma, o cliente pode tentar de novo (retry) quantas vezes quiser sem medo de duplicar a cobrança.
 
@@ -789,17 +789,17 @@ Dessa forma, o cliente pode tentar de novo (retry) quantas vezes quiser sem medo
 
 ## Checklist rápido
 
-*   [ ] Meus endpoints PUT e DELETE são idempotentes?
-*   [ ] Tenho mecanismos para evitar duplicidade em POSTs críticos (pagamentos)?
-*   [ ] O cliente sabe que pode tentar de novo em caso de erro de rede (Network Error)?
+- [ ] Meus endpoints PUT e DELETE são idempotentes?
+- [ ] Tenho mecanismos para evitar duplicidade em POSTs críticos (pagamentos)?
+- [ ] O cliente sabe que pode tentar de novo em caso de erro de rede (Network Error)?
 
 
 
 ## Fontes
 
-*   **[Stripe]:** [Designing robust APIs with Idempotency](https://stripe.com/blog/idempotency)
-*   **[MDN]:** [Idempotent Methods](https://developer.mozilla.org/en-US/docs/Glossary/Idempotent)
-*   **[RFC 7231]:** [Idempotent Methods definition](https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2)
+- **[Stripe]:** [Designing robust APIs with Idempotency](https://stripe.com/blog/idempotency)
+- **[MDN]:** [Idempotent Methods](https://developer.mozilla.org/en-US/docs/Glossary/Idempotent)
+- **[RFC 7231]:** [Idempotent Methods definition](https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2)
 
 ---
 # 6.9 Versionamento de APIs
@@ -821,22 +821,22 @@ Existem 3 formas principais. Nenhuma é perfeita, escolha uma e siga.
 
 ### Versionamento na URI (Path Versioning) - **Mais Comum**
 Coloca a versão explicitamente na URL.
-*   `GET /v1/users`
-*   `GET /v2/users`
+- `GET /v1/users`
+- `GET /v2/users`
 
 **Prós:** Extremamente claro. Fácil de testar no navegador. Fácil de configurar no roteador do framework.
 **Contras:** Tecnicamente, você está dizendo que `/v1/users` e `/v2/users` são recursos diferentes, o que fere o purismo REST. (Mas todo mundo faz: Google, Twitter, Stripe).
 
 ### Versionamento no Header (Header Versioning)
 O cliente pede a versão num cabeçalho customizado.
-*   Header: `X-API-Version: 2`
+- Header: `X-API-Version: 2`
 
 **Prós:** URL fica limpa (`/users`). Mantém a semântica de que o recurso é o mesmo.
 **Contras:** Mais difícil de testar (precisa de ferramentas como Postman). Caches intermediários podem se confundir se não configurados corretamente (`Vary` header).
 
 ### Content Negotiation (Accept Header)
 A forma "Pura REST". O cliente pede a versão no tipo de conteúdo.
-*   Header: `Accept: application/vnd.minhaempresa.v2+json`
+- Header: `Accept: application/vnd.minhaempresa.v2+json`
 
 **Prós:** A mais correta academicamente.
 **Contras:** A mais chata de implementar e usar.
@@ -853,17 +853,17 @@ Para a maioria dos projetos, a simplicidade do `/v1/` na URL vence qualquer argu
 
 ## Checklist rápido
 
-*   [ ] Minha API tem uma estratégia de versionamento definida?
-*   [ ] Se eu mudar a versão, mantenho a antiga rodando por um tempo (Deprecation Policy)?
-*   [ ] Escolhi um método (URI, Header) e mantive consistente?
+- [ ] Minha API tem uma estratégia de versionamento definida?
+- [ ] Se eu mudar a versão, mantenho a antiga rodando por um tempo (Deprecation Policy)?
+- [ ] Escolhi um método (URI, Header) e mantive consistente?
 
 
 
 ## Fontes
 
-*   **[Microsoft]:** [API Versioning](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#versioning-a-restful-web-api)
-*   **[Stripe]:** [Versioning Strategy (Eles usam Data)](https://stripe.com/docs/api/versioning)
-*   **[RestfulAPI]:** [Versioning REST APIs](https://restfulapi.net/versioning/)
+- **[Microsoft]:** [API Versioning](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#versioning-a-restful-web-api)
+- **[Stripe]:** [Versioning Strategy (Eles usam Data)](https://stripe.com/docs/api/versioning)
+- **[RestfulAPI]:** [Versioning REST APIs](https://restfulapi.net/versioning/)
 ---
 # 6.10 HATEOAS
 
@@ -920,17 +920,17 @@ Para seu backend interno do app mobile: Provavelmente não (Overengineering). O 
 
 ## Checklist rápido
 
-*   [ ] Entendi que HATEOAS significa a API "guiar" o cliente através de links?
-*   [ ] Sei que isso permite que o servidor mude URLs sem quebrar o cliente?
-*   [ ] Avaliei se a complexidade extra vale a pena para o meu projeto?
+- [ ] Entendi que HATEOAS significa a API "guiar" o cliente através de links?
+- [ ] Sei que isso permite que o servidor mude URLs sem quebrar o cliente?
+- [ ] Avaliei se a complexidade extra vale a pena para o meu projeto?
 
 
 
 ## Fontes
 
-*   **[Fielding]:** [REST APIs must be hypertext-driven](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
-*   **[Spring]:** [Understanding HATEOAS](https://spring.io/understanding/HATEOAS)
-*   **[PayPal]:** [HATEOAS in PayPal API](https://developer.paypal.com/api/rest/responses/#hateoas-links)
+- **[Fielding]:** [REST APIs must be hypertext-driven](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
+- **[Spring]:** [Understanding HATEOAS](https://spring.io/understanding/HATEOAS)
+- **[PayPal]:** [HATEOAS in PayPal API](https://developer.paypal.com/api/rest/responses/#hateoas-links)
 
 ---
 # 6.11 Checklist de design REST
@@ -940,28 +940,28 @@ Antes de entregar sua API, passe por este checklist. Ele resume as boas prática
 
 
 ## URIs e Recursos
-*   [ ] **Substantivos:** Usei substantivos em vez de verbos? (`/users` ✅, `/getUsers` ❌)
-*   [ ] **Plural:** Usei plural para coleções? (`/users` ✅)
-*   [ ] **Kebab-case:** Usei hífens para separar palavras? (`/customer-orders` ✅)
-*   [ ] **Hierarquia:** O aninhamento faz sentido? (`/users/1/orders` ✅)
+- [ ] **Substantivos:** Usei substantivos em vez de verbos? (`/users` ✅, `/getUsers` ❌)
+- [ ] **Plural:** Usei plural para coleções? (`/users` ✅)
+- [ ] **Kebab-case:** Usei hífens para separar palavras? (`/customer-orders` ✅)
+- [ ] **Hierarquia:** O aninhamento faz sentido? (`/users/1/orders` ✅)
 
 ## Métodos HTTP (Verbos)
-*   [ ] **GET:** Usado para leitura (safe)? Retorna 200 OK?
-*   [ ] **POST:** Usado para criar (não idempotente)? Retorna 201 Created?
-*   [ ] **PUT:** Usado para substituição completa (idempotente)?
-*   [ ] **PATCH:** Usado para atualização parcial?
-*   [ ] **DELETE:** Usado para remover? Retorna 204 No Content?
+- [ ] **GET:** Usado para leitura (safe)? Retorna 200 OK?
+- [ ] **POST:** Usado para criar (não idempotente)? Retorna 201 Created?
+- [ ] **PUT:** Usado para substituição completa (idempotente)?
+- [ ] **PATCH:** Usado para atualização parcial?
+- [ ] **DELETE:** Usado para remover? Retorna 204 No Content?
 
 ## Respostas e Códigos
-*   [ ] **Status Codes:** Uso os códigos corretos (200, 201, 204, 400, 401, 403, 404, 500)?
-*   [ ] **JSON:** O Content-Type é `application/json`?
-*   [ ] **Envelope:** Evitei envelope desnecessário (`{ "data": ... }`) exceto para paginação/meta?
+- [ ] **Status Codes:** Uso os códigos corretos (200, 201, 204, 400, 401, 403, 404, 500)?
+- [ ] **JSON:** O Content-Type é `application/json`?
+- [ ] **Envelope:** Evitei envelope desnecessário (`{ "data": ... }`) exceto para paginação/meta?
 
 ## Segurança e Performance
-*   [ ] **Filtros:** Estão na query string? (`?status=active`)
-*   [ ] **Paginação:** Existe limite padrão (limit) para não quebrar o banco?
-*   [ ] **Stateless:** A API não depende de sessão na memória?
-*   [ ] **HTTPS:** A API roda exclusivamente sobre HTTPS?
+- [ ] **Filtros:** Estão na query string? (`?status=active`)
+- [ ] **Paginação:** Existe limite padrão (limit) para não quebrar o banco?
+- [ ] **Stateless:** A API não depende de sessão na memória?
+- [ ] **HTTPS:** A API roda exclusivamente sobre HTTPS?
 
 
 
@@ -971,9 +971,9 @@ Este checklist não garante que sua API é perfeita, mas garante que ela está n
 
 ## Fontes Gerais de Design
 
-*   **[Microsoft]:** [REST API Design Guidelines](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
-*   **[Google]:** [Google Cloud API Design Guide](https://cloud.google.com/apis/design)
-*   **[Zalando]:** [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
+- **[Microsoft]:** [REST API Design Guidelines](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
+- **[Google]:** [Google Cloud API Design Guide](https://cloud.google.com/apis/design)
+- **[Zalando]:** [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
 
 ---
 # 6.12 Implementação Prática com FastAPI
@@ -1109,18 +1109,18 @@ def update_user(user_id: int, user_update: UserCreate):
 
 O FastAPI gera automaticamente uma documentação interativa (Swagger UI) que é perfeita para testar APIs REST.
 
-1.  Rode o servidor:
+1. Rode o servidor:
     ```bash
     uvicorn main:app --reload
     ```
-2.  Abra no navegador:
+2. Abra no navegador:
     `http://127.0.0.1:8000/docs`
 
 ### O que observar:
 
-1.  **POST:** Tente criar um usuário. Veja que a resposta vem com `id` e o status é `201`.
-2.  **GET (Lista):** Veja que retorna um Array `[]`.
-3.  **GET (Item):** Tente buscar um ID inexistente e veja o erro `404`.
-4.  **DELETE:** Apague um usuário e veja que a resposta não tem corpo (Body), apenas o status `204`.
+1. **POST:** Tente criar um usuário. Veja que a resposta vem com `id` e o status é `201`.
+2. **GET (Lista):** Veja que retorna um Array `[]`.
+3. **GET (Item):** Tente buscar um ID inexistente e veja o erro `404`.
+4. **DELETE:** Apague um usuário e veja que a resposta não tem corpo (Body), apenas o status `204`.
 
 Esta implementação cobre 90% dos casos de uso de uma API REST moderna.

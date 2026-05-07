@@ -110,30 +110,30 @@ Content-Type: application/json
 
 Repare no que esse par de mensagens já comunica, mesmo sem você conhecer o backend por dentro:
 
-* o cliente pediu um recurso específico e deu preferência por JSON
-* o servidor indicou sucesso pelo status 200
-* o servidor informou o tipo de conteúdo devolvido
-* o corpo carrega os dados em um formato que o cliente consegue interpretar
+- o cliente pediu um recurso específico e deu preferência por JSON
+- o servidor indicou sucesso pelo status 200
+- o servidor informou o tipo de conteúdo devolvido
+- o corpo carrega os dados em um formato que o cliente consegue interpretar
 
 ## Checklist rápido
 
-* Eu sei definir HTTP como um protocolo de comunicação baseado em requisição e resposta.
-* Eu entendo que HTTP define mensagens estruturadas, não apenas rotas.
-* Eu entendo que HTTP é stateless
-* Eu sei que status e headers são parte essencial da comunicação.
-* Eu sei diferenciar HTTP (mensagens) de HTTPS (mensagens dentro de um canal seguro).
+- Eu sei definir HTTP como um protocolo de comunicação baseado em requisição e resposta.
+- Eu entendo que HTTP define mensagens estruturadas, não apenas rotas.
+- Eu entendo que HTTP é stateless
+- Eu sei que status e headers são parte essencial da comunicação.
+- Eu sei diferenciar HTTP (mensagens) de HTTPS (mensagens dentro de um canal seguro).
 
-## Fontes 
+## Fontes
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP) 
+[https://developer.mozilla.org/pt-BR/docs/Web/HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview) 
+[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview)
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages) 
+[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
 
-[https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP) 
+[https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP)
 
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html) 
+[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
 
 
 ---
@@ -250,9 +250,9 @@ Aqui o cliente quer listar cursos. Repare que não existe corpo.
 
 O que essa mensagem comunica de forma organizada:
 
-* intenção: ler dados (GET)
-* alvo: coleção de cursos com paginação
-* contexto: o cliente quer resposta em JSON
+- intenção: ler dados (GET)
+- alvo: coleção de cursos com paginação
+- contexto: o cliente quer resposta em JSON
 
 ### Exemplo 2: requisição com corpo (criação)
 
@@ -262,28 +262,28 @@ Aqui o cliente quer criar uma inscrição. Repare que agora existe corpo e, por 
 
 O que muda em relação ao primeiro exemplo:
 
-* método indica uma intenção diferente
-* existe um corpo com dados
-* `Content-Type` define como o servidor deve interpretar o corpo
+- método indica uma intenção diferente
+- existe um corpo com dados
+- `Content-Type` define como o servidor deve interpretar o corpo
 
 
 
 ## Problemas clássicos de iniciante
 
-* Enviar JSON no corpo e esquecer `Content-Type: application/json`.
-* Colocar dados grandes ou sensíveis na URL em vez de usar corpo ou cabeçalhos adequados.
-* Confundir o papel do `Accept` (o que eu quero receber) com `Content-Type` (o que eu estou enviando).
-* Montar a rota correta, mas usar host diferente do esperado, especialmente quando existem múltiplos domínios no mesmo servidor.
+- Enviar JSON no corpo e esquecer `Content-Type: application/json`.
+- Colocar dados grandes ou sensíveis na URL em vez de usar corpo ou cabeçalhos adequados.
+- Confundir o papel do `Accept` (o que eu quero receber) com `Content-Type` (o que eu estou enviando).
+- Montar a rota correta, mas usar host diferente do esperado, especialmente quando existem múltiplos domínios no mesmo servidor.
 
 
 
 ## Checklist rápido
 
-* Eu sei identificar método, alvo e versão na linha inicial.
-* Eu sei explicar a diferença entre cabeçalhos e corpo.
-* Eu sei quando `Content-Type` é obrigatório.
-* Eu sei que `Accept` indica o formato preferido da resposta.
-* Eu consigo ler uma requisição e dizer onde estão intenção, alvo, contexto e dados.
+- Eu sei identificar método, alvo e versão na linha inicial.
+- Eu sei explicar a diferença entre cabeçalhos e corpo.
+- Eu sei quando `Content-Type` é obrigatório.
+- Eu sei que `Accept` indica o formato preferido da resposta.
+- Eu consigo ler uma requisição e dizer onde estão intenção, alvo, contexto e dados.
 
 
 
@@ -348,10 +348,10 @@ O que importa mais na prática é o status code, porque ele é o sinal que ferra
 
 Você não precisa decorar códigos agora, mas vale guardar a ideia:
 
-* 2xx costuma indicar sucesso
-* 3xx costuma indicar redirecionamento
-* 4xx costuma indicar erro causado pela requisição do cliente
-* 5xx costuma indicar erro inesperado no servidor
+- 2xx costuma indicar sucesso
+- 3xx costuma indicar redirecionamento
+- 4xx costuma indicar erro causado pela requisição do cliente
+- 5xx costuma indicar erro inesperado no servidor
 
 Os códigos e suas regras serão aprofundados nos próximos tópicos.
 
@@ -363,10 +363,10 @@ Cabeçalhos na resposta descrevem o que está sendo devolvido e como o cliente d
 
 Alguns dos mais comuns em APIs:
 
-* `Content-Type`: diz o formato do corpo, como `application/json`
-* `Content-Length`: tamanho do corpo, em alguns cenários
-* `Cache-Control`: regras de cache, quando aplicável
-* `Set-Cookie`: define cookies, quando a aplicação usa esse mecanismo
+- `Content-Type`: diz o formato do corpo, como `application/json`
+- `Content-Length`: tamanho do corpo, em alguns cenários
+- `Cache-Control`: regras de cache, quando aplicável
+- `Set-Cookie`: define cookies, quando a aplicação usa esse mecanismo
 
 Um ponto importante: cabeçalhos são a forma correta de transmitir metadados de comunicação. Dados de negócio, como lista de cursos ou detalhes de um usuário, ficam no corpo.
 
@@ -396,9 +396,9 @@ Nem toda resposta tem corpo. Existem respostas em que isso não faz sentido, com
 
 O que essa resposta comunica:
 
-* o resultado foi sucesso
-* o corpo está em JSON
-* o corpo contém os dados solicitados
+- o resultado foi sucesso
+- o corpo está em JSON
+- o corpo contém os dados solicitados
 
 ### Exemplo 2: erro com corpo JSON
 
@@ -406,8 +406,8 @@ O que essa resposta comunica:
 
 O que essa resposta comunica:
 
-* a tentativa falhou porque o recurso não foi encontrado
-* o erro tem um formato previsível, o que facilita tratamento no cliente
+- a tentativa falhou porque o recurso não foi encontrado
+- o erro tem um formato previsível, o que facilita tratamento no cliente
 
 ### Exemplo 3: sucesso sem corpo
 
@@ -421,24 +421,24 @@ Aqui não existe corpo. O status já comunica que a operação deu certo e que n
 
 ## Problemas clássicos de iniciante
 
-* Responder JSON e esquecer `Content-Type: application/json`, fazendo o cliente interpretar de forma errada.
-* Colocar detalhes internos no corpo de erro, como stack trace ou mensagens do banco.
-* Usar sempre o mesmo status code para tudo, obrigando o cliente a adivinhar o que ocorreu lendo apenas o corpo.
-* Criar formatos de erro diferentes em cada endpoint, tornando o cliente um conjunto de exceções.
+- Responder JSON e esquecer `Content-Type: application/json`, fazendo o cliente interpretar de forma errada.
+- Colocar detalhes internos no corpo de erro, como stack trace ou mensagens do banco.
+- Usar sempre o mesmo status code para tudo, obrigando o cliente a adivinhar o que ocorreu lendo apenas o corpo.
+- Criar formatos de erro diferentes em cada endpoint, tornando o cliente um conjunto de exceções.
 
 
 
 ## Checklist rápido
 
-* Eu sei que uma resposta tem linha inicial, cabeçalhos e corpo opcional.
-* Eu sei que o status code é o sinal principal do resultado.
-* Eu sei que `Content-Type` define como interpretar o corpo.
-* Eu sei que nem toda resposta tem corpo.
-* Eu consigo ler uma resposta e separar resultado, metadados e dados.
+- Eu sei que uma resposta tem linha inicial, cabeçalhos e corpo opcional.
+- Eu sei que o status code é o sinal principal do resultado.
+- Eu sei que `Content-Type` define como interpretar o corpo.
+- Eu sei que nem toda resposta tem corpo.
+- Eu consigo ler uma resposta e separar resultado, metadados e dados.
 
 
 
-## Fontes 
+## Fontes
 
 [https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
 
@@ -571,19 +571,19 @@ A intenção é mudar apenas um campo sem reenviar todo o recurso.
 
 ## Problemas clássicos de iniciante
 
-* Usar POST para leitura porque é mais fácil enviar dados no corpo.
-* Criar endpoints que fazem várias ações diferentes dependendo do corpo, sem uma semântica clara.
-* Alterar estado de negócio em GET, quebrando expectativa do consumidor.
-* Misturar PUT e PATCH sem uma regra, o que gera inconsistência.
-* Ignorar idempotência e sofrer com duplicação quando há retries.
+- Usar POST para leitura porque é mais fácil enviar dados no corpo.
+- Criar endpoints que fazem várias ações diferentes dependendo do corpo, sem uma semântica clara.
+- Alterar estado de negócio em GET, quebrando expectativa do consumidor.
+- Misturar PUT e PATCH sem uma regra, o que gera inconsistência.
+- Ignorar idempotência e sofrer com duplicação quando há retries.
 
 ## Checklist rápido
 
-* Eu sei que o método comunica intenção.
-* Eu consigo explicar o uso típico de GET, POST, PUT, PATCH e DELETE.
-* Eu sei o que significa um método ser seguro.
-* Eu sei o que significa um método ser idempotente.
-* Eu entendo por que usar POST para tudo reduz previsibilidade da API.
+- Eu sei que o método comunica intenção.
+- Eu consigo explicar o uso típico de GET, POST, PUT, PATCH e DELETE.
+- Eu sei o que significa um método ser seguro.
+- Eu sei o que significa um método ser idempotente.
+- Eu entendo por que usar POST para tudo reduz previsibilidade da API.
 
 ## Fontes
 
@@ -805,21 +805,21 @@ Esse exemplo é útil porque mostra que o status pode refletir um problema na ca
 
 ## Problemas clássicos de iniciante
 
-* Responder 200 para tudo e colocar erro apenas no corpo.
-* Usar 500 para erros de validação, confundindo cliente e equipe.
-* Misturar 401 e 403 sem regra clara.
-* Usar 404 para qualquer erro, perdendo sinalização.
-* Criar formatos de erro diferentes em cada endpoint.
+- Responder 200 para tudo e colocar erro apenas no corpo.
+- Usar 500 para erros de validação, confundindo cliente e equipe.
+- Misturar 401 e 403 sem regra clara.
+- Usar 404 para qualquer erro, perdendo sinalização.
+- Criar formatos de erro diferentes em cada endpoint.
 
 ## Checklist rápido
 
-* Eu sei ler as faixas 2xx, 4xx e 5xx e o que elas sugerem.
-* Eu sei diferenciar 401 de 403.
-* Eu sei quando faz sentido 201 e 204.
-* Eu entendo que 502, 503 e 504 aparecem por causa de intermediários e tempo.
-* Eu consigo escolher um conjunto mínimo de status codes e manter consistência.
+- Eu sei ler as faixas 2xx, 4xx e 5xx e o que elas sugerem.
+- Eu sei diferenciar 401 de 403.
+- Eu sei quando faz sentido 201 e 204.
+- Eu entendo que 502, 503 e 504 aparecem por causa de intermediários e tempo.
+- Eu consigo escolher um conjunto mínimo de status codes e manter consistência.
 
-## Fontes 
+## Fontes
 
 [https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status)
 
@@ -932,9 +932,9 @@ Authorization: Bearer <token>
 
 O que esses cabeçalhos deixam explícito:
 
-* qual host o cliente quer acessar
-* qual formato de resposta o cliente prefere
-* que a chamada exige credenciais
+- qual host o cliente quer acessar
+- qual formato de resposta o cliente prefere
+- que a chamada exige credenciais
 
 ### Exemplo 2: cliente enviando JSON no corpo
 
@@ -1004,21 +1004,21 @@ Repare que o cliente consegue confirmar que o conteúdo é o mesmo sem receber o
 
 ## Confusões de iniciantes
 
-* Confundir `Accept` com `Content-Type`. Um diz o que eu quero receber, o outro diz o que eu estou enviando.
-* Esquecer `Content-Type` ao enviar JSON.
-* Colocar credenciais na URL em vez de usar `Authorization`.
-* Responder JSON sem `Content-Type: application/json`.
-* Ignorar que caches e proxies existem e depois estranhar comportamento inconsistente em produção.
+- Confundir `Accept` com `Content-Type`. Um diz o que eu quero receber, o outro diz o que eu estou enviando.
+- Esquecer `Content-Type` ao enviar JSON.
+- Colocar credenciais na URL em vez de usar `Authorization`.
+- Responder JSON sem `Content-Type: application/json`.
+- Ignorar que caches e proxies existem e depois estranhar comportamento inconsistente em produção.
 
 ## Checklist rápido
 
-* Eu sei diferenciar cabeçalhos de dados de negócio.
-* Eu sei quando usar `Accept` e quando usar `Content-Type`.
-* Eu sei por que `Authorization` é o lugar típico de credenciais.
-* Eu sei por que `Location` aparece em criação.
-* Eu entendo o papel de `Cache-Control` e a ideia de `ETag` com `If-None-Match`.
+- Eu sei diferenciar cabeçalhos de dados de negócio.
+- Eu sei quando usar `Accept` e quando usar `Content-Type`.
+- Eu sei por que `Authorization` é o lugar típico de credenciais.
+- Eu sei por que `Location` aparece em criação.
+- Eu entendo o papel de `Cache-Control` e a ideia de `ETag` com `If-None-Match`.
 
-## Fontes 
+## Fontes
 
 [https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers)
 
@@ -1107,9 +1107,9 @@ Quando não existe interseção entre o que o cliente quer e o que o servidor po
 
 No dia a dia de APIs, é comum simplificar:
 
-* a API suporta apenas JSON
-* o cliente sempre pede JSON
-* negociação vira mais um mecanismo de clareza do que de escolha real
+- a API suporta apenas JSON
+- o cliente sempre pede JSON
+- negociação vira mais um mecanismo de clareza do que de escolha real
 
 Mesmo assim, entender o conceito é útil porque você vai encontrar `Accept` em clientes, ferramentas, proxies e documentação.
 
@@ -1195,20 +1195,20 @@ Aqui, o dado principal do erro é o código `error`. A mensagem pode variar por 
 
 ## Problemas clássicos de inicante
 
-* Confundir `Accept` com `Content-Type`. `Accept` é o que eu quero receber. `Content-Type` é o que está sendo enviado.
-* Esquecer de responder com `Content-Type`, deixando o cliente adivinhar o formato.
-* Variar respostas por idioma ou compressão e depois estranhar comportamentos inconsistentes em ferramentas de teste, porque o cliente mudou headers sem perceber.
-* Projetar a API para suportar muitos formatos cedo demais, gerando custo e inconsistência, quando um único formato bem definido já resolveria.
+- Confundir `Accept` com `Content-Type`. `Accept` é o que eu quero receber. `Content-Type` é o que está sendo enviado.
+- Esquecer de responder com `Content-Type`, deixando o cliente adivinhar o formato.
+- Variar respostas por idioma ou compressão e depois estranhar comportamentos inconsistentes em ferramentas de teste, porque o cliente mudou headers sem perceber.
+- Projetar a API para suportar muitos formatos cedo demais, gerando custo e inconsistência, quando um único formato bem definido já resolveria.
 
 ## Checklist rápido
 
-* Eu sei explicar negociação de conteúdo como um acordo de formato entre cliente e servidor.
-* Eu sei o papel de `Accept` e `Content-Type`.
-* Eu sei que idioma e compressão também entram na negociação via headers.
-* Eu consigo olhar uma requisição e prever qual representação faz sentido responder.
-* Eu sei que muitas APIs simplificam e suportam apenas JSON, mas ainda usam os headers para clareza.
+- Eu sei explicar negociação de conteúdo como um acordo de formato entre cliente e servidor.
+- Eu sei o papel de `Accept` e `Content-Type`.
+- Eu sei que idioma e compressão também entram na negociação via headers.
+- Eu consigo olhar uma requisição e prever qual representação faz sentido responder.
+- Eu sei que muitas APIs simplificam e suportam apenas JSON, mas ainda usam os headers para clareza.
 
-## Fontes 
+## Fontes
 
 [https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Content_negotiation](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Content_negotiation)
 
@@ -1390,20 +1390,20 @@ Aqui a regra é clara: não guarde.
 
 ## Problemas clássicos de iniciante
 
-* Permitir cache em resposta que depende de usuário, gerando vazamento.
-* Não configurar nada e depois estranhar respostas antigas por causa de cache em intermediários.
-* Usar cache longo em dados que mudam com frequência e criar inconsistência percebida pelo usuário.
-* Tentar cachear cedo demais sem ter clareza do que é público e do que é privado.
+- Permitir cache em resposta que depende de usuário, gerando vazamento.
+- Não configurar nada e depois estranhar respostas antigas por causa de cache em intermediários.
+- Usar cache longo em dados que mudam com frequência e criar inconsistência percebida pelo usuário.
+- Tentar cachear cedo demais sem ter clareza do que é público e do que é privado.
 
 ## Checklist rápido
 
-* Eu sei explicar cache como reutilização de respostas para reduzir latência e carga.
-* Eu sei que cache pode existir no cliente e em intermediários.
-* Eu sei que `Cache-Control` define as regras principais.
-* Eu sei que `ETag` e `If-None-Match` permitem revalidar e receber 304 quando não mudou.
-* Eu sei que dados sensíveis devem evitar cache, muitas vezes com `no-store`.
+- Eu sei explicar cache como reutilização de respostas para reduzir latência e carga.
+- Eu sei que cache pode existir no cliente e em intermediários.
+- Eu sei que `Cache-Control` define as regras principais.
+- Eu sei que `ETag` e `If-None-Match` permitem revalidar e receber 304 quando não mudou.
+- Eu sei que dados sensíveis devem evitar cache, muitas vezes com `no-store`.
 
-## Fontes 
+## Fontes
 
 [https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching)
 
@@ -1546,21 +1546,21 @@ A abordagem comum é manter dados sensíveis no servidor e usar o cookie apenas 
 
 ## Problemas clássicos de iniciante
 
-* Guardar dados sensíveis no cookie em vez de usar id de sessão.
-* Não usar HTTPS e, ainda assim, depender de cookies de autenticação.
-* Esquecer de configurar `HttpOnly` e permitir acesso por JavaScript em casos em que isso não é necessário.
-* Confundir sessão com cookie e achar que são a mesma coisa.
-* Ter o backend em um domínio e o front-end em outro e estranhar que o cookie não está sendo enviado por padrão.
+- Guardar dados sensíveis no cookie em vez de usar id de sessão.
+- Não usar HTTPS e, ainda assim, depender de cookies de autenticação.
+- Esquecer de configurar `HttpOnly` e permitir acesso por JavaScript em casos em que isso não é necessário.
+- Confundir sessão com cookie e achar que são a mesma coisa.
+- Ter o backend em um domínio e o front-end em outro e estranhar que o cookie não está sendo enviado por padrão.
 
 ## Checklist rápido
 
-* Eu sei definir cookie como dado armazenado no cliente e enviado automaticamente.
-* Eu sei definir sessão como estado armazenado no servidor.
-* Eu entendo por que cookie costuma carregar apenas um id de sessão.
-* Eu sei que `Set-Cookie` cria cookie e `Cookie` envia cookie de volta.
-* Eu sei que cookies de autenticação exigem HTTPS e atributos de segurança.
+- Eu sei definir cookie como dado armazenado no cliente e enviado automaticamente.
+- Eu sei definir sessão como estado armazenado no servidor.
+- Eu entendo por que cookie costuma carregar apenas um id de sessão.
+- Eu sei que `Set-Cookie` cria cookie e `Cookie` envia cookie de volta.
+- Eu sei que cookies de autenticação exigem HTTPS e atributos de segurança.
 
-## Fontes 
+## Fontes
 [https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies)
 
 [https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Set-Cookie](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Set-Cookie)
@@ -1699,19 +1699,19 @@ A partir daí, o navegador autoriza a requisição real.
 
 ## Problemas clássicos de iniciante
 
-* Achar que CORS é um mecanismo de segurança da API. Ele é uma política do navegador. Scripts e backends não têm essa restrição.
-* Liberar `Access-Control-Allow-Origin: *` para resolver rápido e depois descobrir que credenciais não funcionam ou que você abriu demais.
-* Esquecer que `http` e `https` são origens diferentes.
-* Não tratar OPTIONS e achar que a API está recebendo chamadas duplicadas.
-* Configurar CORS no lugar errado quando existe reverse proxy na frente.
+- Achar que CORS é um mecanismo de segurança da API. Ele é uma política do navegador. Scripts e backends não têm essa restrição.
+- Liberar `Access-Control-Allow-Origin: *` para resolver rápido e depois descobrir que credenciais não funcionam ou que você abriu demais.
+- Esquecer que `http` e `https` são origens diferentes.
+- Não tratar OPTIONS e achar que a API está recebendo chamadas duplicadas.
+- Configurar CORS no lugar errado quando existe reverse proxy na frente.
 
 ## Checklist rápido
 
-* Eu sei definir origem como scheme, host e porta.
-* Eu sei explicar o que a política de mesma origem bloqueia no navegador.
-* Eu sei que CORS é o servidor dizendo quais origens podem ler respostas.
-* Eu entendo por que existe preflight com OPTIONS em alguns casos.
-* Eu sei que credenciais entre origens exigem configurações específicas.
+- Eu sei definir origem como scheme, host e porta.
+- Eu sei explicar o que a política de mesma origem bloqueia no navegador.
+- Eu sei que CORS é o servidor dizendo quais origens podem ler respostas.
+- Eu entendo por que existe preflight com OPTIONS em alguns casos.
+- Eu sei que credenciais entre origens exigem configurações específicas.
 
 ## Fontes (para leitura)
 
@@ -1825,26 +1825,26 @@ A diferença aparece mais no transporte e na observabilidade da conexão do que 
 
 ## Quando faz sentido se preocupar com isso
 
-* você tem muitas chamadas pequenas para a mesma API e quer reduzir custo de conexões
-* seu público usa rede móvel e você quer melhorar estabilidade e latência
-* você está configurando infraestrutura, proxy ou CDN e precisa decidir o que habilitar
+- você tem muitas chamadas pequenas para a mesma API e quer reduzir custo de conexões
+- seu público usa rede móvel e você quer melhorar estabilidade e latência
+- você está configurando infraestrutura, proxy ou CDN e precisa decidir o que habilitar
 
 Se você está apenas começando, o mais produtivo é dominar bem a semântica e os elementos do HTTP. As versões entram como otimização e configuração de ambiente, não como mudança de contrato.
 
 ## Problemas clássicos de iniciante
 
-* achar que HTTP/2 muda regras de cache, status code ou métodos. Ele não muda.
-* assumir que habilitar HTTP/2 ou HTTP/3 resolve lentidão que na verdade é do backend.
-* confundir a versão usada pelo cliente com a versão usada internamente após um proxy.
-* ficar preso em detalhes de transporte cedo demais e perder foco no contrato da API.
+- achar que HTTP/2 muda regras de cache, status code ou métodos. Ele não muda.
+- assumir que habilitar HTTP/2 ou HTTP/3 resolve lentidão que na verdade é do backend.
+- confundir a versão usada pelo cliente com a versão usada internamente após um proxy.
+- ficar preso em detalhes de transporte cedo demais e perder foco no contrato da API.
 
 ## Checklist rápido
 
-* Eu sei que as versões mudam principalmente o transporte e a eficiência, não a semântica do HTTP.
-* Eu sei que HTTP/2 melhora concorrência usando uma única conexão com streams.
-* Eu sei que HTTP/3 usa QUIC e busca melhorar comportamento em redes com perda e latência variável.
-* Eu sei que a API pode estar atrás de proxy, e a versão externa pode ser diferente da interna.
-* Eu sei quando vale a pena olhar para versões como otimização, não como requisito de design.
+- Eu sei que as versões mudam principalmente o transporte e a eficiência, não a semântica do HTTP.
+- Eu sei que HTTP/2 melhora concorrência usando uma única conexão com streams.
+- Eu sei que HTTP/3 usa QUIC e busca melhorar comportamento em redes com perda e latência variável.
+- Eu sei que a API pode estar atrás de proxy, e a versão externa pode ser diferente da interna.
+- Eu sei quando vale a pena olhar para versões como otimização, não como requisito de design.
 
 ## Fontes (para leitura)
 

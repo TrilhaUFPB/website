@@ -65,20 +65,20 @@ O objetivo, em ambos os casos, é manter o servidor responsivo e previsível mes
 
 ## Checklist rápido
 
-* Eu sei explicar concorrência como várias tarefas em progresso com coordenação.
-* Eu sei explicar paralelismo como execução simultânea.
-* Eu entendo que concorrência pode existir mesmo em um único núcleo.
-* Eu entendo que paralelismo depende de recursos de execução, principalmente CPU.
+- Eu sei explicar concorrência como várias tarefas em progresso com coordenação.
+- Eu sei explicar paralelismo como execução simultânea.
+- Eu entendo que concorrência pode existir mesmo em um único núcleo.
+- Eu entendo que paralelismo depende de recursos de execução, principalmente CPU.
 
-## Fontes 
+## Fontes
 
-[https://go.dev/blog/waza-talk](https://go.dev/blog/waza-talk) 
+[https://go.dev/blog/waza-talk](https://go.dev/blog/waza-talk)
 
 [https://go.dev/talks/2012/waza.slide](https://go.dev/talks/2012/waza.slide)
 
 [https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
 
-[https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf) 
+[https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf)
 
 ---
 # 10.2 Workloads CPU-bound e I/O-bound
@@ -167,13 +167,13 @@ Esse exemplo deixa claro o ponto principal: os dois endpoints podem ter a mesma 
 - Eu entendo que aumentar concorrência sem controle pode piorar dependências e filas.
 - Eu consigo olhar para um endpoint e apontar o que provavelmente domina o tempo.
 
-## Fontes 
+## Fontes
 
-https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf  
+[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
 
-https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf  
+[https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf)
 
-https://www.kegel.com/c10k.html  
+[https://www.kegel.com/c10k.html](https://www.kegel.com/c10k.html)
 
 
 
@@ -231,11 +231,11 @@ A conclusão prática é que o servidor web precisa ser pensado como uma máquin
 
 ## Fontes
 
-https://www.kegel.com/c10k.html
+[https://www.kegel.com/c10k.html](https://www.kegel.com/c10k.html)
 
-https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf
+[https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf)
 
-https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf
+[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
 
 
 ---
@@ -299,9 +299,9 @@ Isso também melhora o processo de encontrar onde estão os erros. Quando o serv
 - Eu consigo citar pelo menos um mecanismo de backpressure: limite de concorrência, limite de fila, rate limiting, timeouts ou degradação controlada.
 - Eu sei que o objetivo é previsibilidade sob carga, não apenas performance.
 
-## Fontes 
+## Fontes
 
-https://sre.google/sre-book/handling-overload/  
+[https://sre.google/sre-book/handling-overload/](https://sre.google/sre-book/handling-overload/)
 
-https://sre.google/sre-book/addressing-cascading-failures/  
+[https://sre.google/sre-book/addressing-cascading-failures/](https://sre.google/sre-book/addressing-cascading-failures/)
 

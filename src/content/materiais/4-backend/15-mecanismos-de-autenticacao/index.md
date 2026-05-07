@@ -16,10 +16,10 @@ order: 15
 ## Como funciona?
 
 O cliente pega `usuario:senha`, concatena com dois pontos e codifica em Base64.
-*   User: `aladdin`
-*   Pass: `opensesame`
-*   String: `aladdin:opensesame`
-*   Base64: `YWxhZGRpbjpvcGVuc2VzYW1l`
+- User: `aladdin`
+- Pass: `opensesame`
+- String: `aladdin:opensesame`
+- Base64: `YWxhZGRpbjpvcGVuc2VzYW1l`
 
 Header enviado:
 `Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l`
@@ -38,16 +38,16 @@ Por isso, Basic Auth **SÓ** pode ser usado sobre **HTTPS (TLS)**. Sem HTTPS, vo
 
 ### Ataques de Força Bruta (Brute Force)
 Como o Basic Auth envia usuário e senha em **toda requisição**, ele é um alvo fácil para scripts que tentam adivinhar senhas.
-*   **Mitigação:** Você **DEVE** implementar **Rate Limiting** (limite de tentativas) e bloqueio de IP após N falhas. Ferramentas como **Fail2Ban** no servidor ajudam.
+- **Mitigação:** Você **DEVE** implementar **Rate Limiting** (limite de tentativas) e bloqueio de IP após N falhas. Ferramentas como **Fail2Ban** no servidor ajudam.
 
 
 
 ## Quando usar? (Use Cases)
 
 Apesar de antigo, ainda é útil em nichos específicos:
-1.  **Redes Internas/VPN:** Ferramentas de administração (Prometheus, Traefik Dashboard) protegidas atrás de uma VPN.
-2.  **Scripts Rápidos:** Quando você precisa fazer um script Python/Bash simples e não quer lidar com o fluxo complexo de tokens.
-3.  **Ambientes de Teste:** Proteger um ambiente de Stage rápido.
+1. **Redes Internas/VPN:** Ferramentas de administração (Prometheus, Traefik Dashboard) protegidas atrás de uma VPN.
+2. **Scripts Rápidos:** Quando você precisa fazer um script Python/Bash simples e não quer lidar com o fluxo complexo de tokens.
+3. **Ambientes de Teste:** Proteger um ambiente de Stage rápido.
 
 
 
@@ -88,10 +88,10 @@ Muito comum para autenticação máquina-máquina (SaaS, APIs Públicas). Você 
 
 ## Onde enviar a chave?
 
-1.  **Query Param (Ruim):** `GET /api/users?api_key=123`
-    *   Fica salvo em logs de proxy, histórico do navegador. Evite.
-2.  **Header (Bom):** `X-API-KEY: 123` ou `Authorization: ApiKey 123`
-    *   Mais seguro e limpo.
+1. **Query Param (Ruim):** `GET /api/users?api_key=123`
+    - Fica salvo em logs de proxy, histórico do navegador. Evite.
+2. **Header (Bom):** `X-API-KEY: 123` ou `Authorization: ApiKey 123`
+    - Mais seguro e limpo.
 
 
 
@@ -99,20 +99,20 @@ Muito comum para autenticação máquina-máquina (SaaS, APIs Públicas). Você 
 
 ### Hashing no Banco de Dados
 Nunca salve a API Key em texto plano no seu banco.
-*   **Mostre uma vez:** Quando o usuário cria a chave, mostre ela na tela e diga "Copie agora, você não verá isso de novo".
-*   **Salve o Hash:** No banco, salve `sha256(api_key)`.
-*   **Validação:** Quando chegar uma requisição, faça o hash da chave recebida e compare com o banco.
-*   *Por que?* Se seu banco vazar, as chaves dos clientes estão seguras.
+- **Mostre uma vez:** Quando o usuário cria a chave, mostre ela na tela e diga "Copie agora, você não verá isso de novo".
+- **Salve o Hash:** No banco, salve `sha256(api_key)`.
+- **Validação:** Quando chegar uma requisição, faça o hash da chave recebida e compare com o banco.
+- *Por que?* Se seu banco vazar, as chaves dos clientes estão seguras.
 
 ### Rotação de Chaves (Key Rotation)
 Chaves vazam. É um fato da vida.
-*   Permita que o usuário tenha **múltiplas chaves ativas**.
-*   Ele cria a Chave B, atualiza os sistemas dele, e depois deleta a Chave A. Isso permite rotação sem downtime.
+- Permita que o usuário tenha **múltiplas chaves ativas**.
+- Ele cria a Chave B, atualiza os sistemas dele, e depois deleta a Chave A. Isso permite rotação sem downtime.
 
 ### Escopos (Permissions)
 Não crie "Chaves Mestras" para tudo.
-*   Chave A: Somente Leitura (`read:users`).
-*   Chave B: Escrita (`write:orders`).
+- Chave A: Somente Leitura (`read:users`).
+- Chave B: Escrita (`write:orders`).
 Se a Chave A vazar, o atacante não consegue apagar dados.
 
 
@@ -162,9 +162,9 @@ O método clássico da web "stateful" (com estado). O servidor cria um espaço n
 ## Armazenamento de Sessão
 
 Se o servidor guarda estado, onde ele guarda?
-1.  **Memória RAM:** Rápido, mas se o servidor reiniciar, todos deslogam. Não funciona com Load Balancer (múltiplos servidores).
-2.  **Redis (Recomendado):** Rápido, persistente e compartilhado entre todos os servidores do cluster.
-3.  **Banco de Dados (SQL):** Lento para ler a cada requisição. Evite.
+1. **Memória RAM:** Rápido, mas se o servidor reiniciar, todos deslogam. Não funciona com Load Balancer (múltiplos servidores).
+2. **Redis (Recomendado):** Rápido, persistente e compartilhado entre todos os servidores do cluster.
+3. **Banco de Dados (SQL):** Lento para ler a cada requisição. Evite.
 
 
 
@@ -172,19 +172,19 @@ Se o servidor guarda estado, onde ele guarda?
 
 Para usar Cookies em APIs, você deve configurar três flags críticas:
 
-1.  **HttpOnly:** Impede que o JavaScript (`document.cookie`) leia o cookie.
-    *   *Protege contra:* **XSS (Cross-Site Scripting)**. Se um hacker injetar JS no seu site, ele não consegue roubar a sessão.
-2.  **Secure:** O cookie só trafega via HTTPS.
-3.  **SameSite:** (`Strict` ou `Lax`). Impede que o cookie seja enviado em requisições vindas de *outros* sites.
-    *   *Protege contra:* **CSRF (Cross-Site Request Forgery)**.
+1. **HttpOnly:** Impede que o JavaScript (`document.cookie`) leia o cookie.
+    - *Protege contra:* **XSS (Cross-Site Scripting)**. Se um hacker injetar JS no seu site, ele não consegue roubar a sessão.
+2. **Secure:** O cookie só trafega via HTTPS.
+3. **SameSite:** (`Strict` ou `Lax`). Impede que o cookie seja enviado em requisições vindas de *outros* sites.
+    - *Protege contra:* **CSRF (Cross-Site Request Forgery)**.
 
 ### Ataque CSRF (O que é?)
 Você está logado no banco (`bank.com`). Você clica num link malicioso (`evil.com`). O site malicioso faz um POST oculto para `bank.com/transfer`. O navegador, inocente, envia seu Cookie do banco junto. O banco aceita e transfere o dinheiro.
-*   **Solução:** `SameSite=Strict` impede que o navegador envie o cookie se a origem não for o próprio banco.
+- **Solução:** `SameSite=Strict` impede que o navegador envie o cookie se a origem não for o próprio banco.
 
 ### Session Fixation
 O atacante cria uma sessão válida e te manda um link com o ID da sessão dele (`?session_id=123`). Você loga usando o ID dele. Ele agora tem acesso à sua conta.
-*   **Solução:** Sempre gere um **novo ID de sessão** logo após o login com sucesso (Regenerate Session ID).
+- **Solução:** Sempre gere um **novo ID de sessão** logo após o login com sucesso (Regenerate Session ID).
 
 ```python
 # Exemplo conceitual (pseudo-código)
@@ -210,21 +210,21 @@ O padrão da web moderna e microserviços. É **Stateless** (Sem estado). O serv
 ## Anatomia do JWT
 `HEADER.PAYLOAD.SIGNATURE`
 
-1.  **Header:** Qual algoritmo foi usado (HS256).
-2.  **Payload (Claims):** Os dados (`sub`: usuário_id, `exp`: expiração, `role`: admin). Base64 legível! **Não coloque senhas aqui.**
-3.  **Signature:** O "lacre". Garante que ninguém alterou o Payload. Só o servidor (que tem a chave secreta) consegue gerar ou validar.
+1. **Header:** Qual algoritmo foi usado (HS256).
+2. **Payload (Claims):** Os dados (`sub`: usuário_id, `exp`: expiração, `role`: admin). Base64 legível! **Não coloque senhas aqui.**
+3. **Signature:** O "lacre". Garante que ninguém alterou o Payload. Só o servidor (que tem a chave secreta) consegue gerar ou validar.
 
 
 
 ## Onde guardar o JWT? (A Grande Polêmica)
 
 ### Opção A: LocalStorage (Frontend)
-*   **Pró:** Fácil de implementar (JS lê e envia no Header).
-*   **Contra:** Vulnerável a **XSS**. Qualquer script malicioso pode ler `localStorage` e roubar o token.
+- **Pró:** Fácil de implementar (JS lê e envia no Header).
+- **Contra:** Vulnerável a **XSS**. Qualquer script malicioso pode ler `localStorage` e roubar o token.
 
 ### Opção B: Cookie HttpOnly
-*   **Pró:** Imune a **XSS** (JS não lê).
-*   **Contra:** Vulnerável a **CSRF** (precisa de proteção extra) e mais difícil de usar entre domínios diferentes.
+- **Pró:** Imune a **XSS** (JS não lê).
+- **Contra:** Vulnerável a **CSRF** (precisa de proteção extra) e mais difícil de usar entre domínios diferentes.
 
 **Veredito:** Para segurança máxima (bancos), use Cookie HttpOnly. Para SPAs gerais, LocalStorage é aceitável *se* você garantir que não tem XSS no seu site.
 
@@ -235,20 +235,20 @@ O padrão da web moderna e microserviços. É **Stateless** (Sem estado). O serv
 Como invalidar um JWT se ele é stateless? Não dá. Se vazar, vaza até expirar.
 Por isso, usamos **dois tokens**:
 
-1.  **Access Token:** Vida curta (ex: 15 min). Usado para acessar a API.
-2.  **Refresh Token:** Vida longa (ex: 7 dias). Usado apenas para pedir um novo Access Token. Fica salvo no banco do servidor.
+1. **Access Token:** Vida curta (ex: 15 min). Usado para acessar a API.
+2. **Refresh Token:** Vida longa (ex: 7 dias). Usado apenas para pedir um novo Access Token. Fica salvo no banco do servidor.
 
 **Fluxo:**
-1.  Access Token expira. API retorna 401.
-2.  Frontend usa Refresh Token para pedir um novo.
-3.  Servidor verifica se o Refresh Token ainda é válido (não foi revogado) e emite novo Access.
-*   **Segurança:** Se você quiser "chutar" o usuário, você deleta/revoga o Refresh Token no banco. Ele só terá acesso por mais 15 min (tempo do Access Token).
+1. Access Token expira. API retorna 401.
+2. Frontend usa Refresh Token para pedir um novo.
+3. Servidor verifica se o Refresh Token ainda é válido (não foi revogado) e emite novo Access.
+- **Segurança:** Se você quiser "chutar" o usuário, você deleta/revoga o Refresh Token no banco. Ele só terá acesso por mais 15 min (tempo do Access Token).
 
 
 
 ## Riscos de Segurança (O Ataque "None")
 Algumas bibliotecas antigas aceitavam tokens com `alg: none` no header (sem assinatura). Hackers podiam forjar tokens de admin.
-*   **Mitigação:** Sempre force o algoritmo na verificação (`algorithms=["HS256"]`).
+- **Mitigação:** Sempre force o algoritmo na verificação (`algorithms=["HS256"]`).
 
 
 
@@ -295,8 +295,8 @@ OAuth 2.0 não é sobre autenticação (quem você é), é sobre **autorização
 
 Muitos confundem, mas eles não são concorrentes. Eles são coisas diferentes.
 
-*   **OAuth 2.0:** É o **Protocolo** (a estrada). Define *como* eu peço permissão e recebo um token.
-*   **JWT:** É o **Formato** (o carro). É *o formato do token* que o OAuth 2.0 entrega no final.
+- **OAuth 2.0:** É o **Protocolo** (a estrada). Define *como* eu peço permissão e recebo um token.
+- **JWT:** É o **Formato** (o carro). É *o formato do token* que o OAuth 2.0 entrega no final.
 
 Você usa OAuth 2.0 para obter um JWT.
 
@@ -304,8 +304,8 @@ Você usa OAuth 2.0 para obter um JWT.
 
 ## OIDC (OpenID Connect) vs OAuth 2.0
 
-*   **OAuth 2.0:** Serve para **Autorização**. "Este app pode postar no meu Twitter?"
-*   **OIDC:** É uma camada em cima do OAuth 2.0 para **Autenticação**. "Quem é este usuário?". Ele adiciona um token especial chamado `id_token` (que é um JWT) contendo dados do usuário (email, nome, foto).
+- **OAuth 2.0:** Serve para **Autorização**. "Este app pode postar no meu Twitter?"
+- **OIDC:** É uma camada em cima do OAuth 2.0 para **Autenticação**. "Quem é este usuário?". Ele adiciona um token especial chamado `id_token` (que é um JWT) contendo dados do usuário (email, nome, foto).
 
 Se você quer "Logar com Google", você está usando OIDC.
 
@@ -314,8 +314,8 @@ Se você quer "Logar com Google", você está usando OIDC.
 ## Scopes (Escopos)
 
 O poder do OAuth são os escopos limitados.
-*   `scope=email profile` -> O app só vê seu nome e email.
-*   `scope=drive.readonly` -> O app pode ler seu Google Drive, mas não pode apagar nada.
+- `scope=email profile` -> O app só vê seu nome e email.
+- `scope=drive.readonly` -> O app pode ler seu Google Drive, mas não pode apagar nada.
 
 Isso é muito mais seguro do que dar sua senha do Google para o aplicativo.
 
@@ -327,21 +327,21 @@ Ao redirecionar o usuário para o Google, como garantir que, quando ele voltar, 
 Um atacante pode iniciar um fluxo de login e enganar você para logar na conta *dele* (CSRF Login).
 
 **Solução:**
-1.  Gere uma string aleatória (`state`) e salve na sessão do usuário.
-2.  Mande o `state` na URL pro Google.
-3.  O Google devolve o `state` igualzinho na volta.
-4.  Se o `state` da volta não bater com o da sessão, bloqueie.
+1. Gere uma string aleatória (`state`) e salve na sessão do usuário.
+2. Mande o `state` na URL pro Google.
+3. O Google devolve o `state` igualzinho na volta.
+4. Se o `state` da volta não bater com o da sessão, bloqueie.
 
 
 
 ## O Fluxo (Authorization Code)
 É o mais seguro para web server-side.
 
-1.  Seu App redireciona o usuário para o Google (`/auth?response_type=code&state=xyz`).
-2.  Usuário loga no Google e diz "Permito".
-3.  Google redireciona de volta para seu App com um `code` na URL.
-4.  Seu Backend (no servidor) pega esse `code` e troca por um `access_token` falando direto com o Google (sem o usuário ver).
-5.  Agora seu Backend pode chamar a API do Google usando o token.
+1. Seu App redireciona o usuário para o Google (`/auth?response_type=code&state=xyz`).
+2. Usuário loga no Google e diz "Permito".
+3. Google redireciona de volta para seu App com um `code` na URL.
+4. Seu Backend (no servidor) pega esse `code` e troca por um `access_token` falando direto com o Google (sem o usuário ver).
+5. Agora seu Backend pode chamar a API do Google usando o token.
 
 Não tente implementar OAuth 2.0 do zero. Use bibliotecas como `Authlib` ou `python-social-auth`.
 
@@ -366,24 +366,24 @@ Quando a conexão inicia (Handshake), o servidor pede o certificado do cliente. 
 ## A Autoridade Certificadora (CA)
 
 Para isso funcionar, você (empresa) cria sua própria CA Interna.
-1.  Você gera um certificado raiz (Root CA).
-2.  Você instala a Root CA em todos os servidores.
-3.  Você gera certificados para cada cliente (Service A, Service B) assinados pela Root CA.
-4.  O servidor confia em qualquer um que tenha um "crachá" assinado pela Root CA.
+1. Você gera um certificado raiz (Root CA).
+2. Você instala a Root CA em todos os servidores.
+3. Você gera certificados para cada cliente (Service A, Service B) assinados pela Root CA.
+4. O servidor confia em qualquer um que tenha um "crachá" assinado pela Root CA.
 
 ## Revogação (CRL e OCSP)
 
 E se uma chave privada de um cliente vazar? Você precisa "banir" aquele certificado.
-*   **CRL (Certificate Revocation List):** Uma lista negra de certificados banidos. O servidor baixa essa lista periodicamente.
-*   **OCSP:** O servidor pergunta em tempo real para a CA: "Esse certificado ainda vale?".
+- **CRL (Certificate Revocation List):** Uma lista negra de certificados banidos. O servidor baixa essa lista periodicamente.
+- **OCSP:** O servidor pergunta em tempo real para a CA: "Esse certificado ainda vale?".
 
 ## Performance e Complexidade
 
 O mTLS adiciona um peso no "Handshake" inicial (troca de chaves). Em conexões de longa duração (Keep-Alive), isso é irrelevante. Em conexões curtas frequentes, pode pesar.
 
 **Quando usar?**
-*   **Zero Trust:** "Nunca confie, sempre verifique". Mesmo dentro da rede interna.
-*   **Service Mesh:** Ferramentas como Istio implementam mTLS automaticamente, tirando essa complexidade do código da aplicação.
+- **Zero Trust:** "Nunca confie, sempre verifique". Mesmo dentro da rede interna.
+- **Service Mesh:** Ferramentas como Istio implementam mTLS automaticamente, tirando essa complexidade do código da aplicação.
 
 ---
 # 15.7 Matriz de Decisão: Qual autenticação escolher?
@@ -407,18 +407,18 @@ Não existe "o melhor". Existe o melhor para o seu cenário. Use esta tabela par
 
 ## Guia de Decisão Rápida
 
-1.  **É um site tradicional renderizado no servidor (Django, Rails)?**
-    *   Use **Sessions/Cookies**. É robusto e batalha-testado.
+1. **É um site tradicional renderizado no servidor (Django, Rails)?**
+    - Use **Sessions/Cookies**. É robusto e batalha-testado.
 
-2.  **É um Frontend separado (React/Vue) ou Mobile App?**
-    *   Use **JWT**. Mas cuidado onde guarda o token. Use Refresh Tokens para segurança.
+2. **É um Frontend separado (React/Vue) ou Mobile App?**
+    - Use **JWT**. Mas cuidado onde guarda o token. Use Refresh Tokens para segurança.
 
-3.  **É um serviço chamando outro serviço (Backend-to-Backend)?**
-    *   Simples? **API Keys** ou **Client Credentials Flow (OAuth)**.
-    *   Crítico/Bancário? **mTLS**.
+3. **É um serviço chamando outro serviço (Backend-to-Backend)?**
+    - Simples? **API Keys** ou **Client Credentials Flow (OAuth)**.
+    - Crítico/Bancário? **mTLS**.
 
-4.  **Quer evitar que o usuário crie mais uma senha?**
-    *   Use **OAuth 2.0 (OIDC)** com Google/Microsoft.
+4. **Quer evitar que o usuário crie mais uma senha?**
+    - Use **OAuth 2.0 (OIDC)** com Google/Microsoft.
 
-5.  **É um script rápido ou ferramenta de dev?**
-    *   **Basic Auth** ou **API Key**.
+5. **É um script rápido ou ferramenta de dev?**
+    - **Basic Auth** ou **API Key**.

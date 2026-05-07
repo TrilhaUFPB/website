@@ -79,20 +79,20 @@ A diferença principal não é o formato do HTTP. É a expectativa de tempo e a 
 
 ## Checklist rápido
 
-* Eu sei explicar comunicação síncrona como esperar a resposta para continuar.
-* Eu sei explicar comunicação assíncrona como separar pedido de conclusão.
-* Eu entendo que síncrono é mais simples, mas propaga latência e falhas.
-* Eu entendo que assíncrono melhora controle sob pico, mas exige rastrear estado e lidar com consistência.
+- Eu sei explicar comunicação síncrona como esperar a resposta para continuar.
+- Eu sei explicar comunicação assíncrona como separar pedido de conclusão.
+- Eu entendo que síncrono é mais simples, mas propaga latência e falhas.
+- Eu entendo que assíncrono melhora controle sob pico, mas exige rastrear estado e lidar com consistência.
 
-## Fontes 
+## Fontes
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous
+[https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous)
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous
+[https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous)
 
-https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication
+[https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication](https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication)
 
-https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply
+[https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply](https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply)
 
 
 
@@ -199,18 +199,18 @@ async def rota_async():
 Em carga alta, a rota assíncrona tende a escalar melhor quando a maior parte do tempo é espera por I/O, porque o servidor não fica preso em sleep.
 ## Checklist rápido
 
-* Eu sei explicar execução síncrona como um fluxo que espera cada etapa terminar.
-* Eu sei explicar execução assíncrona como um fluxo que inicia trabalho e continua, aguardando depois.
-* Eu entendo que a principal vantagem da assincronia aparece quando existe I/O.
-* Eu entendo que CPU-bound não melhora só porque eu iniciei mais coisas ao mesmo tempo.
+- Eu sei explicar execução síncrona como um fluxo que espera cada etapa terminar.
+- Eu sei explicar execução assíncrona como um fluxo que inicia trabalho e continua, aguardando depois.
+- Eu entendo que a principal vantagem da assincronia aparece quando existe I/O.
+- Eu entendo que CPU-bound não melhora só porque eu iniciei mais coisas ao mesmo tempo.
 
-## Fontes 
+## Fontes
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous
+[https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous)
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous
+[https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous)
 
-https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Asynchronous
+[https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Asynchronous](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Asynchronous)
 
 
 ---
@@ -269,15 +269,15 @@ A diferença não é o HTTP em si. É o compromisso que você está assumindo co
 - Eu sei que assíncrono melhora controle sob pico, mas exige rastrear estado e lidar com casos de reprocessamento.
 - Eu consigo justificar a escolha com base em tempo de execução, falhas e experiência do consumidor.
 
-## Fontes 
+## Fontes
 
-https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication  
+[https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication](https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication)
 
-https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply  
+[https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply](https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply)
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous  
+[https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous)
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous  
+[https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous](https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous)
 
 
 
@@ -362,9 +362,9 @@ Isso reduz pressão na API porque você não segura uma conexão aberta enquanto
 - Eu sei que filas e workers são a forma comum de controlar execução em sistemas assíncronos.
 - Eu sei que duplicação é esperada e idempotência é uma proteção essencial.
 
-## Fontes 
+## Fontes
 
-https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply  
+[https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply](https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply)
 
-https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication  
+[https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication](https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication)
 

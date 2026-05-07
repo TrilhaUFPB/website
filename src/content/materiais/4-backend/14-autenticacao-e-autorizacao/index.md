@@ -91,20 +91,20 @@ Esse exemplo também mostra por que autorização precisa ser pensada por recurs
 
 ## Checklist rápido
 
-* Eu sei explicar autenticação como confirmar identidade.
-* Eu sei explicar autorização como validar permissões.
-* Eu sei diferenciar 401 (identidade não confirmada) de 403 (identidade confirmada, permissão negada).
-* Eu entendo que falhas de autorização podem vazar dados mesmo com autenticação correta.
+- Eu sei explicar autenticação como confirmar identidade.
+- Eu sei explicar autorização como validar permissões.
+- Eu sei diferenciar 401 (identidade não confirmada) de 403 (identidade confirmada, permissão negada).
+- Eu entendo que falhas de autorização podem vazar dados mesmo com autenticação correta.
 
-## Fontes 
+## Fontes
 
-https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
+[https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
 
-https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
+[https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
 
-https://owasp.org/www-community/Access_Control
+[https://owasp.org/www-community/Access_Control](https://owasp.org/www-community/Access_Control)
 
-https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html
+[https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html)
 
 
 
@@ -185,15 +185,15 @@ Essa separação impede que um serviço interno vire um atalho para acessar dado
 - Eu garanto que serviços têm permissões mínimas para cumprir sua função.
 - Eu mantenho a autorização por recurso consistente, mesmo quando existe processamento em background.
 
-## Fontes 
+## Fontes
 
-https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html  
+[https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
 
-https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html  
+[https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
 
-https://owasp.org/www-community/Access_Control  
+[https://owasp.org/www-community/Access_Control](https://owasp.org/www-community/Access_Control)
 
-https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html  
+[https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html)
 
 
 ---
@@ -291,16 +291,16 @@ O que isso ilustra: permissões e escopos servem para restringir ações, mas a 
 
 ## Checklist rápido
 
-* Eu entendo permissão como uma autorização específica para uma ação.
-* Eu entendo papel como agrupamento de permissões.
-* Eu entendo escopo como permissão expressa dentro da credencial, geralmente em tokens.
-* Eu não trato papel como atalho para ignorar autorização por recurso.
-* Eu consigo definir o que cada rota exige e aplicar isso de forma consistente.
+- Eu entendo permissão como uma autorização específica para uma ação.
+- Eu entendo papel como agrupamento de permissões.
+- Eu entendo escopo como permissão expressa dentro da credencial, geralmente em tokens.
+- Eu não trato papel como atalho para ignorar autorização por recurso.
+- Eu consigo definir o que cada rota exige e aplicar isso de forma consistente.
 
-## Fontes 
+## Fontes
 
-https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html  
+[https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
 
-https://owasp.org/www-community/Access_Control  
+[https://owasp.org/www-community/Access_Control](https://owasp.org/www-community/Access_Control)
 
-https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html  
+[https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html)
