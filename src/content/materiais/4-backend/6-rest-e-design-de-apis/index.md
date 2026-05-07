@@ -66,267 +66,6 @@ A maioria das APIs que se dizem REST hoje em dia não implementam 100% da teoria
 *   **[Oracle]:** [Definição de REST](https://www.oracle.com/br/cloud/what-is-rest/)
 
 ---
-# 6.10. HATEOAS
-
-**HATEOAS** (Hypermedia As The Engine Of Application State) é a restrição final do REST, aquela que separa "APIs HTTP" de "APIs verdadeiramente REST".
-É também a mais ignorada.
-
-
-
-## O Conceito
-
-Imagine que você entra num site e não tem links. Para ir para a página de contato, você tem que digitar `/contato` na barra do navegador.
-É assim que a maioria das APIs funciona hoje: o cliente tem que ler a documentação para saber as URLs.
-
-Com HATEOAS, a API fornece os **links** para as próximas ações possíveis junto com a resposta.
-
-### Exemplo sem HATEOAS (Padrão)
-```json
-{
-  "id": 10,
-  "status": "pendente",
-  "valor": 100
-}
-```
-O cliente precisa saber "hardcoded" que para pagar deve chamar `POST /pedidos/10/pagar`.
-
-### Exemplo com HATEOAS
-```json
-{
-  "id": 10,
-  "status": "pendente",
-  "valor": 100,
-  "_links": {
-    "self": { "href": "/pedidos/10" },
-    "pagar": { "href": "/pedidos/10/pagar", "method": "POST" },
-    "cancelar": { "href": "/pedidos/10", "method": "DELETE" }
-  }
-}
-```
-Se o pedido mudar para "pago", a API para de enviar o link de "pagar". O front-end poderia (teoricamente) apenas renderizar os botões baseados nos links que recebeu, sem lógica de negócio duplicada (`if status == pendente then show button`).
-
-
-
-## A Realidade Prática
-
-Embora lindo na teoria, HATEOAS adiciona complexidade e tamanho ao payload.
-Grandes APIs públicas (PayPal) usam.
-APIs internas e de startups raramente usam, pois o acoplamento entre front e back já é alto e conhecido via documentação (OpenAPI).
-
-**Vale a pena?**
-Para APIs públicas de longa vida: Sim.
-Para seu backend interno do app mobile: Provavelmente não (Overengineering). O OpenAPI costuma ser suficiente como contrato.
-
-
-
-## Checklist rápido
-
-*   [ ] Entendi que HATEOAS significa a API "guiar" o cliente através de links?
-*   [ ] Sei que isso permite que o servidor mude URLs sem quebrar o cliente?
-*   [ ] Avaliei se a complexidade extra vale a pena para o meu projeto?
-
-
-
-## Fontes
-
-*   **[Fielding]:** [REST APIs must be hypertext-driven](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
-*   **[Spring]:** [Understanding HATEOAS](https://spring.io/understanding/HATEOAS)
-*   **[PayPal]:** [HATEOAS in PayPal API](https://developer.paypal.com/api/rest/responses/#hateoas-links)
-
----
-# 6.11. Checklist de design REST
-
-Antes de entregar sua API, passe por este checklist. Ele resume as boas práticas discutidas em todo o capítulo.
-
-
-
-## URIs e Recursos
-*   [ ] **Substantivos:** Usei substantivos em vez de verbos? (`/users` ✅, `/getUsers` ❌)
-*   [ ] **Plural:** Usei plural para coleções? (`/users` ✅)
-*   [ ] **Kebab-case:** Usei hífens para separar palavras? (`/customer-orders` ✅)
-*   [ ] **Hierarquia:** O aninhamento faz sentido? (`/users/1/orders` ✅)
-
-## Métodos HTTP (Verbos)
-*   [ ] **GET:** Usado para leitura (safe)? Retorna 200 OK?
-*   [ ] **POST:** Usado para criar (não idempotente)? Retorna 201 Created?
-*   [ ] **PUT:** Usado para substituição completa (idempotente)?
-*   [ ] **PATCH:** Usado para atualização parcial?
-*   [ ] **DELETE:** Usado para remover? Retorna 204 No Content?
-
-## Respostas e Códigos
-*   [ ] **Status Codes:** Uso os códigos corretos (200, 201, 204, 400, 401, 403, 404, 500)?
-*   [ ] **JSON:** O Content-Type é `application/json`?
-*   [ ] **Envelope:** Evitei envelope desnecessário (`{ "data": ... }`) exceto para paginação/meta?
-
-## Segurança e Performance
-*   [ ] **Filtros:** Estão na query string? (`?status=active`)
-*   [ ] **Paginação:** Existe limite padrão (limit) para não quebrar o banco?
-*   [ ] **Stateless:** A API não depende de sessão na memória?
-*   [ ] **HTTPS:** A API roda exclusivamente sobre HTTPS?
-
-
-
-Este checklist não garante que sua API é perfeita, mas garante que ela está nos 10% melhores em termos de consistência e padrão de mercado.
-
-
-
-## Fontes Gerais de Design
-
-*   **[Microsoft]:** [REST API Design Guidelines](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
-*   **[Google]:** [Google Cloud API Design Guide](https://cloud.google.com/apis/design)
-*   **[Zalando]:** [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
-
----
-# 6.12. Implementação Prática com FastAPI
-
-Esta seção consolida os conceitos de Recursos, Verbos, Status Codes e Contratos que vimos até aqui em um exemplo prático e funcional usando FastAPI.
-
-
-
-## Estrutura do Projeto
-
-Vamos imaginar um cenário simples de cadastro de usuários. Em um projeto real, você organizaria em múltiplos arquivos, mas para fins didáticos, faremos tudo em um `main.py`.
-
-```text
-meu_projeto/
-├── main.py       # Código da API
-└── requirements.txt
-```
-
-**Instalação:**
-```bash
-pip install fastapi uvicorn
-```
-
-
-
-## Código da Implementação
-
-Copie este código para seu arquivo `main.py`. Ele implementa um CRUD completo de Usuários seguindo os princípios REST.
-
-```python
-from fastapi import FastAPI, HTTPException, status
-from pydantic import BaseModel
-from typing import List, Optional
-from random import randint
-
-app = FastAPI()
-
-#  1. CONTRATOS (Modelos Pydantic) 
-# Define o formato dos dados (Schema)
-
-class UserBase(BaseModel):
-    name: str
-    email: str
-    is_active: bool = True
-
-class UserCreate(UserBase):
-    # Herdamos de UserBase. 
-    # Usado no POST. A senha seria adicionada aqui num caso real.
-    pass
-
-class UserResponse(UserBase):
-    # Usado na resposta (GET/POST).
-    # Adicionamos o ID que é gerado pelo servidor.
-    id: int
-
-    class Config:
-        from_attributes = True
-
-#  2. BANCO DE DADOS FAKE 
-# Em memória, apenas para exemplo
-fake_db = []
-
-#  3. IMPLEMENTAÇÃO REST 
-
-# GET /users (Coleção)
-@app.get("/users", response_model=List[UserResponse])
-def list_users(skip: int = 0, limit: int = 10):
-    # Implementa paginação via Query Params
-    return fake_db[skip : skip + limit]
-
-# GET /users/{user_id} (Recurso Singular)
-@app.get("/users/{user_id}", response_model=UserResponse)
-def get_user(user_id: int):
-    # Procura o usuário
-    for user in fake_db:
-        if user["id"] == user_id:
-            return user
-    
-    # Se não achar, retorna 404 (Erro do Cliente)
-    raise HTTPException(
-        status_code=status.HTTP_404_NOT_FOUND, 
-        detail="User not found"
-    )
-
-# POST /users (Criação)
-@app.post("/users", status_code=status.HTTP_201_CREATED, response_model=UserResponse)
-def create_user(user: UserCreate):
-    # Simula geração de ID
-    new_id = randint(1, 1000)
-    
-    # Transforma o modelo Pydantic em dicionário e adiciona ID
-    user_dict = user.model_dump()
-    user_dict["id"] = new_id
-    
-    # Salva no "banco"
-    fake_db.append(user_dict)
-    
-    # Retorna o recurso criado (com ID) e Status 201
-    return user_dict
-
-# DELETE /users/{user_id} (Remoção)
-@app.delete("/users/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
-def delete_user(user_id: int):
-    # Procura e remove
-    for index, user in enumerate(fake_db):
-        if user["id"] == user_id:
-            fake_db.pop(index)
-            return # Retorna vazio (204)
-            
-    # Se não existir, 404
-    raise HTTPException(
-        status_code=status.HTTP_404_NOT_FOUND, 
-        detail="User not found"
-    )
-
-# PUT /users/{user_id} (Atualização Completa)
-@app.put("/users/{user_id}", response_model=UserResponse)
-def update_user(user_id: int, user_update: UserCreate):
-    for index, user in enumerate(fake_db):
-        if user["id"] == user_id:
-            # Substitui os dados
-            updated_user = user_update.model_dump()
-            updated_user["id"] = user_id # Mantém o mesmo ID
-            fake_db[index] = updated_user
-            return updated_user
-            
-    raise HTTPException(status_code=404, detail="User not found")
-```
-
-
-
-## Como testar
-
-O FastAPI gera automaticamente uma documentação interativa (Swagger UI) que é perfeita para testar APIs REST.
-
-1.  Rode o servidor:
-    ```bash
-    uvicorn main:app --reload
-    ```
-2.  Abra no navegador:
-    `http://127.0.0.1:8000/docs`
-
-### O que observar:
-
-1.  **POST:** Tente criar um usuário. Veja que a resposta vem com `id` e o status é `201`.
-2.  **GET (Lista):** Veja que retorna um Array `[]`.
-3.  **GET (Item):** Tente buscar um ID inexistente e veja o erro `404`.
-4.  **DELETE:** Apague um usuário e veja que a resposta não tem corpo (Body), apenas o status `204`.
-
-Esta implementação cobre 90% dos casos de uso de uma API REST moderna.
-
----
 # 6.2. Restrições do REST
 
 Para um sistema ser considerado verdadeiramente REST, ele deve aderir a 6 restrições arquiteturais. Cada uma delas existe para garantir escalabilidade e simplicidade.
@@ -401,6 +140,118 @@ Muitos desenvolvedores violam o REST criando APIs que dependem de "sessão no se
 * **[RestfulAPI]:** [What is REST](https://restfulapi.net/)
 * **[MDN]:** [HTTP Caching](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching)
 * **[AWS]:** [Statelessness in REST](https://aws.amazon.com/what-is/restful-api/)
+
+---
+# 6.3. Recursos, coleções e identificadores
+
+No coração do REST está o conceito de **Recurso**.
+Esqueça as tabelas do banco de dados por um momento. Pense no que sua API expõe para o mundo.
+
+
+
+## O que é um Recurso?
+
+Um recurso é qualquer coisa que possa ser nomeada e manipulada. É um conceito abstrato, não necessariamente uma linha no banco.
+
+* Um usuário (`joao`)
+* Uma coleção de usuários (`todos os usuários`)
+* Um resultado de busca
+* Um processo (ex: `inscrição`)
+
+## Substantivos, não Verbos
+
+URLs RESTful devem ser baseadas em **substantivos** (coisas), nunca em verbos (ações). A ação é definida pelo método HTTP (GET, POST, DELETE), não pela URL.
+
+* **Errado\* (RPC):**
+  * `GET /getUsers`
+  * `POST /createUser`
+  * `POST /deleteUser?id=1`
+* **Certo\* (REST):**
+  * `GET /users`
+  * `POST /users`
+  * `DELETE /users/1`
+
+\* Note que certo e errado aqui é referente a estar de acordo com os padrões REST, mas não significa que a abordagem RPC não deva ser utilizada. Se quiser se aprofundar um pouco mais, você pode dar uma olhada nesse [artigo](https://medium.com/lfdev-blog/e-agora-api-rest-ou-rpc-c24664d4755b)
+
+## Coleções vs Documentos
+
+As URIs geralmente seguem um padrão hierárquico:
+
+1. **Coleção:** Uma lista de recursos.
+
+   * URI: `/produtos`
+   * Semântica: "O catálogo inteiro de produtos".
+2. **Documento (Recurso Singular):** Um item específico dentro da coleção.
+
+   * URI: `/produtos/123`
+   * Semântica: "O produto com ID 123".
+
+
+
+## Singleton Resources (Recursos Únicos)
+
+Às vezes, um recurso só existe uma vez dentro de um contexto.
+Exemplo: "O perfil do usuário logado".
+
+* `/me` ou `/user/profile`
+  * Não precisa de ID, pois o token de autenticação já diz quem é o usuário.
+
+
+
+## Identificadores
+
+O identificador (ID) é crucial para alcançar um recurso específico.
+
+* **IDs Numéricos:** `/users/105` (Fácil, legível, mas expõe quantos usuários você tem).
+* **UUIDs:** `/users/a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11` (Seguro, único globalmente, mas feio na URL).
+* **Slugs:** `/artigos/como-aprender-backend` (Ótimo para SEO e legibilidade).
+
+
+
+## Como fazer isso com FastAPI
+
+No FastAPI, nós definimos a **estrutura do recurso** usando modelos Pydantic. Isso cria o contrato de dados (Schema).
+
+```python
+from pydantic import BaseModel
+from typing import List
+
+# Definindo o "Recurso" Produto
+class Product(BaseModel):
+    id: int
+    name: str
+    price: float
+    in_stock: bool
+
+# Endpoint que retorna uma Coleção (Lista de Produtos)
+# Note o List[Product] - O FastAPI entende que é uma coleção
+@app.get("/products", response_model=List[Product])
+def get_products():
+    return [
+        {"id": 1, "name": "Teclado", "price": 100.0, "in_stock": True},
+        {"id": 2, "name": "Mouse", "price": 50.0, "in_stock": False}
+    ]
+
+# Endpoint que retorna um Recurso Singular (Um Produto)
+@app.get("/products/{product_id}", response_model=Product)
+def get_product(product_id: int):
+    return {"id": product_id, "name": "Teclado", "price": 100.0, "in_stock": True}
+```
+
+
+
+## Checklist rápido
+
+* [ ] Minhas URLs usam apenas substantivos? (Nada de `/calcularFrete`).
+* [ ] Consigo distinguir claramente Coleções (`/users`) de Recursos (`/users/1`)?
+* [ ] Meus IDs são estáveis (não mudam com o tempo)?
+
+
+
+## Fontes
+
+* **[Microsoft]:** [REST API Design Guidelines - Resources](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#organize-the-api-design-around-resources)
+* **[Google AIP]:** [Resource Names](https://google.aip.dev/122)
 
 ---
 # 6.3.1. Anatomia Prática de uma Requisição REST
@@ -538,118 +389,6 @@ O HTTP tem dezenas de códigos, mas no dia a dia REST você usará estes 90% do 
 2. [ ] Se é **POST/PUT**, mande o header `Content-Type: application/json`.
 3. [ ] Vai criar? Retorne **201**.
 4. [ ] Não encontrou? Retorne **404** (não retorne 200 com array vazio se pediu um ID específico).
-
----
-# 6.3. Recursos, coleções e identificadores
-
-No coração do REST está o conceito de **Recurso**.
-Esqueça as tabelas do banco de dados por um momento. Pense no que sua API expõe para o mundo.
-
-
-
-## O que é um Recurso?
-
-Um recurso é qualquer coisa que possa ser nomeada e manipulada. É um conceito abstrato, não necessariamente uma linha no banco.
-
-* Um usuário (`joao`)
-* Uma coleção de usuários (`todos os usuários`)
-* Um resultado de busca
-* Um processo (ex: `inscrição`)
-
-## Substantivos, não Verbos
-
-URLs RESTful devem ser baseadas em **substantivos** (coisas), nunca em verbos (ações). A ação é definida pelo método HTTP (GET, POST, DELETE), não pela URL.
-
-* **Errado\* (RPC):**
-  * `GET /getUsers`
-  * `POST /createUser`
-  * `POST /deleteUser?id=1`
-* **Certo\* (REST):**
-  * `GET /users`
-  * `POST /users`
-  * `DELETE /users/1`
-
-\* Note que certo e errado aqui é referente a estar de acordo com os padrões REST, mas não significa que a abordagem RPC não deva ser utilizada. Se quiser se aprofundar um pouco mais, você pode dar uma olhada nesse [artigo](https://medium.com/lfdev-blog/e-agora-api-rest-ou-rpc-c24664d4755b)
-
-## Coleções vs Documentos
-
-As URIs geralmente seguem um padrão hierárquico:
-
-1. **Coleção:** Uma lista de recursos.
-
-   * URI: `/produtos`
-   * Semântica: "O catálogo inteiro de produtos".
-2. **Documento (Recurso Singular):** Um item específico dentro da coleção.
-
-   * URI: `/produtos/123`
-   * Semântica: "O produto com ID 123".
-
-
-
-## Singleton Resources (Recursos Únicos)
-
-Às vezes, um recurso só existe uma vez dentro de um contexto.
-Exemplo: "O perfil do usuário logado".
-
-* `/me` ou `/user/profile`
-  * Não precisa de ID, pois o token de autenticação já diz quem é o usuário.
-
-
-
-## Identificadores
-
-O identificador (ID) é crucial para alcançar um recurso específico.
-
-* **IDs Numéricos:** `/users/105` (Fácil, legível, mas expõe quantos usuários você tem).
-* **UUIDs:** `/users/a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11` (Seguro, único globalmente, mas feio na URL).
-* **Slugs:** `/artigos/como-aprender-backend` (Ótimo para SEO e legibilidade).
-
-
-
-## Como fazer isso com FastAPI
-
-No FastAPI, nós definimos a **estrutura do recurso** usando modelos Pydantic. Isso cria o contrato de dados (Schema).
-
-```python
-from pydantic import BaseModel
-from typing import List
-
-# Definindo o "Recurso" Produto
-class Product(BaseModel):
-    id: int
-    name: str
-    price: float
-    in_stock: bool
-
-# Endpoint que retorna uma Coleção (Lista de Produtos)
-# Note o List[Product] - O FastAPI entende que é uma coleção
-@app.get("/products", response_model=List[Product])
-def get_products():
-    return [
-        {"id": 1, "name": "Teclado", "price": 100.0, "in_stock": True},
-        {"id": 2, "name": "Mouse", "price": 50.0, "in_stock": False}
-    ]
-
-# Endpoint que retorna um Recurso Singular (Um Produto)
-@app.get("/products/{product_id}", response_model=Product)
-def get_product(product_id: int):
-    return {"id": product_id, "name": "Teclado", "price": 100.0, "in_stock": True}
-```
-
-
-
-## Checklist rápido
-
-* [ ] Minhas URLs usam apenas substantivos? (Nada de `/calcularFrete`).
-* [ ] Consigo distinguir claramente Coleções (`/users`) de Recursos (`/users/1`)?
-* [ ] Meus IDs são estáveis (não mudam com o tempo)?
-
-
-
-## Fontes
-
-* **[Microsoft]:** [REST API Design Guidelines - Resources](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#organize-the-api-design-around-resources)
-* **[Google AIP]:** [Resource Names](https://google.aip.dev/122)
 
 ---
 # 6.4. Convenções de rotas RESTful
@@ -1125,3 +864,263 @@ Para a maioria dos projetos, a simplicidade do `/v1/` na URL vence qualquer argu
 *   **[Microsoft]:** [API Versioning](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#versioning-a-restful-web-api)
 *   **[Stripe]:** [Versioning Strategy (Eles usam Data)](https://stripe.com/docs/api/versioning)
 *   **[RestfulAPI]:** [Versioning REST APIs](https://restfulapi.net/versioning/)
+---
+# 6.10. HATEOAS
+
+**HATEOAS** (Hypermedia As The Engine Of Application State) é a restrição final do REST, aquela que separa "APIs HTTP" de "APIs verdadeiramente REST".
+É também a mais ignorada.
+
+
+
+## O Conceito
+
+Imagine que você entra num site e não tem links. Para ir para a página de contato, você tem que digitar `/contato` na barra do navegador.
+É assim que a maioria das APIs funciona hoje: o cliente tem que ler a documentação para saber as URLs.
+
+Com HATEOAS, a API fornece os **links** para as próximas ações possíveis junto com a resposta.
+
+### Exemplo sem HATEOAS (Padrão)
+```json
+{
+  "id": 10,
+  "status": "pendente",
+  "valor": 100
+}
+```
+O cliente precisa saber "hardcoded" que para pagar deve chamar `POST /pedidos/10/pagar`.
+
+### Exemplo com HATEOAS
+```json
+{
+  "id": 10,
+  "status": "pendente",
+  "valor": 100,
+  "_links": {
+    "self": { "href": "/pedidos/10" },
+    "pagar": { "href": "/pedidos/10/pagar", "method": "POST" },
+    "cancelar": { "href": "/pedidos/10", "method": "DELETE" }
+  }
+}
+```
+Se o pedido mudar para "pago", a API para de enviar o link de "pagar". O front-end poderia (teoricamente) apenas renderizar os botões baseados nos links que recebeu, sem lógica de negócio duplicada (`if status == pendente then show button`).
+
+
+
+## A Realidade Prática
+
+Embora lindo na teoria, HATEOAS adiciona complexidade e tamanho ao payload.
+Grandes APIs públicas (PayPal) usam.
+APIs internas e de startups raramente usam, pois o acoplamento entre front e back já é alto e conhecido via documentação (OpenAPI).
+
+**Vale a pena?**
+Para APIs públicas de longa vida: Sim.
+Para seu backend interno do app mobile: Provavelmente não (Overengineering). O OpenAPI costuma ser suficiente como contrato.
+
+
+
+## Checklist rápido
+
+*   [ ] Entendi que HATEOAS significa a API "guiar" o cliente através de links?
+*   [ ] Sei que isso permite que o servidor mude URLs sem quebrar o cliente?
+*   [ ] Avaliei se a complexidade extra vale a pena para o meu projeto?
+
+
+
+## Fontes
+
+*   **[Fielding]:** [REST APIs must be hypertext-driven](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
+*   **[Spring]:** [Understanding HATEOAS](https://spring.io/understanding/HATEOAS)
+*   **[PayPal]:** [HATEOAS in PayPal API](https://developer.paypal.com/api/rest/responses/#hateoas-links)
+
+---
+# 6.11. Checklist de design REST
+
+Antes de entregar sua API, passe por este checklist. Ele resume as boas práticas discutidas em todo o capítulo.
+
+
+
+## URIs e Recursos
+*   [ ] **Substantivos:** Usei substantivos em vez de verbos? (`/users` ✅, `/getUsers` ❌)
+*   [ ] **Plural:** Usei plural para coleções? (`/users` ✅)
+*   [ ] **Kebab-case:** Usei hífens para separar palavras? (`/customer-orders` ✅)
+*   [ ] **Hierarquia:** O aninhamento faz sentido? (`/users/1/orders` ✅)
+
+## Métodos HTTP (Verbos)
+*   [ ] **GET:** Usado para leitura (safe)? Retorna 200 OK?
+*   [ ] **POST:** Usado para criar (não idempotente)? Retorna 201 Created?
+*   [ ] **PUT:** Usado para substituição completa (idempotente)?
+*   [ ] **PATCH:** Usado para atualização parcial?
+*   [ ] **DELETE:** Usado para remover? Retorna 204 No Content?
+
+## Respostas e Códigos
+*   [ ] **Status Codes:** Uso os códigos corretos (200, 201, 204, 400, 401, 403, 404, 500)?
+*   [ ] **JSON:** O Content-Type é `application/json`?
+*   [ ] **Envelope:** Evitei envelope desnecessário (`{ "data": ... }`) exceto para paginação/meta?
+
+## Segurança e Performance
+*   [ ] **Filtros:** Estão na query string? (`?status=active`)
+*   [ ] **Paginação:** Existe limite padrão (limit) para não quebrar o banco?
+*   [ ] **Stateless:** A API não depende de sessão na memória?
+*   [ ] **HTTPS:** A API roda exclusivamente sobre HTTPS?
+
+
+
+Este checklist não garante que sua API é perfeita, mas garante que ela está nos 10% melhores em termos de consistência e padrão de mercado.
+
+
+
+## Fontes Gerais de Design
+
+*   **[Microsoft]:** [REST API Design Guidelines](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
+*   **[Google]:** [Google Cloud API Design Guide](https://cloud.google.com/apis/design)
+*   **[Zalando]:** [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
+
+---
+# 6.12. Implementação Prática com FastAPI
+
+Esta seção consolida os conceitos de Recursos, Verbos, Status Codes e Contratos que vimos até aqui em um exemplo prático e funcional usando FastAPI.
+
+
+
+## Estrutura do Projeto
+
+Vamos imaginar um cenário simples de cadastro de usuários. Em um projeto real, você organizaria em múltiplos arquivos, mas para fins didáticos, faremos tudo em um `main.py`.
+
+```text
+meu_projeto/
+├── main.py       # Código da API
+└── requirements.txt
+```
+
+**Instalação:**
+```bash
+pip install fastapi uvicorn
+```
+
+
+
+## Código da Implementação
+
+Copie este código para seu arquivo `main.py`. Ele implementa um CRUD completo de Usuários seguindo os princípios REST.
+
+```python
+from fastapi import FastAPI, HTTPException, status
+from pydantic import BaseModel
+from typing import List, Optional
+from random import randint
+
+app = FastAPI()
+
+#  1. CONTRATOS (Modelos Pydantic) 
+# Define o formato dos dados (Schema)
+
+class UserBase(BaseModel):
+    name: str
+    email: str
+    is_active: bool = True
+
+class UserCreate(UserBase):
+    # Herdamos de UserBase. 
+    # Usado no POST. A senha seria adicionada aqui num caso real.
+    pass
+
+class UserResponse(UserBase):
+    # Usado na resposta (GET/POST).
+    # Adicionamos o ID que é gerado pelo servidor.
+    id: int
+
+    class Config:
+        from_attributes = True
+
+#  2. BANCO DE DADOS FAKE 
+# Em memória, apenas para exemplo
+fake_db = []
+
+#  3. IMPLEMENTAÇÃO REST 
+
+# GET /users (Coleção)
+@app.get("/users", response_model=List[UserResponse])
+def list_users(skip: int = 0, limit: int = 10):
+    # Implementa paginação via Query Params
+    return fake_db[skip : skip + limit]
+
+# GET /users/{user_id} (Recurso Singular)
+@app.get("/users/{user_id}", response_model=UserResponse)
+def get_user(user_id: int):
+    # Procura o usuário
+    for user in fake_db:
+        if user["id"] == user_id:
+            return user
+    
+    # Se não achar, retorna 404 (Erro do Cliente)
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND, 
+        detail="User not found"
+    )
+
+# POST /users (Criação)
+@app.post("/users", status_code=status.HTTP_201_CREATED, response_model=UserResponse)
+def create_user(user: UserCreate):
+    # Simula geração de ID
+    new_id = randint(1, 1000)
+    
+    # Transforma o modelo Pydantic em dicionário e adiciona ID
+    user_dict = user.model_dump()
+    user_dict["id"] = new_id
+    
+    # Salva no "banco"
+    fake_db.append(user_dict)
+    
+    # Retorna o recurso criado (com ID) e Status 201
+    return user_dict
+
+# DELETE /users/{user_id} (Remoção)
+@app.delete("/users/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_user(user_id: int):
+    # Procura e remove
+    for index, user in enumerate(fake_db):
+        if user["id"] == user_id:
+            fake_db.pop(index)
+            return # Retorna vazio (204)
+            
+    # Se não existir, 404
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND, 
+        detail="User not found"
+    )
+
+# PUT /users/{user_id} (Atualização Completa)
+@app.put("/users/{user_id}", response_model=UserResponse)
+def update_user(user_id: int, user_update: UserCreate):
+    for index, user in enumerate(fake_db):
+        if user["id"] == user_id:
+            # Substitui os dados
+            updated_user = user_update.model_dump()
+            updated_user["id"] = user_id # Mantém o mesmo ID
+            fake_db[index] = updated_user
+            return updated_user
+            
+    raise HTTPException(status_code=404, detail="User not found")
+```
+
+
+
+## Como testar
+
+O FastAPI gera automaticamente uma documentação interativa (Swagger UI) que é perfeita para testar APIs REST.
+
+1.  Rode o servidor:
+    ```bash
+    uvicorn main:app --reload
+    ```
+2.  Abra no navegador:
+    `http://127.0.0.1:8000/docs`
+
+### O que observar:
+
+1.  **POST:** Tente criar um usuário. Veja que a resposta vem com `id` e o status é `201`.
+2.  **GET (Lista):** Veja que retorna um Array `[]`.
+3.  **GET (Item):** Tente buscar um ID inexistente e veja o erro `404`.
+4.  **DELETE:** Apague um usuário e veja que a resposta não tem corpo (Body), apenas o status `204`.
+
+Esta implementação cobre 90% dos casos de uso de uma API REST moderna.
