@@ -5,7 +5,7 @@ category: Backend
 order: 10
 ---
 
-# 10.1. Concorrência versus paralelismo
+# 10.1 Concorrência versus paralelismo
 
 Quando uma API está em produção, ela raramente atende um usuário por vez. Várias requisições chegam ao mesmo tempo, cada uma com seu próprio tempo de execução e suas próprias esperas. O servidor precisa decidir como organizar esse trabalho para continuar respondendo com previsibilidade.
 
@@ -81,7 +81,7 @@ O objetivo, em ambos os casos, é manter o servidor responsivo e previsível mes
 [https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf) 
 
 ---
-# 10.2. Workloads CPU-bound e I/O-bound
+# 10.2 Workloads CPU-bound e I/O-bound
 
 Depois de entender a diferença entre concorrência e paralelismo, o próximo passo é aprender a classificar o tipo de trabalho que uma requisição executa. Isso importa porque o gargalo muda completamente a estratégia.
 
@@ -178,7 +178,7 @@ https://www.kegel.com/c10k.html
 
 
 ---
-# 10.3. Impactos em servidores web
+# 10.3 Impactos em servidores web
 
 
 Quando você coloca uma API no ar, ela passa a ser um sistema que recebe tráfego, organiza requisições e disputa recursos limitados. O servidor web é justamente a camada que sustenta esse ciclo: aceitar conexões, transformar dados em requisições e coordenar a execução do seu código para produzir respostas.
@@ -239,7 +239,7 @@ https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf
 
 
 ---
-# 10.4. Backpressure e sistemas sob carga
+# 10.4 Backpressure e sistemas sob carga
 
 Quando uma API começa a receber mais requisições do que consegue concluir, o problema não é apenas ficar mais lenta. O problema é que ela pode entrar em um ciclo em que cada segundo piora o próximo.
 

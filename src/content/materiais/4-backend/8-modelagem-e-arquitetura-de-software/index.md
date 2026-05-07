@@ -5,7 +5,7 @@ category: Backend
 order: 8
 ---
 
-# 8.0. Visão Geral: Modelagem e Arquitetura
+# 8.0 Visão Geral: Modelagem e Arquitetura
 
 Bem-vindo à **Parte 3**. Até agora, falamos sobre *como* construir APIs (HTTP, REST, JSON). Agora, vamos falar sobre *como* organizar sistemas para que eles sobrevivam ao tempo e ao crescimento.
 
@@ -45,7 +45,7 @@ Você pode escrever o melhor código Python do mundo, mas se a arquitetura for r
 Arquitetura é o que permite que 50 desenvolvedores trabalhem no mesmo produto sem um quebrar o código do outro.
 
 ---
-# 8.1. Requisitos funcionais e não funcionais
+# 8.1 Requisitos funcionais e não funcionais
 
 Quando começamos a desenhar um sistema, a primeira pergunta é: "O que ele deve fazer?". Mas tão importante quanto isso é: "Como ele deve se comportar?".
 
@@ -111,7 +111,7 @@ Em sistemas distribuídos (como microserviços ou bancos replicados), o Teorema 
 *   **AP (Disponibilidade):** Se a rede cair, eu respondo com o que tenho, mesmo que desatualizado. (Ex: Feed do Instagram, Likes).
 
 ---
-# 8.2. Limites, contexto e responsabilidades
+# 8.2 Limites, contexto e responsabilidades
 
 O maior erro em sistemas grandes não é técnico, é semântico. Quando a palavra "Produto" significa coisas diferentes para o time de Vendas e para o time de Logística, você tem um problema.
 
@@ -172,7 +172,7 @@ class LegadoAdapter:
 Graças à ACL, sua regra de negócio só conhece `Pedido` e nem sabe que o XML existe. Se o legado mudar, você só arruma o `Adapter`.
 
 ---
-# 8.3. Coesão e acoplamento
+# 8.3 Coesão e acoplamento
 
 Estes são os dois pilares fundamentais da qualidade de software. Se você entender isso, entenderá porque microserviços, classes ou funções são bons ou ruins.
 
@@ -241,7 +241,7 @@ Isso é ruim porque qualquer mudança no sistema (email, banco, regras de cpf) o
 *   **Connascence of Meaning:** "O valor -1 significa erro". Se você mudar para `None`, quebra quem espera `-1`. (Perigoso).
 
 ---
-# 8.4. Monólitos, monólitos modulares e microserviços
+# 8.4 Monólitos, monólitos modulares e microserviços
 
 A decisão de "quebrar" um sistema é uma das mais caras e arriscadas. Não faça por hype.
 
@@ -294,7 +294,7 @@ Não use microserviços se você não tiver:
 3. **Automação de Deploy (CI/CD):** Se o deploy é manual, microserviços serão um inferno.
 
 ---
-# 8.5. Comunicação síncrona e assíncrona
+# 8.5 Comunicação síncrona e assíncrona
 
 Como seus serviços conversam define a resiliência do sistema.
 
@@ -347,7 +347,7 @@ def criar_pedido(pedido):
 ```
 
 ---
-# 8.6. Padrões arquiteturais em APIs
+# 8.6 Padrões arquiteturais em APIs
 
 Não jogue código solto no `main.py`. Use padrões para organizar a casa.
 
@@ -394,7 +394,7 @@ src/
     *   O Core **não depende** do Repository concreto. Ele depende de uma abstração. Isso é a **Inversão de Dependência**.
 
 ---
-# 8.7. Modelos de documentação arquitetural (C4)
+# 8.7 Modelos de documentação arquitetural (C4)
 
 Como documentar arquitetura sem criar diagramas gigantes que ninguém entende? O Modelo C4 resolve isso usando níveis de zoom, como o Google Maps.
 
@@ -429,7 +429,7 @@ Diagramas no Visio/Draw.io morrem. O ideal é usar **Diagrams as Code**.
 Ferramentas como **Structurizr** permitem escrever o modelo C4 em código (DSL) e gerar os desenhos automaticamente. Assim, a arquitetura fica versionada no Git.
 
 ---
-# 8.8. Registros de decisão arquitetural (ADR)
+# 8.8 Registros de decisão arquitetural (ADR)
 
 Você já entrou num projeto e pensou: *"Por que diabos escolheram MongoDB para um sistema financeiro?"*
 Sem documentação, isso vira "conhecimento tribal" ou crítica vazia. O ADR (Architecture Decision Record) serve para registrar o **contexto** e a **decisão** no momento em que ela foi tomada.

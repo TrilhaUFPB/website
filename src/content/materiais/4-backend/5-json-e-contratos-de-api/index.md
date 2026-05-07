@@ -5,7 +5,7 @@ category: Backend
 order: 5
 ---
 
-# 5.0. Visão Geral: Dados e Contratos
+# 5.0 Visão Geral: Dados e Contratos
 
 Bem-vindo à **Parte 2** da trilha. Na Parte 1, entendemos como o HTTP funciona (o "transporte"). Agora, vamos focar na **carga** que esse transporte leva.
 
@@ -43,7 +43,7 @@ Se você muda o formato de um dado sem aviso, o sistema quebra. Se você não va
 Este módulo vai te dar a mentalidade de **"API First"**: pensar no contrato e nos dados antes mesmo de escrever a primeira linha de lógica de negócio.
 
 ---
-# 5.1. JSON como formato de troca de dados
+# 5.1 JSON como formato de troca de dados
 
 No desenvolvimento de backend moderno, sistemas precisam conversar entre si. O **JSON (JavaScript Object Notation)** se tornou a língua universal para essa conversa.
 
@@ -162,7 +162,7 @@ Note que `False` (Python) virou `false` (JSON). Essa conversão de tipos é auto
 *   **[FAST]:** FastAPI e JSON (fastapi.tiangolo.com)
 
 ---
-# 5.2. Tipos, estruturas e armadilhas comuns
+# 5.2 Tipos, estruturas e armadilhas comuns
 
 O JSON parece simples, mas a simplicidade esconde armadilhas que podem causar bugs sérios em produção. O problema principal é a **conversão de tipos**: o que é um número no seu banco de dados nem sempre chega igual no JSON, e vice-versa.
 
@@ -260,7 +260,7 @@ Vamos ver um JSON mal formatado e como corrigi-lo.
 *   **[Google Style]:** JSON Style Guide (Google)
 
 ---
-# 5.3. Serialização e deserialização
+# 5.3 Serialização e deserialização
 
 O seu código não "fala" JSON nativamente. Ele fala objetos Python (dicionários, listas, classes). Para que o dado saia da memória do seu servidor e viaje pela rede, ocorre um processo de transformação.
 
@@ -357,7 +357,7 @@ Se o JSON de entrada estiver errado (ex: `preco` for "abc"), o processo de deser
 *   **[OWASP]:** Deserialization Cheat Sheet
 
 ---
-# 5.4. Contratos de entrada e saída
+# 5.4 Contratos de entrada e saída
 
 Uma API robusta funciona com base em contratos claros. "Contrato" aqui não é burocracia, é a definição exata do que entra e do que sai.
 
@@ -475,7 +475,7 @@ _Implementação de DTOs usando Pydantic_
 *   **[OWASP]:** Mass Assignment Prevention
 
 ---
-# 5.5. Evolução de contratos e compatibilidade
+# 5.5 Evolução de contratos e compatibilidade
 
 Uma API é "para sempre". Diferente de um site que você pode atualizar o HTML e todos os usuários veem a versão nova instantaneamente, uma API tem clientes (apps mobile, integrações de parceiros) que podem demorar meses ou anos para atualizar.
 
@@ -561,7 +561,7 @@ Em backend, "mudar rapidinho" um nome de campo pode derrubar o aplicativo móvel
 * **[Google]:** API Design Guide - Compatibility
 
 ---
-# 5.6. OpenAPI como contrato formal
+# 5.6 OpenAPI como contrato formal
 
 Até agora falamos de contratos conceituais. Mas como formalizar isso tecnicamente? Como documentar de um jeito que máquinas e humanos entendam?
 
@@ -656,7 +656,7 @@ paths:
 *   **[FAST]:** FastAPI e OpenAPI
 
 ---
-# 5.7. Modelagem consistente de erros
+# 5.7 Modelagem consistente de erros
 
 Nada frustra mais um desenvolvedor frontend do que receber um erro `500 Internal Server Error` sem explicação, ou cada endpoint retornar erro num formato diferente.
 

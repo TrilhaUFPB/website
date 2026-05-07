@@ -5,7 +5,7 @@ category: Backend
 order: 4
 ---
 
-# 4.1. O que é HTTP
+# 4.1 O que é HTTP
 
 O HTTP (Hypertext Transfer Protocol) é um protocolo de comunicação para documentos hipermídia como HTTP, utilizado na web e que funciona por meio do modelo cliente-servidor que já foi trabalho anteriormente,  além disso outro ponto importante é o fato dele ser stateless(sem estado), ou seja as respostas do servidor não podem depender de requisições anteriores.
 
@@ -138,7 +138,7 @@ Repare no que esse par de mensagens já comunica, mesmo sem você conhecer o bac
 
 ---
 
-# 4.2. Estrutura de uma requisição HTTP
+# 4.2 Estrutura de uma requisição HTTP
 
 Quando um cliente acessa uma API, existe um caminho por trás: ele precisa localizar o servidor, abrir uma conexão e, em muitos casos, estabelecer um canal seguro. Depois que esse caminho está pronto, o que efetivamente viaja entre cliente e servidor é uma mensagem HTTP.
 
@@ -308,7 +308,7 @@ O que muda em relação ao primeiro exemplo:
 
 
 ---
-# 4.3. Estrutura de uma resposta HTTP
+# 4.3 Estrutura de uma resposta HTTP
 
 Depois que o servidor recebe uma requisição e decide o que fazer com ela, ele devolve uma resposta HTTP. Essa resposta é a forma padronizada de dizer ao cliente duas coisas:
 
@@ -455,7 +455,7 @@ Aqui não existe corpo. O status já comunica que a operação deu certo e que n
 
 
 ---
-# 4.4. Métodos HTTP e semântica
+# 4.4 Métodos HTTP e semântica
 
 Na estrutura de uma requisição, o método aparece logo no começo. Ele não é um detalhe de sintaxe. Ele é a forma padrão de expressar a intenção do cliente.
 
@@ -602,7 +602,7 @@ A intenção é mudar apenas um campo sem reenviar todo o recurso.
 
 
 ---
-# 4.5. Códigos de status HTTP
+# 4.5 Códigos de status HTTP
 
 Quando o servidor responde, a primeira informação que o cliente costuma olhar é o status code. Ele é um número que resume o resultado da requisição de forma padronizada, antes mesmo do cliente ler o corpo.
 
@@ -834,7 +834,7 @@ Esse exemplo é útil porque mostra que o status pode refletir um problema na ca
 
 
 ---
-# 4.6. Cabeçalhos fundamentais para APIs
+# 4.6 Cabeçalhos fundamentais para APIs
 
 Até aqui você já viu que a linha inicial da requisição define a intenção do cliente e que o status code resume o resultado. Falta uma peça que amarra o comportamento real da comunicação: os cabeçalhos.
 
@@ -1044,7 +1044,7 @@ Repare que o cliente consegue confirmar que o conteúdo é o mesmo sem receber o
 
 
 ---
-# 4.7. Negociação de conteúdo
+# 4.7 Negociação de conteúdo
 
 Até aqui você já viu que cabeçalhos como `Accept` e `Content-Type` dão contexto para a comunicação. Negociação de conteúdo é exatamente a parte do HTTP que usa esses cabeçalhos para responder a uma pergunta simples:
 
@@ -1229,7 +1229,7 @@ Aqui, o dado principal do erro é o código `error`. A mensagem pode variar por 
 [https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
 
 ---
-# 4.8. Caching em APIs HTTP
+# 4.8 Caching em APIs HTTP
 
 Em HTTP, cache é uma estratégia para evitar trabalho repetido. Se uma resposta pode ser reutilizada, o cliente ou algum intermediário pode guardar essa resposta e evitar pedir a mesma coisa de novo.
 
@@ -1420,7 +1420,7 @@ Aqui a regra é clara: não guarde.
 
 
 ---
-# 4.9. Cookies, sessões e APIs
+# 4.9 Cookies, sessões e APIs
 
 HTTP é stateless por padrão. Isso significa que cada requisição chega ao servidor como uma mensagem independente. Para muitas APIs, isso é ótimo: o cliente envia tudo o que o servidor precisa em cada chamada e pronto.
 
@@ -1571,7 +1571,7 @@ A abordagem comum é manter dados sensíveis no servidor e usar o cookie apenas 
 
 [https://www.rfc-editor.org/rfc/rfc6265](https://www.rfc-editor.org/rfc/rfc6265)
 ---
-# 4.10. CORS e políticas de mesma origem
+# 4.10 CORS e políticas de mesma origem
 
 Quando você está construindo uma API, existe um tipo de consumidor muito comum: um front-end rodando no navegador. E o navegador tem regras de segurança próprias que não existem do mesmo jeito em scripts e backends.
 
@@ -1733,7 +1733,7 @@ A partir daí, o navegador autoriza a requisição real.
 
 
 ---
-# 4.11. HTTP/1.1, HTTP/2 e HTTP/3
+# 4.11 HTTP/1.1, HTTP/2 e HTTP/3
 
 Até aqui você aprendeu o que é HTTP e como ele organiza requisições e respostas. Agora entra uma dúvida comum quando você começa a olhar ferramentas, logs e configurações de deploy: se HTTP é HTTP, por que existem versões diferentes.
 

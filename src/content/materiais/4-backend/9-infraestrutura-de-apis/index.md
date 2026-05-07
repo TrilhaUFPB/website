@@ -5,7 +5,7 @@ category: Backend
 order: 9
 ---
 
-# 9.0. Visão Geral: Infraestrutura de APIs
+# 9.0 Visão Geral: Infraestrutura de APIs
 
 Se a Arquitetura (Seção 8) é o projeto da casa, a Infraestrutura (Seção 9) é o encanamento, a elétrica e a segurança.
 
@@ -38,7 +38,7 @@ Muitos problemas que tentamos resolver com código (ex: Retry, Circuit Breaker, 
 Entender essas ferramentas evita que você reinvente a roda e permite construir sistemas que são resilientes por padrão, não por sorte.
 
 ---
-# 9.1. API Gateway e suas responsabilidades
+# 9.1 API Gateway e suas responsabilidades
 
 Em uma arquitetura de microserviços (ou até monólitos distribuídos), você não quer expor seus serviços internos diretamente para a internet. O API Gateway é o "porteiro".
 
@@ -104,7 +104,7 @@ Se um cliente exceder 100 req/s, o Traefik barra a requisição ANTES dela chega
 *   **AWS API Gateway:** Gerenciado, serverless. Cobra por requisição.
 
 ---
-# 9.2. Comunicação entre serviços
+# 9.2 Comunicação entre serviços
 
 Quando o Serviço A precisa falar com o Serviço B, como eles se encontram e conversam? Em ambientes de nuvem, IPs são efêmeros (mudam a cada deploy). Você não pode "hardcodar" IPs.
 
@@ -184,7 +184,7 @@ except Exception as e:
 **Dica:** Use REST para borda (falar com frontend) e gRPC para o miolo (serviço falando com serviço) devido à eficiência do formato binário.
 
 ---
-# 9.3. Service Mesh
+# 9.3 Service Mesh
 
 Quando você tem 100 microserviços, configurar Retry, Timeout, Circuit Breaker e mTLS em cada um deles (e em cada linguagem diferente) é impossível. O Service Mesh resolve isso movendo essa lógica para a infraestrutura.
 
@@ -247,7 +247,7 @@ spec:
 Com esse arquivo aplicado no Kubernetes, o desenvolvedor Python não precisa programar lógica de retry nem de balanceamento de carga. O Mesh cuida disso.
 
 ---
-# 9.4. Estratégias de deploy e release
+# 9.4 Estratégias de deploy e release
 
 Como colocar código novo em produção sem derrubar o sistema ou afetar todos os usuários com um bug?
 

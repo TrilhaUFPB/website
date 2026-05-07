@@ -5,7 +5,7 @@ category: Backend
 order: 6
 ---
 
-# 6.1. REST como estilo arquitetural
+# 6.1 REST como estilo arquitetural
 
 Muitas pessoas acham que REST é apenas "retornar JSON em vez de XML" ou "usar URLs bonitas". Mas REST (**Re**presentational **S**tate **T**ransfer) é muito mais profundo que isso.
 
@@ -66,7 +66,7 @@ A maioria das APIs que se dizem REST hoje em dia não implementam 100% da teoria
 *   **[Oracle]:** [Definição de REST](https://www.oracle.com/br/cloud/what-is-rest/)
 
 ---
-# 6.2. Restrições do REST
+# 6.2 Restrições do REST
 
 Para um sistema ser considerado verdadeiramente REST, ele deve aderir a 6 restrições arquiteturais. Cada uma delas existe para garantir escalabilidade e simplicidade.
 
@@ -142,7 +142,7 @@ Muitos desenvolvedores violam o REST criando APIs que dependem de "sessão no se
 * **[AWS]:** [Statelessness in REST](https://aws.amazon.com/what-is/restful-api/)
 
 ---
-# 6.3. Recursos, coleções e identificadores
+# 6.3 Recursos, coleções e identificadores
 
 No coração do REST está o conceito de **Recurso**.
 Esqueça as tabelas do banco de dados por um momento. Pense no que sua API expõe para o mundo.
@@ -254,7 +254,7 @@ def get_product(product_id: int):
 * **[Google AIP]:** [Resource Names](https://google.aip.dev/122)
 
 ---
-# 6.3.1. Anatomia Prática de uma Requisição REST
+# 6.3.1 Anatomia Prática de uma Requisição REST
 
 Agora que você entendeu o conceito abstrato de **Recurso** (Seção 6.3), vamos descer para a prática. Como transformar um recurso abstrato em uma requisição HTTP concreta?
 
@@ -391,7 +391,7 @@ O HTTP tem dezenas de códigos, mas no dia a dia REST você usará estes 90% do 
 4. [ ] Não encontrou? Retorne **404** (não retorne 200 com array vazio se pediu um ID específico).
 
 ---
-# 6.4. Convenções de rotas RESTful
+# 6.4 Convenções de rotas RESTful
 
 Desenhar URLs é uma arte. Uma URL bem desenhada é intuitiva: um desenvolvedor consegue "adivinhar" como acessar um recurso sem ler a documentação.
 
@@ -500,7 +500,7 @@ app.include_router(router)
 *   **[Zalando]:** [RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/#naming)
 
 ---
-# 6.5. CRUD mapeado para HTTP
+# 6.5 CRUD mapeado para HTTP
 
 Uma das maiores vantagens do REST é aproveitar a semântica que o protocolo HTTP já possui. Não reinvente a roda.
 
@@ -609,7 +609,7 @@ def delete_item(item_id: int):
 *   **[RFC 7231]:** [Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content](https://datatracker.ietf.org/doc/html/rfc7231#section-4)
 
 ---
-# 6.6. Filtros, paginação e ordenação
+# 6.6 Filtros, paginação e ordenação
 
 APIs reais lidam com muitos dados. Retornar `GET /users` e devolver 1 milhão de linhas vai derrubar seu banco e a rede do cliente. Você precisa limitar e organizar isso.
 
@@ -680,7 +680,7 @@ Seus metadados de paginação devem ir no corpo da resposta (envelope) ou nos He
 *   **[Microsoft]:** [Paging and Filtering Best Practices](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#filtering-and-pagination)
 
 ---
-# 6.7. Atualizações parciais e PATCH
+# 6.7 Atualizações parciais e PATCH
 
 Muitas vezes o cliente quer mudar apenas o `status` de um pedido, sem precisar reenviar o endereço, lista de produtos e valor total. É aqui que entra o **PATCH**.
 
@@ -749,7 +749,7 @@ Aceite um JSON parcial, valide apenas os campos que vieram, e atualize no banco 
 *   **[William Durand]:** [Please don't use PUT (Use PATCH)](https://williamdurand.fr/2014/02/14/please-do-not-use-put-always-use-patch/)
 
 ---
-# 6.8. Idempotência e retries
+# 6.8 Idempotência e retries
 
 Na Web, a rede falha. O cliente envia uma requisição, o servidor processa, cobra o cartão de crédito, mas a resposta se perde na volta (timeout).
 O cliente não sabe se deu certo. O que ele faz? Tenta de novo (Retry).
@@ -802,7 +802,7 @@ Dessa forma, o cliente pode tentar de novo (retry) quantas vezes quiser sem medo
 *   **[RFC 7231]:** [Idempotent Methods definition](https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2)
 
 ---
-# 6.9. Versionamento de APIs
+# 6.9 Versionamento de APIs
 
 Toda API de sucesso um dia vai precisar mudar de forma incompatível (Breaking Change). Quando isso acontece, você precisa de versionamento.
 
@@ -865,7 +865,7 @@ Para a maioria dos projetos, a simplicidade do `/v1/` na URL vence qualquer argu
 *   **[Stripe]:** [Versioning Strategy (Eles usam Data)](https://stripe.com/docs/api/versioning)
 *   **[RestfulAPI]:** [Versioning REST APIs](https://restfulapi.net/versioning/)
 ---
-# 6.10. HATEOAS
+# 6.10 HATEOAS
 
 **HATEOAS** (Hypermedia As The Engine Of Application State) é a restrição final do REST, aquela que separa "APIs HTTP" de "APIs verdadeiramente REST".
 É também a mais ignorada.
@@ -933,7 +933,7 @@ Para seu backend interno do app mobile: Provavelmente não (Overengineering). O 
 *   **[PayPal]:** [HATEOAS in PayPal API](https://developer.paypal.com/api/rest/responses/#hateoas-links)
 
 ---
-# 6.11. Checklist de design REST
+# 6.11 Checklist de design REST
 
 Antes de entregar sua API, passe por este checklist. Ele resume as boas práticas discutidas em todo o capítulo.
 
@@ -976,7 +976,7 @@ Este checklist não garante que sua API é perfeita, mas garante que ela está n
 *   **[Zalando]:** [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
 
 ---
-# 6.12. Implementação Prática com FastAPI
+# 6.12 Implementação Prática com FastAPI
 
 Esta seção consolida os conceitos de Recursos, Verbos, Status Codes e Contratos que vimos até aqui em um exemplo prático e funcional usando FastAPI.
 

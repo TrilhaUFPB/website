@@ -5,7 +5,7 @@ category: Backend
 order: 2
 ---
 
-# 2.1. Cliente–Servidor: responsabilidades e limites
+# 2.1 Cliente–Servidor: responsabilidades e limites
 
 Backend existe porque, na Web, quase tudo acontece como uma **conversa entre duas partes**:
 
@@ -181,7 +181,7 @@ https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server
 
 ---
 
-# 2.2. Onde o backend roda (processo, porta, host)
+# 2.2 Onde o backend roda (processo, porta, host)
 
 Na seção anterior, vimos que o servidor é o responsável por processar as regras e devolver respostas. Mas, para que ele consiga fazer isso, ele não pode ser apenas um código parado no disco. Ele precisa virar um programa ativo, ocupando um lugar no sistema operacional e na rede.
 
@@ -356,7 +356,7 @@ https://developer.mozilla.org/pt-BR/docs/Web/API/URL/port
 
 ---
 
-# 2.3. Backend como produto: API como contrato
+# 2.3 Backend como produto: API como contrato
 
 Ter um servidor rodando e escutando em uma porta é apenas a parte técnica da conexão. O problema real começa quando o cliente tenta falar com ele: que formato de dados ele deve enviar? O que ele vai receber de volta? O que acontece se der erro?
 
@@ -564,7 +564,7 @@ Leituras principais:
 
 ---
 
-# 2.4. Separação entre transporte, regra de negócio e persistência
+# 2.4 Separação entre transporte, regra de negócio e persistência
 
 Para manter o contrato da API estável (como vimos na seção anterior), o código interno precisa ser organizado. Se a lógica de recepção, as regras de validação e o acesso ao banco estiverem misturados no mesmo bloco, fica quase impossível evoluir o sistema sem quebrar acidentalmente o que foi combinado com o cliente.
 
@@ -804,7 +804,7 @@ FastAPI:
   https://fastapi.tiangolo.com/tutorial/sql-databases/
 ```
 
-# 2.5. Arquitetura em camadas (visão conceitual)
+# 2.5 Arquitetura em camadas (visão conceitual)
 
 A necessidade de separar transporte, regras e persistência é clara, mas como fazer isso na estrutura das pastas e arquivos do projeto? Se cada desenvolvedor inventar seu próprio jeito de organizar essa divisão, o projeto vira uma colcha de retalhos difícil de entender.
 
@@ -1055,7 +1055,7 @@ Leituras principais:
   - lista de REST constraints, item 5 Layered system (camadas como forma de encapsular comportamento e permitir gateways/proxies)
 ```
 
-# 2.6. Anti-padrões comuns em backend iniciante
+# 2.6 Anti-padrões comuns em backend iniciante
 
 Mesmo com a arquitetura definida e o contrato estabelecido, é normal cair em armadilhas durante a implementação. O foco em "fazer funcionar logo" muitas vezes cria hábitos que, sem percebermos, quebram a separação de responsabilidades e tornam a API frágil.
 
