@@ -1,11 +1,11 @@
 ---
-title: 2. Fundamentos de Redes para APIs
+title: 3. Fundamentos de Redes para APIs
 description: Introdução em redes de computadores
 category: Backend
 order: 3
 ---
 
-# 2.1. IP, porta e socket
+# 3.1. IP, porta e socket
 
 Quando a gente fala de rede no dia a dia, é comum misturar termos como internet, web, site, servidor e rota, como se tudo fosse a mesma coisa. Nesta seção, a meta é só organizar o cenário para que IP, porta e socket façam sentido sem mistério.
 
@@ -104,7 +104,7 @@ Tanenbaum, Redes de Computadores (4ª edição):
 
 ---
 
-# 2.2. DNS e resolução de nomes
+# 3.2. DNS e resolução de nomes
 
 DNS é o sistema de nomes da internet. Ele permite que você use nomes fáceis como `api.exemplo.com` em vez de decorar endereços IP.
 
@@ -252,7 +252,7 @@ https://www.cloudflare.com/pt-br/learning/dns/what-is-dns/
 
 ---
 
-# 2.3. TCP e confiabilidade
+# 3.3. TCP e confiabilidade
 
 Depois que um cliente descobre o IP do servidor e decide a porta correta, ainda falta uma etapa essencial: transportar dados de forma confiável entre as duas máquinas.
 
@@ -402,7 +402,7 @@ https://docs.python.org/3/library/socket.html
 
 ---
 
-# 2.4. HTTPS/TLS e comunicação segura
+# 3.4. HTTPS/TLS e comunicação segura
 
 Em uma rede, dados podem atravessar roteadores, provedores, redes públicas e equipamentos que você não controla. Mesmo quando a conexão é confiável, isso não significa que ela é segura.
 
@@ -546,7 +546,7 @@ https://www.cloudflare.com/pt-br/learning/ssl/what-is-tls/
 
 ---
 
-# 2.5. Anatomia de uma URL
+# 3.5. Anatomia de uma URL
 
 Uma URL (Uniform Resource Locator) é um endereço usado para identificar e localizar um recurso. Na prática, é o que você coloca no navegador e é o que um cliente usa para chamar uma API.
 
@@ -686,7 +686,7 @@ Esse tipo de detalhe explica por que, às vezes, você vê uma URL no navegador 
 
 ---
 
-# 2.6. Proxy, reverse proxy e load balancer
+# 3.6. Proxy, reverse proxy e load balancer
 
 Em sistemas reais, uma requisição quase nunca sai do cliente e chega direto na aplicação. No meio do caminho, normalmente existem intermediários. Eles fazem o tráfego ficar mais seguro, mais rápido e mais confiável.
 
@@ -842,7 +842,7 @@ Esse é o benefício prático: você mantém um ponto de entrada estável e ganh
 
 ---
 
-# 2.7. Ambientes de execução e problemas clássicos
+# 3.7. Ambientes de execução e problemas clássicos
 
 Um backend não existe no vazio. Ele sempre está rodando em algum lugar, com alguma rede ao redor, com alguma forma de expor uma porta e, muitas vezes, com intermediários no caminho. É por isso que um sistema pode funcionar no seu computador e falhar quando você coloca em outra máquina ou em outro ambiente.
 

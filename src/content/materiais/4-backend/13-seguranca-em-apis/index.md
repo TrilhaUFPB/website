@@ -1,11 +1,11 @@
 ---
-title: 12. Segurança em APIs
+title: 13. Segurança em APIs
 description: Como implementar um API segura e o que isso significa
 category: Backend
 order: 13
 ---
 
-# 12.1 Modelo de ameaças
+# 13.1 Modelo de ameaças
 
 Antes de pensar em soluções de segurança, vale responder uma pergunta simples: o que pode dar errado, para quem, e por qual caminho?
 
@@ -139,7 +139,7 @@ https://owasp.org/www-project-threat-modeling/
 
 
 ---
-# 12.2 OWASP API Security Top 10
+# 13.2 OWASP API Security Top 10
 
 Depois de ter um modelo mental de ameaças, você precisa de um mapa prático do que mais dá errado em APIs no mundo real. É exatamente isso que o OWASP API Security Top 10 entrega: uma lista dos riscos mais comuns, com foco em como APIs falham na prática.
 
@@ -249,7 +249,7 @@ https://owasp.org/API-Security/editions/2023/en/0x11-t10/
 
 
 ---
-# 12.3 Princípios básicos de segurança
+# 13.3 Princípios básicos de segurança
 
 Os tópicos anteriores ajudam a enxergar ameaças e riscos comuns. Agora a pergunta vira: quais princípios básicos guiam decisões seguras em uma API, mesmo antes de você conhecer técnicas avançadas?
 

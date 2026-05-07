@@ -1,11 +1,11 @@
 ---
-title: 14. Mecanismos de Autenticação
+title: 15. Mecanismos de Autenticação
 description: Como implementar autenticação e autorização em uma API
 category: Backend
 order: 15
 ---
 
-# 14.1. Basic Authentication
+# 15.1. Basic Authentication
 
 É a forma mais primitiva de autenticação HTTP. Definida na RFC 7617.
 
@@ -78,7 +78,7 @@ def read_current_user(credentials: HTTPBasicCredentials = Depends(security)):
 ```
 
 ---
-# 14.2. API Keys
+# 15.2. API Keys
 
 Muito comum para autenticação máquina-máquina (SaaS, APIs Públicas). Você entrega uma chave longa para o desenvolvedor e ele envia em toda requisição.
 
@@ -151,7 +151,7 @@ async def secure_endpoint(user_data: dict = Security(get_api_key)):
 ```
 
 ---
-# 14.3. Sessões e cookies
+# 15.3. Sessões e cookies
 
 O método clássico da web "stateful" (com estado). O servidor cria um espaço na memória para aquele usuário e entrega um "crachá" (Cookie) com o ID da sessão.
 
@@ -198,7 +198,7 @@ response.set_cookie(
 ```
 
 ---
-# 14.4. JSON Web Tokens (JWT)
+# 15.4. JSON Web Tokens (JWT)
 
 O padrão da web moderna e microserviços. É **Stateless** (Sem estado). O servidor não guarda nada na memória. Todo o dado está dentro do token, assinado criptograficamente.
 
@@ -283,7 +283,7 @@ def verify_token(token: str):
 ```
 
 ---
-# 14.5. OAuth 2.0
+# 15.5. OAuth 2.0
 
 OAuth 2.0 não é sobre autenticação (quem você é), é sobre **autorização** (o que você pode acessar). Mas na prática, usamos para "Logar com Google/Facebook".
 
@@ -346,7 +346,7 @@ Um atacante pode iniciar um fluxo de login e enganar você para logar na conta *
 Não tente implementar OAuth 2.0 do zero. Use bibliotecas como `Authlib` ou `python-social-auth`.
 
 ---
-# 14.6. Mutual TLS (mTLS)
+# 15.6. Mutual TLS (mTLS)
 
 Em cenários de altíssima segurança (Zero Trust) ou comunicação entre microserviços sensíveis, não basta o cliente verificar se o servidor é seguro (o cadeado HTTPS). O servidor também quer verificar se o cliente é quem diz ser.
 
@@ -386,7 +386,7 @@ O mTLS adiciona um peso no "Handshake" inicial (troca de chaves). Em conexões d
 *   **Service Mesh:** Ferramentas como Istio implementam mTLS automaticamente, tirando essa complexidade do código da aplicação.
 
 ---
-# 14.7. Matriz de Decisão: Qual autenticação escolher?
+# 15.7. Matriz de Decisão: Qual autenticação escolher?
 
 Não existe "o melhor". Existe o melhor para o seu cenário. Use esta tabela para guiar sua decisão.
 

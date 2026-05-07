@@ -1,13 +1,13 @@
 ---
-title: 8. Infraestrutura de APIs
+title: 9. Infraestrutura de APIs
 description: Como tornar a sua implementação acessível para a internet
 category: Backend
 order: 9
 ---
 
-# 8.0. Visão Geral: Infraestrutura de APIs
+# 9.0. Visão Geral: Infraestrutura de APIs
 
-Se a Arquitetura (Seção 7) é o projeto da casa, a Infraestrutura (Seção 8) é o encanamento, a elétrica e a segurança.
+Se a Arquitetura (Seção 8) é o projeto da casa, a Infraestrutura (Seção 9) é o encanamento, a elétrica e a segurança.
 
 No desenvolvimento moderno (Cloud Native), o desenvolvedor backend não pode mais ignorar a infraestrutura. Você precisa entender onde seu código roda e como o tráfego chega até ele.
 
@@ -18,16 +18,16 @@ No desenvolvimento moderno (Cloud Native), o desenvolvedor backend não pode mai
 Vamos seguir o caminho de uma requisição, da internet até o servidor.
 
 ### A Porta de Entrada (Gateway)
-*   **Seção 8.1:** O **API Gateway**. Por que não devemos expor nossos microserviços diretamente? Como centralizar autenticação e rate limiting?
+*   **Seção 9.1:** O **API Gateway**. Por que não devemos expor nossos microserviços diretamente? Como centralizar autenticação e rate limiting?
 
 ### Encontrando o Destino (Discovery)
-*   **Seção 8.2:** Em um cluster com 100 serviços que mudam de IP toda hora, como o Serviço A encontra o Serviço B? Bem-vindo ao **Service Discovery**.
+*   **Seção 9.2:** Em um cluster com 100 serviços que mudam de IP toda hora, como o Serviço A encontra o Serviço B? Bem-vindo ao **Service Discovery**.
 
 ### Gerenciando o Tráfego (Mesh)
-*   **Seção 8.3:** Quando a comunicação fica complexa, precisamos de um "policial de trânsito". O **Service Mesh** move a lógica de retry, timeout e segurança para fora do seu código Python.
+*   **Seção 9.3:** Quando a comunicação fica complexa, precisamos de um "policial de trânsito". O **Service Mesh** move a lógica de retry, timeout e segurança para fora do seu código Python.
 
 ### Entregando Valor (Deploy)
-*   **Seção 8.4:** Como atualizar o sistema sem tirar do ar? Vamos ver estratégias de **Blue/Green**, **Canary** e **Rolling Updates**.
+*   **Seção 9.4:** Como atualizar o sistema sem tirar do ar? Vamos ver estratégias de **Blue/Green**, **Canary** e **Rolling Updates**.
 
 
 
@@ -38,7 +38,7 @@ Muitos problemas que tentamos resolver com código (ex: Retry, Circuit Breaker, 
 Entender essas ferramentas evita que você reinvente a roda e permite construir sistemas que são resilientes por padrão, não por sorte.
 
 ---
-# 8.1. API Gateway e suas responsabilidades
+# 9.1. API Gateway e suas responsabilidades
 
 Em uma arquitetura de microserviços (ou até monólitos distribuídos), você não quer expor seus serviços internos diretamente para a internet. O API Gateway é o "porteiro".
 
@@ -104,7 +104,7 @@ Se um cliente exceder 100 req/s, o Traefik barra a requisição ANTES dela chega
 *   **AWS API Gateway:** Gerenciado, serverless. Cobra por requisição.
 
 ---
-# 8.2. Comunicação entre serviços
+# 9.2. Comunicação entre serviços
 
 Quando o Serviço A precisa falar com o Serviço B, como eles se encontram e conversam? Em ambientes de nuvem, IPs são efêmeros (mudam a cada deploy). Você não pode "hardcodar" IPs.
 
@@ -184,7 +184,7 @@ except Exception as e:
 **Dica:** Use REST para borda (falar com frontend) e gRPC para o miolo (serviço falando com serviço) devido à eficiência do formato binário.
 
 ---
-# 8.3. Service Mesh
+# 9.3. Service Mesh
 
 Quando você tem 100 microserviços, configurar Retry, Timeout, Circuit Breaker e mTLS em cada um deles (e em cada linguagem diferente) é impossível. O Service Mesh resolve isso movendo essa lógica para a infraestrutura.
 
@@ -247,7 +247,7 @@ spec:
 Com esse arquivo aplicado no Kubernetes, o desenvolvedor Python não precisa programar lógica de retry nem de balanceamento de carga. O Mesh cuida disso.
 
 ---
-# 8.4. Estratégias de deploy e release
+# 9.4. Estratégias de deploy e release
 
 Como colocar código novo em produção sem derrubar o sistema ou afetar todos os usuários com um bug?
 

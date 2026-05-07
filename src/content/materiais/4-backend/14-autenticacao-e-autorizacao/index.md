@@ -1,11 +1,11 @@
 ---
-title: 13. Autenticação e Autorização
+title: 14. Autenticação e Autorização
 description: O que é autenticação e autorização
 category: Backend
 order: 14
 ---
 
-# 13.1 Autenticação versus autorização
+# 14.1 Autenticação versus autorização
 
 Em segurança de APIs, duas perguntas aparecem o tempo todo, e elas não são a mesma coisa.
 
@@ -109,7 +109,7 @@ https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.
 
 
 ---
-# 13.2 Identidade de usuário e de serviço
+# 14.2 Identidade de usuário e de serviço
 
 Em APIs, identidade não é só sobre pessoas. Também existe identidade de sistemas.
 
@@ -197,7 +197,7 @@ https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.
 
 
 ---
-# 13.3 Papéis, permissões e escopos
+# 14.3 Papéis, permissões e escopos
 
 Quando uma API decide se uma ação é permitida, ela precisa transformar uma identidade em regras práticas. Três conceitos aparecem o tempo todo nesse ponto: papéis, permissões e escopos.
 

@@ -1,11 +1,11 @@
 ---
-title: 10. Sincronismo e Assíncronismo
+title: 11. Sincronismo e Assíncronismo
 description: Diferentes formas de um sistema se comunicar entre si e para o externo
 category: Backend
 order: 11
 ---
 
-# 10.1 Comunicação síncrona e assíncrona
+# 11.1 Comunicação síncrona e assíncrona
 
 Quando um backend cresce, ele deixa de ser apenas um código que responde HTTP e passa a ser um conjunto de partes que precisam conversar entre si e com outros sistemas. Nessa conversa, existe uma decisão que muda profundamente o comportamento do sistema sob latência, falhas e picos de carga nesses casos a comunicação vai ser síncrona ou assíncrona.
 
@@ -98,7 +98,7 @@ https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-repl
 
 
 ---
-# 10.2 Execução síncrona e assíncrona
+# 11.2 Execução síncrona e assíncrona
 
 Até agora falamos de sincronismo e assincronismo como forma de um sistema conversar com outro. Agora a lente muda: dentro de um mesmo processo, como o seu código progride enquanto operações acontecem.
 
@@ -214,7 +214,7 @@ https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Asynchronous
 
 
 ---
-# 10.3 Trade-offs arquiteturais
+# 11.3 Trade-offs arquiteturais
 
 Escolher entre síncrono e assíncrono é uma decisão arquitetural porque ela muda o comportamento do sistema em latência, falhas, picos de carga e experiência do consumidor. Não existe escolha universalmente melhor. Existe a escolha que combina com o tipo de operação e com o que o consumidor precisa naquele momento.
 
@@ -282,7 +282,7 @@ https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous
 
 
 ---
-# 10.4 Padrões práticos de execução
+# 11.4 Padrões práticos de execução
 
 Depois de entender os trade-offs, o que falta é transformar a decisão em um formato prático: como um sistema normalmente implementa comunicação e execução assíncrona sem virar um conjunto de gambiarras.
 

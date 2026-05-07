@@ -1,11 +1,11 @@
 ---
-title: 7. Modelagem e Arquitetura de Software
+title: 8. Modelagem e Arquitetura de Software
 description: Como pensar e implementar um sistema
 category: Backend
 order: 8
 ---
 
-# 7.0. Visão Geral: Modelagem e Arquitetura
+# 8.0. Visão Geral: Modelagem e Arquitetura
 
 Bem-vindo à **Parte 3**. Até agora, falamos sobre *como* construir APIs (HTTP, REST, JSON). Agora, vamos falar sobre *como* organizar sistemas para que eles sobrevivam ao tempo e ao crescimento.
 
@@ -15,26 +15,26 @@ Arquitetura de Software não é sobre desenhar caixas e setas. É sobre tomar de
 
 ## O que você vai aprender neste módulo?
 
-Este módulo (Seção 7) foi estruturado para te dar as ferramentas mentais de um Arquiteto de Software.
+Este módulo (Seção 8) foi estruturado para te dar as ferramentas mentais de um Arquiteto de Software.
 
 ### As Fundações
 
-* **Seção 7.1:** Entenderemos a diferença entre o que o sistema *faz* (Funcional) e *como* ele se comporta (Não Funcional). Performance, segurança e escalabilidade nascem aqui.
-* **Seção 7.2:** Como definir fronteiras? Onde termina o módulo de "Vendas" e começa o de "Logística"? Vamos falar de **Bounded Contexts**.
-* **Seção 7.3:** Os dois conceitos mais importantes da engenharia de software: **Coesão** (fazer uma coisa bem feita) e **Acoplamento** (depender pouco dos outros).
+* **Seção 8.1:** Entenderemos a diferença entre o que o sistema *faz* (Funcional) e *como* ele se comporta (Não Funcional). Performance, segurança e escalabilidade nascem aqui.
+* **Seção 8.2:** Como definir fronteiras? Onde termina o módulo de "Vendas" e começa o de "Logística"? Vamos falar de **Bounded Contexts**.
+* **Seção 8.3:** Os dois conceitos mais importantes da engenharia de software: **Coesão** (fazer uma coisa bem feita) e **Acoplamento** (depender pouco dos outros).
 
 ### A Estrutura Macro (Deployment)
 
-* **Seção 7.4:** A eterna briga: **Monólito vs Microserviços**. Quando quebrar? Quando manter junto? Vamos desmistificar o hype.
-* **Seção 7.5:** Como as peças conversam? Síncrono (HTTP) ou Assíncrono (Filas)? Entenderemos os trade-offs de resiliência.
+* **Seção 8.4:** A eterna briga: **Monólito vs Microserviços**. Quando quebrar? Quando manter junto? Vamos desmistificar o hype.
+* **Seção 8.5:** Como as peças conversam? Síncrono (HTTP) ou Assíncrono (Filas)? Entenderemos os trade-offs de resiliência.
 
 ### A Estrutura Micro (Código)
 
-* **Seção 7.6:** Como organizar suas pastas e classes? Vamos ver **Clean Architecture** e **Ports & Adapters** para criar sistemas testáveis e independentes de framework.
+* **Seção 8.6:** Como organizar suas pastas e classes? Vamos ver **Clean Architecture** e **Ports & Adapters** para criar sistemas testáveis e independentes de framework.
 
 ### A Comunicação (Documentação)
 
-* **Seção 7.7 e 7.8:** Como explicar sua arquitetura para outros devs sem desenhar diagramas gigantes que ninguém lê? Conheceremos o **Modelo C4** e os **ADRs** (Registros de Decisão).
+* **Seção 8.7 e 8.8:** Como explicar sua arquitetura para outros devs sem desenhar diagramas gigantes que ninguém lê? Conheceremos o **Modelo C4** e os **ADRs** (Registros de Decisão).
 
 
 
@@ -45,7 +45,7 @@ Você pode escrever o melhor código Python do mundo, mas se a arquitetura for r
 Arquitetura é o que permite que 50 desenvolvedores trabalhem no mesmo produto sem um quebrar o código do outro.
 
 ---
-# 7.1. Requisitos funcionais e não funcionais
+# 8.1. Requisitos funcionais e não funcionais
 
 Quando começamos a desenhar um sistema, a primeira pergunta é: "O que ele deve fazer?". Mas tão importante quanto isso é: "Como ele deve se comportar?".
 
@@ -111,7 +111,7 @@ Em sistemas distribuídos (como microserviços ou bancos replicados), o Teorema 
 *   **AP (Disponibilidade):** Se a rede cair, eu respondo com o que tenho, mesmo que desatualizado. (Ex: Feed do Instagram, Likes).
 
 ---
-# 7.2. Limites, contexto e responsabilidades
+# 8.2. Limites, contexto e responsabilidades
 
 O maior erro em sistemas grandes não é técnico, é semântico. Quando a palavra "Produto" significa coisas diferentes para o time de Vendas e para o time de Logística, você tem um problema.
 
@@ -172,7 +172,7 @@ class LegadoAdapter:
 Graças à ACL, sua regra de negócio só conhece `Pedido` e nem sabe que o XML existe. Se o legado mudar, você só arruma o `Adapter`.
 
 ---
-# 7.3. Coesão e acoplamento
+# 8.3. Coesão e acoplamento
 
 Estes são os dois pilares fundamentais da qualidade de software. Se você entender isso, entenderá porque microserviços, classes ou funções são bons ou ruins.
 
@@ -241,7 +241,7 @@ Isso é ruim porque qualquer mudança no sistema (email, banco, regras de cpf) o
 *   **Connascence of Meaning:** "O valor -1 significa erro". Se você mudar para `None`, quebra quem espera `-1`. (Perigoso).
 
 ---
-# 7.4. Monólitos, monólitos modulares e microserviços
+# 8.4. Monólitos, monólitos modulares e microserviços
 
 A decisão de "quebrar" um sistema é uma das mais caras e arriscadas. Não faça por hype.
 
@@ -294,7 +294,7 @@ Não use microserviços se você não tiver:
 3. **Automação de Deploy (CI/CD):** Se o deploy é manual, microserviços serão um inferno.
 
 ---
-# 7.5. Comunicação síncrona e assíncrona
+# 8.5. Comunicação síncrona e assíncrona
 
 Como seus serviços conversam define a resiliência do sistema.
 
@@ -347,7 +347,7 @@ def criar_pedido(pedido):
 ```
 
 ---
-# 7.6. Padrões arquiteturais em APIs
+# 8.6. Padrões arquiteturais em APIs
 
 Não jogue código solto no `main.py`. Use padrões para organizar a casa.
 
@@ -394,7 +394,7 @@ src/
     *   O Core **não depende** do Repository concreto. Ele depende de uma abstração. Isso é a **Inversão de Dependência**.
 
 ---
-# 7.7. Modelos de documentação arquitetural (C4)
+# 8.7. Modelos de documentação arquitetural (C4)
 
 Como documentar arquitetura sem criar diagramas gigantes que ninguém entende? O Modelo C4 resolve isso usando níveis de zoom, como o Google Maps.
 
@@ -429,7 +429,7 @@ Diagramas no Visio/Draw.io morrem. O ideal é usar **Diagrams as Code**.
 Ferramentas como **Structurizr** permitem escrever o modelo C4 em código (DSL) e gerar os desenhos automaticamente. Assim, a arquitetura fica versionada no Git.
 
 ---
-# 7.8. Registros de decisão arquitetural (ADR)
+# 8.8. Registros de decisão arquitetural (ADR)
 
 Você já entrou num projeto e pensou: *"Por que diabos escolheram MongoDB para um sistema financeiro?"*
 Sem documentação, isso vira "conhecimento tribal" ou crítica vazia. O ADR (Architecture Decision Record) serve para registrar o **contexto** e a **decisão** no momento em que ela foi tomada.

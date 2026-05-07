@@ -1,11 +1,11 @@
 ---
-title: 11. Concorrência em Python
+title: 12. Concorrência em Python
 description: Como fazer um código concorrênte em Python
 category: Backend
 order: 12
 ---
 
-# 11.1 Global Interpreter Lock (GIL)
+# 12.1 Global Interpreter Lock (GIL)
 
 Quando você começa a pensar em fazer um backend em Python lidar com várias coisas ao mesmo tempo, uma ideia aparece rápido: usar threads.
 
@@ -71,7 +71,7 @@ https://pages.cs.wisc.edu/~remzi/OSTEP/
 
 
 ---
-# 11.2 Threading
+# 12.2 Threading
 
 Threading é uma forma de executar múltiplas linhas de execução dentro do mesmo processo. Em vez de um programa fazer uma única sequência do início ao fim, ele pode ter mais de uma sequência avançando e o sistema operacional alterna entre elas rapidamente.
 
@@ -171,7 +171,7 @@ https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf
 
 
 ---
-# 11.3 Multiprocessing
+# 12.3 Multiprocessing
 
 Multiprocessing é a abordagem mais direta em Python para ganhar paralelismo real em tarefas pesadas de CPU.
 
@@ -249,7 +249,7 @@ https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf
 
 
 ---
-# 11.4 Asyncio e event loop
+# 12.4 Asyncio e event loop
 
 Asyncio é a base da programação assíncrona moderna em Python e assim como já foi falado sobre I/O-bound anteriormente, essa ferramente é perfeita para isso. Ele existe para lidar bem com cenários em que o programa passa muito tempo esperando I/O, como rede, banco, disco e chamadas a outros serviços.
 
@@ -339,7 +339,7 @@ https://fastapi.tiangolo.com/async/
 
 
 ---
-# 11.5 Erros comuns em código concorrente
+# 12.5 Erros comuns em código concorrente
 
 Código concorrente tem um tipo de dificuldade particular: ele pode funcionar dez vezes e falhar na décima primeira, mesmo sem você ter mudado nada. Isso acontece porque a ordem em que as partes do programa executam pode variar a cada execução. Quando o resultado depende dessa ordem, você entra em uma categoria de bugs que são difíceis de reproduzir e difíceis de depurar.
 

@@ -1,11 +1,11 @@
 ---
-title: 4. JSON e Contratos de API
+title: 5. JSON e Contratos de API
 description: Introdução a JSON e contratatos
 category: Backend
 order: 5
 ---
 
-# 4.0. Visão Geral: Dados e Contratos
+# 5.0. Visão Geral: Dados e Contratos
 
 Bem-vindo à **Parte 2** da trilha. Na Parte 1, entendemos como o HTTP funciona (o "transporte"). Agora, vamos focar na **carga** que esse transporte leva.
 
@@ -15,22 +15,22 @@ Em um sistema de backend, não basta conectar cabos; é preciso garantir que os 
 
 ## O que você vai aprender neste módulo?
 
-Este módulo (Seção 4) foi desenhado para te levar do "zero" ao "profissional" no que tange à troca de dados em APIs.
+Este módulo (Seção 5) foi desenhado para te levar do "zero" ao "profissional" no que tange à troca de dados em APIs.
 
 ### A Base (O Formato)
-*   **Seção 4.1 e 4.2:** Vamos dominar o **JSON**. Ele parece simples, mas tem armadilhas de tipagem e estrutura que derrubam sistemas em produção. Você vai aprender a estruturar JSONs limpos e evitar erros comuns.
+*   **Seção 5.1 e 5.2:** Vamos dominar o **JSON**. Ele parece simples, mas tem armadilhas de tipagem e estrutura que derrubam sistemas em produção. Você vai aprender a estruturar JSONs limpos e evitar erros comuns.
 
 ### A Mecânica (Serialização)
-*   **Seção 4.3:** Como seu código Python (dicionários, objetos, listas) vira texto para trafegar na rede? Vamos entender o processo de **Serialização e Deserialização**, o coração de qualquer framework web.
+*   **Seção 5.3:** Como seu código Python (dicionários, objetos, listas) vira texto para trafegar na rede? Vamos entender o processo de **Serialização e Deserialização**, o coração de qualquer framework web.
 
 ### As Regras (Contratos)
-*   **Seção 4.4 e 4.5:** Aqui o nível sobe. Vamos falar sobre **Contratos de Interface**. Como garantir que o frontend mande o que o backend espera? O que acontece se eu mudar um campo na API? Como evoluir sem quebrar quem já usa? (Compatibilidade retroativa).
+*   **Seção 5.4 e 5.5:** Aqui o nível sobe. Vamos falar sobre **Contratos de Interface**. Como garantir que o frontend mande o que o backend espera? O que acontece se eu mudar um campo na API? Como evoluir sem quebrar quem já usa? (Compatibilidade retroativa).
 
 ### A Formalização (OpenAPI)
-*   **Seção 4.6:** Você vai aprender sobre **OpenAPI (Swagger)**. Não apenas como uma "documentação bonitinha", mas como um contrato formal que pode gerar código e validar requisições automaticamente.
+*   **Seção 5.6:** Você vai aprender sobre **OpenAPI (Swagger)**. Não apenas como uma "documentação bonitinha", mas como um contrato formal que pode gerar código e validar requisições automaticamente.
 
 ### O Tratamento de Problemas
-*   **Seção 4.7:** Por fim, vamos padronizar como sua API diz que algo deu errado. Modelagem de erros consistente é o que separa APIs amadoras de APIs profissionais.
+*   **Seção 5.7:** Por fim, vamos padronizar como sua API diz que algo deu errado. Modelagem de erros consistente é o que separa APIs amadoras de APIs profissionais.
 
 
 
@@ -43,7 +43,7 @@ Se você muda o formato de um dado sem aviso, o sistema quebra. Se você não va
 Este módulo vai te dar a mentalidade de **"API First"**: pensar no contrato e nos dados antes mesmo de escrever a primeira linha de lógica de negócio.
 
 ---
-# 4.1. JSON como formato de troca de dados
+# 5.1. JSON como formato de troca de dados
 
 No desenvolvimento de backend moderno, sistemas precisam conversar entre si. O **JSON (JavaScript Object Notation)** se tornou a língua universal para essa conversa.
 
@@ -162,7 +162,7 @@ Note que `False` (Python) virou `false` (JSON). Essa conversão de tipos é auto
 *   **[FAST]:** FastAPI e JSON (fastapi.tiangolo.com)
 
 ---
-# 4.2. Tipos, estruturas e armadilhas comuns
+# 5.2. Tipos, estruturas e armadilhas comuns
 
 O JSON parece simples, mas a simplicidade esconde armadilhas que podem causar bugs sérios em produção. O problema principal é a **conversão de tipos**: o que é um número no seu banco de dados nem sempre chega igual no JSON, e vice-versa.
 
@@ -260,7 +260,7 @@ Vamos ver um JSON mal formatado e como corrigi-lo.
 *   **[Google Style]:** JSON Style Guide (Google)
 
 ---
-# 4.3. Serialização e deserialização
+# 5.3. Serialização e deserialização
 
 O seu código não "fala" JSON nativamente. Ele fala objetos Python (dicionários, listas, classes). Para que o dado saia da memória do seu servidor e viaje pela rede, ocorre um processo de transformação.
 
@@ -357,7 +357,7 @@ Se o JSON de entrada estiver errado (ex: `preco` for "abc"), o processo de deser
 *   **[OWASP]:** Deserialization Cheat Sheet
 
 ---
-# 4.4. Contratos de entrada e saída
+# 5.4. Contratos de entrada e saída
 
 Uma API robusta funciona com base em contratos claros. "Contrato" aqui não é burocracia, é a definição exata do que entra e do que sai.
 
@@ -475,7 +475,7 @@ _Implementação de DTOs usando Pydantic_
 *   **[OWASP]:** Mass Assignment Prevention
 
 ---
-# 4.5. Evolução de contratos e compatibilidade
+# 5.5. Evolução de contratos e compatibilidade
 
 Uma API é "para sempre". Diferente de um site que você pode atualizar o HTML e todos os usuários veem a versão nova instantaneamente, uma API tem clientes (apps mobile, integrações de parceiros) que podem demorar meses ou anos para atualizar.
 
@@ -561,7 +561,7 @@ Em backend, "mudar rapidinho" um nome de campo pode derrubar o aplicativo móvel
 * **[Google]:** API Design Guide - Compatibility
 
 ---
-# 4.6. OpenAPI como contrato formal
+# 5.6. OpenAPI como contrato formal
 
 Até agora falamos de contratos conceituais. Mas como formalizar isso tecnicamente? Como documentar de um jeito que máquinas e humanos entendam?
 
@@ -656,7 +656,7 @@ paths:
 *   **[FAST]:** FastAPI e OpenAPI
 
 ---
-# 4.7. Modelagem consistente de erros
+# 5.7. Modelagem consistente de erros
 
 Nada frustra mais um desenvolvedor frontend do que receber um erro `500 Internal Server Error` sem explicação, ou cada endpoint retornar erro num formato diferente.
 

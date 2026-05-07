@@ -7,7 +7,7 @@ order: 1
 
 # 1. Introdução
 
-Este material foi criado para construir uma base sólida e prática sobre **backend e APIs**, partindo do zero  até tópicos de **arquitetura, concorrência, segurança e operação** que aparecem no dia a dia de sistemas reais.
+Este material tem como objetivo construir uma base sólida e prática sobre **backend e APIs**, partindo do zero até tópicos de **arquitetura, concorrência, segurança e operação** que aparecem no dia a dia de sistemas reais.
 
 O objetivo não é apenas que fazer por fazer, mas entender de fato os conceito como onde o backend roda, como ele se comunica na rede, como contratos de API são definidos e evoluem, quais decisões arquiteturais importam, e como operar uma API com segurança e confiabilidade.
 
@@ -27,11 +27,12 @@ Ao final do material, você será capaz de:
 
 ## Pré-requisitos e expectativa de profundidade
 
-**Pré-requisitos:** lógica de programação e noções básicas de Python.  
+**Pré-requisitos:** lógica de programação e noções básicas de Python.
 
 ## Resultado esperado
 
 Ao terminar, você terá uma base forte para:
+
 - implementar APIs com consistência,
 - justificar decisões técnicas com argumentos claros,
 - diagnosticar problemas de rede/HTTP e comportamento sob carga,
