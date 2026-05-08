@@ -2,7 +2,7 @@ export type Lang = 'pt' | 'en';
 
 export type Pillar = { tag: string; img: string; title: string; body: string };
 export type TurmaItem = { period: string; title: string; students: number; theme: string; img: string };
-export type ProjectItem = { tag: string; title: string; desc: string };
+export type ProjectItem = { tag: string; title: string; desc: string; img?: string; pitch?: string };
 
 export type Copy = {
   nav: { sobre: string; turmas: string; projetos: string; time: string; materiais: string; apply: string };
@@ -67,9 +67,9 @@ export const COPY: Record<Lang, Copy> = {
       title: 'O que sai de um semestre no Trilha.',
       lede: 'Todo semestre fecha com um hackathon temático. As equipes constroem do zero em poucos dias — abaixo, alguns dos projetos. (Em breve com links e detalhes.)',
       items: [
-        { tag: '2024.1', title: 'Projeto placeholder #1', desc: 'Tema do hackathon e descrição vão aqui. Substituível depois.' },
-        { tag: '2024.2', title: 'Projeto placeholder #2', desc: 'Pequena descrição do projeto, stack e o impacto pra equipe.' },
-        { tag: '2025.1', title: 'Projeto placeholder #3', desc: 'O conteúdo real será adicionado depois — esses são lugares reservados.' },
+        { tag: '2024.1', title: 'Pixelmind', desc: 'Plataforma de edição de vídeo automatizada por IA: o usuário faz upload do vídeo, descreve o resultado desejado e a edição acontece sozinha.', img: '/assets/projects/pixelmind.png', pitch: 'https://www.youtube.com/watch?v=DHXnobWWJjE' },
+        { tag: '2024.2', title: 'ClarIAr', desc: 'App Android de acessibilidade que usa LLMs para descrever imagens da tela com naturalidade, dando mais autonomia a pessoas com deficiência visual.', img: '/assets/projects/clariar.png', pitch: 'https://www.youtube.com/watch?v=0b4k1lVUtO4' },
+        { tag: '2025.1', title: 'Praxis', desc: 'Plataforma de prática para devs iniciantes com desafios personalizados por trilha de carreira e feedback por IA. Simule, pratique, evolua.', img: '/assets/projects/praxis.png', pitch: 'https://www.youtube.com/watch?v=v5YYfLKEvV0' },
       ],
     },
     depo: { eyebrow: '05 / Depoimentos', title: 'Pelos próprios alunos.', lede: 'Trechos do que ex-alunos escreveram sobre a experiência.' },
@@ -138,9 +138,9 @@ export const COPY: Record<Lang, Copy> = {
       title: 'What comes out of a Trilha semester.',
       lede: 'Every semester ends with a themed hackathon. Teams build from scratch in a few days — below, some of the projects. (Links and details coming soon.)',
       items: [
-        { tag: '2024.1', title: 'Project placeholder #1', desc: 'Hackathon theme and description go here. Replaceable later.' },
-        { tag: '2024.2', title: 'Project placeholder #2', desc: 'Short description of the project, stack, and impact.' },
-        { tag: '2025.1', title: 'Project placeholder #3', desc: 'Real content will be added later — these are reserved slots.' },
+        { tag: '2024.1', title: 'Pixelmind', desc: 'AI-powered video editor: users upload a clip, describe the desired result, and the system automates the full edit.', img: '/assets/projects/pixelmind.png', pitch: 'https://www.youtube.com/watch?v=DHXnobWWJjE' },
+        { tag: '2024.2', title: 'ClarIAr', desc: 'Android accessibility app that uses LLMs to generate rich, natural descriptions of on-screen images, empowering visually impaired users.', img: '/assets/projects/clariar.png', pitch: 'https://www.youtube.com/watch?v=0b4k1lVUtO4' },
+        { tag: '2025.1', title: 'Praxis', desc: 'Hands-on learning platform for junior devs with track-specific challenges and AI feedback. Simulate, practice, evolve.', img: '/assets/projects/praxis.png', pitch: 'https://www.youtube.com/watch?v=v5YYfLKEvV0' },
       ],
     },
     depo: { eyebrow: '05 / Testimonials', title: "In the students' own words.", lede: 'Excerpts from what alumni wrote about the experience.' },

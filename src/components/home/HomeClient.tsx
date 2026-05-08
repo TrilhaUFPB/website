@@ -1,6 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision';
 import { COPY, TESTIMONIALS, ORG, FOUNDERS, FAQS, type Lang, type Copy } from './data';
 
 function useScrolled(threshold = 12) {
@@ -120,27 +122,100 @@ function FlipWord({ words, interval = 2200 }: { words: string[]; interval?: numb
 
 function Hero({ copy }: { copy: Copy }) {
   return (
-    <section id="hero" className="section hero-section">
-      <div className="container hero-container">
-        <div className="hero-top reveal">
-          <h1 className="display hero-headline">
-            {copy.hero.titleA}{' '}
-            <span className="serif-italic hero-flip" style={{ color: 'var(--mint-deep)' }}>
-              <FlipWord words={copy.hero.flips} />
-            </span>
-          </h1>
-          <div className="hero-actions">
-            <a href="#sobre" className="btn">
-              {copy.hero.ctaPrimary}
-              <span className="arrow">→</span>
-            </a>
-            <a href="#time" className="btn btn--ghost">
-              {copy.hero.ctaSecondary}
-            </a>
-          </div>
+    <section id="hero" className="section hero-section hero-with-beams">
+      <BackgroundBeamsWithCollision className="hero-beams">
+        <div className="container hero-container">
+          <motion.div
+            className="hero-top"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.2, 0.8, 0.3, 1] }}
+          >
+            <h1 className="display hero-headline">
+              {copy.hero.titleA}{' '}
+              <span className="serif-italic hero-flip" style={{ color: 'var(--mint-deep)' }}>
+                <FlipWord words={copy.hero.flips} />
+              </span>
+            </h1>
+            <div className="hero-actions">
+              <a href="#sobre" className="btn btn--mint">
+                {copy.hero.ctaPrimary}
+                <span className="arrow">→</span>
+              </a>
+              <a href="#time" className="btn btn--ghost">
+                {copy.hero.ctaSecondary}
+              </a>
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </BackgroundBeamsWithCollision>
     </section>
+  );
+}
+
+function CountUp({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-20% 0px' });
+  const [display, setDisplay] = useState(value);
+
+  useEffect(() => {
+    const match = value.match(/^(\d+)(.*)$/);
+    if (!match || !inView) {
+      setDisplay(value);
+      return;
+    }
+    const target = parseInt(match[1], 10);
+    const suffix = match[2];
+    const duration = 1200;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const n = Math.round(target * eased);
+      setDisplay(`${n}${suffix}`);
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, value]);
+
+  return <span ref={ref}>{display}</span>;
+}
+
+const PILLAR_GALLERY: Record<number, string[]> = {
+  0: ['/assets/aulas/aulas.jpg', '/assets/aulas/luigi.jpg'],
+  1: ['/assets/objetivos/aula.jpg'],
+  2: [
+    '/assets/palestras/herval.jpg',
+    '/assets/palestras/itamar.jpg',
+    '/assets/palestras/jp_honorato.jpg',
+    '/assets/palestras/lara.jpg',
+    '/assets/palestras/terron.png',
+  ],
+  3: ['/assets/pillars/hackathon.jpg', '/assets/objetivos/festa.jpg'],
+};
+
+const TickContext = createContext(0);
+
+function TickProvider({ interval = 3500, children }: { interval?: number; children: React.ReactNode }) {
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setTick((t) => t + 1), interval);
+    return () => clearInterval(id);
+  }, [interval]);
+  return <TickContext.Provider value={tick}>{children}</TickContext.Provider>;
+}
+
+function CyclingImage({ images, alt }: { images: string[]; alt: string }) {
+  const tick = useContext(TickContext);
+  const i = images.length ? tick % images.length : 0;
+  return (
+    <div className="pillar-img-stack">
+      {images.map((src, idx) => (
+        <img key={src} src={src} alt={alt} loading="lazy" className={idx === i ? 'on' : ''} />
+      ))}
+    </div>
   );
 }
 
@@ -150,18 +225,21 @@ function Sobre({ copy }: { copy: Copy }) {
       <div className="container">
         <SectionHead eyebrow={copy.sobre.eyebrow} title={copy.sobre.title} lede={copy.sobre.lede} />
         <div className="pillars-grid reveal">
-          {copy.sobre.pillars.map((p, i) => (
-            <article key={i} className="pillar">
-              {p.img && (
-                <div className="pillar-img">
-                  <img src={p.img} alt={p.tag} loading="lazy" />
-                </div>
-              )}
-              <div className="pillar-tag eyebrow">{p.tag}</div>
-              <h3 className="pillar-title display">{p.title}</h3>
-              <p className="pillar-body">{p.body}</p>
-            </article>
-          ))}
+          {copy.sobre.pillars.map((p, i) => {
+            const gallery = PILLAR_GALLERY[i] ?? (p.img ? [p.img] : []);
+            return (
+              <article key={i} className="pillar">
+                {gallery.length > 0 && (
+                  <div className="pillar-img">
+                    <CyclingImage images={gallery} alt={p.tag} />
+                  </div>
+                )}
+                <div className="pillar-tag eyebrow">{p.tag}</div>
+                <h3 className="pillar-title display">{p.title}</h3>
+                <p className="pillar-body">{p.body}</p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -183,7 +261,7 @@ function Numbers({ copy }: { copy: Copy }) {
     return () => io.disconnect();
   }, []);
   return (
-    <section id="numeros" className="section section--paper">
+    <section id="numeros" className="section section--ink section--ink-numbers">
       <div className="container">
         <SectionHead eyebrow={copy.numbers.eyebrow} title={copy.numbers.title} />
         <div className="stats-grid">
@@ -196,7 +274,7 @@ function Numbers({ copy }: { copy: Copy }) {
               className="reveal stat"
               style={{ transitionDelay: `${i * 60}ms` }}
             >
-              <div className="stat-k display">{s.k}</div>
+              <div className="stat-k display"><CountUp value={s.k} /></div>
               <div className="stat-l eyebrow">{s.l}</div>
             </div>
           ))}
@@ -215,8 +293,9 @@ function Turmas({ copy, lang }: { copy: Copy; lang: Lang }) {
         <SectionHead eyebrow={copy.turmas.eyebrow} title={copy.turmas.title} lede={copy.turmas.lede} />
         <div className="turmas-row reveal">
           {items.map((t, i) => (
-            <article
+            <a
               key={i}
+              href={`/turmas/${t.period}`}
               className={`turma-card ${active === i ? 'is-active' : ''}`}
               onMouseEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
@@ -237,7 +316,7 @@ function Turmas({ copy, lang }: { copy: Copy; lang: Lang }) {
                 </div>
                 <p style={{ margin: 0, color: 'var(--ink-soft)', maxWidth: '46ch' }}>{t.theme}</p>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>
@@ -251,22 +330,42 @@ function Projects({ copy }: { copy: Copy }) {
       <div className="container">
         <SectionHead eyebrow={copy.projects.eyebrow} title={copy.projects.title} lede={copy.projects.lede} />
         <div className="projects-grid reveal">
-          {copy.projects.items.map((p, i) => (
-            <article key={i} className="project-card">
-              <div className="project-img">
-                <PlaceholderImg label={`hackathon shot · ${p.tag}`} ratio="5 / 4" />
-              </div>
-              <div className="project-meta">
-                <div className="kicker tag-dot" style={{ color: 'var(--mint-deep)' }}>
-                  {p.tag}
+          {copy.projects.items.map((p, i) => {
+            const inner = (
+              <>
+                <div className="project-img">
+                  {p.img ? (
+                    <img
+                      src={p.img}
+                      alt={p.title}
+                      loading="lazy"
+                      style={{ width: '100%', aspectRatio: '5 / 4', objectFit: 'cover', background: 'var(--paper)' }}
+                    />
+                  ) : (
+                    <PlaceholderImg label={`hackathon shot · ${p.tag}`} ratio="5 / 4" />
+                  )}
                 </div>
-                <h3 className="display" style={{ fontSize: 30, margin: '10px 0 8px', lineHeight: 1.05 }}>
-                  {p.title}
-                </h3>
-                <p style={{ margin: 0, color: 'var(--ink-soft)', fontSize: 15 }}>{p.desc}</p>
-              </div>
-            </article>
-          ))}
+                <div className="project-meta">
+                  <div className="kicker tag-dot" style={{ color: 'var(--mint-deep)' }}>
+                    {p.tag}
+                  </div>
+                  <h3 className="display" style={{ fontSize: 30, margin: '10px 0 8px', lineHeight: 1.05 }}>
+                    {p.title}
+                  </h3>
+                  <p style={{ margin: 0, color: 'var(--ink-soft)', fontSize: 15 }}>{p.desc}</p>
+                </div>
+              </>
+            );
+            return p.pitch ? (
+              <a key={i} href={p.pitch} target="_blank" rel="noreferrer" className="project-card">
+                {inner}
+              </a>
+            ) : (
+              <article key={i} className="project-card">
+                {inner}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -513,7 +612,7 @@ export default function HomeClient() {
   const copy = COPY[lang];
 
   return (
-    <>
+    <TickProvider interval={3500}>
       <Nav lang={lang} setLang={setLang} copy={copy} />
       <main className="shell">
         <Hero copy={copy} />
@@ -527,6 +626,6 @@ export default function HomeClient() {
         <FAQSection lang={lang} />
         <Footer copy={copy} lang={lang} />
       </main>
-    </>
+    </TickProvider>
   );
 }
