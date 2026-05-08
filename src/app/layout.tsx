@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Trilha — UFPB · Centro de Informática',
+  title: 'Trilha',
   description:
     'O Trilha é um programa gratuito feito por estudantes da UFPB para apoiar quem está chegando ao Centro de Informática.',
 };

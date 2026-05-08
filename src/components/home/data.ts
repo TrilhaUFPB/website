@@ -21,7 +21,7 @@ export const COPY: Record<Lang, Copy> = {
   pt: {
     nav: { sobre: 'Sobre', turmas: 'Turmas', projetos: 'Projetos', time: 'Time', materiais: 'Materiais', apply: 'Inscreva-se' },
     hero: {
-      eyebrow: 'Trilha — UFPB · CI',
+      eyebrow: 'Trilha',
       titleA: 'Um caminho prático para',
       titleB: '',
       flips: ['aprender.', 'crescer.', 'se conectar.', 'começar.'],
@@ -92,7 +92,7 @@ export const COPY: Record<Lang, Copy> = {
   en: {
     nav: { sobre: 'About', turmas: 'Cohorts', projetos: 'Projects', time: 'Team', materiais: 'Materials', apply: 'Apply' },
     hero: {
-      eyebrow: 'Trilha — UFPB · CI',
+      eyebrow: 'Trilha',
       titleA: 'A practical path to',
       titleB: '',
       flips: ['learn.', 'grow.', 'connect.', 'start.'],

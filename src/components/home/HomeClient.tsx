@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision';
-import { COPY, TESTIMONIALS, ORG, FOUNDERS, FAQS, type Lang, type Copy } from './data';
+import { COPY, TESTIMONIALS, ORG, FAQS, type Lang, type Copy } from './data';
 
 function useScrolled(threshold = 12) {
   const [s, setS] = useState(false);
@@ -413,24 +413,12 @@ function Testimonials({ copy, lang }: { copy: Copy; lang: Lang }) {
 }
 
 function Team({ copy }: { copy: Copy }) {
-  const [tab, setTab] = useState<'current' | 'founders'>('current');
-  const list = tab === 'current' ? ORG : FOUNDERS;
   return (
     <section id="time" className="section">
       <div className="container">
         <SectionHead eyebrow={copy.time.eyebrow} title={copy.time.title} lede={copy.time.lede} />
-        <div className="team-toolbar reveal">
-          <div className="team-tabs">
-            <button className={tab === 'current' ? 'on' : ''} onClick={() => setTab('current')}>
-              {copy.time.tabs.current}
-            </button>
-            <button className={tab === 'founders' ? 'on' : ''} onClick={() => setTab('founders')}>
-              {copy.time.tabs.founders}
-            </button>
-          </div>
-        </div>
         <div className="team-grid reveal">
-          {list.map((p, i) => (
+          {ORG.map((p, i) => (
             <a
               key={i}
               href={p.link || '#'}
