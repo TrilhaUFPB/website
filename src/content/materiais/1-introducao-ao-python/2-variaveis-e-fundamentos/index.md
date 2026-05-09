@@ -62,3 +62,27 @@ Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, 
 
 - [Data Types & Variables in Python - Neso Academy](https://youtube.com/playlist?list=PLBlnK6fEyqRhN-sfWgCU1z_Qhakc1AGOn&si=HHME8gy1ldOQNGPS)
 - [Python for Beginners: Data Types - The New Stack](https://thenewstack.io/python-for-beginners-data-types/)
+
+---
+
+## Teste seu Conhecimento
+
+```quiz
+tipo: single
+pergunta: |
+  Qual das opções abaixo é uma **palavra-chave reservada** do Python e **não pode** ser usada como nome de variável?
+opcoes:
+  - texto: "`nome`"
+    explicacao: |
+      `nome` é um identificador comum e pode ser usado como nome de variável normalmente.
+  - texto: "`total_vendas`"
+    explicacao: |
+      `total_vendas` é um nome válido de variável em Python. O uso de `_` para separar palavras (snake_case) é inclusive a convenção recomendada.
+  - texto: "`def`"
+    correta: true
+    explicacao: |
+      `def` é uma palavra-chave reservada usada para **definir funções** em Python. Tentar usá-la como nome de variável causaria um `SyntaxError`.
+  - texto: "`contador2`"
+    explicacao: |
+      `contador2` é um nome de variável válido. Números podem aparecer em identificadores, desde que não sejam o primeiro caractere.
+```
