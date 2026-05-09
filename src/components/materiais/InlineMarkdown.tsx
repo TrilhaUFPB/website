@@ -21,7 +21,7 @@ export default function InlineMarkdown({ content, inline = false }: InlineMarkdo
             <span className="block mb-1 last:mb-0">{children}</span>
           ),
         code: ({ children }) => (
-          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-slate-800 text-AzulEletrico dark:text-AzulCeu font-mono text-sm">
+          <code className="px-1.5 py-0.5 rounded bg-AzulMeiaNoite/[0.06] dark:bg-white/10 text-AzulEletrico dark:text-AzulCeu font-mono text-[0.9em]">
             {children}
           </code>
         ),
