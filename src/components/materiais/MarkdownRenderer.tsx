@@ -6,6 +6,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
 import { useEffect, useState } from "react";
 import { Check, Copy } from "lucide-react";
+import { QuizBlock } from "./Quiz";
 
 interface MarkdownRendererProps {
   content: string;
@@ -174,13 +175,25 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           },
           // Bloco de código - SUPER COMPACTO
           pre: ({ children, ...props }) => {
+            // Detect quiz blocks before anything else
+            if (children && typeof children === "object" && "props" in children) {
+              const childProps = children.props as {
+                className?: string;
+                children?: React.ReactNode;
+              };
+              if (childProps.className?.includes("language-quiz")) {
+                const rawYaml = String(childProps.children || "").trimEnd();
+                return <QuizBlock rawYaml={rawYaml} />;
+              }
+            }
+
             // Extrai o conteúdo do código de forma segura
             let codeContent = "";
             if (children && typeof children === "object" && "props" in children) {
               const childProps = children.props as { children?: React.ReactNode };
               codeContent = String(childProps.children || "");
             }
-            
+
             return (
               <div className="relative group my-4">
                 <pre
