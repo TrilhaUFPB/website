@@ -14,6 +14,7 @@ const QuizSchema = z
     opcoes: z.array(QuizOptionSchema).min(2, "O quiz precisa de pelo menos 2 opções"),
   })
   .superRefine((data, ctx) => {
+    if (data.opcoes.length < 2) return; // field rule already reported this
     const correctCount = data.opcoes.filter((o) => o.correta).length;
     if (correctCount === 0) {
       ctx.addIssue({
