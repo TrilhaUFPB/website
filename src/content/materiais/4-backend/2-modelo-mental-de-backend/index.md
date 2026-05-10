@@ -12,7 +12,7 @@ Backend existe porque, na Web, quase tudo acontece como uma **conversa entre dua
 - o **cliente**, que inicia a interação (ex.: navegador, app mobile, outra API)
 - o **servidor**, que recebe a solicitação, executa o trabalho necessário e devolve uma resposta
 
-Esse modelo é a base de como páginas e APIs funcionam no dia a dia: você clica, envia um formulário, faz uma busca  e uma requisição é enviada para algum servidor, que responde com dados ou com uma página. ([MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview))
+Esse modelo é a base de como páginas e APIs funcionam no dia a dia: você clica, envia um formulário, faz uma busca e uma requisição é enviada para algum servidor, que responde com dados ou com uma página. ([MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview))
 
 ## O que é cliente e o que é servidor
 
@@ -37,9 +37,11 @@ Na prática, “cliente” costuma ser o navegador, mas também pode ser um app 
 
 Servidor não é apenas um computador: normalmente existe um **software servidor** rodando, responsável por responder às requisições (por exemplo, um servidor web). ([MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server))
 
+![Fluxo cliente -> sevidor](/api/materiais-assets/4-backend/2-modelo-mental-de-backend/assets/Client/Client_Server.png)
+
 ## Responsabilidades: o que pertence a cada lado
 
-Um erro comum de quem está começando é achar que cliente e servidor fazem a mesma coisa. Não fazem. Eles têm responsabilidades diferentes  e isso é intencional.
+Um erro comum de quem está começando é achar que cliente e servidor fazem a mesma coisa. Não fazem. Eles têm responsabilidades diferentes e isso é intencional.
 
 ### Responsabilidades do cliente
 
@@ -193,7 +195,7 @@ Em outras palavras: backend no ar significa, na prática, que **existe um proces
 
 ### Servidor pode significar duas coisas
 
-No dia a dia, a palavra *servidor* pode se referir tanto a:
+No dia a dia, a palavra _servidor_ pode se referir tanto a:
 
 - a **máquina** (física/virtual) onde o sistema roda
 - o **programa servidor** (o processo) que está rodando naquela máquina
@@ -209,7 +211,7 @@ A **porta** serve para diferenciar serviços dentro de uma mesma máquina.
 Pense assim:
 
 - o **host** te leva até a máquina
-- a **porta** te leva até o serviço/processo certo *dentro* dela
+- a **porta** te leva até o serviço/processo certo _dentro_ dela
 
 Isso permite que a mesma máquina rode várias coisas ao mesmo tempo (por exemplo: um backend, um banco de dados, um painel de admin), cada uma em sua porta.
 
@@ -296,8 +298,8 @@ Quando você inicia o servidor em desenvolvimento, é comum aparecer no terminal
 Uvicorn running on http://127.0.0.1:8000
 ```
 
-> Uvicorn é um servidor web ASGI, feito em python e com o objetivo de hospedar o HTTP 
->em Frameworks como FastAPI (que iremos utilizar mais para frente)
+> Uvicorn é um servidor web ASGI, feito em python e com o objetivo de hospedar o HTTP
+> em Frameworks como FastAPI (que iremos utilizar mais para frente)
 
 Essa linha te dá as três informações essenciais:
 
@@ -314,7 +316,6 @@ http://127.0.0.1:8000
 ```
 
 o navegador (cliente) vai enviar uma requisição para exatamente esse host e porta e você consegue validar se o processo está respondendo.
-
 
 ## Checklist rápido (para depurar sem sofrer)
 
@@ -345,6 +346,7 @@ Se essas regras não estiverem claras, a integração vira um jogo de adivinhaç
 Por isso, quando você constrói um backend, o foco muda. Você não está apenas escrevendo endpoints; você está entregando um produto (a API) que precisa ser previsível para quem consome. Para garantir essa estabilidade, tratamos a API como um **contrato**.
 
 Contrato significa que existe um acordo explícito sobre:
+
 - o que o cliente pode enviar
 - o que o servidor vai responder
 - quais erros podem acontecer e como aparecem
@@ -368,6 +370,7 @@ Um contrato de API é o conjunto de regras que permite que dois lados diferentes
 Sem um contrato claro, o cliente precisa adivinhar como integrar, e qualquer mudança pequena pode quebrar fluxos existentes.
 
 Com contrato, o cliente consegue:
+
 - implementar com confiança
 - tratar erros de forma previsível
 - atualizar com segurança quando houver mudanças compatíveis
@@ -396,6 +399,7 @@ Isso é um problema típico quando a API é tratada como extensão informal do c
 
 Quando erros não seguem um padrão, o cliente não sabe como tratar.
 Exemplos de problemas comuns:
+
 - mensagens diferentes para o mesmo erro
 - campos de erro inconsistentes
 - uso imprevisível de códigos de status
@@ -413,6 +417,7 @@ Sem estratégia, qualquer evolução vira quebra ou duplicação descontrolada.
 ## Exemplo guiado: API de catálogo de cursos
 
 Agora vamos aplicar a ideia de contrato com um exemplo simples e fácil de visualizar.
+
 > O formato das requisições, como funciona os métodos HTTP e o que são os JSONs será trabalhado mais para frente. Portanto esses exemplos são apenas para entendimento geral do por que a APIs devem ser tratadas como contratos e por isso é recomendado rever esses exemplos após entender melhor os conceitos
 
 ### Cenário
@@ -794,6 +799,8 @@ Em camadas, você divide o backend em partes com responsabilidades diferentes. U
 - Exemplo: banco de dados, cache, fila, serviços externos.
 
 A regra mais importante é: **cada camada deve conhecer o mínimo possível das outras**. Normalmente, as dependências apontam para dentro: o domínio não depende de HTTP, nem de banco.
+
+![Exemplo de arquitetura em camadas](/api/materiais-assets/4-backend/2-modelo-mental-de-backend/assets/Client/Clean_architecture.png)
 
 ## O problema que isso resolve
 
