@@ -241,7 +241,7 @@ Em APIs, o formato mais comum é JSON (`application/json`), mas existem outros f
 
 Aqui o cliente quer listar cursos. Repare que não existe corpo.
 
-![exemplo de request](/api/materiais-assets/4-backend/4-http-a-linguagem-das-apis/assets/http-request.png)
+![exemplo de request](./assets/http-request.png)
 
 O que essa mensagem comunica de forma organizada:
 
@@ -253,7 +253,7 @@ O que essa mensagem comunica de forma organizada:
 
 Aqui o cliente quer criar uma inscrição. Repare que agora existe corpo e, por isso, `Content-Type` aparece.
 
-![exemplo de request](/api/materiais-assets/4-backend/4-http-a-linguagem-das-apis/assets/http-request2.png)
+![exemplo de request](./assets/http-request2.png)
 
 O que muda em relação ao primeiro exemplo:
 
@@ -378,7 +378,7 @@ Nem toda resposta tem corpo. Existem respostas em que isso não faz sentido, com
 
 ### Exemplo 1: sucesso com corpo JSON
 
-![exemplo de response](/api/materiais-assets/4-backend/4-http-a-linguagem-das-apis/assets/http-response.png)
+![exemplo de response](./assets/http-response.png)
 
 O que essa resposta comunica:
 
@@ -388,7 +388,7 @@ O que essa resposta comunica:
 
 ### Exemplo 2: erro com corpo JSON
 
-![exemplo de response](/api/materiais-assets/4-backend/4-http-a-linguagem-das-apis/assets/http-response2.png)
+![exemplo de response](./assets/http-response2.png)
 
 O que essa resposta comunica:
 
@@ -531,19 +531,19 @@ Essa discussão vai ficar mais concreta quando você tratar de retries e falhas,
 
 ### Exemplo 1: leitura com GET
 
-![exemplo de request](/api/materiais-assets/4-backend/4-http-a-linguagem-das-apis/assets/http-request.png)
+![exemplo de request](./assets/http-request.png)
 
 Aqui o cliente só quer ler. A expectativa é que chamar várias vezes não mude nada no servidor.
 
 ### Exemplo 2: criação com POST
 
-![exemplo de request](/api/materiais-assets/4-backend/4-http-a-linguagem-das-apis/assets/http-request2.png)
+![exemplo de request](./assets/http-request2.png)
 
 Aqui existe chance real de duplicar se o cliente repetir. Por isso, em APIs reais, é comum precisar de cuidado extra com criação.
 
 ### Exemplo 3: atualização parcial com PATCH
 
-![exemplo de request](/api/materiais-assets/4-backend/4-http-a-linguagem-das-apis/assets/http-request3.png)
+![exemplo de request](./assets/http-request3.png)
 
 
 A intenção é mudar apenas um campo sem reenviar todo o recurso.
