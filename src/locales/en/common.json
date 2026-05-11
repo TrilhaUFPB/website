@@ -32,14 +32,14 @@
   "numbers": {
     "eyebrow": "02 / Numbers",
     "title": "Three cohorts, a growing network.",
-    "stats": [
-      { "k": "49", "l": "students graduated" },
-      { "k": "20", "l": "active organizers" },
-      { "k": "4", "l": "founders" },
-      { "k": "3", "l": "cohorts completed" },
-      { "k": "100%", "l": "free, always" },
-      { "k": "5+", "l": "invited speakers" }
-    ]
+    "labels": {
+      "studentsGraduated": "students graduated",
+      "activeOrganizers": "active organizers",
+      "founders": "founders",
+      "cohortsCompleted": "cohorts completed",
+      "free": "free, always",
+      "speakers": "invited speakers"
+    }
   },
   "turmas": {
     "eyebrow": "03 / Cohorts",
@@ -65,7 +65,8 @@
   "depo": {
     "eyebrow": "05 / Testimonials",
     "title": "In the students' own words.",
-    "lede": "Excerpts from what alumni wrote about the experience."
+    "lede": "Excerpts from what alumni wrote about the experience.",
+    "cohortLabel": "Cohort"
   },
   "time": {
     "eyebrow": "06 / Team",

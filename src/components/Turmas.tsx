@@ -38,10 +38,10 @@ export default function Turmas() {
                 </div>
               </div>
               <div className="turma-meta">
-                <div className="display" style={{ fontSize: 32, lineHeight: 1, marginBottom: 8 }}>
+                <div className="display turma-title">
                   <span className="serif-italic">{it.period}</span> — {it.title}
                 </div>
-                <p style={{ margin: 0, color: 'var(--ink-soft)', maxWidth: '46ch' }}>{it.theme}</p>
+                <p className="turma-theme">{it.theme}</p>
               </div>
             </a>
           ))}

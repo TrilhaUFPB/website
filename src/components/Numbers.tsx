@@ -4,7 +4,15 @@ import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
 import { SectionHead } from '@/components/home/shared';
-import type { Stat } from '@/components/home/data';
+import {
+  peopleFounders,
+  peopleOrganizationCurrent,
+  peopleStudents20241,
+  peopleStudents20242,
+  peopleStudents20251,
+} from '@/data/people';
+
+const COHORTS = [peopleStudents20241, peopleStudents20242, peopleStudents20251];
 
 function CountUp({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -38,7 +46,17 @@ function CountUp({ value }: { value: string }) {
 
 export default function Numbers() {
   const { t } = useTranslation();
-  const stats = t<Stat[]>('numbers.stats');
+
+  const studentsTotal = COHORTS.reduce((n, c) => n + c.length, 0);
+  const stats = [
+    { k: String(studentsTotal), l: t('numbers.labels.studentsGraduated') },
+    { k: String(peopleOrganizationCurrent.length), l: t('numbers.labels.activeOrganizers') },
+    { k: String(peopleFounders.length), l: t('numbers.labels.founders') },
+    { k: String(COHORTS.length), l: t('numbers.labels.cohortsCompleted') },
+    { k: '100%', l: t('numbers.labels.free') },
+    { k: '5+', l: t('numbers.labels.speakers') },
+  ];
+
   const reveals = useRef<(HTMLDivElement | null)[]>([]);
   useEffect(() => {
     const io = new IntersectionObserver(

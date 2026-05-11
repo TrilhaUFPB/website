@@ -429,8 +429,26 @@ button { font-family: inherit; cursor: pointer; }
   background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
   color: #FAF6EE;
 }
+.turma-overlay .kicker { color: inherit; }
 .turma-meta { padding: 0 4px; }
-@media (max-width: 900px) { .turmas-row { grid-template-columns: 1fr; } }
+.turma-title {
+  font-size: clamp(22px, 4.2vw, 32px);
+  line-height: 1.05;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+.turma-theme {
+  margin: 0;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  font-size: clamp(14px, 3.4vw, 16px);
+  line-height: 1.5;
+}
+@media (max-width: 900px) {
+  .turmas-row { grid-template-columns: 1fr; gap: 20px; }
+  .turma-card { gap: 14px; }
+  .turma-img { aspect-ratio: 5 / 4; }
+}
 
 /* PROJECTS — polaroid feel, alive */
 .projects-grid {
@@ -526,17 +544,29 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* TESTIMONIALS */
-.depo-grid { columns: 3; column-gap: 28px; }
+.depo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: start;
+}
 .depo {
-  break-inside: avoid;
-  margin: 0 0 28px;
+  margin: 0;
   padding: 28px 28px 24px;
   border: 1px solid var(--rule);
   border-radius: var(--radius-m);
   background: var(--cream);
-  transition: transform .35s cubic-bezier(.2,.8,.3,1), border-color .2s ease;
+  box-shadow: 0 0 0 rgba(0, 196, 99, 0);
+  transition:
+    transform .35s cubic-bezier(.2,.8,.3,1),
+    border-color .2s ease,
+    box-shadow .25s ease;
 }
-.depo:hover { border-color: var(--mint-deep); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0, 196, 99, 0.08); }
+.depo:hover {
+  border-color: var(--mint-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 196, 99, 0.08);
+}
 .depo:nth-child(3n+1) { background: var(--mint-soft); }
 .depo:nth-child(3n+2) { background: var(--electric-soft); }
 .depo blockquote { margin: 0; font-size: 17px; line-height: 1.5; color: var(--ink); }
@@ -548,8 +578,8 @@ button { font-family: inherit; cursor: pointer; }
   object-fit: cover;
   background: var(--paper);
 }
-@media (max-width: 1100px) { .depo-grid { columns: 2; } }
-@media (max-width: 700px) { .depo-grid { columns: 1; } }
+@media (max-width: 1100px) { .depo-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) { .depo-grid { grid-template-columns: 1fr; } }
 
 /* TEAM */
 .team-toolbar {
