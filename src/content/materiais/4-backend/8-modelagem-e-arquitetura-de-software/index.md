@@ -49,7 +49,7 @@ Arquitetura é o que permite que 50 desenvolvedores trabalhem no mesmo produto s
 
 Quando começamos a desenhar um sistema, a primeira pergunta é: "O que ele deve fazer?". Mas tão importante quanto isso é: "Como ele deve se comportar?".
 
-![image_iceberg](/api/materiais-assets/4-backend/8-modelagem-e-arquitetura-de-software/assets/iceberg.png)
+![image_iceberg](./assets/iceberg.png)
 *Imagem gerada por IA*
 
 
@@ -98,7 +98,7 @@ Cada "9" extra custa exponencialmente mais caro em infraestrutura e complexidade
 
 Você nunca terá tudo. Arquitetura é sobre escolher o que sacrificar.
 
-![image_teorema_cap](/api/materiais-assets/4-backend/8-modelagem-e-arquitetura-de-software/assets/teorema-cap.png)
+![image_teorema_cap](./assets/teorema-cap.png)
 
 Em sistemas distribuídos (como microserviços ou bancos replicados), o Teorema CAP diz que você só pode ter 2 de 3:
 
@@ -124,7 +124,7 @@ O maior erro em sistemas grandes não é técnico, é semântico. Quando a palav
 
 Para resolver isso, usamos o conceito de **Bounded Contexts** (Contextos Delimitados) do DDD (Domain-Driven Design).
 
-![image_mapa_de_contexto](/api/materiais-assets/4-backend/8-modelagem-e-arquitetura-de-software/assets/mapa-de-contexto.png)
+![image_mapa_de_contexto](./assets/mapa-de-contexto.png)
 
 
 
@@ -189,7 +189,7 @@ Graças à ACL, sua regra de negócio só conhece `Pedido` e nem sabe que o XML 
 
 Estes são os dois pilares fundamentais da qualidade de software. Se você entender isso, entenderá porque microserviços, classes ou funções são bons ou ruins.
 
-![image_coesao_acomplamento](/api/materiais-assets/4-backend/8-modelagem-e-arquitetura-de-software/assets/acomplamento-coesao.png)
+![image_coesao_acomplamento](./assets/acomplamento-coesao.png)
 
 
 
@@ -258,7 +258,7 @@ Isso é ruim porque qualquer mudança no sistema (email, banco, regras de cpf) o
 
 A decisão de "quebrar" um sistema é uma das mais caras e arriscadas. Não faça por hype.
 
-![image_monolito_microsservicos](/api/materiais-assets/4-backend/8-modelagem-e-arquitetura-de-software/assets/monolito-microsservicos.png)
+![image_monolito_microsservicos](./assets/monolito-microsservicos.png)
 
 
 
@@ -331,7 +331,7 @@ Não use microserviços se você não tiver:
 
 Como seus serviços conversam define a resiliência do sistema.
 
-![image_sync_assync](/api/materiais-assets/4-backend/8-modelagem-e-arquitetura-de-software/assets/sync-assync.png)
+![image_sync_assync](./assets/sync-assync.png)
 
 
 
@@ -396,7 +396,7 @@ def criar_pedido(pedido):
 
 Não jogue código solto no `main.py`. Use padrões para organizar a casa.
 
-![image_clean_arch](/api/materiais-assets/4-backend/8-modelagem-e-arquitetura-de-software/assets/clean-arch.png)
+![image_clean_arch](./assets/clean-arch.png)
 
 
 
@@ -456,7 +456,7 @@ Assim, sua regra de negócio não depende diretamente de Stripe, PostgreSQL ou S
 
 Como documentar arquitetura sem criar diagramas gigantes que ninguém entende? O Modelo C4 resolve isso usando níveis de zoom, como o Google Maps.
 
-![image_c4_model](/api/materiais-assets/4-backend/8-modelagem-e-arquitetura-de-software/assets/c4-model.png)
+![image_c4_model](./assets/c4-model.png)
 
 
 ## Nível 1: Context (O Mapa Mundi)
