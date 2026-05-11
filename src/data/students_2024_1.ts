@@ -153,7 +153,7 @@ export const Kruta: Person = {
     photo: "/assets/pessoas/2024.1/kruta.png",
     class: "2024.1",
     org: ["2024.2", "2025.1", "2025.2"],
-    pos: ["Membro da Organização", "Líder de Operações", "Membro da Organização"],
+    pos: ["Membro da Organização", "Líder de Operações", "Líder de Logística"],
 };
 
 export const Luigi: Person = {

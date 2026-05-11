@@ -595,7 +595,8 @@ button { font-family: inherit; cursor: pointer; }
 .team-card:hover .team-photo-bg { opacity: 1; }
 .team-info { padding: 14px 16px 18px; border-top: 1px solid var(--rule); }
 .team-name { font-weight: 500; font-size: 15px; }
-.team-role { margin-top: 2px; }
+.team-pos { margin-top: 4px; color: var(--mint-deep); }
+.team-role { margin-top: 4px; }
 .team-course { color: var(--ink-muted); font-size: 12px; margin-top: 6px; }
 .team-arrow {
   position: absolute; top: 14px; right: 14px;

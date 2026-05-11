@@ -27,6 +27,18 @@ function useCourseTranslator() {
   };
 }
 
+function useSemesterFormatter() {
+  const { t } = useTranslation();
+  return (s: string): string | null => {
+    const v = s.trim();
+    if (!v || v === 'Null') return null;
+    if (/^\d+$/.test(v)) return `${v}°`;
+    const key = `people.semesters.${v}`;
+    const tr = t(key);
+    return tr !== key ? tr : v;
+  };
+}
+
 const founderNames = new Set(peopleFounders.map((p) => p.name));
 const team: Person[] = [
   ...peopleFounders,
@@ -38,6 +50,7 @@ export default function QuemSomos() {
   const { trackFounderProfileClick, trackCurrentMemberProfileClick } = usePostHogTracking();
   const translateRole = useRoleTranslator();
   const translateCourse = useCourseTranslator();
+  const formatSemester = useSemesterFormatter();
 
   return (
     <section id="time" className="section">
@@ -50,6 +63,9 @@ export default function QuemSomos() {
               if (isFounder) trackFounderProfileClick(p.name);
               else trackCurrentMemberProfileClick(p.name, p.role);
             };
+            const trilhaRole = isFounder ? 'Fundador' : (p.pos.at(-1) ?? '');
+            const sem = formatSemester(p.semester);
+            const courseLine = sem ? `${translateCourse(p.course)} · ${sem}` : translateCourse(p.course);
             return (
               <a
                 key={i}
@@ -72,8 +88,13 @@ export default function QuemSomos() {
                 </div>
                 <div className="team-info">
                   <div className="team-name">{p.name}</div>
-                  <div className="kicker team-role">{translateRole(p.role)}</div>
-                  <div className="team-course">{translateCourse(p.course)}</div>
+                  {trilhaRole && (
+                    <div className="kicker team-pos">{translateRole(trilhaRole)}</div>
+                  )}
+                  {p.role.trim() && (
+                    <div className="kicker team-role">{translateRole(p.role)}</div>
+                  )}
+                  <div className="team-course">{courseLine}</div>
                 </div>
                 {p.link && <span className="team-arrow">↗</span>}
               </a>
