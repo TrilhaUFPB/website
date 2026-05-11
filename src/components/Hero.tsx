@@ -1,69 +1,60 @@
-"use client";
+'use client';
 
-import Navbar from "@/components/NavBar";
-import { FlipWords } from "./ui/flip-words";
-import { BackgroundBeamsWithCollision } from "./ui/background-beams-with-collision";
-import DynamicGrid from "./DynamicGrid";
-import { useTranslation } from "@/hooks/useTranslation";
-import { usePostHogTracking } from "@/hooks/usePostHogTracking";
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision';
+import { useTranslation } from '@/hooks/useTranslation';
+import { usePostHogTracking } from '@/hooks/usePostHogTracking';
+
+function FlipWord({ words, interval = 2200 }: { words: string[]; interval?: number }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((x) => (x + 1) % words.length), interval);
+    return () => clearInterval(id);
+  }, [words, interval]);
+  return (
+    <span className="flipword">
+      {words.map((w, idx) => (
+        <span key={idx} className={`flipword-item ${idx === i ? 'on' : ''}`}>
+          {w}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export default function Hero() {
   const { t } = useTranslation();
   const { trackHeroButtonClick } = usePostHogTracking();
-
+  const flips = t<string[]>('hero.flips');
   return (
-    <div className="relative overflow-hidden flex flex-col bg-Branco">
-      <BackgroundBeamsWithCollision className="relative overflow-hidden flex flex-col bg-Branco w-full">
-        <Navbar />
-
-        <DynamicGrid
-          cellSize={50}
-          className="opacity-5 z-0"
-          numberOfCells={50}
-        />
-
-        {/* Main Hero Section */}
-        <div className="h-[90vh] relative overflow-hidden flex items-center justify-center">
-          <div className="relative container mx-auto px-6 text-center z-10 max-w-[60%] flex flex-col items-center">
-            <h1
-              className="font-poppins text-5xl md:text-6xl font-semibold mb-2 text-AzulMeiaNoite select-none"
-              style={{
-                display: "inline-block",
-                transition: "all 0.3s ease-in-out",
-              }}
-            >
-              <span className="text-VerdeMenta">
-                {t("hero.title").split(":")[0]}:
-              </span>{" "}
-              {t("hero.title").split(":")[1]}
+    <section id="hero" className="section hero-section hero-with-beams">
+      <BackgroundBeamsWithCollision className="hero-beams">
+        <div className="container hero-container">
+          <motion.div
+            className="hero-top"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.2, 0.8, 0.3, 1] }}
+          >
+            <h1 className="display hero-headline">
+              {t('hero.titleA')}{' '}
+              <span className="serif-italic hero-flip" style={{ color: 'var(--mint-deep)' }}>
+                <FlipWord words={flips} />
+              </span>
             </h1>
-            <div>
-              <FlipWords
-                words={t("hero.words")}
-                duration={1000}
-                className="font-poppins text-5xl md:text-6xl font-semibold mb-2 text-AzulMeiaNoite select-none"
-              />
+            <div className="hero-actions">
+              <a href="#sobre" className="btn btn--mint" onClick={trackHeroButtonClick}>
+                {t('hero.ctaPrimary')}
+                <span className="arrow">→</span>
+              </a>
+              <a href="#time" className="btn btn--ghost">
+                {t('hero.ctaSecondary')}
+              </a>
             </div>
-            <p className="font-spaceGrotesk text-neutral-600 mb-8 text-lg md:text-2xl max-w-[100%] md:max-w-[80%] align-middle">
-              {t("hero.description")}
-            </p>
-            <div className="flex gap-4 flex-wrap justify-center">
-              <button
-                className="bg-VerdeMenta text-white font-bold py-2 px-4 rounded hover:bg-AzulEletrico transition duration-300"
-                onClick={() => {
-                  trackHeroButtonClick();
-                  const aboutSection = document.getElementById("sobre");
-                  if (aboutSection) {
-                    aboutSection.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
-              >
-                {t("hero.button")}
-              </button>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </BackgroundBeamsWithCollision>
-    </div>
+    </section>
   );
 }

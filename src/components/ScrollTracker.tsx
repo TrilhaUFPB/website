@@ -30,7 +30,7 @@ export default function ScrollTracker() {
       lastScrollDepth = scrollDepth;
 
       // Track section visibility
-      const sections = ["sobre", "depoimentos", "turmas", "quem-somos", "faq"];
+      const sections = ["sobre", "numeros", "turmas", "projetos", "depoimentos", "time", "materiais", "faq"];
       const visibleSections: string[] = [];
 
       sections.forEach((sectionId) => {

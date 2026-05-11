@@ -32,6 +32,7 @@
 
   --pad-x: clamp(24px, 5vw, 88px);
   --section-y: clamp(80px, 10vw, 160px);
+  --nav-h: 68px;
 }
 
 html { scroll-behavior: smooth; }
@@ -160,12 +161,14 @@ button { font-family: inherit; cursor: pointer; }
   -webkit-backdrop-filter: saturate(140%) blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color .25s ease;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
 }
 .nav.scrolled { border-bottom-color: var(--rule); }
 .nav-inner {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 18px var(--pad-x);
+  padding: 18px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -173,17 +176,18 @@ button { font-family: inherit; cursor: pointer; }
 }
 .nav-logo {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 26px;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--ink);
+  align-items: center;
+  color: var(--midnight);
   text-decoration: none;
 }
-.nav-logo .dot { color: var(--mint); font-family: var(--font-body); font-weight: 700; margin-left: 1px; }
+.nav-logo .logo-mark {
+  display: block;
+  height: 32px;
+  width: 46px;
+  background-color: currentColor;
+  -webkit-mask: url('/assets/logo.svg') no-repeat center / contain;
+  mask: url('/assets/logo.svg') no-repeat center / contain;
+}
 .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
 .nav-links a { transition: color .15s ease; }
 .nav-links a:hover { color: var(--ink); }
@@ -267,7 +271,7 @@ button { font-family: inherit; cursor: pointer; }
 /* ============== SECTIONS ============== */
 
 /* HERO BEAMS — tone the framer beams down to editorial palette */
-.hero-beams { background: transparent; min-height: clamp(560px, 70vh, 760px); }
+.hero-beams { background: transparent; min-height: calc(100svh - var(--nav-h)); }
 .hero-beams [class*="bg-gradient-to-t"] {
   background: linear-gradient(to top, var(--mint-deep), var(--mint), transparent) !important;
   opacity: 0.55;
@@ -285,14 +289,13 @@ button { font-family: inherit; cursor: pointer; }
 
 /* HERO */
 .hero-section {
-  min-height: 0;
+  min-height: calc(100svh - var(--nav-h));
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 48px;
-  padding-bottom: 64px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
-.hero-container { display: flex; flex-direction: column; gap: 56px; }
+.hero-container { display: flex; flex-direction: column; justify-content: center; gap: 56px; }
 .hero-headline {
   margin: 0;
   font-size: clamp(44px, 6.4vw, 104px);

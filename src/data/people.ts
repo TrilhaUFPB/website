@@ -20,10 +20,10 @@ export const Tiago: Person = {
     semester: "9",
     role: "Software Engineer Stealth Startup",
     link: "https://www.linkedin.com/in/tiagotrindade03/",
-    photo: "pessoas/tiago.jpeg",
+    photo: "/assets/pessoas/tiago.jpg",
     class: null,
     org: ["2024.1", "2024.2"],
-    pos: ["Fundador", "Líder de Mídia"],    
+    pos: ["Fundador", "Líder de Mídia"],
 };
 
 export const Felipe: Person = {
@@ -31,7 +31,7 @@ export const Felipe: Person = {
     course: "Ciência da Computação",
     semester: "8",
     role: "Technical Staff Tako",
-    photo: "pessoas/felipe.png",
+    photo: "/assets/pessoas/felipe.png",
     link: "https://www.linkedin.com/in/felipeduartea/",
     class: null,
     org: ["2024.1", "2024.2"],
@@ -44,10 +44,10 @@ export const Puca: Person = {
     semester: "7",
     role: "Technical Staff Telepatia AI",
     link: "https://www.linkedin.com/in/pucavaz/",
-    photo: "pessoas/puca.png",
+    photo: "/assets/pessoas/puca.png",
     class: null,
-    org: ["2024.2", "2025.1"],
-    pos: ["Membro da Organização", "Membro da Organização"],
+    org: ["2024.2", "2025.1", "2025.2"],
+    pos: ["Membro da Organização", "Membro da Organização", "Membro da Organização"],
 };
 
 export const Nicholas: Person = {
@@ -56,7 +56,7 @@ export const Nicholas: Person = {
     semester: "8",
     role: "Software Engineer Stealth Startup",
     link: "https://www.linkedin.com/in/nicholas-rodrigues-/",
-    photo: "pessoas/nicholas.png",
+    photo: "/assets/pessoas/nicholas.png",
     class: null,
     org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Líder de Aulas"],
@@ -68,7 +68,7 @@ export const Icaro: Person = {
     semester: "Null",
     role: "Manager Pessoalize",
     link: "https://www.linkedin.com/in/icaro-mori-983608210/",
-    photo: "pessoas/icaro.png",
+    photo: "/assets/pessoas/icaro.png",
     class: null,
     org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Membro da Organização"],
@@ -80,10 +80,10 @@ export const Daniel: Person = {
     semester: "6",
     role: "Software Engineer 11x",
     link: "https://www.linkedin.com/in/daniel-victorcb/",
-    photo: "pessoas/daniel.jpeg",
+    photo: "/assets/pessoas/daniel.jpg",
     class: null,
-    org: ["2024.1", "2024.2", "2025.1"],
-    pos: ["Membro da Organização", "Membro da Organização"],
+    org: ["2024.1", "2024.2", "2025.1", "2025.2"],
+    pos: ["Membro da Organização", "Membro da Organização", "Membro da Organização", "Membro da Organização"],
 };
 
 export const Bea: Person = {
@@ -91,11 +91,11 @@ export const Bea: Person = {
     course: "Ciência da Computação",
     semester: "5",
     role: "Software Engineer Brief",
-    photo: "pessoas/2024.1/bea.png",
+    photo: "/assets/pessoas/2024.1/bea.png",
     link: "https://www.linkedin.com/in/beatriz-pess%C3%B4a/",
     class: "2024.1",
-    org: ["2024.2", "2025.1"],
-    pos: ["Membro da Organização", "Líder de Mídias e Impacto"],
+    org: ["2024.2", "2025.1", "2025.2"],
+    pos: ["Membro da Organização", "Líder de Mídias e Impacto", "Membro da Organização"],
 };
 
 export const Luiz: Person = {
@@ -104,7 +104,7 @@ export const Luiz: Person = {
     semester: "Formado",
     role: "Data Scientist III CloudWalk",
     link: "https://www.linkedin.com/in/luiz-fernando632",
-    photo: "pessoas/luiz.png",
+    photo: "/assets/pessoas/luiz.png",
     class: null,
     org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Membro da Organização"],
@@ -116,7 +116,7 @@ export const Gabriel: Person = {
     semester: "6",
     role: "Technical Staff Stealth Startup",
     link: "https://www.linkedin.com/in/gabrielbayres/",
-    photo: "pessoas/gabriel.png",
+    photo: "/assets/pessoas/gabriel.png",
     class: null,
     org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Membro da Organização"],
@@ -128,10 +128,10 @@ export const Guilherme: Person = {
     semester: "Formado",
     role: "Data Engineer Stealth Startup",
     link: "https://www.linkedin.com/in/guilhermehuther",
-    photo: "pessoas/guilherme.png",
+    photo: "/assets/pessoas/guilherme.png",
     class: null,
-    org: ["2024.1", "2024.2", "2025.1"],
-    pos: ["Fundador", "Líder de Aulas", "Líder de Aulas"],
+    org: ["2024.1", "2024.2", "2025.1", "2025.2"],
+    pos: ["Fundador", "Líder de Aulas", "Líder de Aulas", "Líder de Aulas"],
 };
 
 export const Caio: Person = {
@@ -140,7 +140,7 @@ export const Caio: Person = {
     semester: "11",
     role: "Data Scientist Bitka",
     link: "https://www.linkedin.com/in/caiolchacon",
-    photo: "pessoas/caio.png",
+    photo: "/assets/pessoas/caio.png",
     class: null,
     org: ["2024.1"],
     pos: ["Membro da Organização"],
@@ -148,14 +148,14 @@ export const Caio: Person = {
 
 export const Ceci: Person = {
     name: "Cecília Bíssigo",
-    course: "Fonoaudiologia",
-    semester: "5",
-    role: " ",
+    course: "Mídias Digitais",
+    semester: "1",
+    role: "",
     link: "",
-    photo: "pessoas/ceci.png",
+    photo: "/assets/pessoas/ceci.png",
     class: null,
-    org: ["2024.2", "2025.1"],
-    pos: ["Membro da Organização", "Membro da Organização"],
+    org: ["2024.2", "2025.1", "2025.2"],
+    pos: ["Membro da Organização", "Membro da Organização", "Líder de Marketing"],
 };
 
 export const CeciliaLog: Person = {
@@ -164,10 +164,10 @@ export const CeciliaLog: Person = {
     semester: "7",
     role: "Researcher Log",
     link: "https://www.linkedin.com/in/ana-cec%C3%ADlia-bezerra-338070242/",
-    photo: "pessoas/cecilialog.jpeg",
+    photo: "/assets/pessoas/cecilialog.jpg",
     class: null,
-    org: ["2025.1"],
-    pos: ["Membro da Organização"],
+    org: ["2025.1", "2025.2"],
+    pos: ["Membro da Organização", "Membro da Organização"],
 }
 
 export const peopleOrganization20241: Person[] = [
@@ -299,6 +299,7 @@ export const peopleOrganizationCurrent: Person[] = [
     MariaLuisaQuintela,
     Joaquim,
     EduardoOliveira,
+    MariaLuizaCavalcanti,
 ]
 
 export const peopleFounders: Person[] = [
