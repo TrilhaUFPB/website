@@ -45,7 +45,7 @@ Um rascunho comum e suficiente para começar é:
 
 Um desenho simples já ajuda:
 
-![exemplo de fluxograma de sistema](/api/materiais-assets/4-backend/13-seguranca-em-apis/assets/fluxo-sistema.png)
+![exemplo de fluxograma de sistema](./assets/fluxo-sistema.png)
 
 Esse desenho não é para ficar bonito. É para você conseguir apontar: onde um atacante toca no sistema e onde seus dados mais importantes passam.
 
