@@ -37,7 +37,7 @@ Na prática, “cliente” costuma ser o navegador, mas também pode ser um app 
 
 Servidor não é apenas um computador: normalmente existe um **software servidor** rodando, responsável por responder às requisições (por exemplo, um servidor web). ([MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server))
 
-![Fluxo cliente -> sevidor](/api/materiais-assets/4-backend/2-modelo-mental-de-backend/assets/Client/Client_Server.png)
+![Fluxo cliente -> sevidor](./assets/Client/Client_Server.png)
 
 ## Responsabilidades: o que pertence a cada lado
 
@@ -800,7 +800,7 @@ Em camadas, você divide o backend em partes com responsabilidades diferentes. U
 
 A regra mais importante é: **cada camada deve conhecer o mínimo possível das outras**. Normalmente, as dependências apontam para dentro: o domínio não depende de HTTP, nem de banco.
 
-![Exemplo de arquitetura em camadas](/api/materiais-assets/4-backend/2-modelo-mental-de-backend/assets/Client/Clean_architecture.png)
+![Exemplo de arquitetura em camadas](./assets/Client/Clean_architecture.png)
 
 ## O problema que isso resolve
 
