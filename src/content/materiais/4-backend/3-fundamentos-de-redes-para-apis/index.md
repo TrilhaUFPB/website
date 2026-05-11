@@ -48,7 +48,7 @@ A porta é um número que identifica um ponto de comunicação em uma máquina. 
 
 O IP te leva até a máquina. A porta te leva até o serviço certo dentro dessa máquina.
 
-![multiplexação para entender portas](/api/materiais-assets/4-backend/3-fundamentos-de-redes-para-apis/assets/tanenbau-6-17.png)
+![multiplexação para entender portas](./assets/tanenbau-6-17.png)
 
 Isso explica por que dois backends diferentes não podem escutar na mesma porta ao mesmo tempo no mesmo IP: o sistema operacional não teria como decidir para qual processo entregar os dados.
 
@@ -266,7 +266,7 @@ Um jeito simples de enxergar o modelo TCP/IP é:
 - Camada inter-redes: onde vive o IP, que identifica máquinas e permite atravessar redes diferentes
 - Camada de rede local: onde ocorre o envio real no meio físico e na rede local, como Wi-Fi e Ethernet
 
-![Diagrama das camadas do modelo TCP/IP](/api/materiais-assets/4-backend/3-fundamentos-de-redes-para-apis/assets/diagrama-TCP-IP.png)
+![Diagrama das camadas do modelo TCP/IP](./assets/diagrama-TCP-IP.png)
 
 O ponto principal é que a mensagem vai passando por essas camadas. Cada uma adiciona informações para conseguir fazer seu trabalho, e no destino essas informações são removidas até chegar no programa.
 
