@@ -9,7 +9,7 @@ order: 15
 
 É a forma mais primitiva de autenticação HTTP. Definida na RFC 7617.
 
-![Basic Authentication](/api/materiais-assets/4-backend/15-mecanismos-de-autenticacao/assets/basic-authentication.png)
+![Basic Authentication](./assets/basic-authentication.png)
 
 
 
@@ -87,7 +87,7 @@ def read_current_user(credentials: HTTPBasicCredentials = Depends(security)):
 
 Muito comum para autenticação máquina-máquina (SaaS, APIs Públicas). Você entrega uma chave longa para o desenvolvedor e ele envia em toda requisição.
 
-![Google Cloud API](/api/materiais-assets/4-backend/15-mecanismos-de-autenticacao/assets/google-cloud-api.png)
+![Google Cloud API](./assets/google-cloud-api.png)
 
 
 
@@ -164,7 +164,7 @@ async def secure_endpoint(user_data: dict = Security(get_api_key)):
 
 O método clássico da web "stateful" (com estado). O servidor cria um espaço na memória para aquele usuário e entrega um "crachá" (Cookie) com o ID da sessão.
 
-![Session Cookie](/api/materiais-assets/4-backend/15-mecanismos-de-autenticacao/assets/session-cookie.png)
+![Session Cookie](./assets/session-cookie.png)
 
 
 
@@ -216,8 +216,8 @@ response.set_cookie(
 
 O padrão da web moderna e microserviços. É **Stateless** (Sem estado). O servidor não guarda nada na memória. Todo o dado está dentro do token, assinado criptograficamente.
 
-![JWT Part 1](/api/materiais-assets/4-backend/15-mecanismos-de-autenticacao/assets/jwt-pt1.png)
-![JWT Part 2](/api/materiais-assets/4-backend/15-mecanismos-de-autenticacao/assets/jwt-pt2.png)
+![JWT Part 1](./assets/jwt-pt1.png)
+![JWT Part 2](./assets/jwt-pt2.png)
 
 
 
@@ -306,7 +306,7 @@ def verify_token(token: str):
 
 OAuth 2.0 não é sobre autenticação (quem você é), é sobre **autorização** (o que você pode acessar). Mas na prática, usamos para "Logar com Google/Facebook".
 
-![OAuth](/api/materiais-assets/4-backend/15-mecanismos-de-autenticacao/assets/oauth.png)
+![OAuth](./assets/oauth.png)
 
 
 
@@ -375,7 +375,7 @@ Não tente implementar OAuth 2.0 do zero. Use bibliotecas como `Authlib` ou `pyt
 
 Em cenários de altíssima segurança (Zero Trust) ou comunicação entre microserviços sensíveis, não basta o cliente verificar se o servidor é seguro (o cadeado HTTPS). O servidor também quer verificar se o cliente é quem diz ser.
 
-![Mutual TLS](/api/materiais-assets/4-backend/15-mecanismos-de-autenticacao/assets/mutual-tls.png)
+![Mutual TLS](./assets/mutual-tls.png)
 
 
 
@@ -425,7 +425,7 @@ Não existe "o melhor". Existe o melhor para o seu cenário. Use esta tabela par
 ## Matriz Comparativa
 
 | Mecanismo | Cliente Ideal | Complexidade | Revogação | Segurança Padrão | Cenário Típico |
-| : | : | : | : | : | : |
+| ---- | ---- | ---- | ---- | ---- | ---- |
 | **Basic Auth** | Scripts, Testes | Baixa | N/A (Stateless) | Baixa (Vulnerável sem HTTPS) | Ferramentas internas, testes rápidos. |
 | **API Keys** | Máquina-a-Máquina | Média | Instantânea (Banco) | Média (Chaves vazam fácil) | SaaS, Clientes de API Pública. |
 | **Sessions/Cookies** | Navegador (Web) | Média | Instantânea (Server-side) | Alta (Com flags HttpOnly/Secure) | E-commerce tradicional, Painéis Admin. |
