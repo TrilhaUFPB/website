@@ -56,22 +56,8 @@ export default function QuemSomos() {
     <section id="time" className="section">
       <div className="container">
         <SectionHead eyebrow={t('time.eyebrow')} title={t('time.title')} lede={t('time.lede')} />
-        {(() => {
-          const groupKey = (rawPos: string) =>
-            rawPos === 'Presidente' || rawPos.startsWith('Líder') ? 'Liderança' : rawPos;
-
-          type Member = { person: typeof team[0]; rawPos: string };
-          const groups: { trilhaRole: string; members: Member[] }[] = [];
-          for (const p of team) {
-            const isFounder = founderNames.has(p.name);
-            const rawPos = isFounder ? 'Fundador' : (p.pos.at(-1) ?? '');
-            const trilhaRole = groupKey(rawPos);
-            const last = groups.at(-1);
-            if (last && last.trilhaRole === trilhaRole) last.members.push({ person: p, rawPos });
-            else groups.push({ trilhaRole, members: [{ person: p, rawPos }] });
-          }
-
-          const renderCard = ({ person: p }: Member, i: number) => {
+        <div className="team-grid reveal">
+          {team.map((p, i) => {
             const isFounder = founderNames.has(p.name);
             const sem = formatSemester(p.semester);
             const courseLine = sem ? `${translateCourse(p.course)} · ${sem}` : translateCourse(p.course);
@@ -105,29 +91,8 @@ export default function QuemSomos() {
                 {p.link && <span className="team-arrow">↗</span>}
               </a>
             );
-          };
-
-          return groups.map((group) => {
-            const isLeadership = group.trilhaRole === 'Liderança';
-            return (
-              <div key={group.trilhaRole} className="team-section reveal">
-                {group.trilhaRole && !isLeadership && (
-                  <h2 className="team-section-title">{translateRole(group.trilhaRole)}</h2>
-                )}
-                <div className={isLeadership ? 'team-grid team-grid--titled' : 'team-grid'}>
-                  {group.members.map((m, i) =>
-                    isLeadership ? (
-                      <div key={i} className="team-col">
-                        <h2 className="team-section-title team-col-title">{translateRole(m.rawPos)}</h2>
-                        {renderCard(m, i)}
-                      </div>
-                    ) : renderCard(m, i)
-                  )}
-                </div>
-              </div>
-            );
-          });
-        })()}
+          })}
+        </div>
       </div>
     </section>
   );
