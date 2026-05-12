@@ -31,7 +31,7 @@
   },
   "numbers": {
     "eyebrow": "02 / Numbers",
-    "title": "Three cohorts, a growing network.",
+    "title": "Four cohorts, a growing network.",
     "labels": {
       "studentsGraduated": "students graduated",
       "activeOrganizers": "active organizers",
@@ -43,13 +43,14 @@
   },
   "turmas": {
     "eyebrow": "03 / Cohorts",
-    "title": "Three semesters, three stories.",
+    "title": "Four semesters, four stories.",
     "lede": "Each cohort marks a version of Trilha. Meet the people who came through and what each edition built.",
     "studentsSuffix": "students",
     "items": [
       { "period": "2024.1", "title": "First cohort", "students": 14, "theme": "Where it all started — Python, web, and the first hackathon.", "img": "/assets/turmas/trilha2024.jpg" },
       { "period": "2024.2", "title": "Second cohort", "students": 19, "theme": "Expanded curriculum, first wave of external guest speakers.", "img": "/assets/turmas/trilha2024-2.jpg" },
-      { "period": "2025.1", "title": "Third cohort", "students": 16, "theme": "Structured mentoring and a new data track.", "img": "/assets/turmas/trilha2025.jpg" }
+      { "period": "2025.1", "title": "Third cohort", "students": 16, "theme": "Structured mentoring and a new data track.", "img": "/assets/turmas/trilha2025.jpg" },
+      { "period": "2025.2", "title": "Fourth cohort", "students": 12, "theme": "More cohorts, more projects, a community taking shape.", "img": "/assets/turmas/trilha2025-2.jpeg" }
     ]
   },
   "projects": {

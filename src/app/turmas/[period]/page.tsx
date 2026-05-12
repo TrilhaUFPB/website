@@ -4,12 +4,13 @@ import ptCommon from '@/locales/pt/common.json';
 import type { TurmaItem } from '@/components/home/data';
 import TurmaStudents from './TurmaStudents';
 
-type Period = '2024.1' | '2024.2' | '2025.1';
+type Period = '2024.1' | '2024.2' | '2025.1' | '2025.2';
 
 const COVERS: Record<Period, string> = {
   '2024.1': '/assets/turmas/trilha2024.jpg',
   '2024.2': '/assets/turmas/trilha2024-2.jpg',
   '2025.1': '/assets/turmas/trilha2025.jpg',
+  '2025.2': '/assets/turmas/trilha2025-2.jpeg',
 };
 
 export function generateStaticParams() {

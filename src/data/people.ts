@@ -14,6 +14,7 @@ export interface Person {
 import { Luigi, Kruta, Emyle, Clara, Davi, JoseVitor, Marcus, VitorReis, Artur, LuisAranha, MiguelQueiroz, DaviGurgel, RafaelTorres, NicolasKleiton } from './students_2024_1';
 import { AnnaLivia, Carol, Bruno, Chaves, Beatriz, Caua, GabrielCarvalho, DanielDuarte, Julia, Jose, Kawane, Lara, Nathan, Pedro, Murilo, Filipe, Sofia, Thiago, Vinicius } from './students_2024_2';
 import { EduardoOliveira, DanielSilva, MariaLuizaCavalcanti, LarissaGondim, PedroMenegon, JoaoGabrielArruda, MariaMarianaCavalcante, MariaJullyaEloi, AnaVictoriaFerreira, NicoleCosta, MarianaPontes, ArthurTenorio, LuisAugustoOliveira, MariaCeciliaSouza, MariaLuisaQuintela, Joaquim } from './students_2025_1';
+import { RhuanOliveira, SergioFreitas, LucianaNascimento, GabrielPinto, GabrielBringel, YasminBatista, RicardoBorges, GuilhermeRibeiro, BiancaGuido, PierreQueiroz, MarcoGadelha, SofiaAraujo } from './students_2025_2';
 
 export const Tiago: Person = {
     name: "Tiago Trindade",
@@ -254,6 +255,21 @@ export const peopleStudents20251: Person[] = [
     Joaquim,
 ]
 
+export const peopleStudents20252: Person[] = [
+    RhuanOliveira,
+    SergioFreitas,
+    LucianaNascimento,
+    GabrielPinto,
+    GabrielBringel,
+    YasminBatista,
+    RicardoBorges,
+    GuilhermeRibeiro,
+    BiancaGuido,
+    PierreQueiroz,
+    MarcoGadelha,
+    SofiaAraujo,
+]
+
 export const peopleOrganization20242: Person[] = [
     Tiago,
     Felipe,
@@ -327,4 +343,5 @@ export const peopleFounders: Person[] = [
 export { Luigi, Kruta, Emyle, Clara, Davi, JoseVitor, Marcus, VitorReis, Artur, LuisAranha, MiguelQueiroz, DaviGurgel, RafaelTorres, NicolasKleiton } from './students_2024_1';
 export { AnnaLivia, Carol, Bruno, Chaves, Beatriz, Caua, GabrielCarvalho, DanielDuarte, Julia, Jose, Kawane, Lara, Nathan, Pedro, Murilo, Filipe, Sofia, Thiago, Vinicius } from './students_2024_2';
 export { EduardoOliveira, DanielSilva, MariaLuizaCavalcanti, LarissaGondim, PedroMenegon, JoaoGabrielArruda, MariaMarianaCavalcante, MariaJullyaEloi, AnaVictoriaFerreira, NicoleCosta, MarianaPontes, ArthurTenorio, LuisAugustoOliveira, MariaCeciliaSouza, MariaLuisaQuintela, Joaquim } from './students_2025_1';
+export { RhuanOliveira, SergioFreitas, LucianaNascimento, GabrielPinto, GabrielBringel, YasminBatista, RicardoBorges, GuilhermeRibeiro, BiancaGuido, PierreQueiroz, MarcoGadelha, SofiaAraujo } from './students_2025_2';
 

@@ -10,9 +10,10 @@ import {
   peopleStudents20241,
   peopleStudents20242,
   peopleStudents20251,
+  peopleStudents20252,
 } from '@/data/people';
 
-const COHORTS = [peopleStudents20241, peopleStudents20242, peopleStudents20251];
+const COHORTS = [peopleStudents20241, peopleStudents20242, peopleStudents20251, peopleStudents20252];
 
 function CountUp({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);

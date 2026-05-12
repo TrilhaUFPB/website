@@ -31,7 +31,7 @@
   },
   "numbers": {
     "eyebrow": "02 / Números",
-    "title": "Três turmas, e a rede só cresce.",
+    "title": "Quatro turmas, e a rede só cresce.",
     "labels": {
       "studentsGraduated": "alunos formados",
       "activeOrganizers": "organizadores ativos",
@@ -43,13 +43,14 @@
   },
   "turmas": {
     "eyebrow": "03 / Turmas",
-    "title": "Três semestres, três histórias.",
+    "title": "Quatro semestres, quatro histórias.",
     "lede": "Cada turma marca uma versão do Trilha. Conheça quem passou por aqui e o que cada edição construiu.",
     "studentsSuffix": "alunos",
     "items": [
       { "period": "2024.1", "title": "Primeira Turma", "students": 14, "theme": "Onde tudo começou — Python, web, e o primeiro hackathon.", "img": "/assets/turmas/trilha2024.jpg" },
       { "period": "2024.2", "title": "Segunda Turma", "students": 19, "theme": "Currículo expandido, primeira leva de palestrantes externos.", "img": "/assets/turmas/trilha2024-2.jpg" },
-      { "period": "2025.1", "title": "Terceira Turma", "students": 16, "theme": "Mentoria estruturada e nova frente de dados.", "img": "/assets/turmas/trilha2025.jpg" }
+      { "period": "2025.1", "title": "Terceira Turma", "students": 16, "theme": "Mentoria estruturada e nova frente de dados.", "img": "/assets/turmas/trilha2025.jpg" },
+      { "period": "2025.2", "title": "Quarta Turma", "students": 12, "theme": "Mais turmas, mais projetos, comunidade consolidada.", "img": "/assets/turmas/trilha2025-2.jpeg" }
     ]
   },
   "projects": {
