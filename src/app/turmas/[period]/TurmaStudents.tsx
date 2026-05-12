@@ -14,6 +14,7 @@ export default function TurmaStudents({ period }: { period: string }) {
     if (period === '2024.1') return translated.peopleStudents20241 as Person[];
     if (period === '2024.2') return translated.peopleStudents20242 as Person[];
     if (period === '2025.1') return translated.peopleStudents20251 as Person[];
+    if (period === '2025.2') return translated.peopleStudents20252 as Person[];
     return [] as Person[];
   })();
 

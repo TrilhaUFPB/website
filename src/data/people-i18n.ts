@@ -93,6 +93,7 @@ export function useTranslatedPeople() {
   const peopleStudents20242 = PeopleData.peopleStudents20242.map(translatePerson);
   const peopleOrganization20251 = PeopleData.peopleOrganization20251.map(translatePerson);
   const peopleStudents20251 = PeopleData.peopleStudents20251.map(translatePerson);
+  const peopleStudents20252 = PeopleData.peopleStudents20252.map(translatePerson);
   const peopleOrganizationCurrent = PeopleData.peopleOrganizationCurrent.map(translatePerson);
 
   // Create a mapping of courses
@@ -122,6 +123,7 @@ export function useTranslatedPeople() {
     peopleStudents20242,
     peopleOrganization20251,
     peopleStudents20251,
+    peopleStudents20252,
     peopleOrganizationCurrent,
     courses,
     translatePerson,

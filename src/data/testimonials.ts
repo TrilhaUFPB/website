@@ -1,18 +1,30 @@
 import {
   Artur,
   Bea,
+  BiancaGuido,
   Clara,
   DaviGurgel,
   Emyle,
+  GabrielBringel,
+  GabrielPinto,
+  GuilhermeRibeiro,
   Kruta,
+  LucianaNascimento,
   Luigi,
   LuisAranha,
+  MarcoGadelha,
   Marcus,
   MiguelQueiroz,
   NicolasKleiton,
   type Person,
+  PierreQueiroz,
   RafaelTorres,
+  RhuanOliveira,
+  RicardoBorges,
+  SergioFreitas,
+  SofiaAraujo,
   VitorReis,
+  YasminBatista,
 } from './people';
 
 export type LocalizedText = { pt: string; en: string };
@@ -77,10 +89,6 @@ export const TESTIMONIALS: Testimonial[] = [
       pt: "A experiência que o Trilha proporcionou foi simplesmente única. O projeto me ajudou a crescer tanto como estudante quanto como pessoa, me ensinando a ser mais focada e a trabalhar melhor em equipe. Mais do que isso, conhecer pessoas incríveis e ouvir histórias inspiradoras mudou totalmente a forma como eu vejo a área. Sou muito grata a todos os envolvidos, porque o Trilha marcou profundamente minha vida, tanto no lado pessoal quanto no acadêmico.",
       en: "The experience that Trilha provided was simply unique. The project helped me grow both as a student and as a person, teaching me to be more focused and to work better in teams. More than that, meeting incredible people and hearing inspiring stories completely changed the way I see the field. I am very grateful to everyone involved, because Trilha has profoundly marked my life, both personally and academically.",
     },
-    short: {
-      pt: "Mais do que aprender, conhecer pessoas incríveis e ouvir histórias inspiradoras mudou completamente como eu enxergo a área.",
-      en: "More than learning, meeting incredible people and hearing inspiring stories completely changed how I see the field.",
-    },
   },
   {
     person: LuisAranha,
@@ -127,16 +135,104 @@ export const TESTIMONIALS: Testimonial[] = [
       pt: "O Trilha foi uma experiência incrível pra mim, na qual aprendi muita coisa no ramo da programação, desde o básico até conceitos mais avançados, e tive minha primeira experiência em um trabalho em equipe no hackathon. Além disso, pude conhecer pessoas incríveis, as quais sou extremamente grato por terem feito minhas sextas-feiras mais felizes durante o Trilha.",
       en: "Trilha was an incredible experience for me, in which I learned a lot in the field of programming, from the basics to more advanced concepts, and had my first experience in teamwork during the hackathon. In addition, I was able to meet incredible people, to whom I am extremely grateful for making my Fridays happier during Trilha.",
     },
-    short: {
-      pt: "Aprendi muito no ramo da programação e tive minha primeira experiência de trabalho em equipe no hackathon.",
-      en: "I learned a lot about programming and had my first teamwork experience during the hackathon.",
-    },
   },
   {
     person: RafaelTorres,
     long: {
       pt: "O Trilha foi uma experiência transformadora para mim. O projeto não apenas me ajudou a construir uma base sólida, mas também proporcionou contato com assuntos muito importantes, que dificilmente eu conheceria de outra forma. Participar do Trilha no início do curso foi com certeza uma das melhores decisões que tomei, sou muito grato por ter participado.",
       en: "Trilha was a transformative experience for me. The project not only helped me build a solid foundation, but also provided contact with very important subjects that I would hardly have known otherwise. Participating in Trilha at the beginning of the course was certainly one of the best decisions I made, I am very grateful to have participated.",
+    },
+  },
+  {
+    person: RhuanOliveira,
+    long: {
+      pt: "O Trilha foi um impulso muito importante na minha trajetória universitária — e sei que vai impactar minha carreira em computação. Fiz amigos, interagi com pessoas que nunca imaginei conhecer, e isso me fez crescer como aluno e em conhecimento técnico.",
+      en: "Trilha was a major boost in my university journey — and I know it will shape my career in computing. I made friends, met people I never imagined I'd meet, and that made me grow both as a student and in technical knowledge.",
+    },
+  },
+  {
+    person: SergioFreitas,
+    long: {
+      pt: "O Trilha foi uma experiência intensa que ampliou minha visão e me mostrou as possibilidades que a área traz. Conheci pessoas incríveis, me aproximei de quem eu já admirava, e saio mais confiante, mais maduro e com muito mais clareza de onde quero chegar. Foi mais do que aprender a programar — foi perceber que faço parte de algo maior, de uma comunidade que se importa de verdade.",
+      en: "Trilha was an intense experience that broadened my perspective and showed me what the field can offer. I met incredible people, got closer to those I already admired, and walked out more confident, more mature, and with much greater clarity about where I want to go. It was more than learning to code — it was realizing I'm part of something bigger, a community that genuinely cares.",
+    },
+  },
+  {
+    person: LucianaNascimento,
+    long: {
+      pt: "Entrei no primeiro período com medo de estar muito atrás de todo mundo, e o Trilha mudou isso. Foi um guia que me deu segurança o suficiente para me sentir bem comigo mesma. Amei cada aula — e principalmente os momentos em que o time parava tudo pra ouvir o que a gente estava sentindo. Sou grata por todo o conhecimento, mas principalmente pelos amigos que vou levar pra vida toda.",
+      en: "I started my first semester afraid of being far behind everyone else, and Trilha changed that. It became a guide that gave me enough confidence to feel good about myself. I loved every class — and especially the moments when the team stopped everything to listen to how we were feeling. I'm grateful for everything I learned, but most of all for the friends I'll carry with me for life.",
+    },
+    short: {
+      pt: "O Trilha transformou o medo do primeiro período em confiança, conhecimento e amizades pra vida toda.",
+      en: "Trilha turned my first-semester fear into confidence, knowledge, and friendships for life.",
+    },
+  },
+  {
+    person: GabrielPinto,
+    long: {
+      pt: "Foi uma experiência única em vários sentidos — um desafio muito maior do que eu esperava, e isso foi uma das melhores coisas que poderiam ter acontecido no meu primeiro semestre. Ser exposto a um projeto desse tamanho como calouro faz com que habilidades se desenvolvam por necessidade, e o conhecimento venha das relações que você constrói no caminho.",
+      en: "It was a one-of-a-kind experience — a much bigger challenge than I expected, and that was one of the best things that could have happened in my first semester. Being thrown into a project of this scale as a freshman makes skills develop out of necessity, and the knowledge comes from the relationships you build along the way.",
+    },
+  },
+  {
+    person: GabrielBringel,
+    long: {
+      pt: "Foi uma oportunidade única de desenvolver habilidades importantes pra vida, aprender com grandes exemplos e construir conexões valiosíssimas logo no início da graduação. O Trilha foi, sem dúvidas, a melhor e mais importante primeira etapa do meu desenvolvimento pessoal e acadêmico.",
+      en: "It was a unique chance to develop skills important for life, learn from great role models, and build invaluable connections right at the start of college. Trilha was, without a doubt, the best and most important first step in my personal and academic development.",
+    },
+  },
+  {
+    person: YasminBatista,
+    long: {
+      pt: "O Trilha foi uma experiência marcante muito além das aulas — um espaço de acolhimento, inspiração e crescimento que transformava as sextas-feiras em um dos melhores momentos da semana. Conhecer pessoas tão incríveis fez tudo ser ainda mais especial e motivador.",
+      en: "Trilha was a defining experience far beyond the classes — a space of welcome, inspiration, and growth that turned Fridays into one of the best parts of the week. Meeting such incredible people made everything even more special and motivating.",
+    },
+  },
+  {
+    person: RicardoBorges,
+    long: {
+      pt: "Um salto em experiência profissional e técnica, e também uma comunidade incrível, cheia de pessoas inspiradoras. O Trilha foi a confirmação de que escolhi o caminho certo.",
+      en: "A leap in professional and technical experience, and also an incredible community full of inspiring people. Trilha was the confirmation that I chose the right path.",
+    },
+  },
+  {
+    person: GuilhermeRibeiro,
+    long: {
+      pt: "O Trilha foi um divisor de águas na minha vida acadêmica. As aulas dinâmicas, os assuntos que eu nunca imaginei ver logo no primeiro período e a comunidade foram essenciais — principalmente porque vim de fora e não tinha ninguém tão próximo. Hoje, se eu precisar de qualquer ajuda, sei que posso contar com qualquer pessoa do projeto.",
+      en: "Trilha was a turning point in my academic life. The dynamic classes, the topics I never imagined seeing in my first semester, and the community were essential — especially because I'm from out of town and didn't have anyone close. Today, if I need help, I know I can count on anyone from the project.",
+    },
+  },
+  {
+    person: BiancaGuido,
+    long: {
+      pt: "Foi uma das melhores experiências que se pode ter como caloura. As pessoas do time, que também são jovens, já são uma inspiração enorme pra quem chega. Para além do técnico, a turma aprende que ninguém chega ao topo sozinho e que crítica construtiva vale mais do que elogio. Também aprendi a liderar, a falar com mais confiança e a importância de organizar o próprio tempo.",
+      en: "It was one of the best experiences a freshman can have. The team — also young — is already a huge inspiration for those just arriving. Beyond the technical side, you learn that no one gets to the top alone and that constructive criticism matters more than praise. I also learned to lead, to speak with more confidence, and the importance of managing my own time.",
+    },
+  },
+  {
+    person: PierreQueiroz,
+    long: {
+      pt: "O Trilha ampliou minha visão do que a programação pode me proporcionar e até onde posso chegar. Estar rodeado de pessoas que já trabalham e correm atrás dos seus objetivos mostra que é possível — e fazer amizade, conversar e rir com gente que tem um objetivo parecido com o seu deixa o processo muito mais leve.",
+      en: "Trilha broadened my view of what programming can offer me and how far I can go. Being surrounded by people already working and chasing their goals shows that it's possible — and building friendships with people aiming in the same direction makes the whole journey much lighter.",
+    },
+  },
+  {
+    person: MarcoGadelha,
+    long: {
+      pt: "O Trilha foi uma experiência de muito crescimento, principalmente pela dinâmica de aluno pra aluno. Facilita demais o desenvolvimento de soft skills fundamentais para a vida profissional, e ainda fortaleceu meu próprio conhecimento, abrindo portas e me apresentando conceitos que eu nunca tinha visto.",
+      en: "Trilha was an experience of huge growth, especially because of the student-to-student dynamic. It really helps develop soft skills that are fundamental for professional life, and it also strengthened my own knowledge, opening doors to concepts I had never seen before.",
+    },
+  },
+  {
+    person: SofiaAraujo,
+    long: {
+      pt: "O Trilha me mostrou que o aprendizado vai muito além da sala de aula. Me diverti com a movimentação de ideias e implementações até o código dar certo, e conheci pessoas tão admiráveis que me fazem sonhar muito mais alto. Foi um lugar acolhedor que me fez perder o medo de tirar dúvidas — o Trilha deixou o mundo tech mais divertido, familiar e humano.",
+      en: "Trilha showed me that learning goes far beyond the classroom. I had so much fun with the back-and-forth of ideas and implementations until the code finally worked, and I met people so admirable they made me dream bigger. It was a welcoming place that took away my fear of asking questions — Trilha made the tech world feel more fun, familiar, and human.",
+    },
+    short: {
+      pt: "O Trilha deixou o mundo tech mais divertido, familiar e humano.",
+      en: "Trilha made the tech world feel more fun, familiar, and human.",
     },
   },
 ];

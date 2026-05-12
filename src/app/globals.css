@@ -404,8 +404,8 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* TURMAS */
-.turmas-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.turma-card { display: flex; flex-direction: column; gap: 18px; cursor: pointer; outline: none; }
+.turmas-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.turma-card { display: flex; flex-direction: column; gap: 18px; cursor: pointer; outline: none; min-width: 0; }
 .turma-img {
   position: relative;
   border-radius: var(--radius-m);
@@ -432,7 +432,7 @@ button { font-family: inherit; cursor: pointer; }
 .turma-overlay .kicker { color: inherit; }
 .turma-meta { padding: 0 4px; }
 .turma-title {
-  font-size: clamp(22px, 4.2vw, 32px);
+  font-size: clamp(18px, 2.4vw, 26px);
   line-height: 1.05;
   margin-bottom: 8px;
   word-break: break-word;
@@ -441,10 +441,13 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0;
   color: var(--ink-soft);
   max-width: 46ch;
-  font-size: clamp(14px, 3.4vw, 16px);
+  font-size: clamp(13px, 1.1vw, 15px);
   line-height: 1.5;
 }
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  .turmas-row { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+@media (max-width: 600px) {
   .turmas-row { grid-template-columns: 1fr; gap: 20px; }
   .turma-card { gap: 14px; }
   .turma-img { aspect-ratio: 5 / 4; }
