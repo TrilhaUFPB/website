@@ -119,7 +119,7 @@ export const BiancaGuido: Person = {
     role: "",
     company: "",
     link: "https://www.linkedin.com/in/bianca-guido",
-    photo: "/assets/pessoas/2025.2/bianca.png",
+    photo: "/assets/pessoas/2025.2/bianca.jpeg",
     class: "2025.2",
     org: [],
     pos: [],
