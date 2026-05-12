@@ -106,7 +106,7 @@ export const GuilhermeRibeiro: Person = {
     role: "",
     company: "",
     link: "",
-    photo: "",
+    photo: "/assets/pessoas/2025.2/guilherme.jpeg",
     class: "2025.2",
     org: [],
     pos: [],
