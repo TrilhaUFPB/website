@@ -5,6 +5,19 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { usePostHogTracking } from '@/hooks/usePostHogTracking';
 import { SectionHead } from '@/components/home/shared';
 import type { TurmaItem } from '@/components/home/data';
+import {
+  peopleStudents20241,
+  peopleStudents20242,
+  peopleStudents20251,
+  peopleStudents20252,
+} from '@/data/people';
+
+const STUDENT_COUNTS: Record<string, number> = {
+  '2024.1': peopleStudents20241.length,
+  '2024.2': peopleStudents20242.length,
+  '2025.1': peopleStudents20251.length,
+  '2025.2': peopleStudents20252.length,
+};
 
 export default function Turmas() {
   const { t } = useTranslation();
@@ -33,7 +46,7 @@ export default function Turmas() {
                 <div className="turma-overlay">
                   <span className="kicker">{it.period}</span>
                   <span className="kicker">
-                    {it.students} {studentsSuffix}
+                    {STUDENT_COUNTS[it.period] ?? it.students} {studentsSuffix}
                   </span>
                 </div>
               </div>
