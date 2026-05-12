@@ -77,7 +77,15 @@
     "eyebrow": "07 / Materials",
     "title": "Always open, always free.",
     "lede": "Trilha's teaching material — Python, frontend, backend, databases, data — stays freely available for anyone who wants to learn.",
-    "tracks": ["Python basics", "Frontend", "Backend", "Databases", "Data"],
+    "tracks": {
+      "Python Basics": "/materiais/1-introducao-ao-python/1-introducao-ao-ambiente-de-execucao",
+      "Data Structure": "/materiais/2-estruturas-de-dados/1-introducao",
+      "Data": "/materiais/3-dados/1-tipos-de-dados",
+      "Backend": "/materiais/4-backend/1-introducao",
+      "Database": "/materiais/5-banco-de-dados/1-introducao",
+      "Frontend": "/materiais/6-frontend/1-fundamentos-da-web"
+    },
+    "paths": [],
     "cta": "Open materials"
   },
   "faq": {

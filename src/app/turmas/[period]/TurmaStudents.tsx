@@ -38,7 +38,11 @@ export default function TurmaStudents({ period }: { period: string }) {
           </div>
           <div className="team-info">
             <div className="team-name">{p.name}</div>
-            <div className="kicker team-role">{p.role || ' '}</div>
+            {(p.role || p.company) && (
+              <div className="kicker team-pos">
+                {[p.role, p.company].filter(Boolean).join(' @ ')}
+              </div>
+            )}
             <div className="team-course">{p.course}</div>
           </div>
           {p.link && <span className="team-arrow">↗</span>}

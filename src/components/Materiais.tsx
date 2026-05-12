@@ -4,7 +4,8 @@ import { useTranslation } from '@/hooks/useTranslation';
 
 export default function Materiais() {
   const { t } = useTranslation();
-  const tracks = t<string[]>('materiais.tracks');
+  const tracks = t<Record<string, string>>('materiais.tracks');
+
   return (
     <section id="materiais" className="section section--ink">
       <div className="container">
@@ -34,10 +35,10 @@ export default function Materiais() {
             </a>
           </div>
           <div className="mat-right">
-            {tracks.map((label, i) => (
-              <a key={i} href="/materiais" className="mat-track">
+            {Object.entries(tracks).map(([k, v], i) => (
+              <a key={k} href={v} className="mat-track">
                 <span className="mat-track-num">{String(i + 1).padStart(2, '0')}</span>
-                <span className="mat-track-name">{label}</span>
+                <span className="mat-track-name">{k}</span>
                 <span className="mat-track-arrow">→</span>
               </a>
             ))}

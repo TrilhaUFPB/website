@@ -7,9 +7,9 @@ order: 1
 
 Para iniciar o raciocínio, imagine o computador como um funcionário extremamente rápido e preciso, mas que possui sérias limitações: ele não tem empatia e é incapaz de compreender um contexto mais amplo.
 
-<div style="background: linear-gradient(140deg, #000000 0%,rgb(38, 45, 100) 100%); padding: 3rem; border-radius: 4rem; color: white; margin: 2rem 0;">
-  <h4 style="margin-top: 0;">“Nessa visão, o seu papel não é apenas 'escrever comandos', mas sim o de um gerente estratégico. Seu trabalho é encontrar maneiras de potencializar a velocidade e a precisão desse 'funcionário' (o computador), enquanto cria instruções detalhadas o suficiente para que a falta de discernimento dele não cause erros no resultado final."</h4>
-  <p>Think in Python, Allen B. Downey</p>
+<div style="background: linear-gradient(140deg, #000000 0%,rgb(38, 45, 100) 100%); padding: 3rem; border-radius: 4rem; margin: 2rem 0;">
+  <h4 style="margin-top: 0; color: white;">“Nessa visão, o seu papel não é apenas 'escrever comandos', mas sim o de um gerente estratégico. Seu trabalho é encontrar maneiras de potencializar a velocidade e a precisão desse 'funcionário' (o computador), enquanto cria instruções detalhadas o suficiente para que a falta de discernimento dele não cause erros no resultado final."</h4>
+  <p style="color:rgb(180, 188, 201); margin-bottom: 0; text-align: right; font-style: italic;">Think in Python, Allen B. Downey</p>
 </div>
 
 # 1.1. O que é um programa?

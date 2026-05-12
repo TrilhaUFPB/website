@@ -27,11 +27,11 @@ export default function NavBar() {
   }, []);
 
   const items = [
-    { id: 'sobre', label: t('nav.sobre') },
-    { id: 'turmas', label: t('nav.turmas') },
-    { id: 'projetos', label: t('nav.projetos') },
-    { id: 'time', label: t('nav.time') },
-    { id: 'materiais', label: t('nav.materiais') },
+    { id: 'sobre', label: t('nav.sobre'), url: '#sobre' },
+    { id: 'turmas', label: t('nav.turmas'), url: '#turmas' },
+    { id: 'projetos', label: t('nav.projetos'), url: '#projetos' },
+    { id: 'time', label: t('nav.time'), url: '#time' },
+    { id: 'materiais', label: t('nav.materiais'), url: '/materiais' },
   ];
 
   const toggleLang = () => {
@@ -50,7 +50,7 @@ export default function NavBar() {
           {items.map((it) => (
             <a
               key={it.id}
-              href={`#${it.id}`}
+              href={it.url}
               className={active === it.id ? 'active' : ''}
               onClick={() => trackNavigationClick(it.id)}
             >
