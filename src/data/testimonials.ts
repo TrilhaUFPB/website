@@ -50,10 +50,6 @@ export const TESTIMONIALS: Testimonial[] = [
       pt: "O Trilha foi de suma importância para a minha introdução ao curso de ciência da computação que, até então, estava sendo predominantemente teórico. As aulas semanais e o hackathon no fim do período transformaram a minha visão sobre a programação ao me fazer pôr em prática toda a teoria aprendida em sala. Fiquei muito feliz e grato por ter participado, por isso recomendo a todos que estão iniciando no curso!",
       en: "Trilha was of paramount importance for my introduction to the computer science course which, until then, was predominantly theoretical. The weekly classes and the hackathon at the end of the period transformed my view of programming by making me put into practice all the theory learned in class. I was very happy and grateful to have participated, so I recommend it to everyone who is starting the course!",
     },
-    short: {
-      pt: "As aulas semanais e o hackathon transformaram minha visão de programação por me fazerem colocar em prática toda a teoria aprendida.",
-      en: "The weekly classes and the hackathon transformed my view of programming by making me put theory into practice.",
-    },
   },
   {
     person: Luigi,
@@ -72,16 +68,16 @@ export const TESTIMONIALS: Testimonial[] = [
       pt: "Vivenciar o Trilha foi um marco no início da minha trajetória na Ciência da Computação. O projeto não apenas me apresentou os fundamentos da programação, mas também me deu a confiança para explorar a área com mais segurança. A experiência prática e o aprendizado em equipe foram transformadores, mostrando a importância de colaborar e crescer junto com outras pessoas. O Trilha foi uma parte especial desse começo, e sou muito grata por ter feito parte dessa jornada.",
       en: "Experiencing Trilha was a milestone at the beginning of my journey in Computer Science. The project not only introduced me to the fundamentals of programming, but also gave me the confidence to explore the field with more security. The practical experience and team learning were transformative, showing the importance of collaborating and growing with other people. Trilha was a special part of this beginning, and I am very grateful to have been part of this journey.",
     },
-    short: {
-      pt: "A experiência prática e o aprendizado em time foram transformadores — mostraram a importância de colaborar e crescer com outras pessoas.",
-      en: "The practical experience and team learning were transformative, showing the importance of collaborating and growing with other people.",
-    },
   },
   {
     person: DaviGurgel,
     long: {
       pt: "O Trilha foi essencial para o meu início de curso e me proporcionou uma base muito sólida do que vou precisar para uma boa formação como estudante e profissional. A experiência foi indispensável para mim, pois entrei no curso com pouca base de programação e acredito que o Trilha me fez alcançar um nível que eu talvez demoraria vários meses a mais para atingir, sem a mentoria. Além disso, durante esse projeto conheci pessoas incríveis, com quem tenho vontade de manter contato pelo resto da minha vida. Por isso, sou muito grato por ter participado da primeira edição do Trilha.",
       en: "Trilha was essential for my beginning of the course and provided me with a very solid foundation of what I will need for good training as a student and professional. The experience was indispensable for me, as I entered the course with little programming background and I believe that Trilha made me reach a level that I might have taken several more months to reach without mentoring. Additionally, during this project I met incredible people, with whom I want to stay in touch for the rest of my life. That's why I'm very grateful to have participated in the first edition of Trilha.",
+    },
+    short: {
+      pt: "Entrei no curso com pouca base de programação, e o Trilha me fez alcançar um nível que demoraria meses a mais para atingir sem a mentoria.",
+      en: "I started the course with little programming background, and Trilha got me to a level I'd have needed months more to reach without the mentoring.",
     },
   },
   {
@@ -103,10 +99,6 @@ export const TESTIMONIALS: Testimonial[] = [
     long: {
       pt: "Aqui, tive grandes experiências com coisas que sequer pensei que teria. Consegui aprender com pessoas que me inspiram e, do início ao fim, tive uma enorme satisfação em participar dessa trajetória.",
       en: "Here, I had great experiences with things I never thought I would have. I was able to learn from people who inspire me and, from beginning to end, I had enormous satisfaction in participating in this journey.",
-    },
-    short: {
-      pt: "Tive grandes experiências com coisas que sequer pensei que teria — aprendi com pessoas que me inspiram.",
-      en: "I had great experiences I never imagined — learning from people who inspire me.",
     },
   },
   {
@@ -156,6 +148,10 @@ export const TESTIMONIALS: Testimonial[] = [
     long: {
       pt: "O Trilha foi uma experiência intensa que ampliou minha visão e me mostrou as possibilidades que a área traz. Conheci pessoas incríveis, me aproximei de quem eu já admirava, e saio mais confiante, mais maduro e com muito mais clareza de onde quero chegar. Foi mais do que aprender a programar — foi perceber que faço parte de algo maior, de uma comunidade que se importa de verdade.",
       en: "Trilha was an intense experience that broadened my perspective and showed me what the field can offer. I met incredible people, got closer to those I already admired, and walked out more confident, more mature, and with much greater clarity about where I want to go. It was more than learning to code — it was realizing I'm part of something bigger, a community that genuinely cares.",
+    },
+    short: {
+      pt: "Foi mais do que aprender a programar — foi perceber que faço parte de algo maior, de uma comunidade que se importa de verdade.",
+      en: "It was more than learning to code — it was realizing I'm part of something bigger, a community that genuinely cares.",
     },
   },
   {
@@ -241,6 +237,10 @@ export const TESTIMONIALS: Testimonial[] = [
     long: {
       pt: "O Trilha pra mim foi uma experiência muito gratificante. Aprendi conteúdos que eu nem imaginava ter contato logo no primeiro período, conheci pessoas incríveis sempre dispostas a ajudar e fiz boas amizades — uma família. Mas o que mais mudou foi a minha visão de onde eu poderia chegar: por ser do interior, eu tinha uma visão muito limitada, e o Trilha me fez acreditar que posso alcançar lugares que pareciam impossíveis.",
       en: "Trilha was a deeply rewarding experience. I learned things I never imagined touching in my first semester, met incredible people always ready to help, and made real friendships — a family. But what changed most was my sense of where I could go: I'm from a small town and had a very limited view of what was possible, and Trilha made me believe I can reach places that once felt impossible.",
+    },
+    short: {
+      pt: "O Trilha me fez acreditar que posso alcançar lugares que pareciam impossíveis.",
+      en: "Trilha made me believe I can reach places that once felt impossible.",
     },
   },
 ];
