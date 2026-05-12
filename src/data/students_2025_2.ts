@@ -88,7 +88,7 @@ export const YasminBatista: Person = {
 
 export const RicardoBorges: Person = {
     name: "Ricardo Bezerra Borges",
-    course: "",
+    course: "Ciência de Dados e IA",
     semester: "2",
     role: "",
     company: "",
@@ -101,7 +101,7 @@ export const RicardoBorges: Person = {
 
 export const GuilhermeRibeiro: Person = {
     name: "Guilherme Ribeiro",
-    course: "",
+    course: "Ciência da Computação",
     semester: "2",
     role: "",
     company: "",
@@ -114,7 +114,7 @@ export const GuilhermeRibeiro: Person = {
 
 export const BiancaGuido: Person = {
     name: "Bianca Maria Guido Cavalcanti",
-    course: "",
+    course: "Ciência da Computação",
     semester: "2",
     role: "",
     company: "",
@@ -127,7 +127,7 @@ export const BiancaGuido: Person = {
 
 export const PierreQueiroz: Person = {
     name: "Pierre Queiroz da Costa Pereira",
-    course: "",
+    course: "Ciência da Computação",
     semester: "2",
     role: "",
     company: "",
@@ -140,7 +140,7 @@ export const PierreQueiroz: Person = {
 
 export const MarcoGadelha: Person = {
     name: "Marco Antonio Sarmento Gadelha Filho",
-    course: "",
+    course: "Engenharia da Computação",
     semester: "2",
     role: "",
     company: "",
@@ -153,7 +153,7 @@ export const MarcoGadelha: Person = {
 
 export const SofiaAraujo: Person = {
     name: "Sofia Oliveira Araújo",
-    course: "",
+    course: "Ciência da Computação",
     semester: "2",
     role: "",
     company: "",
