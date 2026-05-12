@@ -18,27 +18,6 @@ function useRoleTranslator() {
       .join(' · ');
 }
 
-function useCourseTranslator() {
-  const { t } = useTranslation();
-  return (course: string) => {
-    const key = `people.courses.${course}`;
-    const tr = t(key);
-    return tr !== key ? tr : course;
-  };
-}
-
-function useSemesterFormatter() {
-  const { t } = useTranslation();
-  return (s: string): string | null => {
-    const v = s.trim();
-    if (!v || v === 'Null') return null;
-    if (/^\d+$/.test(v)) return `${v}°`;
-    const key = `people.semesters.${v}`;
-    const tr = t(key);
-    return tr !== key ? tr : v;
-  };
-}
-
 const founderNames = new Set(peopleFounders.map((p) => p.name));
 const team: Person[] = [
   ...peopleFounders,
@@ -49,8 +28,6 @@ export default function QuemSomos() {
   const { t } = useTranslation();
   const { trackFounderProfileClick, trackCurrentMemberProfileClick } = usePostHogTracking();
   const translateRole = useRoleTranslator();
-  const translateCourse = useCourseTranslator();
-  const formatSemester = useSemesterFormatter();
 
   return (
     <section id="time" className="section">
@@ -59,8 +36,7 @@ export default function QuemSomos() {
         <div className="team-grid reveal">
           {team.map((p, i) => {
             const isFounder = founderNames.has(p.name);
-            const sem = formatSemester(p.semester);
-            const courseLine = sem ? `${translateCourse(p.course)} · ${sem}` : translateCourse(p.course);
+            const trilhaRole = isFounder ? 'Fundador' : (p.pos.at(-1) ?? '');
             return (
               <a
                 key={i}
@@ -81,12 +57,14 @@ export default function QuemSomos() {
                 </div>
                 <div className="team-info">
                   <div className="team-name">{p.name}</div>
+                  {trilhaRole && (
+                    <div className="kicker team-trilha-role">{translateRole(trilhaRole)}</div>
+                  )}
                   {(p.role || p.company) && (
                     <div className="kicker team-pos">
                       {[translateRole(p.role), p.company].filter(Boolean).join(' @ ')}
                     </div>
                   )}
-                  <div className="team-course">{courseLine}</div>
                 </div>
                 {p.link && <span className="team-arrow">↗</span>}
               </a>

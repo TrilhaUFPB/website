@@ -635,8 +635,8 @@ button { font-family: inherit; cursor: pointer; }
 .team-card:hover .team-photo-bg { opacity: 1; }
 .team-info { padding: 14px 16px 18px; border-top: 1px solid var(--rule); }
 .team-name { font-weight: 500; font-size: 16px; }
-.team-pos { margin-top: 4px; color: var(--mint-deep); font-size: 12px; font-weight: 400; letter-spacing: 0.05; }
-.team-role { margin-top: 4px; }
+.team-trilha-role { margin-top: 4px; color: var(--mint-deep); font-size: 12px; font-weight: 400; letter-spacing: 0.05em; }
+.team-pos { margin-top: 4px; color: var(--ink-muted); font-size: 11px; font-weight: 400; opacity: 85%; }
 .team-course { color: var(--ink-muted); font-size: 11px; margin-top: 6px; font-style: oblique; opacity: 85%;}
 .team-arrow {
   position: absolute; top: 14px; right: 14px;
