@@ -184,7 +184,7 @@ export const MariaCeciliaSouza: Person = {
 
 export const MariaLuisaQuintela: Person = {
     name: "Maria Luisa Moreira Quintela",
-    course: "Engenharia da Computação",
+    course: "Ciência da Computação",
     semester: "3",
     role: "Researcher",
     company: "UPenn",

@@ -16,8 +16,9 @@ export default function Depoimentos() {
           {featured.map((item, i) => {
             const p = item.person;
             const cohort = p.class ? `${cohortLabel} ${p.class}` : '';
+            const company = p.company?.trim() ?? '';
             const job = p.role.trim();
-            const role = [cohort, job].filter(Boolean).join(' · ');
+            const role = [cohort, company, job].filter(Boolean).join(' · ');
             return (
               <figure key={i} className={`depo ${i % 3 === 1 ? 'depo--tall' : ''}`}>
                 <blockquote>

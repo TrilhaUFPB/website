@@ -723,6 +723,19 @@ button { font-family: inherit; cursor: pointer; }
   padding-bottom: 64px;
   border-bottom: 1px solid var(--rule);
 }
+.footer-brand { min-width: 0; }
+.footer-brand-mark {
+  font-size: clamp(40px, 4.4vw, 56px);
+  line-height: 0.96;
+}
+.footer-brand-dot { color: var(--mint); }
+.footer-brand-tagline {
+  max-width: 36ch;
+  color: var(--ink-soft);
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.5;
+}
 .footer-col .kicker { margin-bottom: 14px; display: block; }
 .footer-col ul {
   list-style: none; padding: 0; margin: 0;
@@ -731,17 +744,36 @@ button { font-family: inherit; cursor: pointer; }
 }
 .footer-col a { transition: color .15s ease; }
 .footer-col a:hover { color: var(--ink); }
+.footer-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-contact a svg {
+  color: var(--ink-muted);
+  flex-shrink: 0;
+  transition: color .15s ease;
+}
+.footer-contact a:hover svg { color: var(--mint-deep); }
 .footer-foot {
   padding-top: 24px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 16px;
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--ink-muted);
   letter-spacing: 0.06em;
 }
-@media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; padding-bottom: 40px; } }
-@media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+@media (max-width: 800px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; padding-bottom: 40px; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-foot { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
 
 /* ============== TAILWIND/SHADCN BASE (kept for /materiais and admin) ============== */
 @layer base {

@@ -134,6 +134,8 @@
       "Líder de Mídias e Impacto": "Media & Impact Lead",
       "Líder de Operações": "Operations Lead",
       "Líder de Aulas": "Classes Lead",
+      "Líder de Logística": "Logistics Lead",
+      "Líder de Marketing": "Marketing Lead",
       "Membro da Organização": "Organization Member",
       "Org": "Member"
     },
@@ -147,8 +149,7 @@
     "sections": "Sections",
     "locationLabel": "Location",
     "locationLines": ["UFPB · Computing Center", "João Pessoa, Paraíba", "Brazil"],
-    "rights": "All rights reserved.",
-    "version": "v2.0 · Redesign 2026"
+    "rights": "All rights reserved."
   },
   "turmaPage": {
     "back": "← Back",

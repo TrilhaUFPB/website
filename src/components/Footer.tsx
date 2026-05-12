@@ -1,5 +1,7 @@
 'use client';
 
+import { Mail } from 'lucide-react';
+import { FaInstagram, FaGithub } from 'react-icons/fa';
 import { useTranslation } from '@/hooks/useTranslation';
 
 export default function Footer() {
@@ -9,10 +11,10 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <div className="display" style={{ fontSize: 56, lineHeight: 0.92, letterSpacing: '-0.02em' }}>
-            trilha<span style={{ color: 'var(--mint)' }}>.</span>
+          <div className="display footer-brand-mark">
+            trilha<span className="footer-brand-dot">.</span>
           </div>
-          <p style={{ maxWidth: '36ch', color: 'var(--ink-soft)', marginTop: 12 }}>{t('footer.tagline')}</p>
+          <p className="footer-brand-tagline">{t('footer.tagline')}</p>
         </div>
         <div className="footer-col">
           <div className="kicker">{t('footer.sections')}</div>
@@ -26,18 +28,23 @@ export default function Footer() {
         </div>
         <div className="footer-col">
           <div className="kicker">{t('footer.contact')}</div>
-          <ul>
+          <ul className="footer-contact">
             <li>
-              <a href="mailto:contato.trilhaufpb@gmail.com">contato.trilhaufpb@gmail.com</a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/trilhaufpb" target="_blank" rel="noreferrer">
-                @trilhaufpb
+              <a href="mailto:contato.trilhaufpb@gmail.com" aria-label="Email">
+                <Mail size={16} strokeWidth={1.75} aria-hidden />
+                <span>contato.trilhaufpb@gmail.com</span>
               </a>
             </li>
             <li>
-              <a href="https://github.com/trilhaufpb" target="_blank" rel="noreferrer">
-                github.com/trilhaufpb
+              <a href="https://www.instagram.com/trilhaufpb" target="_blank" rel="noreferrer" aria-label="Instagram">
+                <FaInstagram size={16} aria-hidden />
+                <span>@trilhaufpb</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/trilhaufpb" target="_blank" rel="noreferrer" aria-label="GitHub">
+                <FaGithub size={16} aria-hidden />
+                <span>trilhaufpb</span>
               </a>
             </li>
           </ul>
@@ -53,7 +60,6 @@ export default function Footer() {
       </div>
       <div className="container footer-foot">
         <span>© 2024–2026 Trilha. {t('footer.rights')}</span>
-        <span className="kicker">{t('footer.version')}</span>
       </div>
     </footer>
   );

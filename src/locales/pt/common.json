@@ -133,6 +133,8 @@
       "Líder de Mídias e Impacto": "Líder de Mídias e Impacto",
       "Líder de Operações": "Líder de Operações",
       "Líder de Aulas": "Líder de Aulas",
+      "Líder de Logística": "Líder de Logística",
+      "Líder de Marketing": "Líder de Marketing",
       "Membro da Organização": "Membro da Organização",
       "Org": "Org"
     },
@@ -146,8 +148,7 @@
     "sections": "Seções",
     "locationLabel": "Localização",
     "locationLines": ["UFPB · Centro de Informática", "João Pessoa, Paraíba", "Brasil"],
-    "rights": "Todos os direitos reservados.",
-    "version": "v2.0 · Redesign 2026"
+    "rights": "Todos os direitos reservados."
   },
   "turmaPage": {
     "back": "← Voltar",
