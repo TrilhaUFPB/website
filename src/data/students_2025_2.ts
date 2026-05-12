@@ -163,3 +163,16 @@ export const SofiaAraujo: Person = {
     org: [],
     pos: [],
 };
+
+export const MikaelRodrigues: Person = {
+    name: "Mikael Rodrigues dos Santos",
+    course: "Ciência de Dados e IA",
+    semester: "2",
+    role: "",
+    company: "",
+    link: "https://www.linkedin.com/in/mikael-rodrigues-690b48373/",
+    photo: "/assets/pessoas/2025.2/mikael.webp",
+    class: "2025.2",
+    org: [],
+    pos: [],
+};

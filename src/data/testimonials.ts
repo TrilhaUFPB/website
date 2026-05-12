@@ -15,6 +15,7 @@ import {
   MarcoGadelha,
   Marcus,
   MiguelQueiroz,
+  MikaelRodrigues,
   NicolasKleiton,
   type Person,
   PierreQueiroz,
@@ -233,6 +234,13 @@ export const TESTIMONIALS: Testimonial[] = [
     short: {
       pt: "O Trilha deixou o mundo tech mais divertido, familiar e humano.",
       en: "Trilha made the tech world feel more fun, familiar, and human.",
+    },
+  },
+  {
+    person: MikaelRodrigues,
+    long: {
+      pt: "O Trilha pra mim foi uma experiência muito gratificante. Aprendi conteúdos que eu nem imaginava ter contato logo no primeiro período, conheci pessoas incríveis sempre dispostas a ajudar e fiz boas amizades — uma família. Mas o que mais mudou foi a minha visão de onde eu poderia chegar: por ser do interior, eu tinha uma visão muito limitada, e o Trilha me fez acreditar que posso alcançar lugares que pareciam impossíveis.",
+      en: "Trilha was a deeply rewarding experience. I learned things I never imagined touching in my first semester, met incredible people always ready to help, and made real friendships — a family. But what changed most was my sense of where I could go: I'm from a small town and had a very limited view of what was possible, and Trilha made me believe I can reach places that once felt impossible.",
     },
   },
 ];
