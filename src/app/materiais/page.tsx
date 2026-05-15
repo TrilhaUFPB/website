@@ -4,10 +4,10 @@ import { getAllMaterials, getMaterialsByArea } from "@/lib/materials";
 const areaBlurb: Record<string, string> = {
   "1-introducao-ao-python": "Primeiros passos em programação: do ambiente de execução até POO.",
   "2-estruturas-de-dados": "Como organizar, acessar e transformar dados com eficiência.",
-  "dados": "Pipelines, análise e engenharia para trabalhar com dados na prática.",
-  "backend": "Modelos mentais, APIs, segurança e arquitetura de serviços.",
-  "banco-de-dados": "Modelagem, SQL e fundamentos para persistência de dados.",
-  "frontend": "Da semântica do HTML ao React e performance no navegador.",
+  "3-dados": "Pipelines, análise e engenharia para trabalhar com dados na prática.",
+  "4-backend": "Modelos mentais, APIs, segurança e arquitetura de serviços.",
+  "5-banco-de-dados": "Modelagem, SQL e fundamentos para persistência de dados.",
+  "6-frontend": "Da semântica do HTML ao React e performance no navegador.",
 };
 
 export default async function MaterialsIndexPage() {
@@ -29,28 +29,27 @@ export default async function MaterialsIndexPage() {
           </header>
 
           <div className="materiais-areas">
-            {populated.map((area, i) => {
+            {populated.map((area) => {
               const first = area.materials[0];
               return (
                 <article key={area.slug} className="materiais-area">
-                  <div className="materiais-area-index">{String(i + 1).padStart(2, '0')}</div>
-                  <div className="materiais-area-body">
-                    <p className="kicker tag-dot" style={{ color: 'var(--mint-deep)' }}>
+                  <div className="materiais-area-meta">
+                    <span className="kicker tag-dot" style={{ color: 'var(--mint-deep)' }}>
                       {area.materials.length} {area.materials.length === 1 ? 'material' : 'materiais'}
-                    </p>
-                    <h3 className="display materiais-area-title">{area.name}</h3>
-                    <p className="materiais-area-desc">
-                      {areaBlurb[area.slug] ?? 'Materiais didáticos preparados pelo time da Trilha.'}
-                    </p>
-                    {first && (
-                      <Link
-                        href={`/materiais/${first.area}/${first.slug}`}
-                        className="btn btn--ghost materiais-area-cta"
-                      >
-                        Começar por {first.title} <span className="arrow">→</span>
-                      </Link>
-                    )}
+                    </span>
                   </div>
+                  <h3 className="display materiais-area-title">{area.name}</h3>
+                  <p className="materiais-area-desc">
+                    {areaBlurb[area.slug] ?? 'Materiais didáticos preparados pelo time da Trilha.'}
+                  </p>
+                  {first && (
+                    <Link
+                      href={`/materiais/${first.area}/${first.slug}`}
+                      className="materiais-area-cta"
+                    >
+                      Começar <span className="arrow">→</span>
+                    </Link>
+                  )}
                 </article>
               );
             })}

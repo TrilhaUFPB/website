@@ -991,46 +991,47 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--rule);
   border: 1px solid var(--rule);
 }
-@media (max-width: 900px) {
-  .materiais-areas { grid-template-columns: 1fr; }
-}
+@media (max-width: 900px) { .materiais-areas { grid-template-columns: 1fr; } }
 .materiais-area {
   background: var(--paper);
-  padding: 40px 36px;
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 24px;
-  align-items: start;
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
   transition: background .2s ease;
 }
 .materiais-area:hover { background: var(--mint-soft); }
-.materiais-area-index {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--ink-soft);
-  letter-spacing: 0.04em;
-  padding-top: 6px;
-}
-.materiais-area-body { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.materiais-area-meta { display: flex; align-items: center; }
 .materiais-area-title {
-  font-size: clamp(28px, 3vw, 40px);
-  line-height: 1.02;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.05;
   margin: 0;
   letter-spacing: -0.02em;
 }
 .materiais-area-desc {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.5;
   max-width: 44ch;
 }
 .materiais-area-cta {
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   align-self: flex-start;
-  margin-top: 6px;
-  font-size: 13px;
-  padding: 10px 18px;
+  transition: color .15s ease;
 }
+.materiais-area-cta:hover { color: var(--mint-deep); }
+.materiais-area-cta:hover .arrow { transform: translateX(4px); }
+.materiais-area-cta .arrow { transition: transform .25s cubic-bezier(.2,.8,.3,1); }
 
 /* ========================================
    ESTILOS PARA MATERIAIS DIDÁTICOS
