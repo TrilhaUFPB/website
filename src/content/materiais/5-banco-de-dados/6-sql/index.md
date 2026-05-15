@@ -1,15 +1,13 @@
 ---
-title: 4. SQL
-description: 
+title: 6. SQL
+description: Como funcionam bancos de dados estruturados?
 category: Banco de Dados
-order: 4
+order: 6
 ---
 
-# 4.1. SQL (Structured Query Language)
+![Imagem 12](/api/materiais-assets/5-banco-de-dados/6-sql/assets/imagem12.png)
 
-![Imagem 10](/api/materiais-assets/5-banco-de-dados/4-sql/assets/imagem10.png)
-
-## O que é SQL?
+# 6.1 O que é SQL?
 
 SQL (Structured Query Language - Linguagem de Consulta Estruturada) é a linguagem universal para conversar com bancos de dados relacionais. 
 
@@ -28,9 +26,7 @@ SELECT * FROM usuarios WHERE idade > 18;
 
 SQL é dividida em subconjuntos, cada um com um propósito específico:
 
----
-
-## Subconjuntos do SQL
+# 6.2 Subconjuntos do SQL
 
 | Tipo | Função | Comandos Principais |
 |------|--------|---------------------|
@@ -41,9 +37,7 @@ SQL é dividida em subconjuntos, cada um com um propósito específico:
 
 **Vamos focar na busca (manipulação) e na criação (definição)!**
 
----
-
-## Tipos de Dados SQL
+# 6.3 Tipos de Dados SQL
 
 Antes de criar tabelas, você precisa conhecer os tipos de dados disponíveis:
 
@@ -80,19 +74,17 @@ criado_em DATETIME    -- Não muda, guarda exatamente o que você passou
 criado_em TIMESTAMP   -- Ajusta para timezone, atualiza automaticamente
 ```
 
----
+# 6.4 CRUD Completo
 
-## CRUD Completo
-
-![Imagem 11](/api/materiais-assets/5-banco-de-dados/4-sql/assets/imagem11.png)
+![Imagem 13](/api/materiais-assets/5-banco-de-dados/6-sql/assets/imagem13.png)
 
 CRUD = **C**reate, **R**ead, **U**pdate, **D**elete (as 4 operações básicas)
 
-### CREATE (Criar)
+## 6.4.1 CREATE (Criar)
 
 Tem 2 partes: criar a estrutura (DDL) e inserir dados (DML).
 
-#### DDL: Criar Tabela
+### DDL: Criar Tabela
 
 ```sql
 -- Exemplo completo e comentado
@@ -143,7 +135,7 @@ CREATE TABLE usuarios (
 
 ---
 
-#### DML: Inserir Dados (INSERT)
+### DML: Inserir Dados (INSERT)
 
 **Inserção simples:**
 ```sql
@@ -180,11 +172,11 @@ RETURNING id;  -- Mais elegante!
 
 ---
 
-### READ (Consultar/Selecionar)
+## 6.4.2 READ (Consultar/Selecionar)
 
 A parte mais importante e complexa do SQL!
 
-#### SELECT Básico
+### SELECT Básico
 
 ```sql
 -- Selecionar TODAS as colunas
@@ -203,7 +195,7 @@ FROM usuarios;
 
 ---
 
-#### WHERE (Filtrar)
+### WHERE (Filtrar)
 
 Filtra quais linhas você quer ver:
 
@@ -290,7 +282,7 @@ ORDER BY idade DESC;
 
 ---
 
-#### ORDER BY (Ordenar)
+### ORDER BY (Ordenar)
 
 ```sql
 -- Ordem crescente (A-Z, 0-9) - padrão
@@ -310,7 +302,7 @@ ORDER BY ativo DESC, idade ASC, nome ASC;
 
 ---
 
-#### LIMIT e OFFSET (Paginação)
+### LIMIT e OFFSET (Paginação)
 
 ```sql
 -- Primeiros 10 registros
@@ -332,7 +324,7 @@ SELECT * FROM usuarios LIMIT 20 OFFSET 80;  -- (5-1) * 20 = 80
 
 ---
 
-#### GROUP BY
+### GROUP BY
 
 **GROUP BY** agrupa linhas que têm valores iguais:
 
@@ -367,7 +359,7 @@ GROUP BY categoria_id;
 
 ---
 
-### UPDATE (Atualizar)
+## 6.4.3 UPDATE (Atualizar)
 
 Modifica dados existentes. **⚠️ SEMPRE use WHERE, senão atualiza TUDO!**
 
@@ -436,7 +428,7 @@ UPDATE usuarios SET ativo = FALSE WHERE data_cadastro < '2020-01-01';
 
 ---
 
-### DELETE (Excluir)
+## 6.4.4 DELETE (Excluir)
 
 Remove registros. **SEMPRE use WHERE, senão deleta TUDO!**
 
@@ -471,34 +463,3 @@ SELECT * FROM usuarios WHERE ativo = FALSE;
 -- 2. Se estiver certo, delete
 DELETE FROM usuarios WHERE ativo = FALSE;
 ```
-
----
-
-# 4.2. Referências
-
-## Artigos e Documentação
-
-**Conceitos Fundamentais:**
-- IBM - O que é Banco de Dados: https://www.ibm.com/br-pt/think/topics/database
-- Azure - O que são Bancos de Dados: https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-are-databases
-- IBM - Bancos Relacionais: https://www.ibm.com/br-pt/think/topics/relational-databases
-- IBM - Bancos NoSQL: https://www.ibm.com/br-pt/think/topics/nosql-databases
-
-**SQL:**
-- Microsoft - SQL Básico: https://support.microsoft.com/pt-br/topic/acessar-sql-conceitos-b%C3%A1sicos-vocabul%C3%A1rio-e-sintaxe-444d0303-cde1-424e-9a74-e8dc3e460671
-- DIO - Resumão de SQL: https://www.dio.me/articles/resumao-de-sql-conceitos-basicos-exemplos-praticos-e-roteiro-de-estudos
-
-**Prático:**
-- Medium - Back-end Basics (Guilherme): https://medium.com/@guilhermehuther/back-end-basics-e9a2ed1f244a
-
----
-
-## Vídeos
-
-**Conceitos:**
-- Bancos Relacionais: https://www.youtube.com/watch?v=OqjJjpjDRLc
-- SQL vs NoSQL: https://www.youtube.com/watch?v=Q5aTUc7c4jg
-
-**SQL:**
-- SQL Básico (Curso Rápido): https://www.youtube.com/watch?v=et1n7-UxI2M
-- SQL do Zero (Bem Mastigado): https://www.youtube.com/watch?v=xiUTqnI6xk8&t=422s

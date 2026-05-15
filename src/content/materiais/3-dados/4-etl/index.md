@@ -45,6 +45,12 @@ Alguns exemplos comuns:
 
 ### Ingestão de dados
 
+“A ingestão de dados é o processo de mover dados de um local para outro.
+
+A ingestão de dados implica a movimentação de dados de sistemas de origem para o armazenamento no ciclo de vida da engenharia de dados, sendo a ingestão uma etapa intermediária.”
+
+Fonte: **Fundamentals of Data Engineering**.
+
 A ingestão de dados define como e com que frequência as informações extraídas são movidas para o ambiente de processamento ou armazenamento.
 Essa escolha impacta desempenho, custo e atualidade das análises.
 
@@ -109,6 +115,10 @@ Dimensões de qualidade:
 - **Confiabilidade**: processos devem ser rastreáveis, reprodutíveis e auditáveis.
 
 ## Armazenar
+
+“O armazenamento permeia todo o ciclo de vida da engenharia de dados, frequentemente ocorrendo em vários pontos de um pipeline de dados, com sistemas de armazenamento interagindo com sistemas de origem, ingestão, transformação e disponibilização.”
+
+Fonte: **Fundamentals of Data Engineering**.
 
 ### O que é o processo de armazenar (Load)
 
