@@ -864,6 +864,7 @@ button { font-family: inherit; cursor: pointer; }
   grid-template-columns: 240px minmax(0, 1fr);
   gap: 56px;
   align-items: start;
+  transition: grid-template-columns .35s cubic-bezier(.4, 0, .2, 1), gap .35s cubic-bezier(.4, 0, .2, 1);
 }
 .materiais-content { min-width: 0; }
 .materiais-content .section { padding-left: 0; padding-right: 0; }
@@ -873,14 +874,22 @@ button { font-family: inherit; cursor: pointer; }
   .materiais-sidebar-desktop { display: none; }
 }
 
-.materiais-sidebar-desktop { padding-top: var(--section-y); }
+.materiais-sidebar-desktop {
+  padding-top: var(--section-y);
+  overflow: hidden;
+  transition: opacity .25s ease, transform .35s cubic-bezier(.4, 0, .2, 1);
+  will-change: opacity, transform;
+}
 .materiais-sidebar-sticky {
   position: sticky;
   top: 96px;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
   padding-right: 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+.materiais-sidebar-sticky::-webkit-scrollbar { display: none; width: 0; height: 0; }
 .materiais-sidebar-inner { display: flex; flex-direction: column; gap: 8px; }
 .materiais-sidebar-home {
   font-family: var(--font-mono);
@@ -972,7 +981,10 @@ button { font-family: inherit; cursor: pointer; }
   transform: translateX(-100%);
   transition: transform .25s ease;
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+.materiais-sidebar-mobile::-webkit-scrollbar { display: none; width: 0; height: 0; }
 .materiais-sidebar-mobile.is-open { transform: translateX(0); }
 @media (min-width: 1025px) { .materiais-sidebar-mobile, .materiais-sidebar-overlay { display: none; } }
 .materiais-sidebar-close {
@@ -982,6 +994,86 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--ink-soft); cursor: pointer;
   padding: 4px 8px;
 }
+
+/* Sidebar collapse (desktop) — botão dentro da sidebar e botão flutuante de expand */
+.materiais-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 0 4px;
+}
+.materiais-sidebar-collapse {
+  background: transparent;
+  border: 0;
+  padding: 4px 6px;
+  cursor: pointer;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 4px;
+  transition: color .15s ease, background .15s ease;
+}
+.materiais-sidebar-collapse:hover { color: var(--ink); background: var(--rule-soft); }
+
+.materiais-sidebar-expand {
+  position: fixed;
+  top: 88px;
+  left: calc(var(--pad-x) - 4px);
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-6px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease, color .15s ease, border-color .15s ease, background .15s ease;
+  box-shadow: 0 1px 3px rgba(26,24,21,0.04);
+}
+.materiais-sidebar-expand:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: var(--paper);
+}
+.materiais-sidebar-expand-icon { font-size: 14px; line-height: 1; }
+
+/* Quando colapsada: sidebar fade out e shell vira 1fr, suavemente */
+html[data-materiais-collapsed="true"] .materiais-shell {
+  grid-template-columns: 0 minmax(0, 1fr);
+  gap: 0;
+}
+html[data-materiais-collapsed="true"] .materiais-sidebar-desktop {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-8px);
+}
+html[data-materiais-collapsed="true"] .materiais-sidebar-expand {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+  transition: opacity .3s ease .15s, transform .3s ease .15s, visibility 0s linear .15s, color .15s ease, border-color .15s ease, background .15s ease;
+}
+@media (max-width: 1024px) {
+  .materiais-sidebar-expand { display: none !important; }
+  .materiais-sidebar-collapse { display: none; }
+}
+
+/* Utility: scroll funcional sem barra visual */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
 /* MATERIAIS — index editorial cards */
 .materiais-areas {
