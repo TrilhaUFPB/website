@@ -9,9 +9,12 @@ interface MaterialsSidebarProps {
   areas: AreaStructure[];
 }
 
+const COLLAPSED_KEY = "materiais-sidebar-collapsed";
+
 export default function MaterialsSidebar({ areas }: MaterialsSidebarProps) {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -22,24 +25,52 @@ export default function MaterialsSidebar({ areas }: MaterialsSidebarProps) {
     setMobileOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem(COLLAPSED_KEY);
+    if (stored === "true") setCollapsed(true);
+  }, []);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    document.documentElement.dataset.materiaisCollapsed = String(collapsed);
+    window.localStorage.setItem(COLLAPSED_KEY, String(collapsed));
+    return () => {
+      delete document.documentElement.dataset.materiaisCollapsed;
+    };
+  }, [collapsed]);
+
   const toggle = (slug: string) =>
     setExpanded((prev) => {
       const n = new Set(prev);
-      n.has(slug) ? n.delete(slug) : n.add(slug);
+      if (n.has(slug)) n.delete(slug);
+      else n.add(slug);
       return n;
     });
 
   const isActive = (area: string, slug: string) => pathname === `/materiais/${area}/${slug}`;
   const isIndex = pathname === "/materiais";
 
-  const Content = () => (
+  const Content = ({ showCollapse = false }: { showCollapse?: boolean }) => (
     <div className="materiais-sidebar-inner">
-      <Link
-        href="/materiais"
-        className={`materiais-sidebar-home ${isIndex ? "is-active" : ""}`}
-      >
-        Início
-      </Link>
+      <div className="materiais-sidebar-header">
+        <Link
+          href="/materiais"
+          className={`materiais-sidebar-home ${isIndex ? "is-active" : ""}`}
+        >
+          Início
+        </Link>
+        {showCollapse && (
+          <button
+            onClick={() => setCollapsed(true)}
+            className="materiais-sidebar-collapse"
+            aria-label="Recolher menu"
+            title="Recolher menu"
+          >
+            «
+          </button>
+        )}
+      </div>
       <div className="materiais-sidebar-rule" />
       <nav className="materiais-sidebar-nav">
         {areas.map((area) => {
@@ -93,6 +124,18 @@ export default function MaterialsSidebar({ areas }: MaterialsSidebarProps) {
         Materiais
       </button>
 
+      {collapsed && (
+        <button
+          onClick={() => setCollapsed(false)}
+          className="materiais-sidebar-expand"
+          aria-label="Abrir menu de materiais"
+          title="Abrir menu"
+        >
+          <span className="materiais-sidebar-expand-icon" aria-hidden="true">»</span>
+          <span>Materiais</span>
+        </button>
+      )}
+
       {mobileOpen && (
         <div className="materiais-sidebar-overlay" onClick={() => setMobileOpen(false)} />
       )}
@@ -110,7 +153,7 @@ export default function MaterialsSidebar({ areas }: MaterialsSidebarProps) {
 
       <aside className="materiais-sidebar-desktop">
         <div className="materiais-sidebar-sticky">
-          <Content />
+          <Content showCollapse />
         </div>
       </aside>
     </>

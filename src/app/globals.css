@@ -1001,7 +1001,11 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 0 0 4px;
+  padding: 8px 0 6px;
+  position: sticky;
+  top: 0;
+  background: var(--cream);
+  z-index: 2;
 }
 .materiais-sidebar-collapse {
   background: transparent;
