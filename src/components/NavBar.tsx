@@ -43,7 +43,7 @@ export default function NavBar() {
   return (
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-inner">
-        <a href="#hero" className="nav-logo" aria-label="Trilha">
+        <a href="/#hero" className="nav-logo" aria-label="Trilha">
           <span className="logo-mark" aria-hidden="true" />
         </a>
         <nav className="nav-links">
