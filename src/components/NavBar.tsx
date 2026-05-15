@@ -31,6 +31,7 @@ export default function NavBar() {
     { id: 'turmas', label: t('nav.turmas'), url: '/#turmas' },
     { id: 'projetos', label: t('nav.projetos'), url: '/#projetos' },
     { id: 'time', label: t('nav.time'), url: '/#time' },
+    { id: 'materiais', label: t('nav.materiais'), url: '/materiais' },
     { id: 'artigos', label: t('nav.artigos'), url: '/papers' },
   ];
 
@@ -43,7 +44,8 @@ export default function NavBar() {
   return (
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-inner">
-        <a href="/#hero" className="nav-logo" aria-label="Trilha">
+        <a href="/" className="nav-logo" aria-label="Trilha">
+
           <span className="logo-mark" aria-hidden="true" />
         </a>
         <nav className="nav-links">
