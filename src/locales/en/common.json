@@ -59,8 +59,8 @@
     "title": "What comes out of a Trilha semester.",
     "lede": "Every semester ends with a themed hackathon. Teams build from scratch in a few days — below, some of the projects. (Links and details coming soon.)",
     "items": [
-      { "tag": "2024.1", "title": "Pixelmind", "desc": "AI-powered video editor: users upload a clip, describe the desired result, and the system automates the full edit.", "img": "/assets/projects/pixelmind.png", "pitch": "https://www.youtube.com/watch?v=DHXnobWWJjE" },
-      { "tag": "2024.2", "title": "ClarIAr", "desc": "Android accessibility app that uses LLMs to generate rich, natural descriptions of on-screen images, empowering visually impaired users.", "img": "/assets/projects/clariar.png", "pitch": "https://www.youtube.com/watch?v=0b4k1lVUtO4" },
+      { "tag": "2024.1", "title": "ClarIAr", "desc": "Android accessibility app that uses LLMs to generate rich, natural descriptions of on-screen images, empowering visually impaired users.", "img": "/assets/projects/clariar.png", "pitch": "https://www.youtube.com/watch?v=0b4k1lVUtO4" },
+      { "tag": "2024.2", "title": "Pixelmind", "desc": "AI-powered video editor: users upload a clip, describe the desired result, and the system automates the full edit.", "img": "/assets/projects/pixelmind.png", "pitch": "https://www.youtube.com/watch?v=DHXnobWWJjE" },
       { "tag": "2025.1", "title": "Praxis", "desc": "Hands-on learning platform for junior devs with track-specific challenges and AI feedback. Simulate, practice, evolve.", "img": "/assets/projects/praxis.png", "pitch": "https://www.youtube.com/watch?v=v5YYfLKEvV0" }
     ]
   },

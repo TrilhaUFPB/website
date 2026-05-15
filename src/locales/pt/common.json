@@ -59,8 +59,8 @@
     "title": "O que sai de um semestre no Trilha.",
     "lede": "Todo semestre fecha com um hackathon temático. As equipes constroem do zero em poucos dias — abaixo, alguns dos projetos. (Em breve com links e detalhes.)",
     "items": [
-      { "tag": "2024.1", "title": "Pixelmind", "desc": "Plataforma de edição de vídeo automatizada por IA: o usuário faz upload do vídeo, descreve o resultado desejado e a edição acontece sozinha.", "img": "/assets/projects/pixelmind.png", "pitch": "https://www.youtube.com/watch?v=DHXnobWWJjE" },
-      { "tag": "2024.2", "title": "ClarIAr", "desc": "App Android de acessibilidade que usa LLMs para descrever imagens da tela com naturalidade, dando mais autonomia a pessoas com deficiência visual.", "img": "/assets/projects/clariar.png", "pitch": "https://www.youtube.com/watch?v=0b4k1lVUtO4" },
+      { "tag": "2024.1", "title": "ClarIAr", "desc": "App Android de acessibilidade que usa LLMs para descrever imagens da tela com naturalidade, dando mais autonomia a pessoas com deficiência visual.", "img": "/assets/projects/clariar.png", "pitch": "https://www.youtube.com/watch?v=0b4k1lVUtO4" },
+      { "tag": "2024.2", "title": "Pixelmind", "desc": "Plataforma de edição de vídeo automatizada por IA: o usuário faz upload do vídeo, descreve o resultado desejado e a edição acontece sozinha.", "img": "/assets/projects/pixelmind.png", "pitch": "https://www.youtube.com/watch?v=DHXnobWWJjE" },
       { "tag": "2025.1", "title": "Praxis", "desc": "Plataforma de prática para devs iniciantes com desafios personalizados por trilha de carreira e feedback por IA. Simule, pratique, evolua.", "img": "/assets/projects/praxis.png", "pitch": "https://www.youtube.com/watch?v=v5YYfLKEvV0" }
     ]
   },
