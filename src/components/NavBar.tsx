@@ -27,10 +27,10 @@ export default function NavBar() {
   }, []);
 
   const items = [
-    { id: 'sobre', label: t('nav.sobre'), url: '#sobre' },
-    { id: 'turmas', label: t('nav.turmas'), url: '#turmas' },
-    { id: 'projetos', label: t('nav.projetos'), url: '#projetos' },
-    { id: 'time', label: t('nav.time'), url: '#time' },
+    { id: 'sobre', label: t('nav.sobre'), url: '/#sobre' },
+    { id: 'turmas', label: t('nav.turmas'), url: '/#turmas' },
+    { id: 'projetos', label: t('nav.projetos'), url: '/#projetos' },
+    { id: 'time', label: t('nav.time'), url: '/#time' },
     { id: 'artigos', label: t('nav.artigos'), url: '/papers' },
   ];
 
