@@ -110,6 +110,14 @@
         "desc": "Um artigo amigável para calouros sobre como frontend e backend se conectam e por onde começar.",
         "lang": "PT",
         "author": "Luigi Schmitt"
+      },
+      {
+        "slug": "git-paper",
+        "tag": "Git",
+        "title": "Git, do zero",
+        "desc": "Um paper amigável de controle de versão pra quem ouve falar de commit, push, branch e finge entender. Modelo mental antes dos comandos.",
+        "lang": "PT",
+        "author": "Kruta"
       }
     ]
   },
