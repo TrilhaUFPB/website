@@ -1,66 +1,62 @@
 import Link from "next/link";
 import { getAllMaterials, getMaterialsByArea } from "@/lib/materials";
 
+const areaBlurb: Record<string, string> = {
+  "1-introducao-ao-python": "Primeiros passos em programação: do ambiente de execução até POO.",
+  "2-estruturas-de-dados": "Como organizar, acessar e transformar dados com eficiência.",
+  "dados": "Pipelines, análise e engenharia para trabalhar com dados na prática.",
+  "backend": "Modelos mentais, APIs, segurança e arquitetura de serviços.",
+  "banco-de-dados": "Modelagem, SQL e fundamentos para persistência de dados.",
+  "frontend": "Da semântica do HTML ao React e performance no navegador.",
+};
+
 export default async function MaterialsIndexPage() {
   const areas = await getMaterialsByArea();
   const allMaterials = await getAllMaterials();
-  const populatedAreas = areas.filter((a) => a.materials.length > 0);
+  const populated = areas.filter((a) => a.materials.length > 0);
 
   return (
-    <section className="section">
-      <div className="container">
-        <header className="section-head">
-          <p className="eyebrow">Materiais</p>
-          <h2>Biblioteca didática da Trilha.</h2>
-          <p className="lede">
-            Conteúdos organizados por área para apoiar quem está aprendendo computação —
-            {" "}{allMaterials.length} materiais em {populatedAreas.length} áreas.
-          </p>
-        </header>
+    <>
+      <section className="section">
+        <div className="container">
+          <header className="section-head">
+            <p className="eyebrow">Materiais</p>
+            <h2>Biblioteca didática da Trilha.</h2>
+            <p className="lede">
+              Conteúdos organizados por área para apoiar quem está aprendendo computação —
+              {" "}{allMaterials.length} materiais em {populated.length} áreas.
+            </p>
+          </header>
 
-        {populatedAreas.length > 0 ? (
-          <div className="papers-grid">
-            {populatedAreas.map((area) => (
-              <div key={area.slug} className="paper-card">
-                <div className="paper-card-body">
-                  <div className="paper-card-top">
-                    <span className="kicker tag-dot" style={{ color: 'var(--mint-deep)' }}>
-                      {area.name}
-                    </span>
-                    <span className="paper-lang">
+          <div className="materiais-areas">
+            {populated.map((area, i) => {
+              const first = area.materials[0];
+              return (
+                <article key={area.slug} className="materiais-area">
+                  <div className="materiais-area-index">{String(i + 1).padStart(2, '0')}</div>
+                  <div className="materiais-area-body">
+                    <p className="kicker tag-dot" style={{ color: 'var(--mint-deep)' }}>
                       {area.materials.length} {area.materials.length === 1 ? 'material' : 'materiais'}
-                    </span>
+                    </p>
+                    <h3 className="display materiais-area-title">{area.name}</h3>
+                    <p className="materiais-area-desc">
+                      {areaBlurb[area.slug] ?? 'Materiais didáticos preparados pelo time da Trilha.'}
+                    </p>
+                    {first && (
+                      <Link
+                        href={`/materiais/${first.area}/${first.slug}`}
+                        className="btn btn--ghost materiais-area-cta"
+                      >
+                        Começar por {first.title} <span className="arrow">→</span>
+                      </Link>
+                    )}
                   </div>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                    {area.materials.map((m) => (
-                      <li key={m.slug}>
-                        <Link
-                          href={`/materiais/${m.area}/${m.slug}`}
-                          className="display"
-                          style={{
-                            fontSize: 'clamp(18px, 1.4vw, 22px)',
-                            lineHeight: 1.2,
-                            color: 'var(--ink)',
-                            textDecoration: 'none',
-                            display: 'inline-flex',
-                            alignItems: 'baseline',
-                            gap: 10,
-                          }}
-                        >
-                          <span>{m.title}</span>
-                          <span className="arrow" style={{ color: 'var(--ink-soft)' }}>→</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
+                </article>
+              );
+            })}
           </div>
-        ) : (
-          <p className="lede">Os materiais serão adicionados em breve.</p>
-        )}
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }
