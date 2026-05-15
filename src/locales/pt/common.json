@@ -8,7 +8,8 @@
     "turmas": "Turmas",
     "projetos": "Projetos",
     "time": "Time",
-    "materiais": "Materiais"
+    "materiais": "Materiais",
+    "artigos": "Artigos"
   },
   "hero": {
     "eyebrow": "Trilha",
@@ -87,6 +88,30 @@
       "Frontend": "/materiais/6-frontend/1-fundamentos-da-web"
     }, 
     "cta": "Acessar materiais"
+  },
+  "papers": {
+    "eyebrow": "Artigos",
+    "title": "Leitura para quem quer ir além.",
+    "lede": "Artigos e pesquisas produzidos pela comunidade Trilha.",
+    "cta": "Ler artigo",
+    "items": [
+      {
+        "slug": "a-first-look-at-machine-learning",
+        "tag": "Machine Learning",
+        "title": "A First Look at Machine Learning",
+        "desc": "Um guia introdutório para quem está chegando no mundo de ML — conceitos fundamentais, intuição e exemplos práticos.",
+        "lang": "EN",
+        "author": "Malu Quintela"
+      },
+      {
+        "slug": "fullstack-paper",
+        "tag": "Fullstack",
+        "title": "Fullstack, do Zero",
+        "desc": "Um artigo amigável para calouros sobre como frontend e backend se conectam e por onde começar.",
+        "lang": "PT",
+        "author": "Luigi Schmitt"
+      }
+    ]
   },
   "faq": {
     "eyebrow": "08 / Perguntas",
