@@ -251,7 +251,6 @@ Com esse arquivo aplicado no Kubernetes, o desenvolvedor Python não precisa pro
 
 Como colocar código novo em produção sem derrubar o sistema ou afetar todos os usuários com um bug?
 
-![image_grafico_blue_green](/api/materiais-assets/backend/infraestrutura-de-apis/assets/)
 ![image_grafico_canary](/api/materiais-assets/4-backend/9-infraestrutura-de-apis/assets/canary.png)
 *Sugestão de imagem: Gráficos mostrando o tráfego mudando. Blue/Green (Troca súbita de 100%). Canary (Gradual: 1% -> 10% -> 100%).*
 

@@ -39,7 +39,14 @@ export async function GET(
       ".jpeg": "image/jpeg",
       ".gif": "image/gif",
       ".webp": "image/webp",
+      ".avif": "image/avif",
       ".svg": "image/svg+xml",
+      ".ico": "image/x-icon",
+      ".mp4": "video/mp4",
+      ".webm": "video/webm",
+      ".mov": "video/quicktime",
+      ".m4v": "video/mp4",
+      ".ogg": "video/ogg",
       ".pdf": "application/pdf",
     };
 

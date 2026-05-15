@@ -66,7 +66,7 @@ Vamos mapear nosso problema:
 
 ### Como elas se relacionam?
 
-![Estrutura do Projeto](/api/materiais-assets/1-introducao-ao-python/11-exemplo-pratico/assets/estrutura.png)
+![Estrutura do Projeto](/api/materiais-assets/1-introducao-ao-python/12-exemplo-pratico/assets/estrutura.png)
 
 Perceba que:
 - **Metric** é abstrata: não faz sentido criar uma "métrica genérica", só métricas específicas
