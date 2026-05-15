@@ -31,6 +31,7 @@ export default function NavBar() {
     { id: 'turmas', label: t('nav.turmas'), url: '/#turmas' },
     { id: 'projetos', label: t('nav.projetos'), url: '/#projetos' },
     { id: 'time', label: t('nav.time'), url: '/#time' },
+    { id: 'materiais', label: t('nav.materiais'), url: '/materiais' },
     { id: 'artigos', label: t('nav.artigos'), url: '/papers' },
   ];
 
