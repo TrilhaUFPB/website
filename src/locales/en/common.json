@@ -111,6 +111,14 @@
         "desc": "A friendly article for newcomers on how frontend and backend connect and where to start.",
         "lang": "PT",
         "author": "Luigi Schmitt"
+      },
+      {
+        "slug": "git-paper",
+        "tag": "Git",
+        "title": "Git, do zero",
+        "desc": "A friendly version-control paper for those who hear commit, push, branch and just nod along. Mental model before commands.",
+        "lang": "PT",
+        "author": "Kruta"
       }
     ]
   },
