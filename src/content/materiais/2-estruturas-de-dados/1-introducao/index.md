@@ -86,7 +86,7 @@ Já sabemos que podemos armazenar informações por meio da **declaração de va
   </div>
 
   <div>
-    <img src="images/memoria.png" width="300">
+    <img src="/api/materiais-assets/2-estruturas-de-dados/1-introducao/assets/memoria.png" width="300">
   </div>
 
 </div>

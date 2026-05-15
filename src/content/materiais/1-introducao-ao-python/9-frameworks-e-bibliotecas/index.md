@@ -179,7 +179,7 @@ Um pacote é uma **pasta** que contém vários módulos relacionados. Para criar
 3. Colocar seus módulos dentro da pasta
 
 **Estrutura de exemplo:**
-![Estrutura de exemplo](/api/materiais-assets/1-introducao-ao-python/8-frameworks-e-bibliotecas/assets/estrutura_projeto.png)
+![Estrutura de exemplo](/api/materiais-assets/1-introducao-ao-python/9-frameworks-e-bibliotecas/assets/estrutura_projeto.png)
 
 ```python
 # Arquivo: matematica/basica.py
@@ -295,10 +295,10 @@ Quando uma equipe usa o mesmo framework, é como se todos falassem a mesma líng
 ## Frameworks Populares
 
 ### Frameworks Python
-![Principais Frameworks Python](/api/materiais-assets/1-introducao-ao-python/8-frameworks-e-bibliotecas/assets/frameworks_python.png)
+![Principais Frameworks Python](/api/materiais-assets/1-introducao-ao-python/9-frameworks-e-bibliotecas/assets/frameworks_python.png)
 
 ### Frameworks JavaScript
-![Principais Frameworks JavaScript](/api/materiais-assets/1-introducao-ao-python/8-frameworks-e-bibliotecas/assets/frameworks_js.png)
+![Principais Frameworks JavaScript](/api/materiais-assets/1-introducao-ao-python/9-frameworks-e-bibliotecas/assets/frameworks_js.png)
 
 ## Exemplos práticos de Frameworks em Python
 
@@ -330,11 +330,11 @@ python main.py
 
 Você verá algo assim:
 
-![Flask executando no terminal](/api/materiais-assets/1-introducao-ao-python/8-frameworks-e-bibliotecas/assets/flask_terminal.png)
+![Flask executando no terminal](/api/materiais-assets/1-introducao-ao-python/9-frameworks-e-bibliotecas/assets/flask_terminal.png)
 
 Ao acessar o link **http://127.0.0.1:5000** no browser, você verá a página a seguir:
 
-![Página web Flask](/api/materiais-assets/1-introducao-ao-python/8-frameworks-e-bibliotecas/assets/flask_web.png)
+![Página web Flask](/api/materiais-assets/1-introducao-ao-python/9-frameworks-e-bibliotecas/assets/flask_web.png)
 
 > Para matar o processo, basta dar um CTRL+C no terminal.
 

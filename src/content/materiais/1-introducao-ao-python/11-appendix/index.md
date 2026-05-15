@@ -57,7 +57,7 @@ python -m venv .venv
 
 Ao rodar o comando, você verá algo parecido com isso:
 
-![Pasta .venv](/api/materiais-assets/1-introducao-ao-python/10-appendix/assets/venv.png)
+![Pasta .venv](/api/materiais-assets/1-introducao-ao-python/11-appendix/assets/venv.png)
 
 ### Ativando o ambiente virtual
 
@@ -200,7 +200,7 @@ uv init
 
 O comando `uv init` cria automaticamente toda a estrutura inicial do projeto. Veja como fica:
 
-![estrutura gerada pelo uv init](/api/materiais-assets/1-introducao-ao-python/10-appendix/assets/uv_init.png)
+![estrutura gerada pelo uv init](/api/materiais-assets/1-introducao-ao-python/11-appendix/assets/uv_init.png)
 
 Vamos entender cada arquivo criado:
 

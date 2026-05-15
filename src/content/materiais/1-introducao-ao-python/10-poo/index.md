@@ -100,7 +100,7 @@ Inicialmente pode não ser claro como POO ajuda, parecendo talvez até como uma 
 
 Mas ainda advogando sobre a utilidade de POO, a imagem abaixo cria mais um contexto:
 
-![1767191523867](/api/materiais-assets/1-introducao-ao-python/9-poo/assets/1767191523867.png)
+![1767191523867](/api/materiais-assets/1-introducao-ao-python/10-poo/assets/1767191523867.png)
 
 Sabemos que todo carro possui suas características únicas e ao mesmo tempo ainda seguem padrões presentes na maioria dos carros. Com uma classe, algo genérico, é possível organizar os padrões que devem ser seguidos. Além de que facilita o processo de criar algo que possuem as mesmas características.
 
