@@ -1,13 +1,13 @@
 ---
-title: 7. Arquivos
+title: 8. Arquivos
 description: Compreender o que são os arquivos, saber como usá-los em Python.
 category: Programação
-order: 7
+order: 8
 ---
 
 Quando você está aprendendo a programar, provavelmente começa criando variáveis e manipulando dados na memória do computador. O problema é que, quando o programa termina, todos esses dados desaparecem. É como escrever algo importante em uma folha de papel e jogar fora quando termina de usar.
 
-# 7.1. Introdução - Por que trabalhar com arquivos?
+# 8.1. Introdução - Por que trabalhar com arquivos?
 
 Imagine que você criou um programa de lista de tarefas. Você adiciona várias tarefas durante o dia, marca algumas como concluídas, mas quando fecha o programa, no dia seguinte precisa digitar tudo de novo. 
 
@@ -15,7 +15,7 @@ Imagine que você criou um programa de lista de tarefas. Você adiciona várias 
 
 Arquivos permitem que você **salve informações de forma permanente no disco rígido do computador**. Assim, seus dados sobrevivem mesmo depois que o programa é fechado. Pense em situações do dia a dia: salvar o progresso de um jogo, guardar uma lista de contatos, armazenar suas anotações pessoais, ou manter um histórico de gastos mensais. Todos esses casos precisam de arquivos.
 
-# 7.2. Conceitos básicos
+# 8.2. Conceitos básicos
 
 Antes de começarmos a programar, é importante entender alguns conceitos fundamentais.
 
@@ -30,7 +30,7 @@ Um arquivo de texto é simplesmente um arquivo que contém caracteres que podemo
 
 A diferença principal entre arquivos de texto e arquivos binários (como imagens, vídeos ou programas executáveis) é que podemos abrir um arquivo de texto em qualquer editor simples e entender o que está escrito. Já um arquivo binário contém dados em um formato que só o programa específico consegue interpretar.
 
-# 7.3. Abrindo e fechando arquivos
+# 8.3. Abrindo e fechando arquivos
 
 Para trabalhar com um arquivo em Python, primeiro precisamos "abrir" ele. Abrir um arquivo significa criar uma conexão entre o nosso programa e o arquivo no disco. É como abrir um livro antes de começar a ler.
 
@@ -61,7 +61,7 @@ arquivo.close()
 
 O problema dessa abordagem é que, se acontecer algum erro no meio do código, o `close()` pode nunca ser executado, e o arquivo fica aberto. Por isso, existe uma forma melhor de fazer isso.
 
-# 7.4. O contexto `with`
+# 8.4. O contexto `with`
 
 Python oferece uma maneira elegante e segura de trabalhar com arquivos: o gerenciador de contexto `with`. Essa é a forma recomendada e a que você deve usar desde o início.
 ```python
@@ -77,7 +77,7 @@ A palavra `as` serve para dar um nome para o objeto arquivo (nesse caso, chamamo
 
 Daqui em diante, vamos usar sempre o `with` nos nossos exemplos, porque é a melhor prática.
 
-# 7.5. Leitura de arquivos
+# 8.5. Leitura de arquivos
 
 Agora que sabemos abrir um arquivo de forma segura, vamos aprender as diferentes formas de ler o conteúdo dele.
 
@@ -154,7 +154,7 @@ with open("temperaturas.txt", "r") as arquivo:
 
 Nesse exemplo, lemos cada linha, convertemos para número decimal com `float()`, acumulamos na soma e contamos quantas temperaturas temos. No final, calculamos e exibimos a média.
 
-# 7.6. Escrita em arquivos
+# 8.6. Escrita em arquivos
 Agora vamos aprender a criar e escrever conteúdo em arquivos. Lembre-se: para escrever, precisamos abrir o arquivo no modo *"w"* (sobrescreve) ou *"a"* (adiciona ao final).
 
 Escrevendo texto no arquivo: O método básico é `write()`, que escreve uma string no arquivo:
@@ -227,7 +227,7 @@ with open("notas_turma.txt", "w") as arquivo:
 print("Notas salvas com sucesso!")
 ```
 
-# 7.7. Exemplo prático integrado
+# 8.7. Exemplo prático integrado
 
 Vamos criar um mini-projeto que junta tudo que aprendemos: um sistema simples de lista de compras que salva e carrega dados de um arquivo.
 
@@ -248,20 +248,23 @@ Essa função simplesmente exibe o menu e retorna a escolha do usuário. Usaremo
 
 **Passo 2: Criar a função para carregar a lista do arquivo**
 
-Agora precisamos de uma função que leia os itens salvos no arquivo e retorne uma lista com eles:
+Agora precisamos de uma função que leia os itens salvos no arquivo e retorne uma lista com eles. Aqui entra em jogo algo que você aprendeu na aula anterior: o tratamento de exceções com `try/except`. Se o arquivo *"compras.txt"* ainda não existir (por exemplo, na primeira vez que o programa for executado), o Python lançaria um `FileNotFoundError` e o programa travaria. Com o `try/except`, conseguimos tratar esse caso de forma elegante:
 
 ```python
 def carregar_lista():
     itens = []
     
-    with open("compras.txt", "r") as arquivo:
-        for linha in arquivo:
-            itens.append(linha.strip())
+    try:
+        with open("compras.txt", "r") as arquivo:
+            for linha in arquivo:
+                itens.append(linha.strip())
+    except FileNotFoundError:
+        pass  # Arquivo ainda não existe; começamos com lista vazia
     
     return itens
 ```
 
-Essa função abre o arquivo *"compras.txt"* no modo leitura, percorre cada linha, remove os espaços extras e quebras de linha com `strip()`, e adiciona cada item na lista. No final, retorna a lista completa. Note que se o arquivo não existir, o programa vai dar erro. Por enquanto, vamos assumir que o arquivo já existe. Mais adiante você aprenderá a tratar esses casos.
+Se o arquivo existir, ele é lido normalmente e os itens são carregados. Se não existir, o `except FileNotFoundError` captura o erro silenciosamente e a função retorna uma lista vazia — exatamente o comportamento que queremos na primeira execução.
 
 **Passo 3: Criar a função para salvar a lista no arquivo**
 
@@ -309,13 +312,7 @@ Essa função pede o nome do item, adiciona na lista usando `append()`, e confir
 
 Agora vamos criar o programa principal que usa todas essas funções:
 
-- Primeiro, criamos o arquivo vazio se não existir
-```python
-with open("compras.txt", "w") as arquivo:
-    pass
-```
-
-- Carrega a lista existente
+- Carrega a lista existente (ou começa vazia se o arquivo não existir)
 ```python
 lista_compras = carregar_lista()
 ```
@@ -342,7 +339,7 @@ while opcao != "3":
         print("Opção inválida!")
 ```
 
-Vamos entender o que esse programa principal faz passo a passo. Primeiro, criamos o arquivo *"compras.txt"* vazio caso ele não exista. Usamos `pass` porque não queremos escrever nada, apenas criar o arquivo. Depois, carregamos os itens que já estão salvos no arquivo usando nossa função `carregar_lista()`.
+Vamos entender o que esse programa principal faz passo a passo. Primeiro, chamamos `carregar_lista()`, que já trata internamente o caso do arquivo não existir: se for a primeira execução, simplesmente começa com uma lista vazia sem gerar nenhum erro.
 
 Em seguida, criamos a variável opcao vazia e entramos em um loop que continua enquanto a opção for diferente de "3" (que é a opção de sair). Dentro desse loop, mostramos o menu e pegamos a escolha do usuário. Se escolheu a opção 1, chamamos `ver_lista()` para exibir os itens. Se escolheu a opção 2, chamamos `adicionar_item()` para adicionar um novo item e, logo em seguida, chamamos `salvar_lista()` para garantir que o novo item seja salvo no arquivo imediatamente. Se escolheu a opção 3, exibimos uma mensagem de despedida e o loop termina naturalmente. Para qualquer outra entrada, informamos que a opção é inválida.
 
@@ -354,7 +351,7 @@ Quando você executar esse programa pela primeira vez, a lista estará vazia. Vo
 
 Esse é um exemplo real de como arquivos tornam um programa útil. Os dados persistem entre execuções, transformando um programa simples em algo realmente prático.
 
-# 7.8. Boas práticas e cuidados
+# 8.8. Boas práticas e cuidados
 Agora que você já sabe trabalhar com arquivos, vamos ver alguns pontos importantes para evitar problemas comuns.
 
 **Codificação de caracteres (encoding):** Quando você trabalha com arquivos de texto que contém acentos, cedilhas ou outros caracteres especiais do português, pode encontrar problemas. Isso acontece porque existem diferentes formas de representar esses caracteres no computador.
