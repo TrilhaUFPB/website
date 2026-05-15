@@ -1,51 +1,70 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useTranslation } from "@/hooks/useTranslation";
-import LanguageSwitcher from "./LanguageSwitcher";
-import { usePostHogTracking } from "@/hooks/usePostHogTracking";
+import { useEffect, useState } from 'react';
+import { useTranslation } from '@/hooks/useTranslation';
+import { usePostHogTracking } from '@/hooks/usePostHogTracking';
+import { useScrolled } from '@/components/home/shared';
 
-function NavLink({
-  href,
-  children,
-  onClick,
-}: {
-  href: string;
-  children: React.ReactNode;
-  onClick?: () => void;
-}) {
+export default function NavBar() {
+  const { t, locale, changeLanguage } = useTranslation();
+  const { trackNavigationClick, trackLanguageSwitch } = usePostHogTracking();
+  const scrolled = useScrolled();
+  const [active, setActive] = useState('hero');
+
+  useEffect(() => {
+    const ids = ['sobre', 'numeros', 'turmas', 'projetos', 'time', 'materiais'];
+    const onScroll = () => {
+      let cur = '';
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top < 200) cur = id;
+      }
+      setActive(cur);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const items = [
+    { id: 'sobre', label: t('nav.sobre'), url: '#sobre' },
+    { id: 'turmas', label: t('nav.turmas'), url: '#turmas' },
+    { id: 'projetos', label: t('nav.projetos'), url: '#projetos' },
+    { id: 'time', label: t('nav.time'), url: '#time' },
+    { id: 'materiais', label: t('nav.materiais'), url: '/materiais' },
+  ];
+
+  const toggleLang = () => {
+    const next = locale === 'pt' ? 'en' : 'pt';
+    changeLanguage(next);
+    trackLanguageSwitch(next);
+  };
+
   return (
-    <Link
-      href={href}
-      className="relative text-gray-600 hover:text-gray-800 transition-all duration-300 group"
-      onClick={onClick}
-    >
-      {children}
-      <span className="absolute bottom-[-2px] left-0 w-0 h-0.5 rounded bg-AzulCeu transition-all duration-300 group-hover:w-full"></span>
-    </Link>
-  );
-}
-
-export default function Navbar() {
-  const { t } = useTranslation();
-  const { trackNavigationClick } = usePostHogTracking();
-
-  return (
-    <nav className="bg-gradient-to-b from-AzulCeu/10 to-AzulCeu/0 font-poppins">
-      <div className="container mx-auto px-4 md:px-28 py-5 flex justify-between items-center">
-        <div className="text-xl font-bold text-AzulMeiaNoite select-none">
-          trilha
+    <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
+      <div className="nav-inner">
+        <a href="#hero" className="nav-logo" aria-label="Trilha">
+          <span className="logo-mark" aria-hidden="true" />
+        </a>
+        <nav className="nav-links">
+          {items.map((it) => (
+            <a
+              key={it.id}
+              href={it.url}
+              className={active === it.id ? 'active' : ''}
+              onClick={() => trackNavigationClick(it.id)}
+            >
+              {it.label}
+            </a>
+          ))}
+        </nav>
+        <div className="nav-right">
+          <button className="lang-toggle" onClick={toggleLang}>
+            <span className={locale === 'pt' ? 'on' : ''}>PT</span>
+            <span className={locale === 'en' ? 'on' : ''}>EN</span>
+          </button>
         </div>
-        <div className="hidden md:flex space-x-12 text-AzulMeiaNoite">
-          <NavLink href="#sobre" onClick={() => trackNavigationClick("sobre")}>{t("navbar.about")}</NavLink>
-          <NavLink href="#depoimentos" onClick={() => trackNavigationClick("depoimentos")}>{t("navbar.testimonials")}</NavLink>
-          <NavLink href="#turmas" onClick={() => trackNavigationClick("turmas")}>{t("navbar.classes")}</NavLink>
-          <NavLink href="#quem-somos" onClick={() => trackNavigationClick("quem-somos")}>{t("navbar.who")}</NavLink>
-          <NavLink href="#faq" onClick={() => trackNavigationClick("faq")}>{t("navbar.faq")}</NavLink>
-          <NavLink href="/materiais" onClick={() => trackNavigationClick("materiais")}>{t("navbar.materials")}</NavLink>
-        </div>
-        <LanguageSwitcher />
       </div>
-    </nav>
+    </header>
   );
 }

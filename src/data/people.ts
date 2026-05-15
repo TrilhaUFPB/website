@@ -3,6 +3,7 @@ export interface Person {
     course: string;
     semester: string;
     role: string;
+    company: string;
     link: string;
     photo: string;
     class: string | null;
@@ -13,25 +14,28 @@ export interface Person {
 import { Luigi, Kruta, Emyle, Clara, Davi, JoseVitor, Marcus, VitorReis, Artur, LuisAranha, MiguelQueiroz, DaviGurgel, RafaelTorres, NicolasKleiton } from './students_2024_1';
 import { AnnaLivia, Carol, Bruno, Chaves, Beatriz, Caua, GabrielCarvalho, DanielDuarte, Julia, Jose, Kawane, Lara, Nathan, Pedro, Murilo, Filipe, Sofia, Thiago, Vinicius } from './students_2024_2';
 import { EduardoOliveira, DanielSilva, MariaLuizaCavalcanti, LarissaGondim, PedroMenegon, JoaoGabrielArruda, MariaMarianaCavalcante, MariaJullyaEloi, AnaVictoriaFerreira, NicoleCosta, MarianaPontes, ArthurTenorio, LuisAugustoOliveira, MariaCeciliaSouza, MariaLuisaQuintela, Joaquim } from './students_2025_1';
+import { RhuanOliveira, SergioFreitas, LucianaNascimento, GabrielPinto, GabrielBringel, YasminBatista, RicardoBorges, GuilhermeRibeiro, BiancaGuido, PierreQueiroz, MarcoGadelha, SofiaAraujo, MikaelRodrigues } from './students_2025_2';
 
 export const Tiago: Person = {
     name: "Tiago Trindade",
     course: "Ciência da Computação",
     semester: "9",
-    role: "Software Engineer Stealth Startup",
+    role: "Software Engineer",
+    company: "Stealth Startup",
     link: "https://www.linkedin.com/in/tiagotrindade03/",
-    photo: "pessoas/tiago.jpeg",
+    photo: "/assets/pessoas/tiago.jpg",
     class: null,
     org: ["2024.1", "2024.2"],
-    pos: ["Fundador", "Líder de Mídia"],    
+    pos: ["Fundador", "Líder de Mídia"],
 };
 
 export const Felipe: Person = {
     name: "Felipe Duarte",
     course: "Ciência da Computação",
     semester: "8",
-    role: "Technical Staff Tako",
-    photo: "pessoas/felipe.png",
+    role: "Technical Staff",
+    company: "Tako",
+    photo: "/assets/pessoas/felipe.png",
     link: "https://www.linkedin.com/in/felipeduartea/",
     class: null,
     org: ["2024.1", "2024.2"],
@@ -42,21 +46,23 @@ export const Puca: Person = {
     name: "Puca Vaz",
     course: "Ciência da Computação",
     semester: "7",
-    role: "Technical Staff Telepatia AI",
+    role: "Technical Staff",
+    company: "Telepatia AI",
     link: "https://www.linkedin.com/in/pucavaz/",
-    photo: "pessoas/puca.png",
+    photo: "/assets/pessoas/puca.png",
     class: null,
-    org: ["2024.2", "2025.1"],
-    pos: ["Membro da Organização", "Membro da Organização"],
+    org: ["2024.2", "2025.1", "2025.2"],
+    pos: ["Membro da Organização", "Membro da Organização", "Membro da Organização"],
 };
 
 export const Nicholas: Person = {
     name: "Nicholas Rodrigues",
     course: "Ciência da Computação",
     semester: "8",
-    role: "Software Engineer Stealth Startup",
+    role: "Software Engineer",
+    company: "Stealth Startup",
     link: "https://www.linkedin.com/in/nicholas-rodrigues-/",
-    photo: "pessoas/nicholas.png",
+    photo: "/assets/pessoas/nicholas.png",
     class: null,
     org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Líder de Aulas"],
@@ -66,9 +72,10 @@ export const Icaro: Person = {
     name: "Ícaro Mori",
     course: "Ciência da Computação",
     semester: "Null",
-    role: "Manager Pessoalize",
+    role: "Manager",
+    company: "Pessoalize",
     link: "https://www.linkedin.com/in/icaro-mori-983608210/",
-    photo: "pessoas/icaro.png",
+    photo: "/assets/pessoas/icaro.png",
     class: null,
     org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Membro da Organização"],
@@ -78,33 +85,36 @@ export const Daniel: Person = {
     name: "Daniel Brandão",
     course: "Ciência da Computação",
     semester: "6",
-    role: "Software Engineer 11x",
+    role: "Software Engineer",
+    company: "11x",
     link: "https://www.linkedin.com/in/daniel-victorcb/",
-    photo: "pessoas/daniel.jpeg",
+    photo: "/assets/pessoas/daniel.jpg",
     class: null,
-    org: ["2024.1", "2024.2", "2025.1"],
-    pos: ["Membro da Organização", "Membro da Organização"],
+    org: ["2024.1", "2024.2", "2025.1", "2025.2"],
+    pos: ["Membro da Organização", "Membro da Organização", "Membro da Organização", "Membro da Organização"],
 };
 
 export const Bea: Person = {
     name: "Beatriz Pessôa",
     course: "Ciência da Computação",
     semester: "5",
-    role: "Software Engineer Brief",
-    photo: "pessoas/2024.1/bea.png",
+    role: "Software Engineer",
+    company: "Brief",
+    photo: "/assets/pessoas/2024.1/bea.png",
     link: "https://www.linkedin.com/in/beatriz-pess%C3%B4a/",
     class: "2024.1",
-    org: ["2024.2", "2025.1"],
-    pos: ["Membro da Organização", "Líder de Mídias e Impacto"],
+    org: ["2024.2", "2025.1", "2025.2"],
+    pos: ["Membro da Organização", "Líder de Mídias e Impacto", "Líder de Mídias e Impacto"],
 };
 
 export const Luiz: Person = {
     name: "Luiz Fernando",
     course: "Ciência de Dados e IA",
     semester: "Formado",
-    role: "Data Scientist III CloudWalk",
+    role: "Data Scientist III",
+    company: "CloudWalk",
     link: "https://www.linkedin.com/in/luiz-fernando632",
-    photo: "pessoas/luiz.png",
+    photo: "/assets/pessoas/luiz.png",
     class: null,
     org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Membro da Organização"],
@@ -114,9 +124,10 @@ export const Gabriel: Person = {
     name: "Gabriel Ayres",
     course: "Engenharia da Computação",
     semester: "6",
-    role: "Technical Staff Stealth Startup",
+    role: "Technical Staff",
+    company: "Stealth Startup",
     link: "https://www.linkedin.com/in/gabrielbayres/",
-    photo: "pessoas/gabriel.png",
+    photo: "/assets/pessoas/gabriel.png",
     class: null,
     org: ["2024.1", "2024.2"],
     pos: ["Fundador", "Membro da Organização"],
@@ -126,21 +137,23 @@ export const Guilherme: Person = {
     name: "Guilherme Huther",
     course: "Ciência da Computação",
     semester: "Formado",
-    role: "Data Engineer Stealth Startup",
+    role: "Data Engineer",
+    company: "Stealth Startup",
     link: "https://www.linkedin.com/in/guilhermehuther",
-    photo: "pessoas/guilherme.png",
+    photo: "/assets/pessoas/guilherme.png",
     class: null,
-    org: ["2024.1", "2024.2", "2025.1"],
-    pos: ["Fundador", "Líder de Aulas", "Líder de Aulas"],
+    org: ["2024.1", "2024.2", "2025.1", "2025.2"],
+    pos: ["Fundador", "Líder de Aulas", "Líder de Aulas", "Líder de Aulas"],
 };
 
 export const Caio: Person = {
     name: "Caio Chacon",
     course: "Ciência de Dados e IA",
     semester: "11",
-    role: "Data Scientist Bitka",
+    role: "Data Scientist",
+    company: "Dharma AI",
     link: "https://www.linkedin.com/in/caiolchacon",
-    photo: "pessoas/caio.png",
+    photo: "/assets/pessoas/caio.png",
     class: null,
     org: ["2024.1"],
     pos: ["Membro da Organização"],
@@ -148,26 +161,28 @@ export const Caio: Person = {
 
 export const Ceci: Person = {
     name: "Cecília Bíssigo",
-    course: "Fonoaudiologia",
-    semester: "5",
-    role: " ",
+    course: "Mídias Digitais",
+    semester: "1",
+    role: "Social Media",
+    company: "Teeva",
     link: "",
-    photo: "pessoas/ceci.png",
+    photo: "/assets/pessoas/ceci.png",
     class: null,
-    org: ["2024.2", "2025.1"],
-    pos: ["Membro da Organização", "Membro da Organização"],
+    org: ["2024.2", "2025.1", "2025.2"],
+    pos: ["Membro da Organização", "Membro da Organização", "Líder de Marketing"],
 };
 
 export const CeciliaLog: Person = {
     name: "Ana Cecilia Bezerra",
     course: "Ciência da Computação",
     semester: "7",
-    role: "Researcher Log",
+    role: "Researcher",
+    company: "Log",
     link: "https://www.linkedin.com/in/ana-cec%C3%ADlia-bezerra-338070242/",
-    photo: "pessoas/cecilialog.jpeg",
+    photo: "/assets/pessoas/cecilialog.jpg",
     class: null,
-    org: ["2025.1"],
-    pos: ["Membro da Organização"],
+    org: ["2025.1", "2025.2"],
+    pos: ["Membro da Organização", "Membro da Organização"],
 }
 
 export const peopleOrganization20241: Person[] = [
@@ -240,6 +255,22 @@ export const peopleStudents20251: Person[] = [
     Joaquim,
 ]
 
+export const peopleStudents20252: Person[] = [
+    RhuanOliveira,
+    SergioFreitas,
+    LucianaNascimento,
+    GabrielPinto,
+    GabrielBringel,
+    YasminBatista,
+    RicardoBorges,
+    GuilhermeRibeiro,
+    BiancaGuido,
+    PierreQueiroz,
+    MarcoGadelha,
+    SofiaAraujo,
+    MikaelRodrigues,
+]
+
 export const peopleOrganization20242: Person[] = [
     Tiago,
     Felipe,
@@ -264,12 +295,12 @@ export const peopleOrganization20251: Person[] = [
     Guilherme,
     Kruta,
     Bea,
+    Ceci,
     Daniel,
     Davi,
     Puca,
     Emyle,
     Luigi,
-    Ceci,
     Kawane,
     Beatriz,
     MiguelQueiroz,
@@ -283,12 +314,12 @@ export const peopleOrganizationCurrent: Person[] = [
     Guilherme,
     Kruta,
     Bea,
+    Ceci,
     Daniel,
     Davi,
     Puca,
     Emyle,
     Luigi,
-    Ceci,
     Beatriz,
     MiguelQueiroz,
     Marcus,
@@ -299,6 +330,7 @@ export const peopleOrganizationCurrent: Person[] = [
     MariaLuisaQuintela,
     Joaquim,
     EduardoOliveira,
+    MariaLuizaCavalcanti,
 ]
 
 export const peopleFounders: Person[] = [
@@ -312,4 +344,5 @@ export const peopleFounders: Person[] = [
 export { Luigi, Kruta, Emyle, Clara, Davi, JoseVitor, Marcus, VitorReis, Artur, LuisAranha, MiguelQueiroz, DaviGurgel, RafaelTorres, NicolasKleiton } from './students_2024_1';
 export { AnnaLivia, Carol, Bruno, Chaves, Beatriz, Caua, GabrielCarvalho, DanielDuarte, Julia, Jose, Kawane, Lara, Nathan, Pedro, Murilo, Filipe, Sofia, Thiago, Vinicius } from './students_2024_2';
 export { EduardoOliveira, DanielSilva, MariaLuizaCavalcanti, LarissaGondim, PedroMenegon, JoaoGabrielArruda, MariaMarianaCavalcante, MariaJullyaEloi, AnaVictoriaFerreira, NicoleCosta, MarianaPontes, ArthurTenorio, LuisAugustoOliveira, MariaCeciliaSouza, MariaLuisaQuintela, Joaquim } from './students_2025_1';
+export { RhuanOliveira, SergioFreitas, LucianaNascimento, GabrielPinto, GabrielBringel, YasminBatista, RicardoBorges, GuilhermeRibeiro, BiancaGuido, PierreQueiroz, MarcoGadelha, SofiaAraujo, MikaelRodrigues } from './students_2025_2';
 

@@ -12,6 +12,7 @@ export const usePostHogTracking = () => {
     const eventData = {
       section,
       page: "home",
+      version: "v2",
     };
     posthog?.capture("navigation_clicked", eventData);
     if (isDebug) {
@@ -24,6 +25,7 @@ export const usePostHogTracking = () => {
     const eventData = {
       language,
       page: "home",
+      version: "v2",
     };
     posthog?.capture("language_switched", eventData);
     if (isDebug) {
@@ -36,6 +38,7 @@ export const usePostHogTracking = () => {
     const eventData = {
       button: "learn_more",
       page: "home",
+      version: "v2",
     };
     posthog?.capture("hero_button_clicked", eventData);
     if (isDebug) {
@@ -50,6 +53,7 @@ export const usePostHogTracking = () => {
       questionIndex,
       questionText,
       page: "home",
+      version: "v2",
     };
     posthog?.capture("faq_interaction", eventData);
     if (isDebug) {
@@ -63,6 +67,7 @@ export const usePostHogTracking = () => {
       action, // "expand", "collapse"
       section, // "2024.1", "2024.2"
       page: "home",
+      version: "v2",
     };
     posthog?.capture("turma_section_interaction", eventData);
     if (isDebug) {
@@ -76,6 +81,7 @@ export const usePostHogTracking = () => {
       studentName,
       section, // "2024.1", "2024.2"
       page: "home",
+      version: "v2",
     };
     posthog?.capture("student_profile_clicked", eventData);
     if (isDebug) {
@@ -89,6 +95,7 @@ export const usePostHogTracking = () => {
       organizerName,
       section, // "2024.1", "2024.2"
       page: "home",
+      version: "v2",
     };
     posthog?.capture("organizer_profile_clicked", eventData);
     if (isDebug) {
@@ -101,6 +108,7 @@ export const usePostHogTracking = () => {
     const eventData = {
       founderName,
       page: "home",
+      version: "v2",
     };
     posthog?.capture("founder_profile_clicked", eventData);
     if (isDebug) {
@@ -114,6 +122,7 @@ export const usePostHogTracking = () => {
       memberName,
       role,
       page: "home",
+      version: "v2",
     };
     posthog?.capture("current_member_profile_clicked", eventData);
     if (isDebug) {
@@ -126,6 +135,7 @@ export const usePostHogTracking = () => {
     const eventData = {
       depth,
       page: "home",
+      version: "v2",
     };
     posthog?.capture("scroll_depth", eventData);
     if (isDebug) {
@@ -138,6 +148,7 @@ export const usePostHogTracking = () => {
     const eventData = {
       section,
       page: "home",
+      version: "v2",
     };
     posthog?.capture("section_visible", eventData);
     if (isDebug) {

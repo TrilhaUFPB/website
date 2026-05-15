@@ -8,7 +8,8 @@ import enCommon from "../locales/en/common.json";
 type Locale = "pt" | "en";
 
 type Translations = {
-  [key in Locale]: typeof ptCommon;
+  pt: typeof ptCommon;
+  en: typeof enCommon;
 };
 
 const translations: Translations = {
