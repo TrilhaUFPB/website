@@ -8,7 +8,8 @@
     "turmas": "Cohorts",
     "projetos": "Projects",
     "time": "Team",
-    "materiais": "Materials"
+    "materiais": "Materials",
+    "artigos": "Papers"
   },
   "hero": {
     "eyebrow": "Trilha",
@@ -88,6 +89,30 @@
     },
     "paths": [],
     "cta": "Open materials"
+  },
+  "papers": {
+    "eyebrow": "Papers",
+    "title": "Reading for those who want to go further.",
+    "lede": "Articles and research produced by the Trilha community.",
+    "cta": "Read paper",
+    "items": [
+      {
+        "slug": "a-first-look-at-machine-learning",
+        "tag": "Machine Learning",
+        "title": "A First Look at Machine Learning",
+        "desc": "An introductory guide for those arriving in the world of ML — core concepts, intuition, and practical examples.",
+        "lang": "EN",
+        "author": "Malu Quintela"
+      },
+      {
+        "slug": "fullstack-paper",
+        "tag": "Fullstack",
+        "title": "Fullstack, do Zero",
+        "desc": "A friendly article for newcomers on how frontend and backend connect and where to start.",
+        "lang": "PT",
+        "author": "Luigi Schmitt"
+      }
+    ]
   },
   "faq": {
     "eyebrow": "08 / FAQ",

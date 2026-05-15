@@ -7,6 +7,7 @@ import { useTranslation } from '@/hooks/useTranslation';
 export default function Footer() {
   const { t } = useTranslation();
   const locationLines = t<string[]>('footer.locationLines');
+
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
@@ -24,6 +25,7 @@ export default function Footer() {
             <li><a href="#projetos">{t('nav.projetos')}</a></li>
             <li><a href="#time">{t('nav.time')}</a></li>
             <li><a href="/materiais">{t('nav.materiais')}</a></li>
+            <li><a href="/papers">{t('nav.artigos')}</a></li>
           </ul>
         </div>
         <div className="footer-col">
