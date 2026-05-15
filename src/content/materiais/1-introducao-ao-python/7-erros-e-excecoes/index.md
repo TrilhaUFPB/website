@@ -1,15 +1,21 @@
 ---
 title: 7. Erros e Exceções
-description: Compreender o que são os tipos de erros de código, saber como identificá-los, corrigi-los e como usar try/except para tratá-los com segurança.
+description: Entender a diferença entre erros, bugs e exceções, saber como ler mensagens de erro, tratar exceções com try/except e depurar bugs de forma sistemática.
 category: Programação
 order: 7
 ---
 
-Programar é, em grande parte, lidar com erros. Qualquer programador, do iniciante ao experiente, comete erros o tempo todo. A diferença está em saber **identificar, entender e corrigir** esses erros com rapidez.
+Programar é, em grande parte, lidar com problemas no código. Qualquer programador, do iniciante ao experiente, se depara com eles o tempo todo. O que muda com a experiência não é a frequência com que eles aparecem — é a velocidade com que você os resolve.
 
-Esse processo se chama **depuração** (_debugging_). O nome vem de _bug_, que é como chamamos um erro em um programa. A lenda conta que, em 1947, uma das primeiras computadoras do mundo parou de funcionar porque um inseto (bug, em inglês) ficou preso dentro do hardware. Desde então, o termo ficou.
+Nessa aula você vai aprender duas habilidades distintas, mas complementares:
 
-Ao longo desse módulo você vai ver que os erros são seus aliados: eles te dizem exatamente o que está errado e onde. Aprender a lê-los é uma das habilidades mais valiosas da programação.
+- **Identificar e entender erros**: quando o Python detecta um problema, ele para o programa e exibe uma mensagem de erro com o tipo do problema, a linha e uma descrição. Saber ler essas mensagens é a habilidade mais básica — e mais útil — de quem está começando.
+
+- **Tratar erros com segurança** (_error handling_): nem todo erro deve travar o programa. Com `try/except`, você antecipa situações problemáticas e decide o que fazer quando elas ocorrem, mantendo o programa em execução de forma controlada.
+
+Existe ainda um terceiro tipo de problema, que não gera nenhuma mensagem: o **bug**. O programa executa normalmente, mas produz um resultado errado. Bugs são silenciosos — o Python não sabe que existe um problema. Encontrá-los exige investigação, e esse processo se chama **depuração** (_debugging_). A lenda conta que, em 1947, uma das primeiras computadoras do mundo parou de funcionar porque um inseto (_bug_, em inglês) ficou preso dentro do hardware. Desde então, o termo ficou.
+
+Vamos explorar cada um desses cenários ao longo dessa aula.
 
 # 7.1. Tipos de Erros
 
@@ -32,7 +38,7 @@ O Python vai recusar esse código antes de rodar qualquer linha. A mensagem de e
 SyntaxError: expected ':'
 ```
 
-Erros de sintaxe são, na prática, os mais fáceis de corrigir porque o Python aponta exatamente onde está o problema.
+Erros de sintaxe são, na prática, os mais fáceis de corrigir porque o Python os detecta antes de executar qualquer linha do programa, apontando exatamente onde está o problema.
 
 ## 7.1.2. Erro de Tempo de Execução (Exceção)
 
@@ -61,15 +67,17 @@ Outros exemplos comuns de exceções:
 
 Esses erros são muito comuns e fazem parte do dia a dia do programador. A boa notícia é que o Python nos dá ferramentas para **tratar** esses erros de forma elegante, sem deixar o programa travar. Vamos ver isso na seção 7.2.
 
-## 7.1.3. Erro de Lógica
+## 7.1.3. Bug (Erro de Lógica)
 
-Esse é o mais traiçoeiro dos três. O programa roda sem nenhum erro, mas o **resultado está errado**. O Python não consegue detectar esse tipo de problema porque, para ele, o código está perfeito. O problema é que a lógica do programador está incorreta.
+Esse é o mais traiçoeiro dos três — e é o que tecnicamente merece o nome de **bug**. O programa roda sem nenhuma mensagem de erro, mas o **resultado está errado**. O Python não consegue detectar esse tipo de problema porque, para ele, o código está sintaticamente correto e executou sem exceções. O problema está na lógica do programador, não na estrutura do código.
+
+> **Erro vs. Bug:** nos tipos anteriores (sintaxe e execução), o Python detecta o problema e te avisa com uma mensagem clara dizendo o que e onde. No bug, o Python não tem a menor ideia de que algo está errado — ele executou exatamente o que você mandou. Por isso bugs são os mais perigosos: eles não avisam que existem.
 
 **Exemplo:**
 
 ```python
 def media(a, b):
-    return a + b / 2  # Erro de lógica
+    return a + b / 2  # Bug: divisão aplicada só no b
 
 print(media(4, 6))  # Exibe 7.0, mas deveria ser 5.0
 ```
@@ -81,7 +89,7 @@ def media(a, b):
     return (a + b) / 2
 ```
 
-Para encontrar erros de lógica, é preciso **testar o programa com valores que você já sabe a resposta**. Se o resultado esperado for `5.0` e o programa retornar `7.0`, algo está errado na lógica, e você precisa revisar o raciocínio passo a passo.
+Para encontrar bugs, é preciso **testar o programa com valores que você já sabe a resposta**. Se o resultado esperado for `5.0` e o programa retornar `7.0`, algo está errado na lógica, e você precisa revisar o raciocínio passo a passo.
 
 # 7.2. Tratamento de Erros: try/except
 
@@ -247,19 +255,23 @@ Esse programa:
 4. Usa `else` para exibir o resultado apenas quando tudo funcionou
 5. Usa `finally` para sempre despedir o usuário, independente do resultado
 
-# 7.3. A mentalidade do depurador
+# 7.3. A mentalidade do caçador de bugs
 
-Independente do tipo de erro, o processo de corrigi-lo segue sempre uma lógica parecida:
+Para erros de sintaxe e exceções, o trabalho é relativamente direto: o Python já aponta o tipo do erro, a linha e uma descrição. Você lê a mensagem, entende o problema e corrige.
 
-1. **Observar** o problema: o que está acontecendo de errado?
-2. **Ler a mensagem de erro**: o Python costuma indicar o tipo de erro, a linha e uma descrição.
-3. **Formular uma hipótese**: por que isso pode estar acontecendo?
-4. **Alterar o código** e testar novamente.
-5. **Repetir** até o problema estar resolvido.
+**Bugs são outra história.** Como o Python não detecta o problema, você precisa agir como um detetive: o programa "funciona", mas algo está errado, e cabe a você descobrir onde e por quê. Esse processo de investigar e corrigir bugs é o que chamamos de **depuração** (_debugging_).
 
-Pense no computador como um funcionário extremamente **rápido e preciso**, mas **sem empatia ou discernimento**. Ele não entende o que você quis dizer, apenas o que você escreveu. Cada mensagem de erro é um feedback valioso: ele está te dizendo exatamente o que deu errado.
+O método mais eficaz segue uma lógica parecida com o método científico:
 
-Com o tempo, você vai se familiarizar com os erros mais comuns, vai ler as mensagens mais rápido, e o que hoje parece confuso vai se tornar natural. Erros fazem parte do processo, e lidar bem com eles é uma das habilidades que separa um bom programador de um ótimo programador.
+1. **Reproduzir** o problema: execute o programa com entradas cujo resultado correto você já conhece de antemão.
+2. **Observar** o comportamento: o que o programa retornou? Em que difere do esperado?
+3. **Formular uma hipótese**: qual parte do código poderia estar causando esse resultado incorreto?
+4. **Testar a hipótese**: adicione `print()` em pontos estratégicos para inspecionar o valor das variáveis durante a execução, ou altere o código e observe o efeito.
+5. **Repetir** até encontrar a causa raiz e corrigi-la.
+
+Pense no computador como um funcionário extremamente **rápido e preciso**, mas **sem empatia ou discernimento**. Ele não entende o que você _quis_ dizer, apenas o que você _escreveu_. Se o resultado está errado, a lógica que você expressou no código está errada — mesmo que na sua cabeça fizesse todo o sentido.
+
+Quanto mais você programar, mais rápido vai encontrar bugs. Você vai desenvolver intuição para os padrões mais comuns, vai saber onde olhar primeiro, e o que hoje parece difícil vai se tornar natural. Saber depurar bem é uma das habilidades que separa um bom programador de um ótimo programador.
 
 ---
 ## Complemente o Aprendizado
