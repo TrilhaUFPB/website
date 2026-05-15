@@ -1,6 +1,6 @@
 ---
 title: 9. Frameworks e Bibliotecas
-description: 
+description: Aprenda o que são bibliotecas e frameworks em Python, a diferença entre eles, como usar bibliotecas padrão e externas, e como criar a sua própria biblioteca.
 category: Programação
 order: 9
 ---
