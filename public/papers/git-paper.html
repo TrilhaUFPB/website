@@ -101,6 +101,15 @@
     }
     .hero .deck b { color: var(--text); font-weight: 500; }
     .preamble { font-size: 11px; color: var(--text-faint); letter-spacing: 0.14em; margin-bottom: 16px; }
+    .byline {
+      margin: 4px 0 22px; font-size: 12px;
+      letter-spacing: 0.04em; color: var(--text-faint);
+    }
+    .byline a {
+      color: var(--green); font-weight: 600;
+      border-bottom: 1px dashed currentColor;
+    }
+    .byline a:hover { color: var(--text-strong); }
 
     h2.section {
       font-size: 13px; font-weight: 600; letter-spacing: 0.18em;
@@ -940,6 +949,9 @@ function App() {
       <div className="hero">
         <div className="preamble">// PAPER · controle de versão pra quem nunca versionou nada</div>
         <h1>Git, do zero<HeroHash /></h1>
+        <div className="byline">
+          Feito por <a href="https://www.linkedin.com/in/pkruta/" target="_blank" rel="noreferrer">Kruta</a>
+        </div>
         <p className="subtitle">
           Um paper amigável pra quem ouve falar de <code>commit</code>, <code>push</code>, <code>branch</code> e finge entender.
           Construímos o entendimento de baixo pra cima — modelo mental antes dos comandos.
@@ -1163,11 +1175,7 @@ function App() {
 
       <footer className="footer">
         <div className="left"><span className="prompt">$</span><span>echo "fim do paper" && exit 0</span></div>
-        <div className="right">
-          <a href="https://www.linkedin.com/in/pkruta/" target="_blank" rel="noreferrer">Feito por Kruta</a>
-          <span style={{ margin: "0 8px", color: "var(--text-faint)" }}>·</span>
-          git-do-zero · 2026
-        </div>
+        <div className="right">git-do-zero · pt-br · 2026</div>
       </footer>
     </div>
   );
