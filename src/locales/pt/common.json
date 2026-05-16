@@ -96,6 +96,14 @@
     "cta": "Ler artigo",
     "items": [
       {
+        "slug": "what-data-hides-before-machine-learning",
+        "tag": "EDA",
+        "title": "What data hides before Machine Learning",
+        "desc": "An interactive introduction to Exploratory Data Analysis, pattern discovery, and the questions that should come before training a model.",
+        "lang": "EN",
+        "author": "Beatriz Cruz"
+      },
+      {
         "slug": "a-first-look-at-machine-learning",
         "tag": "Machine Learning",
         "title": "A First Look at Machine Learning",
