@@ -101,6 +101,15 @@
     }
     .hero .deck b { color: var(--text); font-weight: 500; }
     .preamble { font-size: 11px; color: var(--text-faint); letter-spacing: 0.14em; margin-bottom: 16px; }
+    .byline {
+      margin: 4px 0 22px; font-size: 12px;
+      letter-spacing: 0.04em; color: var(--text-faint);
+    }
+    .byline a {
+      color: var(--green); font-weight: 600;
+      border-bottom: 1px dashed currentColor;
+    }
+    .byline a:hover { color: var(--text-strong); }
 
     h2.section {
       font-size: 13px; font-weight: 600; letter-spacing: 0.18em;
@@ -812,10 +821,24 @@ function PanelRemote() {
   const [state, setState] = useState(buildInitial());
   const reset = () => setState(buildInitial());
   const gitPush = () => setState(s => {
-    if (s.local.commits.length === s.remote.commits.length) return { ...s, log: [...s.log, { text: "git push origin main" }, { kind: "out", text: "already up-to-date" }], lastAction: "up to date" };
+    const localIds = new Set(s.local.commits.map(c => c.id));
+    const remoteOnly = s.remote.commits.filter(c => !localIds.has(c.id));
+    if (remoteOnly.length > 0) {
+      return { ...s,
+        log: [...s.log,
+          { text: "git push origin main" },
+          { kind: "out", text: "! [rejected]        main -> main (non-fast-forward)" },
+          { kind: "out", text: "hint: o remoto tem trabalho que você não tem ainda — rode git pull primeiro" },
+        ],
+        lastAction: "rejected" };
+    }
+    const ahead = s.local.commits.length - s.remote.commits.length;
+    if (ahead === 0) {
+      return { ...s, log: [...s.log, { text: "git push origin main" }, { kind: "out", text: "Everything up-to-date" }], lastAction: "up to date" };
+    }
     return { ...s,
       remote: { commits: [...s.local.commits], branches: { ...s.local.branches }, head: "main", newestId: s.local.newestId },
-      log: [...s.log, { text: "git push origin main" }, { kind: "out", text: `→ ${s.local.commits.length - s.remote.commits.length} commit(s) enviado(s)` }],
+      log: [...s.log, { text: "git push origin main" }, { kind: "out", text: `→ ${ahead} commit(s) enviado(s)` }],
       lastAction: "→ push" };
   });
   const messages = ["new feature", "fix typo", "update readme", "refactor api"];
@@ -839,13 +862,42 @@ function PanelRemote() {
       lastAction: "← teammate" };
   });
   const gitPull = () => setState(s => {
-    if (s.remote.commits.length <= s.local.commits.length) {
-      const upToDate = s.remote.commits.length === s.local.commits.length;
-      return { ...s, log: [...s.log, { text: "git pull origin main" }, { kind: "out", text: upToDate ? "already up-to-date" : "nada novo no remoto" }] };
+    const localIds = new Set(s.local.commits.map(c => c.id));
+    const remoteIds = new Set(s.remote.commits.map(c => c.id));
+    const remoteOnly = s.remote.commits.filter(c => !localIds.has(c.id));
+    const localOnly  = s.local.commits.filter(c => !remoteIds.has(c.id));
+
+    if (remoteOnly.length === 0) {
+      return { ...s, log: [...s.log, { text: "git pull origin main" }, { kind: "out", text: "Already up to date." }] };
     }
+
+    if (localOnly.length > 0) {
+      const id = randHash();
+      const mergedBase = [...s.local.commits, ...remoteOnly];
+      const mergeCommit = {
+        id,
+        message: `Merge branch 'main' of origin into main`,
+        parents: [s.local.branches.main, s.remote.branches.main],
+      };
+      return { ...s,
+        local: { ...s.local,
+          commits: [...mergedBase, mergeCommit],
+          branches: { ...s.local.branches, main: id },
+          newestId: id },
+        log: [...s.log,
+          { text: "git pull origin main" },
+          { kind: "out", text: `Merge made by the 'recursive' strategy.` },
+          { kind: "out", text: `→ ${remoteOnly.length} commit(s) trazido(s) + merge commit ${id}` },
+        ],
+        lastAction: "← merge" };
+    }
+
     return { ...s,
       local: { ...s.local, commits: [...s.remote.commits], branches: { ...s.remote.branches }, newestId: s.remote.newestId },
-      log: [...s.log, { text: "git pull origin main" }, { kind: "out", text: `→ ${s.remote.commits.length - s.local.commits.length} commit(s) baixado(s)` }],
+      log: [...s.log,
+        { text: "git pull origin main" },
+        { kind: "out", text: `Fast-forward · ${remoteOnly.length} commit(s) baixado(s)` },
+      ],
       lastAction: "← pull" };
   });
   return (
@@ -897,6 +949,9 @@ function App() {
       <div className="hero">
         <div className="preamble">// PAPER · controle de versão pra quem nunca versionou nada</div>
         <h1>Git, do zero<HeroHash /></h1>
+        <div className="byline">
+          Feito por <a href="https://www.linkedin.com/in/pkruta/" target="_blank" rel="noreferrer">Kruta</a>
+        </div>
         <p className="subtitle">
           Um paper amigável pra quem ouve falar de <code>commit</code>, <code>push</code>, <code>branch</code> e finge entender.
           Construímos o entendimento de baixo pra cima — modelo mental antes dos comandos.
