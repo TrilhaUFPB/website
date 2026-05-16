@@ -867,7 +867,7 @@ button { font-family: inherit; cursor: pointer; }
   transition: grid-template-columns .35s cubic-bezier(.4, 0, .2, 1), gap .35s cubic-bezier(.4, 0, .2, 1);
 }
 .materiais-content { min-width: 0; }
-.materiais-content .section { padding-left: 0; padding-right: 0; }
+.materiais-content .section { padding-left: 0; padding-right: 0; padding-top: clamp(32px, 4vw, 56px); }
 .materiais-content .container { max-width: none; margin: 0; }
 @media (max-width: 1024px) {
   .materiais-shell { grid-template-columns: 1fr; }
@@ -875,7 +875,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .materiais-sidebar-desktop {
-  padding-top: var(--section-y);
+  padding-top: clamp(32px, 4vw, 56px);
   overflow: hidden;
   transition: opacity .25s ease, transform .35s cubic-bezier(.4, 0, .2, 1);
   will-change: opacity, transform;
