@@ -49,6 +49,27 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* ============== MOUNTAIN CURSOR ==============
+   The Trilha logo replaces the default cursor across the site.
+   - Default: dark-ink mountain (visible on cream background).
+   - Pointer/clickable elements: green mountain at a slightly larger size.
+   - Text inputs keep the native I-beam (better usability).
+   - Touch devices ignore custom cursors automatically.
+*/
+html, body {
+  cursor: url("/assets/cursor-mountain.svg") 18 4, auto;
+}
+a, button, [role="button"], label[for], summary,
+input[type="checkbox"], input[type="radio"], input[type="submit"],
+input[type="button"], input[type="reset"], select, .paper-card {
+  cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer;
+}
+input[type="text"], input[type="email"], input[type="search"],
+input[type="number"], input[type="password"], input[type="url"],
+input[type="tel"], textarea, [contenteditable="true"] {
+  cursor: text;
+}
+
 /* Subtle grid texture overlaid on the page */
 [data-bg="grid"] body::before {
   content: "";

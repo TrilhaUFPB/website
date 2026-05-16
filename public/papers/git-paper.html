@@ -34,6 +34,7 @@
     }
     * { box-sizing: border-box; }
     html, body {
+      cursor: url("/assets/cursor-mountain.svg") 18 4, auto;
       margin: 0; padding: 0;
       background: var(--bg);
       color: var(--text);
@@ -53,6 +54,10 @@
     a { color: var(--green); text-decoration: none; border-bottom: 1px dashed currentColor; }
     a:hover { color: var(--text-strong); }
     ::selection { background: var(--green); color: var(--bg); }
+
+    a, button, [role="button"], summary {
+      cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer;
+    }
 
     .page { max-width: 760px; margin: 0 auto; padding: 56px 28px 160px; }
 
