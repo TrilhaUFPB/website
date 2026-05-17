@@ -97,12 +97,12 @@
     "cta": "Read paper",
     "items": [
       {
-        "slug": "what-data-hides-before-machine-learning",
-        "tag": "EDA",
-        "title": "What data hides before Machine Learning",
-        "desc": "An interactive introduction to Exploratory Data Analysis, pattern discovery, and the questions that should come before training a model.",
-        "lang": "EN",
-        "author": "Beatriz Cruz"
+        "slug": "fullstack-paper",
+        "tag": "Fullstack",
+        "title": "Fullstack, do Zero",
+        "desc": "A friendly article for newcomers on how frontend and backend connect and where to start.",
+        "lang": "PT",
+        "author": "Luigi Schmitt"
       },
       {
         "slug": "a-first-look-at-machine-learning",
@@ -113,18 +113,26 @@
         "author": "Malu Quintela"
       },
       {
-        "slug": "fullstack-paper",
-        "tag": "Fullstack",
-        "title": "Fullstack, do Zero",
-        "desc": "A friendly article for newcomers on how frontend and backend connect and where to start.",
+        "slug": "de-dados-brutos-a-decisoes-inteligentes",
+        "tag": "Data Science",
+        "title": "De Dados Brutos a Decisões Inteligentes",
+        "desc": "A journey from raw data to informed decisions — through EDA, modeling, and the intuition that connects both worlds.",
         "lang": "PT",
-        "author": "Luigi Schmitt"
+        "author": "Nicole Costa"
+      },
+      {
+        "slug": "what-data-hides-before-machine-learning",
+        "tag": "EDA",
+        "title": "What data hides before Machine Learning",
+        "desc": "An interactive introduction to Exploratory Data Analysis and the questions that come before training a model.",
+        "lang": "EN",
+        "author": "Beatriz Cruz"
       },
       {
         "slug": "git-paper",
         "tag": "Git",
         "title": "Git, do zero",
-        "desc": "A friendly version-control paper for those who hear commit, push, branch and just nod along. Mental model before commands.",
+        "desc": "A friendly version-control paper for those who hear commit, push, branch and just nod along.",
         "lang": "PT",
         "author": "Kruta"
       }
