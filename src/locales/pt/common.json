@@ -96,12 +96,12 @@
     "cta": "Ler artigo",
     "items": [
       {
-        "slug": "what-data-hides-before-machine-learning",
-        "tag": "EDA",
-        "title": "What data hides before Machine Learning",
-        "desc": "An interactive introduction to Exploratory Data Analysis, pattern discovery, and the questions that should come before training a model.",
-        "lang": "EN",
-        "author": "Beatriz Cruz"
+        "slug": "fullstack-paper",
+        "tag": "Fullstack",
+        "title": "Fullstack, do Zero",
+        "desc": "Um artigo amigável para calouros sobre como frontend e backend se conectam e por onde começar.",
+        "lang": "PT",
+        "author": "Luigi Schmitt"
       },
       {
         "slug": "a-first-look-at-machine-learning",
@@ -112,18 +112,26 @@
         "author": "Malu Quintela"
       },
       {
-        "slug": "fullstack-paper",
-        "tag": "Fullstack",
-        "title": "Fullstack, do Zero",
-        "desc": "Um artigo amigável para calouros sobre como frontend e backend se conectam e por onde começar.",
+        "slug": "de-dados-brutos-a-decisoes-inteligentes",
+        "tag": "Data Science",
+        "title": "De Dados Brutos a Decisões Inteligentes",
+        "desc": "Uma jornada do dado bruto à decisão informada — passando por EDA, modelagem e a intuição que conecta os dois mundos.",
         "lang": "PT",
-        "author": "Luigi Schmitt"
+        "author": "Nicole Costa"
+      },
+      {
+        "slug": "what-data-hides-before-machine-learning",
+        "tag": "EDA",
+        "title": "What data hides before Machine Learning",
+        "desc": "Uma introdução interativa à Análise Exploratória de Dados e às perguntas que vêm antes de treinar um modelo.",
+        "lang": "EN",
+        "author": "Beatriz Cruz"
       },
       {
         "slug": "git-paper",
         "tag": "Git",
         "title": "Git, do zero",
-        "desc": "Um paper amigável de controle de versão pra quem ouve falar de commit, push, branch e finge entender. Modelo mental antes dos comandos.",
+        "desc": "Um paper amigável de controle de versão pra quem ouve falar de commit, push, branch e finge entender.",
         "lang": "PT",
         "author": "Kruta"
       }
