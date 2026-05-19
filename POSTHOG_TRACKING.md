@@ -94,6 +94,18 @@ This document outlines all the PostHog tracking events implemented on the main p
   - `page`: "home"
 - **Trigger**: When a section becomes visible in viewport
 
+### 13. Paper Card Click
+- **Event**: `paper_card_clicked`
+- **Properties**:
+  - `paperSlug`: string (e.g. "fullstack-do-zero")
+  - `paperTitle`: string
+  - `paperTag`: string (e.g. "Fullstack", "Machine Learning")
+  - `paperLang`: "pt" | "en"
+  - `paperAuthor`: string
+  - `position`: number (0-based index in the grid at click time)
+  - `page`: "papers"
+- **Trigger**: When user clicks a paper card on `/papers`
+
 ## Implementation Details
 
 ### Files Modified:
@@ -105,6 +117,7 @@ This document outlines all the PostHog tracking events implemented on the main p
 6. `src/components/TurmaSection.tsx` - Turma section and profile tracking
 7. `src/components/ScrollTracker.tsx` - Scroll depth and section visibility
 8. `src/app/page.tsx` - Added ScrollTracker component
+9. `src/app/papers/page.tsx` - Paper card click tracking
 
 ### Key Features:
 - **Automatic page view tracking** (PostHog default)
