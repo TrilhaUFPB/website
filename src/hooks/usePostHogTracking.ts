@@ -156,6 +156,30 @@ export const usePostHogTracking = () => {
     }
   }, [posthog, isDebug]);
 
+  // Track paper card clicks on /papers
+  const trackPaperClick = useCallback(
+    (
+      paper: { slug: string; title: string; tag: string; lang: string; author: string },
+      position: number
+    ) => {
+      const eventData = {
+        paperSlug: paper.slug,
+        paperTitle: paper.title,
+        paperTag: paper.tag,
+        paperLang: paper.lang,
+        paperAuthor: paper.author,
+        position,
+        page: "papers",
+        version: "v2",
+      };
+      posthog?.capture("paper_card_clicked", eventData);
+      if (isDebug) {
+        console.log("📊 PostHog Event: paper_card_clicked", eventData);
+      }
+    },
+    [posthog, isDebug]
+  );
+
   return {
     trackNavigationClick,
     trackLanguageSwitch,
@@ -168,5 +192,6 @@ export const usePostHogTracking = () => {
     trackCurrentMemberProfileClick,
     trackScrollDepth,
     trackSectionVisibility,
+    trackPaperClick,
   };
 }; 

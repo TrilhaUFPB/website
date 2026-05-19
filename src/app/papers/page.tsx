@@ -1,11 +1,13 @@
 'use client';
 
+import { usePostHogTracking } from '@/hooks/usePostHogTracking';
 import { useTranslation } from '@/hooks/useTranslation';
 
 type Paper = { slug: string; tag: string; title: string; desc: string; lang: string; author: string };
 
 export default function PapersPage() {
   const { t } = useTranslation();
+  const { trackPaperClick } = usePostHogTracking();
   const papers = t<Paper[]>('papers.items');
 
   return (
@@ -18,13 +20,14 @@ export default function PapersPage() {
         </header>
 
         <div className="papers-grid">
-          {papers.map((p) => (
+          {papers.map((p, index) => (
             <a
               key={p.slug}
               href={`/papers/${p.slug}.html`}
               target="_blank"
               rel="noreferrer"
               className="paper-card"
+              onClick={() => trackPaperClick(p, index)}
             >
               <div className="paper-card-body">
                 <div className="paper-card-top">
