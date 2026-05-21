@@ -40,7 +40,7 @@ export default function PapersPage() {
                 <p className="paper-card-desc">{p.desc}</p>
               </div>
               <div className="paper-card-footer">
-                <span className="kicker" style={{ color: 'var(--ink-muted)' }}>por {p.author}</span>
+                <span className="kicker" style={{ color: 'var(--ink-muted)' }}>{t('papers.by')} {p.author}</span>
                 <span className="btn btn--ghost" style={{ fontSize: 13, padding: '10px 18px' }}>
                   {t('papers.cta')} <span className="arrow">→</span>
                 </span>

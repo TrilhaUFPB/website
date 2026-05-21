@@ -94,6 +94,7 @@
     "title": "Leitura para quem quer ir além.",
     "lede": "Artigos e pesquisas produzidos pela comunidade Trilha.",
     "cta": "Ler artigo",
+    "by": "por",
     "items": [
       {
         "slug": "fullstack-paper",
