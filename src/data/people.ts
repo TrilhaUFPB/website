@@ -314,7 +314,6 @@ export const peopleOrganizationCurrent: Person[] = [
     Guilherme,
     Kruta,
     Bea,
-    Ceci,
     Daniel,
     Davi,
     Puca,
