@@ -95,11 +95,12 @@
     "title": "Reading for those who want to go further.",
     "lede": "Articles and research produced by the Trilha community.",
     "cta": "Read paper",
+    "by": "by",
     "items": [
       {
         "slug": "fullstack-paper",
         "tag": "Fullstack",
-        "title": "Fullstack, do Zero",
+        "title": "Fullstack, from Zero",
         "desc": "A friendly article for newcomers on how frontend and backend connect and where to start.",
         "lang": "PT",
         "author": "Luigi Schmitt"
@@ -115,7 +116,7 @@
       {
         "slug": "de-dados-brutos-a-decisoes-inteligentes",
         "tag": "Data Science",
-        "title": "De Dados Brutos a Decisões Inteligentes",
+        "title": "From Raw Data to Smart Decisions",
         "desc": "A journey from raw data to informed decisions — through EDA, modeling, and the intuition that connects both worlds.",
         "lang": "PT",
         "author": "Nicole Costa"
@@ -131,7 +132,7 @@
       {
         "slug": "git-paper",
         "tag": "Git",
-        "title": "Git, do zero",
+        "title": "Git, from zero",
         "desc": "A friendly version-control paper for those who hear commit, push, branch and just nod along.",
         "lang": "PT",
         "author": "Kruta"
