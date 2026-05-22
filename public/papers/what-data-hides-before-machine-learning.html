@@ -1,1026 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>What Data Hides Before Machine Learning</title>
+  <meta name="description" content="An interactive introduction to Exploratory Data Analysis and the questions that come before training a model." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --bg: #faf6ee;
-      --bg-elev: #fdfbf6;
-      --bg-elev-2: #fffefa;
-      --bg-inset: #ece8dc;
-      --paper-2: #f3eddf;
-      --border: #ded5c3;
-      --border-strong: #b9af9a;
-      --text: #2a2823;
-      --text-strong: #12110f;
-      --text-dim: #6e6a63;
-      --text-faint: #9a9488;
-      --coral: #d2553a;
-      --teal: #2e6f6a;
-      --gold: #c49a2a;
-      --blue: #2f6bc0;
-      --purple: #8a4ca8;
-      --red: #b3392b;
-      --green: #2f7d3a;
-      --shadow: 0 1px 0 rgba(255,255,255,.72) inset, 0 16px 34px rgba(64,42,10,.08);
-      --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      --serif: "Newsreader", Georgia, serif;
-    }
-
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--serif);
-      font-size: 19px;
-      line-height: 1.66;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    body {
-      background-image:
-        linear-gradient(rgba(210,85,58,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(46,111,106,.025) 1px, transparent 1px);
-      background-size: 42px 42px;
-      background-attachment: fixed;
-    }
-    a { color: var(--coral); text-decoration: none; border-bottom: 1px dashed currentColor; }
-    a:hover { color: var(--text-strong); }
-    ::selection { background: #f2c9bc; color: var(--text-strong); }
-
-    .mono, .topbar, .deck, .preamble, .section, .panel, .btn, .cmd-log, .tag-pill, .footer, code, pre {
-      font-family: var(--mono);
-    }
-
-    .progress {
-      position: fixed;
-      inset: 0 0 auto 0;
-      height: 3px;
-      z-index: 50;
-      background: transparent;
-    }
-    .progress > div {
-      width: 0%;
-      height: 100%;
-      background: var(--coral);
-      transition: width .12s linear;
-    }
-
-    .page { max-width: 760px; margin: 0 auto; padding: 56px 28px 150px; }
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding-bottom: 28px;
-      margin-bottom: 58px;
-      border-bottom: 1px solid var(--border);
-      font-size: 12px;
-    }
-    .brandmark { display: flex; align-items: center; gap: 10px; min-width: 0; color: var(--text-dim); }
-    .brandmark .prompt { color: var(--teal); white-space: nowrap; }
-    .brandmark .cmd { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .cursor {
-      display: inline-block;
-      width: 7px;
-      height: 14px;
-      background: var(--coral);
-      animation: blink 1.2s steps(1) infinite;
-      flex: 0 0 auto;
-    }
-    @keyframes blink { 50% { opacity: 0; } }
-
-    .meta-tags { display: flex; gap: 6px; color: var(--text-faint); }
-    .meta-tags span { padding: 2px 7px; border: 1px solid var(--border); border-radius: 3px; background: rgba(255,255,255,.28); }
-    .back-link {
-      color: var(--text-dim);
-      border: 1px solid var(--border-strong);
-      background: var(--bg-elev);
-      padding: 5px 10px;
-      border-radius: 4px;
-      letter-spacing: .04em;
-      white-space: nowrap;
-    }
-    .back-link:hover { background: var(--bg-elev-2); border-color: var(--coral); color: var(--text-strong); }
-
-    .hero { margin: 24px 0 66px; }
-    .preamble {
-      color: var(--coral);
-      font-size: 11px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(42px, 7vw, 72px);
-      font-weight: 500;
-      line-height: .98;
-      letter-spacing: -.02em;
-      margin: 0 0 20px;
-      color: var(--text-strong);
-      text-wrap: balance;
-    }
-    .hero h1 em { color: var(--coral); font-style: italic; font-weight: 400; }
-    .subtitle {
-      max-width: 62ch;
-      margin: 0;
-      font-size: 22px;
-      line-height: 1.48;
-      color: var(--text-dim);
-      text-wrap: pretty;
-    }
-    .deck {
-      margin-top: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      color: var(--text-faint);
-      font-size: 12px;
-    }
-    .deck div {
-      border: 1px solid var(--border);
-      background: rgba(253,251,246,.72);
-      border-radius: 999px;
-      padding: 4px 10px;
-    }
-    .deck b { color: var(--text); font-weight: 500; }
-    .author-line {
-      margin-top: 18px;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-faint);
-      letter-spacing: .04em;
-    }
-    .author-line strong {
-      color: var(--text-dim);
-      font-family: var(--mono);
-      font-size: inherit;
-      font-weight: 600;
-    }
-
-    h2.section {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 84px 0 8px;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-    }
-    h2.section::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--coral);
-      flex: 0 0 auto;
-    }
-    h2.section .num { color: var(--text-dim); }
-    h2.section .slash { color: var(--text-dim); }
-    h2.section .title { color: var(--text); letter-spacing: .02em; }
-    h3.chapter {
-      font-family: var(--serif);
-      font-size: 34px;
-      font-weight: 500;
-      letter-spacing: -.01em;
-      color: var(--text-strong);
-      margin: 4px 0 28px;
-      line-height: 1.12;
-      text-wrap: balance;
-    }
-    h4 {
-      font-family: var(--mono);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-strong);
-      margin: 34px 0 10px;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-    p { margin: 0 0 17px; text-wrap: pretty; }
-    strong { color: var(--text-strong); font-weight: 600; }
-    em { color: var(--text-strong); }
-    code {
-      font-size: .82em;
-      background: var(--bg-elev);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: 1px 6px;
-      color: var(--teal);
-      white-space: nowrap;
-    }
-    ul { padding-left: 0; list-style: none; margin: 12px 0 20px; }
-    li { position: relative; padding-left: 22px; margin-bottom: 7px; }
-    li::before { content: "-"; position: absolute; left: 0; color: var(--text-faint); }
-    blockquote {
-      margin: 34px -16px;
-      padding: 14px 22px;
-      border-left: 3px solid var(--coral);
-      color: var(--text-strong);
-      font-size: 27px;
-      line-height: 1.35;
-      font-style: italic;
-      background: linear-gradient(90deg, rgba(210,85,58,.07), transparent 84%);
-      border-radius: 0 4px 4px 0;
-      text-wrap: balance;
-    }
-    .callout {
-      border-left: 2px solid var(--gold);
-      background: linear-gradient(90deg, rgba(196,154,42,.08), transparent 82%);
-      padding: 14px 18px;
-      margin: 22px 0;
-      font-size: 16px;
-      color: var(--text);
-      border-radius: 0 4px 4px 0;
-    }
-    .callout .tag {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-
-    .panel {
-      margin: 38px -44px;
-      background: var(--bg-elev);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-    @media (max-width: 880px) { .panel { margin: 34px 0; } }
-    .panel-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 14px;
-      background: var(--bg-elev-2);
-      border-bottom: 1px solid var(--border);
-      font-size: 11px;
-      color: var(--text-dim);
-      letter-spacing: .04em;
-    }
-    .panel-head .left { display: flex; align-items: center; gap: 12px; min-width: 0; }
-    .dots { display: flex; gap: 6px; flex: 0 0 auto; }
-    .dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); }
-    .dots span:nth-child(1) { background: #d97a7a; }
-    .dots span:nth-child(2) { background: #e6c97a; }
-    .dots span:nth-child(3) { background: #7ec27a; }
-    .panel-head .title { color: var(--text); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .panel-head .right { color: var(--text-faint); white-space: nowrap; }
-    .panel-body { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
-    .viz-stage {
-      background: var(--bg-inset);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 18px;
-      min-height: 220px;
-      position: relative;
-      overflow: hidden;
-    }
-    .try-this {
-      padding: 10px 14px;
-      border: 1px dashed var(--border-strong);
-      border-radius: 4px;
-      color: var(--text-dim);
-      display: flex;
-      gap: 10px;
-      font-size: 12.5px;
-    }
-    .try-this .tag {
-      color: var(--purple);
-      font-weight: 600;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      font-size: 10px;
-      flex: 0 0 auto;
-      padding-top: 1px;
-    }
-    .panel-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-    .btn {
-      font-size: 12.5px;
-      background: var(--bg-elev-2);
-      border: 1px solid var(--border-strong);
-      color: var(--text);
-      padding: 7px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: transform .08s ease, background .15s, border-color .15s, color .15s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-      line-height: 1.2;
-    }
-    .btn:hover { background: var(--bg-inset); border-color: var(--coral); color: var(--text-strong); }
-    .btn:active { transform: translateY(1px); }
-    .btn.active { border-color: var(--teal); background: rgba(46,111,106,.1); color: var(--text-strong); }
-    .btn.good { border-color: rgba(47,125,58,.55); background: rgba(47,125,58,.09); }
-    .btn.bad { border-color: rgba(179,57,43,.55); background: rgba(179,57,43,.08); }
-    .btn.ghost { background: transparent; border-color: var(--border); }
-    .btn-reset {
-      margin-left: auto;
-      font-size: 11px;
-      color: var(--text-faint);
-      background: transparent;
-      border: 1px solid transparent;
-      padding: 6px 10px;
-      cursor: pointer;
-      border-radius: 3px;
-      font-family: var(--mono);
-    }
-    .btn-reset:hover { color: var(--text); border-color: var(--border); }
-    .k { color: var(--teal); }
-    .a { color: var(--gold); }
-    .f { color: var(--purple); }
-    .danger { color: var(--red); }
-    .good-text { color: var(--green); }
-
-    .cmd-log {
-      background: var(--bg-inset);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 12px;
-      max-height: 166px;
-      overflow-y: auto;
-      padding: 12px 14px;
-      color: var(--text-dim);
-    }
-    .cmd-log .entry { display: flex; gap: 10px; line-height: 1.85; white-space: nowrap; }
-    .cmd-log .entry.is-out { padding-left: 18px; color: var(--text-faint); font-size: 11.5px; line-height: 1.6; white-space: normal; }
-    .cmd-log .entry .arrow { color: var(--teal); flex: 0 0 8px; line-height: 1.85; }
-
-    .mini-table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13px; background: var(--bg-elev); border-radius: 6px; overflow: hidden; }
-    .mini-table th, .mini-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
-    .mini-table th { color: var(--text-faint); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; background: var(--bg-elev-2); }
-    .mini-table tr:last-child td { border-bottom: 0; }
-    .mini-table tr.flag-outlier td { background: rgba(179,57,43,.11); color: var(--text-strong); }
-    .mini-table tr.flag-missing td { background: rgba(196,154,42,.13); color: var(--text-strong); }
-    .mini-table td.flag-type { box-shadow: inset 3px 0 0 var(--teal); }
-
-    .chart { width: 100%; min-height: 220px; display: block; }
-    .axis { stroke: var(--border-strong); stroke-width: 1; }
-    .grid { stroke: rgba(110,106,99,.16); stroke-width: 1; }
-    .line { fill: none; stroke: var(--teal); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-    .line-2 { fill: none; stroke: var(--coral); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 4 5; }
-    .dot { fill: var(--bg-elev-2); stroke: var(--teal); stroke-width: 3; }
-    .dot.hot { stroke: var(--coral); fill: #f2c9bc; }
-    .bar { fill: rgba(46,111,106,.42); stroke: var(--teal); stroke-width: 1; transition: height .22s ease, y .22s ease, fill .18s ease; }
-    .bar.alt { fill: rgba(210,85,58,.34); stroke: var(--coral); }
-    .chart-label { fill: var(--text-dim); font-family: var(--mono); font-size: 11px; }
-    .chart-note { fill: var(--text-faint); font-family: var(--mono); font-size: 10px; }
-    .heat-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px; }
-    .heat-cell {
-      aspect-ratio: 1;
-      border-radius: 3px;
-      border: 1px solid rgba(110,106,99,.18);
-      background: var(--bg-elev);
-      position: relative;
-    }
-    .heat-cell::after {
-      content: attr(data-hour);
-      position: absolute;
-      inset: auto 3px 1px auto;
-      color: rgba(42,40,35,.36);
-      font-size: 8px;
-      font-family: var(--mono);
-    }
-    .hypothesis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    @media (max-width: 720px) { .hypothesis-grid { grid-template-columns: 1fr; } }
-    .hypothesis-card {
-      background: var(--bg-elev);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 12px;
-      min-height: 132px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      text-align: left;
-      cursor: pointer;
-      font: inherit;
-      color: inherit;
-    }
-    .hypothesis-card.active { border-color: var(--coral); background: rgba(210,85,58,.08); }
-    .hypothesis-card:hover { border-color: var(--teal); }
-    .hypothesis-card .label { font-family: var(--mono); color: var(--text-faint); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
-    .hypothesis-card strong { font-family: var(--mono); font-size: 13px; }
-    .hypothesis-card p { margin: 0; font-family: var(--mono); font-size: 11.5px; color: var(--text-dim); line-height: 1.5; }
-    .meter-row { display: grid; grid-template-columns: 92px 1fr 46px; gap: 10px; align-items: center; font-family: var(--mono); font-size: 12px; color: var(--text-dim); margin: 6px 0; }
-    .meter { height: 9px; background: var(--bg-elev); border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
-    .meter span { display: block; height: 100%; background: var(--teal); border-radius: 999px; transition: width .2s ease; }
-    .range-row { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 12px; color: var(--text-dim); flex-wrap: wrap; }
-    input[type="range"] { accent-color: var(--coral); min-width: 180px; }
-    .tag-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 100px;
-      background: var(--bg-elev);
-      border: 1px solid var(--border);
-      color: var(--text-dim);
-      letter-spacing: .04em;
-    }
-    .split { display: grid; grid-template-columns: 1.15fr .85fr; gap: 14px; align-items: stretch; }
-    @media (max-width: 720px) { .split { grid-template-columns: 1fr; } }
-    .side-note {
-      background: var(--bg-elev);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 14px;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-dim);
-      min-height: 100%;
-    }
-    .side-note strong { display: block; font-size: 12px; margin-bottom: 8px; }
-    .footer {
-      margin-top: 96px;
-      padding-top: 28px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 18px;
-      font-size: 11px;
-      color: var(--text-faint);
-    }
-    .footer .prompt { color: var(--coral); margin-right: 8px; }
-    .footer .right { color: var(--text-dim); }
-
-    @media (max-width: 620px) {
-      html, body { font-size: 17px; }
-      .page { padding: 34px 18px 100px; }
-      .topbar { align-items: flex-start; flex-direction: column; margin-bottom: 42px; }
-      .hero h1 { font-size: 42px; }
-      .subtitle { font-size: 19px; }
-      blockquote { margin-left: 0; margin-right: 0; font-size: 22px; }
-      .panel-body { padding: 14px; }
-      .viz-stage { padding: 12px; }
-      .footer { flex-direction: column; }
-      .heat-grid { grid-template-columns: repeat(8, 1fr); }
-    }
-  </style>
-
-  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/papers/_shared.css" />
 </head>
 <body>
+
   <div class="progress"><div id="bar"></div></div>
-  <div id="root"></div>
+
+  <header class="hero wrap">
+    <a class="back-btn" href="/papers"><span class="arrow">←</span> Papers</a>
+    <h1 class="title">What data hides before <em>Machine Learning</em></h1>
+    <p class="deck">An introduction to Exploratory Data Analysis and the questions worth asking before you train anything at all.</p>
+    <div class="byline">
+      <div class="avatar">BC</div>
+      <div>
+        <div class="author">by Beatriz Cruz</div>
+        <div>20 min read · 7 sections</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="prose wrap">
+
+      <h2><span class="num">§ 01</span>The Problem</h2>
+      <h3>why looking at the data matters</h3>
+      <p class="lead">Imagine training a machine learning model with perfect accuracy, only to realize later that your dataset had duplicated users, missing values, impossible ages, and a correlation that existed only because the data was collected during a holiday campaign.</p>
+      <p>That is not a rare failure. It is one of the most common ways machine learning projects become impressive demos and disappointing products.</p>
+      <p>Modern teams are obsessed with models: bigger architectures, cleaner APIs, better metrics, faster inference. But the model is usually not where the first truth lives. The first truth is in the rows, the columns, the missing cells, the weird spikes, and the boring-looking averages that hide two completely different groups of people.</p>
+
+      <blockquote class="pull">Garbage in, garbage out is not a slogan. It is a data pipeline with consequences.</blockquote>
+
+      <p>Exploratory Data Analysis, or <em class="term">EDA</em>, is the discipline of slowing down before prediction. It asks: what is actually here? What is broken? What is repeated? What is suspiciously convenient? What human behavior produced this shape?</p>
+
+      <h2><span class="num">§ 02</span>What is EDA?</h2>
+      <h3>exploring before predicting</h3>
+      <p>John Tukey helped popularize Exploratory Data Analysis as a way of approaching data with curiosity before formal modeling. The idea is simple and still radical: before you test a hypothesis, sometimes you need to discover which hypotheses are worth having.</p>
+      <p>EDA is less about graphs and more about curiosity. A histogram is not the point. A scatter plot is not the point. The point is learning to ask better questions after every view of the data.</p>
+      <p>A good analyst looks at a chart and does not immediately say "the answer is X." They say, "this could be X, or it could be Y, and here is what I would check next."</p>
+
+      <div class="note">
+        <div class="icon">?</div>
+        <div>
+          <div class="label">the EDA mindset</div>
+          <p>Every chart answers one question and raises three new ones. The job is not to find the answer — it is to learn which questions are worth asking next.</p>
+        </div>
+      </div>
+
+      <h2><span class="num">§ 03</span>Distributions</h2>
+      <h3>most data is not evenly distributed</h3>
+      <p>Real data rarely arrives as a neat bell curve. Purchase times cluster around lunch breaks and late nights. Online activity spikes after notifications. Ticket values often have a long tail: many small purchases, a few huge ones.</p>
+      <p>If you only look at the average, you compress all of that behavior into one number. That number may be mathematically correct and analytically useless.</p>
+      <p>Distributions show the shape of behavior. They reveal concentration, skewness, outliers, and subgroups. They help you notice whether "the typical user" exists, or whether you invented them by averaging unlike people together.</p>
+
+      <h2><span class="num">§ 04</span>Correlations</h2>
+      <h3>when patterns lie</h3>
+      <p>Correlation is seductive because it gives shape to coincidence. Two lines rise together and the brain wants a story. Sometimes the story is real. Sometimes both variables are responding to a third thing you forgot to measure.</p>
+      <p>The classic example is ice cream sales and drowning incidents. They can rise together, but ice cream does not cause drowning. Hot weather increases both swimming and ice cream demand.</p>
+      <p>This is why EDA needs skepticism. A pattern is not a conclusion. It is an invitation to investigate mechanism, bias, measurement, and context.</p>
+
+      <blockquote class="pull">A pattern is not a conclusion. It is an invitation to investigate.</blockquote>
+
+      <h2><span class="num">§ 05</span>Human behavior hidden in data</h2>
+      <h3>people leave patterns everywhere</h3>
+      <p>This is where EDA becomes more than a technical checklist. Most datasets are shadows of human behavior. People buy after payday. They browse late at night. They return to products they trust. They abandon forms that feel too long. They behave differently when they are new, tired, rushed, loyal, or confused.</p>
+      <p>Rows can look mechanical, but they often come from habits. Recurrence, seasonality, hesitation, bursts, and silence all leave traces.</p>
+      <p>The analyst's job is not to romanticize the data. It is to remember that behind many events there was a person, a context, and a reason.</p>
+
+      <h2><span class="num">§ 06</span>EDA before Machine Learning</h2>
+      <h3>why models fail before training</h3>
+      <p>Many model failures are born before the first epoch, before the first split, before the first metric. The dataset already contains the failure.</p>
+      <p>Imagine a team building a model to predict whether a user will buy this week. The dataset includes browsing behavior, account age, email clicks, and one suspiciously powerful column: <code>coupon_used</code>. During training, that column predicts purchases almost perfectly.</p>
+      <p>The problem is timing. A coupon can only be used during or after checkout. If the goal is to predict before checkout, that feature is information from the future. The model did not learn customer intent; it learned a shortcut that will not exist at prediction time.</p>
+
+      <h4>Three failure modes EDA can catch</h4>
+      <p><strong>Leakage</strong> is the cleanest example of a model failing before training. The metric is high, the demo is convincing, and the system is unusable because the training data contained a clue that production will never have.</p>
+      <p><strong>Overfitting</strong> can start the same way: if the dataset is tiny, repetitive, or collected during one unusual campaign, the model learns that moment instead of the broader behavior.</p>
+      <p><strong>Bias</strong> appears when some people, contexts, or outcomes are missing from the data. The model learns the world it was shown, not the world it will meet.</p>
+      <p>EDA catches these issues by asking when each column becomes known, who is missing, what period the data describes, and whether a suspiciously good signal is actually valid.</p>
+
+      <div class="note teal">
+        <div class="icon">✓</div>
+        <div>
+          <div class="label">before training, check</div>
+          <p>Missingness · duplicates · target leakage · temporal splits · class balance · outliers · collection process · whether your metric reflects the decision the model will actually support.</p>
+        </div>
+      </div>
+
+      <h2><span class="num">§ 07</span>Conclusion</h2>
+      <h3>learning to read before teaching machines</h3>
+      <p>EDA is not the glamorous part of machine learning, but it is often the part that decides whether the project deserves a model at all.</p>
+      <p>It turns raw data into questions. It turns charts into hypotheses. It turns suspicious accuracy into a warning. It turns human behavior into something visible enough to reason about.</p>
+      <p>The best analysts do not treat EDA as a box to check before the real work begins. They treat it as the first real work.</p>
+
+      <blockquote class="pull">Before teaching machines how to learn from data, we must first learn how to read it ourselves.</blockquote>
+
+      <div class="dividerdots">· · ·</div>
+
+    </section>
+
+    <footer class="foot wrap">
+      <div class="row">
+        <span>What data hides before Machine Learning · Beatriz Cruz · 2026</span>
+        <a href="/papers">← back to papers</a>
+      </div>
+    </footer>
+  </main>
 
   <script>
-    (function() {
-      const bar = document.getElementById("bar");
-      window.addEventListener("scroll", () => {
+    (function () {
+      const bar = document.getElementById('bar');
+      window.addEventListener('scroll', function () {
         const h = document.documentElement;
-        const total = h.scrollHeight - h.clientHeight;
-        const pct = total > 0 ? (h.scrollTop / total) * 100 : 0;
-        bar.style.width = Math.min(100, pct) + "%";
+        const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+        bar.style.width = Math.min(100, pct) + '%';
       }, { passive: true });
     })();
   </script>
 
-  <script type="text/babel" data-presets="react">
-const { useEffect, useMemo, useRef, useState } = React;
-
-function CmdLog({ entries, empty = "# click an exploration above to inspect the data" }) {
-  const ref = useRef(null);
-  useEffect(() => { if (ref.current) ref.current.scrollTop = ref.current.scrollHeight; }, [entries.length]);
-  return (
-    <div className="cmd-log" ref={ref}>
-      {entries.length === 0 && <div style={{ color: "var(--text-faint)", fontStyle: "italic" }}>{empty}</div>}
-      {entries.map((e, i) => (
-        <div key={i} className={`entry ${e.kind === "out" ? "is-out" : ""}`}>
-          {e.kind === "out" ? <span>{e.text}</span> : <><span className="arrow">$</span><span>{e.text}</span></>}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function PanelShell({ title, fileLabel, children, onReset }) {
-  return (
-    <div className="panel">
-      <div className="panel-head">
-        <div className="left">
-          <span className="dots"><span/><span/><span/></span>
-          <span className="title">{title}</span>
-        </div>
-        <span className="right">{fileLabel || "eda-lab.ipynb"}</span>
-      </div>
-      <div className="panel-body">
-        {children}
-        {onReset && <div style={{ display: "flex" }}><button className="btn-reset" onClick={onReset}>↺ reset playground</button></div>}
-      </div>
-    </div>
-  );
-}
-
-function TryThis({ children }) {
-  return <div className="try-this"><span className="tag">try</span><span>{children}</span></div>;
-}
-
-const miniRows = [
-  { user: "A", age: 22, purchases: 5 },
-  { user: "B", age: 24, purchases: 7 },
-  { user: "C", age: 999, purchases: 3 },
-  { user: "D", age: null, purchases: 8 },
-];
-
-function PanelDataQuality() {
-  const [flags, setFlags] = useState({ outliers: false, missing: false, types: false });
-  const [log, setLog] = useState([]);
-  const reset = () => { setFlags({ outliers: false, missing: false, types: false }); setLog([]); };
-  const run = (kind) => {
-    if (kind === "outliers") {
-      setFlags(f => ({ ...f, outliers: true }));
-      setLog(l => [...l, { text: "detect_outliers(df.age)" }, { kind: "out", text: "age=999 is 40x above the neighborhood of the column. It is probably a sentinel, typo, or broken import." }]);
-    }
-    if (kind === "missing") {
-      setFlags(f => ({ ...f, missing: true }));
-      setLog(l => [...l, { text: "df.isna().sum()" }, { kind: "out", text: "Age has 1 missing value. If age matters, the model will learn from a hole unless you handle it intentionally." }]);
-    }
-    if (kind === "types") {
-      setFlags(f => ({ ...f, types: true }));
-      setLog(l => [...l, { text: "df.dtypes" }, { kind: "out", text: "User is categorical, Age is numeric with null, Purchases is count data. Treating all columns as plain numbers would be careless." }]);
-    }
-  };
-  return (
-    <PanelShell title="data-quality.scan" fileLabel="01_dirty_dataset.csv" onReset={reset}>
-      <TryThis>Run the checks in any order. The point is not to fix the table yet; it is to notice what the model would silently consume.</TryThis>
-      <div className="viz-stage">
-        <table className="mini-table">
-          <thead><tr><th>User</th><th>Age</th><th>Purchases</th></tr></thead>
-          <tbody>
-            {miniRows.map(row => {
-              const cls = row.age === 999 && flags.outliers ? "flag-outlier" : row.age === null && flags.missing ? "flag-missing" : "";
-              return (
-                <tr key={row.user} className={cls}>
-                  <td className={flags.types ? "flag-type" : ""}>{row.user}</td>
-                  <td>{row.age === null ? "null" : row.age}</td>
-                  <td>{row.purchases}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-      <div className="panel-actions">
-        <button className={`btn ${flags.outliers ? "active" : ""}`} onClick={() => run("outliers")}><span className="k">detect</span> outliers</button>
-        <button className={`btn ${flags.missing ? "active" : ""}`} onClick={() => run("missing")}><span className="a">detect</span> missing values</button>
-        <button className={`btn ${flags.types ? "active" : ""}`} onClick={() => run("types")}><span className="f">inspect</span> data types</button>
-      </div>
-      <CmdLog entries={log} />
-    </PanelShell>
-  );
-}
-
-const timeSeries = [18, 21, 19, 20, 24, 26, 29, 34, 40, 38, 37, 62, 68, 71, 70, 73, 76, 78];
-function linePath(values, w = 620, h = 230, pad = 34) {
-  const min = Math.min(...values), max = Math.max(...values);
-  return values.map((v, i) => {
-    const x = pad + (i * (w - pad * 2)) / (values.length - 1);
-    const y = h - pad - ((v - min) / (max - min)) * (h - pad * 2);
-    return `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
-  }).join(" ");
-}
-function TimeSeriesChart({ reveal }) {
-  const w = 620, h = 240, pad = 34;
-  return (
-    <svg className="chart" viewBox={`0 0 ${w} ${h}`} role="img" aria-label="Temporal chart">
-      {[0,1,2,3].map(i => <line key={i} className="grid" x1={pad} x2={w-pad} y1={pad + i*48} y2={pad + i*48} />)}
-      <line className="axis" x1={pad} x2={w-pad} y1={h-pad} y2={h-pad} />
-      <line className="axis" x1={pad} x2={pad} y1={pad} y2={h-pad} />
-      <path className="line" d={linePath(timeSeries, w, h, pad)} />
-      {timeSeries.map((v, i) => {
-        const min = Math.min(...timeSeries), max = Math.max(...timeSeries);
-        const x = pad + (i * (w - pad * 2)) / (timeSeries.length - 1);
-        const y = h - pad - ((v - min) / (max - min)) * (h - pad * 2);
-        return <circle key={i} className={`dot ${i >= 11 ? "hot" : ""}`} cx={x} cy={y} r={i >= 11 && reveal ? 5 : 3.5} />;
-      })}
-      <text className="chart-label" x={pad} y={22}>weekly purchases</text>
-      <text className="chart-note" x={w-pad-120} y={h-10}>week 1 → week 18</text>
-      {reveal && (
-        <g>
-          <line x1="386" x2="386" y1="34" y2="206" stroke="var(--coral)" strokeDasharray="4 4" />
-          <text className="chart-label" x="398" y="54" fill="var(--coral)">behavior changed here</text>
-        </g>
-      )}
-    </svg>
-  );
-}
-
-function PanelGraphStory() {
-  const [choice, setChoice] = useState(null);
-  const [log, setLog] = useState([]);
-  const choices = [
-    { id: "campaign", label: "A campaign started", verdict: "plausible", text: "Plausible. There is a level shift around week 12, the kind you would compare against marketing, product, or pricing events." },
-    { id: "season", label: "Normal seasonality", verdict: "weak", text: "Weak. A seasonal pattern usually repeats. This chart shows one structural break, not a repeating rhythm." },
-    { id: "model", label: "The model improved", verdict: "trap", text: "Trap. This is raw behavior before modeling. A model cannot explain a pattern you have not investigated yet." },
-  ];
-  const pick = (c) => {
-    setChoice(c.id);
-    setLog(l => [...l, { text: `hypothesis("${c.label}")` }, { kind: "out", text: `${c.verdict}: ${c.text}` }]);
-  };
-  return (
-    <PanelShell title="story-from-chart.playground" fileLabel="02_time_series.svg" onReset={() => { setChoice(null); setLog([]); }}>
-      <TryThis>Look at the chart before reading the logs. EDA starts with noticing, then asking what could have produced the shape.</TryThis>
-      <div className="viz-stage"><TimeSeriesChart reveal={!!choice} /></div>
-      <div className="panel-actions">
-        {choices.map(c => <button key={c.id} className={`btn ${choice === c.id ? "active" : ""}`} onClick={() => pick(c)}>{c.label}</button>)}
-      </div>
-      <CmdLog entries={log} empty="# choose a hypothesis to reveal an interpretation" />
-    </PanelShell>
-  );
-}
-
-const ticketValues = [8, 11, 12, 14, 15, 16, 18, 19, 21, 22, 24, 26, 29, 31, 35, 42, 120, 175];
-function TicketDotPlot({ mode }) {
-  const w = 620, h = 230, left = 54, right = 42;
-  const visible = ticketValues.filter(v => mode !== "trim" || v < 100);
-  const max = mode === "log" ? Math.log10(180) : 180;
-  const xFor = (v) => {
-    const value = mode === "log" ? Math.log10(v) : v;
-    return left + (value / max) * (w - left - right);
-  };
-  return (
-    <svg className="chart" viewBox={`0 0 ${w} ${h}`}>
-      <line className="axis" x1={left} x2={w-right} y1="160" y2="160" />
-      {[10, 25, 50, 100, 175].map(v => (
-        <g key={v}>
-          <line className="grid" x1={xFor(v)} x2={xFor(v)} y1="66" y2="172" />
-          <text className="chart-note" x={xFor(v)} y="192" textAnchor="middle">${v}</text>
-        </g>
-      ))}
-      <text className="chart-label" x={left} y="28">average ticket value</text>
-      <text className="chart-note" x={left} y="48">each dot is one customer in the training data</text>
-      {visible.map((v, i) => {
-        const y = 134 + (i % 4) * 11;
-        const isOutlier = v >= 100;
-        return <circle key={`${v}-${i}`} cx={xFor(v)} cy={y} r={isOutlier ? 7 : 5} fill={isOutlier ? "rgba(210,85,58,.52)" : "rgba(46,111,106,.55)"} stroke={isOutlier ? "var(--coral)" : "var(--teal)"} strokeWidth="2" />;
-      })}
-      {mode === "raw" && (
-        <g>
-          <path d="M 430 72 L 430 174" stroke="var(--coral)" strokeDasharray="4 4" />
-          <text className="chart-label" x="442" y="86" fill="var(--coral)">two customers stretch the scale</text>
-        </g>
-      )}
-      {mode === "trim" && <text className="chart-label" x="306" y="86" fill="var(--teal)" textAnchor="middle">first train a baseline on the common behavior</text>}
-      {mode === "log" && <text className="chart-label" x="292" y="86" fill="var(--gold)" textAnchor="middle">log scale keeps outliers without letting them dominate</text>}
-    </svg>
-  );
-}
-
-function PanelDistribution() {
-  const [mode, setMode] = useState("raw");
-  const [log, setLog] = useState([{ text: "# target: train a model to predict next purchase value" }]);
-  const choose = (nextMode) => {
-    setMode(nextMode);
-    const messages = {
-      raw: "Raw values are honest, but two enterprise-sized purchases stretch the chart and can dominate a simple model.",
-      trim: "Simpler baseline: train first on the common customer range, then inspect the high-value segment separately.",
-      log: "Good next step: a log transform keeps every customer while reducing the power of extreme ticket values."
-    };
-    setLog(l => [...l, { text: `prepare_training_data("${nextMode}")` }, { kind: "out", text: messages[nextMode] }]);
-  };
-  return (
-    <PanelShell title="distribution.explorer" fileLabel="03_histogram.ipynb" onReset={() => { setMode("raw"); setLog([{ text: "# target: train a model to predict next purchase value" }]); }}>
-      <TryThis>The training goal is simple: predict a customer's next purchase value. Choose how you would prepare this skewed ticket data before training.</TryThis>
-      <div className="viz-stage"><TicketDotPlot mode={mode} /></div>
-      <div className="panel-actions">
-        <button className={`btn ${mode === "raw" ? "active" : ""}`} onClick={() => choose("raw")}>train on raw values</button>
-        <button className={`btn ${mode === "trim" ? "active" : ""}`} onClick={() => choose("trim")}>train baseline without outliers</button>
-        <button className={`btn ${mode === "log" ? "active" : ""}`} onClick={() => choose("log")}>use log transform</button>
-      </div>
-      <CmdLog entries={log} />
-    </PanelShell>
-  );
-}
-
-const correlationPairs = [
-  { id: "ice", label: "Ice cream sales × drowning", answer: "coincidence", why: "Both rise in hot weather. Temperature is the hidden third variable." },
-  { id: "load", label: "Page load time × checkout abandonment", answer: "real", why: "This can be a real operational relationship, though you would still test causality." },
-  { id: "coffee", label: "Coffee purchases × code quality", answer: "coincidence", why: "Funny, but not a responsible feature without a mechanism and controls." },
-  { id: "age", label: "Account age × repeat purchases", answer: "real", why: "Older accounts have had more chances to return. Useful, but watch for leakage in prediction tasks." },
-];
-
-function ScatterPlot({ active }) {
-  const points = Array.from({ length: 28 }, (_, i) => {
-    const x = 40 + i * 19;
-    let y;
-    if (active === "ice") {
-      y = 195 - i * 5 + Math.sin(i) * 13;
-    } else if (active === "coffee") {
-      y = 190 - i * 4.7 + Math.sin(i * 1.2) * 9;
-    } else if (active === "load") {
-      y = i < 10
-        ? 182 - i * 1.4 + Math.sin(i * 1.8) * 10
-        : 172 - (i - 10) * 6.2 + Math.sin(i * .7) * 8;
-    } else {
-      y = 204 - Math.sqrt(i + 1) * 30 + Math.sin(i * .85) * 7;
-    }
-    return [x, y];
-  });
-  const trend = active === "age"
-    ? "M 44 190 C 150 114, 270 72, 576 52"
-    : active === "load"
-      ? "M 44 180 C 225 178, 330 132, 576 48"
-      : "M 44 188 L 576 46";
-  return (
-    <svg className="chart" viewBox="0 0 620 230">
-      <line className="axis" x1="34" x2="586" y1="198" y2="198" />
-      <line className="axis" x1="34" x2="34" y1="28" y2="198" />
-      {points.map((p, i) => <circle key={i} cx={p[0]} cy={p[1]} r="4" fill="rgba(46,111,106,.55)" stroke="var(--teal)" />)}
-      <path className="line-2" d={trend} />
-      <text className="chart-label" x="34" y="20">correlation view</text>
-      <text className="chart-note" x="434" y="220">higher x → higher y</text>
-    </svg>
-  );
-}
-
-function PanelCorrelation() {
-  const [active, setActive] = useState(correlationPairs[0].id);
-  const [answers, setAnswers] = useState({});
-  const [log, setLog] = useState([]);
-  const pair = correlationPairs.find(p => p.id === active);
-  const guess = (answer) => {
-    const correct = answer === pair.answer;
-    setAnswers(a => ({ ...a, [pair.id]: answer }));
-    setLog(l => [...l, { text: `classify("${pair.label}") => ${answer}` }, { kind: "out", text: `${correct ? "correct" : "not quite"}: ${pair.why}` }]);
-  };
-  return (
-    <PanelShell title="correlation-or-coincidence.quiz" fileLabel="04_patterns_lie.py" onReset={() => { setActive(correlationPairs[0].id); setAnswers({}); setLog([]); }}>
-      <TryThis>Pick a pair, then decide if the relationship is analytically useful or probably a coincidence. The chart can look convincing either way.</TryThis>
-      <div className="split">
-        <div className="viz-stage"><ScatterPlot active={active} /></div>
-        <div className="side-note">
-          <strong>{pair.label}</strong>
-          <span>Observed correlation: <span className="danger">high</span></span>
-          <br/><br/>
-          <span>Question: does this relationship describe a mechanism, or is something else moving both variables?</span>
-        </div>
-      </div>
-      <div className="panel-actions">
-        {correlationPairs.map(p => <button key={p.id} className={`btn ${active === p.id ? "active" : ""}`} onClick={() => setActive(p.id)}>{p.label}</button>)}
-      </div>
-      <div className="panel-actions">
-        <button className={`btn ${answers[pair.id] === "real" ? (pair.answer === "real" ? "good" : "bad") : ""}`} onClick={() => guess("real")}>real pattern</button>
-        <button className={`btn ${answers[pair.id] === "coincidence" ? (pair.answer === "coincidence" ? "good" : "bad") : ""}`} onClick={() => guess("coincidence")}>coincidence</button>
-      </div>
-      <CmdLog entries={log} empty="# choose a relationship, then classify it" />
-    </PanelShell>
-  );
-}
-
-const behaviorPeriods = [
-  { id: "morning", label: "Morning", time: "06-11", newUsers: 42, returning: 24 },
-  { id: "afternoon", label: "Afternoon", time: "12-17", newUsers: 58, returning: 38 },
-  { id: "evening", label: "Evening", time: "18-21", newUsers: 46, returning: 72 },
-  { id: "late", label: "Late night", time: "22-05", newUsers: 18, returning: 16 },
-];
-function BehaviorPlot({ selected }) {
-  const activeFor = (period) => {
-    if (selected === "night") return period.id === "evening";
-    if (selected === "returning") return period.id === "evening";
-    if (selected === "segment") return period.id === "afternoon" || period.id === "evening";
-    return false;
-  };
-  return (
-    <div style={{ display: "grid", gap: 10 }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1.2fr .7fr .8fr .8fr 1fr", gap: 10, alignItems: "end", fontFamily: "var(--mono)", fontSize: 10, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--text-faint)" }}>
-        <span>Period</span><span>Time</span><span>Purchases</span><span>Returning</span><span>Read</span>
-      </div>
-      {behaviorPeriods.map(period => {
-        const purchases = period.newUsers + period.returning;
-        const returningShare = Math.round((period.returning / purchases) * 100);
-        const active = activeFor(period);
-        const read = period.id === "evening"
-          ? "possible habit"
-          : period.id === "afternoon"
-            ? "steady baseline"
-            : period.id === "morning"
-              ? "mostly new"
-              : "low volume";
-        return (
-          <div key={period.id} style={{
-            display: "grid",
-            gridTemplateColumns: "1.2fr .7fr .8fr .8fr 1fr",
-            gap: 10,
-            alignItems: "center",
-            padding: "12px 14px",
-            borderRadius: 6,
-            border: `1px solid ${active ? "var(--coral)" : "var(--border)"}`,
-            background: active ? "rgba(210,85,58,.08)" : "var(--bg-elev)",
-            boxShadow: active ? "inset 3px 0 0 var(--coral)" : "none",
-            fontFamily: "var(--mono)"
-          }}>
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text-strong)" }}>{period.label}</div>
-              <div style={{ fontSize: 10.5, color: "var(--text-faint)" }}>{period.id === "evening" ? "stands out" : "normal range"}</div>
-            </div>
-            <div style={{ fontSize: 12, color: "var(--text-dim)" }}>{period.time}</div>
-            <div style={{ fontSize: 28, lineHeight: 1, color: active ? "var(--coral)" : "var(--text-strong)", fontWeight: 700 }}>{purchases}</div>
-            <div>
-              <div style={{ fontSize: 22, lineHeight: 1, color: "var(--teal)", fontWeight: 700 }}>{returningShare}%</div>
-              <div style={{ fontSize: 10.5, color: "var(--text-faint)" }}>{period.returning} users</div>
-            </div>
-            <div style={{ fontSize: 12, color: active ? "var(--text-strong)" : "var(--text-dim)" }}>{read}</div>
-          </div>
-        );
-      })}
-      <div style={{ fontFamily: "var(--mono)", fontSize: 11.5, color: "var(--text-dim)", paddingTop: 4 }}>
-        Evening is the only period where returning users are the majority. That is the pattern worth investigating.
-      </div>
-    </div>
-  );
-}
-
-function PanelHypothesis() {
-  const [selected, setSelected] = useState("night");
-  const [log, setLog] = useState([{ text: "# behavioral heatmap loaded" }]);
-  const hypotheses = [
-    { id: "night", title: "Why do purchases spike at night?", detail: "Investigate routines, payday timing, device type, and push notifications after work." },
-    { id: "returning", title: "Are returning users different?", detail: "Split first-time and repeat customers before averaging them into one fake person." },
-    { id: "segment", title: "Is this one audience or many?", detail: "Look for clusters by schedule, frequency, basket size, and location." },
-  ];
-  const pick = (h) => {
-    setSelected(h.id);
-    setLog(l => [...l, { text: `next_investigation("${h.title}")` }, { kind: "out", text: h.detail }]);
-  };
-  return (
-    <PanelShell title="human-patterns.hypothesis-builder" fileLabel="05_behavior.json" onReset={() => { setSelected("night"); setLog([{ text: "# behavioral heatmap loaded" }]); }}>
-      <TryThis>EDA is not just chart production. It is choosing the next honest question from the pattern in front of you.</TryThis>
-      <div className="viz-stage">
-        <BehaviorPlot selected={selected} />
-      </div>
-      <div className="hypothesis-grid">
-        {hypotheses.map(h => (
-          <button key={h.id} className={`hypothesis-card ${selected === h.id ? "active" : ""}`} onClick={() => pick(h)}>
-            <span className="label">investigate</span>
-            <strong>{h.title}</strong>
-            <p>{h.detail}</p>
-          </button>
-        ))}
-      </div>
-      <CmdLog entries={log} />
-    </PanelShell>
-  );
-}
-
-function FailureExample() {
-  const rows = [
-    ["u_104", "visited pricing", "coupon_used = yes", "bought"],
-    ["u_219", "opened email", "coupon_used = no", "did not buy"],
-    ["u_311", "visited pricing", "coupon_used = yes", "bought"],
-    ["u_447", "read docs", "coupon_used = ?", "predict now"],
-  ];
-  return (
-    <div className="side-note">
-      <strong>Example: a too-good churn model</strong>
-      <table className="mini-table" style={{ fontSize: 11 }}>
-        <thead><tr><th>User</th><th>Behavior</th><th>Feature</th><th>Label</th></tr></thead>
-        <tbody>{rows.map(r => <tr key={r[0]} className={r[2].includes("?") ? "flag-missing" : r[2].includes("yes") ? "flag-outlier" : ""}>{r.map(c => <td key={c}>{c}</td>)}</tr>)}</tbody>
-      </table>
-      <p style={{ margin: "12px 0 0" }}>If <code>coupon_used</code> is recorded after the purchase, it leaks the answer. Training accuracy looks amazing because the model is reading the future.</p>
-    </div>
-  );
-}
-
-function Section({ id, num, title, chapter, children }) {
-  return (
-    <section id={id} style={{ scrollMarginTop: 40 }}>
-      <h2 className="section"><span className="num">Part {num}</span><span className="slash">/</span><span className="title">{title}</span></h2>
-      <h3 className="chapter">{chapter}</h3>
-      {children}
-    </section>
-  );
-}
-
-function App() {
-  return (
-    <div className="page">
-      <header className="topbar">
-        <div className="brandmark">
-          <span className="prompt">~/papers/eda $</span>
-          <span className="cmd">inspect raw_data.csv</span>
-          <span className="cursor" />
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div className="meta-tags"><span>v1.0</span><span>en</span><span>~20 min</span></div>
-          <a href="/papers" className="back-link">← papers</a>
-        </div>
-      </header>
-
-      <main>
-        <div className="hero">
-          <div className="preamble">// PAPER · exploratory data analysis before prediction</div>
-          <h1>What Data Hides Before <em>Machine Learning</em></h1>
-          <p className="subtitle">An interactive introduction to Exploratory Data Analysis and pattern discovery.</p>
-          <div className="deck">
-            <div><b>↓ 7 sections</b></div>
-            <div><b>↻ interactive explorations</b></div>
-            <div><b>⚡ real-world analytical thinking</b></div>
-          </div>
-          <div className="author-line">By <strong>Beatriz Cruz</strong></div>
-        </div>
-
-        <Section id="problem" num="01" title="The Problem" chapter="Why looking at the data matters">
-          <p>Imagine training a machine learning model with perfect accuracy, only to realize later that your dataset had duplicated users, missing values, impossible ages, and a correlation that existed only because the data was collected during a holiday campaign.</p>
-          <p>That is not a rare failure. It is one of the most common ways machine learning projects become impressive demos and disappointing products.</p>
-          <p>Modern teams are obsessed with models: bigger architectures, cleaner APIs, better metrics, faster inference. But the model is usually not where the first truth lives. The first truth is in the rows, the columns, the missing cells, the weird spikes, and the boring-looking averages that hide two completely different groups of people.</p>
-          <blockquote>Garbage in, garbage out is not a slogan. It is a data pipeline with consequences.</blockquote>
-          <p>Exploratory Data Analysis, or EDA, is the discipline of slowing down before prediction. It asks: what is actually here? What is broken? What is repeated? What is suspiciously convenient? What human behavior produced this shape?</p>
-          <PanelDataQuality />
-        </Section>
-
-        <Section id="eda" num="02" title="What Is EDA?" chapter="Exploring before predicting">
-          <p>John Tukey helped popularize Exploratory Data Analysis as a way of approaching data with curiosity before formal modeling. The idea is simple and still radical: before you test a hypothesis, sometimes you need to discover which hypotheses are worth having.</p>
-          <p>EDA is less about graphs and more about curiosity. A histogram is not the point. A scatter plot is not the point. The point is learning to ask better questions after every view of the data.</p>
-          <p>A good analyst looks at a chart and does not immediately say "the answer is X." They say, "this could be X, or it could be Y, and here is what I would check next."</p>
-          <PanelGraphStory />
-        </Section>
-
-        <Section id="distributions" num="03" title="Distributions" chapter="Most data is not evenly distributed">
-          <p>Real data rarely arrives as a neat bell curve. Purchase times cluster around lunch breaks and late nights. Online activity spikes after notifications. Ticket values often have a long tail: many small purchases, a few huge ones.</p>
-          <p>If you only look at the average, you compress all of that behavior into one number. That number may be mathematically correct and analytically useless.</p>
-          <p>Distributions show the shape of behavior. They reveal concentration, skewness, outliers, and subgroups. They help you notice whether "the typical user" exists, or whether you invented them by averaging unlike people together.</p>
-          <PanelDistribution />
-        </Section>
-
-        <Section id="correlations" num="04" title="Correlations" chapter="When patterns lie">
-          <p>Correlation is seductive because it gives shape to coincidence. Two lines rise together and the brain wants a story. Sometimes the story is real. Sometimes both variables are responding to a third thing you forgot to measure.</p>
-          <p>The classic example is ice cream sales and drowning incidents. They can rise together, but ice cream does not cause drowning. Hot weather increases both swimming and ice cream demand.</p>
-          <p>This is why EDA needs skepticism. A pattern is not a conclusion. It is an invitation to investigate mechanism, bias, measurement, and context.</p>
-          <PanelCorrelation />
-        </Section>
-
-        <Section id="behavior" num="05" title="Human Behavior Hidden in Data" chapter="People leave patterns everywhere">
-          <p>This is where EDA becomes more than a technical checklist. Most datasets are shadows of human behavior. People buy after payday. They browse late at night. They return to products they trust. They abandon forms that feel too long. They behave differently when they are new, tired, rushed, loyal, or confused.</p>
-          <p>Rows can look mechanical, but they often come from habits. Recurrence, seasonality, hesitation, bursts, and silence all leave traces.</p>
-          <p>The analyst's job is not to romanticize the data. It is to remember that behind many events there was a person, a context, and a reason.</p>
-          <PanelHypothesis />
-        </Section>
-
-        <Section id="before-ml" num="06" title="EDA Before Machine Learning" chapter="Why models fail before training">
-          <p>Many model failures are born before the first epoch, before the first split, before the first metric. The dataset already contains the failure.</p>
-          <p>Imagine a team building a model to predict whether a user will buy this week. The dataset includes browsing behavior, account age, email clicks, and one suspiciously powerful column: <code>coupon_used</code>. During training, that column predicts purchases almost perfectly.</p>
-          <p>The problem is timing. A coupon can only be used during or after checkout. If the goal is to predict before checkout, that feature is information from the future. The model did not learn customer intent; it learned a shortcut that will not exist at prediction time.</p>
-          <div className="split">
-            <div>
-              <p><strong>Leakage</strong> is the cleanest example of a model failing before training. The metric is high, the demo is convincing, and the system is unusable because the training data contained a clue that production will never have.</p>
-              <p><strong>Overfitting</strong> can start the same way: if the dataset is tiny, repetitive, or collected during one unusual campaign, the model learns that moment instead of the broader behavior.</p>
-              <p><strong>Bias</strong> appears when some people, contexts, or outcomes are missing from the data. The model learns the world it was shown, not the world it will meet.</p>
-              <p>EDA catches these issues by asking when each column becomes known, who is missing, what period the data describes, and whether a suspiciously good signal is actually valid.</p>
-            </div>
-            <FailureExample />
-          </div>
-          <div className="callout">
-            <div className="tag">before training</div>
-            <p style={{ margin: 0 }}>Check missingness, duplicates, target leakage, temporal splits, class balance, outliers, collection process, and whether your metric reflects the decision the model will actually support.</p>
-          </div>
-        </Section>
-
-        <Section id="conclusion" num="07" title="Conclusion" chapter="Learning to read before teaching machines">
-          <p>EDA is not the glamorous part of machine learning, but it is often the part that decides whether the project deserves a model at all.</p>
-          <p>It turns raw data into questions. It turns charts into hypotheses. It turns suspicious accuracy into a warning. It turns human behavior into something visible enough to reason about.</p>
-          <p>The best analysts do not treat EDA as a box to check before the real work begins. They treat it as the first real work.</p>
-          <blockquote>Before teaching machines how to learn from data, we must first learn how to read it ourselves.</blockquote>
-        </Section>
-      </main>
-
-      <footer className="footer">
-        <div><span className="prompt">$</span><span>echo "read the data first"</span></div>
-        <div className="right">eda-before-ml · en · 2026</div>
-      </footer>
-    </div>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-  </script>
 </body>
 </html>
