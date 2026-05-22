@@ -1,267 +1,1132 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Git, do zero — um paper</title>
-  <meta name="description" content="Um paper amigável de controle de versão pra quem ouve falar de commit, push, branch e finge entender." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/papers/_shared.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #faf6ee;
+      --bg-elev: #fdfcf8;
+      --bg-elev-2: #ffffff;
+      --bg-inset: #ece9e1;
+      --border: #d9d4c7;
+      --border-strong: #b8b1a0;
+      --text: #2a2823;
+      --text-strong: #100f0d;
+      --text-dim: #6b6a64;
+      --text-faint: #9a988f;
+      --green:  #2f7d3a;
+      --yellow: #a87a16;
+      --purple: #8a4ca8;
+      --blue:   #2f6bc0;
+      --pink:   #b14872;
+      --orange: #b85c1e;
+      --red:    #b3392b;
+      --accent: var(--green);
+      --shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 12px 30px rgba(60,40,10,.08);
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 15px;
+      line-height: 1.62;
+      font-feature-settings: "ss01", "ss02", "cv01";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      background-image:
+        radial-gradient(circle at 10% 0%, rgba(126,194,122,.04), transparent 50%),
+        radial-gradient(circle at 90% 100%, rgba(195,155,214,.04), transparent 50%);
+      background-attachment: fixed;
+    }
+    a { color: var(--green); text-decoration: none; border-bottom: 1px dashed currentColor; }
+    a:hover { color: var(--text-strong); }
+    ::selection { background: var(--green); color: var(--bg); }
+
+    .page { max-width: 760px; margin: 0 auto; padding: 56px 28px 160px; }
+
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 28px; margin-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brandmark {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 12px; color: var(--text-dim); letter-spacing: 0.02em;
+    }
+    .brandmark .prompt { color: var(--green); }
+    .brandmark .cursor {
+      display: inline-block; width: 7px; height: 14px;
+      background: var(--green); vertical-align: -2px; margin-left: 2px;
+      animation: blink 1.2s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .meta-tags { display: flex; gap: 6px; font-size: 11px; color: var(--text-faint); }
+    .meta-tags span { padding: 2px 7px; border: 1px solid var(--border); border-radius: 3px; }
+
+    .back-link {
+      font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+      border: 1px solid var(--border-strong); background: var(--bg-elev);
+      padding: 5px 10px; border-radius: 4px; letter-spacing: 0.04em;
+      transition: all 0.15s ease; text-decoration: none;
+    }
+    .back-link:hover {
+      background: var(--bg-elev-2); border-color: var(--green); color: var(--text-strong);
+    }
+
+    .hero { margin: 24px 0 64px; }
+    .hero h1 {
+      font-family: var(--mono);
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 700; line-height: 1.04; letter-spacing: -0.02em;
+      margin: 0 0 18px; color: var(--text-strong);
+    }
+    .hero h1 .hash { color: var(--text-faint); font-weight: 500; }
+    .hero .subtitle { font-size: 16px; color: var(--text-dim); max-width: 60ch; line-height: 1.55; margin: 0; }
+    .hero .deck {
+      margin-top: 28px; display: flex; flex-wrap: wrap; gap: 18px;
+      font-size: 12px; color: var(--text-faint);
+    }
+    .hero .deck b { color: var(--text); font-weight: 500; }
+    .preamble { font-size: 11px; color: var(--text-faint); letter-spacing: 0.14em; margin-bottom: 16px; }
+
+    h2.section {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--text-faint);
+      margin: 84px 0 8px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    h2.section::before {
+      content: ""; display: inline-block;
+      width: 8px; height: 8px; background: var(--green); border-radius: 50%;
+    }
+    h2.section .num { color: var(--text-dim); }
+    h2.section .slash { color: var(--text-dim); }
+    h2.section .title { color: var(--text); letter-spacing: 0.02em; }
+
+    h3.chapter {
+      font-size: 28px; font-weight: 600; letter-spacing: -0.01em;
+      color: var(--text-strong); margin: 4px 0 28px; line-height: 1.15;
+    }
+    h4 { font-size: 16px; font-weight: 600; color: var(--text-strong); margin: 36px 0 10px; letter-spacing: -0.005em; }
+
+    p { margin: 0 0 16px; text-wrap: pretty; }
+    p + p { margin-top: 0; }
+    strong { color: var(--text-strong); font-weight: 600; }
+    em { color: var(--text-strong); font-style: italic; }
+
+    code {
+      font-family: var(--mono); font-size: 0.92em;
+      background: var(--bg-elev); border: 1px solid var(--border);
+      border-radius: 3px; padding: 1px 6px; color: var(--orange); white-space: nowrap;
+    }
+    pre {
+      background: var(--bg-elev); border: 1px solid var(--border);
+      border-left: 2px solid var(--green); border-radius: 4px;
+      padding: 14px 18px; overflow-x: auto; font-size: 13px; line-height: 1.55;
+      margin: 18px 0; color: var(--text);
+    }
+    pre code { background: none; border: 0; padding: 0; color: inherit; white-space: pre; }
+    pre .cmd { color: var(--green); }
+    pre .arg { color: var(--text); }
+    pre .flag { color: var(--purple); }
+    pre .str { color: var(--yellow); }
+    pre .cmt { color: var(--text-faint); }
+
+    ul { padding-left: 0; list-style: none; margin: 12px 0 20px; }
+    ul li { position: relative; padding-left: 22px; margin-bottom: 6px; }
+    ul li::before { content: "—"; position: absolute; left: 0; color: var(--text-faint); }
+
+    .callout {
+      border-left: 2px solid var(--yellow);
+      background: linear-gradient(90deg, rgba(230,201,122,.06), transparent 80%);
+      padding: 14px 18px; margin: 20px 0; font-size: 14px;
+      color: var(--text); border-radius: 0 4px 4px 0;
+    }
+    .callout.warn { border-color: var(--red); background: linear-gradient(90deg, rgba(217,122,122,.07), transparent 80%); }
+    .callout.info { border-color: var(--blue); background: linear-gradient(90deg, rgba(127,178,217,.06), transparent 80%); }
+    .callout .tag {
+      display: inline-block; font-size: 10px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 4px; font-weight: 600;
+    }
+    .callout.warn .tag { color: var(--red); }
+    .callout.info .tag { color: var(--blue); }
+
+    .panel {
+      margin: 36px -40px; background: var(--bg-elev);
+      border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+    @media (max-width: 880px) { .panel { margin: 36px 0; } }
+
+    .panel-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; background: var(--bg-elev-2);
+      border-bottom: 1px solid var(--border);
+      font-size: 11px; color: var(--text-dim); letter-spacing: 0.04em;
+    }
+    .panel-head .dots { display: flex; gap: 6px; }
+    .panel-head .dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); }
+    .panel-head .dots span:nth-child(1) { background: #d97a7a; }
+    .panel-head .dots span:nth-child(2) { background: #e6c97a; }
+    .panel-head .dots span:nth-child(3) { background: #7ec27a; }
+    .panel-head .title { color: var(--text); font-weight: 500; white-space: nowrap; }
+    .panel-head .right { color: var(--text-faint); }
+    .panel-body { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+
+    .viz-stage {
+      background: var(--bg-inset); border: 1px solid var(--border);
+      border-radius: 6px; padding: 18px; min-height: 220px;
+      position: relative; overflow: hidden;
+    }
+    .panel-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .btn {
+      font-family: var(--mono); font-size: 12.5px;
+      background: var(--bg-elev-2); border: 1px solid var(--border-strong);
+      color: var(--text); padding: 7px 12px; border-radius: 4px;
+      cursor: pointer; transition: transform .08s ease, background .15s, border-color .15s;
+      display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; line-height: 1.2;
+    }
+    .btn:hover { background: var(--bg-inset); border-color: var(--green); color: var(--text-strong); }
+    .btn:active { transform: translateY(1px); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn .k { color: var(--green); }
+    .btn .a { color: var(--yellow); }
+    .btn .f { color: var(--purple); }
+    .btn.ghost { background: transparent; border-color: var(--border); }
+
+    .btn-reset {
+      margin-left: auto; font-size: 11px; color: var(--text-faint);
+      background: transparent; border: 1px solid transparent;
+      padding: 6px 10px; cursor: pointer; border-radius: 3px; font-family: var(--mono);
+    }
+    .btn-reset:hover { color: var(--text); border-color: var(--border); }
+
+    .cmd-log {
+      background: var(--bg-inset); border: 1px solid var(--border);
+      border-radius: 6px; font-size: 12px; max-height: 160px; overflow-y: auto;
+      padding: 12px 14px; color: var(--text-dim); font-family: var(--mono);
+    }
+    .cmd-log .entry { display: flex; gap: 10px; line-height: 1.85; white-space: nowrap; }
+    .cmd-log .entry.is-out { padding-left: 18px; color: var(--text-faint); font-size: 11.5px; line-height: 1.6; }
+    .cmd-log .entry .arrow { color: var(--green); flex-shrink: 0; width: 8px; line-height: 1.85; }
+    .cmd-log::-webkit-scrollbar { width: 6px; }
+    .cmd-log::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+
+    .three-areas {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: stretch;
+    }
+    @media (max-width: 640px) { .three-areas { grid-template-columns: 1fr; } }
+    .area {
+      background: var(--bg-elev); border: 1px solid var(--border);
+      border-radius: 6px; padding: 12px; min-height: 180px;
+      display: flex; flex-direction: column; gap: 10px; position: relative;
+    }
+    .area .area-label {
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-faint); display: flex; justify-content: space-between;
+      align-items: baseline; margin-bottom: 2px;
+    }
+    .area .area-name {
+      color: var(--text); font-weight: 600; font-size: 11px;
+      letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
+    }
+    .area .area-sub { font-size: 10.5px; color: var(--text-faint); margin: 0 0 4px; font-style: italic; }
+    .area .area-files { display: flex; flex-direction: column; gap: 4px; }
+
+    .file-chip {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; padding: 6px 8px; border-radius: 4px;
+      background: var(--bg-inset); border: 1px solid var(--border);
+      color: var(--text); transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      animation: chipIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .file-chip .badge {
+      font-size: 10px; padding: 1px 6px; border-radius: 3px;
+      background: var(--bg-elev-2); color: var(--text-faint);
+    }
+    .file-chip.modified   { border-color: rgba(226,152,103,.4); }
+    .file-chip.modified .badge   { color: var(--orange); }
+    .file-chip.staged     { border-color: rgba(126,194,122,.4); }
+    .file-chip.staged .badge     { color: var(--green); }
+    .file-chip.untracked  { border-color: rgba(217,122,122,.3); }
+    .file-chip.untracked .badge  { color: var(--red); }
+    .file-chip.commit { border-color: rgba(126,194,122,.35); background: rgba(126,194,122,.06); color: var(--text); }
+    .file-chip.commit .badge { background: rgba(126,194,122,.18); color: var(--green); font-family: var(--mono); font-weight: 500; }
+    @keyframes chipIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+    .area-empty { color: var(--text-faint); font-size: 11px; font-style: italic; text-align: center; padding: 16px 0; }
+
+    .graph-wrap { width: 100%; overflow-x: auto; display: flex; align-items: center; min-height: 180px; }
+    .graph-wrap svg { display: block; flex-shrink: 0; }
+    .graph-wrap::-webkit-scrollbar { height: 6px; }
+    .graph-wrap::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+
+    .commit-node { transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+    .commit-node circle { transition: r 0.3s ease, fill 0.3s ease, stroke 0.3s ease; }
+    .commit-node .hash {
+      font-family: var(--mono); font-size: 9px; fill: var(--bg);
+      font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none;
+    }
+    .commit-line { fill: none; stroke-width: 2; opacity: 0.6; transition: opacity 0.3s ease; }
+    .branch-label { font-family: var(--mono); font-size: 10px; font-weight: 600; fill: var(--text-strong); }
+    .head-label { font-family: var(--mono); font-size: 10px; font-weight: 700; fill: var(--bg); }
+    .commit-msg { font-family: var(--mono); font-size: 10.5px; fill: var(--text-dim); }
+    @keyframes commitPop { 0% { opacity: 0; } 100% { opacity: 1; } }
+    .commit-node.is-new circle { animation: ringPulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .commit-node.is-new { animation: commitPop 0.3s ease-out; }
+    @keyframes ringPulse {
+      0%   { stroke-width: 3; stroke: var(--yellow); }
+      60%  { stroke-width: 8; stroke: var(--yellow); }
+      100% { stroke-width: 3; stroke: var(--bg-inset); }
+    }
+    @keyframes headFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+    .head-marker { animation: headFloat 2.4s ease-in-out infinite; }
+
+    .dual-view { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: stretch; }
+    @media (max-width: 720px) {
+      .dual-view { grid-template-columns: 1fr; }
+      .dual-arrow { flex-direction: row; }
+      .dual-arrow .ln { display: none; }
+    }
+    .dual-side {
+      background: var(--bg-elev); border: 1px solid var(--border);
+      border-radius: 6px; padding: 14px; min-height: 220px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .dual-side .side-label {
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-faint); display: flex; justify-content: space-between;
+    }
+    .dual-side .side-name { color: var(--text-strong); font-weight: 600; font-size: 13px; }
+    .dual-arrow {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; font-size: 11px; color: var(--text-faint); min-width: 60px;
+    }
+    .dual-arrow .ln { width: 1px; flex: 1; background: var(--border); }
+    .dual-arrow .badge { border: 1px solid var(--border); padding: 3px 8px; border-radius: 100px; background: var(--bg-inset); }
+
+    .footer {
+      margin-top: 96px; padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-size: 11px; color: var(--text-faint);
+    }
+    .footer .left .prompt { color: var(--green); margin-right: 8px; }
+    .footer .right { color: var(--text-dim); }
+
+    .divider { border: 0; border-top: 1px dashed var(--border); margin: 64px 0; }
+
+    .tag-pill {
+      display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 100px;
+      background: var(--bg-elev); border: 1px solid var(--border);
+      color: var(--text-dim); letter-spacing: 0.04em;
+    }
+    .try-this {
+      padding: 10px 14px; border: 1px dashed var(--border-strong); border-radius: 4px;
+      font-size: 12.5px; color: var(--text-dim); display: flex; gap: 10px;
+    }
+    .try-this .tag {
+      color: var(--purple); font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; font-size: 10px; flex-shrink: 0; padding-top: 1px;
+    }
+    .outro p { color: var(--text-dim); }
+    .outro p.fine { color: var(--text-faint); font-style: italic; font-size: 13px; }
+  </style>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <div id="root"></div>
 
-  <div class="progress"><div id="bar"></div></div>
+  <script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef } = React;
 
-  <header class="hero wrap">
-    <a class="back-btn" href="/papers"><span class="arrow">←</span> Papers</a>
-    <h1 class="title">Git, do <em>zero</em></h1>
-    <p class="deck">Controle de versão pra quem ouve falar de <code>commit</code>, <code>push</code>, <code>branch</code> e finge entender. Construímos o entendimento de baixo pra cima — modelo mental antes dos comandos.</p>
-    <div class="byline">
-      <div class="avatar">KR</div>
-      <div>
-        <div class="author">por Kruta</div>
-        <div>25 min de leitura · 8 capítulos</div>
+function randHash() {
+  const chars = "0123456789abcdef";
+  let s = "";
+  for (let i = 0; i < 7; i++) s += chars[Math.floor(Math.random() * 16)];
+  return s;
+}
+
+const BRANCH_COLORS = {
+  main: "var(--green)", master: "var(--green)",
+  feature: "var(--purple)", "feature/login": "var(--purple)", "modo-escuro": "var(--purple)",
+  bugfix: "var(--blue)", dev: "var(--pink)",
+};
+const FALLBACK_COLORS = ["var(--purple)", "var(--blue)", "var(--pink)", "var(--orange)"];
+function colorFor(branchName, allBranchNames) {
+  if (BRANCH_COLORS[branchName]) return BRANCH_COLORS[branchName];
+  const idx = allBranchNames.indexOf(branchName);
+  return FALLBACK_COLORS[idx % FALLBACK_COLORS.length];
+}
+
+function CmdLog({ entries }) {
+  const ref = useRef(null);
+  useEffect(() => { if (ref.current) ref.current.scrollTop = ref.current.scrollHeight; }, [entries.length]);
+  return (
+    <div className="cmd-log" ref={ref}>
+      {entries.length === 0 && (
+        <div style={{ color: "var(--text-faint)", fontStyle: "italic" }}>
+          # use os botões acima pra ver o que os comandos fazem
+        </div>
+      )}
+      {entries.map((e, i) => (
+        <div key={i} className={`entry ${e.kind === "out" ? "is-out" : ""}`}>
+          {e.kind === "out" ? <span>{e.text}</span> : <><span className="arrow">$</span><span>{e.text}</span></>}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PanelShell({ title, children, onReset, fileLabel }) {
+  return (
+    <div className="panel">
+      <div className="panel-head">
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <span className="dots"><span/><span/><span/></span>
+          <span className="title">{title}</span>
+        </div>
+        <span className="right">{fileLabel || "playground.tsx"}</span>
+      </div>
+      <div className="panel-body">
+        {children}
+        {onReset && (
+          <div style={{ display: "flex" }}>
+            <button className="btn-reset" onClick={onReset}>↺ reset playground</button>
+          </div>
+        )}
       </div>
     </div>
-  </header>
+  );
+}
 
-  <main>
-    <section class="prose wrap">
+function TryThis({ children }) {
+  return <div className="try-this"><span className="tag">tente</span><span>{children}</span></div>;
+}
 
-      <h2><span class="num">§ 01</span>A história</h2>
-      <h3>por que Git existe?</h3>
-      <p class="lead">Imagina que você está escrevendo um TCC. Abre o Word, digita 30 páginas, salva como <code>tcc.docx</code>. No dia seguinte quer mexer, mas tem medo de estragar o que já está pronto. O que você faz?</p>
-      <p>Salva como <code>tcc_v2.docx</code>.</p>
-      <p>Depois <code>tcc_v2_final.docx</code>.</p>
-      <p>Depois <code>tcc_v2_final_DESSA_VEZ_VAI.docx</code>.</p>
-      <p>Depois <code>tcc_v2_final_correcao_orientador.docx</code>.</p>
-      <p>Familiar? Esse é o problema que <strong>controle de versão</strong> resolve. Em vez de manter cópias com nomes cada vez mais desesperados, você usa uma ferramenta que guarda o histórico de tudo que você fez e te deixa voltar pra qualquer ponto anterior quando quiser.</p>
-      <p>Agora multiplica isso por <strong>um time inteiro de programadores</strong> mexendo nos mesmos arquivos ao mesmo tempo. Sem controle de versão, é um inferno. Com controle de versão, é só uma quarta-feira normal.</p>
+function CommitGraph({ repo, height = 220 }) {
+  const { commits, branches, head, newestId } = repo;
+  const branchNames = Object.keys(branches);
+  const STEP_X = 64, STEP_Y = 50, PAD_X = 40, PAD_Y = 32, RADIUS = 16;
+  const laneOrder = ["main", "master", ...branchNames.filter(b => b !== "main" && b !== "master")];
+  const lanesByBranch = {};
+  laneOrder.forEach((name, i) => { lanesByBranch[name] = i; });
+  const commitLane = {};
+  const sortedBranchTips = laneOrder.filter(n => branches[n]);
+  for (const branchName of sortedBranchTips) {
+    let id = branches[branchName];
+    while (id && commitLane[id] === undefined) {
+      commitLane[id] = lanesByBranch[branchName];
+      const c = commits.find(c => c.id === id);
+      id = c?.parents?.[0];
+    }
+  }
+  commits.forEach(c => { if (commitLane[c.id] === undefined) commitLane[c.id] = 0; });
+  const commitX = {};
+  commits.forEach((c, i) => { commitX[c.id] = PAD_X + i * STEP_X; });
+  const maxLane = Math.max(0, ...Object.values(commitLane));
+  const svgWidth  = Math.max(360, PAD_X * 2 + commits.length * STEP_X);
+  const svgHeight = PAD_Y * 2 + maxLane * STEP_Y + 90;
+  const headBranch = branches[head] !== undefined ? head : null;
+  const latest = commits.find(c => c.id === newestId) || commits[commits.length - 1];
+  const TOP_OVERHEAD = 32;
+  const totalHeight = svgHeight + TOP_OVERHEAD;
+  return (
+    <div className="graph-wrap" style={{ minHeight: height }}>
+      <svg width={svgWidth} height={totalHeight}
+        viewBox={`0 -${TOP_OVERHEAD} ${svgWidth} ${totalHeight}`}
+        preserveAspectRatio="xMinYMid meet"
+        style={{ width: svgWidth + "px", maxWidth: "none" }}>
+        {Array.from({ length: maxLane + 1 }).map((_, lane) => {
+          const branchName = laneOrder[lane] || `lane-${lane}`;
+          const y = PAD_Y + lane * STEP_Y + RADIUS;
+          const stroke = colorFor(branchName, branchNames);
+          return <line key={`lane-${lane}`} x1={PAD_X - 20} x2={svgWidth - 20} y1={y} y2={y}
+            stroke={stroke} strokeOpacity={0.08} strokeDasharray="2 4" />;
+        })}
+        {commits.map(c => {
+          if (!c.parents || c.parents.length === 0) return null;
+          return c.parents.map(parentId => {
+            const parent = commits.find(p => p.id === parentId);
+            if (!parent) return null;
+            const x1 = commitX[parent.id];
+            const y1 = PAD_Y + commitLane[parent.id] * STEP_Y + RADIUS;
+            const x2 = commitX[c.id];
+            const y2 = PAD_Y + commitLane[c.id] * STEP_Y + RADIUS;
+            const stroke = colorFor(laneOrder[commitLane[c.id]], branchNames);
+            const mx = (x1 + x2) / 2;
+            const d = y1 === y2
+              ? `M ${x1} ${y1} L ${x2} ${y2}`
+              : `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+            return <path key={`${parent.id}-${c.id}`} d={d} className="commit-line" stroke={stroke} />;
+          });
+        })}
+        {commits.map(c => {
+          const x = commitX[c.id];
+          const y = PAD_Y + commitLane[c.id] * STEP_Y + RADIUS;
+          const branchName = laneOrder[commitLane[c.id]];
+          const fill = colorFor(branchName, branchNames);
+          const isNew = c.id === newestId;
+          return (
+            <g key={c.id} className={`commit-node ${isNew ? "is-new" : ""}`}>
+              <circle cx={x} cy={y} r={RADIUS} fill={fill} stroke="var(--bg-inset)" strokeWidth={3} />
+              <text x={x} y={y} className="hash">{c.id.slice(0, 4)}</text>
+            </g>
+          );
+        })}
+        {Object.entries(branches).map(([name, commitId]) => {
+          const c = commits.find(x => x.id === commitId);
+          if (!c) return null;
+          const x = commitX[commitId];
+          const y = PAD_Y + commitLane[commitId] * STEP_Y + RADIUS;
+          const isHead = headBranch === name;
+          const labelW = 8 + name.length * 6.8;
+          const color = colorFor(name, branchNames);
+          const labelY = y - RADIUS - 18;
+          return (
+            <g key={`br-${name}`} transform={`translate(${x - labelW/2}, ${labelY})`}>
+              <rect width={labelW} height={16} rx={3} fill={color} fillOpacity={0.14} stroke={color} strokeWidth={1} />
+              <text x={labelW/2} y={8.5} className="branch-label" textAnchor="middle" dominantBaseline="central" fill={color}>{name}</text>
+              {isHead && (
+                <g className="head-marker" transform={`translate(${labelW/2}, -10)`}>
+                  <rect x={-16} y={-9} width={32} height={14} rx={3} fill="var(--yellow)" />
+                  <text x={0} y={-2.5} className="head-label" textAnchor="middle" dominantBaseline="central">HEAD</text>
+                  <polygon points="-4,5 4,5 0,9" fill="var(--yellow)" />
+                </g>
+              )}
+            </g>
+          );
+        })}
+        {latest && (
+          <g transform={`translate(${PAD_X}, ${svgHeight - 24})`}>
+            <text className="commit-msg" x={0} y={0}>
+              <tspan fill="var(--text-faint)">last: </tspan>
+              <tspan fill="var(--yellow)">{latest.id.slice(0,7)}</tspan>
+              <tspan fill="var(--text-dim)">  {latest.message}</tspan>
+            </text>
+          </g>
+        )}
+        {commits.length === 0 && (
+          <text x={svgWidth/2} y={svgHeight/2} textAnchor="middle" fill="var(--text-faint)" fontSize="12" fontStyle="italic">
+            nenhum commit ainda — clica em git commit pra começar
+          </text>
+        )}
+      </svg>
+    </div>
+  );
+}
 
-      <h4>Entra o Linus Torvalds</h4>
-      <p>Em 2005, o Linus Torvalds (sim, o cara do Linux) tinha um problema. O kernel do Linux era desenvolvido com uma ferramenta chamada <strong>BitKeeper</strong>, que era proprietária mas dava licença grátis pra projetos open-source. Teve uma briga política, a BitKeeper revogou a licença, e o Linus ficou sem ferramenta pra gerenciar o maior projeto open-source do mundo.</p>
-      <p>Ele tinha duas opções: usar CVS ou SVN (que ele detestava), ou escrever a própria ferramenta. Adivinha qual ele escolheu.</p>
-      <p>Em <strong>duas semanas</strong>, ele escreveu a primeira versão do Git. Os requisitos eram: ser absurdamente rápido, ter design distribuído (sem servidor central), suportar milhares de branches em paralelo, aguentar projetos enormes e garantir integridade — impossível alterar o histórico sem deixar rastro.</p>
-      <p>Hoje, Git é o padrão da indústria. Praticamente todo código que roda no mundo passa por Git em algum momento.</p>
+function Area({ title, sub, files, empty, commitsMode = false }) {
+  return (
+    <div className="area">
+      <div className="area-label"><span className="area-name">{title}</span></div>
+      <div className="area-sub">{sub}</div>
+      <div className="area-files">
+        {files.length === 0 ? (
+          <div className="area-empty">{empty}</div>
+        ) : files.map((f, i) => (
+          <div key={i} className={`file-chip ${f.status || ""}`}>
+            {commitsMode ? (
+              <>
+                <span style={{ color: "var(--text-dim)", fontSize: 11.5, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.name}</span>
+                <span className="badge" style={{ color: "var(--green)" }}>{f.hash}</span>
+              </>
+            ) : (
+              <>
+                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.name}</span>
+                <span className="badge">{f.status}</span>
+              </>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
-      <div class="note">
-        <div class="icon">!</div>
-        <div>
-          <div class="label">git ≠ github</div>
-          <p><strong>Git</strong> é a ferramenta de controle de versão — roda no seu computador, offline, criada pelo Linus. <strong>GitHub</strong> é uma empresa (hoje da Microsoft) que oferece hospedagem de repositórios Git na nuvem. Git é o motor. GitHub é uma garagem na nuvem onde você estaciona seus projetos.</p>
+function ThreeAreas({ wd, staging, repoCommits }) {
+  return (
+    <div className="three-areas">
+      <Area title="Working Dir" sub="o que você edita" files={wd} empty="tudo limpo" />
+      <Area title="Staging" sub="vai no próximo commit" files={staging.map(f => ({ ...f, status: "staged" }))} empty="vazio" />
+      <Area title="Repository"
+        sub={`histórico · ${repoCommits.length} commit${repoCommits.length === 1 ? "" : "s"}`}
+        empty="sem commits"
+        files={repoCommits.slice().reverse().slice(0, 4).map(c => ({ name: c.message, status: "commit", hash: c.id.slice(0, 7) }))}
+        commitsMode />
+    </div>
+  );
+}
+
+function DualView({ local, remote, lastAction }) {
+  return (
+    <div className="dual-view">
+      <div className="dual-side">
+        <div className="side-label"><span className="side-name">LOCAL</span><span>seu computador</span></div>
+        <CommitGraph repo={local} />
+      </div>
+      <div className="dual-arrow">
+        <div className="ln" /><div className="badge">{lastAction || "↔"}</div><div className="ln" />
+      </div>
+      <div className="dual-side">
+        <div className="side-label"><span className="side-name">ORIGIN</span><span>github.com</span></div>
+        {remote.commits.length > 0 ? <CommitGraph repo={remote} /> : (
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flex: 1, color: "var(--text-faint)", fontStyle: "italic", fontSize: 12 }}>
+            repositório remoto vazio
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function PanelThreeAreas() {
+  const initial = { wd: [], staging: [], commits: [], log: [] };
+  const [state, setState] = useState(initial);
+  const reset = () => setState(initial);
+  const editFile = (name) => {
+    setState(s => {
+      const existsInWd = s.wd.find(f => f.name === name);
+      const wd = existsInWd
+        ? s.wd.map(f => f.name === name ? { ...f, status: "modified" } : f)
+        : [...s.wd, { name, status: "untracked" }];
+      return { ...s, wd,
+        log: [...s.log, { text: `# editou ${name}` }, { kind: "out", text: existsInWd ? "→ arquivo modificado" : "→ arquivo novo (untracked)" }] };
+    });
+  };
+  const gitAdd = () => {
+    setState(s => {
+      if (s.wd.length === 0) return { ...s, log: [...s.log, { text: "git add ." }, { kind: "out", text: "nada pra adicionar" }] };
+      const moved = s.wd;
+      return { ...s, wd: [], staging: [...s.staging, ...moved.map(f => ({ name: f.name }))],
+        log: [...s.log, { text: "git add ." }, { kind: "out", text: `→ ${moved.length} arquivo(s) movido(s) pra staging` }] };
+    });
+  };
+  const gitCommit = () => {
+    setState(s => {
+      if (s.staging.length === 0) return { ...s, log: [...s.log, { text: 'git commit -m "..."' }, { kind: "out", text: "nada em staging — use git add primeiro" }] };
+      const id = randHash();
+      const msg = `commit #${s.commits.length + 1}`;
+      return { ...s, staging: [],
+        commits: [...s.commits, { id, message: msg, parents: s.commits.length ? [s.commits[s.commits.length - 1].id] : [] }],
+        log: [...s.log, { text: `git commit -m "${msg}"` }, { kind: "out", text: `[main ${id}] ${msg} · ${s.staging.length} arquivo(s)` }] };
+    });
+  };
+  const gitStatus = () => {
+    setState(s => {
+      const lines = [{ text: "git status" }];
+      if (s.wd.length === 0 && s.staging.length === 0) lines.push({ kind: "out", text: "working tree clean" });
+      else {
+        if (s.staging.length > 0) lines.push({ kind: "out", text: `staged: ${s.staging.map(f => f.name).join(", ")}` });
+        if (s.wd.length > 0) lines.push({ kind: "out", text: `working: ${s.wd.map(f => f.name).join(", ")}` });
+      }
+      return { ...s, log: [...s.log, ...lines] };
+    });
+  };
+  return (
+    <PanelShell title="three-areas.demo" onReset={reset} fileLabel="01_modelo_mental.sh">
+      <TryThis>edita um arquivo, manda pra staging com <code>git add</code> e congela com <code>git commit</code>. Repare nos chips viajando entre as colunas.</TryThis>
+      <div className="viz-stage">
+        <ThreeAreas wd={state.wd} staging={state.staging} repoCommits={state.commits} />
+      </div>
+      <div className="panel-actions">
+        <button className="btn" onClick={() => editFile("index.html")}><span style={{color:"var(--text-faint)"}}>edit</span> index.html</button>
+        <button className="btn" onClick={() => editFile("style.css")}><span style={{color:"var(--text-faint)"}}>edit</span> style.css</button>
+        <button className="btn" onClick={gitAdd} disabled={state.wd.length === 0}><span className="k">git</span> <span className="a">add</span> <span>.</span></button>
+        <button className="btn" onClick={gitCommit} disabled={state.staging.length === 0}><span className="k">git</span> <span className="a">commit</span> <span className="f">-m</span></button>
+        <button className="btn ghost" onClick={gitStatus}><span className="k">git</span> <span className="a">status</span></button>
+      </div>
+      <CmdLog entries={state.log} />
+    </PanelShell>
+  );
+}
+
+function PanelTimeline() {
+  const buildInitial = () => ({ commits: [], branches: { main: null }, head: "main", wd: [], staging: [], log: [], newestId: null });
+  const [state, setState] = useState(buildInitial());
+  const reset = () => setState(buildInitial());
+  const editFile = (name) => setState(s => ({
+    ...s,
+    wd: s.wd.find(f => f.name === name) ? s.wd.map(f => f.name === name ? { ...f, status: "modified" } : f) : [...s.wd, { name, status: "untracked" }],
+    log: [...s.log, { text: `# editou ${name}` }],
+  }));
+  const gitAdd = () => setState(s => {
+    if (s.wd.length === 0) return s;
+    return { ...s, wd: [], staging: [...s.staging, ...s.wd.map(f => ({ name: f.name }))],
+      log: [...s.log, { text: "git add ." }, { kind: "out", text: `→ ${s.wd.length} arquivo(s) staged` }] };
+  });
+  const gitCommit = (msg) => setState(s => {
+    if (s.staging.length === 0) return { ...s, log: [...s.log, { text: `git commit -m "${msg}"` }, { kind: "out", text: "nada pra commitar" }] };
+    const id = randHash();
+    const parent = s.branches[s.head];
+    return { ...s,
+      commits: [...s.commits, { id, message: msg, parents: parent ? [parent] : [] }],
+      branches: { ...s.branches, [s.head]: id }, staging: [], newestId: id,
+      log: [...s.log, { text: `git commit -m "${msg}"` }, { kind: "out", text: `[${s.head} ${id}] ${msg}` }] };
+  });
+  const gitLog = () => setState(s => {
+    const lines = [{ text: "git log --oneline" }];
+    if (s.commits.length === 0) lines.push({ kind: "out", text: "(sem commits)" });
+    [...s.commits].reverse().forEach(c => lines.push({ kind: "out", text: `${c.id} ${c.message}` }));
+    return { ...s, log: [...s.log, ...lines] };
+  });
+  const messages = ["init project", "add header", "fix navbar bug", "wire up footer", "polish typography", "improve perf"];
+  const nextMsg = messages[state.commits.length % messages.length];
+  const repoForGraph = {
+    commits: state.commits,
+    branches: Object.fromEntries(Object.entries(state.branches).filter(([_, v]) => v)),
+    head: state.head, newestId: state.newestId,
+  };
+  return (
+    <PanelShell title="commit-timeline.demo" onReset={reset} fileLabel="02_comandos.sh">
+      <TryThis>faça uns 3 ou 4 ciclos completos de <code>edit → add → commit</code>. Cada bolinha nova é um snapshot permanente. Os hashes são únicos, gerados a partir do conteúdo.</TryThis>
+      <div className="viz-stage"><CommitGraph repo={repoForGraph} /></div>
+      <div className="panel-actions">
+        <button className="btn" onClick={() => editFile("README.md")}><span style={{color:"var(--text-faint)"}}>edit</span> README.md</button>
+        <button className="btn" onClick={() => editFile("app.tsx")}><span style={{color:"var(--text-faint)"}}>edit</span> app.tsx</button>
+        <button className="btn" onClick={gitAdd} disabled={state.wd.length === 0}><span className="k">git</span> <span className="a">add</span> <span>.</span></button>
+        <button className="btn" onClick={() => gitCommit(nextMsg)} disabled={state.staging.length === 0}><span className="k">git</span> <span className="a">commit</span></button>
+        <button className="btn ghost" onClick={gitLog}><span className="k">git</span> <span className="a">log</span></button>
+      </div>
+      <CmdLog entries={state.log} />
+    </PanelShell>
+  );
+}
+
+function PanelBranches() {
+  const buildInitial = () => {
+    const a = randHash(), b = randHash(), c = randHash();
+    return {
+      commits: [
+        { id: a, message: "init project", parents: [] },
+        { id: b, message: "add header", parents: [a] },
+        { id: c, message: "wire up homepage", parents: [b] },
+      ],
+      branches: { main: c }, head: "main",
+      log: [{ text: "# começamos com 3 commits na main" }], newestId: c,
+    };
+  };
+  const [state, setState] = useState(buildInitial());
+  const reset = () => setState(buildInitial());
+  const gitBranch = (name) => setState(s => {
+    if (s.branches[name]) return { ...s, log: [...s.log, { text: `git branch ${name}` }, { kind: "out", text: `branch '${name}' já existe` }] };
+    const cur = s.branches[s.head] || s.head;
+    return { ...s, branches: { ...s.branches, [name]: cur },
+      log: [...s.log, { text: `git branch ${name}` }, { kind: "out", text: `→ criada em ${cur.slice(0,7)}` }] };
+  });
+  const gitCheckout = (name) => setState(s => {
+    if (!s.branches[name]) return { ...s, log: [...s.log, { text: `git checkout ${name}` }, { kind: "out", text: `branch não existe` }] };
+    return { ...s, head: name, log: [...s.log, { text: `git checkout ${name}` }, { kind: "out", text: `→ agora em '${name}'` }] };
+  });
+  const messages = ["tweak colors", "add toggle", "polish dark theme", "fix nav z-index", "update copy"];
+  const gitCommit = () => setState(s => {
+    const id = randHash();
+    const parent = s.branches[s.head];
+    const msg = messages[s.commits.length % messages.length];
+    return { ...s,
+      commits: [...s.commits, { id, message: msg, parents: parent ? [parent] : [] }],
+      branches: { ...s.branches, [s.head]: id }, newestId: id,
+      log: [...s.log, { text: `git commit -m "${msg}"` }, { kind: "out", text: `[${s.head} ${id}] ${msg}` }] };
+  });
+  const gitMerge = (from) => setState(s => {
+    if (!s.branches[from] || s.head === from) return { ...s, log: [...s.log, { text: `git merge ${from}` }, { kind: "out", text: "nada pra fazer" }] };
+    const id = randHash();
+    const targetCommit = s.branches[s.head];
+    const sourceCommit = s.branches[from];
+    return { ...s,
+      commits: [...s.commits, { id, message: `Merge branch '${from}' into ${s.head}`, parents: [targetCommit, sourceCommit] }],
+      branches: { ...s.branches, [s.head]: id }, newestId: id,
+      log: [...s.log, { text: `git merge ${from}` }, { kind: "out", text: `→ merge commit ${id} criado` }] };
+  });
+  const otherBranches = Object.keys(state.branches).filter(b => b !== state.head);
+  return (
+    <PanelShell title="branches.demo" onReset={reset} fileLabel="03_branches.sh">
+      <TryThis>crie uma branch <code>modo-escuro</code>, troque pra ela com <code>checkout</code>, faça 2 commits, volte pra <code>main</code> e mescle. Repare na linha do tempo se ramificando e se juntando.</TryThis>
+      <div className="viz-stage"><CommitGraph repo={state} height={260} /></div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center", fontSize: 12, color: "var(--text-dim)" }}>
+        <span style={{ color: "var(--text-faint)" }}>HEAD →</span>
+        <strong style={{ color: "var(--yellow)" }}>{state.head}</strong>
+        <span style={{ color: "var(--text-faint)" }}>·</span>
+        <span>{Object.keys(state.branches).length} branch(es):</span>
+        {Object.keys(state.branches).map(b => (
+          <span key={b} className="tag-pill" style={{
+            color: b === state.head ? "var(--yellow)" : "var(--text-dim)",
+            borderColor: b === state.head ? "var(--yellow)" : "var(--border)",
+          }}>{b}</span>
+        ))}
+      </div>
+      <div className="panel-actions">
+        {!state.branches["modo-escuro"] && (
+          <button className="btn" onClick={() => gitBranch("modo-escuro")}>
+            <span className="k">git</span> <span className="a">branch</span> <span style={{color:"var(--purple)"}}>modo-escuro</span>
+          </button>
+        )}
+        {!state.branches["bugfix"] && (
+          <button className="btn" onClick={() => gitBranch("bugfix")}>
+            <span className="k">git</span> <span className="a">branch</span> <span style={{color:"var(--blue)"}}>bugfix</span>
+          </button>
+        )}
+        {Object.keys(state.branches).map(b => b !== state.head ? (
+          <button key={b} className="btn ghost" onClick={() => gitCheckout(b)}>
+            <span className="k">git</span> <span className="a">checkout</span> {b}
+          </button>
+        ) : null)}
+        <button className="btn" onClick={gitCommit}><span className="k">git</span> <span className="a">commit</span></button>
+        {otherBranches.map(b => (
+          <button key={`m-${b}`} className="btn ghost" onClick={() => gitMerge(b)}>
+            <span className="k">git</span> <span className="a">merge</span> {b}
+          </button>
+        ))}
+      </div>
+      <CmdLog entries={state.log} />
+    </PanelShell>
+  );
+}
+
+function PanelRemote() {
+  const buildInitial = () => {
+    const a = randHash(), b = randHash();
+    return {
+      local: { commits: [{ id: a, message: "init", parents: [] }, { id: b, message: "add homepage", parents: [a] }],
+        branches: { main: b }, head: "main", newestId: b },
+      remote: { commits: [], branches: {}, head: "main", newestId: null },
+      log: [{ text: "# repositório local com 2 commits, remoto vazio" }],
+      lastAction: "no sync",
+    };
+  };
+  const [state, setState] = useState(buildInitial());
+  const reset = () => setState(buildInitial());
+  const gitPush = () => setState(s => {
+    if (s.local.commits.length === s.remote.commits.length) return { ...s, log: [...s.log, { text: "git push origin main" }, { kind: "out", text: "already up-to-date" }], lastAction: "up to date" };
+    return { ...s,
+      remote: { commits: [...s.local.commits], branches: { ...s.local.branches }, head: "main", newestId: s.local.newestId },
+      log: [...s.log, { text: "git push origin main" }, { kind: "out", text: `→ ${s.local.commits.length - s.remote.commits.length} commit(s) enviado(s)` }],
+      lastAction: "→ push" };
+  });
+  const messages = ["new feature", "fix typo", "update readme", "refactor api"];
+  const localCommit = () => setState(s => {
+    const id = randHash();
+    const msg = messages[s.local.commits.length % messages.length];
+    const parent = s.local.branches.main;
+    return { ...s,
+      local: { ...s.local, commits: [...s.local.commits, { id, message: msg, parents: [parent] }],
+        branches: { ...s.local.branches, main: id }, newestId: id },
+      log: [...s.log, { text: `git commit -m "${msg}"` }, { kind: "out", text: `[main ${id}] ${msg}` }] };
+  });
+  const teammatePush = () => setState(s => {
+    const id = randHash();
+    const parent = s.remote.branches.main || s.remote.commits[s.remote.commits.length - 1]?.id;
+    if (!parent) return { ...s, log: [...s.log, { text: "# colega tentou empurrar mas remoto está vazio" }, { kind: "out", text: "faça git push primeiro" }] };
+    return { ...s,
+      remote: { ...s.remote, commits: [...s.remote.commits, { id, message: "colega: fix prod bug", parents: [parent] }],
+        branches: { ...s.remote.branches, main: id }, newestId: id },
+      log: [...s.log, { text: "# 🧑 colega de equipe deu push" }, { kind: "out", text: `[origin/main ${id}] fix prod bug` }],
+      lastAction: "← teammate" };
+  });
+  const gitPull = () => setState(s => {
+    if (s.remote.commits.length <= s.local.commits.length) {
+      const upToDate = s.remote.commits.length === s.local.commits.length;
+      return { ...s, log: [...s.log, { text: "git pull origin main" }, { kind: "out", text: upToDate ? "already up-to-date" : "nada novo no remoto" }] };
+    }
+    return { ...s,
+      local: { ...s.local, commits: [...s.remote.commits], branches: { ...s.remote.branches }, newestId: s.remote.newestId },
+      log: [...s.log, { text: "git pull origin main" }, { kind: "out", text: `→ ${s.remote.commits.length - s.local.commits.length} commit(s) baixado(s)` }],
+      lastAction: "← pull" };
+  });
+  return (
+    <PanelShell title="remote.demo" onReset={reset} fileLabel="04_remoto.sh">
+      <TryThis>commita 2x localmente, dá <code>push</code>, simula um colega dando push no remoto, e então <code>pull</code> pra trazer o trabalho dele. Esse é o ciclo do trabalho em equipe.</TryThis>
+      <div className="viz-stage"><DualView local={state.local} remote={state.remote} lastAction={state.lastAction} /></div>
+      <div className="panel-actions">
+        <button className="btn" onClick={localCommit}><span className="k">git</span> <span className="a">commit</span></button>
+        <button className="btn" onClick={gitPush}><span className="k">git</span> <span className="a">push</span> origin main →</button>
+        <button className="btn ghost" onClick={teammatePush}><span style={{ color: "var(--pink)" }}>🧑 colega dá push</span></button>
+        <button className="btn" onClick={gitPull}>← <span className="k">git</span> <span className="a">pull</span> origin main</button>
+      </div>
+      <CmdLog entries={state.log} />
+    </PanelShell>
+  );
+}
+
+function HeroHash() {
+  const [seed, setSeed] = useState("0000000");
+  useEffect(() => {
+    if (window.__paperSeed) { setSeed(window.__paperSeed); return; }
+    const chars = "0123456789abcdef";
+    let h = (Date.now() ^ Math.floor(Math.random() * 0xffffffff)) >>> 0;
+    let out = "";
+    for (let i = 0; i < 7; i++) { h = (h * 1103515245 + 12345) >>> 0; out += chars[(h >>> 8) % 16]; }
+    window.__paperSeed = out;
+    setSeed(out);
+  }, []);
+  return <span className="hash"> /* {seed} */</span>;
+}
+
+function App() {
+  return (
+    <div className="page">
+      <header className="topbar">
+        <div className="brandmark">
+          <span className="prompt">~/papers/git-do-zero $</span>
+          <span style={{ color: "var(--text)" }}>cat README.md</span>
+          <span className="cursor" />
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div className="meta-tags">
+            <span>v1.0</span><span>pt-br</span><span>~25 min</span>
+          </div>
+          <a href="/papers" className="back-link">← papers</a>
+        </div>
+      </header>
+
+      <div className="hero">
+        <div className="preamble">// PAPER · controle de versão pra quem nunca versionou nada</div>
+        <h1>Git, do zero<HeroHash /></h1>
+        <p className="subtitle">
+          Um paper amigável pra quem ouve falar de <code>commit</code>, <code>push</code>, <code>branch</code> e finge entender.
+          Construímos o entendimento de baixo pra cima — modelo mental antes dos comandos.
+        </p>
+        <div className="deck">
+          <div><b>↓ 8 capítulos</b> ler na ordem</div>
+          <div><b>↻ 4 painéis interativos</b> brinca à vontade</div>
+          <div><b>⚡ comandos reais</b> testáveis aqui mesmo</div>
         </div>
       </div>
 
-      <h2><span class="num">§ 02</span>O modelo mental</h2>
-      <h3>como o Git pensa</h3>
-      <p>Antes dos comandos. Antes do terminal. Você precisa entender <strong>como o Git enxerga o mundo</strong>. Se pular essa parte, vai decorar comandos sem entender. Se ler com atenção, o resto vira tranquilo.</p>
-
-      <h4>Snapshots, não diferenças</h4>
-      <p>Outras ferramentas de versionamento (tipo SVN) guardam o histórico como uma lista de <strong>diferenças</strong> entre versões. Tipo: "na versão 2, a linha 47 mudou de X pra Y". Pra reconstruir, ela aplica essas diferenças por cima da versão anterior.</p>
-      <p>O Git faz diferente. Cada vez que você "salva", ele tira uma <em class="term">foto</em> (snapshot) de todos os arquivos do projeto naquele momento. Guarda o estado completo, não as diferenças.</p>
-      <p>"Mas isso não ocupa muito espaço?" Não, porque o Git é esperto. Se um arquivo não mudou entre dois snapshots, ele só guarda um ponteiro pro arquivo anterior. Esse modelo é o que torna o Git absurdamente rápido em operações como ver histórico, comparar versões, ou voltar pra um ponto no passado.</p>
-
-      <h4>As três áreas do Git</h4>
-      <p>Quando você trabalha com Git, seus arquivos vivem em <strong>três lugares conceituais</strong>. Essa é a parte mais importante desse paper inteiro. Se você entender isso, entendeu Git.</p>
-      <ul>
-        <li><strong>Working Directory</strong> — a pasta onde você está editando. É o que você vê no Finder ou VS Code.</li>
-        <li><strong>Staging Area</strong> (Index) — uma área intermediária onde você "monta" o próximo commit, como uma sacola antes do caixa.</li>
-        <li><strong>Repository</strong> — o histórico permanente. Quando você commita, o que estava na Staging vira um snapshot oficial.</li>
-      </ul>
-
-      <h4>Por que a Staging existe?</h4>
-      <p>Outras ferramentas não têm Staging — você muda o arquivo e commita. Por que o Git complicou? Resposta: <strong>controle</strong>.</p>
-      <p>Imagina que você editou 5 arquivos. 3 deles são uma feature de login. 2 são correção de um bug no header. Você quer fazer <strong>dois commits separados</strong>: um pra cada coisa. Com Staging, você adiciona os 3 primeiros, commita, depois adiciona os outros 2, commita de novo. Limpo. A Staging é onde você <em class="term">monta</em> o commit.</p>
-
-      <h2><span class="num">§ 03</span>Mãos na massa</h2>
-      <h3>comandos fundamentais</h3>
-      <p>Agora sim. Cada comando vai fazer alguma coisa <strong>em uma dessas três áreas</strong>. Se você sempre pensar "onde esse comando atua?", nunca mais se perde.</p>
-
-      <h4>Configuração inicial (faz uma vez na vida)</h4>
-      <pre class="code"><span class="cmd">git config</span> <span class="k">--global</span> user.name <span class="s">"Seu Nome"</span>
-<span class="cmd">git config</span> <span class="k">--global</span> user.email <span class="s">"seu@email.com"</span></pre>
-      <p>Isso diz pro Git quem você é. Todo commit vai gravar seu nome e email — é assim que se sabe quem fez o quê.</p>
-
-      <h4><code>git init</code> — criando um repositório</h4>
-      <p>Você tem uma pasta com um projeto e quer começar a versionar. Entra na pasta pelo terminal e:</p>
-      <pre class="code">git init</pre>
-      <p>Isso cria uma pasta escondida <code>.git</code> dentro do seu projeto. <strong>Toda a mágica do Git mora nessa pasta.</strong> Histórico, configurações, branches — tudo. Se você apagar a <code>.git</code>, perde o histórico (mas os arquivos do projeto continuam ali).</p>
-
-      <h4><code>git status</code> — seu melhor amigo</h4>
-      <p>Esse comando você vai usar mais que qualquer outro. Ele mostra <strong>em que estado as três áreas estão</strong>: o que está modificado, o que está em staging, o que ainda não foi rastreado. Sempre que estiver perdido, <code>git status</code>. Sempre.</p>
-
-      <h4><code>git add</code>, <code>git commit</code></h4>
-      <p><code>git add &lt;arquivo&gt;</code> manda mudanças do Working Directory pra Staging. <code>git commit -m "mensagem"</code> pega tudo que está na Staging e congela num snapshot permanente no histórico.</p>
-
-      <h4>O ciclo básico</h4>
-      <pre class="code"><span class="c"># 1. edita arquivos no Working Directory</span>
-<span class="c"># 2. vê o que mudou</span>
-git status
-
-<span class="c"># 3. manda pra Staging</span>
-git add arquivo1 arquivo2
-
-<span class="c"># 4. salva no Repository</span>
-git commit -m <span class="s">"mensagem descritiva"</span>
-
-<span class="c"># 5. repete</span></pre>
-      <p>Esse é o <strong>loop fundamental do Git</strong>. Tudo mais é variação ou extensão disso.</p>
-
-      <div class="note teal">
-        <div class="icon">✓</div>
-        <div>
-          <div class="label">boas mensagens de commit</div>
-          <p>Comece com verbo no imperativo: "Adiciona", "Corrige", "Refatora". Específico mas conciso. <em>"Mudei umas coisas"</em> é uma mensagem péssima. <em>"Corrige validação no formulário de cadastro"</em> é boa.</p>
+      <section id="historia" style={{ scrollMarginTop: 40 }}>
+        <h2 className="section"><span className="num">Parte 01</span><span className="slash">/</span><span className="title">A história</span></h2>
+        <h3 className="chapter">por que Git existe?</h3>
+        <p>Imagina que você está escrevendo um TCC. Abre o Word, digita 30 páginas, salva como <code>tcc.docx</code>. No dia seguinte quer mexer, mas tem medo de estragar o que já está pronto. O que você faz?</p>
+        <p>Salva como <code>tcc_v2.docx</code>.</p>
+        <p>Depois <code>tcc_v2_final.docx</code>.</p>
+        <p>Depois <code>tcc_v2_final_DESSA_VEZ_VAI.docx</code>.</p>
+        <p>Depois <code>tcc_v2_final_correcao_orientador.docx</code>.</p>
+        <p>Familiar? Esse é o problema que <strong>controle de versão</strong> resolve. Em vez de manter cópias com nomes cada vez mais desesperados, você usa uma ferramenta que guarda o histórico de tudo que você fez, e te deixa voltar pra qualquer ponto anterior quando quiser.</p>
+        <p>Agora multiplica isso por <strong>um time inteiro de programadores</strong> mexendo nos mesmos arquivos ao mesmo tempo. Sem controle de versão, é um inferno. Com controle de versão, é só uma quarta-feira normal.</p>
+        <h4>Entra o Linus Torvalds</h4>
+        <p>Em 2005, o Linus Torvalds (sim, o cara do Linux) tinha um problema. O kernel do Linux era desenvolvido com uma ferramenta chamada <strong>BitKeeper</strong>, que era proprietária mas dava licença grátis pra projetos open-source. Teve uma briga política, a BitKeeper revogou a licença, e o Linus ficou sem ferramenta pra gerenciar o maior projeto open-source do mundo.</p>
+        <p>Ele tinha duas opções: usar CVS ou SVN (que ele detestava), ou escrever a própria ferramenta. Adivinha qual ele escolheu.</p>
+        <p>Em <strong>duas semanas</strong>, ele escreveu a primeira versão do Git. Os requisitos eram: ser absurdamente rápido, ter design distribuído (sem servidor central), suportar milhares de branches em paralelo, aguentar projetos enormes, e garantir integridade — impossível alterar o histórico sem deixar rastro.</p>
+        <p>Hoje, Git é o padrão da indústria. Praticamente todo código que roda no mundo passa por Git em algum momento.</p>
+        <div className="callout info">
+          <div className="tag">git ≠ github</div>
+          <p style={{ margin: 0 }}>
+            <strong>Git</strong> é a ferramenta de controle de versão — roda no seu computador, offline, criada pelo Linus.{" "}
+            <strong>GitHub</strong> é uma empresa (hoje da Microsoft) que oferece hospedagem de repositórios Git na nuvem. Git é o motor. GitHub é uma garagem na nuvem onde você estaciona seus projetos.
+          </p>
         </div>
-      </div>
+      </section>
 
-      <h2><span class="num">§ 04</span>Branches</h2>
-      <h3>a parte que muda tudo</h3>
-      <p>Até aqui você tem uma linha do tempo linear: commit 1, commit 2, commit 3. Bonitinho. Mas a vida real não é linear.</p>
-      <p>Imagina que você está num projeto, tudo funcionando. Aí quer <strong>experimentar</strong> uma feature nova — tipo um botão de modo escuro. Não sabe se vai dar certo. Se der ruim, não quer ter que desfazer um monte de coisa. Como faz?</p>
-      <p><strong>Branches.</strong> Uma branch é uma linha de desenvolvimento paralela. É como dizer: "a partir desse commit, vou começar a fazer experimentos numa realidade alternativa. Se der certo, eu junto com a principal. Se der errado, eu jogo fora e a principal nem percebe."</p>
+      <section id="modelo" style={{ scrollMarginTop: 40 }}>
+        <h2 className="section"><span className="num">Parte 02</span><span className="slash">/</span><span className="title">O modelo mental</span></h2>
+        <h3 className="chapter">como o Git pensa</h3>
+        <p>Antes dos comandos. Antes do terminal. Você precisa entender <strong>como o Git enxerga o mundo</strong>. Se pular essa parte, vai decorar comandos sem entender. Se ler com atenção, o resto vira tranquilo.</p>
+        <h4>Snapshots, não diferenças</h4>
+        <p>Outras ferramentas de versionamento (tipo SVN) guardam o histórico como uma lista de <strong>diferenças</strong> entre versões. Tipo: "na versão 2, a linha 47 mudou de X pra Y". Pra reconstruir, ela aplica essas diferenças por cima da versão anterior.</p>
+        <p>O Git faz diferente. Cada vez que você "salva", ele tira uma <strong>foto</strong> (snapshot) de todos os arquivos do projeto naquele momento. Guarda o estado completo, não as diferenças.</p>
+        <p>"Mas isso não ocupa muito espaço?" Não, porque o Git é esperto. Se um arquivo não mudou entre dois snapshots, ele só guarda um ponteiro pro arquivo anterior. Esse modelo é o que torna o Git absurdamente rápido em operações como ver histórico, comparar versões, ou voltar pra um ponto no passado.</p>
+        <h4>As três áreas do Git</h4>
+        <p>Quando você trabalha com Git, seus arquivos vivem em <strong>três lugares conceituais</strong>. Essa é a parte mais importante desse paper inteiro. Se você entender isso, entendeu Git.</p>
+        <ul>
+          <li><strong>Working Directory</strong> — a pasta onde você está editando. É o que você vê no Finder/VSCode.</li>
+          <li><strong>Staging Area</strong> (Index) — uma área intermediária onde você "monta" o próximo commit, como uma sacola antes do caixa.</li>
+          <li><strong>Repository</strong> — o histórico permanente. Quando você commita, o que estava na Staging vira um snapshot oficial.</li>
+        </ul>
+        <p>Brinca um pouco no painel abaixo. Edita arquivos, manda pra staging, commita. Repare nos arquivos viajando entre as três colunas.</p>
+        <PanelThreeAreas />
+        <h4>Por que a Staging existe?</h4>
+        <p>Outras ferramentas não têm Staging — você muda o arquivo e commita. Por que o Git complicou? Resposta: <strong>controle</strong>.</p>
+        <p>Imagina que você editou 5 arquivos. 3 deles são uma feature de login. 2 são correção de um bug no header. Você quer fazer <strong>dois commits separados</strong>: um pra cada coisa. Com Staging, você adiciona os 3 primeiros, commita, depois adiciona os outros 2, commita de novo. Limpo. A Staging é onde você <em>monta</em> o commit.</p>
+      </section>
 
-      <blockquote class="pull">É <em>a</em> razão pela qual Git domina o mundo. Outras ferramentas tinham branches, mas eram pesadas, lentas, dolorosas. No Git, criar uma branch é instantâneo.</blockquote>
-
-      <h4>Por que isso é genial</h4>
-      <p>Porque permite que <strong>várias pessoas trabalhem em várias coisas ao mesmo tempo sem se atrapalhar</strong>. Cada feature, cada bugfix, cada experimento vive numa branch própria. Tá pronta? Vai pra main. Não tá? Fica lá, isolada.</p>
-
-      <h4>HEAD — o "você está aqui"</h4>
-      <p>Tem um conceito que aparece o tempo todo: <strong>HEAD</strong>. É um ponteiro que aponta pra onde você está agora. Geralmente aponta pra última commit da branch atual. Quando você muda de branch, HEAD vai junto.</p>
-
-      <h4>Conflitos</h4>
-      <p>Quando você dá merge, o Git tenta juntar as duas linhas do tempo. Na maior parte das vezes, dá certo automaticamente. Às vezes, dá <strong>conflito</strong> — quando as duas branches modificaram a mesma linha do mesmo arquivo de jeitos diferentes. Aí o Git para e te pede pra resolver na mão. Chato, mas faz parte. Você abre o arquivo, escolhe qual versão fica, <code>git add</code>, <code>git commit</code>.</p>
-
-      <h2><span class="num">§ 05</span>Remoto</h2>
-      <h3>o mundo lá fora</h3>
-      <p>Tudo que a gente fez até aqui é <strong>local</strong> — só no seu computador. Ninguém vê. Pra compartilhar, ter backup, colaborar, você precisa de um <strong>repositório remoto</strong>.</p>
-      <p>O remoto geralmente fica num serviço tipo GitHub, GitLab ou Bitbucket. É uma cópia do seu repositório que mora num servidor.</p>
-
-      <h4>Conectando local e remoto</h4>
-      <pre class="code">git remote add origin <span class="s">https://github.com/voce/seu-repo.git</span></pre>
-      <p><code>origin</code> é o <strong>apelido</strong> do remoto. Por convenção, o principal sempre se chama <code>origin</code>. Poderia ser "github" ou "carlinhos", mas todo mundo usa <code>origin</code>, então usa também.</p>
-
-      <h4><code>git push</code> e <code>git pull</code></h4>
-      <p><code>git push</code> manda commits locais pro remoto. <code>git pull</code> traz commits do remoto pro local. Os dois são o coração do trabalho em equipe.</p>
-
-      <h4>O ciclo completo do dia a dia</h4>
-      <pre class="code">git pull origin main           <span class="c"># puxa atualizações do time</span>
-git checkout -b minha-feature  <span class="c"># cria branch nova</span>
-<span class="c"># ...edita arquivos...</span>
-git add .
-git commit -m <span class="s">"mensagem"</span>
-git push origin minha-feature  <span class="c"># manda sua branch</span>
-<span class="c"># abre Pull Request no GitHub</span>
-<span class="c"># time revisa, aprova, faz merge na main</span>
-git checkout main
-git pull origin main           <span class="c"># atualiza main local</span>
-<span class="c"># recomeça pra próxima feature</span></pre>
-      <p>Esse é o <strong>fluxo padrão do desenvolvimento profissional</strong>. Decora.</p>
-
-      <div class="note">
-        <div class="icon">i</div>
-        <div>
-          <div class="label">.gitignore</div>
-          <p>Tem arquivos que <em>não devem</em> ir pro repositório: senhas, <code>node_modules/</code>, arquivos compilados, configs pessoais do editor. Cria um arquivo <code>.gitignore</code> na raiz listando os padrões a ignorar e o Git finge que esses arquivos não existem.</p>
+      <section id="comandos" style={{ scrollMarginTop: 40 }}>
+        <h2 className="section"><span className="num">Parte 03</span><span className="slash">/</span><span className="title">Mãos na massa</span></h2>
+        <h3 className="chapter">comandos fundamentais</h3>
+        <p>Agora sim. Cada comando vai fazer alguma coisa <strong>em uma dessas três áreas</strong>. Se você sempre pensar "onde esse comando atua?", nunca mais se perde.</p>
+        <h4>Configuração inicial (faz uma vez na vida)</h4>
+        <pre><code>
+<span className="cmd">git config</span> <span className="flag">--global</span> user.name <span className="str">"Seu Nome"</span>{"\n"}
+<span className="cmd">git config</span> <span className="flag">--global</span> user.email <span className="str">"seu@email.com"</span>
+        </code></pre>
+        <p>Isso diz pro Git quem você é. Todo commit vai gravar seu nome e email — é assim que se sabe quem fez o quê.</p>
+        <h4><code>git init</code> — criando um repositório</h4>
+        <p>Você tem uma pasta com um projeto e quer começar a versionar. Entra na pasta pelo terminal e:</p>
+        <pre><code><span className="cmd">git init</span></code></pre>
+        <p>Isso cria uma pasta escondida <code>.git</code> dentro do seu projeto. <strong>Toda a mágica do Git mora nessa pasta.</strong> Histórico, configurações, branches — tudo. Se você apagar a <code>.git</code>, perde o histórico (mas os arquivos do projeto continuam ali).</p>
+        <h4><code>git status</code> — seu melhor amigo</h4>
+        <p>Esse comando você vai usar mais que qualquer outro. Ele mostra <strong>em que estado as três áreas estão</strong>: o que está modificado, o que está em staging, o que ainda não foi rastreado. Sempre que estiver perdido, <code>git status</code>. Sempre.</p>
+        <h4><code>git add</code>, <code>git commit</code></h4>
+        <p><code>git add &lt;arquivo&gt;</code> manda mudanças do Working Directory pra Staging. <code>git commit -m "mensagem"</code> pega tudo que está na Staging e congela num snapshot permanente no histórico.</p>
+        <p>O painel abaixo é o coração do Git: a linha do tempo de commits crescendo enquanto você trabalha.</p>
+        <PanelTimeline />
+        <h4>O ciclo básico</h4>
+        <pre><code>
+<span className="cmt"># 1. edita arquivos no Working Directory</span>{"\n"}
+<span className="cmt"># 2. vê o que mudou</span>{"\n"}
+<span className="cmd">git status</span>{"\n\n"}
+<span className="cmt"># 3. manda pra Staging</span>{"\n"}
+<span className="cmd">git add</span> <span className="arg">arquivo1 arquivo2</span>{"\n\n"}
+<span className="cmt"># 4. salva no Repository</span>{"\n"}
+<span className="cmd">git commit</span> <span className="flag">-m</span> <span className="str">"mensagem descritiva"</span>{"\n\n"}
+<span className="cmt"># 5. repete</span>
+        </code></pre>
+        <p>Esse é o <strong>loop fundamental do Git</strong>. Tudo mais é variação ou extensão disso.</p>
+        <div className="callout">
+          <div className="tag">boas mensagens de commit</div>
+          <p style={{ margin: 0 }}>Comece com verbo no imperativo: "Adiciona", "Corrige", "Refatora". Específico mas conciso. <em>"Mudei umas coisas"</em> é uma mensagem péssima. <em>"Corrige validação no formulário de cadastro"</em> é boa.</p>
         </div>
-      </div>
+      </section>
 
-      <h2><span class="num">§ 06</span>Quando as coisas dão errado</h2>
-      <h3>comandos pra desfazer</h3>
-      <p>Você vai quebrar coisas no Git. Todo mundo quebra. Abaixo, os comandos pra desfazer.</p>
+      <section id="branches" style={{ scrollMarginTop: 40 }}>
+        <h2 className="section"><span className="num">Parte 04</span><span className="slash">/</span><span className="title">Branches</span></h2>
+        <h3 className="chapter">a parte que muda tudo</h3>
+        <p>Até aqui você tem uma linha do tempo linear: commit 1, commit 2, commit 3. Bonitinho. Mas a vida real não é linear.</p>
+        <p>Imagina que você está num projeto, tudo funcionando. Aí quer <strong>experimentar</strong> uma feature nova — tipo um botão de modo escuro. Não sabe se vai dar certo. Se der ruim, não quer ter que desfazer um monte de coisa. Como faz?</p>
+        <p><strong>Branches.</strong> Uma branch é uma linha de desenvolvimento paralela. É como dizer: "a partir desse commit, vou começar a fazer experimentos numa realidade alternativa. Se der certo, eu junto com a principal. Se der errado, eu jogo fora e a principal nem percebe."</p>
+        <PanelBranches />
+        <h4>Por que isso é genial</h4>
+        <p>Porque permite que <strong>várias pessoas trabalhem em várias coisas ao mesmo tempo sem se atrapalhar</strong>. Cada feature, cada bugfix, cada experimento vive numa branch própria. Tá pronta? Vai pra main. Não tá? Fica lá, isolada.</p>
+        <p>É <em>a</em> razão pela qual Git domina o mundo. Outras ferramentas tinham branches, mas eram pesadas, lentas, dolorosas. No Git, criar uma branch é instantâneo. Você cria branches o tempo todo.</p>
+        <h4>HEAD — o "você está aqui"</h4>
+        <p>Tem um conceito que aparece o tempo todo: <strong>HEAD</strong>. É um ponteiro que aponta pra onde você está agora. Geralmente aponta pra última commit da branch atual. Quando você muda de branch, HEAD vai junto. (Repare no marcadorzinho amarelo no painel acima.)</p>
+        <h4>Conflitos</h4>
+        <p>Quando você dá merge, o Git tenta juntar as duas linhas do tempo. Na maior parte das vezes, dá certo automaticamente. Às vezes, dá <strong>conflito</strong> — quando as duas branches modificaram a mesma linha do mesmo arquivo de jeitos diferentes. Aí o Git para e te pede pra resolver na mão. Chato, mas faz parte. Você abre o arquivo, escolhe qual versão fica, <code>git add</code>, <code>git commit</code>.</p>
+      </section>
 
-      <h4>"Editei errado, quero voltar o arquivo"</h4>
-      <pre class="code">git restore arquivo.txt        <span class="c"># versão moderna</span>
-git checkout -- arquivo.txt    <span class="c"># versão antiga</span></pre>
-      <div class="note gold">
-        <div class="icon">!</div>
-        <div>
-          <div class="label">cuidado</div>
-          <p>Isso <strong>apaga</strong> suas mudanças não commitadas. Não tem volta.</p>
+      <section id="remoto" style={{ scrollMarginTop: 40 }}>
+        <h2 className="section"><span className="num">Parte 05</span><span className="slash">/</span><span className="title">Remoto</span></h2>
+        <h3 className="chapter">o mundo lá fora</h3>
+        <p>Tudo que a gente fez até aqui é <strong>local</strong> — só no seu computador. Ninguém vê. Pra compartilhar, ter backup, colaborar, você precisa de um <strong>repositório remoto</strong>.</p>
+        <p>O remoto geralmente fica num serviço tipo GitHub, GitLab ou Bitbucket. É uma cópia do seu repositório que mora num servidor.</p>
+        <h4>Conectando local e remoto</h4>
+        <pre><code><span className="cmd">git remote add</span> <span className="arg">origin</span> <span className="str">https://github.com/voce/seu-repo.git</span></code></pre>
+        <p><code>origin</code> é o <strong>apelido</strong> do remoto. Por convenção, o principal sempre se chama <code>origin</code>. Poderia ser "github" ou "carlinhos", mas todo mundo usa <code>origin</code>, então usa também.</p>
+        <h4><code>git push</code> e <code>git pull</code></h4>
+        <p><code>git push</code> manda commits locais pro remoto. <code>git pull</code> traz commits do remoto pro local. Os dois são o coração do trabalho em equipe.</p>
+        <PanelRemote />
+        <h4>O ciclo completo do dia a dia</h4>
+        <pre><code>
+<span className="cmd">git pull</span> <span className="arg">origin main</span>           <span className="cmt"># puxa atualizações do time</span>{"\n"}
+<span className="cmd">git checkout</span> <span className="flag">-b</span> <span className="arg">minha-feature</span> <span className="cmt"># cria branch nova</span>{"\n"}
+<span className="cmt"># ...edita arquivos...</span>{"\n"}
+<span className="cmd">git add</span> <span className="arg">.</span>{"\n"}
+<span className="cmd">git commit</span> <span className="flag">-m</span> <span className="str">"mensagem"</span>{"\n"}
+<span className="cmd">git push</span> <span className="arg">origin minha-feature</span>  <span className="cmt"># manda sua branch</span>{"\n"}
+<span className="cmt"># abre Pull Request no GitHub</span>{"\n"}
+<span className="cmt"># time revisa, aprova, faz merge na main</span>{"\n"}
+<span className="cmd">git checkout</span> <span className="arg">main</span>{"\n"}
+<span className="cmd">git pull</span> <span className="arg">origin main</span>           <span className="cmt"># atualiza main local</span>{"\n"}
+<span className="cmt"># recomeça pra próxima feature</span>
+        </code></pre>
+        <p>Esse é o <strong>fluxo padrão do desenvolvimento profissional</strong>. Decora.</p>
+        <div className="callout info">
+          <div className="tag">.gitignore</div>
+          <p style={{ margin: 0 }}>Tem arquivos que <em>não devem</em> ir pro repositório: senhas, <code>node_modules/</code>, arquivos compilados, configs pessoais do editor. Cria um arquivo <code>.gitignore</code> na raiz listando os padrões a ignorar e o Git finge que esses arquivos não existem.</p>
         </div>
+      </section>
+
+      <section id="oops" style={{ scrollMarginTop: 40 }}>
+        <h2 className="section"><span className="num">Parte 06</span><span className="slash">/</span><span className="title">Quando as coisas dão errado</span></h2>
+        <h3 className="chapter">comandos pra desfazer</h3>
+        <p>Você vai quebrar coisas no Git. Todo mundo quebra. Abaixo, os comandos pra desfazer alguma coisa.</p>
+        <h4>"Editei errado, quero voltar o arquivo"</h4>
+        <pre><code>
+<span className="cmd">git restore</span> <span className="arg">arquivo.txt</span>     <span className="cmt"># versão moderna</span>{"\n"}
+<span className="cmd">git checkout</span> <span className="flag">--</span> <span className="arg">arquivo.txt</span>  <span className="cmt"># versão antiga</span>
+        </code></pre>
+        <div className="callout warn">
+          <div className="tag">cuidado</div>
+          <p style={{ margin: 0 }}>Isso <strong>apaga</strong> suas mudanças não commitadas. Não tem volta.</p>
+        </div>
+        <h4>"Adicionei errado à Staging, quero tirar"</h4>
+        <pre><code><span className="cmd">git restore</span> <span className="flag">--staged</span> <span className="arg">arquivo.txt</span></code></pre>
+        <p>Tira da Staging mas mantém a mudança no Working Directory. Seguro.</p>
+        <h4>"Commitei errado, quero desfazer o último commit"</h4>
+        <pre><code>
+<span className="cmt"># desfaz o commit mas mantém as mudanças</span>{"\n"}
+<span className="cmd">git reset</span> <span className="flag">--soft</span> <span className="arg">HEAD~1</span>{"\n\n"}
+<span className="cmt"># PERIGOSO: desfaz E joga fora as mudanças</span>{"\n"}
+<span className="cmd">git reset</span> <span className="flag">--hard</span> <span className="arg">HEAD~1</span>
+        </code></pre>
+        <h4>"Tô completamente perdido"</h4>
+        <p>Existe um comando salvador: <code>git reflog</code>. Ele mostra <strong>tudo</strong> que o HEAD apontou recentemente, mesmo coisas que você "perdeu". Quase nada se perde de verdade no Git — quase sempre dá pra recuperar via reflog. Decora esse nome: <strong>reflog é seu paraquedas</strong>.</p>
+      </section>
+
+      <section id="internals" style={{ scrollMarginTop: 40 }}>
+        <h2 className="section"><span className="num">Parte 07</span><span className="slash">/</span><span className="title">Por baixo dos panos</span></h2>
+        <h3 className="chapter">o que rola por dentro</h3>
+        <p>Você já consegue trabalhar com Git agora. Mas pra virar um usuário fluente, vale entender o que está rolando por baixo.</p>
+        <p>Por baixo, o Git é um banco de dados chave-valor de <strong>objetos</strong>:</p>
+        <ul>
+          <li><strong>Blob</strong> — conteúdo de um arquivo</li>
+          <li><strong>Tree</strong> — uma pasta (lista de blobs e outras trees)</li>
+          <li><strong>Commit</strong> — um snapshot (aponta pra uma tree raiz, mais metadados)</li>
+          <li><strong>Tag</strong> — uma referência fixa a um commit específico</li>
+        </ul>
+        <p>Cada objeto é identificado por um <strong>hash SHA-1</strong> — aquele código tipo <code>a3f5e9c8d2...</code> que você vê o tempo todo. O hash é gerado a partir do conteúdo. Se o conteúdo muda, o hash muda. <strong>É por isso que é impossível alterar o histórico sem deixar rastro</strong> — qualquer mudança propaga em cadeia.</p>
+        <h4>Uma branch é só um ponteiro</h4>
+        <p>O que é uma branch? É <strong>literalmente um arquivo de texto</strong> com o hash do commit pra onde ela aponta. Sério. Você pode ver:</p>
+        <pre><code>
+<span className="cmd">cat</span> <span className="arg">.git/refs/heads/main</span>{"\n"}
+<span className="cmt"># a3f5e9c8d2b1e4f7c0a9d8b6e5f4a3c2d1e0f9a8</span>
+        </code></pre>
+        <p>Aparece um hash. Só isso. Uma branch é só um nome amigável pra um hash. Por isso criar branch é instantâneo — você só está criando um arquivinho de texto com 40 caracteres.</p>
+      </section>
+
+      <section id="next" style={{ scrollMarginTop: 40 }}>
+        <h2 className="section"><span className="num">Parte 08</span><span className="slash">/</span><span className="title">Para onde ir daqui</span></h2>
+        <h3 className="chapter">próximos passos</h3>
+        <p>Você cobriu o suficiente pra trabalhar profissionalmente. Git é fundo, e tem coisas legais que ficam pra depois:</p>
+        <ul>
+          <li><code>git rebase</code> — alternativa ao merge que reescreve o histórico</li>
+          <li><code>git cherry-pick</code> — pegar um commit específico de outra branch</li>
+          <li><code>git stash</code> — guardar mudanças temporariamente sem commitar</li>
+          <li><code>git tag</code> — marcar versões importantes (tipo <code>v1.0.0</code>)</li>
+          <li><strong>Hooks</strong> — scripts que rodam em eventos (pre-commit, pre-push)</li>
+          <li><code>git bisect</code> — busca binária pra encontrar o commit que introduziu um bug</li>
+        </ul>
+        <p>Cada um dá pra explorar quando precisar. Não tenta aprender tudo de uma vez — você vai esquecer e ficar frustrado.</p>
+        <h4>Pra estudar mais</h4>
+        <ul>
+          <li><strong>Pro Git Book</strong> (git-scm.com/book/pt-br/v2) — gratuito, traduzido, oficial. A bíblia.</li>
+          <li><strong>Atlassian Git Tutorials</strong> — explicações visuais excelentes.</li>
+          <li><strong>Oh Shit, Git!?!</strong> (ohshitgit.com) — receita de bolo pra quando você quebra alguma coisa.</li>
+          <li><strong>Learn Git Branching</strong> — referência interativa.</li>
+        </ul>
+      </section>
+
+      <hr className="divider" />
+
+      <div className="outro" style={{ maxWidth: "60ch" }}>
+        <p>Git não é difícil. Git é <strong>mal explicado</strong>. A maior parte dos tutoriais joga comandos na sua cara sem te dar o modelo mental que faz eles fazerem sentido. Se você chegou até aqui, você tem o modelo mental: <strong>três áreas</strong>, <strong>snapshots</strong> como objetos, <strong>branches</strong> como ponteiros, <strong>HEAD</strong> como o "você está aqui".</p>
+        <p>A partir disso, tudo no Git fica navegável. Você pode esquecer um comando — mas sabe procurar. Pode ver um erro estranho — mas sabe interpretar. Pode encarar um merge conflict cabeludo — mas sabe o que está fazendo.</p>
+        <p className="fine">Esse paper foi escrito pra ser lido linearmente do começo ao fim. Se você pulou pra cá: volta. Não é longo, é cumulativo.</p>
       </div>
 
-      <h4>"Adicionei errado à Staging, quero tirar"</h4>
-      <pre class="code">git restore --staged arquivo.txt</pre>
-      <p>Tira da Staging mas mantém a mudança no Working Directory. Seguro.</p>
+      <footer className="footer">
+        <div className="left"><span className="prompt">$</span><span>echo "fim do paper" && exit 0</span></div>
+        <div className="right">git-do-zero · pt-br · 2026</div>
+      </footer>
+    </div>
+  );
+}
 
-      <h4>"Commitei errado, quero desfazer o último commit"</h4>
-      <pre class="code"><span class="c"># desfaz o commit mas mantém as mudanças</span>
-git reset --soft HEAD~1
-
-<span class="c"># PERIGOSO: desfaz E joga fora as mudanças</span>
-git reset --hard HEAD~1</pre>
-
-      <h4>"Tô completamente perdido"</h4>
-      <p>Existe um comando salvador: <code>git reflog</code>. Ele mostra <strong>tudo</strong> que o HEAD apontou recentemente, mesmo coisas que você "perdeu". Quase nada se perde de verdade no Git — quase sempre dá pra recuperar via reflog. Decora esse nome: <strong>reflog é seu paraquedas</strong>.</p>
-
-      <h2><span class="num">§ 07</span>Por baixo dos panos</h2>
-      <h3>o que rola por dentro</h3>
-      <p>Você já consegue trabalhar com Git agora. Mas pra virar um usuário fluente, vale entender o que está rolando por baixo.</p>
-      <p>Por baixo, o Git é um banco de dados chave-valor de <strong>objetos</strong>:</p>
-      <ul>
-        <li><strong>Blob</strong> — conteúdo de um arquivo.</li>
-        <li><strong>Tree</strong> — uma pasta (lista de blobs e outras trees).</li>
-        <li><strong>Commit</strong> — um snapshot (aponta pra uma tree raiz, mais metadados).</li>
-        <li><strong>Tag</strong> — uma referência fixa a um commit específico.</li>
-      </ul>
-      <p>Cada objeto é identificado por um <strong>hash SHA-1</strong> — aquele código tipo <code>a3f5e9c8d2…</code> que você vê o tempo todo. O hash é gerado a partir do conteúdo. Se o conteúdo muda, o hash muda. <strong>É por isso que é impossível alterar o histórico sem deixar rastro</strong> — qualquer mudança propaga em cadeia.</p>
-
-      <h4>Uma branch é só um ponteiro</h4>
-      <p>O que é uma branch? É <strong>literalmente um arquivo de texto</strong> com o hash do commit pra onde ela aponta. Sério. Você pode ver:</p>
-      <pre class="code">cat .git/refs/heads/main
-<span class="c"># a3f5e9c8d2b1e4f7c0a9d8b6e5f4a3c2d1e0f9a8</span></pre>
-      <p>Aparece um hash. Só isso. Uma branch é só um nome amigável pra um hash. Por isso criar branch é instantâneo — você só está criando um arquivinho de texto com 40 caracteres.</p>
-
-      <h2><span class="num">§ 08</span>Para onde ir daqui</h2>
-      <h3>próximos passos</h3>
-      <p>Você cobriu o suficiente pra trabalhar profissionalmente. Git é fundo, e tem coisas legais que ficam pra depois:</p>
-      <ul>
-        <li><code>git rebase</code> — alternativa ao merge que reescreve o histórico.</li>
-        <li><code>git cherry-pick</code> — pegar um commit específico de outra branch.</li>
-        <li><code>git stash</code> — guardar mudanças temporariamente sem commitar.</li>
-        <li><code>git tag</code> — marcar versões importantes (tipo <code>v1.0.0</code>).</li>
-        <li><strong>Hooks</strong> — scripts que rodam em eventos (pre-commit, pre-push).</li>
-        <li><code>git bisect</code> — busca binária pra encontrar o commit que introduziu um bug.</li>
-      </ul>
-      <p>Cada um dá pra explorar quando precisar. Não tenta aprender tudo de uma vez — você vai esquecer e ficar frustrado.</p>
-
-      <h4>Pra estudar mais</h4>
-      <ul>
-        <li><strong>Pro Git Book</strong> (<a href="https://git-scm.com/book/pt-br/v2" target="_blank" rel="noreferrer">git-scm.com/book/pt-br/v2</a>) — gratuito, traduzido, oficial. A bíblia.</li>
-        <li><strong>Atlassian Git Tutorials</strong> — explicações visuais excelentes.</li>
-        <li><strong>Oh Shit, Git!?!</strong> (<a href="https://ohshitgit.com" target="_blank" rel="noreferrer">ohshitgit.com</a>) — receita de bolo pra quando você quebra alguma coisa.</li>
-        <li><strong>Learn Git Branching</strong> — referência interativa.</li>
-      </ul>
-
-      <div class="dividerdots">· · ·</div>
-
-      <p>Git não é difícil. Git é <strong>mal explicado</strong>. A maior parte dos tutoriais joga comandos na sua cara sem te dar o modelo mental que faz eles fazerem sentido. Se você chegou até aqui, você tem o modelo mental: <strong>três áreas</strong>, <strong>snapshots</strong> como objetos, <strong>branches</strong> como ponteiros, <strong>HEAD</strong> como o "você está aqui".</p>
-      <p>A partir disso, tudo no Git fica navegável. Você pode esquecer um comando — mas sabe procurar. Pode ver um erro estranho — mas sabe interpretar. Pode encarar um merge conflict cabeludo — mas sabe o que está fazendo.</p>
-
-    </section>
-
-    <footer class="foot wrap">
-      <div class="row">
-        <span>Git, do zero · Kruta · 2026</span>
-        <a href="/papers">← voltar para papers</a>
-      </div>
-    </footer>
-  </main>
-
-  <script>
-    (function () {
-      const bar = document.getElementById('bar');
-      window.addEventListener('scroll', function () {
-        const h = document.documentElement;
-        const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-        bar.style.width = Math.min(100, pct) + '%';
-      }, { passive: true });
-    })();
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
   </script>
-
 </body>
 </html>
