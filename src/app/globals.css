@@ -49,6 +49,27 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* ============== MOUNTAIN CURSOR ==============
+   The Trilha logo replaces the default cursor across the site.
+   - Default: dark-ink mountain (visible on cream background).
+   - Pointer/clickable elements: green mountain at a slightly larger size.
+   - Text inputs keep the native I-beam (better usability).
+   - Touch devices ignore custom cursors automatically.
+*/
+html, body {
+  cursor: url("/assets/cursor-mountain.svg") 18 4, auto;
+}
+a, button, [role="button"], label[for], summary,
+input[type="checkbox"], input[type="radio"], input[type="submit"],
+input[type="button"], input[type="reset"], select, .paper-card {
+  cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer;
+}
+input[type="text"], input[type="email"], input[type="search"],
+input[type="number"], input[type="password"], input[type="url"],
+input[type="tel"], textarea, [contenteditable="true"] {
+  cursor: text;
+}
+
 /* Subtle grid texture overlaid on the page */
 [data-bg="grid"] body::before {
   content: "";
@@ -73,7 +94,7 @@ body {
 
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
-button { font-family: inherit; cursor: pointer; }
+button { font-family: inherit; cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer; }
 ::selection { background: var(--ink); color: var(--cream); }
 
 /* ============== TYPOGRAPHY ============== */
@@ -405,7 +426,7 @@ button { font-family: inherit; cursor: pointer; }
 
 /* TURMAS */
 .turmas-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.turma-card { display: flex; flex-direction: column; gap: 18px; cursor: pointer; outline: none; min-width: 0; }
+.turma-card { display: flex; flex-direction: column; gap: 18px; cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer; outline: none; min-width: 0; }
 .turma-img {
   position: relative;
   border-radius: var(--radius-m);
@@ -467,7 +488,7 @@ button { font-family: inherit; cursor: pointer; }
   overflow: hidden;
   position: relative;
   display: block;
-  cursor: pointer;
+  cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer;
   transition:
     transform .5s cubic-bezier(.2,.8,.3,1),
     border-color .25s ease,
@@ -681,7 +702,7 @@ button { font-family: inherit; cursor: pointer; }
 
 /* FAQ */
 .faq-list { border-top: 1px solid var(--rule); }
-.faq-item { border-bottom: 1px solid var(--rule); cursor: pointer; }
+.faq-item { border-bottom: 1px solid var(--rule); cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer; }
 .faq-q {
   width: 100%;
   background: transparent;
@@ -692,7 +713,7 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  cursor: pointer;
+  cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer;
 }
 .faq-mark { font-family: var(--font-body); font-weight: 500; font-size: 28px; color: var(--mint-deep); transition: transform .25s ease; }
 .faq-item.open .faq-mark { transform: rotate(180deg); }
@@ -912,7 +933,7 @@ button { font-family: inherit; cursor: pointer; }
   background: transparent;
   border: 0;
   padding: 4px 0;
-  cursor: pointer;
+  cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer;
   text-align: left;
 }
 .materiais-sidebar-list {
@@ -991,7 +1012,7 @@ button { font-family: inherit; cursor: pointer; }
   position: absolute; top: 12px; right: 12px;
   background: transparent; border: 0;
   font-size: 24px; line-height: 1;
-  color: var(--ink-soft); cursor: pointer;
+  color: var(--ink-soft); cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer;
   padding: 4px 8px;
 }
 
@@ -1011,7 +1032,7 @@ button { font-family: inherit; cursor: pointer; }
   background: transparent;
   border: 0;
   padding: 4px 6px;
-  cursor: pointer;
+  cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer;
   color: var(--ink-muted);
   font-family: var(--font-mono);
   font-size: 14px;
@@ -1038,7 +1059,7 @@ button { font-family: inherit; cursor: pointer; }
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  cursor: pointer;
+  cursor: url("/assets/cursor-mountain-pointer.svg") 20 4, pointer;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
