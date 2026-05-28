@@ -1,6 +1,6 @@
 ---
 title: 12. Exemplo Prático
-description: Coloque em prática tudo que você aprendeu construindo um Monitor de Sistema do zero: POO, herança, abstração, bibliotecas e frameworks com Streamlit e Gradio.
+description: "Coloque em prática tudo que você aprendeu construindo um Monitor de Sistema do zero: POO, herança, abstração, bibliotecas e frameworks com Streamlit e Gradio."
 category: Programação
 order: 12
 ---

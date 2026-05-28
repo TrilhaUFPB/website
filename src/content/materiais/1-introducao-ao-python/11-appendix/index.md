@@ -1,6 +1,6 @@
 ---
 title: 11. Appendix
-description: Configure seu ambiente de desenvolvimento Python com as ferramentas essenciais: venv para isolar projetos, pip para gerenciar pacotes e uv como alternativa moderna e eficiente.
+description: "Configure seu ambiente de desenvolvimento Python com as ferramentas essenciais: venv para isolar projetos, pip para gerenciar pacotes e uv como alternativa moderna e eficiente."
 category: Programação
 order: 11
 ---
