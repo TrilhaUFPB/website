@@ -15,7 +15,12 @@
   "hero": {
     "eyebrow": "Trilha",
     "titleA": "A practical path to",
-    "flips": ["learn.", "grow.", "connect.", "start."],
+    "flips": [
+      "learn.",
+      "grow.",
+      "connect.",
+      "start."
+    ],
     "lede": "Trilha is a free program built by UFPB students to support people arriving at the Computing Center. Classes, mentoring, talks, and a hackathon — all in one semester.",
     "ctaPrimary": "How it works",
     "ctaSecondary": "Meet the team"
@@ -25,10 +30,26 @@
     "title": "More than a course. A network for life.",
     "lede": "Trilha started in 2024 as senior students' answer to a simple question: what was missing for us when we arrived? Today it is a program of classes, mentoring, talks, and events — built by people who walked the path already.",
     "pillars": [
-      { "tag": "Hands-on classes", "title": "A curriculum aimed at industry", "body": "Python, web, data, and engineering fundamentals — taught by tutors already working in the field. Applied to a real project at the end of each semester." },
-      { "tag": "1-1 mentoring", "title": "Support that doesn't end with the class", "body": "Every student is paired with a senior mentor. The conversations continue long after the semester ends." },
-      { "tag": "Talks", "title": "Guests from industry and research", "body": "Engineers, founders, and researchers bring back what is actually happening in the market and in academia." },
-      { "tag": "Hackathon", "title": "Putting it all together at the end", "body": "Each cohort closes with a themed hackathon — teams build from scratch in a few days, the best way to consolidate everything learned." }
+      {
+        "tag": "Hands-on classes",
+        "title": "A curriculum aimed at industry",
+        "body": "Python, web, data, and engineering fundamentals — taught by tutors already working in the field. Applied to a real project at the end of each semester."
+      },
+      {
+        "tag": "1-1 mentoring",
+        "title": "Support that doesn't end with the class",
+        "body": "Every student is paired with a senior mentor. The conversations continue long after the semester ends."
+      },
+      {
+        "tag": "Talks",
+        "title": "Guests from industry and research",
+        "body": "Engineers, founders, and researchers bring back what is actually happening in the market and in academia."
+      },
+      {
+        "tag": "Hackathon",
+        "title": "Putting it all together at the end",
+        "body": "Each cohort closes with a themed hackathon — teams build from scratch in a few days, the best way to consolidate everything learned."
+      }
     ]
   },
   "numbers": {
@@ -49,10 +70,34 @@
     "lede": "Each cohort marks a version of Trilha. Meet the people who came through and what each edition built.",
     "studentsSuffix": "students",
     "items": [
-      { "period": "2024.1", "title": "First cohort", "students": 14, "theme": "Where it all started — Python, web, and the first hackathon.", "img": "/assets/turmas/trilha2024.jpg" },
-      { "period": "2024.2", "title": "Second cohort", "students": 19, "theme": "Expanded curriculum, first wave of external guest speakers.", "img": "/assets/turmas/trilha2024-2.jpg" },
-      { "period": "2025.1", "title": "Third cohort", "students": 16, "theme": "Structured mentoring and a new data track.", "img": "/assets/turmas/trilha2025.jpg" },
-      { "period": "2025.2", "title": "Fourth cohort", "students": 12, "theme": "More cohorts, more projects, a community taking shape.", "img": "/assets/turmas/trilha2025-2.jpeg" }
+      {
+        "period": "2024.1",
+        "title": "First cohort",
+        "students": 14,
+        "theme": "Where it all started — Python, web, and the first hackathon.",
+        "img": "/assets/turmas/trilha2024.jpg"
+      },
+      {
+        "period": "2024.2",
+        "title": "Second cohort",
+        "students": 19,
+        "theme": "Expanded curriculum, first wave of external guest speakers.",
+        "img": "/assets/turmas/trilha2024-2.jpg"
+      },
+      {
+        "period": "2025.1",
+        "title": "Third cohort",
+        "students": 16,
+        "theme": "Structured mentoring and a new data track.",
+        "img": "/assets/turmas/trilha2025.jpg"
+      },
+      {
+        "period": "2025.2",
+        "title": "Fourth cohort",
+        "students": 12,
+        "theme": "More cohorts, more projects, a community taking shape.",
+        "img": "/assets/turmas/trilha2025-2.jpeg"
+      }
     ]
   },
   "projects": {
@@ -60,9 +105,27 @@
     "title": "What comes out of a Trilha semester.",
     "lede": "Every semester ends with a themed hackathon. Teams build from scratch in a few days — below, some of the projects. (Links and details coming soon.)",
     "items": [
-      { "tag": "2024.1", "title": "ClarIAr", "desc": "Android accessibility app that uses LLMs to generate rich, natural descriptions of on-screen images, empowering visually impaired users.", "img": "/assets/projects/clariar.png", "pitch": "https://www.youtube.com/watch?v=0b4k1lVUtO4" },
-      { "tag": "2024.2", "title": "Pixelmind", "desc": "AI-powered video editor: users upload a clip, describe the desired result, and the system automates the full edit.", "img": "/assets/projects/pixelmind.png", "pitch": "https://www.youtube.com/watch?v=DHXnobWWJjE" },
-      { "tag": "2025.1", "title": "Praxis", "desc": "Hands-on learning platform for junior devs with track-specific challenges and AI feedback. Simulate, practice, evolve.", "img": "/assets/projects/praxis.png", "pitch": "https://www.youtube.com/watch?v=v5YYfLKEvV0" }
+      {
+        "tag": "2024.1",
+        "title": "ClarIAr",
+        "desc": "Android accessibility app that uses LLMs to generate rich, natural descriptions of on-screen images, empowering visually impaired users.",
+        "img": "/assets/projects/clariar.png",
+        "pitch": "https://www.youtube.com/watch?v=0b4k1lVUtO4"
+      },
+      {
+        "tag": "2024.2",
+        "title": "Pixelmind",
+        "desc": "AI-powered video editor: users upload a clip, describe the desired result, and the system automates the full edit.",
+        "img": "/assets/projects/pixelmind.png",
+        "pitch": "https://www.youtube.com/watch?v=DHXnobWWJjE"
+      },
+      {
+        "tag": "2025.1",
+        "title": "Praxis",
+        "desc": "Hands-on learning platform for junior devs with track-specific challenges and AI feedback. Simulate, practice, evolve.",
+        "img": "/assets/projects/praxis.png",
+        "pitch": "https://www.youtube.com/watch?v=v5YYfLKEvV0"
+      }
     ]
   },
   "depo": {
@@ -144,13 +207,35 @@
     "eyebrow": "08 / FAQ",
     "title": "Questions?",
     "questions": [
-      { "q": "Is it for every major?", "a": "Yes — open to students from any major, not restricted to UFPB only." },
-      { "q": "How do I sign up?", "a": "Registrations open periodically, when each cohort ends, at the start of each academic semester." },
-      { "q": "How many cohorts run at once?", "a": "Just one cohort per semester." },
-      { "q": "Do I need to know how to program?", "a": "No. The program targets people starting out and assumes no prior experience." },
-      { "q": "Where are classes held?", "a": "At UFPB's Computing Center (CI)." },
-      { "q": "Is it free?", "a": "Yes — completely free." },
-      { "q": "What's Tiago's favorite color?", "a": "One of the most frequently asked questions at Trilha, and Tiago's favorite color is ", "easterEgg": "tiagoColor" }
+      {
+        "q": "Is it for every major?",
+        "a": "Yes — open to students from any major, not restricted to UFPB only."
+      },
+      {
+        "q": "How do I sign up?",
+        "a": "Registrations open periodically, when each cohort ends, at the start of each academic semester."
+      },
+      {
+        "q": "How many cohorts run at once?",
+        "a": "Just one cohort per semester."
+      },
+      {
+        "q": "Do I need to know how to program?",
+        "a": "No. The program targets people starting out and assumes no prior experience."
+      },
+      {
+        "q": "Where are classes held?",
+        "a": "At UFPB's Computing Center (CI)."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes — completely free."
+      },
+      {
+        "q": "What's Tiago's favorite color?",
+        "a": "One of the most frequently asked questions at Trilha, and Tiago's favorite color is ",
+        "easterEgg": "tiagoColor"
+      }
     ],
     "colors": {
       "sunday": "Red",
@@ -200,7 +285,11 @@
     "contact": "Contact",
     "sections": "Sections",
     "locationLabel": "Location",
-    "locationLines": ["UFPB · Computing Center", "João Pessoa, Paraíba", "Brazil"],
+    "locationLines": [
+      "UFPB · Computing Center",
+      "João Pessoa, Paraíba",
+      "Brazil"
+    ],
     "rights": "All rights reserved."
   },
   "turmaPage": {
@@ -224,117 +313,276 @@
     "submeterTitle": "Submission",
     "items": [
       {
-        "number": "01",
-        "title": "Python Basics 1",
-        "description": "Variables, primitive types, operators, and first scripts. The foundation for writing any Python program.",
+        "number": "03",
+        "category": "python",
+        "title": "Variables and Fundamentals",
+        "description": "Introduction to the execution environment, variables and fundamentals, data types, operations, and conditional structures.",
         "embedUrl": "https://www.canva.com/design/DAHBCocu1jA/oOEHWdZww_tgWoTxUAPKsA/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHBCocu1jA/oOEHWdZww_tgWoTxUAPKsA/view?utm_content=DAHBCocu1jA&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "June 12, 2026",
         "deadline": "June 18, 2026",
         "homework": "Write two programs: (1) one that reads the user's name, age, and city and prints a personalized greeting; (2) one that reads an integer and prints whether it is positive, negative, or zero. Push both .py files to a GitHub repository.",
         "links": [
-          { "label": "Official Python 3 tutorial", "url": "https://docs.python.org/3/tutorial/index.html" },
-          { "label": "Python Tutor — visualize your code execution", "url": "https://pythontutor.com/" },
-          { "label": "W3Schools — Python Basics", "url": "https://www.w3schools.com/python/python_intro.asp" }
-        ]
+          {
+            "label": "Official Python 3 tutorial",
+            "url": "https://docs.python.org/3/tutorial/index.html"
+          },
+          {
+            "label": "Python Tutor — visualize your code execution",
+            "url": "https://pythontutor.com/"
+          },
+          {
+            "label": "W3Schools — Python Basics",
+            "url": "https://www.w3schools.com/python/python_intro.asp"
+          }
+        ],
+        "dateISO": "2026-06-12"
       },
       {
-        "number": "02",
-        "title": "Python Basics 2",
-        "description": "Conditionals, loops, and control flow logic. How to structure a program's logic from start to finish.",
+        "number": "04",
+        "category": "python",
+        "title": "Loops and Functions",
+        "description": "Loops and functions. How to structure a program's logic from start to finish.",
         "embedUrl": "https://www.canva.com/design/DAHBCrdmSq4/EQXDzhpmoiq5MxbrOYGH7A/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHBCrdmSq4/EQXDzhpmoiq5MxbrOYGH7A/view?utm_content=DAHBCrdmSq4&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "June 19, 2026",
         "deadline": "June 25, 2026",
         "homework": "Write a function that calculates the factorial of a number using a loop. Then write a program that prints the first N terms of the Fibonacci sequence, where N is read from the user. Push both .py files to a GitHub repository.",
         "links": [
-          { "label": "Python — control flow", "url": "https://docs.python.org/3/tutorial/controlflow.html" },
-          { "label": "Python — defining functions", "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions" },
-          { "label": "Practice problems — HackerRank Python", "url": "https://www.hackerrank.com/domains/python" }
-        ]
+          {
+            "label": "Python — control flow",
+            "url": "https://docs.python.org/3/tutorial/controlflow.html"
+          },
+          {
+            "label": "Python — defining functions",
+            "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+          },
+          {
+            "label": "Practice problems — HackerRank Python",
+            "url": "https://www.hackerrank.com/domains/python"
+          }
+        ],
+        "dateISO": "2026-06-19"
       },
       {
-        "number": "03",
-        "title": "Python Basics 3 — OOP",
-        "description": "Object-oriented programming in practice: classes, attributes, methods, and inheritance. Modeling real problems with objects.",
-        "embedUrl": "https://www.canva.com/design/DAHAjlieHS0/0triK2_jCcUBGhC7yYWbCw/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHAjlieHS0/0triK2_jCcUBGhC7yYWbCw/view?utm_content=DAHAjlieHS0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "July 3, 2026",
-        "deadline": "July 9, 2026",
-        "homework": "Homework coming soon.",
-        "links": [
-          { "label": "Python — classes and objects", "url": "https://docs.python.org/3/tutorial/classes.html" }
-        ]
-      },
-      {
-        "number": "04",
-        "title": "Python Basics 3 — Frameworks & Libraries",
-        "description": "The Python ecosystem: pip, virtual environments, and the libraries every developer needs to know.",
+        "number": "05",
+        "category": "python",
+        "title": "Errors, Exceptions, and Frameworks",
+        "description": "Errors, exceptions, files, libraries, and frameworks. The Python ecosystem and how to use it in practice.",
         "embedUrl": "https://www.canva.com/design/DAHBClIMRP8/9kIAewlHHH-pK44YeYLSxw/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHBClIMRP8/9kIAewlHHH-pK44YeYLSxw/view?utm_content=DAHBClIMRP8&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "June 26, 2026",
         "deadline": "July 2, 2026",
         "homework": "Create a virtual environment with venv, install the requests library, and use it to fetch data from a public API (suggestion: https://jsonplaceholder.typicode.com/posts). Print the title of the first 5 posts. Document the process in a README.md and push everything to GitHub.",
         "links": [
-          { "label": "pip — Python package manager", "url": "https://pip.pypa.io/en/stable/" },
-          { "label": "requests documentation", "url": "https://requests.readthedocs.io/en/latest/" },
-          { "label": "JSONPlaceholder — free test API", "url": "https://jsonplaceholder.typicode.com/" },
-          { "label": "Python venv — virtual environments", "url": "https://docs.python.org/3/library/venv.html" }
-        ]
-      },
-      {
-        "number": "05",
-        "title": "Data 1 — Intro & Data Engineering",
-        "description": "What data engineering is, pipelines, and how raw data becomes usable information in real systems.",
-        "embedUrl": "https://www.canva.com/design/DAHLV2G9YO0/5bx-5OZsT2mNbsUo6jxHzw/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHLV2G9YO0/5bx-5OZsT2mNbsUo6jxHzw/view?utm_content=DAHLV2G9YO0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "homework": "Homework coming soon.",
-        "links": []
+          {
+            "label": "pip — Python package manager",
+            "url": "https://pip.pypa.io/en/stable/"
+          },
+          {
+            "label": "requests documentation",
+            "url": "https://requests.readthedocs.io/en/latest/"
+          },
+          {
+            "label": "JSONPlaceholder — free test API",
+            "url": "https://jsonplaceholder.typicode.com/"
+          },
+          {
+            "label": "Python venv — virtual environments",
+            "url": "https://docs.python.org/3/library/venv.html"
+          }
+        ],
+        "dateISO": "2026-06-26"
       },
       {
         "number": "06",
-        "title": "Data 2 — Data Analysis",
-        "description": "Exploration and visualization with pandas and matplotlib. Extracting patterns and insights from datasets.",
-        "embedUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?utm_content=DAHBCznivZs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "category": "python",
+        "title": "Object-Oriented Programming",
+        "description": "Object-oriented programming: classes, attributes, methods, and inheritance.",
+        "embedUrl": "https://www.canva.com/design/DAHAjlieHS0/0triK2_jCcUBGhC7yYWbCw/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHAjlieHS0/0triK2_jCcUBGhC7yYWbCw/view?utm_content=DAHAjlieHS0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "July 3, 2026",
+        "deadline": "July 9, 2026",
         "homework": "Homework coming soon.",
-        "links": []
+        "links": [
+          {
+            "label": "Python — classes and objects",
+            "url": "https://docs.python.org/3/tutorial/classes.html"
+          }
+        ],
+        "dateISO": "2026-07-03"
       },
       {
         "number": "07",
-        "title": "Data 3 — ML",
-        "description": "Introduction to Machine Learning: supervised models, training, testing, and how to evaluate performance in practice.",
-        "embedUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?utm_content=DAHAHCMaCH0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "category": "python",
+        "title": "Lists, Queues, and Stacks",
+        "description": "Linear structures: arrays/lists, queues, and stacks. How to store and organize data in memory.",
+        "embedUrl": "",
+        "canvaUrl": "",
+        "date": "July 10, 2026",
+        "deadline": "July 16, 2026",
         "homework": "Homework coming soon.",
-        "links": []
+        "links": [],
+        "dateISO": "2026-07-10"
       },
       {
         "number": "08",
-        "title": "FullStack 1 — Backend",
-        "description": "Building RESTful APIs with Python. Routes, requests, responses, and the logic that lives on the server.",
-        "embedUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?utm_content=DAHCdA8c7fI&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "category": "python",
+        "title": "Hash Tables, Sets, and Complexity",
+        "description": "Hash tables, sets, and computational complexity. Efficiency and choosing the right structure for each problem.",
+        "embedUrl": "",
+        "canvaUrl": "",
+        "date": "July 17, 2026",
+        "deadline": "July 23, 2026",
         "homework": "Homework coming soon.",
-        "links": []
+        "links": [],
+        "dateISO": "2026-07-17"
       },
       {
         "number": "09",
-        "title": "FullStack 2 — Database",
-        "description": "Relational modeling, SQL, and connecting a database to the backend. Data persistence in practice.",
-        "embedUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?utm_content=DAHBC_b0Jbs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "homework": "Homework coming soon.",
-        "links": []
+        "category": "python",
+        "title": "Competitive Practice",
+        "description": "Hands-on class in competition format. The mini-project brings together everything you've learned about data structures.",
+        "embedUrl": "",
+        "canvaUrl": "",
+        "date": "July 24, 2026",
+        "deadline": "July 30, 2026",
+        "taskType": "miniprojeto",
+        "homework": "Mini-Project coming soon.",
+        "links": [],
+        "dateISO": "2026-07-24"
       },
       {
         "number": "10",
-        "title": "FullStack 3 — Frontend",
-        "description": "HTML, CSS, and JavaScript applied: building interfaces that talk to the backend and make sense for the user.",
+        "category": "dados",
+        "title": "Data Engineering and Web Scraping",
+        "description": "Introduction to data engineering and web scraping in practice. How to collect, process, and transform raw data.",
+        "embedUrl": "https://www.canva.com/design/DAHLV2G9YO0/5bx-5OZsT2mNbsUo6jxHzw/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHLV2G9YO0/5bx-5OZsT2mNbsUo6jxHzw/view?utm_content=DAHLV2G9YO0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "July 31, 2026",
+        "deadline": "August 6, 2026",
+        "homework": "Homework coming soon.",
+        "links": [],
+        "dateISO": "2026-07-31"
+      },
+      {
+        "number": "11",
+        "category": "dados",
+        "title": "Exploratory Data Analysis",
+        "description": "Concepts and practice of exploratory data analysis with pandas and matplotlib.",
+        "embedUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?utm_content=DAHBCznivZs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "August 7, 2026",
+        "deadline": "August 27, 2026",
+        "homework": "Homework coming soon.",
+        "links": [],
+        "dateISO": "2026-08-07"
+      },
+      {
+        "number": "12",
+        "category": "dados",
+        "title": "Notebook Presentations",
+        "description": "Presentation and discussion of notebooks from the previous assignment. Refinement and insights.",
+        "embedUrl": "",
+        "canvaUrl": "",
+        "date": "August 28, 2026",
+        "deadline": "September 3, 2026",
+        "homework": "Homework coming soon.",
+        "links": [],
+        "dateISO": "2026-08-28"
+      },
+      {
+        "number": "13",
+        "category": "dados",
+        "title": "Introduction to Machine Learning",
+        "description": "Introduction to Machine Learning: supervised models, training, testing, and performance evaluation.",
+        "embedUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?utm_content=DAHAHCMaCH0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "September 4, 2026",
+        "deadline": "September 10, 2026",
+        "homework": "Homework coming soon.",
+        "links": [],
+        "dateISO": "2026-09-04"
+      },
+      {
+        "number": "14",
+        "category": "dados",
+        "title": "Advanced ML Topics",
+        "description": "Advanced topics and Machine Learning mini-project. How to apply models to real-world problems.",
+        "embedUrl": "",
+        "canvaUrl": "",
+        "date": "September 11, 2026",
+        "deadline": "September 17, 2026",
+        "taskType": "miniprojeto",
+        "homework": "Mini-Project coming soon.",
+        "links": [],
+        "dateISO": "2026-09-11"
+      },
+      {
+        "number": "15",
+        "category": "fullstack",
+        "title": "Introduction to Full Stack",
+        "description": "Introduction to full stack development: what software is, networks, and the fundamentals of APIs.",
+        "embedUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?utm_content=DAHCdA8c7fI&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "September 18, 2026",
+        "deadline": "September 24, 2026",
+        "homework": "Homework coming soon.",
+        "links": [],
+        "dateISO": "2026-09-18"
+      },
+      {
+        "number": "16",
+        "category": "fullstack",
+        "title": "API with FastAPI and Postman",
+        "description": "Backend in practice: API with FastAPI and Postman. How to persist data durably.",
+        "embedUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?utm_content=DAHBC_b0Jbs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "September 25, 2026",
+        "deadline": "October 1, 2026",
+        "homework": "Homework coming soon.",
+        "links": [],
+        "dateISO": "2026-09-25"
+      },
+      {
+        "number": "17",
+        "category": "fullstack",
+        "title": "Databases",
+        "description": "Database theory: relational modeling, SQL, and connecting data to the server.",
         "embedUrl": "https://www.canva.com/design/DAHIPYNNMlM/gZ7J69hsNILgyqoOJsBing/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHIPYNNMlM/gZ7J69hsNILgyqoOJsBing/view?utm_content=DAHIPYNNMlM&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "October 2, 2026",
+        "deadline": "October 8, 2026",
         "homework": "Homework coming soon.",
-        "links": []
+        "links": [],
+        "dateISO": "2026-10-02"
+      },
+      {
+        "number": "18",
+        "category": "fullstack",
+        "title": "SQLAlchemy and Database Integration",
+        "description": "API refinement with schemas, base models, and SQLAlchemy. Full integration of the database with the backend.",
+        "embedUrl": "",
+        "canvaUrl": "",
+        "date": "October 9, 2026",
+        "deadline": "October 15, 2026",
+        "homework": "Homework coming soon.",
+        "links": [],
+        "dateISO": "2026-10-09"
+      },
+      {
+        "number": "19",
+        "category": "fullstack",
+        "title": "Frontend in Practice",
+        "description": "Frontend theory and practice. The mini-project closes the cycle with a complete application.",
+        "embedUrl": "",
+        "canvaUrl": "",
+        "date": "October 16, 2026",
+        "deadline": "October 24, 2026",
+        "taskType": "miniprojeto",
+        "homework": "Mini-Project coming soon.",
+        "links": [],
+        "dateISO": "2026-10-16"
       }
     ],
     "form": {
@@ -354,7 +602,17 @@
       "notesPlaceholder": "Any notes about your solution? (optional)",
       "sending": "Sending...",
       "successTitle": "Homework submitted!",
-      "successBody": "We received your submission. The team will get back to you soon."
-    }
+      "successBody": "We received your submission. The team will get back to you soon.",
+      "errorRequired": "Please fill in all required fields.",
+      "errorGithub": "The homework link must be a GitHub URL (https://github.com/...)."
+    },
+    "miniprojetoTitle": "Mini-Project",
+    "categories": {
+      "python": "Python Basics",
+      "dados": "Data",
+      "fullstack": "FullStack",
+      "pitch": "Pitch"
+    },
+    "today": "Today"
   }
 }

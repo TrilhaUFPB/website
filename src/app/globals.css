@@ -760,6 +760,83 @@ button { font-family: inherit; cursor: pointer; }
 .aula-scard-arrow { font-size: 20px; color: var(--ink-soft); transition: transform .25s cubic-bezier(.2,.8,.3,1), color .15s ease; }
 .aula-scard:hover .aula-scard-arrow { transform: translateX(4px); color: var(--ink); }
 
+/* Date-state variants */
+.aula-scard--past { opacity: 0.45; }
+.aula-scard--past:hover { opacity: 0.75; }
+.aula-scard--today { border-bottom-color: transparent; background: color-mix(in srgb, var(--mint-deep) 6%, transparent); border-radius: var(--radius-s); margin-inline: -24px; padding-inline: 24px; }
+.aula-scard--today:hover { background: color-mix(in srgb, var(--mint-deep) 10%, transparent); }
+.aula-scard--today .aula-scard-num { background: var(--mint-deep); color: var(--cream); border-color: transparent; }
+
+/* Today badge — flex sibling of the title */
+.aula-scard-today-tag {
+  display: inline-block;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--mint-deep);
+  color: var(--cream);
+}
+
+/* Category group — schedule list */
+.aulas-group { display: contents; }
+.aulas-group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 0 4px;
+}
+.aulas-group-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+.aulas-group-header--python  .aulas-group-label { background: rgba(55, 118, 171, 0.1); color: #2a6396; }
+.aulas-group-header--dados   .aulas-group-label { background: rgba(219, 121, 40, 0.1); color: #b3621c; }
+.aulas-group-header--fullstack .aulas-group-label { background: rgba(16, 148, 130, 0.1); color: #0e7a6c; }
+.aulas-group-header--pitch   .aulas-group-label { background: rgba(100, 80, 160, 0.1); color: #5b3fa8; }
+
+/* Title + mini-projeto tag on the same row */
+.aula-scard-title-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.aula-scard-title-row .aula-scard-title { margin: 0; }
+.aula-scard-mini-tag {
+  display: inline-block;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(100, 80, 160, 0.1);
+  color: #5b3fa8;
+}
+
+/* Category badge — detail page header */
+.aula-page-category {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.aula-page-category--python    { background: rgba(55, 118, 171, 0.12); color: #2a6396; }
+.aula-page-category--dados     { background: rgba(219, 121, 40, 0.12); color: #b3621c; }
+.aula-page-category--fullstack { background: rgba(16, 148, 130, 0.12); color: #0e7a6c; }
+.aula-page-category--pitch     { background: rgba(100, 80, 160, 0.12); color: #5b3fa8; }
+
 /* AULAS — INDIVIDUAL CLASS PAGE (/aulas/[slug]) */
 .aula-back {
   display: inline-flex;
@@ -955,6 +1032,15 @@ button { font-family: inherit; cursor: pointer; }
 .aulas-input::placeholder { color: var(--ink-soft); opacity: 0.55; }
 select.aulas-input { cursor: pointer; }
 .aulas-textarea { resize: vertical; min-height: 120px; }
+.aulas-form-error {
+  font-size: 13px;
+  color: var(--warn);
+  padding: 10px 14px;
+  background: rgba(194, 98, 46, 0.08);
+  border: 1px solid rgba(194, 98, 46, 0.25);
+  border-radius: var(--radius-s);
+  margin: 0;
+}
 .aulas-form-success {
   display: flex;
   flex-direction: column;

@@ -7,20 +7,24 @@ import { useTranslation } from '@/hooks/useTranslation';
 type AulaLink = { label: string; url: string };
 type Aula = {
   number: string;
+  category: string;
   title: string;
   description: string;
   embedUrl: string;
   canvaUrl: string;
   date?: string;
   deadline?: string;
+  taskType?: string;
   homework?: string;
   links?: AulaLink[];
 };
+
 
 export default function AulaPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const { t } = useTranslation();
   const aulas = t<Aula[]>('aulas.items');
+  const categories = t<Record<string, string>>('aulas.categories');
   const aula = aulas.find((a) => a.number === slug);
 
   const [edicao, setEdicao] = useState('');
@@ -30,13 +34,29 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
   const [notes, setNotes] = useState('');
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [formError, setFormError] = useState('');
 
   const edicoes = ['2025.2', '2026.1', '2026.2', '2027.1', '2027.2'];
 
   if (!aula) return null;
 
+  const isMini = aula.taskType === 'miniprojeto';
+  const taskTitle = isMini ? t('aulas.miniprojetoTitle') : t('aulas.homeworkTitle');
+  const categoryLabel = categories?.[aula.category] ?? '';
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setFormError('');
+
+    if (!edicao || !name || !email || !taskLink) {
+      setFormError(t('aulas.form.errorRequired'));
+      return;
+    }
+    if (!taskLink.startsWith('https://github.com/')) {
+      setFormError(t('aulas.form.errorGithub'));
+      return;
+    }
+
     setSending(true);
     try {
       await fetch('/api/submit-aula', {
@@ -72,6 +92,11 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
             <span className="kicker tag-dot" style={{ color: 'var(--mint-deep)' }}>
               {t('aulas.lessonLabel')} {aula.number}
             </span>
+            {categoryLabel && (
+              <span className={`aula-page-category aula-page-category--${aula.category}`}>
+                {categoryLabel}
+              </span>
+            )}
             {aula.date && (
               <span className="kicker" style={{ color: 'var(--ink-soft)' }}>{aula.date}</span>
             )}
@@ -80,10 +105,10 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
           <p className="aula-page-subtitle">{aula.description}</p>
         </header>
 
-        {/* Slide — smaller */}
-        <div className="aula-page-embed-outer">
-          <div className="aula-page-embed-ratio">
-            {aula.embedUrl ? (
+        {/* Slide — only when embedUrl is set */}
+        {aula.embedUrl && (
+          <div className="aula-page-embed-outer">
+            <div className="aula-page-embed-ratio">
               <iframe
                 loading="lazy"
                 className="aula-page-embed"
@@ -92,18 +117,14 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
                 allow="fullscreen"
                 allowFullScreen
               />
-            ) : (
-              <div className="aula-page-embed aula-page-embed--empty">
-                <span className="kicker">{t('aulas.comingSoon')}</span>
-              </div>
+            </div>
+            {aula.canvaUrl && (
+              <a href={aula.canvaUrl} target="_blank" rel="noopener noreferrer" className="aula-canva-link">
+                {aula.title} · Trilha
+              </a>
             )}
           </div>
-          {aula.canvaUrl && (
-            <a href={aula.canvaUrl} target="_blank" rel="noopener noreferrer" className="aula-canva-link">
-              {aula.title} · Trilha
-            </a>
-          )}
-        </div>
+        )}
 
         {/* Useful links — below slide, no title */}
         {aula.links && aula.links.length > 0 && (
@@ -118,9 +139,9 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
           </ul>
         )}
 
-        {/* Tarefa */}
-        <div className="aula-tarefa">
-          <h1 className="aula-tarefa-h1">{t('aulas.homeworkTitle')}</h1>
+        {/* Tarefa / Mini-Projeto — only when deadline is set */}
+        {aula.deadline && <div className="aula-tarefa">
+          <h1 className="aula-tarefa-h1">{taskTitle}</h1>
           {aula.deadline && (
             <p className="aula-page-deadline" style={{ marginBottom: 32 }}>
               {t('aulas.deadlineLabel')}: {aula.deadline}
@@ -153,7 +174,6 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
                   <label className="aulas-form-field">
                     <span className="aulas-form-label">{t('aulas.form.edicao')}</span>
                     <select
-                      required
                       value={edicao}
                       onChange={(e) => setEdicao(e.target.value)}
                       className="aulas-input"
@@ -169,7 +189,6 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
                       <span className="aulas-form-label">{t('aulas.form.name')}</span>
                       <input
                         type="text"
-                        required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder={t('aulas.form.namePlaceholder')}
@@ -180,7 +199,6 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
                       <span className="aulas-form-label">{t('aulas.form.email')}</span>
                       <input
                         type="email"
-                        required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder={t('aulas.form.emailPlaceholder')}
@@ -208,6 +226,9 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
                       className="aulas-input aulas-textarea"
                     />
                   </label>
+                  {formError && (
+                    <p className="aulas-form-error">{formError}</p>
+                  )}
                   <button type="submit" className="btn btn--mint" disabled={sending}>
                     {sending
                       ? t('aulas.form.sending')
@@ -217,7 +238,7 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
               )}
             </div>
           </div>
-        </div>
+        </div>}
 
       </div>
       </div>
