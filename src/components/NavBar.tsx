@@ -33,6 +33,7 @@ export default function NavBar() {
     { id: 'time', label: t('nav.time'), url: '/#time' },
     { id: 'materiais', label: t('nav.materiais'), url: '/materiais' },
     { id: 'artigos', label: t('nav.artigos'), url: '/papers' },
+    { id: 'aulas', label: t('nav.aulas'), url: '/aulas' },
   ];
 
   const toggleLang = () => {

@@ -9,7 +9,8 @@
     "projetos": "Projects",
     "time": "Team",
     "materiais": "Materials",
-    "artigos": "Papers"
+    "artigos": "Papers",
+    "aulas": "Classes"
   },
   "hero": {
     "eyebrow": "Trilha",
@@ -205,5 +206,155 @@
   "turmaPage": {
     "back": "← Back",
     "cohortLabel": "Cohort"
+  },
+  "aulas": {
+    "eyebrow": "Classes",
+    "title": "Trilha Classes.",
+    "lede": "Access recordings and materials for each class of the semester. Have a question? Send a message directly to the team.",
+    "lessonLabel": "Class",
+    "comingSoon": "Coming soon",
+    "available": "Available",
+    "dateLabel": "Date",
+    "deadlineLabel": "Due",
+    "back": "All classes",
+    "aboutTitle": "About this class",
+    "linksTitle": "Useful links",
+    "homeworkTitle": "Homework",
+    "descricaoTitle": "Description",
+    "submeterTitle": "Submission",
+    "items": [
+      {
+        "number": "01",
+        "title": "Python Basics 1",
+        "description": "Variables, primitive types, operators, and first scripts. The foundation for writing any Python program.",
+        "embedUrl": "https://www.canva.com/design/DAHBCocu1jA/oOEHWdZww_tgWoTxUAPKsA/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHBCocu1jA/oOEHWdZww_tgWoTxUAPKsA/view?utm_content=DAHBCocu1jA&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "June 12, 2026",
+        "deadline": "June 18, 2026",
+        "homework": "Write two programs: (1) one that reads the user's name, age, and city and prints a personalized greeting; (2) one that reads an integer and prints whether it is positive, negative, or zero. Push both .py files to a GitHub repository.",
+        "links": [
+          { "label": "Official Python 3 tutorial", "url": "https://docs.python.org/3/tutorial/index.html" },
+          { "label": "Python Tutor — visualize your code execution", "url": "https://pythontutor.com/" },
+          { "label": "W3Schools — Python Basics", "url": "https://www.w3schools.com/python/python_intro.asp" }
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Python Basics 2",
+        "description": "Conditionals, loops, and control flow logic. How to structure a program's logic from start to finish.",
+        "embedUrl": "https://www.canva.com/design/DAHBCrdmSq4/EQXDzhpmoiq5MxbrOYGH7A/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHBCrdmSq4/EQXDzhpmoiq5MxbrOYGH7A/view?utm_content=DAHBCrdmSq4&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "June 19, 2026",
+        "deadline": "June 25, 2026",
+        "homework": "Write a function that calculates the factorial of a number using a loop. Then write a program that prints the first N terms of the Fibonacci sequence, where N is read from the user. Push both .py files to a GitHub repository.",
+        "links": [
+          { "label": "Python — control flow", "url": "https://docs.python.org/3/tutorial/controlflow.html" },
+          { "label": "Python — defining functions", "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions" },
+          { "label": "Practice problems — HackerRank Python", "url": "https://www.hackerrank.com/domains/python" }
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Python Basics 3 — OOP",
+        "description": "Object-oriented programming in practice: classes, attributes, methods, and inheritance. Modeling real problems with objects.",
+        "embedUrl": "https://www.canva.com/design/DAHAjlieHS0/0triK2_jCcUBGhC7yYWbCw/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHAjlieHS0/0triK2_jCcUBGhC7yYWbCw/view?utm_content=DAHAjlieHS0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "July 3, 2026",
+        "deadline": "July 9, 2026",
+        "homework": "Homework coming soon.",
+        "links": [
+          { "label": "Python — classes and objects", "url": "https://docs.python.org/3/tutorial/classes.html" }
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Python Basics 3 — Frameworks & Libraries",
+        "description": "The Python ecosystem: pip, virtual environments, and the libraries every developer needs to know.",
+        "embedUrl": "https://www.canva.com/design/DAHBClIMRP8/9kIAewlHHH-pK44YeYLSxw/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHBClIMRP8/9kIAewlHHH-pK44YeYLSxw/view?utm_content=DAHBClIMRP8&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "June 26, 2026",
+        "deadline": "July 2, 2026",
+        "homework": "Create a virtual environment with venv, install the requests library, and use it to fetch data from a public API (suggestion: https://jsonplaceholder.typicode.com/posts). Print the title of the first 5 posts. Document the process in a README.md and push everything to GitHub.",
+        "links": [
+          { "label": "pip — Python package manager", "url": "https://pip.pypa.io/en/stable/" },
+          { "label": "requests documentation", "url": "https://requests.readthedocs.io/en/latest/" },
+          { "label": "JSONPlaceholder — free test API", "url": "https://jsonplaceholder.typicode.com/" },
+          { "label": "Python venv — virtual environments", "url": "https://docs.python.org/3/library/venv.html" }
+        ]
+      },
+      {
+        "number": "05",
+        "title": "Data 1 — Intro & Data Engineering",
+        "description": "What data engineering is, pipelines, and how raw data becomes usable information in real systems.",
+        "embedUrl": "https://www.canva.com/design/DAHLV2G9YO0/5bx-5OZsT2mNbsUo6jxHzw/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHLV2G9YO0/5bx-5OZsT2mNbsUo6jxHzw/view?utm_content=DAHLV2G9YO0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "homework": "Homework coming soon.",
+        "links": []
+      },
+      {
+        "number": "06",
+        "title": "Data 2 — Data Analysis",
+        "description": "Exploration and visualization with pandas and matplotlib. Extracting patterns and insights from datasets.",
+        "embedUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?utm_content=DAHBCznivZs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "homework": "Homework coming soon.",
+        "links": []
+      },
+      {
+        "number": "07",
+        "title": "Data 3 — ML",
+        "description": "Introduction to Machine Learning: supervised models, training, testing, and how to evaluate performance in practice.",
+        "embedUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?utm_content=DAHAHCMaCH0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "homework": "Homework coming soon.",
+        "links": []
+      },
+      {
+        "number": "08",
+        "title": "FullStack 1 — Backend",
+        "description": "Building RESTful APIs with Python. Routes, requests, responses, and the logic that lives on the server.",
+        "embedUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?utm_content=DAHCdA8c7fI&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "homework": "Homework coming soon.",
+        "links": []
+      },
+      {
+        "number": "09",
+        "title": "FullStack 2 — Database",
+        "description": "Relational modeling, SQL, and connecting a database to the backend. Data persistence in practice.",
+        "embedUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?utm_content=DAHBC_b0Jbs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "homework": "Homework coming soon.",
+        "links": []
+      },
+      {
+        "number": "10",
+        "title": "FullStack 3 — Frontend",
+        "description": "HTML, CSS, and JavaScript applied: building interfaces that talk to the backend and make sense for the user.",
+        "embedUrl": "https://www.canva.com/design/DAHIPYNNMlM/gZ7J69hsNILgyqoOJsBing/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHIPYNNMlM/gZ7J69hsNILgyqoOJsBing/view?utm_content=DAHIPYNNMlM&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "homework": "Homework coming soon.",
+        "links": []
+      }
+    ],
+    "form": {
+      "eyebrow": "Submit",
+      "submitTitle": "Submit homework",
+      "submitLede": "Send the link to your solution and any notes you think are relevant.",
+      "submitBtn": "Submit homework",
+      "edicao": "Trilha edition",
+      "edicaoPlaceholder": "Select your cohort",
+      "name": "Name",
+      "email": "Email",
+      "taskLink": "Homework link",
+      "notes": "Notes",
+      "namePlaceholder": "Your full name",
+      "emailPlaceholder": "you@email.com",
+      "taskLinkPlaceholder": "https://github.com/your-username/your-repo",
+      "notesPlaceholder": "Any notes about your solution? (optional)",
+      "sending": "Sending...",
+      "successTitle": "Homework submitted!",
+      "successBody": "We received your submission. The team will get back to you soon."
+    }
   }
 }
