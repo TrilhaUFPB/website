@@ -770,11 +770,70 @@ button { font-family: inherit; cursor: pointer; }
 .faq-a { margin: 0 0 24px; max-width: 60ch; color: var(--ink-soft); font-size: 16px; }
 
 /* AULAS — SCHEDULE LIST (main /aulas page) */
+.aulas-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+  padding: 14px 18px;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-s);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.aulas-search:focus-within {
+  border-color: var(--mint-deep);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--mint-deep) 18%, transparent);
+}
+.aulas-search-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  flex-shrink: 0;
+}
+.aulas-search-input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  min-width: 0;
+}
+.aulas-search-input::placeholder { color: var(--ink-soft); opacity: 0.7; }
+.aulas-search-input::-webkit-search-cancel-button { display: none; }
+.aulas-search-clear {
+  border: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 14px;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .15s ease, color .15s ease;
+}
+.aulas-search-clear:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); color: var(--ink); }
+.aulas-empty {
+  margin: 56px 0 24px;
+  padding: 32px 24px;
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius-s);
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
 .aulas-schedule {
   display: flex;
   flex-direction: column;
-  margin-top: 56px;
-  border-top: 1px solid var(--rule);
+  margin-top: 32px;
 }
 .aula-scard {
   display: grid;
@@ -852,13 +911,34 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* Category group — schedule list */
-.aulas-group { display: contents; }
+.aulas-group { display: block; border-bottom: 1px solid var(--rule); }
+.aulas-group:first-child { border-top: 1px solid var(--rule); }
 .aulas-group-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 28px 0 4px;
+  padding: 24px 0;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: background .15s ease;
 }
+.aulas-group-header:hover { background: color-mix(in srgb, var(--ink) 3%, transparent); margin-inline: -24px; padding-inline: 24px; border-radius: var(--radius-s); }
+.aulas-group-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--ink-soft);
+  transition: transform .25s cubic-bezier(.2,.8,.3,1);
+  flex-shrink: 0;
+}
+.aulas-group-header.is-open .aulas-group-chevron { transform: rotate(90deg); }
 .aulas-group-label {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -868,10 +948,26 @@ button { font-family: inherit; cursor: pointer; }
   padding: 5px 12px;
   border-radius: 6px;
 }
+.aulas-group-count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  opacity: 0.7;
+  text-transform: uppercase;
+}
 .aulas-group-header--python  .aulas-group-label { background: rgba(55, 118, 171, 0.1); color: #2a6396; }
 .aulas-group-header--dados   .aulas-group-label { background: rgba(219, 121, 40, 0.1); color: #b3621c; }
 .aulas-group-header--fullstack .aulas-group-label { background: rgba(16, 148, 130, 0.1); color: #0e7a6c; }
 .aulas-group-header--pitch   .aulas-group-label { background: rgba(100, 80, 160, 0.1); color: #5b3fa8; }
+.aulas-group-body { width: 100%; }
+.aulas-group-inner {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--rule);
+}
+.aulas-group-inner .aula-scard:last-child { border-bottom: 0; }
 
 /* Title + mini-projeto tag on the same row */
 .aula-scard-title-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }

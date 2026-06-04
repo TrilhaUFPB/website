@@ -620,6 +620,11 @@
       "fullstack": "FullStack",
       "pitch": "Pitch"
     },
-    "today": "Today"
+    "today": "Today",
+    "searchPlaceholder": "Search lessons by title, number or description",
+    "clearSearch": "Clear search",
+    "noResults": "No lessons found for “{q}”.",
+    "lessonSingular": "lesson",
+    "lessonPlural": "lessons"
   }
 }
