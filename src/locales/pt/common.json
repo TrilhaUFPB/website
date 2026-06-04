@@ -619,6 +619,11 @@
       "fullstack": "FullStack",
       "pitch": "Pitch"
     },
-    "today": "Hoje"
+    "today": "Hoje",
+    "searchPlaceholder": "Pesquisar aulas por título, número ou descrição",
+    "clearSearch": "Limpar busca",
+    "noResults": "Nenhuma aula encontrada para “{q}”.",
+    "lessonSingular": "aula",
+    "lessonPlural": "aulas"
   }
 }
