@@ -125,6 +125,13 @@
         "desc": "Plataforma de prática para devs iniciantes com desafios personalizados por trilha de carreira e feedback por IA. Simule, pratique, evolua.",
         "img": "/assets/projects/praxis.png",
         "pitch": "https://www.youtube.com/watch?v=v5YYfLKEvV0"
+      },
+      {
+        "tag": "2025.2",
+        "title": "Juca",
+        "desc": "App para pais de crianças com seletividade alimentar: trilha personalizada por IA, com receitas e sugestões a cada conquista.",
+        "img": "/assets/projects/juca.png",
+        "pitch": "https://youtu.be/8-npHgnnckw"
       }
     ]
   },

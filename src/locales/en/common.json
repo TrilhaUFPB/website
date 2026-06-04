@@ -125,6 +125,13 @@
         "desc": "Hands-on learning platform for junior devs with track-specific challenges and AI feedback. Simulate, practice, evolve.",
         "img": "/assets/projects/praxis.png",
         "pitch": "https://www.youtube.com/watch?v=v5YYfLKEvV0"
+      },
+      {
+        "tag": "2025.2",
+        "title": "Juca",
+        "desc": "App for parents of kids with food selectivity: AI-curated food track with recipes and suggestions at every milestone.",
+        "img": "/assets/projects/juca.png",
+        "pitch": "https://youtu.be/8-npHgnnckw"
       }
     ]
   },
