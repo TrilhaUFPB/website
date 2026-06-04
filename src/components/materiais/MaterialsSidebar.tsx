@@ -18,8 +18,11 @@ export default function MaterialsSidebar({ areas }: MaterialsSidebarProps) {
   const pathname = usePathname();
 
   useEffect(() => {
-    setExpanded(new Set(areas.map((a) => a.slug)));
-  }, [areas]);
+    // Default-open only the area matching the current page; fall back to the first area.
+    const match = areas.find((a) => pathname.startsWith(`/materiais/${a.slug}/`));
+    const initial = match?.slug ?? areas[0]?.slug;
+    setExpanded(new Set(initial ? [initial] : []));
+  }, [areas, pathname]);
 
   useEffect(() => {
     setMobileOpen(false);
