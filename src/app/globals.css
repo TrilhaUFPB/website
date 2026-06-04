@@ -116,6 +116,8 @@ button { font-family: inherit; cursor: pointer; }
 .section--paper { background: var(--paper); }
 .section--ink { color: #F2EAD8; }
 .section--mint { background: var(--mint-soft); }
+.section--top-tight { padding-top: clamp(32px, 4vw, 56px); }
+.section-head--wide h2 { max-width: none; }
 .container { max-width: 1320px; margin: 0 auto; }
 
 .section-head {
@@ -461,12 +463,12 @@ button { font-family: inherit; cursor: pointer; }
 .projects-track {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 72px) / 3);
+  grid-auto-columns: calc((100% - 220px) / 3);
   gap: 36px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-padding: 0 8px;
-  padding: 8px 4px 28px;
+  scroll-padding-inline: 80px;
+  padding: 8px 80px 28px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }

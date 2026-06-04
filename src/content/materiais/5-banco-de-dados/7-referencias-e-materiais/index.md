@@ -1,11 +1,11 @@
 ---
-title: 8. Referências
+title: 7. Referências
 description: 
 category: Banco de Dados
-order: 8
+order: 7
 ---
 
-# 8.1. Referências e material complementar
+# 7.1. Referências e material complementar
 
 ## Artigos e Documentação
 

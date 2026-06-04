@@ -11,9 +11,9 @@ export default function PapersPage() {
   const papers = t<Paper[]>('papers.items');
 
   return (
-    <section className="section">
+    <section className="section section--top-tight">
       <div className="container">
-        <header className="section-head">
+        <header className="section-head section-head--wide">
           <p className="eyebrow">{t('papers.eyebrow')}</p>
           <h2>{t('papers.title')}</h2>
           <p className="lede">{t('papers.lede')}</p>

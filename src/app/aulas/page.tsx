@@ -101,7 +101,7 @@ export default function AulasPage() {
   }
 
   return (
-    <section className="section">
+    <section className="section section--top-tight">
       <div className="container">
         <header className="section-head">
           <p className="eyebrow">{t('aulas.eyebrow')}</p>
