@@ -44,8 +44,10 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   const createHeadingId = (text: string) => {
     return text
       .toLowerCase()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/\s+/g, "-");
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
   };
 
   if (!mounted) {
