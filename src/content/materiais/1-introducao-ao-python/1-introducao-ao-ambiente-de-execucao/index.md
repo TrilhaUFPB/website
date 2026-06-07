@@ -102,3 +102,24 @@ Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, 
 - [PROGRAMAÇÃO e SISTEMAS de INFORMAÇÃO - Manual do Mundo](https://youtu.be/ML1fgVfxuRU?si=JdHpSeCM2j1kiUGl)
 - [Compiler vs Interpreter In animated Way - CodeVerse](https://youtu.be/E3TDMVETp08?si=4Q2iIDY0Cam7L9ki)
 - [Como Baixar, Instalar e Configurar Visual Studio Code - Canal TI](https://youtu.be/oDgjp7PfX7c?si=PhpkmxqDCG7fIKyk)
+
+```quiz
+- tipo: single
+  pergunta: O que é um programa?
+  opcoes:
+    - texto: Uma sequência de instruções
+      correta: true
+      explicacao: Exato! Todo programa é uma sequência de instruções.
+    - texto: Um arquivo de texto qualquer
+      correta: false
+
+- tipo: single
+  pergunta: Python é uma linguagem…
+  opcoes:
+    - texto: Compilada
+      correta: false
+    - texto: Interpretada
+      correta: true
+      explicacao: Correto! O Python executa linha por linha.
+
+```
