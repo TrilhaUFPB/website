@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { Check, RotateCcw, ArrowRight } from "lucide-react";
+import { Check, RotateCcw, ArrowRight, Pencil } from "lucide-react";
 import { parseQuiz, type QuizData } from "@/lib/quizParser";
 import InlineMarkdown from "./InlineMarkdown";
 
@@ -51,7 +51,6 @@ function SingleQuiz({
     onSubmit({ correct: isCorrect, chosen: selected });
   };
 
-  // Enter para enviar
   useEffect(() => {
     const node = containerRef.current;
     if (!node) return;
@@ -81,6 +80,12 @@ function SingleQuiz({
     return null;
   };
 
+  // Verifica se o aluno errou (submeteu e não acertou)
+  const answeredWrong =
+    submitted &&
+    selected.length > 0 &&
+    !data.opcoes[selected[0]]?.correta;
+
   return (
     <div ref={containerRef}>
       <h4
@@ -98,12 +103,16 @@ function SingleQuiz({
         {data.opcoes.map((opcao, i) => {
           const isSelected = selected.includes(i);
           const status = getStatus(i, opcao.correta);
-          const showExplanation = !!status && !!opcao.explicacao;
-          const isElevated = isSelected || status === "correct" || status === "incorrect";
+          const isElevated = isSelected;
 
-          const containerClass = isElevated
-            ? "bg-slate-800 shadow-[0_1px_3px_rgba(0,0,0,0.3)] ring-1 ring-white/10"
-            : "bg-slate-800/40 hover:bg-slate-800/60";
+          const containerClass =
+            status === "missed"
+              ? "bg-VerdeMenta/10 ring-1 ring-VerdeMenta/30"
+              : status === "incorrect"
+                ? "bg-red-500/10 ring-1 ring-red-500/30"
+                : isElevated
+                  ? "bg-slate-800 shadow-[0_1px_3px_rgba(0,0,0,0.3)] ring-1 ring-white/10"
+                  : "bg-slate-800/40 hover:bg-slate-800/60";
 
           let iconNode: React.ReactNode;
           if (isSelected) {
@@ -135,7 +144,7 @@ function SingleQuiz({
             label = <span className="text-sm font-semibold text-red-400">Incorreto</span>;
           } else if (status === "missed") {
             label = (
-              <span className="text-sm font-semibold text-slate-400">
+              <span className="text-sm font-semibold text-VerdeMenta">
                 Resposta correta
               </span>
             );
@@ -155,7 +164,7 @@ function SingleQuiz({
               >
                 <span className="shrink-0">{iconNode}</span>
                 <span
-                  className="flex-1 text-[15px] text-slate-100 font-inter"
+                  className={`flex-1 text-[15px] font-inter ${status === "incorrect" ? "text-red-400" : "text-slate-100"}`}
                   style={{ fontWeight: 450, lineHeight: "1.5" }}
                 >
                   <InlineMarkdown content={opcao.texto} inline />
@@ -163,18 +172,35 @@ function SingleQuiz({
                 {label && <span className="shrink-0 ml-2">{label}</span>}
               </button>
 
-              {showExplanation && (
+              {/* Explicação da alternativa clicada (correta ou incorreta) */}
+              {(status === "correct" || status === "incorrect") && opcao.explicacao && (
                 <div
                   className="mt-1.5 ml-9 mr-4 mb-1 text-[13.5px] font-inter text-slate-300"
                   style={{ lineHeight: "1.6", fontWeight: 450 }}
                 >
-                  <InlineMarkdown content={opcao.explicacao!} />
+                  <InlineMarkdown content={opcao.explicacao} />
                 </div>
               )}
             </div>
           );
         })}
       </div>
+
+      {/* Bloco 💡 — fora do loop, aparece só quando errou */}
+      {answeredWrong && (() => {
+        const correta = data.opcoes.find((o) => o.correta && (o.explicacao_erro || o.explicacao));
+        if (!correta) return null;
+        const texto = correta.explicacao_erro ?? correta.explicacao!;
+        return (
+          <div
+            className="mt-4 text-[13px] font-inter text-slate-400 flex gap-2"
+            style={{ lineHeight: "1.6", fontWeight: 450 }}
+          >
+            <span className="shrink-0">💡</span>
+            <span><InlineMarkdown content={texto} /></span>
+          </div>
+        );
+      })()}
 
       <div className="mt-5 flex items-center gap-3">
         {!submitted ? (
@@ -222,7 +248,7 @@ function ResultScreen({
       : pct >= 40
         ? "Você está no caminho certo. Releia o conteúdo e tente novamente."
         : "Recomendamos rever a aula antes de continuar.";
-        
+
   const R = 36;
   const circ = 2 * Math.PI * R;
   const dash = circ * (pct / 100);
@@ -230,7 +256,6 @@ function ResultScreen({
 
   return (
     <div className="my-2">
-      {/* Score ring */}
       <div className="flex flex-col items-center gap-3 mb-6">
         <div className="relative w-24 h-24">
           <svg width="96" height="96" viewBox="0 0 96 96" className="-rotate-90">
@@ -241,11 +266,9 @@ function ResultScreen({
               style={{ transition: "stroke-dasharray .6s cubic-bezier(.4,0,.2,1)" }} />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            {/* Ajustado de text-2xl para text-[20px] para melhor proporção interna */}
             <span className="text-[20px] font-bold text-white font-poppins leading-none">
               {pct}%
             </span>
-            {/* Diminuído levemente o contador para harmonizar o espaço */}
             <span className="text-[10px] text-slate-400 font-inter mt-0.5">
               {score}/{total}
             </span>
@@ -253,12 +276,8 @@ function ResultScreen({
         </div>
 
         <div className="text-center">
-          <p className="font-poppins font-semibold text-lg text-white">
-            {title}
-          </p>
-          <p className="text-sm font-inter text-slate-400 mt-0.5 max-w-xs">
-            {desc}
-          </p>
+          <p className="font-poppins font-semibold text-lg text-white">{title}</p>
+          <p className="text-sm font-inter text-slate-400 mt-0.5 max-w-xs">{desc}</p>
         </div>
 
         <div className="flex gap-2">
@@ -271,7 +290,6 @@ function ResultScreen({
         </div>
       </div>
 
-      {/* Revisão por questão */}
       <div className="border-t border-slate-700 pt-4 space-y-2">
         {questions.map((q, i) => {
           const r = results[i];
@@ -290,7 +308,6 @@ function ResultScreen({
         })}
       </div>
 
-      {/* Refazer */}
       <div className="mt-5">
         <button
           type="button"
@@ -324,17 +341,30 @@ export function QuizBlock({ rawYaml }: { rawYaml: string }) {
   const isSingle = questions.length === 1;
 
   return (
-    <div className="my-8 bg-[#0B1230] p-6 md:p-8 rounded-xl shadow-md border border-slate-800 text-white">
-      {/* Título integrado diretamente dentro do container destacado */}
-      <h3 className="font-poppins font-bold text-lg md:text-xl text-white mb-6 border-b border-slate-800 pb-3 opacity-95">
-        Teste seu Conhecimento
-      </h3>
-      
-      {isSingle ? (
-        <SingleQuiz data={questions[0]} onSubmit={() => {}} />
-      ) : (
-        <MultiQuiz questions={questions} />
-      )}
+    <div id="exercicios" className="my-8 scroll-mt-28">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="flex-1 h-px bg-gray-200 dark:bg-slate-700" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold font-inter bg-[#0B1230] text-white">
+          <Pencil className="w-3 h-3" aria-hidden="true" />
+          Exercícios
+        </span>
+        <div className="flex-1 h-px bg-gray-200 dark:bg-slate-700" />
+      </div>
+
+      <div className="bg-[#0B1230] p-6 md:p-8 rounded-xl shadow-md border border-slate-800 text-white">
+        <h3 className="font-poppins font-bold text-lg md:text-xl text-white mb-1 border-b border-slate-700 pb-3 opacity-95">
+          Teste seu Conhecimento
+        </h3>
+        <p className="text-slate-400 text-sm font-inter mb-6" style={{ fontWeight: 450 }}>
+          Responda as questões para fixar o conteúdo da aula.
+        </p>
+
+        {isSingle ? (
+          <SingleQuiz data={questions[0]} onSubmit={() => {}} />
+        ) : (
+          <MultiQuiz questions={questions} />
+        )}
+      </div>
     </div>
   );
 }
@@ -381,12 +411,11 @@ function MultiQuiz({ questions }: { questions: QuizData[] }) {
 
   return (
     <div key={key}>
-      {/* Barra de progresso */}
       <div className="flex items-center gap-3 mb-5">
         <span className="text-xs font-semibold font-inter text-slate-400 shrink-0">
           {cur + 1} / {questions.length}
         </span>
-        <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+        <div className="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
           <div
             className="h-full bg-AzulEletrico rounded-full transition-all duration-500"
             style={{ width: `${pct}%` }}
@@ -394,14 +423,8 @@ function MultiQuiz({ questions }: { questions: QuizData[] }) {
         </div>
       </div>
 
-      {/* Pergunta atual */}
-      <SingleQuiz
-        key={cur}
-        data={questions[cur]}
-        onSubmit={handleSubmit}
-      />
+      <SingleQuiz key={cur} data={questions[cur]} onSubmit={handleSubmit} />
 
-      {/* Botão avançar */}
       {pendingResult && (
         <button
           type="button"

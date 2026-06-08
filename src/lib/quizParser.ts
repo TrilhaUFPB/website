@@ -5,6 +5,7 @@ const QuizOptionSchema = z.object({
   texto: z.string().min(1, 'O campo "texto" da opção não pode ser vazio'),
   correta: z.boolean().optional().default(false),
   explicacao: z.string().optional(),
+  explicacao_erro: z.string().optional(),
 });
 
 const QuizSchema = z
