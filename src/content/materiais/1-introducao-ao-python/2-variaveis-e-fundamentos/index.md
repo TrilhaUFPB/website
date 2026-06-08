@@ -1,12 +1,21 @@
 ---
 title: 2. Variáveis e fundamentos
-description: Compreender como funcionam instruções de atribuição, diagramas de estado, como nomear variáveis e a importância das palavras chave
+description: Compreenda como funcionam instruções de atribuição, diagramas de estado, como nomear variáveis e a importância das palavras chave
 category: Programação
 order: 2
 ---
 
+## Sumário
+
+- [2.1. Instruções de atribuição](#21-instrucoes-de-atribuicao)
+- [2.2. Diagrama de Estado](#22-diagrama-de-estado)
+- [2.3. Nomes de Variáveis e Palavras-chave](#23-nomes-de-variaveis-e-palavras-chave)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
 Uma das características mais importantes de uma linguagem de programação é a capacidade de __manipular variáveis__. 
-___
+---
+
 # 2.1. Instruções de atribuição
 
 **Uma variável é definida como um nome que se refere a um valor.**
@@ -57,7 +66,7 @@ __Exemplos incluem:__
 > Na maioria dos editores de código, essas palavras-chave aparecem em cores diferentes para alertar o programador de que elas possuem um significado especial na linguagem.
 ---
 
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, confira os seguintes recursos:
 
  [Data Types & Variables in Python - Neso Academy](https://youtu.be/R83OfbQeB7M?si=djA5FtbG1m8P3UiV)
