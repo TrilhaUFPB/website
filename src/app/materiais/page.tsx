@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllMaterials, getMaterialsByArea } from "@/lib/materials";
+import { getMaterialsByArea } from "@/lib/materials";
 
 const areaBlurb: Record<string, string> = {
   "1-introducao-ao-python": "Primeiros passos em programação: do ambiente de execução até POO.",
@@ -12,7 +12,6 @@ const areaBlurb: Record<string, string> = {
 
 export default async function MaterialsIndexPage() {
   const areas = await getMaterialsByArea();
-  const allMaterials = await getAllMaterials();
   const populated = areas.filter((a) => a.materials.length > 0);
 
   return (
@@ -23,16 +22,20 @@ export default async function MaterialsIndexPage() {
             <p className="eyebrow">Materiais</p>
             <h2>Biblioteca didática da Trilha.</h2>
             <p className="lede">
-              Conteúdos organizados por área para apoiar quem está aprendendo computação —
-              {" "}{allMaterials.length} materiais em {populated.length} áreas.
+              Conteúdos organizados por área para apoiar quem está aprendendo computação.
             </p>
           </header>
 
           <div className="materiais-areas">
             {populated.map((area) => {
               const first = area.materials[0];
+              if (!first) return null;
               return (
-                <article key={area.slug} className="materiais-area">
+                <Link
+                  key={area.slug}
+                  href={`/materiais/${first.area}/${first.slug}`}
+                  className="materiais-area"
+                >
                   <div className="materiais-area-meta">
                     <span className="kicker tag-dot" style={{ color: 'var(--mint-deep)' }}>
                       {area.materials.length} {area.materials.length === 1 ? 'material' : 'materiais'}
@@ -42,15 +45,10 @@ export default async function MaterialsIndexPage() {
                   <p className="materiais-area-desc">
                     {areaBlurb[area.slug] ?? 'Materiais didáticos preparados pelo time da Trilha.'}
                   </p>
-                  {first && (
-                    <Link
-                      href={`/materiais/${first.area}/${first.slug}`}
-                      className="materiais-area-cta"
-                    >
-                      Começar <span className="arrow">→</span>
-                    </Link>
-                  )}
-                </article>
+                  <span className="materiais-area-cta">
+                    Começar <span className="arrow">→</span>
+                  </span>
+                </Link>
               );
             })}
           </div>

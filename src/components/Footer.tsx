@@ -26,6 +26,7 @@ export default function Footer() {
             <li><a href="#time">{t('nav.time')}</a></li>
             <li><a href="/materiais">{t('nav.materiais')}</a></li>
             <li><a href="/papers">{t('nav.artigos')}</a></li>
+            <li><a href="/aulas">{t('nav.aulas')}</a></li>
           </ul>
         </div>
         <div className="footer-col">
