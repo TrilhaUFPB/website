@@ -360,8 +360,12 @@
             "url": "https://docs.python.org/3/tutorial/controlflow.html"
           },
           {
-            "label": "Python — funções definidas pelo usuário",
-            "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+            "label": "W3Schools — Python Functions",
+            "url": "https://www.w3schools.com/python/python_functions.asp"
+          },
+          {
+            "label": "Python MOOC — Laços, Funções e mais",
+            "url": "https://programming-25.mooc.fi/part-3"
           },
           {
             "label": "Exercícios práticos — HackerRank Python",
@@ -384,6 +388,10 @@
           {
             "label": "pip — gerenciador de pacotes Python",
             "url": "https://pip.pypa.io/en/stable/"
+          },
+          {
+            "label": "uv — Um gerenciador de pacotes Python extremamente rápido",
+            "url": "https://docs.astral.sh/uv/"
           },
           {
             "label": "Documentação requests",
@@ -414,6 +422,14 @@
           {
             "label": "Python — classes e objetos",
             "url": "https://docs.python.org/3/tutorial/classes.html"
+          },
+          {
+            "label": "Python MOOC — Classes e Objetos",
+            "url": "https://programming-25.mooc.fi/part-8"
+          },
+          {
+            "label": "Gustavo Guanabara — Curso de POO em Python",
+            "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dn_RXXoa3Ameh77f95Hgwv3"
           }
         ],
         "dateISO": "2026-07-03"

@@ -361,8 +361,12 @@
             "url": "https://docs.python.org/3/tutorial/controlflow.html"
           },
           {
-            "label": "Python — defining functions",
-            "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+            "label": "W3Schools — Python Functions",
+            "url": "https://www.w3schools.com/python/python_functions.asp"
+          },
+          {
+            "label": "Python MOOC — Loops, Functions and more",
+            "url": "https://programming-25.mooc.fi/part-3"
           },
           {
             "label": "Practice problems — HackerRank Python",
@@ -385,6 +389,10 @@
           {
             "label": "pip — Python package manager",
             "url": "https://pip.pypa.io/en/stable/"
+          },
+          {
+            "label": "uv — An extremely fast Python package and project manager",
+            "url": "https://docs.astral.sh/uv/"
           },
           {
             "label": "requests documentation",
@@ -415,6 +423,14 @@
           {
             "label": "Python — classes and objects",
             "url": "https://docs.python.org/3/tutorial/classes.html"
+          },
+          {
+            "label": "Python MOOC — Classes and Objects",
+            "url": "https://programming-25.mooc.fi/part-8"
+          },
+          {
+            "label": "Gustavo Guanabara — Python OOP Course (Portuguese)",
+            "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dn_RXXoa3Ameh77f95Hgwv3"
           }
         ],
         "dateISO": "2026-07-03"
