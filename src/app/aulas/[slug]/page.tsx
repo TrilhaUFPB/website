@@ -27,7 +27,7 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
   const categories = t<Record<string, string>>('aulas.categories');
   const aula = aulas.find((a) => a.number === slug);
 
-  const [edicao, setEdicao] = useState('');
+  const [edicao, setEdicao] = useState('2026.1');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [taskLink, setTaskLink] = useState('');
@@ -36,7 +36,7 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
   const [sending, setSending] = useState(false);
   const [formError, setFormError] = useState('');
 
-  const edicoes = ['2025.2', '2026.1', '2026.2', '2027.1', '2027.2'];
+  const edicoes = ['2025.2', '2026.1'];
 
   if (!aula) return null;
 
