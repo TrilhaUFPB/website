@@ -303,9 +303,9 @@ uv add <nome_pacote>
 ```
 
 **O que este comando faz:**
-- Instala o pacote no ambiente virtual
-- Adiciona a dependência no `pyproject.toml`
-- Atualiza o arquivo `uv.lock` com as versões exatas
+- **Instala** o pacote no ambiente virtual
+- **Adiciona** a dependência no `pyproject.toml`
+- **Atualiza** o arquivo `uv.lock` com as versões exatas
 
 ### Instalando todas as dependências
 
