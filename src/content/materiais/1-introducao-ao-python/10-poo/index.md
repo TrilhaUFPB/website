@@ -1,10 +1,29 @@
 ---
 title: 10. Programação Orientada a Objetos
-description: 
+subtitle: Classes, objetos e os quatro pilares da POO em Python
+description: Aprenda os fundamentos da Programação Orientada a Objetos em Python, entendendo como criar classes e objetos, reutilizar código com herança e organizar sistemas de forma mais eficiente.
 category: Programação
 order: 10
 ---
 
+## Sumário
+
+- [10.1. Conceitos Básicos](#101-conceitos-basicos)
+- [10.2. Abstração](#102-abstracao)
+- [10.3. Implementando em Python](#103-implementando-em-python)
+- [10.4. Encapsulamento: Estratégia e Proteção](#104-encapsulamento-estrategia-e-protecao)
+- [10.5. Herança](#105-heranca)
+- [10.6. Polimorfismo](#106-polimorfismo)
+- [10.7. Classes Abstratas e Interfaces](#107-classes-abstratas-e-interfaces)
+- [10.8. Aplicando Tudo: De Volta à Escola](#108-aplicando-tudo-de-volta-a-escola)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+---
+
+> Ao desenvolver um sistema, nem sempre é suficiente pensar apenas em instruções sendo executadas em sequência. Muitas vezes, é mais natural enxergar o problema como um conjunto de entidades que possuem características e realizam ações, exatamente a proposta da Programação Orientada a Objetos.
+
+---
 # 10.1. Conceitos Básicos
 
 Programação orientada a objetos, ou POO para os mais íntimos, se trata muito de uma forma de organização de construação de sistemas, especificamente no nível do código.
@@ -27,9 +46,9 @@ Uma classe pode conter servir para definir comportamentos e padrões - como no e
 
 Entretanto, a classe "Professor" por si só é apenas uma ideia, não representa uma "Pessoa" que realmente é um professor. Quando temos essa "Pessoa" que executa os comportamentos e padrões definidos na classe, temos então um **objeto**. Numa escola, existem várias pessoas na categoria de "Aluno" que possuem o mesmo objetivo geral. Objetos representam cada pessoa existente que ocupa a posição de aluno na escola, seguem o mesmo padrão de comportamentos, possuindo informações únicas sobre si.
 
-Essa ação de criar um objeto a partir de uma classe é definida pelo termo **instanciação**^1^. Então criar um objeto da classe "Aluno" é o mesmo que instanciar sua classe.
+Essa ação de criar um objeto a partir de uma classe é definida pelo termo **instanciação**. Então criar um objeto da classe "Aluno" é o mesmo que instanciar sua classe.
 
-> Nota 📝: Esse termo será explorado melhor posteriormente.
+> Nota: Esse termo será explorado melhor posteriormente.
 
 Resumidamente,
 
@@ -70,7 +89,7 @@ No quesito de código, métodos são apenas **funções** que estão dentro de u
 
 Em pseudocódigo, o formato das classes, apenas com métodos e atributos, seria:
 
-```
+```plaintext
 classe Professor:
     atributos:
         nome
@@ -94,6 +113,8 @@ classe Aluno:
 
 ```
 
+---
+
 # 10.2. Abstração
 
 Inicialmente pode não ser claro como POO ajuda, parecendo talvez até como uma camada de complexidade a mais. No fim, tudo vai depender do contexto do seu problema, pode ser que POO realmente não seja a melhor abordagem e você precise explorar outros paradigmas da programação.
@@ -107,6 +128,8 @@ Sabemos que todo carro possui suas características únicas e ao mesmo tempo ain
 Colocando isso em nível de código, digamos que você criou um sistema de autorização com 150 linhas. Se você não utilizar classes para organizar, pode acabar sendo necessário replicar quase as mesmas 150 linhas de código de novo. Enquanto usando uma classe, normalmente você as vezes precisa de apenas 1 linha de código para replicar aquela estrutura inteira.
 
 No fim, tudo são sobre práticas que visam facilitar o trabalho do programador. Não só o trabalho pessoal, mas também o em conjunto a outras pessoas. Facilitar organização de ideias e garantir que se uma nova pessoa começar a contribuir no sistema ela consiga entender melhor devido a estsrutura padronizada e bem definida.
+
+---
 
 # 10.3. Implementando em Python
 
@@ -547,4 +570,68 @@ aluno.apresentar()
 
 print(f"CPF do Professor: {prof.get_cpf_mascarado()}")
 # > CPF do Professor: ***.456.***-**
+```
+---
+
+# Complemente o Aprendizado
+
+Para aprofundar seus conhecimentos sobre Programação Orientada a Objetos, confira os seguintes recursos:
+
+ [Nome do vídeo - Canal](#)
+ [Nome do vídeo - Canal](#)
+ [Nome do vídeo - Canal](#)
+
+---
+
+```quiz
+- tipo: single
+  pergunta: Uma escola precisa cadastrar professores e alunos no sistema. Qual conceito de POO melhor representa essa organização?
+  opcoes:
+    - texto: Criar funções separadas para cada tipo de pessoa
+      correta: false
+      explicacao: Funções isoladas não agrupam atributos e comportamentos relacionados. Classes são a abordagem adequada para modelar entidades do mundo real.
+    - texto: Criar classes Professor e Aluno com seus atributos e métodos
+      correta: true
+      explicacao: Exato! Classes modelam entidades reais agrupando seus atributos (dados) e métodos (comportamentos) em uma estrutura organizada.
+      explicacao_erro: Em POO modelamos entidades do mundo real como classes, definindo seus atributos e comportamentos em uma estrutura organizada.
+    - texto: Armazenar tudo em uma lista de dicionários
+      correta: false
+      explicacao: Dicionários armazenam dados, mas não encapsulam comportamentos nem criam relações entre entidades como as classes fazem.
+    - texto: Usar variáveis globais para cada informação
+      correta: false
+      explicacao: Variáveis globais dificultam organização e manutenção. POO existe justamente para evitar esse tipo de estrutura.
+
+- tipo: single
+  pergunta: Você criou uma classe Cachorro com o método latir(). Depois escreveu rex = Cachorro(). O que é rex e o que acontece quando você chama rex.latir()?
+  opcoes:
+    - texto: rex é a classe e latir() cria um novo objeto
+      correta: false
+      explicacao: rex não é a classe, pois a classe já foi definida antes. rex é um objeto criado a partir dela, e latir() é um comportamento que esse objeto executa.
+    - texto: rex é um objeto instanciado da classe Cachorro e rex.latir() executa o método definido na classe
+      correta: true
+      explicacao: Exato! rex é uma instância concreta da classe Cachorro. Ao chamar rex.latir(), o objeto executa o comportamento definido na classe.
+      explicacao_erro: Lembre-se que a classe é o molde e o objeto é a instância criada a partir dela. rex = Cachorro() é o ato de instanciar — criar um objeto real baseado no padrão da classe.
+    - texto: rex é um método e latir() é um atributo da classe
+      correta: false
+      explicacao: rex é um objeto, não um método. E latir() é um método — um comportamento definido na classe — não um atributo.
+    - texto: rex é uma cópia da classe Cachorro e latir() cria outra classe
+      correta: false
+      explicacao: Objetos não são cópias de classes. A classe continua existindo como molde; rex é apenas uma instância independente criada a partir dela.
+
+- tipo: single
+  pergunta: Ao revisar o código de um colega, você nota que o saldo de ContaBancaria pode ser alterado diretamente de qualquer lugar. Que risco isso representa e qual conceito da POO foi ignorado?
+  opcoes:
+    - texto: Nenhum problema, acessar atributos diretamente é uma boa prática em Python
+      correta: false
+      explicacao: Acessar e alterar atributos diretamente ignora qualquer validação, permitindo que o objeto entre em um estado inválido como um saldo negativo sem passar pelo método sacar().
+    - texto: O problema está na falta de herança pois a conta deveria herdar de uma classe base
+      correta: false
+      explicacao: Herança resolve reutilização de código entre classes, não a proteção de dados internos de um objeto.
+    - texto: O saldo deveria ser privado e acessível apenas via métodos como depositar() e sacar(). Isso é encapsulamento
+      correta: true
+      explicacao: Exato! Encapsulamento protege os dados internos do objeto, forçando o uso de métodos que validam as operações antes de alterar o estado.
+      explicacao_erro: Encapsulamento existe para proteger a integridade dos dados. Tornar o saldo privado e expor apenas métodos controlados garante que o objeto nunca entre em um estado inválido.
+    - texto: O problema está na ausência de polimorfismo pois deveriam existir várias versões do método saldo()
+      correta: false
+      explicacao: Polimorfismo permite que objetos diferentes respondam ao mesmo método de formas distintas. Não tem relação com a proteção de dados internos.
 ```

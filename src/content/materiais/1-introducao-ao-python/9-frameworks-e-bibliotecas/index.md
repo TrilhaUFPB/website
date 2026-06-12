@@ -1,28 +1,30 @@
 ---
 title: 9. Frameworks e Bibliotecas
+subtitle: Entenda o que são bibliotecas e frameworks — e como eles aceleram seu desenvolvimento
 description: Aprenda o que são bibliotecas e frameworks em Python, a diferença entre eles, como usar bibliotecas padrão e externas, e como criar a sua própria biblioteca.
 category: Programação
 order: 9
 ---
 
-# 9.1. Bibliotecas
-
-Bem-vindo à aula sobre Bibliotecas! Este é um guia essencial para entender como bibliotecas podem simplificar e acelerar seu desenvolvimento em Python.
-
 ## Sumário
-- [O que é uma Biblioteca?](#o-que-é-uma-biblioteca)
-- [Por que Bibliotecas são Importantes?](#por-que-bibliotecas-são-importantes)
-- [Tipos de Biblioteca em Python](#tipos-de-biblioteca-em-python)
-- [Exemplos Práticos](#exemplos-práticos)
-- [Criando sua própria biblioteca](#criando-sua-própria-biblioteca)
+- [O que é uma Biblioteca?](#91-o-que-e-uma-biblioteca)
+- [Por que Bibliotecas são Importantes?](#92-por-que-bibliotecas-sao-importantes)
+- [Tipos de Biblioteca em Python](#93-tipos-de-biblioteca-em-python)
+- [Exemplos Práticos](#exemplos-praticos)
+- [Criando sua própria biblioteca](#94-criando-sua-propria-biblioteca)
 
-## O que é uma Biblioteca?
+---
+
+> Para iniciar o raciocínio, pense em uma biblioteca como um atalho: em vez de reinventar a roda, você usa código que já foi escrito e testado por outros.
+
+
+# 9.1. O que é uma Biblioteca?
 
 Uma biblioteca é um **conjunto de códigos pré-escritos e prontos para utilizarmos em nossos projetos**. Em vez de criar tudo do zero, podemos importar e usar funções, classes e métodos que já foram desenvolvidos e testados por outros programadores.
 
 Em Python, por exemplo, uma biblioteca é um grupo de **módulos** que contém recursos para realizar tarefas comuns como manipulação de dados, operações matemáticas, extração de dados da web e muito mais.
 
-## Por que Bibliotecas são Importantes?
+# 9.2. Por que Bibliotecas são Importantes?
 
 Durante o desenvolvimento de software, nos deparamos com problemas que já foram resolvidos milhares de vezes por outros programadores. Por exemplo, ordenar uma lista de números, validar um endereço de e-mail ou fazer cálculos matemáticos complexos. Em vez de reescrever essas soluções do zero, podemos usar bibliotecas que já contêm código testado e otimizado para essas tarefas.
 
@@ -34,11 +36,11 @@ Isso traz três grandes vantagens:
 
 > Assim como os frameworks (conceito que será abordado em seguida), bibliotecas são um importante recurso para melhorar a eficiência no trabalho de programação. A diferença é que, no caso das bibliotecas, nós chamamos o código quando precisamos dele. No caso dos frameworks, é o oposto: o framework chama nosso código. Você vai compreender essa diferença melhor mais adiante.
 
-## Tipos de Biblioteca em Python
+# 9.3. Tipos de Biblioteca em Python
 
 Em Python, existem dois tipos principais de bibliotecas que você vai utilizar:
 
-### Bibliotecas Padrão (built-in)
+## Bibliotecas Padrão (built-in)
 
 São módulos que já vêm incluídos na instalação do Python. Não precisamos instalar nada adicional para utilizá-las.
 
@@ -50,7 +52,7 @@ Algumas bibliotecas padrão:
 - **os**: interação com o sistema operacional (arquivos, diretórios)
 - **json**: trabalhar com dados no formato JSON
 
-### Bibliotecas Externas
+## Bibliotecas Externas
 
 São bibliotecas que não vêm incluídas por padrão no Python. Para usá-las, você precisa instalá-las, normalmente utilizando o gerenciador de pacotes **pip** (você vai aprender sobre ele mais adiante). Essas bibliotecas ficam disponíveis no [PyPI](https://pypi.org/) (Python Package Index), o repositório oficial onde milhares de pacotes Python estão cadastrados. O PyPI funciona como uma "loja" gratuita de bibliotecas: basta buscar e instalar o que você precisa.
 
@@ -128,7 +130,7 @@ print(f"\nPreço médio: R$ {preco_medio:.2f}")   # Printa o preço médio
 - `df['Preço'].mean()`: calcula a média dos valores da coluna 'Preço' usando o método **mean()** do **pandas**
 - A tabela é exibida de forma organizada, facilitando a visualização dos dados
 
-## Criando sua própria biblioteca
+# 9.4. Criando sua própria biblioteca
 Até agora vimos como usar bibliotecas prontas. Agora você vai aprender a criar seus próprios módulos e pacotes para organizar e reutilizar seu código.
 
 ### Módulos:
@@ -246,16 +248,19 @@ Para aprofundar seus conhecimentos sobre bibliotecas, confira o seguinte recurso
 
 # 9.2. Frameworks
 
-Bem-vindo à aula sobre Frameworks! Este é um guia essencial para entender como frameworks podem acelerar seu desenvolvimento.
-
 ## Sumário
-- [O que é um Framework?](#o-que-é-um-framework)
+- [O que é um Framework?](#o-que-e-um-framework)
 - [Por que usar um framework?](#por-que-usar-um-framework)
 - [Vantagens de usar um framework](#vantagens-principais-de-utilizar-um-framework)
 - [Framework vs. Biblioteca](#framework-vs-biblioteca)
 - [Frameworks Populares](#frameworks-populares)
 - [Exemplos Práticos](#exemplos-simples-de-frameworks-em-python)
 
+---
+
+> Para iniciar o raciocínio, pense em um framework como uma casa pré-fabricada: a estrutura já existe, e você apenas personaliza os espaços dentro dos limites estabelecidos.
+
+---
 ## O que é um Framework?
 
 Um framework é um conjunto de ferramentas e componentes prontos que ajudam você a construir aplicações de forma mais rápida, organizada e com menos erros.
