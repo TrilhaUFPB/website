@@ -417,7 +417,7 @@ function MultiQuiz({ questions }: { questions: QuizData[] }) {
         </span>
         <div className="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
           <div
-            className="h-full bg-VerdeMenta rounded-full transition-all duration-500"
+            className="h-full bg-AzulEletrico rounded-full transition-all duration-500"
             style={{ width: `${pct}%` }}
           />
         </div>
