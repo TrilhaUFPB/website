@@ -318,6 +318,14 @@
     "homeworkTitle": "Homework",
     "descricaoTitle": "Description",
     "submeterTitle": "Submission",
+    "guidelines": {
+      "title": "Before you start",
+      "items": [
+        "Avoid using generative AI — the goal here is your learning, not jumping straight to a ready-made answer.",
+        "Try to solve it on your own before looking up the solution. Getting stuck and making mistakes is part of the process.",
+        "Team up with classmates to tackle the tasks — learning together goes further and makes it lighter."
+      ]
+    },
     "items": [
       {
         "number": "03",
@@ -328,19 +336,31 @@
         "canvaUrl": "https://www.canva.com/design/DAHBCocu1jA/oOEHWdZww_tgWoTxUAPKsA/view?utm_content=DAHBCocu1jA&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "June 12, 2026",
         "deadline": "June 18, 2026",
-        "homework": "Write two programs: (1) one that reads the user's name, age, and city and prints a personalized greeting; (2) one that reads an integer and prints whether it is positive, negative, or zero. Push both .py files to a GitHub repository.",
+        "homework": "1. Make a copy of or download this notebook: https://drive.google.com/file/d/1GmUdSbu99AlV3xgl0IOR_Qngh-Hxjihn/view?usp=sharing.\n 2. Solve all the questions in your file.\n 3. Add the notebook, with your answers, to your GitHub repository (it can be an existing repo or a new one created for the course).\n 4. Fill out the form on the right, pasting the link to your repository.",
         "links": [
           {
-            "label": "Official Python 3 tutorial",
+            "label": "Official Python 3 documentation",
             "url": "https://docs.python.org/3/tutorial/index.html"
           },
           {
-            "label": "Python Tutor — visualize your code execution",
-            "url": "https://pythontutor.com/"
+            "label": "100 Days of Code - Udemy",
+            "url": "https://www.udemy.com/share/103IHM/"
           },
           {
-            "label": "W3Schools — Python Basics",
-            "url": "https://www.w3schools.com/python/python_intro.asp"
+            "label": "Mundo 1: Fundamentos - Curso em Vídeo (Portuguese)",
+            "url": "https://youtube.com/playlist?list=PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6&si=kEENJrB6PggbqrXo"
+          },
+          {
+            "label": "CodeWars",
+            "url": "https://www.codewars.com/"
+          },
+          {
+            "label": "Beecrowd",
+            "url": "https://judge.beecrowd.com/pt/login"
+          },
+          {
+            "label": "LeetCode",
+            "url": "https://leetcode.com/"
           }
         ],
         "dateISO": "2026-06-12"
@@ -354,15 +374,15 @@
         "canvaUrl": "https://www.canva.com/design/DAHBCrdmSq4/EQXDzhpmoiq5MxbrOYGH7A/view?utm_content=DAHBCrdmSq4&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "June 19, 2026",
         "deadline": "June 25, 2026",
-        "homework": "Write a function that calculates the factorial of a number using a loop. Then write a program that prints the first N terms of the Fibonacci sequence, where N is read from the user. Push both .py files to a GitHub repository.",
+        "homework": "1. Make a copy of or download this notebook: https://drive.google.com/file/d/1frKg4m1xvccFq0D2H8KCfxgCF_LXee_c/view?usp=sharing.\n 2. Solve all the questions in your file.\n 3. Add the notebook, with your answers, to your GitHub repository (it can be an existing repo or a new one created for the course).\n 4. Fill out the form on the right, pasting the link to your repository.",
         "links": [
           {
             "label": "Python — control flow",
             "url": "https://docs.python.org/3/tutorial/controlflow.html"
           },
           {
-            "label": "W3Schools — Python Functions",
-            "url": "https://www.w3schools.com/python/python_functions.asp"
+            "label": "Mundo 2: Estruturas de Controle - Curso em Vídeo (Portuguese)",
+            "url": "https://youtube.com/playlist?list=PLHz_AreHm4dk_nZHmxxf_J0WRAqy5Czye&si=l-pH6iiaEJVIY15q"
           },
           {
             "label": "Python MOOC — Loops, Functions and more",
@@ -384,7 +404,7 @@
         "canvaUrl": "https://www.canva.com/design/DAHBClIMRP8/9kIAewlHHH-pK44YeYLSxw/view?utm_content=DAHBClIMRP8&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "June 26, 2026",
         "deadline": "July 2, 2026",
-        "homework": "Create a virtual environment with venv, install the requests library, and use it to fetch data from a public API (suggestion: https://jsonplaceholder.typicode.com/posts). Print the title of the first 5 posts. Document the process in a README.md and push everything to GitHub.",
+        "homework": "1. Make a copy of or download this notebook: https://drive.google.com/file/d/1KiSf1WjPnjgmJJJsaGgekKMoDCZdZM94/view?usp=sharing.\n 2. Solve all the questions in your file.\n 3. Add the notebook, with your answers, to your GitHub repository (it can be an existing repo or a new one created for the course).\n 4. Fill out the form on the right, pasting the link to your repository.",
         "links": [
           {
             "label": "pip — Python package manager",
@@ -418,7 +438,7 @@
         "canvaUrl": "https://www.canva.com/design/DAHAjlieHS0/0triK2_jCcUBGhC7yYWbCw/view?utm_content=DAHAjlieHS0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "July 3, 2026",
         "deadline": "July 9, 2026",
-        "homework": "Homework coming soon.",
+        "homework": "1. Make a copy of or download this notebook: https://drive.google.com/file/d/1YtCLoMc-_gZ8P6KseyTeQI7h-wXG6qPp/view?usp=sharing.\n 2. Solve all the questions in your file.\n 3. Add the notebook, with your answers, to your GitHub repository (it can be an existing repo or a new one created for the course).\n 4. Fill out the form on the right, pasting the link to your repository.",
         "links": [
           {
             "label": "Python — classes and objects",
@@ -445,7 +465,12 @@
         "date": "July 10, 2026",
         "deadline": "July 16, 2026",
         "homework": "Homework coming soon.",
-        "links": [],
+        "links": [
+          {
+            "label": "Mundo 3: Estruturas Compostas - Curso em Vídeo (Portuguese)",
+            "url": "https://youtube.com/playlist?list=PLHz_AreHm4dksnH2jVTIVNviIMBVYyFnH&si=y6N-qV0OQF9Qfnbf"
+          }
+        ],
         "dateISO": "2026-07-10"
       },
       {

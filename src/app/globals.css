@@ -1108,6 +1108,26 @@ button { font-family: inherit; cursor: pointer; }
   flex-direction: column;
   gap: 6px;
 }
+.aula-useful-links--cols {
+  display: block;
+  columns: 2;
+  column-gap: 40px;
+}
+.aula-useful-links--cols li {
+  break-inside: avoid;
+  margin-bottom: 6px;
+}
+.aula-useful-links li a {
+  font-size: 15px;
+  color: var(--electric);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .15s ease;
+}
+.aula-useful-links li a:hover { color: var(--mint-deep); }
+@media (max-width: 560px) {
+  .aula-useful-links--cols { columns: 1; }
+}
 .aula-page-links-title { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 10px; }
 .aula-links-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
 .aula-links-list--centered { list-style: disc; padding-inline-start: 20px; }
@@ -1135,6 +1155,56 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0 0 10px;
   line-height: 1.1;
 }
+.aula-guidelines {
+  margin: 0 0 40px;
+  padding: 20px 24px;
+  background: color-mix(in srgb, var(--mint-deep) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mint-deep) 22%, transparent);
+  border-radius: var(--radius-m);
+}
+.aula-guidelines-title {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mint-deep);
+  margin-bottom: 12px;
+}
+.aula-guidelines-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.aula-guidelines-list li {
+  position: relative;
+  padding-inline-start: 22px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.aula-guidelines-list li::before {
+  content: "!";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  border-radius: 50%;
+  background: var(--mint-deep);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
 .aula-tarefa-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1154,6 +1224,14 @@ button { font-family: inherit; cursor: pointer; }
   padding: 24px;
 }
 .aula-homework-box p { margin: 0; font-size: 15px; line-height: 1.7; color: var(--ink-soft); }
+.aula-homework-link {
+  color: var(--electric);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-word;
+  transition: color .15s ease;
+}
+.aula-homework-link:hover { color: var(--mint-deep); }
 
 /* AULAS — SHARED FORM */
 .aulas-form-wrap { }

@@ -4,6 +4,34 @@ import { use, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from '@/hooks/useTranslation';
 
+const URL_REGEX = /(https?:\/\/[^\s]+)/g;
+
+function renderRichText(text: string) {
+  return text.split('\n').map((line, lineIdx, lines) => (
+    <span key={lineIdx}>
+      {line.split(URL_REGEX).map((part, partIdx) => {
+        if (!/^https?:\/\//.test(part)) return part;
+        const trailing = part.match(/[.,;:!?)\]]+$/)?.[0] ?? '';
+        const url = part.slice(0, part.length - trailing.length);
+        return (
+          <span key={partIdx}>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="aula-homework-link"
+            >
+              {url}
+            </a>
+            {trailing}
+          </span>
+        );
+      })}
+      {lineIdx < lines.length - 1 && <br />}
+    </span>
+  ));
+}
+
 type AulaLink = { label: string; url: string };
 type Aula = {
   number: string;
@@ -43,6 +71,7 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
   const isMini = aula.taskType === 'miniprojeto';
   const taskTitle = isMini ? t('aulas.miniprojetoTitle') : t('aulas.homeworkTitle');
   const categoryLabel = categories?.[aula.category] ?? '';
+  const guidelines = t<{ title: string; items: string[] }>('aulas.guidelines');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -128,11 +157,11 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
 
         {/* Useful links — below slide, no title */}
         {aula.links && aula.links.length > 0 && (
-          <ul className="aula-useful-links">
+          <ul className={`aula-useful-links${aula.links.length > 5 ? ' aula-useful-links--cols' : ''}`}>
             {aula.links.map((link) => (
               <li key={link.url}>
                 <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  {link.label} <span className="arrow">→</span>
+                  {link.label}
                 </a>
               </li>
             ))}
@@ -148,13 +177,24 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
             </p>
           )}
 
+          {guidelines?.items?.length > 0 && (
+            <div className="aula-guidelines">
+              <span className="aula-guidelines-title">{guidelines.title}</span>
+              <ul className="aula-guidelines-list">
+                {guidelines.items.map((g) => (
+                  <li key={g}>{g}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <div className="aula-tarefa-grid">
             {/* Descrição */}
             <div>
               <h2 className="aula-tarefa-h2">{t('aulas.descricaoTitle')}</h2>
               {aula.homework && (
                 <div className="aula-homework-box">
-                  <p>{aula.homework}</p>
+                  <p>{renderRichText(aula.homework)}</p>
                 </div>
               )}
             </div>
