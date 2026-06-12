@@ -373,3 +373,51 @@ Para aprofundar seus conhecimentos sobre gerenciamento de ambientes Python, conf
 - [uv — An extremely fast Python package manager (Documentação Oficial)](https://docs.astral.sh/uv/)
 
 > Lembre-se: preparar corretamente o ambiente de desenvolvimento é o primeiro passo para um projeto bem organizado. Independente da ferramenta escolhida, o importante é manter seus projetos isolados e suas dependências documentadas!
+
+```quiz
+- tipo: single
+  pergunta: |
+    Ao inicializar um projeto moderno com o comando uv init, a ferramenta gera automaticamente um arquivo chamado .gitignore. Qual é a real importância desse arquivo em um fluxo de trabalho profissional de desenvolvimento?
+  opcoes:
+    - texto: "Ele serve para salvar as senhas e credenciais de acesso ao banco de dados do projeto de forma segura."
+      correta: false
+      explicacao: |
+        O .gitignore não é um cofre de senhas; guardar credenciais nele é um erro conceitual grave. Arquivos de configuração de ambiente (como .env) devem ser ignorados por ele, mas não criados dentro dele.
+    - texto: "Ele instrui o Git a não enviar arquivos desnecessários ou locais para o repositório, como a pasta .venv (ambiente virtual) e arquivos de cache."
+      correta: true
+      explicacao: |
+        Perfeito! A pasta .venv e os arquivos compilados são específicos da máquina local do desenvolvedor. O .gitignore garante que esses arquivos pesados e redundantes não poluam o repositório compartilhado (como o GitHub).
+      explicacao_erro: |
+        O arquivo .gitignore não serve para proteger ou criar dados confidenciais ativos, mas sim para filtrar e impedir que arquivos locais de cache ou ambientes isolados sejam enviados ao controle de versão.
+    - texto: "Ele impede que o interpretador Python execute scripts que contenham erros de sintaxe graves."
+      correta: false
+      explicacao: |
+        O Git é apenas um sistema de controle de versão e não interfere na execução, validação de sintaxe ou compilação do código Python. Isso é papel do interpretador.
+    - texto: "Ele força o ambiente virtual a ser ativado automaticamente assim que o desenvolvedor abre o terminal do sistema operacional."
+      correta: false
+      explicacao: |
+        A ativação do ambiente virtual exige um comando explícito no terminal (como o source); o arquivo .gitignore serve apenas para o Git e não altera o comportamento do terminal.
+
+- tipo: single
+  pergunta: |
+    Para que serve a ferramenta `venv` ao iniciar um novo projeto em Python?
+  opcoes:
+    - texto: "Para gerenciar as diferentes versões do interpretador Python instaladas globalmente no sistema operacional."
+      correta: false
+      explicacao: |
+        O venv não gerencia múltiplas versões do Python no sistema; ele apenas utiliza uma versão já existente para criar um ambiente isolado.
+    - texto: "Para baixar e atualizar automaticamente pacotes e bibliotecas externas diretamente do repositório oficial PyPI."
+      correta: false
+      explicacao: |
+        O download e a atualização de pacotes do PyPI são responsabilidades do gerenciador de pacotes, como o pip ou o uv, e não do venv em si.
+    - texto: "Para criar um ambiente isolado, evitando conflitos de dependências entre projetos."
+      correta: true
+      explicacao: |
+        Perfeito! O venv cria um diretório dedicado (geralmente chamado `.venv`) para o seu projeto. Isso garante que cada aplicação tenha suas próprias dependências e versões sem interferir no sistema global ou em outros projetos da máquina.
+      explicacao_erro: |
+        O principal objetivo do venv é o isolamento local do projeto (criando uma pasta própria para dependências), e não o gerenciamento de downloads globais ou monitoramento de hardware.
+    - texto: "Para monitorar o consumo de memória RAM e processamento do computador durante a execução de scripts pesados."
+      correta: false
+      explicacao: |
+        O monitoramento de hardware (CPU e RAM) é feito por ferramentas do sistema operacional ou pacotes específicos de perfilamento, não fazendo parte das funções do venv.
+```
