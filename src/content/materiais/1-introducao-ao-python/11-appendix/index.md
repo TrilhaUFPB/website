@@ -11,9 +11,9 @@ Bem-vindo à aula sobre Ferramentas Úteis! Este é um guia essencial para enten
 
 ## Sumário
 - [Por que preparar o ambiente?](#por-que-preparar-o-ambiente)
-- [venv – Ambiente Virtual](#venv--ambiente-virtual)
-- [pip – Gerenciador de Pacotes](#pip--gerenciador-de-pacotes)
-- [uv – Alternativa Moderna](#uv--alternativa-moderna)
+- [venv – Ambiente Virtual](#venv-ambiente-virtual)
+- [pip – Gerenciador de Pacotes](#pip-gerenciador-de-pacotes)
+- [uv – Alternativa Moderna](#uv-alternativa-moderna)
 - [Resumo dos Comandos](#resumo-dos-comandos)
 
 ## Por que preparar o ambiente?
