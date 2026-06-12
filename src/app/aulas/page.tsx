@@ -19,7 +19,9 @@ type Aula = {
 
 function getDateState(dateISO?: string): 'past' | 'today' | 'upcoming' {
   if (!dateISO) return 'upcoming';
-  const today = new Date().toISOString().slice(0, 10);
+  const today = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Sao_Paulo',
+  }).format(new Date());
   if (dateISO < today) return 'past';
   if (dateISO === today) return 'today';
   return 'upcoming';
