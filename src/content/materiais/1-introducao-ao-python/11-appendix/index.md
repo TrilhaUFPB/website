@@ -137,7 +137,7 @@ pip freeze > requirements.txt
 
 Esse comando vai listar todos os pacotes instalados com suas versões exatas para o arquivo "requirements.txt". O arquivo gerado terá um formato assim:
 
-```
+```plaintext
 certifi==2023.7.22
 charset-normalizer==3.2.0
 requests==2.31.0
@@ -208,7 +208,7 @@ Vamos entender cada arquivo criado:
 
 Arquivo que diz ao Git quais arquivos e pastas **não devem ser versionados**. Por padrão, o uv já configura para ignorar a pasta `.venv` e outros arquivos temporários do Python:
 
-```
+```plaintext
 # Python-generated files
 __pycache__/
 *.py[oc]
@@ -227,7 +227,7 @@ Isso evita que você suba arquivos desnecessários para o repositório.
 
 Arquivo simples que especifica **qual versão do Python** o projeto usa. Contém apenas uma linha, por exemplo:
 
-```
+```plaintext
 3.14
 ```
 
