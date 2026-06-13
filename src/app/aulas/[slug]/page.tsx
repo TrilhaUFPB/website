@@ -81,7 +81,10 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
       setFormError(t('aulas.form.errorRequired'));
       return;
     }
-    if (!taskLink.startsWith('https://github.com/')) {
+    if (
+      !taskLink.startsWith('https://github.com/') &&
+      !taskLink.startsWith('https://colab.research.google.com/')
+    ) {
       setFormError(t('aulas.form.errorGithub'));
       return;
     }

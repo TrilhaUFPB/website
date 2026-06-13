@@ -652,7 +652,7 @@
       "successTitle": "Homework submitted!",
       "successBody": "We received your submission. The team will get back to you soon.",
       "errorRequired": "Please fill in all required fields.",
-      "errorGithub": "The homework link must be a GitHub URL (https://github.com/...)."
+      "errorGithub": "The homework link must be a GitHub URL (https://github.com/...) or a Google Colab URL (https://colab.research.google.com/...)."
     },
     "miniprojetoTitle": "Mini-Project",
     "categories": {
