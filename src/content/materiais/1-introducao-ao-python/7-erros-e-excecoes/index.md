@@ -7,7 +7,6 @@ order: 7
 ## Sumário
 
 - [7.1. Tipos de Erros](#7.1-Tipos-de-Erros)
-    - [7.1. Tipos de Erros](#7.1-Tipos-de-Erros)
 - [7.2. Tratamento de Erros: try/except](#7.2-Tratamento-de-Erros-try/except)
 - [1.3. Modos de Execução: Interativo vs. Script](#13-modos-de-execucao-interativo-vs-script)
 - [1.4. Execução no Navegador](#14-execucao-no-navegador)
