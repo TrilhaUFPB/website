@@ -120,16 +120,41 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               </h4>
             );
           },
-          // Parágrafos - SUPER COMPACTOS
-          p: ({ children, ...props }) => (
-            <p
-              className="font-inter text-[15px] text-black dark:text-white mb-3 max-w-[180ch]"
-              style={{ lineHeight: '1.7', fontWeight: 450 }}
-              {...props}
-            >
-              {children}
-            </p>
-          ),
+          // Parágrafos - com detecção de elementos block para evitar hydration error
+          p: ({ children, ...props }) => {
+            const childArray = Array.isArray(children) ? children : [children];
+
+            // Filtra itens vazios/whitespace
+            const meaningful = childArray.filter((child) => {
+              if (child === null || child === undefined) return false;
+              if (typeof child === "string" && child.trim() === "") return false;
+              return true;
+            });
+
+            // Se contém algum elemento React que renderiza block-level (figure, div, iframe)
+            const hasBlockChild = meaningful.some((child) => {
+              if (!child || typeof child !== "object" || !("type" in child)) return false;
+              const type = (child as React.ReactElement).type;
+              // Componentes customizados (figura de imagem, div do YouTube) são funções/objetos
+              if (typeof type === "function") return true;
+              if (typeof type === "string" && ["figure", "div", "iframe"].includes(type)) return true;
+              return false;
+            });
+
+            if (hasBlockChild) {
+              return <>{children}</>;
+            }
+
+            return (
+              <p
+                className="font-inter text-[15px] text-black dark:text-white mb-3 max-w-[180ch]"
+                style={{ lineHeight: '1.7', fontWeight: 450 }}
+                {...props}
+              >
+                {children}
+              </p>
+            );
+          },
           // Listas - SUPER COMPACTAS
           ul: ({ children, ...props }) => (
             <ul
