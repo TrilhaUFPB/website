@@ -4,6 +4,17 @@ description: Compreender o que são os tipos de erros de código, saber como ide
 category: Programação
 order: 7
 ---
+## Sumário
+
+- [7.1. Tipos de Erros](#7.1-Tipos-de-Erros)
+    - [7.1. Tipos de Erros](#7.1-Tipos-de-Erros)
+- [7.2. Tratamento de Erros: try/except](#7.2-Tratamento-de-Erros-try/except)
+- [1.3. Modos de Execução: Interativo vs. Script](#13-modos-de-execucao-interativo-vs-script)
+- [1.4. Execução no Navegador](#14-execucao-no-navegador)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+---
 
 Programar é, em grande parte, lidar com erros. Qualquer programador, do iniciante ao experiente, comete erros o tempo todo. A diferença está em saber **identificar, entender e corrigir** esses erros com rapidez.
 
@@ -266,3 +277,56 @@ Com o tempo, você vai se familiarizar com os erros mais comuns, vai ler as mens
 Para aprofundar seus conhecimentos sobre erros e tratamento de exceções em Python, confira os seguintes recursos:
 
 - [Python Try Except - W3Schools](https://www.w3schools.com/python/python_try_except.asp)
+## quiz
+```quiz
+- tipo: single
+  pergunta: O que melhor define um programa de computador?
+  opcoes:
+    - texto: Uma sequência de instruções para executar uma operação de computação
+      correta: true
+      explicacao: Exato! Um programa é composto por instruções que orientam o computador na execução de tarefas.
+      explicacao_erro: Um programa é definido como uma sequência de instruções que especifica como executar uma operação de computação.
+    - texto: Um conjunto de arquivos armazenados no computador
+      correta: false
+      explicacao: Arquivos são dados persistidos em disco. Um programa é uma sequência de instruções, não um arquivo em si.
+    - texto: Um dispositivo responsável por processar dados
+      correta: false
+      explicacao: Isso descreve o hardware, como o processador (CPU). Um programa é software, não um componente físico.
+    - texto: Uma conexão entre o computador e a internet
+      correta: false
+      explicacao: Isso se refere a redes de comunicação. Um programa existe independentemente de qualquer conexão.
+
+- tipo: single
+  pergunta: Qual característica descreve melhor o Python?
+  opcoes:
+    - texto: É uma linguagem compilada que precisa ser traduzida integralmente antes da execução
+      correta: false
+      explicacao: Isso descreve linguagens como C ou C++. O Python não exige uma etapa explícita de compilação.
+    - texto: É uma linguagem de baixo nível voltada para hardware
+      correta: false
+      explicacao: Linguagens de baixo nível, como Assembly, interagem diretamente com o hardware. O Python é de alto nível.
+    - texto: É uma linguagem interpretada executada pelo interpretador
+      correta: true
+      explicacao: Correto! O Python é tradicionalmente tratado como uma linguagem interpretada, executada linha por linha.
+      explicacao_erro: O Python é uma linguagem de alto nível classificada como interpretada. O interpretador lê e executa o código diretamente, sem etapa de compilação explícita.
+    - texto: É uma linguagem que não precisa de interpretador nem compilador
+      correta: false
+      explicacao: Todo código precisa ser processado de alguma forma. O Python usa um interpretador para executar o código.
+
+- tipo: single
+  pergunta: Qual é uma vantagem do modo interativo do Python?
+  opcoes:
+    - texto: Permite executar programas maiores de forma mais eficiente
+      correta: false
+      explicacao: O modo interativo é indicado para trechos pequenos. Para programas maiores, o modo script é o adequado.
+    - texto: Exibe automaticamente o conteúdo de qualquer arquivo .py
+      correta: false
+      explicacao: O modo interativo não lê arquivos automaticamente. Ele aguarda comandos digitados diretamente no prompt.
+    - texto: Permite testar pequenos trechos de código e ver o resultado imediatamente
+      correta: true
+      explicacao: Exatamente! O modo interativo é ideal para experimentação e aprendizado rápido.
+      explicacao_erro: O modo interativo permite executar comandos e ver o resultado na hora, sem precisar salvar um arquivo. É ideal para testar pequenos trechos de código.
+    - texto: Elimina a necessidade do comando print()
+      correta: false
+      explicacao: O print() ainda é necessário em scripts. No modo interativo, expressões simples exibem resultado, mas o print() continua sendo usado.
+```
