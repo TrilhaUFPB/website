@@ -651,7 +651,7 @@
       "successTitle": "Tarefa enviada!",
       "successBody": "Recebemos sua entrega. O time vai dar um retorno em breve.",
       "errorRequired": "Preencha todos os campos obrigatórios.",
-      "errorGithub": "O link da tarefa deve ser do GitHub (https://github.com/...)."
+      "errorGithub": "O link da tarefa deve ser do GitHub (https://github.com/...) ou do Google Colab (https://colab.research.google.com/...)."
     },
     "miniprojetoTitle": "Mini-Projeto",
     "categories": {
