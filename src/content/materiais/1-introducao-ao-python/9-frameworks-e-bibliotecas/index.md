@@ -7,11 +7,19 @@ order: 9
 ---
 
 ## Sumário
-- [O que é uma Biblioteca?](#91-o-que-e-uma-biblioteca)
-- [Por que Bibliotecas são Importantes?](#92-por-que-bibliotecas-sao-importantes)
-- [Tipos de Biblioteca em Python](#93-tipos-de-biblioteca-em-python)
+- [9.1. O que é uma Biblioteca?](#91-o-que-e-uma-biblioteca)
+- [9.2. Por que Bibliotecas são Importantes?](#92-por-que-bibliotecas-sao-importantes)
+- [9.3. Tipos de Biblioteca em Python](#93-tipos-de-biblioteca-em-python)
 - [Exemplos Práticos](#exemplos-praticos)
-- [Criando sua própria biblioteca](#94-criando-sua-propria-biblioteca)
+- [9.4. Criando sua própria biblioteca](#94-criando-sua-propria-biblioteca)
+- [9.5. O que é um Framework?](#95-o-que-e-um-framework)
+- [9.6. Por que usar um framework?](#96-por-que-usar-um-framework)
+- [9.7. Vantagens de usar um framework](#97-vantagens-principais-de-utilizar-um-framework)
+- [9.8. Framework vs. Biblioteca](#98-framework-vs-biblioteca)
+- [9.9. Frameworks Populares](#99-frameworks-populares)
+- [Exemplos Práticos](#exemplos-simples-de-frameworks-em-python)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
 
 ---
 
@@ -236,32 +244,15 @@ print(area_circulo(3))
 - Organiza vários módulos relacionados
 - Importe com `from pasta import modulo`
 
-## Complemente o Aprendizado
-
-Para aprofundar seus conhecimentos sobre bibliotecas, confira o seguinte recurso:
-
-- [Libraries in Python - GeeksforGeeks](https://www.geeksforgeeks.org/python/libraries-in-python/)
-
-> Lembre-se: dominar o uso de bibliotecas é essencial para se tornar um programador eficiente. Existem muitas outras a serem exploradas. Por isso, não tenha medo de buscar e experimentar novas bibliotecas em seus projetos!
 
 ---
 
-# 9.2. Frameworks
-
-## Sumário
-- [O que é um Framework?](#o-que-e-um-framework)
-- [Por que usar um framework?](#por-que-usar-um-framework)
-- [Vantagens de usar um framework](#vantagens-principais-de-utilizar-um-framework)
-- [Framework vs. Biblioteca](#framework-vs-biblioteca)
-- [Frameworks Populares](#frameworks-populares)
-- [Exemplos Práticos](#exemplos-simples-de-frameworks-em-python)
-
----
+# Frameworks
 
 > Para iniciar o raciocínio, pense em um framework como uma casa pré-fabricada: a estrutura já existe, e você apenas personaliza os espaços dentro dos limites estabelecidos.
 
 ---
-## O que é um Framework?
+# 9.5. O que é um Framework?
 
 Um framework é um conjunto de ferramentas e componentes prontos que ajudam você a construir aplicações de forma mais rápida, organizada e com menos erros.
 
@@ -269,7 +260,7 @@ Em qualquer área da tecnologia, reaproveitar o que já existe é essencial. Pen
 
 Com frameworks de software acontece algo parecido. Eles fornecem "peças prontas" de código que já foram testadas e aprovadas por milhares de desenvolvedores. Essas peças seguem regras e padrões específicos, como se fossem instruções de montagem que todos conhecem.
 
-## Por que usar um framework?
+# 9.6. Por que usar um framework?
 
 Quando uma equipe usa o mesmo framework, é como se todos falassem a mesma língua. Um desenvolvedor consegue entender rapidamente o código escrito por outro, porque ambos seguem as mesmas regras e organização. Isso significa:
 
@@ -280,7 +271,7 @@ Quando uma equipe usa o mesmo framework, é como se todos falassem a mesma líng
 
 É como seguir uma receita de bolo: quando todos usam a mesma receita, fica mais fácil ensinar, aprender e obter resultados consistentes.
 
-## Vantagens principais de utilizar um framework
+# 9.7. Vantagens principais de utilizar um framework
 
 - **Melhor qualidade do código**: Você usa soluções já testadas e aprovadas por milhares de desenvolvedores, em vez de criar tudo do zero.
 - **Reduz tempo de desenvolvimento**: Funcionalidades comuns já vêm prontas. Você não perde tempo recriando coisas básicas como login de usuários ou conexão com banco de dados.
@@ -288,7 +279,7 @@ Quando uma equipe usa o mesmo framework, é como se todos falassem a mesma líng
 - **Revisão e teste eficiente do código**: A estrutura padronizada facilita encontrar e corrigir erros. Ferramentas de teste automatizado já vêm integradas.
 - **Melhor escalabilidade do código**: Quando sua aplicação precisa crescer, o framework já está preparado para isso. Você não precisa reescrever tudo depois.
 
-## Framework vs. Biblioteca
+# 9.8. Framework vs. Biblioteca
 
 É muito comum nos confundirmos com os conceitos de biblioteca e framework, mas aqui vai uma analogia simples para você nunca mais esquecer: Imagine que você quer construir a sua casa.
 
@@ -297,7 +288,7 @@ Quando uma equipe usa o mesmo framework, é como se todos falassem a mesma líng
 
 > Ao usar uma biblioteca, você decide quando invocar as funções da biblioteca no seu código. Já no caso do framework, é ele mesmo que define a estrutura e chama o seu código nos momentos apropriados. Isso é o que chamamos de **inversão de controle**.
 
-## Frameworks Populares
+# 9.9. Frameworks Populares
 
 ### Frameworks Python
 ![Principais Frameworks Python](/api/materiais-assets/1-introducao-ao-python/9-frameworks-e-bibliotecas/assets/frameworks_python.png)
@@ -305,9 +296,9 @@ Quando uma equipe usa o mesmo framework, é como se todos falassem a mesma líng
 ### Frameworks JavaScript
 ![Principais Frameworks JavaScript](/api/materiais-assets/1-introducao-ao-python/9-frameworks-e-bibliotecas/assets/frameworks_js.png)
 
-## Exemplos práticos de Frameworks em Python
+# Exemplos práticos de Frameworks em Python
 
-### Exemplo 1: Flask - Criando um servidor web simples
+## Exemplo 1: Flask - Criando um servidor web simples
 
 ```python
 # main.py
@@ -343,7 +334,7 @@ Ao acessar o link **http://127.0.0.1:5000** no browser, você verá a página a 
 
 > Para matar o processo, basta dar um CTRL+C no terminal.
 
-### Exemplo 2: Django - Muito usado para criar páginas web
+## Exemplo 2: Django - Muito usado para criar páginas web
 
 ```python
 # views.py
@@ -369,9 +360,15 @@ urlpatterns = [  # Lista de URLs do site (pode ter mais de uma)
 
 Django divide o código em arquivos diferentes: um para definir as páginas (views.py) e outro para definir os endereços (urls.py). Parece mais complicado, mas essa organização padrão é o que facilita quando o projeto cresce. Todo mundo que usa Django sabe exatamente onde procurar cada coisa. É como ter gavetas organizadas - no começo dá mais trabalho, mas depois você acha tudo rapidinho.
 
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 
-Para aprofundar seus conhecimentos sobre frameworks, confira os seguintes recursos:
+Confira os recursos abaixo para aprofundar seus conhecimentos:
+
+**Bibliotecas**:
+
+- [Libraries in Python - GeeksforGeeks](https://www.geeksforgeeks.org/python/libraries-in-python/)
+
+**Frameworks**:
 
 - [What is a Framework? - GeeksforGeeks](https://www.geeksforgeeks.org/blogs/what-is-a-framework/)
 - [What is a Framework? - AWS](https://aws.amazon.com/what-is/framework/)
@@ -379,4 +376,59 @@ Para aprofundar seus conhecimentos sobre frameworks, confira os seguintes recurs
 - [Most popular JavaScript frameworks - GeeksforGeeks](https://www.geeksforgeeks.org/javascript/most-popular-javascript-frameworks-for-web-development/)
 - [Most popular Python frameworks - GeeksforGeeks](https://www.geeksforgeeks.org/blogs/best-python-frameworks/)
 
-> Lembre-se: dominar o uso de frameworks é essencial para se tornar um programador eficiente. Existem muitos outros a serem explorados. Por isso, não tenha medo de buscar e experimentar novos frameworks em seus projetos!
+>Lembre-se: dominar o uso de bibliotecas e frameworks é essencial para se tornar um programador eficiente. Existem muitos outros a serem explorados. Por isso, não tenha medo de buscar e experimentar novos recursos em seus projetos!
+
+---
+
+```quiz
+- tipo: single
+  pergunta: O que é uma biblioteca em Python?
+  opcoes:
+    - texto: Um conjunto de códigos pré-escritos prontos para usar em projetos
+      correta: true
+      explicacao: Exato! Bibliotecas reúnem funções, classes e métodos já desenvolvidos e testados por outros programadores.
+      explicacao_erro: Uma biblioteca é um conjunto de códigos pré-escritos que você importa e usa no seu projeto, sem precisar criar tudo do zero.
+    - texto: Um programa que compila o código Python antes de executar
+      correta: false
+      explicacao: Isso descreve um compilador. Bibliotecas são conjuntos de código reutilizável, não ferramentas de execução.
+    - texto: Um arquivo de configuração do ambiente Python
+      correta: false
+      explicacao: Arquivos de configuração definem o ambiente. Bibliotecas contêm código com funções e classes prontas para uso.
+    - texto: Um framework com estrutura pré-definida para aplicações
+      correta: false
+      explicacao: Frameworks e bibliotecas são conceitos diferentes. A biblioteca você controla quando usar — o framework controla seu código.
+
+- tipo: single
+  pergunta: Qual é a principal diferença entre uma biblioteca e um framework?
+  opcoes:
+    - texto: Bibliotecas são gratuitas, frameworks são pagos
+      correta: false
+      explicacao: Tanto bibliotecas quanto frameworks podem ser gratuitos ou pagos. A diferença está em quem controla o fluxo do código.
+    - texto: No framework, é ele quem chama o seu código — não o contrário
+      correta: true
+      explicacao: Exato! Isso é a inversão de controle — o framework define a estrutura e chama seu código nos momentos certos.
+      explicacao_erro: A diferença principal é o controle do fluxo. Com uma biblioteca, você chama o código quando quiser. Com um framework, ele é quem chama o seu código.
+    - texto: Frameworks só existem em Python, bibliotecas em qualquer linguagem
+      correta: false
+      explicacao: Frameworks existem em diversas linguagens, como React (JavaScript), Django (Python), Spring (Java), entre outros.
+    - texto: Bibliotecas externas não precisam ser instaladas, frameworks sim
+      correta: false
+      explicacao: Tanto bibliotecas externas quanto frameworks precisam ser instalados, geralmente via pip ou outro gerenciador de pacotes.
+
+- tipo: single
+  pergunta: O que diferencia uma biblioteca padrão de uma biblioteca externa em Python?
+  opcoes:
+    - texto: Bibliotecas padrão são pagas, bibliotecas externas são gratuitas
+      correta: false
+      explicacao: Nenhuma das duas é paga por padrão. A diferença está em como elas são obtidas e instaladas.
+    - texto: Bibliotecas padrão já vêm com o Python instalado, externas precisam ser instaladas via pip
+      correta: true
+      explicacao: Correto! Bibliotecas como math e random já vêm com o Python. Já pandas e requests precisam ser instaladas separadamente.
+      explicacao_erro: Bibliotecas padrão (como math e datetime) já vêm incluídas na instalação do Python. Bibliotecas externas (como pandas) precisam ser instaladas via pip.
+    - texto: Bibliotecas externas são mais lentas que as padrão
+      correta: false
+      explicacao: A velocidade depende da implementação de cada biblioteca, não de ser padrão ou externa.
+    - texto: Bibliotecas padrão só funcionam no modo interativo do Python
+      correta: false
+      explicacao: Bibliotecas padrão funcionam em qualquer modo de execução, tanto interativo quanto script.
+```

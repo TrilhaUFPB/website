@@ -142,7 +142,14 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             });
 
             if (hasBlockChild) {
-              return <>{children}</>;
+              return (
+                <div
+                  className="font-inter text-[15px] text-black dark:text-white mb-3 max-w-[180ch]"
+                  style={{ lineHeight: '1.7', fontWeight: 450 }}
+                >
+                  {children}
+                </div>
+              );
             }
 
             return (

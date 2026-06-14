@@ -34,15 +34,14 @@ A Programação Orientada a Objetos é uma forma de modelar um sistema dividindo
 
 O objetivo é criar definições abstratas que representem os objetos que queremos ter no sistema. Por exemplo, ao modelar uma escola, podemos criar um objeto para representar professores e outro objeto para representar alunos. E da mesma maneira que uma escola real, também podemos criar as relações e como cada objeto interage entre si, como quando professores alteram as notas de algum aluno.
 
----
 
 ## Classes e Objetos
 
 Em POO usamos classes como as abstrações, lógicas de um objeto. Ainda no contexto da escola, podemos pensar como "Professor" e "Aluno" sendo classes. Cada uma possui seus próprios comportamentos, capacidades e conjunto de informações associadas.
 
-As **classes** são uma maneira de definir padrões. _"Todo aluno possui um número de matrícula"_, _"Todo professor define notas para os alunos"_, etc - todas essas coisas são definidas numa classe.
+As **classes** são uma maneira de definir padrões. *"Todo aluno possui um número de matrícula"*, *"Todo professor define notas para os alunos"*, etc - todas essas coisas são definidas numa classe.
 
-Uma classe pode conter servir para definir comportamentos e padrões - como no exemplo da escola - ou também para organizar informações, como numa lista de compras.
+Uma classe pode servir para definir comportamentos e padrões - como no exemplo da escola - ou também para organizar informações, como numa lista de compras.
 
 Entretanto, a classe "Professor" por si só é apenas uma ideia, não representa uma "Pessoa" que realmente é um professor. Quando temos essa "Pessoa" que executa os comportamentos e padrões definidos na classe, temos então um **objeto**. Numa escola, existem várias pessoas na categoria de "Aluno" que possuem o mesmo objetivo geral. Objetos representam cada pessoa existente que ocupa a posição de aluno na escola, seguem o mesmo padrão de comportamentos, possuindo informações únicas sobre si.
 
@@ -54,7 +53,6 @@ Resumidamente,
 
 Uma **Classe** representa os comportamentos e informações de algo. Enquanto um **Objeto** possui os padrões de alguma **Classe** e pode efetivamente executar os comportamentos definidos.
 
----
 
 ## Métodos e Atributos
 
