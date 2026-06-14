@@ -14,16 +14,16 @@ Bem-vindo ao exemplo prático! Neste guia, vamos construir **do zero** um Monito
 ## Sumário
 - [O que vamos construir?](#o-que-vamos-construir)
 - [Planejando antes de codar](#planejando-antes-de-codar)
-- [Mão na massa: Iniciando o projeto](#mão-na-massa-iniciando-o-projeto)
+- [Mão na massa: Iniciando o projeto](#mao-na-massa-iniciando-o-projeto)
 - [Passo 1: Criando a estrutura de pacotes](#passo-1-criando-a-estrutura-de-pacotes)
 - [Passo 2: A classe abstrata Metric](#passo-2-a-classe-abstrata-metric)
-- [Passo 3: Implementando as métricas concretas](#passo-3-implementando-as-métricas-concretas)
+- [Passo 3: Implementando as métricas concretas](#passo-3-implementando-as-metricas-concretas)
 - [Passo 4: O orquestrador SystemMonitor](#passo-4-o-orquestrador-systemmonitor)
 - [Passo 5: A interface abstrata BaseUI](#passo-5-a-interface-abstrata-baseui)
 - [Passo 6: Implementando as UIs concretas](#passo-6-implementando-as-uis-concretas)
 - [Passo 7: Juntando tudo no main.py](#passo-7-juntando-tudo-no-mainpy)
 - [Testando o projeto](#testando-o-projeto)
-- [A mágica da POO: Extensibilidade](#a-mágica-da-poo-extensibilidade)
+- [A mágica da POO: Extensibilidade](#a-magica-da-poo-extensibilidade)
 
 ---
 
