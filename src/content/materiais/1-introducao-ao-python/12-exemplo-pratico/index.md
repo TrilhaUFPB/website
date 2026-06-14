@@ -136,7 +136,7 @@ dependencies = [
 
 Lembra do material de **Bibliotecas** sobre pacotes? Um pacote é uma pasta com um arquivo `__init__.py`. Vamos organizar nosso código em dois pacotes:
 
-```
+```plaintext
 exemplo-pratico/
 ├── core/               # Pacote com a lógica do monitor
 │   ├── __init__.py
