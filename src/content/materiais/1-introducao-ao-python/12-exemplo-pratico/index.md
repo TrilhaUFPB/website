@@ -48,7 +48,7 @@ Este projeto foi escolhido especificamente para demonstrar na prática os concei
 | **Bibliotecas** | Usamos `psutil` para coletar dados do sistema |
 | **Frameworks** | Streamlit e Gradio cuidam da interface web |
 | **Pacotes** | O código está organizado em `core/` e `ui/` |
-| **Outras Ferramentas** | Utilizaremos o **uv** como gerenciador de dependências, ambientes virtuais e ferramenta para rodar o projeto |
+| **Outras Ferramentas** | Utilizaremos o `uv` como gerenciador de dependências, ambientes virtuais e ferramenta para rodar o projeto |
 
 ---
 
@@ -78,7 +78,7 @@ Perceba que:
 
 ## Mão na massa: Iniciando o projeto
 
-Vamos usar o **uv** para criar nosso projeto. Lembra do material de Ferramentas Úteis?
+Vamos usar o `uv` para criar nosso projeto. Lembra do material de Ferramentas Úteis?
 
 ### Criando o projeto
 
