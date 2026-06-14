@@ -436,9 +436,9 @@ class BaseUI(ABC):
 ```
 
 Perceba o padrão: `BaseUI` define **O QUE** toda interface deve fazer:
-- Adicionar métricas
-- Limpar métricas
-- Exibir na tela
+- **Adicionar** métricas
+- **Limpar** métricas
+- **Exibir** na tela
 
 Mas não define **COMO** fazer. Isso fica para as implementações concretas!
 
@@ -536,9 +536,9 @@ class GradioUI(BaseUI):
 ```
 
 **Polimorfismo em ação!** Tanto `StreamlitUI` quanto `GradioUI`:
-- Herdam de `BaseUI`
-- Implementam os mesmos métodos (`adicionar_metrica`, `limpar_metricas`, `exibir`)
-- Mas fazem de formas completamente diferentes!
+- **Herdam** de `BaseUI`
+- **Implementam** os mesmos métodos (`adicionar_metrica`, `limpar_metricas`, `exibir`)
+- **Mas** fazem de formas completamente **diferentes**!
 
 ---
 
