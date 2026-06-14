@@ -60,9 +60,9 @@ Vamos mapear nosso problema:
 
 ### Quais são as "coisas" do nosso sistema?
 
-1. **Métricas** - representam os dados que queremos coletar (CPU, RAM, Disco)
-2. **Monitor** - orquestra a coleta de todas as métricas
-3. **Interface** - exibe os dados para o usuário
+- **Métricas** - representam os dados que queremos coletar (CPU, RAM, Disco)
+- **Monitor** - orquestra a coleta de todas as métricas
+- **Interface** - exibe os dados para o usuário
 
 ### Como elas se relacionam?
 
@@ -387,11 +387,11 @@ class SystemMonitor:
 
 **Conceitos importantes aqui:**
 
-1. **Composição**: `SystemMonitor` **TEM** métricas, não **É** uma métrica. Essa é a diferença entre composição e herança. Use herança quando há uma relação "é um" (CPUMetric É UMA Metric). Use composição quando há uma relação "tem um" (Monitor TEM métricas).
+- **Composição**: `SystemMonitor` **TEM** métricas, não **É** uma métrica. Essa é a diferença entre composição e herança. Use herança quando há uma relação "é um" (CPUMetric É UMA Metric). Use composição quando há uma relação "tem um" (Monitor TEM métricas).
 
-2. **Encapsulamento**: Os atributos `_cpu_metric`, `_memory_metric` e `_disk_metric` começam com `_`, indicando que são "protegidos" (lembra do material de POO?). A UI não precisa acessá-los diretamente - usa apenas `snapshot()`.
+- **Encapsulamento**: Os atributos `_cpu_metric`, `_memory_metric` e `_disk_metric` começam com `_`, indicando que são "protegidos" (lembra do material de POO?). A UI não precisa acessá-los diretamente - usa apenas `snapshot()`.
 
-3. **Interface simples**: A UI só precisa chamar `snapshot()` para obter todos os dados. Não precisa saber que existem classes separadas para cada métrica.
+- **Interface simples**: A UI só precisa chamar `snapshot()` para obter todos os dados. Não precisa saber que existem classes separadas para cada métrica.
 
 ### Sobre o \_\_init\_\_.py do core
 
@@ -622,10 +622,10 @@ A UI nem precisa saber que existe uma nova métrica - ela já sabe exibir qualqu
 
 ### Por que isso funciona tão bem?
 
-1. **Herança**: Toda nova métrica herda de `Metric`, então sabemos que tem `collect()`
-2. **Abstração**: A classe abstrata `Metric` garantiu uma interface consistente
-3. **Encapsulamento**: A UI não precisa saber como os dados são coletados
-4. **Polimorfismo**: O monitor trata todas as métricas da mesma forma
+- **Herança**: Toda nova métrica herda de `Metric`, então sabemos que tem `collect()`
+- **Abstração**: A classe abstrata `Metric` garantiu uma interface consistente
+- **Encapsulamento**: A UI não precisa saber como os dados são coletados
+- **Polimorfismo**: O monitor trata todas as métricas da mesma forma
 
 Imagine se tivéssemos escrito tudo sem POO, com funções soltas e variáveis globais... Adicionar funcionalidades seria **muito mais trabalhoso e arriscado**!
 
