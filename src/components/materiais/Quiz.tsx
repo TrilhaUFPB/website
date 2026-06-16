@@ -113,7 +113,7 @@ function SingleQuiz({
                 ? "bg-red-500/10 ring-1 ring-red-500/30"
                 : isElevated
                   ? "bg-slate-800 shadow-[0_1px_3px_rgba(0,0,0,0.3)] ring-1 ring-white/10"
-                  : "bg-slate-800/40 hover:bg-slate-800/60";
+                  : "bg-slate-40 hover:bg-slate-600";
 
           let iconNode: React.ReactNode;
           if (isSelected) {
