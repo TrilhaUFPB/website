@@ -5,6 +5,7 @@ const QuizOptionSchema = z.object({
   texto: z.string().min(1, 'O campo "texto" da opção não pode ser vazio'),
   correta: z.boolean().optional().default(false),
   explicacao: z.string().optional(),
+  explicacao_erro: z.string().optional(),
 });
 
 const QuizSchema = z
@@ -30,22 +31,25 @@ const QuizSchema = z
     }
   });
 
+const QuizInputSchema = z.union([z.array(QuizSchema), QuizSchema]);
+
 export type QuizData = z.infer<typeof QuizSchema>;
 export type QuizOption = z.infer<typeof QuizOptionSchema>;
 
 export type ParseResult =
-  | { success: true; data: QuizData }
+  | { success: true; data: QuizData[] }
   | { success: false; error: string };
 
 export function parseQuiz(rawYaml: string): ParseResult {
   try {
     const parsed = parse(rawYaml);
-    const result = QuizSchema.safeParse(parsed);
+    const result = QuizInputSchema.safeParse(parsed);
     if (!result.success) {
       const messages = result.error.issues.map((i) => i.message).join("; ");
       return { success: false, error: `Dados inválidos: ${messages}` };
     }
-    return { success: true, data: result.data };
+    const data = Array.isArray(result.data) ? result.data : [result.data];
+    return { success: true, data };
   } catch (e) {
     return {
       success: false,
