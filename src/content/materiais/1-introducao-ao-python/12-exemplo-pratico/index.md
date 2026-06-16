@@ -14,16 +14,16 @@ Bem-vindo ao exemplo prático! Neste guia, vamos construir **do zero** um Monito
 ## Sumário
 - [O que vamos construir?](#o-que-vamos-construir)
 - [Planejando antes de codar](#planejando-antes-de-codar)
-- [Mão na massa: Iniciando o projeto](#mão-na-massa-iniciando-o-projeto)
+- [Mão na massa: Iniciando o projeto](#mao-na-massa-iniciando-o-projeto)
 - [Passo 1: Criando a estrutura de pacotes](#passo-1-criando-a-estrutura-de-pacotes)
 - [Passo 2: A classe abstrata Metric](#passo-2-a-classe-abstrata-metric)
-- [Passo 3: Implementando as métricas concretas](#passo-3-implementando-as-métricas-concretas)
+- [Passo 3: Implementando as métricas concretas](#passo-3-implementando-as-metricas-concretas)
 - [Passo 4: O orquestrador SystemMonitor](#passo-4-o-orquestrador-systemmonitor)
 - [Passo 5: A interface abstrata BaseUI](#passo-5-a-interface-abstrata-baseui)
 - [Passo 6: Implementando as UIs concretas](#passo-6-implementando-as-uis-concretas)
 - [Passo 7: Juntando tudo no main.py](#passo-7-juntando-tudo-no-mainpy)
 - [Testando o projeto](#testando-o-projeto)
-- [A mágica da POO: Extensibilidade](#a-mágica-da-poo-extensibilidade)
+- [A mágica da POO: Extensibilidade](#a-magica-da-poo-extensibilidade)
 
 ---
 
@@ -48,7 +48,7 @@ Este projeto foi escolhido especificamente para demonstrar na prática os concei
 | **Bibliotecas** | Usamos `psutil` para coletar dados do sistema |
 | **Frameworks** | Streamlit e Gradio cuidam da interface web |
 | **Pacotes** | O código está organizado em `core/` e `ui/` |
-| **Outras Ferramentas** | Utilizaremos o **uv** como gerenciador de dependências, ambientes virtuais e ferramenta para rodar o projeto |
+| **Outras Ferramentas** | Utilizaremos o `uv` como gerenciador de dependências, ambientes virtuais e ferramenta para rodar o projeto |
 
 ---
 
@@ -60,9 +60,9 @@ Vamos mapear nosso problema:
 
 ### Quais são as "coisas" do nosso sistema?
 
-1. **Métricas** - representam os dados que queremos coletar (CPU, RAM, Disco)
-2. **Monitor** - orquestra a coleta de todas as métricas
-3. **Interface** - exibe os dados para o usuário
+- **Métricas** - representam os dados que queremos coletar (CPU, RAM, Disco)
+- **Monitor** - orquestra a coleta de todas as métricas
+- **Interface** - exibe os dados para o usuário
 
 ### Como elas se relacionam?
 
@@ -78,7 +78,7 @@ Perceba que:
 
 ## Mão na massa: Iniciando o projeto
 
-Vamos usar o **uv** para criar nosso projeto. Lembra do material de Ferramentas Úteis?
+Vamos usar o `uv` para criar nosso projeto. Lembra do material de Ferramentas Úteis?
 
 ### Criando o projeto
 
@@ -136,7 +136,7 @@ dependencies = [
 
 Lembra do material de **Bibliotecas** sobre pacotes? Um pacote é uma pasta com um arquivo `__init__.py`. Vamos organizar nosso código em dois pacotes:
 
-```
+```plaintext
 exemplo-pratico/
 ├── core/               # Pacote com a lógica do monitor
 │   ├── __init__.py
@@ -387,11 +387,11 @@ class SystemMonitor:
 
 **Conceitos importantes aqui:**
 
-1. **Composição**: `SystemMonitor` **TEM** métricas, não **É** uma métrica. Essa é a diferença entre composição e herança. Use herança quando há uma relação "é um" (CPUMetric É UMA Metric). Use composição quando há uma relação "tem um" (Monitor TEM métricas).
+- **Composição**: `SystemMonitor` **TEM** métricas, não **É** uma métrica. Essa é a diferença entre composição e herança. Use herança quando há uma relação "é um" (CPUMetric É UMA Metric). Use composição quando há uma relação "tem um" (Monitor TEM métricas).
 
-2. **Encapsulamento**: Os atributos `_cpu_metric`, `_memory_metric` e `_disk_metric` começam com `_`, indicando que são "protegidos" (lembra do material de POO?). A UI não precisa acessá-los diretamente - usa apenas `snapshot()`.
+- **Encapsulamento**: Os atributos `_cpu_metric`, `_memory_metric` e `_disk_metric` começam com `_`, indicando que são "protegidos" (lembra do material de POO?). A UI não precisa acessá-los diretamente - usa apenas `snapshot()`.
 
-3. **Interface simples**: A UI só precisa chamar `snapshot()` para obter todos os dados. Não precisa saber que existem classes separadas para cada métrica.
+- **Interface simples**: A UI só precisa chamar `snapshot()` para obter todos os dados. Não precisa saber que existem classes separadas para cada métrica.
 
 ### Sobre o \_\_init\_\_.py do core
 
@@ -436,9 +436,9 @@ class BaseUI(ABC):
 ```
 
 Perceba o padrão: `BaseUI` define **O QUE** toda interface deve fazer:
-- Adicionar métricas
-- Limpar métricas
-- Exibir na tela
+- **Adicionar** métricas
+- **Limpar** métricas
+- **Exibir** na tela
 
 Mas não define **COMO** fazer. Isso fica para as implementações concretas!
 
@@ -536,9 +536,9 @@ class GradioUI(BaseUI):
 ```
 
 **Polimorfismo em ação!** Tanto `StreamlitUI` quanto `GradioUI`:
-- Herdam de `BaseUI`
-- Implementam os mesmos métodos (`adicionar_metrica`, `limpar_metricas`, `exibir`)
-- Mas fazem de formas completamente diferentes!
+- **Herdam** de `BaseUI`
+- **Implementam** os mesmos métodos (`adicionar_metrica`, `limpar_metricas`, `exibir`)
+- **Mas** fazem de formas completamente **diferentes**!
 
 ---
 
@@ -622,10 +622,10 @@ A UI nem precisa saber que existe uma nova métrica - ela já sabe exibir qualqu
 
 ### Por que isso funciona tão bem?
 
-1. **Herança**: Toda nova métrica herda de `Metric`, então sabemos que tem `collect()`
-2. **Abstração**: A classe abstrata `Metric` garantiu uma interface consistente
-3. **Encapsulamento**: A UI não precisa saber como os dados são coletados
-4. **Polimorfismo**: O monitor trata todas as métricas da mesma forma
+- **Herança**: Toda nova métrica herda de `Metric`, então sabemos que tem `collect()`
+- **Abstração**: A classe abstrata `Metric` garantiu uma interface consistente
+- **Encapsulamento**: A UI não precisa saber como os dados são coletados
+- **Polimorfismo**: O monitor trata todas as métricas da mesma forma
 
 Imagine se tivéssemos escrito tudo sem POO, com funções soltas e variáveis globais... Adicionar funcionalidades seria **muito mais trabalhoso e arriscado**!
 

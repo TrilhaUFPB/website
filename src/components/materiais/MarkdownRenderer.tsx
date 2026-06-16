@@ -12,6 +12,18 @@ interface MarkdownRendererProps {
   content: string;
 }
 
+function extractTextFromNode(node: React.ReactNode): string {
+  if (typeof node === "string") return node;
+  if (typeof node === "number") return String(node);
+  if (!node) return "";
+  if (Array.isArray(node)) return node.map(extractTextFromNode).join("");
+  if (typeof node === "object" && "props" in (node as object)) {
+    const el = node as { props: { children?: React.ReactNode } };
+    return extractTextFromNode(el.props.children);
+  }
+  return "";
+}
+
 // Componente para botão de copiar código
 function CopyButton({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);
@@ -218,7 +230,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             let codeContent = "";
             if (children && typeof children === "object" && "props" in children) {
               const childProps = children.props as { children?: React.ReactNode };
-              codeContent = String(childProps.children || "");
+              codeContent = extractTextFromNode(childProps.children);
             }
 
             return (
