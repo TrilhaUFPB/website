@@ -15,7 +15,6 @@ order: 8
 - [8.7. Exemplo prático integrado](#87-exemplo-pratico-integrado)
 - [8.8. Boas práticas e cuidados](#88-boas-praticas-e-cuidados)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
-- [Teste seu Conhecimento](#exercicios)
 
 >Quando você está aprendendo a programar, provavelmente começa criando variáveis e manipulando dados na memória do computador. O problema é que, quando o programa termina, todos esses dados desaparecem. É como escrever algo importante em uma folha de papel e jogar fora quando termina de usar.
 ---

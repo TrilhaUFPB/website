@@ -15,6 +15,7 @@ Bem-vindo à aula sobre Ferramentas Úteis! Este é um guia essencial para enten
 - [pip – Gerenciador de Pacotes](#pip-gerenciador-de-pacotes)
 - [uv – Alternativa Moderna](#uv-alternativa-moderna)
 - [Resumo dos Comandos](#resumo-dos-comandos)
+- [Teste seu Conhecimento](#exercicios)
 
 ## Por que preparar o ambiente?
 
