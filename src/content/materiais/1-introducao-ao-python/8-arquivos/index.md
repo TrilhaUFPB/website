@@ -4,8 +4,23 @@ description: Compreender o que são os arquivos, saber como usá-los em Python.
 category: Programação
 order: 8
 ---
+## Sumário
 
-Quando você está aprendendo a programar, provavelmente começa criando variáveis e manipulando dados na memória do computador. O problema é que, quando o programa termina, todos esses dados desaparecem. É como escrever algo importante em uma folha de papel e jogar fora quando termina de usar.
+- [8.1. Introdução - Por que trabalhar com arquivos?](#81-introducao---por-que-trabalhar-com-arquivos)
+- [8.2. Conceitos básicos](#82-conceitos-basicos)
+- [8.3. Abrindo e fechando arquivos](#83-abrindo-e-fechando-arquivos)
+- [8.4. O contexto](#84-o-contexto-object-object)
+- [8.5. Leitura de arquivos](#85-leitura-de-arquivos)
+- [8.6. Escrita em arquivos](#86-escrita-em-arquivos)
+- [8.7. Exemplo prático integrado](#87-exemplo-pratico-integrado)
+- [8.8. Boas práticas e cuidados](#88-boas-praticas-e-cuidados)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+>Quando você está aprendendo a programar, provavelmente começa criando variáveis e manipulando dados na memória do computador. O problema é que, quando o programa termina, todos esses dados desaparecem. É como escrever algo importante em uma folha de papel e jogar fora quando termina de usar.
+---
+
+
 
 # 8.1. Introdução - Por que trabalhar com arquivos?
 
@@ -13,9 +28,9 @@ Imagine que você criou um programa de lista de tarefas. Você adiciona várias 
 
 **Frustrante, não é? É aí que entram os arquivos.**
 
-Arquivos permitem que você **salve informações de forma permanente no disco rígido do computador**. Assim, seus dados sobrevivem mesmo depois que o programa é fechado. Pense em situações do dia a dia: salvar o progresso de um jogo, guardar uma lista de contatos, armazenar suas anotações pessoais, ou manter um histórico de gastos mensais. Todos esses casos precisam de arquivos.
+>Arquivos permitem que você **salve informações de forma permanente no disco rígido do computador**. Assim, seus dados sobrevivem mesmo depois que o programa é fechado. Pense em situações do dia a dia: salvar o progresso de um jogo, guardar uma lista de contatos, armazenar suas anotações pessoais, ou manter um histórico de gastos mensais. Todos esses casos precisam de arquivos.
 
-# 8.2. Conceitos básicos
+# 8.2. Conceitos basicos
 
 Antes de começarmos a programar, é importante entender alguns conceitos fundamentais.
 
@@ -28,7 +43,7 @@ __Tipos de arquivos:__ Existem diversos tipos de arquivos, mas vamos focar nos a
 
 Um arquivo de texto é simplesmente um arquivo que contém caracteres que podemos ler, como letras, números e símbolos. Exemplos comuns são arquivos com extensão *.txt* (texto puro), *.csv* (valores separados por vírgula, como planilhas simples) e *.json* (formato estruturado muito usado para guardar dados).
 
-A diferença principal entre arquivos de texto e arquivos binários (como imagens, vídeos ou programas executáveis) é que podemos abrir um arquivo de texto em qualquer editor simples e entender o que está escrito. Já um arquivo binário contém dados em um formato que só o programa específico consegue interpretar.
+>A diferença principal entre arquivos de texto e arquivos binários (como imagens, vídeos ou programas executáveis) é que podemos abrir um arquivo de texto em qualquer editor simples e entender o que está escrito. Já um arquivo binário contém dados em um formato que só o programa específico consegue interpretar.
 
 # 8.3. Abrindo e fechando arquivos
 
@@ -124,7 +139,7 @@ with open("notas.txt", "r") as arquivo:
 
 Essa última forma é melhor porque não carrega o arquivo inteiro na memória. Ela lê uma linha, processa, lê a próxima, e assim por diante. É perfeita para arquivos grandes.
 
-**Um detalhe importante sobre quebras de linha:** Quando você lê linhas de um arquivo, cada linha vem com o caractere de quebra de linha no final (geralmente representado como `\n`). Isso pode causar espaçamentos extras quando você imprime. Para remover esses espaços, você pode usar o método `strip()`:
+>**Um detalhe importante sobre quebras de linha:** Quando você lê linhas de um arquivo, cada linha vem com o caractere de quebra de linha no final (geralmente representado como `\n`). Isso pode causar espaçamentos extras quando você imprime. Para remover esses espaços, você pode usar o método `strip()`:
 
 ```python
 with open("notas.txt", "r") as arquivo:
@@ -245,6 +260,7 @@ def mostrar_menu():
 ```
 
 Essa função simplesmente exibe o menu e retorna a escolha do usuário. Usaremos essa resposta para decidir qual ação executar.
+
 
 **Passo 2: Criar a função para carregar a lista do arquivo**
 
@@ -404,3 +420,10 @@ with open(caminho, "r") as arquivo:
 - Use **modo "a"** quando você quer adicionar informações ao final de um arquivo existente, sem perder o que já está lá. É perfeito para logs, históricos, ou qualquer situação onde você quer acumular informações ao longo do tempo.
 
 Existem outros modos mais avançados (como *"r+"* para ler e escrever simultaneamente, ou *"b"* para arquivos binários), mas esses três básicos resolvem a maioria dos casos quando você está começando.
+---
+# Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre erros e tratamento de exceções em Python, confira os seguintes recursos:
+
+- [Como Manipular Arquivos em Python | Python do Jeito Certo 2.0](https://www.youtube.com/watch?v=yo03paxXV10)
+- [5 Tips To Organize Python Code](https://www.youtube.com/watch?v=e9yMYdnSlUA&t=2s)
+---
