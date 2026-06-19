@@ -5,13 +5,8 @@ category: Programação
 order: 12
 ---
 
-# 12.1. Monitor de Sistema
-
-Bem-vindo ao exemplo prático! Neste guia, vamos construir **do zero** um Monitor de Sistema completo, aplicando todos os conceitos que aprendemos nas aulas anteriores.
-
-> **Repositório do projeto**: Você pode acompanhar o código completo desta aula no repositório [System-Monitor](https://github.com/Marcus-Vin/System-Monitor).
-
 ## Sumário
+- [12.1. Monitor de Sistema](#121-monitor-de-sistema)
 - [O que vamos construir?](#o-que-vamos-construir)
 - [Planejando antes de codar](#planejando-antes-de-codar)
 - [Mão na massa: Iniciando o projeto](#mao-na-massa-iniciando-o-projeto)
@@ -24,6 +19,14 @@ Bem-vindo ao exemplo prático! Neste guia, vamos construir **do zero** um Monito
 - [Passo 7: Juntando tudo no main.py](#passo-7-juntando-tudo-no-mainpy)
 - [Testando o projeto](#testando-o-projeto)
 - [A mágica da POO: Extensibilidade](#a-magica-da-poo-extensibilidade)
+
+---
+
+# 12.1. Monitor de Sistema
+
+Bem-vindo ao exemplo prático! Neste guia, vamos construir **do zero** um Monitor de Sistema completo, aplicando todos os conceitos que aprendemos nas aulas anteriores.
+
+> **Repositório do projeto**: Você pode acompanhar o código completo desta aula no repositório [System-Monitor](https://github.com/Marcus-Vin/System-Monitor).
 
 ---
 

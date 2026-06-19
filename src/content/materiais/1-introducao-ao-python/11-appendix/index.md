@@ -5,17 +5,22 @@ category: Programação
 order: 11
 ---
 
-# 11.1. Ferramentas Úteis
-
-Bem-vindo à aula sobre Ferramentas Úteis! Este é um guia essencial para entender como preparar corretamente seu ambiente de desenvolvimento Python.
-
 ## Sumário
+
+- [11.1. Ferramentas Úteis](#111-ferramentas-uteis)
 - [Por que preparar o ambiente?](#por-que-preparar-o-ambiente)
 - [venv – Ambiente Virtual](#venv-ambiente-virtual)
 - [pip – Gerenciador de Pacotes](#pip-gerenciador-de-pacotes)
 - [uv – Alternativa Moderna](#uv-alternativa-moderna)
 - [Resumo dos Comandos](#resumo-dos-comandos)
-- [Teste seu Conhecimento](#exercicios)
+- [Complemente o seu aprendizado](#complemente-o-aprendizado)
+
+---
+
+# 11.1. Ferramentas Úteis
+
+Bem-vindo à aula sobre Ferramentas Úteis! Este é um guia essencial para entender como preparar corretamente seu ambiente de desenvolvimento Python.
+
 
 ## Por que preparar o ambiente?
 
