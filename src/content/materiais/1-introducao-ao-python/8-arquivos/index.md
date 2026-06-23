@@ -425,4 +425,56 @@ Para aprofundar seus conhecimentos sobre erros e tratamento de exceções em Pyt
 
 - [Como Manipular Arquivos em Python | Python do Jeito Certo 2.0](https://www.youtube.com/watch?v=yo03paxXV10)
 - [5 Tips To Organize Python Code](https://www.youtube.com/watch?v=e9yMYdnSlUA&t=2s)
----
+
+```quiz
+- tipo: single
+  pergunta: Qual é a principal vantagem de utilizar o gerenciador de contexto `with` ao abrir arquivos em Python?
+  opcoes:
+    - texto: Ele garante o fechamento automático do arquivo após a execução do bloco, mesmo se ocorrer um erro/exceção.
+      correta: true
+      explicacao: Exato! O `with` atua como um gerenciador de contexto que fecha o arquivo de forma limpa e automática ao sair do escopo indentado.
+      explicacao_erro: Pense na segurança e na prevenção de vazamentos de recursos. O `with` resolve a necessidade de chamar manualmente o método `close()`.
+    - texto: Ele aumenta a velocidade de leitura e gravação dos dados no disco.
+      correta: false
+      explicacao: O `with` não altera a velocidade física de leitura/escrita; ele apenas gerencia a abertura e o fechamento automático do recurso.
+    - texto: Ele criptografa automaticamente os arquivos criados para maior segurança.
+      correta: false
+      explicacao: Não há criptografia automática. O arquivo continua sendo gravado em texto plano ou conforme especificado pelo programador.
+    - texto: Ele permite ler e escrever no arquivo simultaneamente sem precisar definir o modo.
+      correta: false
+      explicacao: O modo de abertura (como `"r"` ou `"w"`) ainda precisa ser informado na função `open()` dentro do `with`.
+
+- tipo: single
+  pergunta: O que acontece por padrão se você abrir um arquivo de texto existente utilizando o modo `"w"`?
+  opcoes:
+    - texto: O arquivo é sobrescrito, apagando completamente todo o conteúdo anterior.
+      correta: true
+      explicacao: Exato! O modo `"w"` (write) abre o arquivo para escrita, limpando todo o conteúdo anterior se o arquivo já existir. Se o arquivo não existir, um novo é criado.
+      explicacao_erro: Tenha cuidado com o modo `"w"`. Para adicionar conteúdo ao final sem apagar o que já existe, você deve utilizar outro modo.
+    - texto: O Python gera um erro do tipo FileNotFoundError.
+      correta: false
+      explicacao: O modo `"w"` não gera erro se o arquivo já existir; ele apenas sobrescreve seu conteúdo. E se não existir, ele cria o arquivo.
+    - texto: O novo conteúdo é adicionado ao final do arquivo, preservando o conteúdo anterior.
+      correta: false
+      explicacao: Adicionar dados ao final preservando o conteúdo anterior é o comportamento do modo `"a"` (append). O modo `"w"` limpa tudo.
+    - texto: O arquivo é aberto apenas no modo de leitura protegida.
+      correta: false
+      explicacao: O modo `"w"` serve exclusivamente para escrita. Para leitura, o modo padrão é `"r"`.
+
+- tipo: single
+  pergunta: Por que é recomendado especificar `encoding="utf-8"` ao trabalhar com arquivos de texto em Python?
+  opcoes:
+    - texto: Para garantir que caracteres especiais, acentos e cedilhas do português sejam lidos e salvos corretamente.
+      correta: true
+      explicacao: Perfeito! O UTF-8 é o padrão moderno universal de codificação de caracteres que suporta acentuações do português e evita erros de codificação em diferentes sistemas operacionais.
+      explicacao_erro: Lembre-se de caracteres como 'á', 'ç' e 'õ'. A falta de definição do encoding pode quebrar o programa dependendo do sistema operacional onde roda.
+    - texto: Para compactar o tamanho do arquivo salvo no disco rígido.
+      correta: false
+      explicacao: O `encoding` define como mapear caracteres para bytes, não funciona como um compressor de arquivos.
+    - texto: Para transformar o arquivo em binário e impedir a leitura humana.
+      correta: false
+      explicacao: Pelo contrário, UTF-8 é uma codificação de arquivos de texto plano legíveis por humanos. Arquivos binários usam o modo `"wb"`.
+    - texto: Para duplicar a velocidade com que o loop `for` percorre as linhas.
+      correta: false
+      explicacao: A velocidade de processamento do loop depende do interpretador e hardware, não da codificação de caracteres escolhida.
+```

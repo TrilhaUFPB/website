@@ -37,13 +37,46 @@ function CopyButton({ code }: { code: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="absolute top-3 right-3 p-2 rounded-md bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white transition-colors duration-200 opacity-0 group-hover:opacity-100"
+      className="p-1 px-2.5 rounded-md hover:bg-slate-800 text-slate-400 hover:text-white transition-colors duration-150 flex items-center gap-1.5 font-sans text-[11px] font-medium"
       aria-label="Copiar código"
     >
-      {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
+      {copied ? (
+        <>
+          <Check className="w-3.5 h-3.5 text-green-400" />
+          <span className="text-green-400">Copiado!</span>
+        </>
+      ) : (
+        <>
+          <Copy className="w-3.5 h-3.5" />
+          <span>Copiar</span>
+        </>
+      )}
     </button>
   );
 }
+
+// Mapeamento amigável para nomes de linguagens de programação
+const getLanguageLabel = (lang: string) => {
+  if (!lang) return "Código";
+  const mapping: Record<string, string> = {
+    python: "Python",
+    py: "Python",
+    bash: "Terminal",
+    sh: "Terminal",
+    shell: "Terminal",
+    yaml: "YAML",
+    yml: "YAML",
+    json: "JSON",
+    html: "HTML",
+    css: "CSS",
+    javascript: "JavaScript",
+    js: "JavaScript",
+    typescript: "TypeScript",
+    ts: "TypeScript",
+    sql: "SQL",
+  };
+  return mapping[lang.toLowerCase()] || lang.toUpperCase();
+};
 
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   const [mounted, setMounted] = useState(false);
@@ -56,10 +89,10 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   const createHeadingId = (text: string) => {
     return text
       .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-");
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-");
   };
 
   if (!mounted) {
@@ -86,7 +119,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <h1
                 id={id}
-                className="text-xl md:text-2xl font-bold text-AzulMeiaNoite dark:text-white mt-6 mb-2 scroll-mt-28 leading-tight"
+                className="text-2xl md:text-3xl font-bold font-poppins text-[var(--ink)] dark:text-white mt-10 mb-4 border-b border-[var(--rule)] pb-2 scroll-mt-28 leading-tight"
                 {...props}
               >
                 {children}
@@ -99,7 +132,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <h2
                 id={id}
-                className="text-lg md:text-xl font-bold text-AzulMeiaNoite dark:text-white mt-6 mb-2 scroll-mt-28 border-b border-gray-200 dark:border-slate-700 pb-1 leading-tight"
+                className="text-xl md:text-2xl font-bold font-poppins text-[var(--ink)] dark:text-white mt-8 mb-3.5 scroll-mt-28 leading-tight"
                 {...props}
               >
                 {children}
@@ -112,7 +145,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <h3
                 id={id}
-                className="text-base md:text-lg font-semibold text-AzulMeiaNoite dark:text-white mt-5 mb-2 scroll-mt-28 leading-snug"
+                className="text-lg md:text-xl font-semibold font-poppins text-[var(--ink-soft)] dark:text-gray-200 mt-6 mb-3 scroll-mt-28 leading-snug"
                 {...props}
               >
                 {children}
@@ -125,7 +158,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <h4
                 id={id}
-                className="text-sm md:text-base font-semibold text-AzulMeiaNoite dark:text-white mt-4 mb-2 scroll-mt-28 leading-snug"
+                className="text-base md:text-lg font-semibold font-poppins text-[var(--ink-soft)] dark:text-gray-300 mt-5 mb-2.5 scroll-mt-28 leading-snug"
                 {...props}
               >
                 {children}
@@ -156,8 +189,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             if (hasBlockChild) {
               return (
                 <div
-                  className="font-inter text-[15px] text-black dark:text-white mb-3 max-w-[180ch]"
-                  style={{ lineHeight: '1.7', fontWeight: 450 }}
+                  className="font-sans text-[16px] md:text-[17px] text-[var(--ink)] dark:text-[var(--cream)] mb-4 max-w-[180ch]"
+                  style={{ lineHeight: '1.65', fontWeight: 400 }}
                 >
                   {children}
                 </div>
@@ -166,8 +199,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
             return (
               <p
-                className="font-inter text-[15px] text-black dark:text-white mb-3 max-w-[180ch]"
-                style={{ lineHeight: '1.7', fontWeight: 450 }}
+                className="font-sans text-[16px] md:text-[17px] text-[var(--ink)] dark:text-[var(--cream)] mb-4 max-w-[180ch]"
+                style={{ lineHeight: '1.65', fontWeight: 400 }}
                 {...props}
               >
                 {children}
@@ -177,8 +210,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           // Listas - SUPER COMPACTAS
           ul: ({ children, ...props }) => (
             <ul
-              className="font-inter list-disc space-y-1.5 mb-3 text-[15px] text-black dark:text-white ml-6"
-              style={{ lineHeight: '1.7', fontWeight: 450 }}
+              className="list-disc space-y-2 mb-4 text-[16px] md:text-[17px] text-[var(--ink)] dark:text-[var(--cream)] ml-6"
+              style={{ lineHeight: '1.65', fontWeight: 400 }}
               {...props}
             >
               {children}
@@ -186,15 +219,15 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
           ol: ({ children, ...props }) => (
             <ol
-              className="font-inter list-decimal space-y-1.5 mb-3 text-[15px] text-black dark:text-white ml-6"
-              style={{ lineHeight: '1.7', fontWeight: 450 }}
+              className="list-decimal space-y-2 mb-4 text-[16px] md:text-[17px] text-[var(--ink)] dark:text-[var(--cream)] ml-6"
+              style={{ lineHeight: '1.65', fontWeight: 400 }}
               {...props}
             >
               {children}
             </ol>
           ),
           li: ({ children, ...props }) => (
-            <li className="leading-relaxed pl-2" {...props}>
+            <li className="leading-relaxed pl-1" {...props}>
               {children}
             </li>
           ),
@@ -212,7 +245,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             
             return (
               <code
-                className="px-1.5 py-0.5 rounded bg-gray-100 dark:bg-slate-800 text-AzulEletrico dark:text-AzulCeu font-mono text-sm"
+                className="px-1.5 py-0.5 rounded bg-[var(--paper-2)] border border-[var(--rule-soft)] dark:bg-slate-800 text-[var(--electric)] dark:text-AzulCeu font-mono text-[14px]"
                 {...props}
               >
                 {children}
@@ -235,28 +268,36 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
             // Extrai o conteúdo do código de forma segura
             let codeContent = "";
+            let lang = "";
             if (children && typeof children === "object" && "props" in children) {
-              const childProps = children.props as { children?: React.ReactNode };
+              const childProps = children.props as { className?: string; children?: React.ReactNode };
               codeContent = extractTextFromNode(childProps.children);
+              const match = /language-(\w+)/.exec(childProps.className || "");
+              lang = match ? match[1] : "";
             }
 
+            const languageLabel = getLanguageLabel(lang);
+
             return (
-              <div className="relative group my-4">
+              <div className="relative group my-6 rounded-xl overflow-hidden border border-slate-700/40 shadow-sm">
+                <div className="flex items-center justify-between px-4 py-2 bg-slate-950/95 border-b border-slate-800/80 text-xs font-mono text-slate-400 select-none">
+                  <span>{languageLabel}</span>
+                  <CopyButton code={codeContent} />
+                </div>
                 <pre
-                  className="overflow-x-auto rounded-lg bg-slate-900 dark:bg-slate-950 p-3 text-sm leading-relaxed"
+                  className="overflow-x-auto bg-slate-900/90 dark:bg-slate-950 p-4 text-[14px] leading-relaxed font-mono"
                   {...props}
                 >
                   {children}
                 </pre>
-                <CopyButton code={codeContent} />
               </div>
             );
           },
           // Blockquote - SUPER COMPACTO
           blockquote: ({ children, ...props }) => (
             <blockquote
-              className="font-inter border-l-4 border-AzulCeu pl-4 py-2 my-4 bg-AzulCeu/5 dark:bg-AzulCeu/10 rounded-r-lg text-[15px] italic text-black dark:text-white"
-              style={{ lineHeight: '1.7', fontWeight: 450 }}
+              className="border-l-4 border-[var(--electric)] pl-5 py-3 my-6 bg-[var(--electric-soft)]/20 dark:bg-slate-800/40 rounded-r-xl text-[16px] italic text-[var(--ink)] dark:text-white"
+              style={{ lineHeight: '1.65', fontWeight: 400 }}
               {...props}
             >
               {children}
@@ -289,7 +330,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <a
                 href={href}
-                className="text-AzulEletrico dark:text-AzulCeu hover:underline transition-colors duration-200 font-medium"
+                className="text-[var(--electric)] dark:text-AzulCeu hover:underline transition-colors duration-200 font-medium"
                 target={href?.startsWith("http") ? "_blank" : undefined}
                 rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
                 {...props}
@@ -324,7 +365,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
           td: ({ children, ...props }) => (
             <td
-              className="font-inter px-3 py-2 text-sm text-black dark:text-white border-t border-gray-200 dark:border-slate-700"
+              className="font-sans px-3 py-2 text-sm text-[var(--ink)] dark:text-white border-t border-gray-200 dark:border-slate-700"
               style={{ lineHeight: '1.65', fontWeight: 450 }}
               {...props}
             >
@@ -351,11 +392,11 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
           // Horizontal rule - SUPER COMPACTO
           hr: () => (
-            <hr className="my-5 border-gray-200 dark:border-slate-700" />
+            <hr className="my-5 border-[var(--rule)]" />
           ),
           // Strong/Bold
           strong: ({ children, ...props }) => (
-            <strong className="font-bold text-AzulMeiaNoite dark:text-white" {...props}>
+            <strong className="font-bold text-[var(--ink)] dark:text-white" {...props}>
               {children}
             </strong>
           ),

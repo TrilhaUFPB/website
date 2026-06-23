@@ -151,3 +151,4 @@ Para aprofundar seus conhecimentos sobre tipos de dados e operações, confira o
     - texto: Que elas não aceitam letras maiúsculas através de métodos.
       correta: false
       explicacao: Métodos alteram a caixa do texto de saída perfeitamente, o conceito de imutabilidade se refere à preservação do dado original na memória.
+```

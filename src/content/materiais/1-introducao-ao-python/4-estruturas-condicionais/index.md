@@ -103,3 +103,4 @@ Para aprofundar seus conhecimentos sobre estruturas condicionais, confira os seg
       correta: false
       explicacao: |
         Em uma estrutura condicional ligada por `elif`, apenas um único bloco (o primeiro verdadeiro) é executado.
+```
