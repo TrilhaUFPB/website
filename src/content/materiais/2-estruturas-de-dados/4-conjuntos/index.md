@@ -1,8 +1,26 @@
 ---
 title: 4. Conjuntos
+subtitle:
 description: 
 category: Programação
 order: 4
+---
+# Sumário
+
+- [4.1. Introdução: A Natureza do Dado Desordenado](#41-introducao-a-natureza-do-dado-desordenado)
+- [4.2. Declaração e Sintaxe](#42-declaracao-e-sintaxe)
+- [4.3. Instanciação e Limpeza de Dados](#43-instanciacao-e-limpeza-de-dados)
+- [4.4. A Ambiguidade das Chaves Vazias](#44-a-ambiguidade-das-chaves-vazias)
+- [4.5. Fundamentação Matemática](#45-fundamentacao-matematica)
+- [4.6. Princípio da Extensionalidade](#46-principio-da-extensionalidade)
+- [4.7. Continência (Subconjuntos)](#47-continencia-subconjuntos)
+- [4.8. Álgebra de Conjuntos (Operações Binárias)](#48-algebra-de-conjuntos-operacoes-binarias)
+- [4.9. Engenharia de Software e Performance](#49-engenharia-de-software-e-performance)
+- [4.10. Análise Assintótica (Big O Notation)](#410-analise-assintotica-big-o-notation)
+- [4.11. Conclusão Prática](#411-conclusao-pratica)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
 ---
 
 # 4.1. Introdução: A Natureza do Dado Desordenado
