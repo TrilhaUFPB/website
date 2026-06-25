@@ -5,6 +5,15 @@ category: Programação
 order: 1
 ---
 
+## Sumário
+
+- [1.1. Big O Notation: Entendendo a Eficiência dos Algoritmos](#11-big-o-notation-entendendo-a-eficiencia-dos-algoritmos)
+- [1.2. O que é Estrutura de Dados?](#12-o-que-e-estrutura-de-dados)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+---
+
 # 1.1. Big O Notation: Entendendo a Eficiência dos Algoritmos
 
 ## O que é Big O?
@@ -92,3 +101,63 @@ Já sabemos que podemos armazenar informações por meio da **declaração de va
 </div>
 
 Esse modelo funciona bem quando temos poucos dados. Porém, quando a quantidade de informações cresce, é necessário estruturas de dados adequadas para o armazenamento dessas informações, para facilitação de acesso, organização, eficiência etc..
+
+---
+
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre Big O e Estruturas de Dados, confira os seguintes recursos:
+
+- [O que é a notação Big O: complexidade de tempo e de espaço - freeCodeCamp](https://www.freecodecamp.org/portuguese/news/o-que-e-a-notacao-big-o-complexidade-de-tempo-e-de-espaco/)
+
+```quiz
+- tipo: single
+  pergunta: O que a notação Big O mede em um algoritmo?
+  opcoes:
+    - texto: Como o tempo de execução cresce conforme a quantidade de dados aumenta
+      correta: true
+      explicacao: Exato! Big O não mede segundos, mas sim como o algoritmo se comporta quando o volume de dados escala.
+      explicacao_erro: Big O não mede o tempo em segundos, mas sim como o tempo de execução cresce proporcionalmente à quantidade de dados.
+    - texto: Quantos segundos um algoritmo leva para executar
+      correta: false
+      explicacao: Big O não mede tempo absoluto. Um algoritmo O(n) pode ser mais rápido ou mais lento que outro dependendo do hardware, mas Big O descreve apenas o crescimento.
+    - texto: Quantos erros um algoritmo pode ter
+      correta: false
+      explicacao: Big O não tem relação com erros. Ele descreve a eficiência e escalabilidade de um algoritmo conforme o volume de dados cresce.
+    - texto: Quanta memória RAM o computador possui
+      correta: false
+      explicacao: Big O descreve o comportamento do algoritmo, não uma característica do hardware. Ele responde à pergunta - se os dados dobrarem, quanto mais tempo vai levar?
+
+- tipo: single
+  pergunta: Qual é a complexidade Big O de um loop dentro de outro loop, onde ambos percorrem a mesma lista de tamanho n?
+  opcoes:
+    - texto: O(n²)
+      correta: true
+      explicacao: Correto! Para cada elemento do loop externo, o loop interno percorre todos os n elementos. Isso resulta em n × n = n² operações.
+      explicacao_erro: Quando há um loop dentro de outro, multiplicamos as complexidades. Como cada loop é O(n), o resultado é O(n × n) = O(n²).
+    - texto: O(n)
+      correta: false
+      explicacao: O(n) seria correto se houvesse apenas um loop. Com dois loops aninhados percorrendo a mesma lista, a complexidade é O(n²).
+    - texto: O(1)
+      correta: false
+      explicacao: O(1) indica tempo constante, ou seja, o algoritmo sempre faz o mesmo número de operações independente do tamanho dos dados. Dois loops aninhados crescem com n².
+    - texto: O(2n)
+      correta: false
+      explicacao: O(2n) simplifica para O(n) pelas regras do Big O. Dois loops aninhados resultam em O(n²), não em uma soma.
+
+- tipo: single
+  pergunta: O que é uma Estrutura de Dados?
+  opcoes:
+    - texto: A forma como organizamos, armazenamos e acessamos informações na memória do computador
+      correta: true
+      explicacao: Exato! Uma estrutura de dados busca responder qual é a melhor forma de armazenar um dado para que possamos usá-lo de maneira eficiente.
+      explicacao_erro: Estrutura de dados é a forma como organizamos e armazenamos informações na memória, buscando eficiência no acesso e na manipulação dos dados.
+    - texto: Um tipo de variável que armazena apenas números inteiros
+      correta: false
+      explicacao: Isso descreve um tipo primitivo de dado, como int. Uma estrutura de dados é um conceito mais amplo que define como organizar e acessar conjuntos de informações.
+    - texto: Uma linguagem de programação voltada para banco de dados
+      correta: false
+      explicacao: Isso descreve linguagens como SQL. Estrutura de dados é um conceito de organização de informações na memória, independente de linguagem.
+    - texto: Um algoritmo que ordena elementos de uma lista
+      correta: false
+      explicacao: Isso descreve um algoritmo de ordenação, como o Bubble Sort. Uma estrutura de dados define como os dados são organizados, não como são processados.
+```
