@@ -30,7 +30,7 @@ Em Python, a estrutura de dados lista (list) é ideal para implementar uma pilha
 
 Essas são as três operações básicas da pilha: inserção(push), remoção(pop) e acesso(top).
 
-```
+```python
 .append(valor) # adiciona um elemento no topo
 .pop() # remove e retorna o elemento do topo
 lista[-1] # acessa o último elemento sem remover
@@ -54,7 +54,7 @@ Um exemplo comum de uso dessa estrutura é uma fila de músicas, como em aplicat
 
 Em Python, uma fila pode ser implementada de forma simples utilizando uma lista, como mostrado a seguir:
 
-```
+```python
 fila = []
 
 # Enfileirar elementos
