@@ -1,6 +1,6 @@
 ---
 title: 6. Pilhas e Filas
-description: 
+description: Entenda a teoria e a prática por trás de Pilhas (LIFO) e Filas (FIFO), e saiba exatamente quando e como utilizar cada uma em seus projetos
 category: Programação
 order: 6
 ---
