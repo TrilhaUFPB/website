@@ -7,14 +7,14 @@ order: 6
 
 # 6.1. Pilha
 
-Uma Pilha, como estrutura de dados, é uma sequência lógica onde os elementos são inseridos e removidos apenas por uma das extremidades, denominada topo. Esse fluxo de manipulação é chamado de LIFO (Last In, First Out — o último a entrar é o primeiro a sair). Para exemplificar seu funcionamento, imagine uma pilha de livros organizada para estudo. Sempre que você adquire um novo material, você o coloca no topo para que ele seja o próximo a ser lido. A remoção segue a mesma lógica: você retira primeiro o que está em cima para acessar o conteúdo de forma ordenada. Da mesma forma, em uma pilha de dados, o acesso ocorre sempre pelo topo, garantindo que o elemento mais recente seja sempre o primeiro a ser processado.
+Uma Pilha, como estrutura de dados, é uma sequência lógica onde os elementos são inseridos e removidos apenas por uma das extremidades, denominada topo. Esse fluxo de manipulação é chamado de **LIFO (Last In, First Out — o último a entrar é o primeiro a sair)**. Para exemplificar seu funcionamento, imagine uma pilha de livros organizada para estudo. Sempre que você adquire um novo material, você o coloca no topo para que ele seja o próximo a ser lido. A remoção segue a mesma lógica: você retira primeiro o que está em cima para acessar o conteúdo de forma ordenada. Da mesma forma, em uma pilha de dados, o acesso ocorre sempre pelo topo, garantindo que o elemento mais recente seja sempre o primeiro a ser processado.
 
 <img src="/api/materiais-assets/2-estruturas-de-dados/6-pilha-e-filas/assets/stack.png" width=500>
 
 ## Operações principais
 
-- Push (Empilhar): É a operação de inserção. Quando um novo dado é adicionado, ele é colocado obrigatoriamente no topo.
-- Pop (Desempilhar): É a operação de remoção. Ela retira o elemento que está no topo (o último que entrou) e o retorna para quem fez a chamada.
+- **Push** (Empilhar): É a operação de inserção. Quando um novo dado é adicionado, ele é colocado obrigatoriamente no topo.
+- **Pop** (Desempilhar): É a operação de remoção. Ela retira o elemento que está no topo (o último que entrou) e o retorna para quem fez a chamada.
 
 Mas você pode estar se perguntando: qual é a real utilidade dessa estrutura? Quando tive meu primeiro contato com ela, confesso que me parecia apenas uma versão limitada de um array comum. Afinal, por que restringir o acesso apenas ao topo se podemos acessar qualquer posição em um array?
 
@@ -28,7 +28,7 @@ Em Python, a estrutura de dados lista (list) é ideal para implementar uma pilha
 
 ### Operações para implementação da pilha
 
-Essas são as três operações básicas da pilha: inserção(push), remoção(pop) e acesso(top).
+Essas são as três operações básicas da pilha: **inserção**(push), **remoção**(pop) e **acesso**(top).
 
 ```python
 .append(valor) # adiciona um elemento no topo
@@ -46,9 +46,9 @@ Um exemplo comum de uso dessa estrutura é uma fila de músicas, como em aplicat
 
 ## Operações principais
 
-- Enfileirar (enqueue): adiciona um elemento ao final da fila.
-- Desenfileirar (dequeue): remove o elemento que está no início da fila.
-- Frente (front/peek): permite visualizar o primeiro elemento da fila, sem removê-lo.
+- **Enfileirar** (enqueue): adiciona um elemento ao final da fila.
+- **Desenfileirar** (dequeue): remove o elemento que está no início da fila.
+- **Frente** (front/peek): permite visualizar o primeiro elemento da fila, sem removê-lo.
 
 ## Em python
 
