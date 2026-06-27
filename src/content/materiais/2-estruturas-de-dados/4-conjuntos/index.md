@@ -18,7 +18,6 @@ order: 4
 - [4.9. Engenharia de Software e Performance](#49-engenharia-de-software-e-performance)
 - [4.10. Análise Assintótica (Big O Notation)](#410-analise-assintotica-big-o-notation)
 - [4.11. Conclusão Prática](#411-conclusao-pratica)
-- [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
 ---
@@ -209,10 +208,59 @@ Para um sistema de login que precisa verificar se um e-mail já está cadastrado
 
 ---
 
-# Complemente o Aprendizado
+```quiz
+- tipo: single
+  pergunta: Um estagiário escreveu `banidos = {}` esperando criar um conjunto vazio, e depois chamou `banidos.add("joao123")`. O código gerou um erro. O que está acontecendo?
+  opcoes:
+    - texto: "`{}` sempre cria um dicionário vazio, e dicionários não possuem o método `add()`"
+      correta: true
+      explicacao: Exato! Em Python, `{}` é reservado para dicionários vazios por herança histórica da linguagem. Para criar um set vazio, é obrigatório usar o construtor `set()`.
+      explicacao_erro: O símbolo `{}` sozinho sempre instancia um dicionário, nunca um set. Por isso `dict` não reconhece o método `add()`, que pertence à classe `set`.
+    - texto: O método correto para adicionar itens a um conjunto seria `append()`, não `add()`
+      correta: false
+      explicacao: O método `add()` está correto para sets. O erro real é que `banidos` nunca chegou a ser um set, e sim um dict, por causa do uso de `{}`.
+    - texto: Conjuntos vazios não podem receber elementos depois de criados
+      correta: false
+      explicacao: Sets vazios podem receber elementos normalmente com `add()`. O problema é que `{}` criou um dicionário, não um set.
+    - texto: O nome da variável `banidos` é inválido para um conjunto
+      correta: false
+      explicacao: O nome da variável não influencia o tipo do objeto. O erro vem do uso de `{}`, que sempre cria um dicionário vazio.
 
-Para aprofundar seus conhecimentos sobre Conjuntos, confira os seguintes recursos:
+- tipo: single
+  pergunta: Dados `grupo_a = {1, 2, 3}` e `grupo_b = {3, 1, 2, 1}`, a comparação `grupo_a == grupo_b` retorna `True`. Qual princípio da Teoria dos Conjuntos explica esse resultado?
+  opcoes:
+    - texto: Princípio da Extensionalidade, pois um conjunto é definido apenas pelos elementos que possui, sem importar ordem ou repetição
+      correta: true
+      explicacao: Exato! Como `grupo_b` possui os mesmos elementos únicos que `grupo_a` (o `1` repetido é ignorado), os dois conjuntos são considerados idênticos.
+      explicacao_erro: A igualdade entre conjuntos segue o Princípio da Extensionalidade, que define um conjunto exclusivamente pelos elementos que ele contém, e não pela ordem ou repetição na notação.
+    - texto: Coincidência, já que o Python compara apenas o tamanho das variáveis
+      correta: false
+      explicacao: O Python não compara apenas o tamanho. Ele verifica se os elementos únicos de ambos os conjuntos são exatamente os mesmos.
+    - texto: Os conjuntos são iguais porque foram declarados na mesma ordem de criação
+      correta: false
+      explicacao: A ordem de criação não influencia a igualdade entre sets. O que importa é apenas quais elementos únicos cada um contém.
+    - texto: Erro de execução, pois conjuntos com sintaxes diferentes nunca deveriam ser comparáveis
+      correta: false
+      explicacao: Não há erro aqui. Conjuntos com sintaxes de declaração diferentes podem ser comparados normalmente, e serão iguais se contiverem os mesmos elementos.
 
----
+- tipo: single
+  pergunta: Um sistema de login precisa verificar se um e-mail já existe numa base de 50 milhões de usuários. Por que um `set` é mais indicado que uma `list` para essa verificação?
+  opcoes:
+    - texto: Porque sets ocupam menos espaço em disco que listas
+      correta: false
+      explicacao: O ganho de um set nesse cenário não está no espaço em disco, e sim na velocidade da busca, graças à tabela hash.
+    - texto: Porque a busca em um set tem complexidade O(1), enquanto em uma lista é O(n), tornando a verificação praticamente instantânea independente do tamanho da base
+      correta: true
+      explicacao: Exato! Sets usam tabelas hash internamente, calculando o endereço do elemento diretamente, em vez de percorrer item por item como uma lista faria.
+      explicacao_erro: A vantagem do set está na complexidade da busca. Enquanto uma lista precisa percorrer elemento por elemento (O(n)), um set calcula o hash do item e acessa a posição diretamente (O(1)).
+    - texto: Porque listas não conseguem armazenar strings como e-mails
+      correta: false
+      explicacao: Listas armazenam strings perfeitamente. A diferença real está na performance da operação de busca, não no tipo de dado armazenado.
+    - texto: Porque sets garantem que o e-mail nunca será perdido em caso de falha do sistema
+      correta: false
+      explicacao: Isso não tem relação com confiabilidade ou persistência de dados, e sim com a velocidade de busca por pertinência.
+```
+
+
 
 
