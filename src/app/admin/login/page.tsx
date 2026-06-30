@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -43,22 +44,17 @@ export default function AdminLoginPage() {
             borderRadius: 16,
             padding: '2rem',
           }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.75rem' }}>
+              <Image src="/assets/logo.svg" alt="Trilha" width={48} height={34} />
+            </div>
             <h1 className="display font-poppins" style={{
               fontSize: 'clamp(20px, 2.5vw, 28px)',
               color: 'var(--ink)',
-              marginBottom: '0.5rem',
+              marginBottom: '1.5rem',
               textAlign: 'center',
             }}>
               Admin
             </h1>
-            <p className="font-spaceGrotesk" style={{
-              color: 'var(--ink-soft)',
-              textAlign: 'center',
-              marginBottom: '1.5rem',
-              fontSize: 14,
-            }}>
-              TrilhaUFPB
-            </p>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 <span className="font-poppins" style={{ fontSize: 13, fontWeight: 600, color: 'var(--ink)' }}>
