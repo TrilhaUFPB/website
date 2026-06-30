@@ -45,7 +45,7 @@ export default function AdminLoginPage() {
             padding: '2rem',
           }}>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.75rem' }}>
-              <Image src="/assets/logo.svg" alt="Trilha" width={48} height={34} />
+              <Image src="/assets/logo.svg" alt="Trilha" width={48} height={34} style={{ filter: 'brightness(0)' }} />
             </div>
             <h1 className="display font-poppins" style={{
               fontSize: 'clamp(20px, 2.5vw, 28px)',
