@@ -1,33 +1,25 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { usePolls } from '@/hooks/trilhurna/usePolls';
-import { useAdminAuth } from '@/hooks/trilhurna/useAdminAuth';
 import { CreatePoll } from './CreatePoll';
 
 export const AdminDashboard = () => {
   const { polls, loading, error, deletePoll } = usePolls();
-  const { isAdmin } = useAdminAuth();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [deletingPoll, setDeletingPoll] = useState<string | null>(null);
+  const [loggingOut, setLoggingOut] = useState(false);
+  const router = useRouter();
 
-  if (!isAdmin) {
-    return (
-      <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">
-            🔒 Access Denied
-          </h2>
-          <p className="text-gray-600">
-            You need to be logged in as admin to access this page.
-          </p>
-        </div>
-      </div>
-    );
-  }
+  const handleLogout = async () => {
+    setLoggingOut(true);
+    await fetch('/api/admin/logout', { method: 'POST' });
+    router.push('/admin/login');
+  };
 
   const handleDeletePoll = async (pollId: string) => {
-    if (confirm('Are you sure you want to delete this poll? This action cannot be undone.')) {
+    if (confirm('Tem certeza que deseja deletar esta enquete? Esta ação não pode ser desfeita.')) {
       setDeletingPoll(pollId);
       try {
         await deletePoll(pollId);
@@ -40,9 +32,9 @@ export const AdminDashboard = () => {
   };
 
   const copyPollLink = (pollId: string) => {
-    const pollUrl = `${window.location.origin}/vote?id=${pollId}`;
+    const pollUrl = `${window.location.origin}/trilhurna?id=${pollId}`;
     navigator.clipboard.writeText(pollUrl);
-    alert('Poll link copied to clipboard!');
+    alert('Link da enquete copiado!');
   };
 
   if (showCreateForm) {
@@ -53,7 +45,7 @@ export const AdminDashboard = () => {
             onClick={() => setShowCreateForm(false)}
             className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-200"
           >
-            ← Back to Dashboard
+            ← Voltar
           </button>
         </div>
         <CreatePoll />
@@ -67,12 +59,21 @@ export const AdminDashboard = () => {
         <h1 className="text-2xl font-bold text-AzulMeiaNoite font-poppins">
           Admin Dashboard
         </h1>
-        <button
-          onClick={() => setShowCreateForm(true)}
-          className="bg-VerdeMenta text-white px-4 py-2 rounded-lg hover:bg-AzulEletrico transition duration-300 font-bold font-poppins text-sm"
-        >
-          + Create New Poll
-        </button>
+        <div className="flex gap-3">
+          <button
+            onClick={() => setShowCreateForm(true)}
+            className="bg-VerdeMenta text-white px-4 py-2 rounded-lg hover:bg-AzulEletrico transition duration-300 font-bold font-poppins text-sm"
+          >
+            + Nova enquete
+          </button>
+          <button
+            onClick={handleLogout}
+            disabled={loggingOut}
+            className="text-sm text-gray-400 hover:text-red-500 transition duration-300 font-spaceGrotesk"
+          >
+            {loggingOut ? 'Saindo…' : 'Sair'}
+          </button>
+        </div>
       </div>
 
       {error && (
@@ -90,10 +91,10 @@ export const AdminDashboard = () => {
           {polls.length === 0 ? (
             <div className="text-center py-8">
               <h3 className="text-lg font-semibold text-gray-600 mb-2 font-poppins">
-                No polls created yet
+                Nenhuma enquete criada
               </h3>
               <p className="text-gray-500 text-sm font-spaceGrotesk">
-                Create your first poll to get started!
+                Crie a primeira enquete para começar!
               </p>
             </div>
           ) : (
@@ -113,15 +114,15 @@ export const AdminDashboard = () => {
                       </p>
                     )}
                     <div className="text-xs text-gray-500 font-spaceGrotesk">
-                      Created: {poll.createdAt.toLocaleDateString()}
+                      Criado em: {poll.createdAt.toLocaleDateString('pt-BR')}
                       <span className="mx-2">•</span>
-                      Total votes: {poll.totalVotes}
+                      Total de votos: {poll.totalVotes}
                       <span className="mx-2">•</span>
-                      Options: {poll.options.length}
+                      Opções: {poll.options.length}
                       {poll.allowMultipleVotes && (
                         <>
                           <span className="mx-2">•</span>
-                          <span className="text-AzulEletrico">Multiple choice (max {poll.maxVotes})</span>
+                          <span className="text-AzulEletrico">Múltipla escolha (max {poll.maxVotes})</span>
                         </>
                       )}
                     </div>
@@ -130,18 +131,18 @@ export const AdminDashboard = () => {
                     <button
                       onClick={() => copyPollLink(poll.id)}
                       className="bg-AzulEletrico text-white px-2 py-1 rounded text-xs hover:bg-AzulMeiaNoite transition duration-200 font-bold"
-                      title="Copy poll link"
+                      title="Copiar link"
                     >
-                      Copy
+                      Copiar
                     </button>
                     <a
                       href={`/trilhurna?id=${poll.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-VerdeMenta text-white px-2 py-1 rounded text-xs hover:bg-AzulEletrico transition duration-200 font-bold"
-                      title="View poll"
+                      title="Ver enquete"
                     >
-                      View
+                      Ver
                     </a>
                     <button
                       onClick={() => handleDeletePoll(poll.id)}
@@ -151,9 +152,9 @@ export const AdminDashboard = () => {
                           ? 'bg-gray-400 cursor-not-allowed'
                           : 'bg-red-500 text-white hover:bg-red-600'
                       }`}
-                      title="Delete poll"
+                      title="Deletar"
                     >
-                      {deletingPoll === poll.id ? 'Deleting...' : '×'}
+                      {deletingPoll === poll.id ? '…' : '×'}
                     </button>
                   </div>
                 </div>
@@ -168,7 +169,7 @@ export const AdminDashboard = () => {
                         {option.name}
                       </div>
                       <div className="text-xs text-gray-600 font-spaceGrotesk">
-                        {option.votes} votes
+                        {option.votes} votos
                       </div>
                     </div>
                   ))}
