@@ -14,8 +14,12 @@ export const AdminDashboard = () => {
 
   const handleLogout = async () => {
     setLoggingOut(true);
-    await fetch('/api/admin/logout', { method: 'POST' });
-    router.push('/admin/login');
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+      router.push('/admin/login');
+    } finally {
+      setLoggingOut(false);
+    }
   };
 
   const handleDeletePoll = async (pollId: string) => {

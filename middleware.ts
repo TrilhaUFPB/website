@@ -12,6 +12,10 @@ async function computeExpectedToken(): Promise<string> {
 }
 
 export async function middleware(request: NextRequest) {
+  if (!process.env.ADMIN_USER || !process.env.ADMIN_PASSWORD) {
+    return NextResponse.redirect(new URL('/admin/login', request.url));
+  }
+
   const cookie = request.cookies.get('admin_session');
   const expected = await computeExpectedToken();
 
