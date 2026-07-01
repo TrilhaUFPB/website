@@ -49,7 +49,7 @@ Para entender como um programa funciona, é preciso seguir a ordem em que as ins
 Uma chamada de função funciona como um desvio. O fluxo “salta” para o corpo da função, executa suas instruções e depois retorna para continuar o programa.
 
 Exemplo:
-```python 
+```python-run 
 def mostrar_msg():
     print("Dentro da função")
 print("Antes da função")
