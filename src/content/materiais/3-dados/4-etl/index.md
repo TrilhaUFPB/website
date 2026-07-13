@@ -157,3 +157,55 @@ Essas arquiteturas costumam coexistir em uma **plataforma de dados moderna**, pe
 Para aprofundar seus conhecimentos sobre ETL, confira os seguintes recursos:
 
 - [ETL Made Simple | What Data Analysts Should Know](https://youtu.be/rnmoT0P6Oyg?si=90R5RS71LmHlDCr_)
+
+```quiz
+- tipo: single
+  pergunta: |
+    Uma empresa coleta dados de vendas de três sistemas diferentes, padroniza os formatos de data e moeda, e grava tudo num data warehouse para gerar relatórios.
+    Qual etapa do ETL corresponde à **padronização dos formatos**?
+  opcoes:
+    - texto: "Extract, pois os dados estão sendo coletados das fontes"
+      correta: false
+      explicacao: "A extração é apenas a coleta dos dados nas origens (ERP, planilha e API). A padronização de formatos acontece depois, quando os dados brutos já foram coletados."
+    - texto: "Transform, pois os dados estão sendo limpos e padronizados conforme regras de negócio"
+      correta: true
+      explicacao: "Correto! A transformação é a etapa em que os dados são limpos, padronizados, enriquecidos e combinados. Converter formatos de data e moeda é um exemplo clássico de limpeza e padronização."
+      explicacao_erro: "Pense no que está acontecendo com os dados: eles já foram coletados (Extract) e ainda não foram gravados no destino (Load). A padronização de formatos é uma atividade de limpeza — que pertence à etapa intermediária."
+    - texto: "Load, pois os dados estão sendo preparados para o destino"
+      correta: false
+      explicacao: "O Load é apenas a gravação dos dados já transformados no sistema de destino (o data warehouse). A preparação e padronização acontecem antes, na transformação."
+    - texto: "Ingestão, pois os dados estão sendo movidos entre sistemas"
+      correta: false
+      explicacao: "A ingestão define como e com que frequência os dados extraídos são movidos (batch, real-time, push/pull). Ela não envolve padronizar formatos — isso é papel da transformação."
+
+- tipo: single
+  pergunta: |
+    O time de dados de um hospital montou o seguinte fluxo noturno:
+
+    &nbsp;
+
+    (1) lê os registros de atendimentos do banco OLTP do sistema hospitalar;
+
+    (2) anonimiza os CPFs, padroniza os códigos de procedimento e junta com a tabela de convênios;
+
+    (3) insere no data warehouse somente os atendimentos novos do dia.
+
+    &nbsp;
+
+    A correspondência correta entre as ações e as etapas do ETL é:
+  opcoes:
+    - texto: "(1) Extract → (2) Transform → (3) Load com carga incremental"
+      correta: true
+      explicacao: "Correto! Ler os registros do banco de origem é a extração; anonimizar, padronizar e juntar tabelas são atividades típicas de transformação (limpeza, padronização e integração); e inserir apenas os registros novos no destino é a carga — no modo incremental, já que não substitui todo o conjunto."
+      explicacao_erro: "Siga o fluxo dos dados: primeiro eles saem da origem (Extract), depois são preparados e combinados (Transform) e só então gravados no destino (Load). Como apenas os atendimentos novos são inseridos, a carga é incremental, não total."
+    - texto: "(1) Transform → (2) Load → (3) Extract"
+      correta: false
+      explicacao: "A ordem está invertida. Ler dados da origem não é transformação, e o pipeline ETL sempre começa pela extração — não termina nela."
+    - texto: "(1) Extract → (2) Load → (3) Transform"
+      correta: false
+      explicacao: "Essa seria a lógica de um pipeline ELT, mas no cenário descrito as transformações (anonimização, padronização, junção) acontecem *antes* da gravação no data warehouse — ou seja, é um ETL clássico."
+    - texto: "(1) Ingestão → (2) Extract → (3) Carga total"
+      correta: false
+      explicacao: "Além da ordem estar errada, a etapa (3) insere somente os atendimentos novos do dia — isso caracteriza carga incremental, e não carga total, que substituiria todo o conjunto de dados a cada execução."
+
+```
