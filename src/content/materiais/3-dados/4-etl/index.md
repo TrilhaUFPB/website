@@ -5,6 +5,13 @@ category: Dados
 order: 4
 ---
 
+## Sumário
+
+- [4.1. O que é ETL](#42-oque-e-etl)
+- [4.2. Passos do ETL](#42-passos-do-etl)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
 # 4.1. O que é ETL
 
 ETL (Extract, Transform, Load) é um dos principais padrões de integração e processamento de dados usados para mover informações de suas fontes originais para um sistema de destino, geralmente com foco analítico.
@@ -150,3 +157,8 @@ As arquiteturas de armazenamento definem como os dados são organizados e dispon
 - **Data Lakehouse**: abordagem que combina a flexibilidade do data lake com recursos de gerenciamento, performance e consistência típicos de data warehouses, utilizando camadas de metadados e formatos transacionais.
 
 Essas arquiteturas costumam coexistir em uma **plataforma de dados moderna**, permitindo que os dados fluam da captação até análises avançadas com governança, segurança e escalabilidade.
+
+---
+
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre Pilhas e Filas, confira os seguintes recursos:
