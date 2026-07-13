@@ -1,6 +1,6 @@
 ---
 title: 4. ETL
-description: Entenda como funcionam as etapas de Extração, Transformação e Carga, e saiba quando aplicar cada estratégia em seus pipelines de dados
+description: Entenda como funcionam as etapas de Extract, Transform e Load, e saiba quando aplicar cada estratégia em seus pipelines de dados
 category: Dados
 order: 4
 ---
