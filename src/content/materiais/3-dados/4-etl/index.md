@@ -23,8 +23,7 @@ A ideia central é extrair dados de múltiplas origens, transformá‑los confor
 
 - **Load (*Carga*)**: etapa final, na qual os dados transformados são carregados em um ou mais destinos, como data warehouses, data lakes ou data marts, para serem consumidos por análises, relatórios, modelos ou aplicações.
 
-Fonte: Fundamentals of Data Engineering
-![ETL](/api/materiais-assets/3-dados/4-etl/assets/etl.jpg)
+![Fonte: Fundamentals of Data Engineering](/api/materiais-assets/3-dados/4-etl/assets/etl.jpg)
 
 # 4.2. Passos do ETL
 
@@ -34,8 +33,6 @@ Fonte: Fundamentals of Data Engineering
 
 A extração é a primeira etapa do pipeline ETL e seu objetivo é coletar dados de um ou mais sistemas de origem e transportá‑los para um ambiente intermediário ou de processamento.
 Essa fase busca obter informações de forma íntegra e consistente, com a menor latência possível, evitando sobrecarregar os sistemas transacionais ou de produção.
-
-Fonte:
 
 ### Fontes de dados
 
@@ -55,8 +52,6 @@ Alguns exemplos comuns:
 “A ingestão de dados é o processo de mover dados de um local para outro.
 
 A ingestão de dados implica a movimentação de dados de sistemas de origem para o armazenamento no ciclo de vida da engenharia de dados, sendo a ingestão uma etapa intermediária.”
-
-Fonte: **Fundamentals of Data Engineering**.
 
 A ingestão de dados define como e com que frequência as informações extraídas são movidas para o ambiente de processamento ou armazenamento.
 Essa escolha impacta desempenho, custo e atualidade das análises.
@@ -125,8 +120,6 @@ Dimensões de qualidade:
 
 “O armazenamento permeia todo o ciclo de vida da engenharia de dados, frequentemente ocorrendo em vários pontos de um pipeline de dados, com sistemas de armazenamento interagindo com sistemas de origem, ingestão, transformação e disponibilização.”
 
-Fonte: **Fundamentals of Data Engineering**.
-
 ### O que é o processo de armazenar (Load)
 
 O armazenamento (Load) é a fase final do ETL, em que os dados já extraídos e transformados são gravados em um sistema de destino preparado para consulta e consumo.
@@ -157,8 +150,3 @@ As arquiteturas de armazenamento definem como os dados são organizados e dispon
 - **Data Lakehouse**: abordagem que combina a flexibilidade do data lake com recursos de gerenciamento, performance e consistência típicos de data warehouses, utilizando camadas de metadados e formatos transacionais.
 
 Essas arquiteturas costumam coexistir em uma **plataforma de dados moderna**, permitindo que os dados fluam da captação até análises avançadas com governança, segurança e escalabilidade.
-
----
-
-## Complemente o Aprendizado
-Para aprofundar seus conhecimentos sobre Pilhas e Filas, confira os seguintes recursos:
