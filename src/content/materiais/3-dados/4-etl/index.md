@@ -31,7 +31,7 @@ A ideia central é extrair dados de múltiplas origens, transformá‑los confor
 
 ### O que é o processo de extração (extract)
 
-A extração é a primeira etapa do pipeline ETL e seu objetivo é coletar dados de um ou mais sistemas de origem e transportá‑los para um ambiente intermediário ou de processamento.
+A extração é a primeira etapa do pipeline ETL e seu objetivo é **coletar dados** de um ou mais sistemas de origem e transportá‑los para um ambiente intermediário ou de processamento.
 Essa fase busca obter informações de forma íntegra e consistente, com a menor latência possível, evitando sobrecarregar os sistemas transacionais ou de produção.
 
 ### Fontes de dados
@@ -71,7 +71,7 @@ Padrão de movimentação:
 
 ### O que é o processo de transformação (transform)
 
-A transformação é a fase intermediária do ETL, em que dados brutos são convertidos em informações estruturadas e coerentes com o sistema de destino.
+A transformação é a fase intermediária do ETL, em que dados brutos são **convertidos em informações estruturadas e coerentes com o sistema de destino.**
 O objetivo é preparar os dados para análises, relatórios ou modelagem, garantindo integridade, consistência e alinhamento com as regras de negócio.
 
 Atividades comuns incluem:
@@ -122,7 +122,7 @@ Dimensões de qualidade:
 
 ### O que é o processo de armazenar (Load)
 
-O armazenamento (Load) é a fase final do ETL, em que os dados já extraídos e transformados são gravados em um sistema de destino preparado para consulta e consumo.
+O armazenamento (Load) é a fase final do ETL, em que os dados já extraídos e transformados são **gravados em um sistema de destino preparado para consulta e consumo.**
 Além da carga final, é comum utilizar áreas intermediárias (como *staging* e camadas refinadas) para controlar versionamento, desempenho e governança.
 
 Os principais modos de carga incluem:
