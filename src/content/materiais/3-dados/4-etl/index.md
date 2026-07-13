@@ -150,3 +150,10 @@ As arquiteturas de armazenamento definem como os dados são organizados e dispon
 - **Data Lakehouse**: abordagem que combina a flexibilidade do data lake com recursos de gerenciamento, performance e consistência típicos de data warehouses, utilizando camadas de metadados e formatos transacionais.
 
 Essas arquiteturas costumam coexistir em uma **plataforma de dados moderna**, permitindo que os dados fluam da captação até análises avançadas com governança, segurança e escalabilidade.
+
+---
+
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre ETL, confira os seguintes recursos:
+
+- [ETL Made Simple | What Data Analysts Should Know](https://youtu.be/rnmoT0P6Oyg?si=90R5RS71LmHlDCr_)
