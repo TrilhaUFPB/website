@@ -462,8 +462,8 @@
         "description": "Linear structures: arrays/lists, queues, and stacks. How to store and organize data in memory.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "July 10, 2026",
-        "deadline": "July 16, 2026",
+        "date": "July 17, 2026",
+        "deadline": "July 23, 2026",
         "homework": "Homework coming soon.",
         "links": [
           {
@@ -471,7 +471,7 @@
             "url": "https://youtube.com/playlist?list=PLHz_AreHm4dksnH2jVTIVNviIMBVYyFnH&si=y6N-qV0OQF9Qfnbf"
           }
         ],
-        "dateISO": "2026-07-10"
+        "dateISO": "2026-07-17"
       },
       {
         "number": "08",
@@ -480,11 +480,11 @@
         "description": "Hash tables, sets, and computational complexity. Efficiency and choosing the right structure for each problem.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "July 17, 2026",
-        "deadline": "July 23, 2026",
+        "date": "July 24, 2026",
+        "deadline": "July 30, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-07-17"
+        "dateISO": "2026-07-24"
       },
       {
         "number": "09",
@@ -493,12 +493,12 @@
         "description": "Hands-on class in competition format. The mini-project brings together everything you've learned about data structures.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "July 24, 2026",
-        "deadline": "July 30, 2026",
+        "date": "July 31, 2026",
+        "deadline": "August 6, 2026",
         "taskType": "miniprojeto",
         "homework": "Mini-Project coming soon.",
         "links": [],
-        "dateISO": "2026-07-24"
+        "dateISO": "2026-07-31"
       },
       {
         "number": "10",
@@ -507,11 +507,11 @@
         "description": "Introduction to data engineering and web scraping in practice. How to collect, process, and transform raw data.",
         "embedUrl": "https://www.canva.com/design/DAHLV2G9YO0/5bx-5OZsT2mNbsUo6jxHzw/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHLV2G9YO0/5bx-5OZsT2mNbsUo6jxHzw/view?utm_content=DAHLV2G9YO0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "July 31, 2026",
-        "deadline": "August 6, 2026",
+        "date": "August 7, 2026",
+        "deadline": "August 13, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-07-31"
+        "dateISO": "2026-08-07"
       },
       {
         "number": "11",
@@ -520,11 +520,11 @@
         "description": "Concepts and practice of exploratory data analysis with pandas and matplotlib.",
         "embedUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?utm_content=DAHBCznivZs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "August 7, 2026",
-        "deadline": "August 27, 2026",
+        "date": "August 14, 2026",
+        "deadline": "September 3, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-08-07"
+        "dateISO": "2026-08-14"
       },
       {
         "number": "12",
@@ -533,11 +533,11 @@
         "description": "Presentation and discussion of notebooks from the previous assignment. Refinement and insights.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "August 28, 2026",
-        "deadline": "September 3, 2026",
+        "date": "September 4, 2026",
+        "deadline": "September 10, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-08-28"
+        "dateISO": "2026-09-04"
       },
       {
         "number": "13",
@@ -546,11 +546,11 @@
         "description": "Introduction to Machine Learning: supervised models, training, testing, and performance evaluation.",
         "embedUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?utm_content=DAHAHCMaCH0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "September 4, 2026",
-        "deadline": "September 10, 2026",
+        "date": "September 11, 2026",
+        "deadline": "September 17, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-09-04"
+        "dateISO": "2026-09-11"
       },
       {
         "number": "14",
@@ -559,12 +559,12 @@
         "description": "Advanced topics and Machine Learning mini-project. How to apply models to real-world problems.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "September 11, 2026",
-        "deadline": "September 17, 2026",
+        "date": "September 18, 2026",
+        "deadline": "September 24, 2026",
         "taskType": "miniprojeto",
         "homework": "Mini-Project coming soon.",
         "links": [],
-        "dateISO": "2026-09-11"
+        "dateISO": "2026-09-18"
       },
       {
         "number": "15",
@@ -573,11 +573,11 @@
         "description": "Introduction to full stack development: what software is, networks, and the fundamentals of APIs.",
         "embedUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?utm_content=DAHCdA8c7fI&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "September 18, 2026",
-        "deadline": "September 24, 2026",
+        "date": "September 25, 2026",
+        "deadline": "October 1, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-09-18"
+        "dateISO": "2026-09-25"
       },
       {
         "number": "16",
@@ -586,11 +586,11 @@
         "description": "Backend in practice: API with FastAPI and Postman. How to persist data durably.",
         "embedUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?utm_content=DAHBC_b0Jbs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "September 25, 2026",
-        "deadline": "October 1, 2026",
+        "date": "October 2, 2026",
+        "deadline": "October 8, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-09-25"
+        "dateISO": "2026-10-02"
       },
       {
         "number": "17",
@@ -599,11 +599,11 @@
         "description": "Database theory: relational modeling, SQL, and connecting data to the server.",
         "embedUrl": "https://www.canva.com/design/DAHIPYNNMlM/gZ7J69hsNILgyqoOJsBing/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHIPYNNMlM/gZ7J69hsNILgyqoOJsBing/view?utm_content=DAHIPYNNMlM&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "October 2, 2026",
-        "deadline": "October 8, 2026",
+        "date": "October 9, 2026",
+        "deadline": "October 15, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-10-02"
+        "dateISO": "2026-10-09"
       },
       {
         "number": "18",
@@ -612,11 +612,11 @@
         "description": "API refinement with schemas, base models, and SQLAlchemy. Full integration of the database with the backend.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "October 9, 2026",
-        "deadline": "October 15, 2026",
+        "date": "October 16, 2026",
+        "deadline": "October 22, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-10-09"
+        "dateISO": "2026-10-16"
       },
       {
         "number": "19",
@@ -625,12 +625,12 @@
         "description": "Frontend theory and practice. The mini-project closes the cycle with a complete application.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "October 16, 2026",
-        "deadline": "October 24, 2026",
+        "date": "October 23, 2026",
+        "deadline": "October 31, 2026",
         "taskType": "miniprojeto",
         "homework": "Mini-Project coming soon.",
         "links": [],
-        "dateISO": "2026-10-16"
+        "dateISO": "2026-10-23"
       }
     ],
     "form": {
