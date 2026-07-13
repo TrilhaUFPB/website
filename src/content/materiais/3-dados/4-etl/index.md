@@ -166,7 +166,7 @@ Para aprofundar seus conhecimentos sobre ETL, confira os seguintes recursos:
   opcoes:
     - texto: "Extract, pois os dados estão sendo coletados das fontes"
       correta: false
-      explicacao: "A extração é apenas a coleta dos dados nas origens (ERP, planilha e API). A padronização de formatos acontece depois, quando os dados brutos já foram coletados."
+      explicacao: "A extração é apenas a coleta dos dados nas origens (os três sistemas de vendas). A padronização de formatos acontece depois, quando os dados brutos já foram coletados."
     - texto: "Transform, pois os dados estão sendo limpos e padronizados conforme regras de negócio"
       correta: true
       explicacao: "Correto! A transformação é a etapa em que os dados são limpos, padronizados, enriquecidos e combinados. Converter formatos de data e moeda é um exemplo clássico de limpeza e padronização."
