@@ -103,7 +103,7 @@ export default function PyRunner({ code: initialCode }: PyRunnerProps) {
           <button
             onClick={handleRun}
             disabled={isBusy}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-green-600 hover:bg-green-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white text-xs font-semibold font-sans transition-colors duration-150"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-green-600 hover:bg-green-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white text-xs font-bold font-sans transition-colors duration-150"
           >
             {status === "loading"
               ? "Carregando..."
@@ -130,12 +130,12 @@ export default function PyRunner({ code: initialCode }: PyRunnerProps) {
         />
       </div>
 
-      <div className="px-4 py-3 bg-slate-950/60 border-t border-slate-800/80">
-        <div className="text-[11px] uppercase tracking-wider text-emerald-400 mb-1.5 select-none font-semibold">
+      <div className="px-4 py-3 bg-[#f0ead6] dark:bg-[#f0ead6] border-t border-slate-800/80 rounded-b-xl">
+        <div className="text-[11px] uppercase tracking-wider text-green-600 mb-1.5 select-none font-semibold">
           Saída
         </div>
         <pre
-          className="font-mono text-slate-100 whitespace-pre-wrap min-h-[1.5em]"
+          className="font-mono text-[var(--ink,#1c1917)] whitespace-pre-wrap min-h-[1.5em]"
           style={{ fontSize: 14, lineHeight: 1.6 }}
         >
           {output || " "}
