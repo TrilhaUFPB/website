@@ -5,6 +5,7 @@ description: Aprenda a estrutura set em Python, entendendo sua base na teoria do
 category: Programação
 order: 4
 ---
+
 ## Sumário
 
 - [4.1. Introdução: A Natureza do Dado Desordenado](#41-introducao-a-natureza-do-dado-desordenado)
@@ -31,23 +32,12 @@ Para compreender a estrutura de dados `set` (conjunto) em Python, é necessário
 Uma analogia útil é a de um pacote de figurinhas soltas, e não coladas em um álbum. Ao despejar as figurinhas sobre uma mesa, observam-se duas regras fundamentais:
 
 1. **Unicidade:** Ter duas figurinhas idênticas não altera o fato de que você possui *aquele* item na coleção. Duplicatas são redundantes e ignoradas.
-2. **Ausência de Ordem:** Não existe "primeira" ou "última" figurinha na mesa. Elas estão dispersas. O conceito de índice posicional () inexiste.
+2. **Ausência de Ordem:** Não existe "primeira" ou "última" figurinha na mesa. Elas estão dispersas. O conceito de índice posicional inexiste.
 
 Na Ciência da Computação, definimos formalmente um `set` como uma **Coleção Mutável de Elementos Imutáveis e Não Ordenados**.
 
 - **Mutável:** O conjunto em si pode ser alterado (inserção/remoção de itens).
 - **Elementos Imutáveis:** Os itens *dentro* do conjunto devem ser estáticos (hashables). Não é possível armazenar uma lista dentro de um conjunto, pois a lista pode mudar, o que quebraria a integridade da estrutura.
-
-## **Exercício de Fixação**
-
-Tente executar o código abaixo mentalmente (ou no interpretador) e explique o erro gerado:
-
-```python
-meu_conjunto = {1, 2, [3, 4]}
-
-```
-
-Por que o Python não permite que a lista `[3, 4]` faça parte do conjunto?
 
 ---
 
@@ -66,15 +56,9 @@ frutas = {'maçã', 'banana', 'uva'}
 
 lista_bruta = [1, 2, 2, 3, 3, 3, 4, 1]
 numeros_unicos = set(lista_bruta)
-
 ```
 
-Ao executar o código acima, a variável `frutas` é criada como uma coleção desordenada. Já no caso de `numeros_unicos`, o Python processa a lista de entrada e elimina automaticamente as redundâncias. O valor armazenado em `numeros_unicos` será apenas `{1, 2, 3, 4}`. A ordem original da lista é descartada durante essa conversão.
-
-## **Exercício de Fixação**
-
-Você recebeu uma lista de IDs de acesso de um servidor: `acessos = [101, 102, 101, 103, 104, 102]`.
-Se você fizer `len(set(acessos))`, qual será o número resultante?
+Ao executar o código acima, a variável `frutas` é criada como uma coleção desordenada. Já no caso de `numeros_unicos`, o Python processa a lista de entrada e elimina automaticamente as redundâncias. O valor armazenado será apenas `{1, 2, 3, 4}`. A ordem original da lista é descartada durante essa conversão.
 
 ---
 
@@ -85,22 +69,9 @@ Existe uma particularidade sintática importante no Python herdada de versões a
 ```python
 dicionario_vazio = {}
 conjunto_vazio = set()
-
 ```
 
 Se o programador utilizar `variavel = {}`, o interpretador criará um objeto do tipo `dict`, e não um `set`, o que causará erros de tipo (TypeError) se métodos de conjunto forem chamados posteriormente.
-
-## **Exercício de Fixação**
-
-O estagiário escreveu o seguinte código para iniciar um conjunto de usuários banidos:
-
-```python
-banidos = {}
-banidos.add("joao123")
-
-```
-
-Qual erro (Exception) esse código vai gerar e como corrigir a primeira linha?
 
 ---
 
@@ -112,14 +83,11 @@ O comportamento do tipo `set` não é arbitrário; ele é uma implementação di
 
 Na matemática, um conjunto é definido exclusivamente por sua extensão (os elementos que o compõem), independentemente da ordem ou da repetição na notação. Se dois conjuntos possuem os mesmos elementos, eles são iguais.
 
-Considere o código abaixo:
-
 ```python
 grupo_a = {1, 2, 3}
 grupo_b = {3, 1, 2, 1}
 
 sao_iguais = (grupo_a == grupo_b)
-
 ```
 
 Neste caso, a variável `sao_iguais` será avaliada como `True`. O Python ignora a repetição do número `1` e a ordem diferente em `grupo_b`, confirmando que a identidade do conjunto é baseada apenas na presença dos itens únicos.
@@ -128,7 +96,7 @@ Neste caso, a variável `sao_iguais` será avaliada como `True`. O Python ignora
 
 # 4.7. Continência (Subconjuntos)
 
-A linguagem distingue com precisão entre subconjunto e subconjunto próprio através de operadores relacionais. Um subconjunto () pode ser igual ao conjunto original, enquanto um subconjunto próprio () deve ser estritamente menor.
+A linguagem distingue com precisão entre subconjunto e subconjunto próprio através de operadores relacionais. Um subconjunto pode ser igual ao conjunto original, enquanto um subconjunto próprio deve ser estritamente menor.
 
 ```python
 s = {1, 2}
@@ -136,15 +104,9 @@ t = {1, 2, 3}
 
 teste_subconjunto = s <= t
 teste_proprio = s < t
-
 ```
 
 No exemplo, `teste_subconjunto` retorna `True` pois todos os elementos de `s` estão em `t`. A variável `teste_proprio` também retorna `True`, pois além de estar contido, `s` não é idêntico a `t` (é menor).
-
-## **Exercício de Fixação**
-
-Dados `A = {1, 2}` e `B = {1, 2}`.
-O resultado de `A < B` (subconjunto próprio) será `True` ou `False`? Justifique.
 
 ---
 
@@ -156,11 +118,10 @@ O `set` permite realizar operações algébricas complexas de forma nativa. Para
 a = {1, 2, 3}
 b = {2, 3, 4}
 
-intersecao = a & b
-uniao = a | b
-diferenca = a - b
+intersecao    = a & b
+uniao         = a | b
+diferenca     = a - b
 dif_simetrica = a ^ b
-
 ```
 
 Analisando os resultados das operações acima:
@@ -171,11 +132,6 @@ Analisando os resultados das operações acima:
 4. **Diferença Simétrica (`^`):** A variável `dif_simetrica` resultará em `{1, 4}`. Este é o "Ou Exclusivo" (XOR), mantendo apenas o que é exclusivo de cada lado e descartando o que é comum.
 
 <img src="/api/materiais-assets/2-estruturas-de-dados/4-conjuntos/assets/diagrama_venn.png" width="500">
-
-## **Exercício de Fixação**
-
-Você tem o conjunto de alunos de inglês `ingles = {"Ana", "Bia"}` e espanhol `espanhol = {"Bia", "Caio"}`.
-Escreva a operação para descobrir quem faz **apenas** inglês (e não faz espanhol).
 
 ---
 
@@ -195,16 +151,12 @@ A tabela abaixo compara o custo computacional médio de operações de busca:
 
 | Estrutura de Dados | Operação | Complexidade Média | Interpretação |
 | --- | --- | --- | --- |
-| **Lista (`list`)** | `x in lista` |  (Linear) | O tempo de busca cresce proporcionalmente ao tamanho dos dados. Em grandes volumes, torna-se ineficiente. |
-| **Conjunto (`set`)** | `x in set` |  (Constante) | O tempo de busca é praticamente instantâneo e independe do tamanho do conjunto (seja 10 ou 10 milhões de itens). |
+| **Lista (`list`)** | `x in lista` | O(n) — Linear | O tempo de busca cresce proporcionalmente ao tamanho dos dados. Em grandes volumes, torna-se ineficiente. |
+| **Conjunto (`set`)** | `x in set` | O(1) — Constante | O tempo de busca é praticamente instantâneo e independe do tamanho do conjunto (seja 10 ou 10 milhões de itens). |
 
 # 4.11. Conclusão Prática
 
 O uso de sets é recomendado e considerado uma boa prática de engenharia quando a ordem dos elementos é irrelevante e a unicidade é necessária. O domínio desta estrutura permite ao programador escrever códigos não apenas semanticamente corretos, mas computacionalmente escaláveis.
-
-## **Exercício de Fixação**
-
-Para um sistema de login que precisa verificar se um e-mail já está cadastrado em uma base de 50 milhões de usuários, qual estrutura é melhor para armazenar os e-mails: Lista ou Set? Por quê?
 
 ---
 
@@ -259,8 +211,38 @@ Para um sistema de login que precisa verificar se um e-mail já está cadastrado
     - texto: Porque sets garantem que o e-mail nunca será perdido em caso de falha do sistema
       correta: false
       explicacao: Isso não tem relação com confiabilidade ou persistência de dados, e sim com a velocidade de busca por pertinência.
+
+- tipo: single
+  pergunta: O que acontece ao executar `meu_conjunto = {1, 2, [3, 4]}`?
+  opcoes:
+    - texto: O código executa normalmente, criando o conjunto `{1, 2, [3, 4]}`
+      correta: false
+      explicacao: Isso não é possível. Conjuntos exigem que seus elementos sejam imutáveis (hashables), e listas são mutáveis.
+    - texto: TypeError, pois listas são mutáveis e não possuem um hash fixo, o que é exigido de todo elemento de um conjunto
+      correta: true
+      explicacao: Correto! O Python lança um TypeError com a mensagem "unhashable type list". Como listas podem mudar, elas não possuem hash fixo, quebrando a integridade da estrutura do set.
+      explicacao_erro: Sets exigem que seus elementos sejam hashables (imutáveis). Listas são mutáveis e não possuem hash fixo, por isso o Python lança TypeError ao tentar incluí-las em um conjunto.
+    - texto: SyntaxError, pois conjuntos não aceitam tipos de dados mistos
+      correta: false
+      explicacao: Conjuntos aceitam tipos mistos, desde que todos sejam imutáveis. O erro aqui é de tipo (TypeError), não de sintaxe.
+    - texto: IndexError, pois `[3, 4]` é uma lista e conjuntos não suportam índices
+      correta: false
+      explicacao: O erro não é sobre índices. O problema é que listas são mutáveis e não podem ser usadas como elementos de um conjunto.
+
+- tipo: single
+  pergunta: "`ingles = {\"Ana\", \"Bia\"}` e `espanhol = {\"Bia\", \"Caio\"}`. Qual operação retorna apenas os alunos que fazem inglês e **não** fazem espanhol?"
+  opcoes:
+    - texto: "`ingles & espanhol`"
+      correta: false
+      explicacao: O operador `&` retorna a interseção — os elementos em comum entre os dois conjuntos. Nesse caso, retornaria `{\"Bia\"}`, que faz ambos os idiomas.
+    - texto: "`ingles | espanhol`"
+      correta: false
+      explicacao: O operador `|` retorna a união — todos os elementos de ambos os conjuntos. Nesse caso, retornaria `{\"Ana\", \"Bia\", \"Caio\"}`.
+    - texto: "`ingles - espanhol`"
+      correta: true
+      explicacao: "Correto! O operador `-` retorna a diferença: elementos que estão em `ingles` mas não em `espanhol`. Resultado: `{\"Ana\"}`."
+      explicacao_erro: "A operação de diferença (`-`) remove do primeiro conjunto tudo que também existe no segundo. `ingles - espanhol` retorna `{\"Ana\"}`, que estuda apenas inglês."
+    - texto: "`ingles ^ espanhol`"
+      correta: false
+      explicacao: O operador `^` retorna a diferença simétrica — elementos exclusivos de cada lado, descartando o que é comum. Retornaria `{\"Ana\", \"Caio\"}`, incluindo Caio que faz apenas espanhol.
 ```
-
-
-
-
