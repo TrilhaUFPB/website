@@ -4,7 +4,7 @@ import { useState } from "react";
 import Editor from "react-simple-code-editor";
 import hljs from "highlight.js/lib/core";
 import python from "highlight.js/lib/languages/python";
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, RotateCcw, Play } from "lucide-react";
 
 hljs.registerLanguage("python", python);
 
@@ -74,6 +74,12 @@ export default function PyRunner({ code: initialCode }: PyRunnerProps) {
     setTimeout(() => setCopied(false), 2000);
   }
 
+  function handleReset() {
+    setCode(initialCode.trim());
+    setOutput("");
+    setStatus("idle");
+  }
+
   const isBusy = status === "loading" || status === "running";
 
   return (
@@ -101,15 +107,28 @@ export default function PyRunner({ code: initialCode }: PyRunnerProps) {
             )}
           </button>
           <button
+            onClick={handleReset}
+            className="p-1 px-2.5 rounded-md hover:bg-slate-800 text-slate-400 hover:text-white transition-colors duration-150 flex items-center gap-1.5 font-sans text-[11px] font-medium"
+            aria-label="Restaurar código original"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>Resetar</span>
+          </button>
+          <button
             onClick={handleRun}
             disabled={isBusy}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-green-600 hover:bg-green-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white text-xs font-bold font-sans transition-colors duration-150"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-transparent hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs font-bold font-sans transition-colors duration-150"
           >
-            {status === "loading"
-              ? "Carregando..."
-              : status === "running"
-              ? "Rodando..."
-              : "▶ Run"}
+            {status === "loading" ? (
+              "Carregando..."
+            ) : status === "running" ? (
+              "Rodando..."
+            ) : (
+              <>
+                <Play className="w-3.5 h-3.5" fill="currentColor" />
+                <span>Run</span>
+              </>
+            )}
           </button>
         </div>
       </div>
