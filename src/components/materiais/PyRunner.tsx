@@ -36,6 +36,22 @@ function getPyodide(): Promise<any> {
 
 type Status = "idle" | "loading" | "running" | "done" | "error";
 
+// Remove os frames internos do Pyodide (_pyodide/_base.py, eval_code_async, etc.)
+// e deixa só o que acontece dentro do código.
+function cleanTraceback(rawMessage: string): string {
+  const lines = rawMessage.split("\n");
+  const execIndex = lines.findIndex((line) => line.includes('File "<exec>"'));
+
+  if (execIndex === -1) {
+    // Não é um traceback conhecido (ex: erro de sintaxe) - devolve como veio
+    return rawMessage.trim();
+  }
+
+  const header = "Traceback (most recent call last):";
+  const relevantLines = lines.slice(execIndex);
+  return [header, ...relevantLines].join("\n").trim();
+}
+
 interface PyRunnerProps {
   code: string;
 }
@@ -45,14 +61,19 @@ export default function PyRunner({ code: initialCode }: PyRunnerProps) {
   const [output, setOutput] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [copied, setCopied] = useState(false);
+  // Controla se a última execução terminou em erro, pra pintar a saída de vermelho
+  const [isError, setIsError] = useState(false);
 
   async function handleRun() {
     setStatus("loading");
     setOutput("");
+    setIsError(false);
     try {
       const pyodide = await getPyodide();
       setStatus("running");
 
+      // Pyodide não manda o print() do Python pro console do navegador por padrão;
+      // esses dois handlers redirecionam stdout/stderr pro nosso estado "output".
       pyodide.setStdout({
         batched: (text: string) => setOutput((prev) => prev + text + "\n"),
       });
@@ -63,7 +84,9 @@ export default function PyRunner({ code: initialCode }: PyRunnerProps) {
       await pyodide.runPythonAsync(code);
       setStatus("done");
     } catch (err) {
-      setOutput((prev) => prev + "\n" + (err as Error).message);
+      // Erros não passam pelo stderr acima, vêm como exception JS mesmo
+      setOutput(cleanTraceback((err as Error).message));
+      setIsError(true);
       setStatus("error");
     }
   }
@@ -78,6 +101,7 @@ export default function PyRunner({ code: initialCode }: PyRunnerProps) {
     setCode(initialCode.trim());
     setOutput("");
     setStatus("idle");
+    setIsError(false);
   }
 
   const isBusy = status === "loading" || status === "running";
@@ -149,12 +173,15 @@ export default function PyRunner({ code: initialCode }: PyRunnerProps) {
         />
       </div>
 
+      {/* Fundo da saída */}
       <div className="px-4 py-3 bg-[#f0ead6] dark:bg-[#f0ead6] border-t border-slate-800/80 rounded-b-xl">
         <div className="text-[11px] uppercase tracking-wider text-green-600 mb-1.5 select-none font-semibold">
           Saída
         </div>
         <pre
-          className="font-mono text-[var(--ink,#1c1917)] whitespace-pre-wrap min-h-[1.5em]"
+          className={`font-mono whitespace-pre-wrap min-h-[1.5em] ${
+            isError ? "text-red-600" : "text-[var(--ink,#1c1917)]"
+          }`}
           style={{ fontSize: 14, lineHeight: 1.6 }}
         >
           {output || " "}
