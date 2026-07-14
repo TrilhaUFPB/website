@@ -14,6 +14,15 @@ order: 1
 
 ---
 
+> Imagine uma biblioteca com um milhão de livros jogados no chão — sem ordem, sem prateleiras, sem índice. Você poderia encontrar qualquer livro, mas levaria horas. As **estruturas de dados** são as prateleiras e os índices dessa biblioteca: elas determinam com que eficiência um programa consegue armazenar, buscar e manipular informações.
+
+<div style="background: #0B1230; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+  <h4 style="margin-top: 0; color: white;">"Algoritmos + Estruturas de Dados = Programas."</h4>
+  <p style="color: rgb(180, 188, 201); margin-bottom: 0; text-align: right; font-style: italic;">— Niklaus Wirth</p>
+</div>
+
+---
+
 # 1.1. Big O Notation: Entendendo a Eficiência dos Algoritmos
 
 ## O que é Big O?
