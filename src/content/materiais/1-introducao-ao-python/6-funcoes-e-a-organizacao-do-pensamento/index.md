@@ -28,15 +28,13 @@ Para criar uma nova função, utilizamos a palavra-chave _def_, definindo um cab
 - __Encapsulamento:__ Colocar código dentro de uma função é chamado de encapsulamento. Isso ajuda a organizar o programa, dar nome a uma ideia e funciona como uma forma de documentação.
 
 __Exemplo de função:__
-```python 
+```python-run 
 def saudacao():
     print("Olá, mundo!")
 
 # A função só executa quando é chamada
 saudacao()
 ```
->Saída:\
-Olá, mundo!
 ___
 # 6.2. Fluxo de Execução
 
@@ -56,11 +54,6 @@ print("Antes da função")
 mostrar_msg()
 print("Depois da função")
 ```
-
-Ordem de saída:
-Antes da função
-Dentro da função
-Depois da função
 ___
 # 6.3. Parâmetros e Argumentos
 As funções podem exigir valores para realizar seu trabalho.
@@ -70,7 +63,7 @@ As funções podem exigir valores para realizar seu trabalho.
 - __Parâmetro:__ É o nome usado dentro da função para se referir ao valor recebido.
 
 __Exemplo de parâmetro e argumento:__
-```python 
+```python-run
 def print_twice(bruce):
     print(bruce)
     print(bruce)
@@ -84,7 +77,7 @@ ___
 Variáveis criadas dentro de uma função são _locais_, ou seja, existem apenas enquanto a função está sendo executada. Quando a função termina, essas variáveis são destruídas.
 
 __Exemplo de Erro (NameError):__
-```python
+```python-run
 def juntar_palavras(part1, part2):
     cat = part1 + part2
     return cat
@@ -100,7 +93,7 @@ Funções com Resultado
 Utilizam a instrução return para devolver um valor.
 
 __Exemplo de função com resultado:__
-```python 
+```python-run 
 import math
 def area_circulo(radius):
     return math.pi * radius**2
@@ -111,7 +104,7 @@ print(area)
 - __Funções Nulas:__ Executam uma ação, mas não retornam um valor útil. Nesse caso, o valor retornado é _None_.
 
 __Exemplo de função nula:__
-```python
+```python-run
 def mostrar_nome(nome):
     print(nome)
 resultado = mostrar_nome("Maria")
