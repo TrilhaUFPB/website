@@ -309,7 +309,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             const youtubeRegex = /(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
             const match = href?.match(youtubeRegex);
             
-            if (match) {
+            const isRawUrl = typeof children === 'string' && children.match(/^https?:\/\//);
+            if (match && isRawUrl) {
               const videoId = match[1];
               return (
                 <div className="my-8 rounded-xl overflow-hidden shadow-lg">
