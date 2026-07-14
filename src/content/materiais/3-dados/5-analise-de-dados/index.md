@@ -4,29 +4,17 @@ description:
 category: Dados
 order: 5
 ---
+## Sumário
+
+- [5.1. Introdução à Análise de Dados](51-introducao-a-analise-de-dados)
+- [5.2. Operações Principais](#52operacoes-principais)
+- [5.3. Por que não usar apenas Listas?](#53-uso-por-que-nao-usar-apenas-listas)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+>Vamos entender o que é análise de dados e por que ela é importante no dia a dia, Reconhecer propriedades e tipos de dados, Aplicar EDA (Análise Exploratória de Dados) em um dataset simples, Executar limpeza e transformação básicas de dados, Visualizar informações de forma clara e correta e Ganhar familiaridade com Pandas, Matplotlib, Seaborn e Jupyter Notebook
 
 # 5.1. Introdução à Análise de Dados
 
-Essa aula é uma primeira visão prática de **como pensar com dados**. A ideia é que o aluno saia sabendo:
-- o que é análise de dados na prática,
-- como dar os primeiros passos em EDA,
-- e como usar Python (Pandas + bibliotecas de visualização) para explorar um conjunto de dados real.
-
-## Objetivos de Aprendizagem
-
-- Entender o que é análise de dados e por que ela é importante no dia a dia  
-- Reconhecer propriedades e tipos de dados  
-- Aplicar EDA (Análise Exploratória de Dados) em um dataset simples  
-- Executar limpeza e transformação básicas de dados  
-- Visualizar informações de forma clara e correta  
-- Ganhar familiaridade com Pandas, Matplotlib, Seaborn e Jupyter Notebook
-
-
-## Roteiro de Assuntos
-
-### O que é análise de dados
-
-#### Definição
+## 5.1.1 O que é análise de dados
 Análise de dados é o processo de **fazer perguntas** e **tentar respondê-las usando dados**.  
 Na prática, isso envolve inspecionar, limpar, transformar e modelar dados para extrair informações úteis, apoiar decisões e gerar conhecimento acionável.
 
@@ -46,14 +34,14 @@ Vamos focar principalmente em:
 
 ![Ciclo de analise de dados](/api/materiais-assets/3-dados/5-analise-de-dados/assets/data-analysis-process.png)
 
-### Propriedades dos dados
+## 5.2 **Classificação de Dados**
 
 #### Dados estruturados
 Dados organizados em formato tabelar (linhas e colunas), com uma **estrutura bem definida** (tipos, chaves, restrições).  
 Exemplos: tabelas SQL, planilhas do Excel, dados transacionais de um sistema.
 
-- Vantagens: fácil consulta, validação e integração  
-- Desafios: mais rígidos; às vezes é preciso adaptar os dados ao formato da tabela
+- **Vantagens**: fácil consulta, validação e integração  
+- **Desafios**: mais rígidos; às vezes é preciso adaptar os dados ao formato da tabela
 
 #### Dados não estruturados
 Dados sem um esquema pré-definido ou com estrutura muito flexível.  
@@ -89,11 +77,11 @@ Suportam operações aritméticas e estatísticas descritivas.
 ![dados qualitativos x dados quantitativos](/api/materiais-assets/3-dados/5-analise-de-dados/assets/tipos_variaveis.webp)
 
 
-### Ferramentas e bibliotecas essenciais
+## 5.3 **Ferramentas e bibliotecas essenciais**
 
 Antes de falar de cada biblioteca, vale ver um **mini-exemplo** completo.
 
-#### Mini-exemplo
+## Mini-exemplo
 
 Suponha um arquivo `alunos.csv` com colunas como `nome`, `idade`, `nota`.
 
@@ -111,7 +99,7 @@ print(df.describe())
 ```
 ---
 
-#### Pandas
+## Pandas
 
 Pandas é a principal biblioteca Python para **manipulação e análise de dados estruturados**.  
 Ela fornece estruturas de dados eficientes que permitem trabalhar com tabelas de forma simples e expressiva.
@@ -164,7 +152,7 @@ plt.show()
 
 ---
 
-#### Seaborn
+## Seaborn
 
 Seaborn é uma biblioteca de visualização construída **sobre o Matplotlib**, focada em **visualizações estatísticas** mais informativas e com melhor estética padrão.
 
@@ -189,7 +177,7 @@ sns.boxplot(data=df, x="turma", y="nota")
 
 ---
 
-#### Relação entre as bibliotecas
+## Relação entre as bibliotecas
 
 Essas ferramentas são complementares e costumam ser usadas juntas em um fluxo típico de análise de dados:
 
@@ -210,9 +198,9 @@ df.head()
 df.tail()
 df.sample(5, random_state=42)
 df.info()
-### Análise Exploratória de Dados (EDA)
+## 5.4 Análise Exploratória de Dados (EDA)
 
-#### Inspeção inicial do dataset
+## Inspeção inicial do dataset
 Pense no dataset como uma **caixa misteriosa**: antes de usar, você dá uma olhada rápida para saber o que tem dentro.
 
 O que checar:
@@ -246,7 +234,7 @@ df["coluna_cat"].value_counts(normalize=True)  # proporção
 
 ---
 
-#### Estatísticas descritivas
+## Estatísticas descritivas
 Aqui você faz o “resumo do resumo” dos dados: uma forma rápida de entender o comportamento geral.
 
 Para variáveis numéricas:
@@ -278,7 +266,7 @@ df.notna().sum()                   # valores presentes
 
 ---
 
-#### Detecção de dados ausentes
+## Detecção de dados ausentes
 Valores ausentes são como **peças faltando**: se você ignorar, pode distorcer a análise e os modelos.
 
 O que verificar:
@@ -297,7 +285,7 @@ df.notna().sum()                   # valores presentes
 
 ---
 
-#### Relações entre variáveis
+## Relações entre variáveis
 Parte “detetive”: aqui você procura padrões entre variáveis e valida (ou derruba) hipóteses.  
 O gráfico normalmente vem *antes* da métrica, porque relação sem visual pode enganar.
 
@@ -307,10 +295,9 @@ Perguntas clássicas:
 - Existe outlier distorcendo a leitura?  
 - A relação é linear, monotônica ou não linear?
 
-## Tipos de relação e quais gráficos usar
+## 5.5 Tipos de relação e quais gráficos usar
 
-df.plot.scatter(x="x", y="y")
-df.sort_values("data").plot(x="data", y="y")
+> df.plot.scatter(x="x", y="y")  df.sort_values("data").plot(x="data", y="y")
 ### - Numérica vs Numérica
 **Objetivo:** ver tendência, forma (linear/não-linear), dispersão e outliers.
 
@@ -378,9 +365,9 @@ df["coluna_num"].quantile([0.25, 0.5, 0.75])
 
 ---
 
-### Limpeza e Transformação de Dados
+## 5.6 Limpeza e Transformação de Dados
 
-#### Tratamento de valores nulos
+### Tratamento de valores nulos
 Depois de detectar os nulos, você escolhe: **remover**, **preencher** ou **manter** (com justificativa).
 
 Estratégias comuns:
@@ -401,7 +388,7 @@ df["coluna_isnull"] = df["coluna"].isna().astype(int)
 
 ---
 
-#### Remoção de duplicatas
+### Remoção de duplicatas
 Duplicatas distorcem contagens, médias e treinamento de modelos (ex: o mesmo registro “vale por dois”).
 
 Tipos de duplicata:
@@ -493,6 +480,58 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
 
 ![Gráficos](/api/materiais-assets/3-dados/5-analise-de-dados/assets/cheatsheet_graficos.png)
 
+```quiz
+- tipo: single
+  pergunta: Um estagiário escreveu `banidos = {}` esperando criar um conjunto vazio, e depois chamou `banidos.add("joao123")`. O código gerou um erro. O que está acontecendo?
+  opcoes:
+    - texto: "`{}` sempre cria um dicionário vazio, e dicionários não possuem o método `add()`"
+      correta: true
+      explicacao: Exato! Em Python, `{}` é reservado para dicionários vazios por herança histórica da linguagem. Para criar um set vazio, é obrigatório usar o construtor `set()`.
+      explicacao_erro: O símbolo `{}` sozinho sempre instancia um dicionário, nunca um set. Por isso `dict` não reconhece o método `add()`, que pertence à classe `set`.
+    - texto: O método correto para adicionar itens a um conjunto seria `append()`, não `add()`
+      correta: false
+      explicacao: O método `add()` está correto para sets. O erro real é que `banidos` nunca chegou a ser um set, e sim um dict, por causa do uso de `{}`.
+    - texto: Conjuntos vazios não podem receber elementos depois de criados
+      correta: false
+      explicacao: Sets vazios podem receber elementos normalmente com `add()`. O problema é que `{}` criou um dicionário, não um set.
+    - texto: O nome da variável `banidos` é inválido para um conjunto
+      correta: false
+      explicacao: O nome da variável não influencia o tipo do objeto. O erro vem do uso de `{}`, que sempre cria um dicionário vazio.
+
+- tipo: single
+  pergunta: Dados `grupo_a = {1, 2, 3}` e `grupo_b = {3, 1, 2, 1}`, a comparação `grupo_a == grupo_b` retorna `True`. Qual princípio da Teoria dos Conjuntos explica esse resultado?
+  opcoes:
+    - texto: Princípio da Extensionalidade, pois um conjunto é definido apenas pelos elementos que possui, sem importar ordem ou repetição
+      correta: true
+      explicacao: Exato! Como `grupo_b` possui os mesmos elementos únicos que `grupo_a` (o `1` repetido é ignorado), os dois conjuntos são considerados idênticos.
+      explicacao_erro: A igualdade entre conjuntos segue o Princípio da Extensionalidade, que define um conjunto exclusivamente pelos elementos que ele contém, e não pela ordem ou repetição na notação.
+    - texto: Coincidência, já que o Python compara apenas o tamanho das variáveis
+      correta: false
+      explicacao: O Python não compara apenas o tamanho. Ele verifica se os elementos únicos de ambos os conjuntos são exatamente os mesmos.
+    - texto: Os conjuntos são iguais porque foram declarados na mesma ordem de criação
+      correta: false
+      explicacao: A ordem de criação não influencia a igualdade entre sets. O que importa é apenas quais elementos únicos cada um contém.
+    - texto: Erro de execução, pois conjuntos com sintaxes diferentes nunca deveriam ser comparáveis
+      correta: false
+      explicacao: Não há erro aqui. Conjuntos com sintaxes de declaração diferentes podem ser comparados normalmente, e serão iguais se contiverem os mesmos elementos.
+
+- tipo: single
+  pergunta: Um sistema de login precisa verificar se um e-mail já existe numa base de 50 milhões de usuários. Por que um `set` é mais indicado que uma `list` para essa verificação?
+  opcoes:
+    - texto: Porque sets ocupam menos espaço em disco que listas
+      correta: false
+      explicacao: O ganho de um set nesse cenário não está no espaço em disco, e sim na velocidade da busca, graças à tabela hash.
+    - texto: Porque a busca em um set tem complexidade O(1), enquanto em uma lista é O(n), tornando a verificação praticamente instantânea independente do tamanho da base
+      correta: true
+      explicacao: Exato! Sets usam tabelas hash internamente, calculando o endereço do elemento diretamente, em vez de percorrer item por item como uma lista faria.
+      explicacao_erro: A vantagem do set está na complexidade da busca. Enquanto uma lista precisa percorrer elemento por elemento (O(n)), um set calcula o hash do item e acessa a posição diretamente (O(1)).
+    - texto: Porque listas não conseguem armazenar strings como e-mails
+      correta: false
+      explicacao: Listas armazenam strings perfeitamente. A diferença real está na performance da operação de busca, não no tipo de dado armazenado.
+    - texto: Porque sets garantem que o e-mail nunca será perdido em caso de falha do sistema
+      correta: false
+      explicacao: Isso não tem relação com confiabilidade ou persistência de dados, e sim com a velocidade de busca por pertinência.
+```
 ---
 ## Referências
 
