@@ -82,7 +82,7 @@ Esta biblioteca permite gerar números aleatórios, fazer sorteios e embaralhar 
 
 > Se você tiver Python instalado, pode testar facilmente rodando o código na sua IDE de preferência.
 
-```python
+```python-run
 import random   # Importa a biblioteca random
 
 resultado = random.randint(1, 6)  # Gera um número inteiro aleatório entre 1 e 6
@@ -146,7 +146,7 @@ Um módulo é simplesmente um arquivo Python que você pode importar em outros a
 
 Exemplo - Criando o módulo **calculadora**:
 
-```python
+```python-run
 # arquivo: calculadora.py
 
 def somar(a, b):
