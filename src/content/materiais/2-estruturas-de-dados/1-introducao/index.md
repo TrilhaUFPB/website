@@ -45,14 +45,14 @@ Imagine que você precisa encontrar um livro na biblioteca:
 
 ### O(1) - Constante: Sempre a mesma velocidade
 
-```python-run
+```python
 def pegar_primeiro(lista):
     return lista[0]  # Sempre uma operação
 ```
 
 ### O(n) - Linear: Cresce proporcionalmente
 
-```python-run
+```python
 def imprimir_todos(lista):
     for item in lista:  # Passa por cada elemento
         print(item)
@@ -60,7 +60,7 @@ def imprimir_todos(lista):
 
 ### O(n²) - Quadrática: Cresce muito rápido
 
-```python-run
+```python
 def comparar_todos(lista):
     for i in lista:
         for j in lista:  # Loop dentro de loop
