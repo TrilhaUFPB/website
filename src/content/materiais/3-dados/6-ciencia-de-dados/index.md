@@ -7,7 +7,20 @@ order: 6
 ---
 
 ## Sumário
--[]
+
+- [6.1. Introdução a Machine Learning](#61-introducao-a-machine-learning)
+- [6.2. Tipos de Aprendizado](#62-tipos-de-aprendizado)
+- [6.3. Pipeline Geral de Machine Learning](#63-pipeline-geral-de-machine-learning)
+- [6.4. Fundamentos Matemáticos do Aprendizado Supervisionado](#64-fundamentos-matematicos-do-aprendizado-supervisionado)
+- [6.5. Regressão Linear](#65-regressao-linear)
+- [6.6. Classificação](#66-classificacao-prever-classe-nao-numero)
+- [6.7. Tipos de Problemas Supervisionados](#67-tipos-de-problemas-supervisionados--essencial)
+- [6.8. Outros Modelos Supervisionados Clássicos](#68-outros-modelos-supervisionados-classicos)
+- [6.9. Critérios de Avaliação](#69-criterios-de-avaliacao)
+- [6.10. Overfitting, Underfitting e Estratégias de Mitigação](#610-overfitting-underfitting-e-estrategias-de-mitigacao)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+- [Referências](#referencias)
 
 # 6.1. Introdução a Machine Learning
 
@@ -228,11 +241,11 @@ Normalmente essa minimização é feita com métodos numéricos como o **gradien
 ![gradient descent](/api/materiais-assets/3-dados/6-ciencia-de-dados/assets/descent.jpg)
 
 Por isso a loss é tão importante: ela é literalmente o “alvo” do treinamento.  
-(Mais adiante, em **4.5**, a gente fala das **métricas de avaliação**: elas são usadas para reportar desempenho no teste/validação e nem sempre são iguais à loss usada no treino.)
+(Mais adiante, em **6.9**, a gente fala das **métricas de avaliação**: elas são usadas para reportar desempenho no teste/validação e nem sempre são iguais à loss usada no treino.)
 
-#### Regressão linear (o “caso base” da regressão)
+# 6.5. Regressão Linear
 
-Agora vamos transformar as ideias do 4.2 em um exemplo que dá para visualizar. Vamos usar o seguinte exemplo:
+Agora vamos transformar essas ideias em um exemplo que dá para visualizar. Vamos usar o seguinte exemplo:
 
 > Você quer prever o **preço** de um imóvel com base em algumas features, como **área (m²)** e **número de quartos**.
 
@@ -255,7 +268,7 @@ $$
 
 Assim, na regressão, vamos encontrar os valores de $w_1, w_2, \dots, b$ que fazem as previsões ficarem o mais próximas possível dos valores reais.
 
-#### Como a regressão linear “aprende” (loss e otimização)
+## Como a regressão linear “aprende” (loss e otimização)
 
 Para medir quão ruim está a previsão, usamos uma loss típica de regressão, como o **erro quadrático médio (MSE)**:
 
@@ -277,7 +290,7 @@ OBS:
 
 O **gradient descent** entra como o método prático para ajustar $\theta$ aos poucos, sempre tentando reduzir essa média.
 
-##### Como interpretar os pesos $w$ (o que o modelo “descobriu”)
+## Como interpretar os pesos $w$ (o que o modelo “descobriu”)
 
 Uma vantagem da regressão linear é que os pesos podem ser interpretados (com cuidado):
 
@@ -312,12 +325,12 @@ $$
 
 Ou seja: **+10 m² → +R$ 5.000** (na previsão), porque a única coisa que mudou foi a área.
 
-##### O que pode dar errado (e como isso se manifesta)
+## O que pode dar errado (e como isso se manifesta)
 
 Essa leitura dos pesos pode ficar confusa (ou enganosa) quando a relação real não é bem aproximada por uma linha reta (não linearidade), quando há pontos muito fora do padrão (outliers “puxando” o ajuste) e quando duas features carregam quase a mesma informação (colinearidade, como “área” e “área construída”). Além disso, alguns algoritmos são sensíveis à escala das features, então padronização/normalização pode ser necessária.
 
 
-#### Classificação (prever classe, não número)
+# 6.6. Classificação (prever classe, não número)
 
 Agora considere um problema diferente:
 
@@ -371,7 +384,7 @@ Quando o modelo dá \(p\) alto e erra (ou \(p\) baixo e erra), ele é penalizado
 
 ![Classificação gráfico](/api/materiais-assets/3-dados/6-ciencia-de-dados/assets/classify_example.png)
 
-#### Tipos de problemas supervisionados — **Essencial**
+# 6.7. Tipos de problemas supervisionados — **Essencial**
 
 > Como reconhecer o tipo de problema e o que isso muda no treinamento e na avaliação?
 
@@ -390,9 +403,9 @@ Na prática, isso determina três escolhas que sempre andam juntas: **saída do 
 
 
 
-#### Outros Modelos supervisionados clássicos
+# 6.8. Outros Modelos supervisionados clássicos
 
-#### Regressão logística
+## Regressão logística
 
 ![Regressão logistica gráfico](/api/materiais-assets/3-dados/6-ciencia-de-dados/assets/log_reg8.png)
 
@@ -404,7 +417,7 @@ $$
 
 Ela é um excelente baseline quando a fronteira de decisão é aproximadamente linear (ou quando você quer um modelo simples, estável e fácil de explicar).
 
-#### Árvores de decisão
+## Árvores de decisão
 
 ![Arvore de decisao grafico](/api/materiais-assets/3-dados/6-ciencia-de-dados/assets/Decision-Tree-Diagram-Example-MindManager-Blog.png)
 
@@ -414,7 +427,7 @@ O ponto forte das árvores é que elas capturam, quase automaticamente, **não l
 
 O principal risco é o modelo virar um “decorador”. Se você deixar a árvore crescer demais, ela pode memorizar o treino e piorar fora dele. Por isso, quase sempre você controla a complexidade limitando profundidade e exigindo um número mínimo de exemplos por folha.
 
-#### Random Forest
+## Random Forest
 
 ![random forest grafico](/api/materiais-assets/3-dados/6-ciencia-de-dados/assets/random_forest.png)
 
@@ -424,26 +437,26 @@ O efeito disso é bem intuitivo: cada árvore comete erros diferentes; ao combin
 
 O cuidado aqui é custo e interpretabilidade: com muitas árvores, o modelo pode ficar pesado e menos explicável do que uma árvore única (embora ainda seja possível olhar importância de features).
 
-#### Gradient Boosting (XGBoost, LightGBM, CatBoost)
+## Gradient Boosting (XGBoost, LightGBM, CatBoost)
 
 Gradient Boosting também usa várias árvores, mas a lógica é diferente do Random Forest. Aqui, as árvores são treinadas **em sequência**: cada árvore nova tenta consertar o que o conjunto anterior ainda está errando. É como se o modelo fosse “lapidando” o resultado aos poucos.
 
 Em dados tabulares, boosting frequentemente entrega desempenho excelente (por isso XGBoost/LightGBM/CatBoost são tão populares). O custo é que ele é mais sensível a ajustes: se você exagera na complexidade (árvores profundas, muitas árvores, taxa de aprendizado alta), ele pode overfitar. Na prática, esses modelos exigem mais validação e tuning do que Random Forest.
 
-#### Support Vector Machines
+## Support Vector Machines
 
 SVM é um modelo clássico, muito usado em classificação. A ideia central é encontrar uma fronteira que separa as classes com a **maior margem possível** (uma separação “com folga”). Essa folga tende a ajudar a generalizar melhor.
 
 Quando os dados não são separáveis por uma linha/hiperplano, o SVM pode usar **kernels** (como o RBF) para criar separações não lineares. O cuidado é que SVM geralmente precisa de features bem escaladas (padronização ajuda muito) e pode ficar caro em datasets grandes.
 
-#### Redes neurais artificiais
+## Redes neurais artificiais
 
 ![](/api/materiais-assets/3-dados/6-ciencia-de-dados/assets/rede_neural.jpg)
 Redes neurais são uma família de modelos composta por camadas que vão transformando as features em representações cada vez mais úteis para o objetivo final. Elas são muito flexíveis pois conseguem aprender relações bem complexas sem que você precise “inventar regras”.
 
 Elas tendem a brilhar quando existe muito dado e padrões ricos (imagens, texto, áudio). Em dados tabulares pequenos, no entanto, redes neurais nem sempre ganham de boosting/Random Forest e podem overfitar com facilidade se não houver regularização e um bom procedimento de validação.
 
-#### Critérios de avaliação 
+# 6.9. Critérios de avaliação 
 
 Quando treinamos um modelo, ele “aprende” olhando para o conjunto de treino. O problema é que um modelo pode ir muito bem no treino e ainda assim ir mal no mundo real. Por isso, avaliar em Machine Learning é checar **generalização**: como o modelo se comporta em dados que ele **não viu**.
 
@@ -455,7 +468,7 @@ Uma forma simples (e correta) de pensar é:
 
 
 
-#### Classificação: acurácia, precisão, recall, F1, ROC-AUC
+## Classificação: acurácia, precisão, recall, F1, ROC-AUC
 
 Em classificação binária, toda avaliação começa entendendo **quais erros** o modelo comete. A “matriz de confusão” é só um jeito de organizar isso:
 
@@ -473,7 +486,7 @@ As métricas mais comuns existem para responder perguntas diferentes:
 Um jeito bem didático de escolher a métrica é perguntar: **“qual erro dói mais no meu problema?”**. Se você responder isso, a métrica certa costuma ficar óbvia.
 
 
-#### Regressão: RMSE, MAE, R²
+## Regressão: RMSE, MAE, R²
 
 Em regressão, você quer que o número previsto chegue o mais perto possível do real. Então a pergunta vira: **qual é o “tamanho do erro” que eu considero aceitável?**
 
@@ -484,16 +497,16 @@ As métricas mais usadas são:
 - **R²**: compara o seu modelo com um baseline simples (sempre prever a média). Ajuda a entender se o modelo realmente aprendeu algo útil, mas não substitui MAE/RMSE quando você precisa de interpretação em unidades reais.
 
 
-#### Problemas e riscos específicos
+# 6.10. Overfitting, Underfitting e Estratégias de Mitigação
 
 Quando um modelo erra, muitas vezes o motivo não é “o algoritmo é ruim”, e sim um desbalanceamento entre **complexidade do modelo** e **qualidade/quantidade de dados**. Os dois casos clássicos são overfitting e underfitting.
 
-#### Overfitting
+## Overfitting
 
 Overfitting é quando o modelo aprende o que deveria (padrões reais), mas também aprende o que não deveria (ruído, coincidências e “macetes” do treino). O sintoma típico é: **treino muito bom, validação/teste pior**.
 
 
-#### Underfitting
+## Underfitting
 
 Underfitting é quando o modelo é simples demais (ou está mal configurado) e não consegue aprender nem o básico. O sintoma típico é: **ruim no treino e ruim no teste**.
 
@@ -501,23 +514,23 @@ Isso aparece, por exemplo, quando você tenta resolver um problema claramente n�
 
 ![Overfitting x Underfitting](/api/materiais-assets/3-dados/6-ciencia-de-dados/assets/underfitted-overfitted.png)
 
-#### Estratégias de mitigação
+## Estratégias de mitigação
 
 Mitigar overfitting/underfitting é, na prática, ajustar três coisas: capacidade do modelo, qualidade/quantidade de dados e procedimento de validação.
 
 
-##### 4.7.1 Validação cruzada
+## Validação cruzada
 
 Validação cruzada repete treino/validação em várias divisões dos dados e dá uma estimativa mais estável de desempenho (especialmente quando o dataset é pequeno). Ela também ajuda a escolher hiperparâmetros sem “viciar” uma única divisão.
 
-#### Aumento de dados (data augmentation) 
+## Aumento de dados (data augmentation) 
 
 Em problemas como imagens, augmentation cria variações realistas (rotação leve, recorte, brilho) para o modelo ver mais diversidade e memorizar menos.
 
 A intuição é: se o modelo só vê a mesma imagem sempre no mesmo ângulo/iluminação, ele pode “decorar” detalhes. Ao ver versões levemente diferentes, ele é forçado a aprender o que realmente importa (o padrão).
 
 
-#### Seleção de features 
+## Seleção de features 
 
 Selecionar features é reduzir o conjunto de variáveis para ficar com as que realmente ajudam. Isso pode:
 
@@ -527,8 +540,67 @@ Selecionar features é reduzir o conjunto de variáveis para ficar com as que re
 
 O cuidado mais importante é, de novo, vazamento: se você seleciona features olhando o dataset inteiro antes de separar treino/teste, você pode “vazar” informação do teste para o treino. O jeito correto é selecionar features dentro do pipeline de treino/validação.
 
+# Complemente o Aprendizado
 
-## Referências
+Para aprofundar seus conhecimentos sobre Ciências de Dados, confira os seguintes recursos:
+
+ [nome](link)
+
+---
+
+```quiz
+- tipo: single
+  pergunta: Uma empresa quer prever se um cliente vai cancelar a assinatura (sim ou não) usando dados históricos de comportamento com resultado já conhecido. Que tipo de aprendizado é mais adequado?
+  opcoes:
+    - texto: Aprendizado não supervisionado, pois o algoritmo vai agrupar clientes parecidos
+      correta: false
+      explicacao: Não supervisionado é usado quando não há rótulos conhecidos. Aqui já sabemos quais clientes cancelaram no passado, ou seja, existe um rótulo (target) disponível para o treino.
+    - texto: Aprendizado supervisionado, pois existem dados históricos com o resultado (cancelou ou não) já conhecido
+      correta: true
+      explicacao: Exato! Quando temos exemplos passados com a resposta correta (cancelou/não cancelou), o algoritmo aprende a mapear entradas para essa saída conhecida — a definição central do aprendizado supervisionado.
+      explicacao_erro: Lembre-se que a diferença entre os tipos de aprendizado está em como o algoritmo recebe feedback. Quando já existem exemplos rotulados (a resposta certa para casos passados), o problema é supervisionado.
+    - texto: Aprendizado por reforço, pois o modelo vai aprender por tentativa e erro
+      correta: false
+      explicacao: Reforço é usado quando o algoritmo toma ações num ambiente e recebe recompensas/punições ao longo do tempo, não quando já existe uma base de dados histórica rotulada.
+    - texto: Deep Learning, pois é sempre a melhor opção para prever comportamento de clientes
+      correta: false
+      explicacao: Deep Learning é uma abordagem técnica (redes neurais em camadas), não uma categoria de aprendizado. Para dados tabulares como este, modelos mais simples costumam funcionar tão bem ou melhor.
+
+- tipo: single
+  pergunta: Um modelo atinge 99% de acerto no conjunto de treino, mas apenas 60% em dados novos (teste). O que provavelmente aconteceu e o que isso significa?
+  opcoes:
+    - texto: Underfitting, porque o modelo é simples demais para aprender os padrões
+      correta: false
+      explicacao: Underfitting apresenta desempenho ruim tanto no treino quanto no teste. Aqui o treino está ótimo, o que aponta para o problema oposto.
+    - texto: Overfitting, porque o modelo decorou padrões específicos do treino (incluindo ruído) que não se repetem em dados novos
+      correta: true
+      explicacao: Exato! O sintoma clássico de overfitting é desempenho muito bom no treino e bem pior em dados que o modelo nunca viu, sinal de que ele memorizou detalhes do treino em vez de aprender padrões que generalizam.
+      explicacao_erro: O ponto-chave é comparar o desempenho em treino versus teste. Quando o treino é quase perfeito e o teste despenca, o modelo aprendeu especificidades do treino (inclusive ruído) que não generalizam — isso é overfitting.
+    - texto: O modelo está funcionando corretamente, pois 99% no treino é sempre um bom sinal
+      correta: false
+      explicacao: Um desempenho excelente no treino não garante nada sobre a capacidade de generalização. O que importa de fato é o desempenho em dados novos (validação/teste).
+    - texto: Faltam mais dados de treino para o modelo aprender melhor
+      correta: false
+      explicacao: Embora mais dados às vezes ajudem, o sintoma descrito (treino ótimo, teste ruim) é a assinatura de overfitting, que geralmente se resolve reduzindo a complexidade do modelo ou usando técnicas de regularização/validação, não apenas adicionando dados.
+
+- tipo: single
+  pergunta: Um banco está construindo um modelo para detectar fraude em transações (evento raro). Deixar uma fraude passar despercebida (falso negativo) é muito mais caro do que bloquear uma transação legítima por engano. Qual métrica deve orientar a escolha do modelo?
+  opcoes:
+    - texto: Acurácia, pois mede o total de acertos do modelo
+      correta: false
+      explicacao: Em problemas com classes desbalanceadas (fraude é rara), a acurácia pode ser enganosa. Um modelo que nunca prevê fraude pode ter acurácia altíssima e ainda assim ser inútil.
+    - texto: Recall, pois prioriza encontrar o máximo possível dos casos positivos reais (fraudes), mesmo que isso gere alguns falsos positivos
+      correta: true
+      explicacao: Exato! Recall responde "dos positivos reais, quantos eu encontrei?". Como o custo de deixar passar uma fraude é o mais alto, priorizar recall garante que o modelo capture o maior número possível de fraudes reais.
+      explicacao_erro: A pergunta certa aqui é "qual erro dói mais no meu problema?". Como deixar fraude passar (falso negativo) é mais caro que bloquear por engano (falso positivo), a métrica que prioriza captar os positivos reais é o recall.
+    - texto: Precisão, pois garante que toda transação marcada como fraude realmente seja fraude
+      correta: false
+      explicacao: Precisão é importante quando o custo de um falso positivo é alto. Mas no cenário descrito, o custo de deixar passar uma fraude (falso negativo) é o que mais preocupa, então recall é mais adequado.
+    - texto: R², pois compara o modelo com uma previsão simples de baseline
+      correta: false
+      explicacao: R² é uma métrica de regressão (usada quando o target é um número contínuo). Detecção de fraude é um problema de classificação, então métricas como recall, precisão e F1 são as apropriadas.
+```
+# Referências
 
 - ML – Materiais (Google Drive): https://drive.google.com/drive/folders/1OtAk5mOA-SJ-yaUX0PK9s10Uuiocvz8V?usp=sharing
 - Introduction to Machine Learning (curso Andrew Ng): https://www.coursera.org/learn/machine-learning
