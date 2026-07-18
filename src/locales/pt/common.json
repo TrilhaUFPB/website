@@ -12,6 +12,14 @@
     "artigos": "Artigos",
     "aulas": "Aulas"
   },
+  "notFound": {
+    "code": "404",
+    "titleA": "Essa trilha",
+    "titleFlip": "não existe.",
+    "lede": "A página que você procura não existe. Talvez o link esteja quebrado ou o conteúdo tenha mudado de lugar. Vamos te levar de volta ao caminho.",
+    "ctaPrimary": "Voltar ao início",
+    "ctaSecondary": "Ver materiais"
+  },
   "hero": {
     "eyebrow": "Trilha",
     "titleA": "Um caminho prático para",
