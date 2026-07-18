@@ -12,6 +12,14 @@
     "artigos": "Papers",
     "aulas": "Classes"
   },
+  "notFound": {
+    "code": "404",
+    "titleA": "This trail",
+    "titleFlip": "doesn't exist.",
+    "lede": "The page you're looking for doesn't exist. The link may be broken or the content may have moved. Let's get you back on track.",
+    "ctaPrimary": "Back to home",
+    "ctaSecondary": "Browse materials"
+  },
   "hero": {
     "eyebrow": "Trilha",
     "titleA": "A practical path to",
