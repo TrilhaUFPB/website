@@ -7,10 +7,11 @@ order: 5
 ## Sumário
 
 - [5.1. Introdução à Análise de Dados](51-introducao-a-analise-de-dados)
-- [5.2. Operações Principais](#52operacoes-principais)
+- [5.2. Operações Principais](#52-classificacao-de-dadoss)
 - [5.3. Por que não usar apenas Listas?](#53-uso-por-que-nao-usar-apenas-listas)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
->Vamos entender o que é análise de dados e por que ela é importante no dia a dia, Reconhecer propriedades e tipos de dados, Aplicar EDA (Análise Exploratória de Dados) em um dataset simples, Executar limpeza e transformação básicas de dados, Visualizar informações de forma clara e correta e Ganhar familiaridade com Pandas, Matplotlib, Seaborn e Jupyter Notebook
+
+>O que é análise de dados e por que ela é importante no dia a dia, Reconhecer propriedades e tipos de dados, Aplicar EDA (Análise Exploratória de Dados) em um dataset simples, Executar limpeza e transformação básicas de dados, Visualizar informações de forma clara e correta e Ganhar familiaridade com Pandas, Matplotlib, Seaborn e Jupyter Notebook
 
 # 5.1. Introdução à Análise de Dados
 
@@ -34,7 +35,7 @@ Vamos focar principalmente em:
 
 ![Ciclo de analise de dados](/api/materiais-assets/3-dados/5-analise-de-dados/assets/data-analysis-process.png)
 
-## 5.2 **Classificação de Dados**
+## 5.2 Classificação de Dados
 
 #### Dados estruturados
 Dados organizados em formato tabelar (linhas e colunas), com uma **estrutura bem definida** (tipos, chaves, restrições).  
@@ -122,7 +123,7 @@ Principais usos:
 
 ---
 
-#### Matplotlib
+## Matplotlib
 
 Matplotlib é a biblioteca base de **visualização de dados em Python**.  
 Ela permite criar gráficos simples ou altamente customizáveis, sendo muito utilizada em contextos acadêmicos e científicos.
@@ -159,9 +160,9 @@ Seaborn é uma biblioteca de visualização construída **sobre o Matplotlib**, 
 Ela facilita a análise exploratória ao permitir observar relações entre variáveis, distribuições e correlações com menos código.
 
 Principais recursos:
-- Heatmaps de correlação
-- Boxplots e violin plots
-- Pairplots (análise multivariada)
+- **Heatmaps** de correlação
+- **Boxplots** e violin plots
+- **Pairplots** (análise multivariada)
 - Estilos visuais mais claros e consistentes
 
 Exemplo simples:
@@ -191,13 +192,14 @@ Uso conjunto (resumindo):
 - Use **Seaborn** quando quiser gráficos estatísticos bonitos e rápidos
 
 ---
-
-df.columns
-df.dtypes
-df.head()
-df.tail()
-df.sample(5, random_state=42)
-df.info()
+```python
+  df.columns
+  df.dtypes
+  df.head()
+  df.tail()
+  df.sample(5, random_state=42)
+  df.info()
+```
 ## 5.4 Análise Exploratória de Dados (EDA)
 
 ## Inspeção inicial do dataset
@@ -218,20 +220,14 @@ Se esses campos tiverem tipos consistentes, é um bom sinal de que os dados fora
 Comandos úteis (Pandas em Python):
 
 ```python
-df.shape
-df.columns
-df.dtypes
-df.head()
-df.tail()
-df.sample(5, random_state=42)
-df.info()
+df.shape #Mostra o tamanho do seu DataFrame, entregando a quantidade exata de linhas e colunas que ele possui.
+df.columns #Lista os nomes de todas as colunas
+df.dtypes #Revela o tipo de dado (string, int, float etc...) armazenado em cada coluna.
+df.head() #Exibe as 5 primeiras linhas do conjunto de dados
+df.tail() #Exibe as 5 Últimas linhas do conjunto de dados
+df.sample(5, random_state=42) #Sorteia 5 linhas totalmente aleatórias da tabela, mas garante que seja reproduzivel pela seed = 42
+df.info() #Dá um relatório completo sobre a tabela
 ```
-
-df.describe(include="all")    # inclui categóricas (pode ficar grande)
-df["coluna_num"].describe()
-df["coluna_cat"].value_counts()
-df["coluna_cat"].value_counts(normalize=True)  # proporção
-
 ---
 
 ## Estatísticas descritivas
@@ -260,10 +256,10 @@ df["coluna_num"].describe()
 
 df["coluna_cat"].value_counts()
 df["coluna_cat"].value_counts(normalize=True)  # proporção
-```
+
 df[df.isna().any(axis=1)].head()   # linhas com pelo menos um nulo
 df.notna().sum()                   # valores presentes
-
+```
 ---
 
 ## Detecção de dados ausentes
@@ -343,9 +339,9 @@ df.boxplot(column="y", by="categoria")
 **Gráficos**
 - Barras (contagem)
 - Barras empilhadas (proporções por grupo)
-
-df["coluna_num"].quantile([0.25, 0.5, 0.75])
-
+```python
+df["coluna_num"].quantile([0.25, 0.5, 0.75]) #seleciona valores para as colunas
+```
 ---
 
 #### Distribuições e outliers
@@ -377,6 +373,7 @@ Estratégias comuns:
 - Criar flag de ausência (às vezes ausência é informativa)
 
 Comandos úteis (pandas):
+```python
 df.dropna()                         # remove linhas com algum nulo
 df.dropna(subset=["coluna"])        # remove linhas se coluna específica for nula
 df.drop(columns=["coluna"])         # remove coluna
@@ -385,7 +382,7 @@ df["coluna_num"] = df["coluna_num"].fillna(df["coluna_num"].median())
 df["coluna_cat"] = df["coluna_cat"].fillna("Desconhecido")
 
 df["coluna_isnull"] = df["coluna"].isna().astype(int)
-
+```
 ---
 
 ### Remoção de duplicatas
@@ -482,56 +479,62 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
 
 ```quiz
 - tipo: single
-  pergunta: Um estagiário escreveu `banidos = {}` esperando criar um conjunto vazio, e depois chamou `banidos.add("joao123")`. O código gerou um erro. O que está acontecendo?
+  pergunta: Uma turma tem notas 2, 3, 3 e 10. Por que a mediana (3) descreve melhor o "aluno típico" do que a média (4,5)?
   opcoes:
-    - texto: "`{}` sempre cria um dicionário vazio, e dicionários não possuem o método `add()`"
+    - texto: Porque a nota 10 puxa a média para cima, enquanto a mediana só olha a posição central
       correta: true
-      explicacao: Exato! Em Python, `{}` é reservado para dicionários vazios por herança histórica da linguagem. Para criar um set vazio, é obrigatório usar o construtor `set()`.
-      explicacao_erro: O símbolo `{}` sozinho sempre instancia um dicionário, nunca um set. Por isso `dict` não reconhece o método `add()`, que pertence à classe `set`.
-    - texto: O método correto para adicionar itens a um conjunto seria `append()`, não `add()`
+      explicacao: Exato, é o mesmo raciocínio do exemplo das notas — um valor extremo acaba distorcendo a média, mas não muda o "meio" real dos dados.
+      explicacao_erro: O ponto é que a média soma todos os valores (incluindo o extremo) e divide pelo total, então um único valor discrepante desloca o resultado. A mediana só mostra o centro de fato.
+    - texto: Porque a mediana sempre é a estatística mais confiável, independente da situação
       correta: false
-      explicacao: O método `add()` está correto para sets. O erro real é que `banidos` nunca chegou a ser um set, e sim um dict, por causa do uso de `{}`.
-    - texto: Conjuntos vazios não podem receber elementos depois de criados
+      explicacao: Em distribuições sem valores extremos, média e mediana costumam contar histórias parecidas. Aqui a mediana ganha porque há um outlier específico (o 10).
+    - texto: Porque a média está calculada errado nesse caso
       correta: false
-      explicacao: Sets vazios podem receber elementos normalmente com `add()`. O problema é que `{}` criou um dicionário, não um set.
-    - texto: O nome da variável `banidos` é inválido para um conjunto
+      explicacao: A média está certa matematicamente (2+3+3+10)/4 = 4,5. O problema não é o cálculo, é que ela não representa bem o grupo quando existe um outlier.
+    - texto: Porque com apenas 4 alunos fazer a media não funciona
       correta: false
-      explicacao: O nome da variável não influencia o tipo do objeto. O erro vem do uso de `{}`, que sempre cria um dicionário vazio.
+      explicacao: O tamanho pequeno da amostra não é o motivo da diferença — é a presença do valor 10, destoante dos demais, que puxa a média.
 
 - tipo: single
-  pergunta: Dados `grupo_a = {1, 2, 3}` e `grupo_b = {3, 1, 2, 1}`, a comparação `grupo_a == grupo_b` retorna `True`. Qual princípio da Teoria dos Conjuntos explica esse resultado?
+  pergunta: Você está comparando duas variáveis numéricas e já calculou a correlação entre elas. Por que ainda vale a pena olhar o gráfico de dispersão antes de confiar nesse número?
   opcoes:
-    - texto: Princípio da Extensionalidade, pois um conjunto é definido apenas pelos elementos que possui, sem importar ordem ou repetição
+    - texto: Porque o gráfico substitui a necessidade da correlação
+      correta: false
+      explicacao: Um não substitui o outro, eles se complementam. A ideia é visualizar para validar (ou desconfiar) do que o número está dizendo.
+    - texto: Porque calcular gráficos é mais rápido do que calcular correlação no Pandas
+      correta: false
+      explicacao: Não é questão de velocidade de processamento — confiar só no número, sem olhar o gráfico, pode levar a uma conclusão errada.
+    - texto: Porque a correlação só pode ser calculada depois que um gráfico existe
+      correta: false
+      explicacao: Dá para calcular correlação sem nunca ter plotado nada. A recomendação é sobre segurança da interpretação, não sobre dependência técnica
+    - texto: Porque a mesma correlação pode aparecer em relações bem diferentes
       correta: true
-      explicacao: Exato! Como `grupo_b` possui os mesmos elementos únicos que `grupo_a` (o `1` repetido é ignorado), os dois conjuntos são considerados idênticos.
-      explicacao_erro: A igualdade entre conjuntos segue o Princípio da Extensionalidade, que define um conjunto exclusivamente pelos elementos que ele contém, e não pela ordem ou repetição na notação.
-    - texto: Coincidência, já que o Python compara apenas o tamanho das variáveis
-      correta: false
-      explicacao: O Python não compara apenas o tamanho. Ele verifica se os elementos únicos de ambos os conjuntos são exatamente os mesmos.
-    - texto: Os conjuntos são iguais porque foram declarados na mesma ordem de criação
-      correta: false
-      explicacao: A ordem de criação não influencia a igualdade entre sets. O que importa é apenas quais elementos únicos cada um contém.
-    - texto: Erro de execução, pois conjuntos com sintaxes diferentes nunca deveriam ser comparáveis
-      correta: false
-      explicacao: Não há erro aqui. Conjuntos com sintaxes de declaração diferentes podem ser comparados normalmente, e serão iguais se contiverem os mesmos elementos.
+      explicacao: Perfeito! A correlação resume tudo em um único valor, então esconde a forma real da relação, só o gráfico mostra se essa forma bate com o que o número sugere.
+      explicacao_erro: O risco não é o cálculo estar errado, é que o número sozinho não mostra a forma da relação. Duas dispersões diferentes podem gerar valores de correlação
+
 
 - tipo: single
-  pergunta: Um sistema de login precisa verificar se um e-mail já existe numa base de 50 milhões de usuários. Por que um `set` é mais indicado que uma `list` para essa verificação?
+  pergunta: Uma coluna `satisfacao` tem valores "ruim", "médio", "bom", "ótimo". Uma coluna `cidade` tem valores como "Recife", "Natal", "Salvador". Qual a diferença real entre elas para fins de análise?
   opcoes:
-    - texto: Porque sets ocupam menos espaço em disco que listas
+    - texto: "`satisfacao` é numérica e `cidade` é categórica"
       correta: false
-      explicacao: O ganho de um set nesse cenário não está no espaço em disco, e sim na velocidade da busca, graças à tabela hash.
-    - texto: Porque a busca em um set tem complexidade O(1), enquanto em uma lista é O(n), tornando a verificação praticamente instantânea independente do tamanho da base
+      explicacao: Nenhuma das duas é numérica por natureza — ambas representam categorias (qualitativas). A diferença está em existir ordem ou não entre elas.
+    - texto: "`satisfacao` tem uma ordem  entre as categorias, enquanto `cidade` não tem "
       correta: true
-      explicacao: Exato! Sets usam tabelas hash internamente, calculando o endereço do elemento diretamente, em vez de percorrer item por item como uma lista faria.
-      explicacao_erro: A vantagem do set está na complexidade da busca. Enquanto uma lista precisa percorrer elemento por elemento (O(n)), um set calcula o hash do item e acessa a posição diretamente (O(1)).
-    - texto: Porque listas não conseguem armazenar strings como e-mails
+      explicacao: Exato. "Ruim < médio < bom < ótimo" segue uma progressão, enquanto nenhuma cidade é "maior" ou "menor" que outra.
+      explicacao_erro: As duas são categóricas, então a diferença não está aí. O que muda é que dá para por uma ordem entre os valores e a outra não.
+    - texto: "`cidade` deveria ter mais categorias do que `satisfacao`, e é por isso que são diferentes"
       correta: false
-      explicacao: Listas armazenam strings perfeitamente. A diferença real está na performance da operação de busca, não no tipo de dado armazenado.
-    - texto: Porque sets garantem que o e-mail nunca será perdido em caso de falha do sistema
+      explicacao: A quantidade de categorias não define o tipo e sim a existência (ou ausência) de uma ordem lógica entre os valores.
+    - texto: Não há diferença relevante, ambas podem ser tratadas do mesmo jeito em qualquer análise
       correta: false
-      explicacao: Isso não tem relação com confiabilidade ou persistência de dados, e sim com a velocidade de busca por pertinência.
+      explicacao: Há diferença, ignorar a ordem de uma variável ordinal na codificação ou na visualização joga fora alguma informação real atrapalha intensamente a analise.
 ```
+---
+## Complemente o Aprendizado
+- [O que é análise de dados?](https://www.freecodecamp.org/portuguese/news/o-que-e-analise-de-dados/)
+- [Te ensino TUDO sobre criar gráficos com Python e Matplotlib](https://www.youtube.com/watch?v=unEdvkCjL8U)
+- [Python para análise de dados](https://www.alura.com.br/artigos/python-para-analise-de-dados?srsltid=AfmBOop21pv15vNxi8nTQILDqGnx77l-y4c2TEzVWWmFjT1YVM32weu3)
 ---
 ## Referências
 
@@ -541,7 +544,6 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
 - Seaborn Tutorial: https://seaborn.pydata.org/tutorial.html
 - Plotly Python Graphing Library: https://plotly.com/python/
 - Project Jupyter (Docs): https://docs.jupyter.org/
-- Artigo “O que é análise de dados?” (freeCodeCamp, 2021): https://www.freecodecamp.org/portuguese/news/ (procure pelo título)
 - Tutorial “Python Pandas para iniciantes” (DataCamp, PT): https://www.datacamp.com/pt (procure por “Pandas para iniciantes”)
 - Medium – “Como usar cada tipo de gráfico no contexto certo” (Gabriel R. F. Lopes, 2021): https://medium.com/ (procure pelo título do artigo)
 - Medium – “10 boas práticas em visualização de dados” (Giuliana de Jong, 2022): https://medium.com/ (procure pelo título do artigo)
