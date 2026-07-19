@@ -1,19 +1,21 @@
 ---
 title: 5. Análise de Dados
-description: 
+description: Entenda o que é análise de dados na prática, como dar os primeiros passos em EDA e como usar Python (Pandas + bibliotecas de visualização) para explorar um conjunto de dados real.
 category: Dados
 order: 5
 ---
 ## Sumário
 
-- [5.1. Introdução à Análise de Dados](51-introducao-a-analise-de-dados)
-- [5.2. Operações Principais](#52-classificacao-de-dadoss)
-- [5.3. Por que não usar apenas Listas?](#53-uso-por-que-nao-usar-apenas-listas)
+- [5.1 Introdução à Análise de Dados](#51-introducao-a-analise-de-dados)
+- [5.2 Classificação de Dados](#52-classificacao-de-dados)
+- [5.3 Ferramentas e bibliotecas essenciais](#53-ferramentas-e-bibliotecas-essenciais)
+- [5.4 Análise Exploratória de Dados (EDA)](#54-analise-exploratoria-de-dados-eda)
+- [5.5 Tipos de relação e quais gráficos usar](#55-tipos-de-relacao-e-quais-graficos-usar)
+- [5.6 Limpeza e Transformação de Dados](#56-limpeza-e-transformacao-de-dados)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 
->O que é análise de dados e por que ela é importante no dia a dia, Reconhecer propriedades e tipos de dados, Aplicar EDA (Análise Exploratória de Dados) em um dataset simples, Executar limpeza e transformação básicas de dados, Visualizar informações de forma clara e correta e Ganhar familiaridade com Pandas, Matplotlib, Seaborn e Jupyter Notebook
-
 # 5.1. Introdução à Análise de Dados
+>O que é análise de dados e por que ela é importante no dia a dia, Reconhecer propriedades e tipos de dados, Aplicar EDA (Análise Exploratória de Dados) em um dataset simples, Executar limpeza e transformação básicas de dados, Visualizar informações de forma clara e correta e Ganhar familiaridade com Pandas, Matplotlib, Seaborn e Jupyter Notebook
 
 ## 5.1.1 O que é análise de dados
 Análise de dados é o processo de **fazer perguntas** e **tentar respondê-las usando dados**.  
@@ -78,7 +80,7 @@ Suportam operações aritméticas e estatísticas descritivas.
 ![dados qualitativos x dados quantitativos](/api/materiais-assets/3-dados/5-analise-de-dados/assets/tipos_variaveis.webp)
 
 
-## 5.3 **Ferramentas e bibliotecas essenciais**
+## 5.3 Ferramentas e bibliotecas essenciais
 
 Antes de falar de cada biblioteca, vale ver um **mini-exemplo** completo.
 
@@ -532,9 +534,9 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
 ```
 ---
 ## Complemente o Aprendizado
-- [O que é análise de dados?](https://www.freecodecamp.org/portuguese/news/o-que-e-analise-de-dados/)
-- [Te ensino TUDO sobre criar gráficos com Python e Matplotlib](https://www.youtube.com/watch?v=unEdvkCjL8U)
-- [Python para análise de dados](https://www.alura.com.br/artigos/python-para-analise-de-dados?srsltid=AfmBOop21pv15vNxi8nTQILDqGnx77l-y4c2TEzVWWmFjT1YVM32weu3)
+- [O que é análise de dados? (Artigo Freecodecamp)](https://www.freecodecamp.org/portuguese/news/o-que-e-analise-de-dados/)
+- [Te ensino TUDO sobre criar gráficos com Python e Matplotlib (Vídeo)](https://www.youtube.com/watch?v=unEdvkCjL8U)
+- [Python para análise de dados (Artigo Alura)](https://www.alura.com.br/artigos/python-para-analise-de-dados?srsltid=AfmBOop21pv15vNxi8nTQILDqGnx77l-y4c2TEzVWWmFjT1YVM32weu3)
 ---
 ## Referências
 
