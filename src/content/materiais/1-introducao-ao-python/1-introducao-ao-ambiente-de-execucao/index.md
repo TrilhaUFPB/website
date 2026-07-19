@@ -76,17 +76,11 @@ Quando o código cresce e precisa ser salvo, utilizamos arquivos chamados **scri
 
 > Diferente do modo interativo, expressões isoladas em scripts **não exibem resultados automaticamente**, a menos que você use a instrução `print`.
 
-```python
+```python-run
 # arquivo: meu_script.py
 mensagem = "Olá, mundo!"
 print(mensagem)
 ```
-
-**Saída:**
-```python
-Olá, mundo!
-```
-
 ---
 
 # 1.4. Execução no Navegador

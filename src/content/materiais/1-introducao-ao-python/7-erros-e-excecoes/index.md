@@ -39,16 +39,12 @@ O erro de sintaxe acontece quando o Python não consegue nem começar a executar
 
 **Exemplo:**
 
-```python
+```python-run
 def soma(a, b)  # Erro: falta o ":"
     return a + b
 ```
 
-O Python vai recusar esse código antes de rodar qualquer linha. A mensagem de erro vai indicar exatamente a linha e o caractere do problema:
-
-```
-SyntaxError: expected ':'
-```
+O Python recusa esse código antes mesmo de rodar qualquer linha. A mensagem de erro indica exatamente a linha e o caractere do problema.
 
 Erros de sintaxe são, na prática, os mais fáceis de corrigir porque o Python aponta exatamente onde está o problema.
 
@@ -58,17 +54,13 @@ Esse tipo de erro acontece enquanto o programa está rodando. O código está si
 
 **Exemplo:**
 
-```python
+```python-run
 x = 10
 y = 0
 print(x / y)  # Erro: divisão por zero
 ```
 
-O Python vai rodar o código normalmente até chegar nessa linha, e então vai parar e exibir:
-
-```
-ZeroDivisionError: division by zero
-```
+O Python vai rodar o código normalmente até chegar nessa linha do erro
 
 Outros exemplos comuns de exceções:
 
@@ -85,18 +77,20 @@ Esse é o mais traiçoeiro dos três. O programa roda sem nenhum erro, mas o **r
 
 **Exemplo:**
 
-```python
+```python-run
 def media(a, b):
     return a + b / 2  # Erro de lógica
 
-print(media(4, 6))  # Exibe 7.0, mas deveria ser 5.0
+print(media(4, 6)) 
 ```
 
 O código roda sem reclamar. Mas a divisão está sendo aplicada apenas ao `b`, e não à soma. O correto seria:
 
-```python
+```python-run
 def media(a, b):
     return (a + b) / 2
+
+print(media(4, 6))   
 ```
 
 Para encontrar erros de lógica, é preciso **testar o programa com valores que você já sabe a resposta**. Se o resultado esperado for `5.0` e o programa retornar `7.0`, algo está errado na lógica, e você precisa revisar o raciocínio passo a passo.
@@ -195,7 +189,7 @@ Se a conversão para `int` funcionar, o bloco `else` roda e exibe as informaçõ
 
 O bloco `finally` é executado **sempre**, independente de ter ocorrido um erro ou não. É muito útil para tarefas de limpeza que precisam acontecer de qualquer jeito, como fechar um arquivo ou encerrar uma conexão.
 
-```python
+```python-run
 try:
     arquivo = open("dados.txt", "r")
     conteudo = arquivo.read()
@@ -212,7 +206,7 @@ Mesmo que o arquivo não exista e o `except` seja executado, o `finally` roda ao
 
 Você também pode lançar seus próprios erros quando uma condição não é atendida. Isso é útil quando você quer garantir que uma função receba os dados corretos:
 
-```python
+```python-run
 def calcular_raiz_quadrada(numero):
     if numero < 0:
         raise ValueError("Não é possível calcular a raiz quadrada de um número negativo.")
@@ -222,11 +216,6 @@ try:
     resultado = calcular_raiz_quadrada(-9)
 except ValueError as erro:
     print(f"Erro: {erro}")
-```
-
-Saída:
-```
-Erro: Não é possível calcular a raiz quadrada de um número negativo.
 ```
 
 O `raise` interrompe a execução e lança o erro que você escolher. O `as erro` dentro do `except` captura a mensagem de erro para que você possa exibi-la.
