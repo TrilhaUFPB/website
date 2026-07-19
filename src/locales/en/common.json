@@ -468,12 +468,17 @@
         "category": "python",
         "title": "Lists, Queues, and Stacks",
         "description": "Linear structures: arrays/lists, queues, and stacks. How to store and organize data in memory.",
-        "embedUrl": "",
-        "canvaUrl": "",
+        "embedUrl": "https://www.canva.com/design/DAGqu5uy3Ak/sqfU70yeOCRc1Kpk88uqSw/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAGqu5uy3Ak/sqfU70yeOCRc1Kpk88uqSw/view?utm_content=DAGqu5uy3Ak&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "July 17, 2026",
         "deadline": "July 23, 2026",
-        "homework": "Homework coming soon.",
+        "noSubmission": true,
+        "homework": "This class's activity is a beecrowd contest. Grading is automatic, so there is nothing to submit here.\n 1. Go to the beecrowd tournaments page: https://judge.beecrowd.com/pt/tournaments\n 2. Log in to your beecrowd account (create one if you don't have it yet) and make sure you belong to a team.\n 3. Join the tournament Trilha ED 26.2 using the password TRILHETE.\n 4. Solve the contest problems directly on the platform.",
         "links": [
+          {
+            "label": "beecrowd Tournaments",
+            "url": "https://judge.beecrowd.com/pt/tournaments"
+          },
           {
             "label": "Mundo 3: Estruturas Compostas - Curso em Vídeo (Portuguese)",
             "url": "https://youtube.com/playlist?list=PLHz_AreHm4dksnH2jVTIVNviIMBVYyFnH&si=y6N-qV0OQF9Qfnbf"

@@ -43,6 +43,7 @@ type Aula = {
   date?: string;
   deadline?: string;
   taskType?: string;
+  noSubmission?: boolean;
   homework?: string;
   links?: AulaLink[];
 };
@@ -191,7 +192,7 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
             </div>
           )}
 
-          <div className="aula-tarefa-grid">
+          <div className={`aula-tarefa-grid${aula.noSubmission ? ' aula-tarefa-grid--single' : ''}`}>
             {/* Descrição */}
             <div>
               <h2 className="aula-tarefa-h2">{t('aulas.descricaoTitle')}</h2>
@@ -202,7 +203,8 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
               )}
             </div>
 
-            {/* Submeter */}
+            {/* Submeter: hidden when the task is graded elsewhere (e.g. a judge platform) */}
+            {!aula.noSubmission && (
             <div>
               <h2 className="aula-tarefa-h2">{t('aulas.submeterTitle')}</h2>
               {sent ? (
@@ -280,6 +282,7 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
                 </form>
               )}
             </div>
+            )}
           </div>
         </div>}
 
