@@ -467,12 +467,17 @@
         "category": "python",
         "title": "Listas, Filas e Pilhas",
         "description": "Estruturas lineares: arrays/listas, filas e pilhas. Como armazenar e organizar dados em memória.",
-        "embedUrl": "",
-        "canvaUrl": "",
+        "embedUrl": "https://www.canva.com/design/DAGqu5uy3Ak/sqfU70yeOCRc1Kpk88uqSw/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAGqu5uy3Ak/sqfU70yeOCRc1Kpk88uqSw/view?utm_content=DAGqu5uy3Ak&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "17 de julho de 2026",
         "deadline": "23 de julho de 2026",
-        "homework": "Tarefa em breve.",
+        "noSubmission": true,
+        "homework": "A atividade desta aula é um contest no beecrowd. A correção é automática, não é preciso enviar nada por aqui.\n 1. Acesse a página de torneios do beecrowd: https://judge.beecrowd.com/pt/tournaments\n 2. Faça login na sua conta do beecrowd (crie uma, caso ainda não tenha) e certifique-se de estar em um time.\n 3. Entre no torneio Trilha ED 26.2 usando a senha TRILHETE.\n 4. Resolva as questões do contest diretamente pela plataforma.",
         "links": [
+          {
+            "label": "Torneios do beecrowd",
+            "url": "https://judge.beecrowd.com/pt/tournaments"
+          },
           {
             "label": "Mundo 3: Estruturas Compostas - Curso em Vídeo",
             "url": "https://youtube.com/playlist?list=PLHz_AreHm4dksnH2jVTIVNviIMBVYyFnH&si=y6N-qV0OQF9Qfnbf"

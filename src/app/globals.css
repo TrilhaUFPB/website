@@ -1262,6 +1262,9 @@ button { font-family: inherit; cursor: pointer; }
   gap: 48px;
   align-items: start;
 }
+.aula-tarefa-grid--single {
+  grid-template-columns: 1fr;
+}
 .aula-tarefa-h2 {
   font-size: 18px;
   font-weight: 500;
