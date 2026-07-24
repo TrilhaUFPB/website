@@ -491,12 +491,17 @@
         "category": "python",
         "title": "Hash Tables, Sets, and Complexity",
         "description": "Hash tables, sets, and computational complexity. Efficiency and choosing the right structure for each problem.",
-        "embedUrl": "",
-        "canvaUrl": "",
+        "embedUrl": "https://www.canva.com/design/DAHQTOk2ajk/3oRwmOIRevcJksjoToWN8w/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHQTOk2ajk/3oRwmOIRevcJksjoToWN8w/view?utm_content=DAHQTOk2ajk&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "July 24, 2026",
         "deadline": "July 30, 2026",
-        "homework": "Homework coming soon.",
-        "links": [],
+        "homework": "This class's activity is a beecrowd tournament.\n 1. Go to the beecrowd tournaments page: https://judge.beecrowd.com/pt/tournaments\n 2. Log in to your beecrowd account (create one if you don't have it yet) and make sure you belong to a team.\n 3. Join tournament 10611 — Estrutura de Dados - aula 2 using the password trilhaehtop.\n 4. Solve and submit each problem directly on the beecrowd platform.\n 5. In addition, put the files with the solution to each exercise in a GitHub repository and send that repository link through the submission form on the right.",
+        "links": [
+          {
+            "label": "beecrowd Tournaments",
+            "url": "https://judge.beecrowd.com/pt/tournaments"
+          }
+        ],
         "dateISO": "2026-07-24"
       },
       {
