@@ -490,12 +490,17 @@
         "category": "python",
         "title": "Hash, Sets e Complexidade",
         "description": "Tabelas hash, sets e complexidade computacional. Eficiência e escolha da estrutura certa para cada problema.",
-        "embedUrl": "",
-        "canvaUrl": "",
+        "embedUrl": "https://www.canva.com/design/DAHQTOk2ajk/3oRwmOIRevcJksjoToWN8w/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHQTOk2ajk/3oRwmOIRevcJksjoToWN8w/view?utm_content=DAHQTOk2ajk&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "24 de julho de 2026",
         "deadline": "30 de julho de 2026",
-        "homework": "Tarefa em breve.",
-        "links": [],
+        "homework": "A atividade desta aula é um torneio no beecrowd.\n 1. Acesse a página de torneios do beecrowd: https://judge.beecrowd.com/pt/tournaments\n 2. Faça login na sua conta do beecrowd (crie uma, caso ainda não tenha) e certifique-se de estar em um time.\n 3. Entre no torneio 10611 — Estrutura de Dados - aula 2 usando a senha trilhaehtop.\n 4. Resolva e submeta cada questão diretamente pela plataforma do beecrowd.\n 5. Além disso, coloque os arquivos com a resolução de cada exercício em um repositório do GitHub e envie o link desse repositório pelo formulário de submissão à direita.",
+        "links": [
+          {
+            "label": "Torneios do beecrowd",
+            "url": "https://judge.beecrowd.com/pt/tournaments"
+          }
+        ],
         "dateISO": "2026-07-24"
       },
       {
