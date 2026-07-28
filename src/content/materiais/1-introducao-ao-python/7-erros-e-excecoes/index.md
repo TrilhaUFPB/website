@@ -8,8 +8,8 @@ order: 7
 
 - [7.1. Tipos de Erros](#71-tipos-de-erros)
     - [Erro de Sintaxe](#711-erro-de-sintaxe)
-    - [Erro de Tempo de Execução (Exceção)](712-erro-de-tempo-de-execucao-excecao)
-    - [Erro de Lógica](713-erro-de-logica)
+    - [Erro de Tempo de Execução (Exceção)](#712-erro-de-tempo-de-execucao-excecao)
+    - [Erro de Lógica](#713-erro-de-logica)
 - [7.2. Tratamento de Erros: try/except](#72-tratamento-de-erros-tryexcept)
     - [A estrutura básica de try/except](721-a-estrutura-basica)
     - [Capturando erros específicos)](722-capturando-erros-especificos)
