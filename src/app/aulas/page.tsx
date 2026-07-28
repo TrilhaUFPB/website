@@ -57,6 +57,16 @@ export default function AulasPage() {
     const initial = pickDefaultOpenCategory(aulas);
     return new Set(initial ? [initial] : []);
   });
+  // Categorias cuja animação de abertura já terminou — só nelas liberamos
+  // overflow:visible, para o hover das aulas poder sangrar até a borda da
+  // tela sem quebrar o clipping usado durante a animação de altura.
+  // A categoria aberta por padrão no primeiro render nunca anima de verdade
+  // (AnimatePresence initial={false} pula a animação dela), então já entra
+  // como "settled" — senão onAnimationComplete nunca dispararia pra ela.
+  const [settledCategories, setSettledCategories] = useState<Set<string>>(() => {
+    const initial = pickDefaultOpenCategory(aulas);
+    return new Set(initial ? [initial] : []);
+  });
 
   const groups = useMemo(() => {
     const out: { category: string; items: Aula[] }[] = [];
@@ -96,8 +106,19 @@ export default function AulasPage() {
   function toggleCategory(category: string) {
     setOpenCategories((prev) => {
       const next = new Set(prev);
-      if (next.has(category)) next.delete(category);
-      else next.add(category);
+      if (next.has(category)) {
+        next.delete(category);
+        // Fechando: reaplica overflow:hidden já, para a animação de
+        // recolhimento não vazar conteúdo sangrado durante a transição.
+        setSettledCategories((s) => {
+          if (!s.has(category)) return s;
+          const ns = new Set(s);
+          ns.delete(category);
+          return ns;
+        });
+      } else {
+        next.add(category);
+      }
       return next;
     });
   }
@@ -175,7 +196,10 @@ export default function AulasPage() {
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.28, ease: [0.2, 0.8, 0.3, 1] }}
-                        style={{ overflow: 'hidden' }}
+                        onAnimationComplete={() =>
+                          setSettledCategories((s) => (s.has(category) ? s : new Set(s).add(category)))
+                        }
+                        style={{ overflow: settledCategories.has(category) ? 'visible' : 'hidden' }}
                       >
                         <div className="aulas-group-inner">
                           {items.map((aula) => {

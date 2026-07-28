@@ -47,6 +47,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-feature-settings: "ss01", "cv01";
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 /* Subtle grid texture overlaid on the page */
@@ -846,9 +847,21 @@ button { font-family: inherit; cursor: pointer; }
   border-bottom: 1px solid var(--rule);
   color: var(--ink);
   text-decoration: none;
+  position: relative;
+}
+.aula-scard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  background: transparent;
+  border-radius: var(--radius-s);
+  z-index: -1;
   transition: background .15s ease;
 }
-.aula-scard:hover { background: var(--paper); margin-inline: calc(var(--pad-x) * -1); padding-inline: var(--pad-x); border-radius: var(--radius-s); }
+.aula-scard:hover::before { background: color-mix(in srgb, var(--ink) 3%, transparent); }
 .aula-scard-num {
   width: 56px;
   height: 56px;
@@ -893,8 +906,9 @@ button { font-family: inherit; cursor: pointer; }
 /* Date-state variants */
 .aula-scard--past { opacity: 0.45; }
 .aula-scard--past:hover { opacity: 0.75; }
-.aula-scard--today { border-bottom-color: transparent; background: color-mix(in srgb, var(--mint-deep) 6%, transparent); border-radius: var(--radius-s); margin-inline: calc(var(--pad-x) * -1); padding-inline: var(--pad-x); }
-.aula-scard--today:hover { background: color-mix(in srgb, var(--mint-deep) 10%, transparent); }
+.aula-scard--today { border-bottom-color: transparent; }
+.aula-scard--today::before { background: color-mix(in srgb, var(--mint-deep) 6%, transparent); }
+.aula-scard--today:hover::before { background: color-mix(in srgb, var(--mint-deep) 10%, transparent); }
 .aula-scard--today .aula-scard-num { background: var(--mint-deep); color: var(--cream); border-color: transparent; }
 
 /* Today badge — flex sibling of the title */
@@ -928,8 +942,19 @@ button { font-family: inherit; cursor: pointer; }
   font: inherit;
   color: inherit;
   transition: background .15s ease;
+  position: relative;
 }
-.aulas-group-header:hover { background: color-mix(in srgb, var(--ink) 3%, transparent); margin-inline: calc(var(--pad-x) * -1); padding-inline: var(--pad-x); border-radius: var(--radius-s); }
+.aulas-group-header:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  background: color-mix(in srgb, var(--ink) 3%, transparent);
+  border-radius: var(--radius-s);
+  z-index: -1;
+}
 .aulas-group-chevron {
   display: inline-flex;
   align-items: center;
