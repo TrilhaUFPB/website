@@ -899,7 +899,7 @@ button { font-family: inherit; cursor: pointer; }
   text-decoration: none;
   transition: background .15s ease;
 }
-.aula-scard:hover { background: var(--paper); margin-inline: -24px; padding-inline: 24px; border-radius: var(--radius-s); }
+.aula-scard:hover { background: var(--paper); margin-inline: calc(var(--pad-x) * -1); padding-inline: var(--pad-x); border-radius: var(--radius-s); }
 .aula-scard-num {
   width: 56px;
   height: 56px;
@@ -944,7 +944,7 @@ button { font-family: inherit; cursor: pointer; }
 /* Date-state variants */
 .aula-scard--past { opacity: 0.45; }
 .aula-scard--past:hover { opacity: 0.75; }
-.aula-scard--today { border-bottom-color: transparent; background: color-mix(in srgb, var(--mint-deep) 6%, transparent); border-radius: var(--radius-s); margin-inline: -24px; padding-inline: 24px; }
+.aula-scard--today { border-bottom-color: transparent; background: color-mix(in srgb, var(--mint-deep) 6%, transparent); border-radius: var(--radius-s); margin-inline: calc(var(--pad-x) * -1); padding-inline: var(--pad-x); }
 .aula-scard--today:hover { background: color-mix(in srgb, var(--mint-deep) 10%, transparent); }
 .aula-scard--today .aula-scard-num { background: var(--mint-deep); color: var(--cream); border-color: transparent; }
 
@@ -980,7 +980,7 @@ button { font-family: inherit; cursor: pointer; }
   color: inherit;
   transition: background .15s ease;
 }
-.aulas-group-header:hover { background: color-mix(in srgb, var(--ink) 3%, transparent); margin-inline: -24px; padding-inline: 24px; border-radius: var(--radius-s); }
+.aulas-group-header:hover { background: color-mix(in srgb, var(--ink) 3%, transparent); margin-inline: calc(var(--pad-x) * -1); padding-inline: var(--pad-x); border-radius: var(--radius-s); }
 .aulas-group-chevron {
   display: inline-flex;
   align-items: center;
