@@ -4,8 +4,22 @@ description: Compreender o que são os arquivos, saber como usá-los em Python.
 category: Programação
 order: 8
 ---
+## Sumário
 
-Quando você está aprendendo a programar, provavelmente começa criando variáveis e manipulando dados na memória do computador. O problema é que, quando o programa termina, todos esses dados desaparecem. É como escrever algo importante em uma folha de papel e jogar fora quando termina de usar.
+- [8.1. Introdução - Por que trabalhar com arquivos?](#81-introducao---por-que-trabalhar-com-arquivos)
+- [8.2. Conceitos básicos](#82-conceitos-basicos)
+- [8.3. Abrindo e fechando arquivos](#83-abrindo-e-fechando-arquivos)
+- [8.4. O contexto](#84-o-contexto-object-object)
+- [8.5. Leitura de arquivos](#85-leitura-de-arquivos)
+- [8.6. Escrita em arquivos](#86-escrita-em-arquivos)
+- [8.7. Exemplo prático integrado](#87-exemplo-pratico-integrado)
+- [8.8. Boas práticas e cuidados](#88-boas-praticas-e-cuidados)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+
+>Quando você está aprendendo a programar, provavelmente começa criando variáveis e manipulando dados na memória do computador. O problema é que, quando o programa termina, todos esses dados desaparecem. É como escrever algo importante em uma folha de papel e jogar fora quando termina de usar.
+---
+
+
 
 # 8.1. Introdução - Por que trabalhar com arquivos?
 
@@ -13,9 +27,9 @@ Imagine que você criou um programa de lista de tarefas. Você adiciona várias 
 
 **Frustrante, não é? É aí que entram os arquivos.**
 
-Arquivos permitem que você **salve informações de forma permanente no disco rígido do computador**. Assim, seus dados sobrevivem mesmo depois que o programa é fechado. Pense em situações do dia a dia: salvar o progresso de um jogo, guardar uma lista de contatos, armazenar suas anotações pessoais, ou manter um histórico de gastos mensais. Todos esses casos precisam de arquivos.
+>Arquivos permitem que você **salve informações de forma permanente no disco rígido do computador**. Assim, seus dados sobrevivem mesmo depois que o programa é fechado. Pense em situações do dia a dia: salvar o progresso de um jogo, guardar uma lista de contatos, armazenar suas anotações pessoais, ou manter um histórico de gastos mensais. Todos esses casos precisam de arquivos.
 
-# 8.2. Conceitos básicos
+# 8.2. Conceitos basicos
 
 Antes de começarmos a programar, é importante entender alguns conceitos fundamentais.
 
@@ -28,7 +42,7 @@ __Tipos de arquivos:__ Existem diversos tipos de arquivos, mas vamos focar nos a
 
 Um arquivo de texto é simplesmente um arquivo que contém caracteres que podemos ler, como letras, números e símbolos. Exemplos comuns são arquivos com extensão *.txt* (texto puro), *.csv* (valores separados por vírgula, como planilhas simples) e *.json* (formato estruturado muito usado para guardar dados).
 
-A diferença principal entre arquivos de texto e arquivos binários (como imagens, vídeos ou programas executáveis) é que podemos abrir um arquivo de texto em qualquer editor simples e entender o que está escrito. Já um arquivo binário contém dados em um formato que só o programa específico consegue interpretar.
+>A diferença principal entre arquivos de texto e arquivos binários (como imagens, vídeos ou programas executáveis) é que podemos abrir um arquivo de texto em qualquer editor simples e entender o que está escrito. Já um arquivo binário contém dados em um formato que só o programa específico consegue interpretar.
 
 # 8.3. Abrindo e fechando arquivos
 
@@ -124,7 +138,7 @@ with open("notas.txt", "r") as arquivo:
 
 Essa última forma é melhor porque não carrega o arquivo inteiro na memória. Ela lê uma linha, processa, lê a próxima, e assim por diante. É perfeita para arquivos grandes.
 
-**Um detalhe importante sobre quebras de linha:** Quando você lê linhas de um arquivo, cada linha vem com o caractere de quebra de linha no final (geralmente representado como `\n`). Isso pode causar espaçamentos extras quando você imprime. Para remover esses espaços, você pode usar o método `strip()`:
+>**Um detalhe importante sobre quebras de linha:** Quando você lê linhas de um arquivo, cada linha vem com o caractere de quebra de linha no final (geralmente representado como `\n`). Isso pode causar espaçamentos extras quando você imprime. Para remover esses espaços, você pode usar o método `strip()`:
 
 ```python
 with open("notas.txt", "r") as arquivo:
@@ -245,6 +259,7 @@ def mostrar_menu():
 ```
 
 Essa função simplesmente exibe o menu e retorna a escolha do usuário. Usaremos essa resposta para decidir qual ação executar.
+
 
 **Passo 2: Criar a função para carregar a lista do arquivo**
 
@@ -404,3 +419,62 @@ with open(caminho, "r") as arquivo:
 - Use **modo "a"** quando você quer adicionar informações ao final de um arquivo existente, sem perder o que já está lá. É perfeito para logs, históricos, ou qualquer situação onde você quer acumular informações ao longo do tempo.
 
 Existem outros modos mais avançados (como *"r+"* para ler e escrever simultaneamente, ou *"b"* para arquivos binários), mas esses três básicos resolvem a maioria dos casos quando você está começando.
+---
+# Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre erros e tratamento de exceções em Python, confira os seguintes recursos:
+
+- [Como Manipular Arquivos em Python | Python do Jeito Certo 2.0](https://www.youtube.com/watch?v=yo03paxXV10)
+- [5 Tips To Organize Python Code](https://www.youtube.com/watch?v=e9yMYdnSlUA&t=2s)
+
+```quiz
+- tipo: single
+  pergunta: Qual é a principal vantagem de utilizar o gerenciador de contexto `with` ao abrir arquivos em Python?
+  opcoes:
+    - texto: Ele garante o fechamento automático do arquivo após a execução do bloco, mesmo se ocorrer um erro/exceção.
+      correta: true
+      explicacao: Exato! O `with` atua como um gerenciador de contexto que fecha o arquivo de forma limpa e automática ao sair do escopo indentado.
+      explicacao_erro: Pense na segurança e na prevenção de vazamentos de recursos. O `with` resolve a necessidade de chamar manualmente o método `close()`.
+    - texto: Ele aumenta a velocidade de leitura e gravação dos dados no disco.
+      correta: false
+      explicacao: O `with` não altera a velocidade física de leitura/escrita; ele apenas gerencia a abertura e o fechamento automático do recurso.
+    - texto: Ele criptografa automaticamente os arquivos criados para maior segurança.
+      correta: false
+      explicacao: Não há criptografia automática. O arquivo continua sendo gravado em texto plano ou conforme especificado pelo programador.
+    - texto: Ele permite ler e escrever no arquivo simultaneamente sem precisar definir o modo.
+      correta: false
+      explicacao: O modo de abertura (como `"r"` ou `"w"`) ainda precisa ser informado na função `open()` dentro do `with`.
+
+- tipo: single
+  pergunta: O que acontece por padrão se você abrir um arquivo de texto existente utilizando o modo `"w"`?
+  opcoes:
+    - texto: O arquivo é sobrescrito, apagando completamente todo o conteúdo anterior.
+      correta: true
+      explicacao: Exato! O modo `"w"` (write) abre o arquivo para escrita, limpando todo o conteúdo anterior se o arquivo já existir. Se o arquivo não existir, um novo é criado.
+      explicacao_erro: Tenha cuidado com o modo `"w"`. Para adicionar conteúdo ao final sem apagar o que já existe, você deve utilizar outro modo.
+    - texto: O Python gera um erro do tipo FileNotFoundError.
+      correta: false
+      explicacao: O modo `"w"` não gera erro se o arquivo já existir; ele apenas sobrescreve seu conteúdo. E se não existir, ele cria o arquivo.
+    - texto: O novo conteúdo é adicionado ao final do arquivo, preservando o conteúdo anterior.
+      correta: false
+      explicacao: Adicionar dados ao final preservando o conteúdo anterior é o comportamento do modo `"a"` (append). O modo `"w"` limpa tudo.
+    - texto: O arquivo é aberto apenas no modo de leitura protegida.
+      correta: false
+      explicacao: O modo `"w"` serve exclusivamente para escrita. Para leitura, o modo padrão é `"r"`.
+
+- tipo: single
+  pergunta: Por que é recomendado especificar `encoding="utf-8"` ao trabalhar com arquivos de texto em Python?
+  opcoes:
+    - texto: Para garantir que caracteres especiais, acentos e cedilhas do português sejam lidos e salvos corretamente.
+      correta: true
+      explicacao: Perfeito! O UTF-8 é o padrão moderno universal de codificação de caracteres que suporta acentuações do português e evita erros de codificação em diferentes sistemas operacionais.
+      explicacao_erro: Lembre-se de caracteres como 'á', 'ç' e 'õ'. A falta de definição do encoding pode quebrar o programa dependendo do sistema operacional onde roda.
+    - texto: Para compactar o tamanho do arquivo salvo no disco rígido.
+      correta: false
+      explicacao: O `encoding` define como mapear caracteres para bytes, não funciona como um compressor de arquivos.
+    - texto: Para transformar o arquivo em binário e impedir a leitura humana.
+      correta: false
+      explicacao: Pelo contrário, UTF-8 é uma codificação de arquivos de texto plano legíveis por humanos. Arquivos binários usam o modo `"wb"`.
+    - texto: Para duplicar a velocidade com que o loop `for` percorre as linhas.
+      correta: false
+      explicacao: A velocidade de processamento do loop depende do interpretador e hardware, não da codificação de caracteres escolhida.
+```

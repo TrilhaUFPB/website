@@ -1,8 +1,32 @@
 ---
 title: 2. Arrays ou Listas
-description: 
+description: Aprenda o que são arrays e listas em Python, como manipulá-las com índices, fatias e métodos, e explore estruturas mais avançadas como listas encadeadas e o algoritmo de busca binária.
 category: Programação
 order: 2
+---
+
+## Sumário
+
+- [2.1. Arrays (Vetores)](#21-arrays-vetores)
+- [2.2. Busca Binária: O Poder de Dividir pela Metade](#22-busca-binaria-o-poder-de-dividir-pela-metade)
+- [2.3. Listas são Mutáveis](#23-listas-sao-mutaveis)
+- [2.4. Percorrendo uma Lista](#24-percorrendo-uma-lista)
+- [2.5. Operações com Listas](#25-operacoes-com-listas)
+- [2.6. Fatias de Listas (Slicing)](#26-fatias-de-listas-slicing)
+- [2.7. Métodos de Listas](#27-metodos-de-listas)
+- [2.8. Mapeamento, Filtragem e Redução](#28-mapeamento-filtragem-e-reducao)
+- [2.9. Como Excluir Elementos](#29-como-excluir-elementos)
+- [2.10. Listas e Strings](#210-listas-e-strings)
+- [2.11. Objetos e Valores](#211-objetos-e-valores)
+- [2.12. Lista Encadeada (Linked List)](#212-lista-encadeada-linked-list)
+- [2.13. Doubly Linked Lists](#213-doubly-linked-lists)
+- [2.14. O Jeito Pythonico (`collections.deque`)](#214-o-jeito-pythonico-collectionsdeque)
+- [2.15. Exercícios Resolvidos: Entendendo os Padrões](#215-exercicios-resolvidos-entendendo-os-padroes)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+Arrays são uma das estruturas de dados mais fundamentais da computação. Dominar listas em Python — e entender o que acontece por baixo dos panos — é o primeiro passo para escrever código eficiente e resolver problemas complexos.
+
 ---
 
 # 2.1. Arrays (Vetores)
@@ -73,13 +97,7 @@ Obviamente, podemos atribuir uma lista de valores, vazio ou não, a variáveis:
 
 ```
 
-### **Exercício de Fixação**
-
-Crie uma variável chamada `meus_dados` que contenha uma lista com os seguintes elementos, exatamente nesta ordem:
-
-1. Uma string com seu nome.
-2. Um número inteiro com sua idade.
-3. Uma lista contendo suas duas cores favoritas.
+---
 
 # 2.2. Busca Binária: O Poder de Dividir pela Metade
 
@@ -148,7 +166,7 @@ Percebe o padrão? Cada vez que você **dobra** a quantidade de dados, você só
 
 ## Visualizando a Diferença
 
-```
+```plaintext
 Busca Linear vs Busca Binária
 
 Para encontrar em 1024 elementos:
@@ -227,13 +245,6 @@ O operador `in` também funciona com listas:
 True
 ```
 
-### **Exercício de Fixação**
-
-Dada a lista `notas = [8.0, 5.5, 9.0, 10.0]`:
-
-1. Como você altera a nota `5.5` para `6.0` usando o índice?
-2. O que o código `print(notas[-1])` irá imprimir?
-
 ---
 
 # 2.4. Percorrendo uma Lista
@@ -263,10 +274,6 @@ Este loop percorre a lista e atualiza cada elemento:
 - `len()` retorna o número de elementos na lista
 - `range()` retorna uma sequência de índices de 0 a n-1
 
-### **Exercício de Fixação**
-
-Escreva um loop `for` que percorra a lista `precos = [10, 20, 30]` e dê um desconto de 10% em cada item (multiplique por 0.9), atualizando a lista original.
-
 ---
 
 # 2.5. Operações com Listas
@@ -290,17 +297,6 @@ O operador `*` **repete** a lista um dado número de vezes:
 ```python
 >>> [0] * 4
 [0, 0, 0, 0]
-
-```
-
-### **Exercício de Fixação**
-
-Sem rodar o código, qual será o resultado de:
-
-```python
-lista = [1, 2]
-nova_lista = lista * 3 + [3]
-print(nova_lista)
 
 ```
 
@@ -332,10 +328,6 @@ Um operador de fatia à esquerda de uma atribuição pode **atualizar vários el
 ["a", "x", "y", "d", "e", "f"]
 ```
 
-### **Exercício de Fixação**
-
-Dada a lista `semana = ["seg", "ter", "qua", "qui", "sex", "sab", "dom"]`, use o fatiamento (slicing) para imprimir apenas os dias do fim de semana ("sab" e "dom").
-
 ---
 
 # 2.7. Métodos de Listas
@@ -359,16 +351,6 @@ O Python oferece métodos que operam em listas:
 
 > **Atenção Importante:** A maior parte dos métodos de listas são **nulos** (void); eles **alteram** a lista e **retornam `None`**. Se você escrever `t = t.sort()` por acidente, ficará desapontado com o resultado (perderá sua lista).
 
-### **Exercício de Fixação**
-
-Um aluno escreveu o seguinte código e a lista dele sumiu. Explique o erro:
-
-```python
-numeros = [3, 1, 2]
-numeros = numeros.sort()
-print(numeros)  # Resultado: None
-```
-
 ---
 
 # 2.8. Mapeamento, Filtragem e Redução
@@ -382,14 +364,6 @@ As operações de lista mais comuns podem ser expressas como combinações de **
 2. **Mapeamento:** **Percorrer** uma lista e **aplicar uma função** em cada elemento (como transformar todas as strings em maiúsculas).
 
 3. **Filtragem:** **Selecionar** alguns elementos e desconsiderar outros (como pegar apenas as strings que já são maiúsculas).
-
-### **Exercício de Fixação**
-
-Classifique as operações abaixo como **Mapeamento**, **Filtragem** ou **Redução**:
-
-- **A.** Somar o total de vendas do mês.
-- **B.** Criar uma nova lista contendo apenas os alunos aprovados.
-- **C.** Converter uma lista de preços em Dólar para Real.
 
 ---
 
@@ -420,13 +394,6 @@ Se não precisar do valor removido, você pode usar a instrução `del`.
 ## Método `remove()`
 
 Se souber o **elemento** que quer excluir (mas não o índice), você pode usar `remove()`.
-
-### **Exercício de Fixação**
-
-Você tem a lista `mochila = ["livro", "caneta", "notebook", "lanche"]`.
-
-1. Como remover "lanche" sabendo apenas o nome do item?
-2. Como remover o item na posição 1 e salvar o valor dele em uma variável?
 
 ---
 
@@ -462,10 +429,6 @@ Se você quiser **quebrar uma string em palavras**, você pode usar o método `s
 >>> s
 "eu so durmo com meu ventilador ligado"
 ```
-
-### **Exercício de Fixação**
-
-Converta a data `"25/12/2024"` em uma lista `['25', '12', '2024']` usando o método `split()`. Qual delimitador você deve usar?
 
 ---
 
@@ -526,84 +489,6 @@ Se usarmos essa função, a variável original é afetada.
 
 É importante distinguir entre operações que alteram listas e operações que criam novas listas. Por exemplo, o método `append` altera a lista, mas o operador `+` cria uma nova lista.
 
-### **Exercício de Fixação**
-
-Observe o código abaixo e responda: `lista_original` será alterada? Por que?
-
-```python
-def dobrar_lista(t):
-    t = t + t # Cria uma nova lista e atribui a 't' localmente
-    print(t)
-
-lista_original = [1, 2]
-dobrar_lista(lista_original)
-print(lista_original)
-
-```
-
----
-
-## Lista de Exercícios
-
-Chegou a hora de testar seus conhecimentos. Estes exercícios exigem que você combine múltiplos conceitos vistos acima.
-
-**1. O Acumulador**
-Crie uma lista com 10 números inteiros aleatórios. Escreva um código que percorra essa lista e calcule a "Soma Acumulada". Ou seja, o novo elemento no índice `i` deve ser a soma de todos os elementos originais do índice `0` até `i`.
-*Exemplo:* Entrada `[1, 2, 3]` -> Saída `[1, 3, 6]`.
-
-**2. O Verificador de Palíndromos**
-Um palíndromo é uma palavra que se lê da mesma forma de trás para frente (ex: "arara"). Dada uma lista de palavras: `palavras = ["arara", "casa", "ovo", "radar", "python"]`, crie um código que filtre e imprima apenas as palavras que são palíndromos. Dica: use fatiamento reverso `[::-1]`.
-
-**3. Remover Duplicatas**
-Dada a lista `numeros = [1, 2, 2, 3, 4, 4, 4, 5]`, escreva um algoritmo que remova os elementos duplicados, mantendo apenas a primeira ocorrência de cada número, sem usar a função `set()`. O resultado deve ser `[1, 2, 3, 4, 5]`.
-
-**4. Intercalação de Listas**
-Dadas duas listas ordenadas `A = [1, 3, 5]` e `B = [2, 4, 6]`, crie uma nova lista `C` que contenha os elementos de ambas intercalados, ou seja: `[1, 2, 3, 4, 5, 6]`.
-
-**5. Média de Notas Aninhadas**
-Você tem uma lista de listas onde cada sublista representa as notas de um aluno:
-`notas_turma = [[5.0, 9.0], [2.0, 3.0], [10.0, 9.5]]`.
-Calcule a média de cada aluno e armazene em uma nova lista `medias`. Se a média for maior ou igual a 7, imprima "Aprovado", caso contrário "Reprovado".
-
-**6. Rotação de Lista**
-Crie uma função que receba uma lista e um número inteiro `k`. A função deve "rotacionar" a lista para a direita `k` vezes.
-*Exemplo:* Lista `[1, 2, 3, 4, 5]` e `k=2` -> Resultado `[4, 5, 1, 2, 3]`.
-
-**7. A Maior Palavra**
-Dada uma frase (string) inserida pelo usuário, use `split()` para separar as palavras e encontre a palavra com o maior número de caracteres. Imprima a palavra e o seu tamanho.
-
-**8. O Problema da Referência (Depuração)**
-Você quer criar uma matriz 3x3 preenchida com zeros. Um aluno fez o seguinte:
-
-```python
-linha = [0, 0, 0]
-matriz = [linha, linha, linha] # CUIDADO AQUI!
-matriz[0][0] = 1
-print(matriz)
-```
-
-Ao rodar, ele percebeu que a primeira coluna inteira virou 1 ```([[1, 0, 0], [1, 0, 0], [1, 0, 0]]).```
-
-Explique por que isso aconteceu (Conceito de Aliasing).
-
-Escreva o código correto para criar a matriz onde alterar um elemento não afete as outras linhas.
-
-**9. Filtragem com List Comprehension (Lógica)**
-Embora não tenhamos aprofundado em List Comprehension, tente resolver este problema com um loop normal primeiro: Dada uma lista de números `[1, 2, 3, 4, 5, 6]`, crie uma nova lista contendo o **quadrado** dos números, mas **apenas se o número for par**. Resultado esperado: `[4, 16, 36]`.
-
-**10. Matriz Transposta**
-Considere que uma lista de listas representa uma matriz:
-
-```python
-matriz = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
-```
-
-Escreva um código que gere a matriz transposta (transforme linhas em colunas). O resultado deve ser `[[1, 4, 7], [2, 5, 8], [3, 6, 9]]`.
-
 ---
 
 # 2.12. Lista Encadeada (Linked List)
@@ -649,13 +534,6 @@ Na nossa analogia, cada pessoa no cinema é um **Nó** (Node). Para que a mágic
 
 > **Atenção:** Se você perder o endereço do próximo, a corrente se quebra e o resto da lista desaparece da memória para sempre.
 
-### **Exercício de Fixação**
-
-Se tivermos uma Lista Encadeada com 3 nós: `A -> B -> C`.
-
-1. O que está armazenado no `next` do nó C?
-2. Se, por acidente, fizermos `A.next = None`, o que acontece com os nós B e C na memória?
-
 ---
 
 ## Arrays vs. Linked Lists
@@ -681,12 +559,6 @@ Você quer adicionar um novo amigo bem no meio da fila.
 |-----------|---------------|-------------|
 | **Array** | Você tem que pedir para **todo mundo** que está à direita se levantar e dar um passo para o lado para abrir espaço. Se tiver 1 milhão de itens, o computador tem que mover 1 milhão de coisas. | **O(n) - Lento e cansativo** |
 | **Linked List** | Aqui a mágica acontece. Você simplesmente muda o papelzinho do amigo anterior para apontar para o novo, e o novo aponta para o seguinte. Ninguém mais precisa se mexer. | **O(1) - Instantâneo** |
-
-### **Exercício de Fixação**
-
-Você está criando um sistema de logs de erro onde novos erros são adicionados constantemente (milhares por segundo), mas raramente precisamos ler logs antigos.
-
-Para guardar esses logs, qual estrutura seria mais eficiente na **escrita**: Array ou Linked List? Por quê?
 
 ---
 
@@ -768,20 +640,6 @@ lista.display()
 
 ```
 
-### **Exercício de Fixação**
-
-Um aluno tentou percorrer a lista para imprimir os valores, mas esqueceu uma linha importante e seu programa entrou em **loop infinito** (travou).
-
-```python
-current = self.head
-while current:
-    print(current.data)
-    # O que está faltando aqui?
-
-```
-
-Qual linha de código está faltando dentro do `while`?
-
 ---
 
 # 2.13. Doubly Linked Lists
@@ -796,6 +654,8 @@ Cada nó agora tem dois braços: um para segurar o da frente (next) e um para se
 - **Custo:** Ocupa mais memória (precisa guardar 2 endereços por item).
 
 <img src="/api/materiais-assets/2-estruturas-de-dados/2-arrays/assets/doubly_linked.png" width="500">
+
+---
 
 # 2.14. O Jeito Pythonico (`collections.deque`)
 
@@ -818,12 +678,6 @@ print(playlist)
 # deque(['Música Nova', 'Música 1', 'Música 2'])
 
 ```
-
-### **Exercício de Fixação**
-
-Se usarmos uma lista padrão do Python (`lista = []`) e fizermos `lista.insert(0, "Item")`, o Python precisa deslocar todos os outros itens.
-Se usarmos `deque` e fizermos `deque.appendleft("Item")`, ele não precisa deslocar ninguém.
-Qual dessas operações tem complexidade  e qual tem ?
 
 ---
 
@@ -886,72 +740,129 @@ def inverter(head):
 
 ```
 
-### **Exercício de Fixação**
-
-Na função `inverter` acima, o que aconteceria se esquecêssemos de fazer a linha `proximo_temp = atual.next` antes de mudar o `atual.next`?
-( ) Nada demais.
-( ) Perderíamos o acesso ao resto da lista original para sempre.
-( ) A lista ficaria duplicada.
-
 ---
 
-## Lista de Exercícios
+# Complemente o Aprendizado
 
-Estes são exercícios clássicos de entrevistas técnicas em grandes empresas (Google, Amazon, Facebook). Resolva-os desenhando os nós no papel antes de codificar.
+Para aprofundar seus conhecimentos sobre arrays, listas e estruturas de dados, confira os seguintes recursos:
 
-**1. O Histórico do Navegador**
-Implemente uma classe `Navegador` usando uma **Doubly Linked List**.
+ [Criação de uma primeira estrutura - UNIVESP](https://www.youtube.com/watch?v=x2DwllnUZDg)
+ 
 
-- Deve ter os métodos `visitar(url)` (adiciona página e limpa o histórico futuro), `voltar(passos)` e `avancar(passos)`.
-- Se o usuário tentar voltar 10 passos mas só houver 2 páginas, volte apenas até a primeira.
+```quiz
+- tipo: single
+  pergunta: |
+    Sem rodar o código, qual será o resultado de:
+    ```python
+    lista = [1, 2]
+    nova_lista = lista * 3 + [3]
+    print(nova_lista)
+    ```
+  opcoes:
+    - texto: "[1, 2, 1, 2, 1, 2, 3]"
+      correta: true
+      explicacao: Correto! O operador `*` repete a lista 3 vezes, resultando em `[1, 2, 1, 2, 1, 2]`. Em seguida, o operador `+` concatena `[3]` ao final.
+      explicacao_erro: O operador `*` repete a lista inteira 3 vezes (`[1, 2, 1, 2, 1, 2]`) e depois `+` concatena `[3]` ao final, resultando em `[1, 2, 1, 2, 1, 2, 3]`.
+    - texto: "[1, 2, 3, 1, 2, 3, 1, 2, 3]"
+      correta: false
+      explicacao: Esse seria o resultado de `(lista + [3]) * 3`. Aqui, o `*` opera sobre `lista` antes da concatenação com `[3]`.
+    - texto: "[3, 3, 3, 3]"
+      correta: false
+      explicacao: Esse resultado não faz sentido com os operadores usados. `lista * 3` repete os elementos `[1, 2]`, não multiplica cada elemento.
+    - texto: "[1, 2, 3]"
+      correta: false
+      explicacao: Esse seria o resultado de `lista + [3]`. A operação `* 3` precisa ser aplicada antes da concatenação.
 
-**2. O Espião (Middle of Linked List)**
-Dada uma lista encadeada simples, encontre o nó que está exatamente no **meio** da lista.
+- tipo: single
+  pergunta: |
+    Um aluno escreveu o seguinte código e a lista dele sumiu. Qual é o motivo?
+    ```python
+    numeros = [3, 1, 2]
+    numeros = numeros.sort()
+    print(numeros)  # Resultado: None
+    ```
+  opcoes:
+    - texto: "`sort()` é um método void — ordena a lista in-place e retorna `None`. Ao reatribuir, a variável perde a lista."
+      correta: true
+      explicacao: Exato! O método `sort()` modifica a lista diretamente e retorna `None`. A linha `numeros = numeros.sort()` sobrescreve `numeros` com esse `None`.
+      explicacao_erro: O método `sort()` altera a lista in-place e retorna `None`. Fazer `numeros = numeros.sort()` é um erro clássico — a variável perde a lista e passa a valer `None`.
+    - texto: "`sort()` cria uma nova lista ordenada e a original é destruída automaticamente."
+      correta: false
+      explicacao: Não — `sort()` ordena a lista original in-place, sem criar uma nova. O problema está no retorno `None` sendo atribuído à variável.
+    - texto: "O Python apaga variáveis que recebem o resultado de métodos de lista."
+      correta: false
+      explicacao: Isso não existe em Python. O problema específico é que `sort()` retorna `None`, não que o Python apaga variáveis.
+    - texto: "`sort()` só funciona com `sorted()`. Usar `sort()` diretamente sempre retorna `None`."
+      correta: false
+      explicacao: O método `sort()` funciona normalmente como método de lista. O problema está em reatribuir seu retorno (`None`) à própria variável.
 
-- *Desafio:* Faça isso percorrendo a lista **apenas uma vez** (Dica: Use a estratégia da Tartaruga e da Lebre).
+- tipo: single
+  pergunta: "Qual delimitador deve ser passado ao método `split()` para converter a string `\"25/12/2024\"` na lista `['25', '12', '2024']`?"
+  opcoes:
+    - texto: "\"/\""
+      correta: true
+      explicacao: Correto! O método `split(\"/\")` divide a string em cada ocorrência do caractere `/`, produzindo `['25', '12', '2024']`.
+      explicacao_erro: O delimitador deve ser `\"/\"`, pois é o caractere que separa os componentes da data na string original.
+    - texto: "\".\""
+      correta: false
+      explicacao: O ponto `.` não aparece na string `\"25/12/2024\"`. `split(\".\")` retornaria a string inteira como um único elemento.
+    - texto: "\"-\""
+      correta: false
+      explicacao: O hífen `-` não aparece na string. `split(\"-\")` retornaria a string inteira sem divisão.
+    - texto: "Nenhum (chamar `split()` sem argumento)"
+      correta: false
+      explicacao: "O método `split()` sem argumento divide por espaços em branco. Como não há espaços em \"25/12/2024\", a string inteira seria retornada como um único elemento."
 
-**3. Remover Duplicatas (Versão Hard)**
-Dada uma lista ordenada `1 -> 1 -> 2 -> 3 -> 3 -> 4`, remova os nós duplicados de forma que cada elemento apareça apenas uma vez.
+- tipo: single
+  pergunta: |
+    Um aluno tentou percorrer uma Linked List e o programa travou em loop infinito. O que está faltando?
+    ```python
+    current = self.head
+    while current:
+        print(current.data)
+        # O que está faltando aqui?
+    ```
+  opcoes:
+    - texto: "`current = current.next`"
+      correta: true
+      explicacao: Correto! Sem avançar o ponteiro `current` para o próximo nó, o loop sempre avalia o mesmo nó e nunca termina.
+      explicacao_erro: A linha `current = current.next` é obrigatória para avançar o ponteiro ao próximo nó. Sem ela, `current` nunca muda e o `while` nunca termina.
+    - texto: "`current += 1`"
+      correta: false
+      explicacao: Nós de uma Linked List não são acessados por índice numérico. Para avançar, usa-se `current = current.next`.
+    - texto: "`break`"
+      correta: false
+      explicacao: Um `break` encerraria o loop após o primeiro nó, ignorando todos os outros. O objetivo é percorrer toda a lista.
+    - texto: "`return current`"
+      correta: false
+      explicacao: Um `return` encerraria a função inteira após o primeiro nó. O objetivo é percorrer todos os nós da lista.
 
-- *Resultado:* `1 -> 2 -> 3 -> 4`.
-- *Restrição:* Modifique a lista "in-place" (sem criar uma nova lista).
-
-**4. O K-ésimo do Fim**
-Encontre o k-ésimo nó contando **do final** para o começo.
-
-- Exemplo: Lista `A -> B -> C -> D` e `k=2`. O nó alvo é o `C` (pois D é o 1º de trás, C é o 2º).
-- *Dica:* Use dois ponteiros com uma distância de `k` entre eles.
-
-**5. Fusão Nuclear (Merge Two Sorted Lists)**
-Dadas duas listas encadeadas que já estão ordenadas (ex: `L1: 1->2->4` e `L2: 1->3->4`), crie uma função que funda as duas em uma única lista também ordenada: `1->1->2->3->4->4`.
-
-**6. É Palíndromo?**
-Verifique se uma Linked List lê a mesma coisa de frente para trás.
-
-- Exemplo: `1 -> 2 -> 2 -> 1` (True).
-- *Desafio:* Tente fazer isso com complexidade de espaço O(1) e tempo O(n).
-
-**7. Deletar sem Head**
-Você recebe acesso **apenas** a um nó `node` no meio de uma lista (você não tem acesso à `head` da lista).
-
-- Escreva uma função para deletar esse nó específico.
-- *Dica:* Você não pode remover o nó da memória, mas pode copiar os dados do próximo nó para este e deletar o próximo.
-
-**8. Ponto de Intersecção (Y-Shape)**
-Duas listas encadeadas podem se unir em um determinado ponto, formando um "Y".
-
-- `Lista A: a1 -> a2 -> c1 -> c2`
-- `Lista B: b1 -> c1 -> c2`
-- Encontre o nó exato onde a intersecção começa (`c1`). Note que a intersecção é baseada em referência de memória, não apenas valor.
-
-**9. Swap em Pares**
-Troque os nós adjacentes dois a dois.
-
-- Entrada: `1 -> 2 -> 3 -> 4`
-- Saída: `2 -> 1 -> 4 -> 3`
-- Você deve trocar os nós de verdade, não apenas os valores dos dados.
-
-**10. A Roleta (Josephus Problem na Lista Circular)**
-Implemente uma **Lista Circular** (o último aponta para o primeiro).
-
-- Simule o problema de Josephus: N pessoas em círculo. Começando da primeira, conte `k` pessoas e remova a k-ésima. Repita o processo com o círculo remanescente até sobrar apenas uma pessoa. Retorne o valor do sobrevivente.
+- tipo: single
+  pergunta: |
+    Na função `inverter` abaixo, o que aconteceria se a linha `proximo_temp = atual.next` fosse removida?
+    ```python
+    def inverter(head):
+        anterior = None
+        atual = head
+        while atual:
+            proximo_temp = atual.next  # ← esta linha
+            atual.next = anterior
+            anterior = atual
+            atual = proximo_temp
+        return anterior
+    ```
+  opcoes:
+    - texto: Perderíamos o acesso ao resto da lista original para sempre.
+      correta: true
+      explicacao: Correto! Ao fazer `atual.next = anterior`, a referência ao próximo nó é sobrescrita. Sem salvar `proximo_temp` antes, não há como avançar — o restante da lista fica inacessível.
+      explicacao_erro: A linha `proximo_temp = atual.next` salva o próximo nó antes de modificar o ponteiro. Sem ela, ao executar `atual.next = anterior`, a referência ao próximo nó é perdida para sempre.
+    - texto: Nada demais — a lista seria invertida normalmente.
+      correta: false
+      explicacao: Não. A inversão depende de avançar para o próximo nó após modificar o ponteiro. Sem salvar `proximo_temp`, isso se torna impossível.
+    - texto: A lista ficaria duplicada.
+      correta: false
+      explicacao: A lista não seria duplicada. O problema é diferente — o ponteiro para o próximo nó seria perdido, tornando o restante da lista inacessível.
+    - texto: A função lançaria um `AttributeError`.
+      correta: false
+      explicacao: "Não há erro de atributo. O problema é lógico: `atual` nunca avança e os nós seguintes ficam inacessíveis."
+```

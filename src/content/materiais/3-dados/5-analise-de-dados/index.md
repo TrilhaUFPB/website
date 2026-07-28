@@ -1,32 +1,23 @@
 ---
 title: 5. Análise de Dados
-description: 
+description: Entenda o que é análise de dados na prática, como dar os primeiros passos em EDA e como usar Python (Pandas + bibliotecas de visualização) para explorar um conjunto de dados real.
 category: Dados
 order: 5
 ---
+## Sumário
+
+- [5.1 Introdução à Análise de Dados](#51-introducao-a-analise-de-dados)
+- [5.2 Classificação de Dados](#52-classificacao-de-dados)
+- [5.3 Ferramentas e bibliotecas essenciais](#53-ferramentas-e-bibliotecas-essenciais)
+- [5.4 Análise Exploratória de Dados (EDA)](#54-analise-exploratoria-de-dados-eda)
+- [5.5 Tipos de relação e quais gráficos usar](#55-tipos-de-relacao-e-quais-graficos-usar)
+- [5.6 Limpeza e Transformação de Dados](#56-limpeza-e-transformacao-de-dados)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
 
 # 5.1. Introdução à Análise de Dados
+>O que é análise de dados e por que ela é importante no dia a dia, Reconhecer propriedades e tipos de dados, Aplicar EDA (Análise Exploratória de Dados) em um dataset simples, Executar limpeza e transformação básicas de dados, Visualizar informações de forma clara e correta e Ganhar familiaridade com Pandas, Matplotlib, Seaborn e Jupyter Notebook
 
-Essa aula é uma primeira visão prática de **como pensar com dados**. A ideia é que o aluno saia sabendo:
-- o que é análise de dados na prática,
-- como dar os primeiros passos em EDA,
-- e como usar Python (Pandas + bibliotecas de visualização) para explorar um conjunto de dados real.
-
-## Objetivos de Aprendizagem
-
-- Entender o que é análise de dados e por que ela é importante no dia a dia  
-- Reconhecer propriedades e tipos de dados  
-- Aplicar EDA (Análise Exploratória de Dados) em um dataset simples  
-- Executar limpeza e transformação básicas de dados  
-- Visualizar informações de forma clara e correta  
-- Ganhar familiaridade com Pandas, Matplotlib, Seaborn e Jupyter Notebook
-
-
-## Roteiro de Assuntos
-
-### O que é análise de dados
-
-#### Definição
+## 5.1.1 O que é análise de dados
 Análise de dados é o processo de **fazer perguntas** e **tentar respondê-las usando dados**.  
 Na prática, isso envolve inspecionar, limpar, transformar e modelar dados para extrair informações úteis, apoiar decisões e gerar conhecimento acionável.
 
@@ -46,14 +37,14 @@ Vamos focar principalmente em:
 
 ![Ciclo de analise de dados](/api/materiais-assets/3-dados/5-analise-de-dados/assets/data-analysis-process.png)
 
-### Propriedades dos dados
+## 5.2 Classificação de Dados
 
 #### Dados estruturados
 Dados organizados em formato tabelar (linhas e colunas), com uma **estrutura bem definida** (tipos, chaves, restrições).  
 Exemplos: tabelas SQL, planilhas do Excel, dados transacionais de um sistema.
 
-- Vantagens: fácil consulta, validação e integração  
-- Desafios: mais rígidos; às vezes é preciso adaptar os dados ao formato da tabela
+- **Vantagens**: fácil consulta, validação e integração  
+- **Desafios**: mais rígidos; às vezes é preciso adaptar os dados ao formato da tabela
 
 #### Dados não estruturados
 Dados sem um esquema pré-definido ou com estrutura muito flexível.  
@@ -89,11 +80,11 @@ Suportam operações aritméticas e estatísticas descritivas.
 ![dados qualitativos x dados quantitativos](/api/materiais-assets/3-dados/5-analise-de-dados/assets/tipos_variaveis.webp)
 
 
-### Ferramentas e bibliotecas essenciais
+## 5.3 Ferramentas e bibliotecas essenciais
 
 Antes de falar de cada biblioteca, vale ver um **mini-exemplo** completo.
 
-#### Mini-exemplo
+## Mini-exemplo
 
 Suponha um arquivo `alunos.csv` com colunas como `nome`, `idade`, `nota`.
 
@@ -111,7 +102,7 @@ print(df.describe())
 ```
 ---
 
-#### Pandas
+## Pandas
 
 Pandas é a principal biblioteca Python para **manipulação e análise de dados estruturados**.  
 Ela fornece estruturas de dados eficientes que permitem trabalhar com tabelas de forma simples e expressiva.
@@ -134,7 +125,7 @@ Principais usos:
 
 ---
 
-#### Matplotlib
+## Matplotlib
 
 Matplotlib é a biblioteca base de **visualização de dados em Python**.  
 Ela permite criar gráficos simples ou altamente customizáveis, sendo muito utilizada em contextos acadêmicos e científicos.
@@ -164,16 +155,16 @@ plt.show()
 
 ---
 
-#### Seaborn
+## Seaborn
 
 Seaborn é uma biblioteca de visualização construída **sobre o Matplotlib**, focada em **visualizações estatísticas** mais informativas e com melhor estética padrão.
 
 Ela facilita a análise exploratória ao permitir observar relações entre variáveis, distribuições e correlações com menos código.
 
 Principais recursos:
-- Heatmaps de correlação
-- Boxplots e violin plots
-- Pairplots (análise multivariada)
+- **Heatmaps** de correlação
+- **Boxplots** e violin plots
+- **Pairplots** (análise multivariada)
 - Estilos visuais mais claros e consistentes
 
 Exemplo simples:
@@ -189,7 +180,7 @@ sns.boxplot(data=df, x="turma", y="nota")
 
 ---
 
-#### Relação entre as bibliotecas
+## Relação entre as bibliotecas
 
 Essas ferramentas são complementares e costumam ser usadas juntas em um fluxo típico de análise de dados:
 
@@ -203,16 +194,17 @@ Uso conjunto (resumindo):
 - Use **Seaborn** quando quiser gráficos estatísticos bonitos e rápidos
 
 ---
+```python
+  df.columns
+  df.dtypes
+  df.head()
+  df.tail()
+  df.sample(5, random_state=42)
+  df.info()
+```
+## 5.4 Análise Exploratória de Dados (EDA)
 
-df.columns
-df.dtypes
-df.head()
-df.tail()
-df.sample(5, random_state=42)
-df.info()
-### Análise Exploratória de Dados (EDA)
-
-#### Inspeção inicial do dataset
+## Inspeção inicial do dataset
 Pense no dataset como uma **caixa misteriosa**: antes de usar, você dá uma olhada rápida para saber o que tem dentro.
 
 O que checar:
@@ -230,23 +222,17 @@ Se esses campos tiverem tipos consistentes, é um bom sinal de que os dados fora
 Comandos úteis (Pandas em Python):
 
 ```python
-df.shape
-df.columns
-df.dtypes
-df.head()
-df.tail()
-df.sample(5, random_state=42)
-df.info()
+df.shape #Mostra o tamanho do seu DataFrame, entregando a quantidade exata de linhas e colunas que ele possui.
+df.columns #Lista os nomes de todas as colunas
+df.dtypes #Revela o tipo de dado (string, int, float etc...) armazenado em cada coluna.
+df.head() #Exibe as 5 primeiras linhas do conjunto de dados
+df.tail() #Exibe as 5 Últimas linhas do conjunto de dados
+df.sample(5, random_state=42) #Sorteia 5 linhas totalmente aleatórias da tabela, mas garante que seja reproduzivel pela seed = 42
+df.info() #Dá um relatório completo sobre a tabela
 ```
-
-df.describe(include="all")    # inclui categóricas (pode ficar grande)
-df["coluna_num"].describe()
-df["coluna_cat"].value_counts()
-df["coluna_cat"].value_counts(normalize=True)  # proporção
-
 ---
 
-#### Estatísticas descritivas
+## Estatísticas descritivas
 Aqui você faz o “resumo do resumo” dos dados: uma forma rápida de entender o comportamento geral.
 
 Para variáveis numéricas:
@@ -272,13 +258,13 @@ df["coluna_num"].describe()
 
 df["coluna_cat"].value_counts()
 df["coluna_cat"].value_counts(normalize=True)  # proporção
-```
+
 df[df.isna().any(axis=1)].head()   # linhas com pelo menos um nulo
 df.notna().sum()                   # valores presentes
-
+```
 ---
 
-#### Detecção de dados ausentes
+## Detecção de dados ausentes
 Valores ausentes são como **peças faltando**: se você ignorar, pode distorcer a análise e os modelos.
 
 O que verificar:
@@ -297,7 +283,7 @@ df.notna().sum()                   # valores presentes
 
 ---
 
-#### Relações entre variáveis
+## Relações entre variáveis
 Parte “detetive”: aqui você procura padrões entre variáveis e valida (ou derruba) hipóteses.  
 O gráfico normalmente vem *antes* da métrica, porque relação sem visual pode enganar.
 
@@ -307,10 +293,9 @@ Perguntas clássicas:
 - Existe outlier distorcendo a leitura?  
 - A relação é linear, monotônica ou não linear?
 
-## Tipos de relação e quais gráficos usar
+## 5.5 Tipos de relação e quais gráficos usar
 
-df.plot.scatter(x="x", y="y")
-df.sort_values("data").plot(x="data", y="y")
+> df.plot.scatter(x="x", y="y")  df.sort_values("data").plot(x="data", y="y")
 ### - Numérica vs Numérica
 **Objetivo:** ver tendência, forma (linear/não-linear), dispersão e outliers.
 
@@ -356,9 +341,9 @@ df.boxplot(column="y", by="categoria")
 **Gráficos**
 - Barras (contagem)
 - Barras empilhadas (proporções por grupo)
-
-df["coluna_num"].quantile([0.25, 0.5, 0.75])
-
+```python
+df["coluna_num"].quantile([0.25, 0.5, 0.75]) #seleciona valores para as colunas
+```
 ---
 
 #### Distribuições e outliers
@@ -378,9 +363,9 @@ df["coluna_num"].quantile([0.25, 0.5, 0.75])
 
 ---
 
-### Limpeza e Transformação de Dados
+## 5.6 Limpeza e Transformação de Dados
 
-#### Tratamento de valores nulos
+### Tratamento de valores nulos
 Depois de detectar os nulos, você escolhe: **remover**, **preencher** ou **manter** (com justificativa).
 
 Estratégias comuns:
@@ -390,6 +375,7 @@ Estratégias comuns:
 - Criar flag de ausência (às vezes ausência é informativa)
 
 Comandos úteis (pandas):
+```python
 df.dropna()                         # remove linhas com algum nulo
 df.dropna(subset=["coluna"])        # remove linhas se coluna específica for nula
 df.drop(columns=["coluna"])         # remove coluna
@@ -398,10 +384,10 @@ df["coluna_num"] = df["coluna_num"].fillna(df["coluna_num"].median())
 df["coluna_cat"] = df["coluna_cat"].fillna("Desconhecido")
 
 df["coluna_isnull"] = df["coluna"].isna().astype(int)
-
+```
 ---
 
-#### Remoção de duplicatas
+### Remoção de duplicatas
 Duplicatas distorcem contagens, médias e treinamento de modelos (ex: o mesmo registro “vale por dois”).
 
 Tipos de duplicata:
@@ -493,6 +479,64 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
 
 ![Gráficos](/api/materiais-assets/3-dados/5-analise-de-dados/assets/cheatsheet_graficos.png)
 
+```quiz
+- tipo: single
+  pergunta: Uma turma tem notas 2, 3, 3 e 10. Por que a mediana (3) descreve melhor o "aluno típico" do que a média (4,5)?
+  opcoes:
+    - texto: Porque a nota 10 puxa a média para cima, enquanto a mediana só olha a posição central
+      correta: true
+      explicacao: Exato, é o mesmo raciocínio do exemplo das notas — um valor extremo acaba distorcendo a média, mas não muda o "meio" real dos dados.
+      explicacao_erro: O ponto é que a média soma todos os valores (incluindo o extremo) e divide pelo total, então um único valor discrepante desloca o resultado. A mediana só mostra o centro de fato.
+    - texto: Porque a mediana sempre é a estatística mais confiável, independente da situação
+      correta: false
+      explicacao: Em distribuições sem valores extremos, média e mediana costumam contar histórias parecidas. Aqui a mediana ganha porque há um outlier específico (o 10).
+    - texto: Porque a média está calculada errado nesse caso
+      correta: false
+      explicacao: A média está certa matematicamente (2+3+3+10)/4 = 4,5. O problema não é o cálculo, é que ela não representa bem o grupo quando existe um outlier.
+    - texto: Porque com apenas 4 alunos fazer a media não funciona
+      correta: false
+      explicacao: O tamanho pequeno da amostra não é o motivo da diferença — é a presença do valor 10, destoante dos demais, que puxa a média.
+
+- tipo: single
+  pergunta: Você está comparando duas variáveis numéricas e já calculou a correlação entre elas. Por que ainda vale a pena olhar o gráfico de dispersão antes de confiar nesse número?
+  opcoes:
+    - texto: Porque o gráfico substitui a necessidade da correlação
+      correta: false
+      explicacao: Um não substitui o outro, eles se complementam. A ideia é visualizar para validar (ou desconfiar) do que o número está dizendo.
+    - texto: Porque calcular gráficos é mais rápido do que calcular correlação no Pandas
+      correta: false
+      explicacao: Não é questão de velocidade de processamento — confiar só no número, sem olhar o gráfico, pode levar a uma conclusão errada.
+    - texto: Porque a correlação só pode ser calculada depois que um gráfico existe
+      correta: false
+      explicacao: Dá para calcular correlação sem nunca ter plotado nada. A recomendação é sobre segurança da interpretação, não sobre dependência técnica
+    - texto: Porque a mesma correlação pode aparecer em relações bem diferentes
+      correta: true
+      explicacao: Perfeito! A correlação resume tudo em um único valor, então esconde a forma real da relação, só o gráfico mostra se essa forma bate com o que o número sugere.
+      explicacao_erro: O risco não é o cálculo estar errado, é que o número sozinho não mostra a forma da relação. Duas dispersões diferentes podem gerar valores de correlação
+
+
+- tipo: single
+  pergunta: Uma coluna `satisfacao` tem valores "ruim", "médio", "bom", "ótimo". Uma coluna `cidade` tem valores como "Recife", "Natal", "Salvador". Qual a diferença real entre elas para fins de análise?
+  opcoes:
+    - texto: "`satisfacao` é numérica e `cidade` é categórica"
+      correta: false
+      explicacao: Nenhuma das duas é numérica por natureza — ambas representam categorias (qualitativas). A diferença está em existir ordem ou não entre elas.
+    - texto: "`satisfacao` tem uma ordem  entre as categorias, enquanto `cidade` não tem "
+      correta: true
+      explicacao: Exato. "Ruim < médio < bom < ótimo" segue uma progressão, enquanto nenhuma cidade é "maior" ou "menor" que outra.
+      explicacao_erro: As duas são categóricas, então a diferença não está aí. O que muda é que dá para por uma ordem entre os valores e a outra não.
+    - texto: "`cidade` deveria ter mais categorias do que `satisfacao`, e é por isso que são diferentes"
+      correta: false
+      explicacao: A quantidade de categorias não define o tipo e sim a existência (ou ausência) de uma ordem lógica entre os valores.
+    - texto: Não há diferença relevante, ambas podem ser tratadas do mesmo jeito em qualquer análise
+      correta: false
+      explicacao: Há diferença, ignorar a ordem de uma variável ordinal na codificação ou na visualização joga fora alguma informação real atrapalha intensamente a analise.
+```
+---
+## Complemente o Aprendizado
+- [O que é análise de dados? (Artigo Freecodecamp)](https://www.freecodecamp.org/portuguese/news/o-que-e-analise-de-dados/)
+- [Te ensino TUDO sobre criar gráficos com Python e Matplotlib (Vídeo)](https://www.youtube.com/watch?v=unEdvkCjL8U)
+- [Python para análise de dados (Artigo Alura)](https://www.alura.com.br/artigos/python-para-analise-de-dados?srsltid=AfmBOop21pv15vNxi8nTQILDqGnx77l-y4c2TEzVWWmFjT1YVM32weu3)
 ---
 ## Referências
 
@@ -502,7 +546,6 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
 - Seaborn Tutorial: https://seaborn.pydata.org/tutorial.html
 - Plotly Python Graphing Library: https://plotly.com/python/
 - Project Jupyter (Docs): https://docs.jupyter.org/
-- Artigo “O que é análise de dados?” (freeCodeCamp, 2021): https://www.freecodecamp.org/portuguese/news/ (procure pelo título)
 - Tutorial “Python Pandas para iniciantes” (DataCamp, PT): https://www.datacamp.com/pt (procure por “Pandas para iniciantes”)
 - Medium – “Como usar cada tipo de gráfico no contexto certo” (Gabriel R. F. Lopes, 2021): https://medium.com/ (procure pelo título do artigo)
 - Medium – “10 boas práticas em visualização de dados” (Giuliana de Jong, 2022): https://medium.com/ (procure pelo título do artigo)
