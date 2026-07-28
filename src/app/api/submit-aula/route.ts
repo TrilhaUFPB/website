@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { getSmtpConfig } from '@/lib/smtp-config.cjs';
 
 type SubmitAulaBody = {
   edition: string;
@@ -11,19 +12,11 @@ type SubmitAulaBody = {
 };
 
 async function sendConfirmationEmail(data: SubmitAulaBody) {
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM } = process.env;
-  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) return;
-
-  const port = Number(SMTP_PORT) || 587;
-  const transporter = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port,
-    secure: port === 465,
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
-  });
+  const { url, from } = getSmtpConfig(process.env);
+  const transporter = nodemailer.createTransport(url);
 
   await transporter.sendMail({
-    from: SMTP_FROM || `Trilha <${SMTP_USER}>`,
+    from,
     to: data.email,
     subject: `Submissão recebida — ${data.aula}`,
     text: [
