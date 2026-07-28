@@ -7,7 +7,7 @@ order: 4
 
 ## Sumário
 
-- [4.1. O que é ETL](#42-oque-e-etl)
+- [4.1. O que é ETL](#41-o-que-e-etl)
 - [4.2. Passos do ETL](#42-passos-do-etl)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
