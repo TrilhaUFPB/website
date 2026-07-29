@@ -1,5 +1,5 @@
 ---
-title: 2. Fundamentos de Redes para APIs
+title: 3. Fundamentos de Redes para APIs
 description: Introdução em redes de computadores
 category: Backend
 order: 3

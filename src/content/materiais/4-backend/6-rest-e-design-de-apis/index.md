@@ -1,5 +1,5 @@
 ---
-title: 5. REST e Design de APIs
+title: 6. REST e Design de APIs
 description: Visão geral sobre APIs Restful
 category: Backend
 order: 6
