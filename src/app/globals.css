@@ -1141,6 +1141,30 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: center;
   color: var(--ink-soft);
 }
+.aula-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+}
+.aula-demo-note {
+  color: var(--ink-soft);
+  margin: 0;
+}
+.aula-demo-frame {
+  width: 100%;
+  height: clamp(420px, 68vh, 640px);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+.aula-demo-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
 .aula-canva-link {
   font-family: var(--font-mono);
   font-size: 11px;

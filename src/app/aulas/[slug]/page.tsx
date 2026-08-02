@@ -44,6 +44,9 @@ type Aula = {
   deadline?: string;
   taskType?: string;
   noSubmission?: boolean;
+  demoUrl?: string;
+  demoTitle?: string;
+  demoNote?: string;
   homework?: string;
   links?: AulaLink[];
 };
@@ -170,6 +173,25 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
               </li>
             ))}
           </ul>
+        )}
+
+        {/* Demo rodando — o resultado esperado da entrega */}
+        {aula.demoUrl && (
+          <div className="aula-demo">
+            {aula.demoTitle && <h2 className="aula-tarefa-h2">{aula.demoTitle}</h2>}
+            {aula.demoNote && <p className="aula-demo-note">{aula.demoNote}</p>}
+            <div className="aula-demo-frame">
+              <iframe
+                loading="lazy"
+                src={aula.demoUrl}
+                title={aula.demoTitle ?? aula.title}
+                allow="fullscreen; clipboard-write"
+              />
+            </div>
+            <a href={aula.demoUrl} target="_blank" rel="noopener noreferrer" className="aula-canva-link">
+              {t('aulas.demoOpen')}
+            </a>
+          </div>
         )}
 
         {/* Tarefa / Mini-Projeto — only when deadline is set */}
