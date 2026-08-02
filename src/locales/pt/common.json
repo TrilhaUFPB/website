@@ -323,6 +323,7 @@
     "aboutTitle": "Sobre esta aula",
     "linksTitle": "Materiais úteis",
     "homeworkTitle": "Tarefa",
+    "demoOpen": "Abrir a demo em outra aba",
     "descricaoTitle": "Descrição",
     "submeterTitle": "Submissão",
     "guidelines": {
@@ -511,10 +512,22 @@
         "embedUrl": "",
         "canvaUrl": "",
         "date": "31 de julho de 2026",
-        "deadline": "6 de agosto de 2026",
+        "deadline": "7 de agosto de 2026",
         "taskType": "miniprojeto",
-        "homework": "Mini-Projeto em breve.",
-        "links": [],
+        "demoUrl": "https://joaoliveirarruda.github.io/trilhasonora-demo/?embed=1",
+        "demoTitle": "O resultado esperado",
+        "demoNote": "Esta é a solução de referência rodando aqui no navegador: o CLI do mini-projeto, com o catálogo de 60 conteúdos. É exatamente o comportamento que a entrega de vocês precisa reproduzir. Mexam à vontade antes de escrever a primeira linha de código.",
+        "homework": "O mini-projeto é o analisador do catálogo da TrilhaSonora: a classe Catalogo, um CLI interativo e um modo batch que responde 10 mil consultas de uma vez. Zero dependências externas.\n 1. Dê fork no repositório do mini-projeto e trabalhe no seu fork: https://github.com/joaoliveirarruda/miniprojeto-1\n 2. Leia o README do repositório: ele tem o enunciado completo, o schema do catálogo, as sujeiras intencionais do dado, os 16 métodos obrigatórios da classe Catalogo e as 17 regras canônicas que decidem se uma resposta está certa.\n 3. Use a demo acima como referência do resultado esperado enquanto implementam.\n 4. Preencham catalogo.py, main.py e cli.py, gerem o respostas.json rodando o main.py e reescrevam o README.md justificando as decisões de modelagem.\n 5. Envie o link do seu fork pelo formulário à direita. Só o link, nada de zip, nada de email.",
+        "links": [
+          {
+            "label": "Repositório do mini-projeto",
+            "url": "https://github.com/joaoliveirarruda/miniprojeto-1"
+          },
+          {
+            "label": "collections.deque — documentação",
+            "url": "https://docs.python.org/3/library/collections.html#collections.deque"
+          }
+        ],
         "dateISO": "2026-07-31"
       },
       {
