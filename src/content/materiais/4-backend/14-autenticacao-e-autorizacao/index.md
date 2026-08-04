@@ -5,7 +5,16 @@ category: Backend
 order: 14
 ---
 
-# 13.1 Autenticação versus autorização
+## Sumário
+
+- [14.1. Autenticação versus autorização](#141-autenticacao-versus-autorizacao)
+- [14.2. Identidade de usuário e de serviço](#142-identidade-de-usuario-e-de-servico)
+- [14.3. Papéis, permissões e escopos](#143-papeis-permissoes-e-escopos)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+- [Referências](#referencias)
+
+# 14.1. Autenticação versus autorização
 
 Em segurança de APIs, duas perguntas aparecem o tempo todo, e elas não são a mesma coisa.
 
@@ -96,20 +105,8 @@ Esse exemplo também mostra por que autorização precisa ser pensada por recurs
 * Eu sei diferenciar 401 (identidade não confirmada) de 403 (identidade confirmada, permissão negada).
 * Eu entendo que falhas de autorização podem vazar dados mesmo com autenticação correta.
 
-## Fontes 
-
-https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
-
-https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
-
-https://owasp.org/www-community/Access_Control
-
-https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html
-
-
-
 ---
-# 13.2 Identidade de usuário e de serviço
+# 14.2. Identidade de usuário e de serviço
 
 Em APIs, identidade não é só sobre pessoas. Também existe identidade de sistemas.
 
@@ -185,19 +182,8 @@ Essa separação impede que um serviço interno vire um atalho para acessar dado
 - Eu garanto que serviços têm permissões mínimas para cumprir sua função.
 - Eu mantenho a autorização por recurso consistente, mesmo quando existe processamento em background.
 
-## Fontes 
-
-https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html  
-
-https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html  
-
-https://owasp.org/www-community/Access_Control  
-
-https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html  
-
-
 ---
-# 13.3 Papéis, permissões e escopos
+# 14.3. Papéis, permissões e escopos
 
 Quando uma API decide se uma ação é permitida, ela precisa transformar uma identidade em regras práticas. Três conceitos aparecem o tempo todo nesse ponto: papéis, permissões e escopos.
 
@@ -297,10 +283,53 @@ O que isso ilustra: permissões e escopos servem para restringir ações, mas a 
 * Eu não trato papel como atalho para ignorar autorização por recurso.
 * Eu consigo definir o que cada rota exige e aplicar isso de forma consistente.
 
-## Fontes 
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre Autenticação e Autorização, confira os seguintes recursos:
 
-https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html  
+```quiz
+- tipo: single
+  pergunta: |
+    Um cliente faz uma requisição para `GET /inscricoes/123` sem enviar nenhum token. O servidor responde `401 Unauthorized`.
+    Em seguida, o mesmo cliente envia um token válido, mas de um usuário que não é dono da inscrição 123, e o servidor responde `403 Forbidden`.
+    O que essas duas respostas ilustram?
+  opcoes:
+    - texto: "Que o servidor confundiu autenticação com autorização, já que deveria retornar 401 nos dois casos"
+      correta: false
+      explicacao: "Não há confusão aqui — os dois códigos estão corretos para cada situação. 401 é para identidade não confirmada, 403 é para identidade confirmada mas sem permissão. Retornar 401 nos dois casos é que estaria errado."
+    - texto: "Que o 401 indica falha de autenticação (identidade não confirmada) e o 403 indica falha de autorização (identidade confirmada, mas sem permissão)"
+      correta: true
+      explicacao: "Correto! Sem token, o servidor não sabe quem está fazendo a requisição (401 — falha de autenticação). Com token válido mas sem permissão sobre aquele recurso específico, o servidor sabe quem você é mas nega a ação (403 — falha de autorização)."
+      explicacao_erro: "Repare na diferença entre os dois cenários: no primeiro não há credencial nenhuma (o servidor não sabe quem é você), no segundo a credencial é válida mas não dá direito àquele recurso. Isso é exatamente a distinção entre autenticação (quem você é) e autorização (o que você pode fazer)."
+    - texto: "Que o token do segundo cliente estava expirado, por isso o servidor retornou 403"
+      correta: false
+      explicacao: "Um token expirado ou inválido normalmente gera 401 (falha de autenticação), não 403. O 403 aqui ocorre porque o token é válido, mas a identidade autenticada não tem permissão sobre aquela inscrição específica."
+    - texto: "Que ambos os erros são de autenticação, pois envolvem o header Authorization"
+      correta: false
+      explicacao: "Usar o header Authorization não torna os dois erros equivalentes. O primeiro é falta de credencial (autenticação); o segundo é credencial válida sem permissão sobre o recurso (autorização) — são camadas diferentes do processo."
 
-https://owasp.org/www-community/Access_Control  
+- tipo: single
+  pergunta: |
+    Uma API cria o papel "editor", que agrupa as permissões de criar, atualizar e deletar qualquer curso, além de gerenciar usuários — só porque era mais rápido do que criar papéis separados para cada função.
+    Qual é o principal risco dessa decisão, segundo os conceitos de papéis e permissões?
+  opcoes:
+    - texto: "Nenhum risco relevante, já que papéis servem justamente para agrupar o máximo de permissões possível"
+      correta: false
+      explicacao: "Papéis servem para agrupar permissões que refletem uma função *real* do sistema, não para acumular o máximo de poder possível por conveniência. Um papel grande demais é justamente o risco a evitar."
+    - texto: "O papel vira uma autorização genérica que concede mais poder do que o necessário para a função real do usuário"
+      correta: true
+      explicacao: "Correto! Quando um papel agrupa permissões demais por conveniência, ele deixa de representar uma função real e passa a violar o privilégio mínimo — qualquer usuário com esse papel ganha poder além do que sua função exige."
+      explicacao_erro: "Pense no princípio de privilégio mínimo: um papel deveria refletir exatamente as permissões de uma função real. Agrupar permissões de áreas distintas (conteúdo e gestão de usuários) por conveniência cria um papel poderoso demais, ampliando o estrago possível se essa conta for comprometida."
+    - texto: "O problema é só de nomenclatura — bastaria renomear o papel para deixar mais claro o que ele faz"
+      correta: false
+      explicacao: "O problema não é o nome do papel, é o conjunto de permissões que ele carrega. Renomear não muda o fato de que esse papel concede acesso muito além do que a função de 'editor' deveria ter."
+    - texto: "Escopos resolvem esse problema automaticamente, então não é necessário se preocupar com o desenho do papel"
+      correta: false
+      explicacao: "Escopos são um sinal enviado junto com a credencial, mas não corrigem sozinhos um papel mal desenhado — a API ainda aplica as permissões que aquele papel carrega. O cuidado precisa vir do desenho do próprio papel."
+```
 
-https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html  
+# Referências
+
+- Authentication Cheat Sheet (OWASP): https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
+- Authorization Cheat Sheet (OWASP): https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
+- Access Control (OWASP): https://owasp.org/www-community/Access_Control
+- Web Service Security Cheat Sheet (OWASP): https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html
