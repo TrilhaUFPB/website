@@ -312,16 +312,16 @@ Para aprofundar seus conhecimentos sobre Segurança em APIs, confira os seguinte
     Um endpoint `GET /pedidos/{id}` retorna os dados do pedido correspondente ao `id` informado na URL, sem checar se o pedido pertence ao usuário autenticado que fez a requisição.
     Qual risco do OWASP API Security Top 10 isso representa?
   opcoes:
-    - texto: "Broken Object Level Authorization (API1), pois o sistema não verifica se o usuário tem permissão sobre aquele objeto específico"
-      correta: true
-      explicacao: "Correto! Esse é o caso clássico de BOLA: o endpoint recebe um ID e devolve os dados daquele objeto sem checar se o usuário autenticado tem permissão para acessá-lo, permitindo que qualquer pessoa veja pedidos de outros usuários trocando o ID na URL."
-      explicacao_erro: "Pense no que falta: o servidor confia no ID enviado pelo cliente e não verifica se aquele pedido pertence a quem está pedindo. Essa falta de checagem por objeto é exatamente o que a API1 (BOLA) descreve."
     - texto: "Security Misconfiguration (API8), pois é um problema de configuração do servidor"
       correta: false
       explicacao: "Misconfiguration envolve headers, TLS, CORS, permissões de infraestrutura e afins. Aqui o problema é de lógica de autorização por objeto, não de configuração do ambiente."
     - texto: "Unsafe Consumption of APIs (API10), pois o endpoint consome dados de outro pedido"
       correta: false
       explicacao: "API10 trata de riscos ao consumir APIs externas (confiar demais no retorno de terceiros). O cenário descrito é interno: o próprio endpoint da aplicação falha em checar autorização."
+    - texto: "Broken Object Level Authorization (API1), pois o sistema não verifica se o usuário tem permissão sobre aquele objeto específico"
+      correta: true
+      explicacao: "Correto! Esse é o caso clássico de BOLA: o endpoint recebe um ID e devolve os dados daquele objeto sem checar se o usuário autenticado tem permissão para acessá-lo, permitindo que qualquer pessoa veja pedidos de outros usuários trocando o ID na URL."
+      explicacao_erro: "Pense no que falta: o servidor confia no ID enviado pelo cliente e não verifica se aquele pedido pertence a quem está pedindo. Essa falta de checagem por objeto é exatamente o que a API1 (BOLA) descreve."
     - texto: "Unrestricted Resource Consumption (API4), pois o endpoint pode ser chamado sem limites"
       correta: false
       explicacao: "API4 é sobre ausência de limites de uso (rate limiting, tamanho de payload etc.). O problema aqui não é quantas vezes o endpoint pode ser chamado, e sim a falta de checagem de permissão sobre o objeto retornado."
@@ -331,13 +331,13 @@ Para aprofundar seus conhecimentos sobre Segurança em APIs, confira os seguinte
     Ao fazer o modelo de ameaças de uma API de inscrição em cursos, um desenvolvedor identifica que "um atacante pode criar centenas de inscrições falsas para sobrecarregar o serviço".
     Nos termos do vocabulário de modelo de ameaças, o que essa frase descreve?
   opcoes:
+    - texto: "Uma vulnerabilidade — uma fraqueza específica do endpoint que permite o abuso"
+      correta: false
+      explicacao: "Vulnerabilidade seria, por exemplo, 'o endpoint não tem limite de requisições por cliente'. A frase dada descreve o evento indesejado em si (o abuso acontecendo), não a fraqueza técnica que o torna possível."
     - texto: "Uma ameaça (threat) — uma possibilidade de evento indesejado contra o sistema"
       correta: true
       explicacao: "Correto! A frase descreve um evento indesejado que pode acontecer (alguém abusando do endpoint de inscrição para sobrecarregar o serviço), o que é exatamente a definição de ameaça no modelo de ameaças."
       explicacao_erro: "Repare que a frase não aponta uma fraqueza específica do código (isso seria vulnerabilidade) nem um controle (mitigação) — ela descreve algo ruim que *pode acontecer*, que é a definição de ameaça."
-    - texto: "Uma vulnerabilidade — uma fraqueza específica do endpoint que permite o abuso"
-      correta: false
-      explicacao: "Vulnerabilidade seria, por exemplo, 'o endpoint não tem limite de requisições por cliente'. A frase dada descreve o evento indesejado em si (o abuso acontecendo), não a fraqueza técnica que o torna possível."
     - texto: "Uma mitigação — um controle que reduz a probabilidade do ataque"
       correta: false
       explicacao: "Mitigação seria a solução, como 'aplicar limite de inscrições por usuário'. A frase descreve o problema que ainda não tem controle nenhum, não a medida de defesa."
