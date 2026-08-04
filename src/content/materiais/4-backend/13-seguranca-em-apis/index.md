@@ -10,10 +10,13 @@ order: 13
 - [13.1. Modelo de ameaças](#131-modelo-de-ameacas)
 - [13.2. OWASP API Security Top 10](#132-owasp-api-security-top-10)
 - [13.3. Princípios básicos de segurança](#133-principios-basicos-de-seguranca)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+- [Referências](#referencias)
 
 # 13.1. Modelo de ameaças
 
-Antes de pensar em soluções de segurança, vale responder uma pergunta simples: o que pode dar errado, para quem, e por qual caminho?
+Antes de pensar em soluções de segurança, vale responder uma pergunta simples: **o que pode dar errado, para quem, e por qual caminho?**
 
 Modelo de ameaças, threat modeling, é um jeito estruturado de fazer isso. Você descreve o sistema do ponto de vista de um atacante e, com base nessa visão, levanta ameaças plausíveis e decide quais controles valem a pena.
 
@@ -134,16 +137,6 @@ A utilidade do modelo é transformar uma discussão vaga de segurança em decis�
 * Eu consigo propor mitigigações que são testáveis e monitoráveis.
 * Eu termino com uma lista priorizada, não com uma lista infinita.
 
-## Fontes 
-
-https://owasp.org/www-community/Threat_Modeling  
-https://owasp.org/www-community/Threat_Modeling_Process  
-https://owasp.org/www-project-threat-modelling-guide/  
-https://owasp.org/www-project-threat-modeling/  
-
-
-
-
 ---
 # 13.2. OWASP API Security Top 10
 
@@ -248,12 +241,6 @@ Isso orienta onde colocar atenção mesmo em projetos pequenos:
 - Eu sei que consumo de recursos e abuso de fluxo são riscos de segurança, não só de performance.
 - Eu sei que integrações externas precisam de validação, limites e timeouts.
 
-## Fontes 
-
-https://owasp.org/API-Security/editions/2023/en/0x11-t10/  
-
-
-
 ---
 # 13.3. Princípios básicos de segurança
 
@@ -314,9 +301,18 @@ Isso envolve impor limites de consumo, tratar payloads grandes, controlar concor
 - Eu não vazo detalhes internos nem segredos em erros e logs.
 - Eu defino limites para proteger disponibilidade.
 
-## Fontes 
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre Segurança em APIs, confira os seguintes recursos:
 
-https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html  
+- [Top 12 Tips For API Security](https://www.youtube.com/watch?v=6WZ6S-qmtqY)
 
-https://owasp.org/www-project-application-security-verification-standard/  
+# Referências
+
+- REST Security Cheat Sheet (OWASP): https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html
+- Application Security Verification Standard (OWASP): https://owasp.org/www-project-application-security-verification-standard/
+- API Security Top 10 2023 (OWASP): https://owasp.org/API-Security/editions/2023/en/0x11-t10/
+- Threat Modeling (OWASP): https://owasp.org/www-community/Threat_Modeling
+- Threat Modeling Process (OWASP): https://owasp.org/www-community/Threat_Modeling_Process
+- Threat Modeling Guide (OWASP): https://owasp.org/www-project-threat-modelling-guide/
+- Threat Modeling Project (OWASP): https://owasp.org/www-project-threat-modeling/
 
