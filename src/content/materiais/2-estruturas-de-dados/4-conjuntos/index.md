@@ -19,6 +19,7 @@ order: 4
 - [4.9. Engenharia de Software e Performance](#49-engenharia-de-software-e-performance)
 - [4.10. Análise Assintótica (Big O Notation)](#410-analise-assintotica-big-o-notation)
 - [4.11. Conclusão Prática](#411-conclusao-pratica)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
 ---
@@ -159,6 +160,18 @@ A tabela abaixo compara o custo computacional médio de operações de busca:
 O uso de sets é recomendado e considerado uma boa prática de engenharia quando a ordem dos elementos é irrelevante e a unicidade é necessária. O domínio desta estrutura permite ao programador escrever códigos não apenas semanticamente corretos, mas computacionalmente escaláveis.
 
 ---
+
+---
+
+# Complemente o Aprendizado
+
+Para aprofundar seus conhecimentos sobre conjuntos, confira os seguintes recursos:
+
+- [Conjuntos (sets) - Documentação Oficial do Python em português](https://docs.python.org/pt-br/3/tutorial/datastructures.html#sets)
+
+- [set e frozenset - Referência da biblioteca padrão](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset)
+
+- [TimeComplexity - Custo das operações de set no CPython](https://wiki.python.org/moin/TimeComplexity)
 
 ```quiz
 - tipo: single
