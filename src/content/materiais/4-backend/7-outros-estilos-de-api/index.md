@@ -1,5 +1,5 @@
 ---
-title: 6. Outros Estilos de API
+title: 7. Outros Estilos de API
 description: Implementações diferentes para solucionas o problema da comunicação da internet
 category: Backend
 order: 7

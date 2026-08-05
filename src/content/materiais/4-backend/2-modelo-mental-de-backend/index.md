@@ -5,6 +5,19 @@ category: Backend
 order: 2
 ---
 
+## Sumário
+
+- [2.1. Cliente–Servidor: responsabilidades e limites](#21-clienteservidor-responsabilidades-e-limites)
+- [2.2. Onde o backend roda (processo, porta, host)](#22-onde-o-backend-roda-processo-porta-host)
+- [2.3. Backend como produto: API como contrato](#23-backend-como-produto-api-como-contrato)
+- [2.4. Separação entre transporte, regra de negócio e persistência](#24-separacao-entre-transporte-regra-de-negocio-e-persistencia)
+- [2.5. Arquitetura em camadas (visão conceitual)](#25-arquitetura-em-camadas-visao-conceitual)
+- [2.6. Anti-padrões comuns em backend iniciante](#26-anti-padroes-comuns-em-backend-iniciante)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+---
+
 # 2.1. Cliente–Servidor: responsabilidades e limites
 
 Backend existe porque, na Web, quase tudo acontece como uma **conversa entre duas partes**:
@@ -152,32 +165,6 @@ Uma pessoa quer **se inscrever no Trilha** preenchendo:
 * [ ] Eu sei dizer por que validação no cliente não é suficiente.
 * [ ] Eu consigo listar pelo menos 3 falhas reais de rede e o impacto na experiência.
 * [ ] Eu consigo justificar por que o servidor é a “fonte de verdade”.
-
-## Fontes (para leitura)
-
-**Leituras principais (fundamentos):** ([MDN Web Docs][1])
-
-```text
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview
-https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview
-https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Session
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server
-https://developer.mozilla.org/pt-BR/docs/Web/HTTP
-```
-
-**Leitura complementar (para reforçar “lado servidor” e por que ele existe):** ([MDN Web Docs][6])
-
-```text
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Introduction
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps
-```
-
-[1]: https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview?utm_source=chatgpt.com "Visão geral do cliente-servidor - MDN Web Docs - Mozilla"
-[2]: https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server?utm_source=chatgpt.com "O que é um servidor web (web server)? - MDN Web Docs"
-[3]: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Session?utm_source=chatgpt.com "Uma típica sessão HTTP - MDN Web Docs - Mozilla"
-[4]: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview?utm_source=chatgpt.com "Uma visão geral do HTTP - MDN Web Docs"
-[5]: https://developer.mozilla.org/pt-BR/docs/Web/HTTP?utm_source=chatgpt.com "HTTP - MDN Web Docs - Mozilla"
-[6]: https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Introduction?utm_source=chatgpt.com "Introdução ao lado servidor - Aprendendo desenvolvimento web"
 
 ---
 
@@ -338,21 +325,6 @@ o navegador (cliente) vai enviar uma requisição para exatamente esse host e po
 * [ ] Eu sei qual host e porta ele está usando ?
 * [ ] Eu estou acessando exatamente o mesmo host e porta no navegador?
 * [ ] Se deu “porta em uso”, eu parei o processo antigo ou troquei a porta?
-
-## Fontes (para leitura)
-
-**MDN (fundamentos e glossário):**
-
-```text
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server
-https://developer.mozilla.org/pt-BR/docs/Glossary/Port
-https://developer.mozilla.org/pt-BR/docs/Glossary/IP_Address
-https://developer.mozilla.org/pt-BR/docs/Glossary/Origin
-https://developer.mozilla.org/pt-BR/docs/Web/API/URL
-https://developer.mozilla.org/pt-BR/docs/Web/API/URL/host
-https://developer.mozilla.org/pt-BR/docs/Web/API/URL/hostname
-https://developer.mozilla.org/pt-BR/docs/Web/API/URL/port
-```
 
 ---
 
@@ -542,25 +514,6 @@ Mudanças com alto risco de quebra:
 * [ ] A API tem padrões consistentes de sucesso e erro.
 * [ ] Mudanças planejadas evitam quebra de clientes.
 * [ ] Eu sei diferenciar mudanças compatíveis e mudanças que quebram contrato.
-
-## Fontes
-
-Leituras principais:
-
-```text
-[MAPI] Mastering API Architecture (O'Reilly)
-  Parte I (Designing, Building, and Testing APIs)
-    Capítulo 1: Design, Build, and Specify APIs
-      - Summary (Key takeaways): consistência para consumidores; OpenAPI como forma de compartilhar estrutura; versionamento como decisão de produto
-      - Seção: Specifying REST APIs Using OpenAPI (como usar especificação para documentar e alinhar expectativas de request/response)
-      - Seções: Code Generation; OpenAPI Validation (uso prático do OpenAPI para automatizar e validar o contrato)
-
-[LAPI] Learning API Styles (O'Reilly)
-  Capítulo 5: REST
-    - Seção: OpenAPI Specification (API specification como contract; OAS como padrão para documentar APIs HTTP; ferramentas e uso em frameworks)
-  Capítulo 2: Design Patterns
-    - Seção: API Versioning (estratégias de versionamento, incluindo path, query parameter e header; impactos em debugging e roteamento)
-```
 
 ---
 
@@ -771,38 +724,6 @@ class InscricaoRepository:
 * [ ] A regra de negócio não conhece detalhes de SQL ou tabelas.
 * [ ] A persistência não decide regras do produto.
 * [ ] Existe um ponto claro onde validar regra e um ponto claro onde salvar dados.
-
-## Fontes 
-
-Leituras principais:
-
-```text
-[MAPI] Mastering API Architecture (O’Reilly)
-- Introdução: From Tiered Architecture to Modeling APIs
-- Part I (Designing, Building, and Testing APIs)
-  - Chapter 1: Design, Build, and Specify APIs (visão de produtor/consumidor e estruturação de APIs)
-```
-
-complementar:
-
-```text
-[LAPI] Learning API Styles (O’Reilly)
-- Chapter 3: TCP (base de conexão e modelo em camadas)
-- Chapter 4: HTTP (mensagens, headers, request/response)
-- Chapter 5: REST (uniform interface e mensagens auto descritivas, úteis para separar transporte do domínio)
-```
-
-FastAPI:
-
-```text
-[FAST] FastAPI
-- Bigger Applications (organização do projeto e separação de responsabilidades):
-  https://fastapi.tiangolo.com/tutorial/bigger-applications/
-- Dependencies (injeção e composição de camadas, útil para services e repositories):
-  https://fastapi.tiangolo.com/tutorial/dependencies/
-- SQL (exemplos de persistência separada da rota):
-  https://fastapi.tiangolo.com/tutorial/sql-databases/
-```
 
 # 2.5. Arquitetura em camadas (visão conceitual)
 
@@ -1040,21 +961,6 @@ Isso reduz o tipo de mudança que vira efeito cascata.
 * [ ] Casos de uso orquestram o fluxo e chamam dependências.
 * [ ] Eu consigo testar domínio e aplicação sem subir servidor.
 
-## Fontes (para leitura)
-
-Leituras principais:
-
-```text
-[MAPI] Mastering API Architecture (O'Reilly)
-- Introdução: From Tiered Architecture to Modeling APIs (três camadas e modelo mental para processar requisições)
-- Introdução: trecho do case study que descreve API Controller como ponto de entrada e roteamento interno
-
-[LAPI] Learning API Styles (O'Reilly)
-- Capítulo 5: REST
-  - seção Origins of REST (motivação: consistência, escalabilidade e intermediários)
-  - lista de REST constraints, item 5 Layered system (camadas como forma de encapsular comportamento e permitir gateways/proxies)
-```
-
 # 2.6. Anti-padrões comuns em backend iniciante
 
 Mesmo com a arquitetura definida e o contrato estabelecido, é normal cair em armadilhas durante a implementação. O foco em "fazer funcionar logo" muitas vezes cria hábitos que, sem percebermos, quebram a separação de responsabilidades e tornam a API frágil.
@@ -1288,24 +1194,96 @@ O ganho prático:
 * [ ] Eu tenho convenções claras de nomes e rotas.
 * [ ] Eu penso em limites básicos e comportamento defensivo.
 
-## Fontes (para leitura)
+---
 
-Leituras principais:
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre cliente-servidor, APIs e arquitetura backend, confira os recursos abaixo, organizados por tópico:
 
-```text
-[MAPI] Mastering API Architecture (O'Reilly)
-- Part I (Designing, Building, and Testing APIs)
-  - Chapter 1: Design, Build, and Specify APIs
-    - estratégias para consistência e evitar incompatibilidades
-    - padrões e escolhas para reduzir risco de breaking changes
-  - Chapter 2: Testing APIs
-    - como evitar inconsistência, breaking changes acidentais e feedback ruim para entradas inválidas
-```
+**2.1. Cliente–Servidor**
+- [Visão geral do cliente-servidor - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview)
+- [Uma visão geral do HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview)
+- [Uma típica sessão HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Session)
+- [O que é um servidor web (web server)? - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server)
+- [HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)
+- [Introdução ao lado servidor - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Introduction)
 
-```text
-[LAPI] Learning API Styles (O'Reilly)
-- Chapter 2: Design Patterns
-  - API Naming (consistência de nomes e convenções)
-  - API Versioning (contrato e estratégias de versionamento)
-  - Best practices e seções de qualidade: input validation e comunicação de erros com códigos padrão
+**2.2. Onde o Backend Roda**
+- [Port - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Port)
+- [IP Address - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/IP_Address)
+- [Origin - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Origin)
+- [URL - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/API/URL)
+- [URL: host - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/API/URL/host)
+- [URL: hostname - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/API/URL/hostname)
+- [URL: port - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/API/URL/port)
+
+**2.3. API como Contrato**
+- *Mastering API Architecture* (O'Reilly) — Parte I, Cap. 1: consistência para consumidores, OpenAPI e versionamento como decisão de produto
+- *Learning API Styles* (O'Reilly) — Cap. 5: REST (OpenAPI Specification) e Cap. 2: Design Patterns (API Versioning)
+
+**2.4. Separação entre Transporte, Regra de Negócio e Persistência**
+- *Mastering API Architecture* (O'Reilly) — Introdução: From Tiered Architecture to Modeling APIs; Parte I, Cap. 1
+- *Learning API Styles* (O'Reilly) — Cap. 3: TCP, Cap. 4: HTTP, Cap. 5: REST
+- [Bigger Applications - FastAPI](https://fastapi.tiangolo.com/tutorial/bigger-applications/) — organização do projeto e separação de responsabilidades
+- [Dependencies - FastAPI](https://fastapi.tiangolo.com/tutorial/dependencies/) — injeção e composição de camadas (services e repositories)
+- [SQL (Relational) Databases - FastAPI](https://fastapi.tiangolo.com/tutorial/sql-databases/) — exemplos de persistência separada da rota
+
+**2.5. Arquitetura em Camadas**
+- *Mastering API Architecture* (O'Reilly) — Introdução: From Tiered Architecture to Modeling APIs
+- *Learning API Styles* (O'Reilly) — Cap. 5: REST (Origins of REST; Layered System)
+
+**2.6. Anti-padrões Comuns em Backend Iniciante**
+- *Mastering API Architecture* (O'Reilly) — Parte I, Cap. 1 e Cap. 2: Testing APIs
+- *Learning API Styles* (O'Reilly) — Cap. 2: Design Patterns (API Naming, API Versioning, Boas Práticas)
+
+```quiz
+- tipo: single
+  pergunta: Qual é a principal diferença de responsabilidade entre cliente e servidor?
+  opcoes:
+    - texto: O cliente foca em experiência e apresentação, enquanto o servidor garante regras e consistência
+      correta: true
+      explicacao: Exato! O cliente melhora a experiência do usuário, mas quem garante que as regras de negócio sejam realmente cumpridas é o servidor.
+      explicacao_erro: O cliente é responsável pela experiência e apresentação, enquanto o servidor aplica as validações definitivas e garante a consistência dos dados.
+    - texto: O cliente e o servidor têm exatamente as mesmas responsabilidades
+      correta: false
+      explicacao: Cliente e servidor têm papéis bem diferentes. O cliente cuida da interação com o usuário, e o servidor garante as regras de negócio de verdade.
+    - texto: Apenas o servidor interage com o usuário
+      correta: false
+      explicacao: É o cliente que interage diretamente com o usuário, coletando entradas e exibindo resultados. O servidor processa a lógica por trás dessas interações.
+    - texto: Apenas o cliente pode acessar o banco de dados
+      correta: false
+      explicacao: É o servidor que acessa e consulta os dados, não o cliente. O cliente apenas exibe o que recebe do servidor.
+
+- tipo: single
+  pergunta: Por que a validação feita apenas no lado do cliente não é suficiente?
+  opcoes:
+    - texto: Porque o usuário controla o ambiente do cliente e pode enviar requisições sem passar pela interface
+      correta: true
+      explicacao: Exato! Como o cliente não é confiável, a validação nele é apenas conveniência. A validação real e obrigatória precisa acontecer no servidor.
+      explicacao_erro: A validação no cliente é apenas uma conveniência de UX. Como o usuário controla o ambiente do cliente, apenas o servidor pode garantir que as regras sejam realmente cumpridas.
+    - texto: Porque o cliente nunca consegue validar nada
+      correta: false
+      explicacao: O cliente pode sim fazer validações básicas de UX, como checar campos vazios. O problema é que essas validações não são garantia de segurança.
+    - texto: Porque o servidor é mais lento que o cliente
+      correta: false
+      explicacao: A questão não é velocidade, mas confiabilidade. O servidor precisa validar porque é o único lado que garante que as regras sejam cumpridas de verdade.
+    - texto: Porque o cliente não tem acesso à internet
+      correta: false
+      explicacao: O cliente normalmente tem acesso à internet, é assim que ele se comunica com o servidor. O problema é que ele não é confiável para garantir regras de negócio.
+
+- tipo: single
+  pergunta: O que significa tratar uma API como um "contrato"?
+  opcoes:
+    - texto: Existe um acordo explícito sobre o que o cliente pode enviar, o que o servidor responde e como os erros aparecem
+      correta: true
+      explicacao: Exato! O contrato define exatamente o formato de entradas, saídas e erros, permitindo que o cliente integre com confiança.
+      explicacao_erro: Um contrato de API define regras claras sobre entradas, saídas e erros, permitindo que cliente e servidor trabalhem juntos sem precisar conhecer a implementação interna um do outro.
+    - texto: Um documento legal assinado entre a empresa e o cliente
+      correta: false
+      explicacao: Não se trata de um documento jurídico, mas sim de um acordo técnico sobre como a API deve se comportar de forma previsível.
+    - texto: Uma promessa de que a API nunca vai mudar
+      correta: false
+      explicacao: APIs podem evoluir com o tempo. O contrato define quais mudanças são compatíveis (como adicionar um campo opcional) e quais quebram os clientes existentes.
+    - texto: Uma configuração de segurança do servidor
+      correta: false
+      explicacao: O contrato trata da previsibilidade da comunicação entre cliente e servidor (formatos, erros, regras), não especificamente de configurações de segurança.
 ```
