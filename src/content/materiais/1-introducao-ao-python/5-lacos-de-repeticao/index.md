@@ -95,7 +95,7 @@ for i in range(10):
 ```
 
 ---
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre laços de repetição, confira os seguintes recursos:
 
 [Loops em PYTHON sem enrolação pra facilitar sua vida (for e while) - Lan Code](https://youtu.be/n5ETibjJcAE?si=uAP4N9YeIQQHOCLL)

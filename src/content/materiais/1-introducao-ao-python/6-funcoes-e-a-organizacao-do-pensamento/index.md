@@ -111,7 +111,7 @@ resultado = mostrar_nome("Maria")
 print(resultado)  # None
 ```
 
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre funções, confira os seguintes recursos:
 
 [Funções em Python (def, parâmetros e retorno) - Python do Zero](https://www.youtube.com/watch?v=CSWx1Mr2xms)

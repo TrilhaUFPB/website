@@ -58,7 +58,7 @@ As instruções condicionais permitem que o programa mude seu comportamento de a
 - *elif:* Abreviação de "else if", é utilizada quando há mais de duas possibilidades. O Python verifica cada condição em ordem: se a primeira for falsa, verifica a próxima, e assim por diante. Apenas o primeiro ramo cuja condição for verdadeira será executado.
 
 ---
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre estruturas condicionais, confira os seguintes recursos:
 
  [Conditional Statements in Python - Real Python](https://realpython.com/python-conditional-statements/)

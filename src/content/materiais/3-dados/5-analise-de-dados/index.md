@@ -533,7 +533,7 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
       explicacao: Há diferença, ignorar a ordem de uma variável ordinal na codificação ou na visualização joga fora alguma informação real atrapalha intensamente a analise.
 ```
 ---
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 - [O que é análise de dados? (Artigo Freecodecamp)](https://www.freecodecamp.org/portuguese/news/o-que-e-analise-de-dados/)
 - [Te ensino TUDO sobre criar gráficos com Python e Matplotlib (Vídeo)](https://www.youtube.com/watch?v=unEdvkCjL8U)
 - [Python para análise de dados (Artigo Alura)](https://www.alura.com.br/artigos/python-para-analise-de-dados?srsltid=AfmBOop21pv15vNxi8nTQILDqGnx77l-y4c2TEzVWWmFjT1YVM32weu3)

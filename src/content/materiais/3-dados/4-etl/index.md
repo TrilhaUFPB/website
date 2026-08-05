@@ -153,7 +153,7 @@ Essas arquiteturas costumam coexistir em uma **plataforma de dados moderna**, pe
 
 ---
 
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre ETL, confira os seguintes recursos:
 
 - [ETL Made Simple | What Data Analysts Should Know](https://youtu.be/rnmoT0P6Oyg?si=90R5RS71LmHlDCr_)

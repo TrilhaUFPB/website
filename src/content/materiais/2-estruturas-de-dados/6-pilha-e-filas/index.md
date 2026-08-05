@@ -80,7 +80,7 @@ OBS: Embora seja possível implementar uma fila utilizando listas em Python, ess
 
 ---
 
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre Pilhas e Filas, confira os seguintes recursos:
 
 - [Pilhas e Filas - Curso de Estruturas de Dados e Algoritmos em Python - Aula 5](https://www.youtube.com/watch?v=vOx3vY1w4tM&t=93s)

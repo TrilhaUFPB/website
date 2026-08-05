@@ -269,7 +269,7 @@ Pense no computador como um funcionário extremamente **rápido e preciso**, mas
 Com o tempo, você vai se familiarizar com os erros mais comuns, vai ler as mensagens mais rápido, e o que hoje parece confuso vai se tornar natural. Erros fazem parte do processo, e lidar bem com eles é uma das habilidades que separa um bom programador de um ótimo programador.
 
 ---
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre erros e tratamento de exceções em Python, confira os seguintes recursos:
 
 - [Python Try Except - W3Schools](https://www.w3schools.com/python/python_try_except.asp)

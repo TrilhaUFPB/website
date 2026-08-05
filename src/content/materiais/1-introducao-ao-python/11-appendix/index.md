@@ -371,7 +371,7 @@ uv pip install -r requirements.txt
 
 ---
 
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 
 Para aprofundar seus conhecimentos sobre gerenciamento de ambientes Python, confira os seguintes recursos:
 
