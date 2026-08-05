@@ -315,16 +315,16 @@ Para aprofundar seus conhecimentos sobre Autenticação e Autorização, confira
     - texto: "Nenhum risco relevante, já que papéis servem justamente para agrupar o máximo de permissões possível"
       correta: false
       explicacao: "Papéis servem para agrupar permissões que refletem uma função *real* do sistema, não para acumular o máximo de poder possível por conveniência. Um papel grande demais é justamente o risco a evitar."
-    - texto: "O papel vira uma autorização genérica que concede mais poder do que o necessário para a função real do usuário"
-      correta: true
-      explicacao: "Correto! Quando um papel agrupa permissões demais por conveniência, ele deixa de representar uma função real e passa a violar o privilégio mínimo — qualquer usuário com esse papel ganha poder além do que sua função exige."
-      explicacao_erro: "Pense no princípio de privilégio mínimo: um papel deveria refletir exatamente as permissões de uma função real. Agrupar permissões de áreas distintas (conteúdo e gestão de usuários) por conveniência cria um papel poderoso demais, ampliando o estrago possível se essa conta for comprometida."
     - texto: "O problema é só de nomenclatura — bastaria renomear o papel para deixar mais claro o que ele faz"
       correta: false
       explicacao: "O problema não é o nome do papel, é o conjunto de permissões que ele carrega. Renomear não muda o fato de que esse papel concede acesso muito além do que a função de 'editor' deveria ter."
     - texto: "Escopos resolvem esse problema automaticamente, então não é necessário se preocupar com o desenho do papel"
       correta: false
       explicacao: "Escopos são um sinal enviado junto com a credencial, mas não corrigem sozinhos um papel mal desenhado — a API ainda aplica as permissões que aquele papel carrega. O cuidado precisa vir do desenho do próprio papel."
+    - texto: "O papel vira uma autorização genérica que concede mais poder do que o necessário para a função real do usuário"
+      correta: true
+      explicacao: "Correto! Quando um papel agrupa permissões demais por conveniência, ele deixa de representar uma função real e passa a violar o privilégio mínimo — qualquer usuário com esse papel ganha poder além do que sua função exige."
+      explicacao_erro: "Pense no princípio de privilégio mínimo: um papel deveria refletir exatamente as permissões de uma função real. Agrupar permissões de áreas distintas (conteúdo e gestão de usuários) por conveniência cria um papel poderoso demais, ampliando o estrago possível se essa conta for comprometida."
 ```
 
 # Referências
