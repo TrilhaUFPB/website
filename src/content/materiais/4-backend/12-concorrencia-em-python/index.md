@@ -1,5 +1,5 @@
 ---
-title: 11. Concorrência em Python
+title: 12. Concorrência em Python
 description: Como fazer um código concorrênte em Python
 category: Backend
 order: 12

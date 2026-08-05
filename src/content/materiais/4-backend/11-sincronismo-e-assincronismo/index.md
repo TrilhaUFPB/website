@@ -1,5 +1,5 @@
 ---
-title: 10. Sincronismo e Assíncronismo
+title: 11. Sincronismo e Assíncronismo
 description: Diferentes formas de um sistema se comunicar entre si e para o externo
 category: Backend
 order: 11
