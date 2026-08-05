@@ -9,12 +9,13 @@ order: 8
 - [8.1. Introdução - Por que trabalhar com arquivos?](#81-introducao---por-que-trabalhar-com-arquivos)
 - [8.2. Conceitos básicos](#82-conceitos-basicos)
 - [8.3. Abrindo e fechando arquivos](#83-abrindo-e-fechando-arquivos)
-- [8.4. O contexto](#84-o-contexto-object-object)
+- [8.4. O contexto `with`](#84-o-contexto-with)
 - [8.5. Leitura de arquivos](#85-leitura-de-arquivos)
 - [8.6. Escrita em arquivos](#86-escrita-em-arquivos)
 - [8.7. Exemplo prático integrado](#87-exemplo-pratico-integrado)
 - [8.8. Boas práticas e cuidados](#88-boas-praticas-e-cuidados)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
 
 >Quando você está aprendendo a programar, provavelmente começa criando variáveis e manipulando dados na memória do computador. O problema é que, quando o programa termina, todos esses dados desaparecem. É como escrever algo importante em uma folha de papel e jogar fora quando termina de usar.
 ---
@@ -29,7 +30,7 @@ Imagine que você criou um programa de lista de tarefas. Você adiciona várias 
 
 >Arquivos permitem que você **salve informações de forma permanente no disco rígido do computador**. Assim, seus dados sobrevivem mesmo depois que o programa é fechado. Pense em situações do dia a dia: salvar o progresso de um jogo, guardar uma lista de contatos, armazenar suas anotações pessoais, ou manter um histórico de gastos mensais. Todos esses casos precisam de arquivos.
 
-# 8.2. Conceitos basicos
+# 8.2. Conceitos básicos
 
 Antes de começarmos a programar, é importante entender alguns conceitos fundamentais.
 

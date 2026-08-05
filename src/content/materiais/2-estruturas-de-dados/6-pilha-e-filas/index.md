@@ -12,6 +12,12 @@ order: 6
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
+---
+
+> Uma pilha de pratos e uma fila de banco resolvem o mesmo problema, que é organizar quem vem primeiro, mas chegam a respostas opostas. Definir quem entra e quem sai antes é o que separa as duas estruturas deste capítulo.
+
+---
+
 # 6.1. Pilha
 
 Uma Pilha, como estrutura de dados, é uma sequência lógica onde os elementos são inseridos e removidos apenas por uma das extremidades, denominada topo. Esse fluxo de manipulação é chamado de **LIFO (Last In, First Out — o último a entrar é o primeiro a sair)**. Para exemplificar seu funcionamento, imagine uma pilha de livros organizada para estudo. Sempre que você adquire um novo material, você o coloca no topo para que ele seja o próximo a ser lido. A remoção segue a mesma lógica: você retira primeiro o que está em cima para acessar o conteúdo de forma ordenada. Da mesma forma, em uma pilha de dados, o acesso ocorre sempre pelo topo, garantindo que o elemento mais recente seja sempre o primeiro a ser processado.
@@ -80,11 +86,10 @@ OBS: Embora seja possível implementar uma fila utilizando listas em Python, ess
 
 ---
 
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre Pilhas e Filas, confira os seguintes recursos:
 
 - [Pilhas e Filas - Curso de Estruturas de Dados e Algoritmos em Python - Aula 5](https://www.youtube.com/watch?v=vOx3vY1w4tM&t=93s)
-
 
 ```quiz
 - tipo: single

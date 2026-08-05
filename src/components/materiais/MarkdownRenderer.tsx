@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { QuizBlock } from "./Quiz";
 import PyRunner from "./PyRunner";
+import { slugifyHeading } from "@/lib/utils";
 
 interface MarkdownRendererProps {
   content: string;
@@ -86,16 +87,6 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
     setMounted(true);
   }, []);
 
-  // Função para criar IDs para os headings
-  const createHeadingId = (text: string) => {
-    return text
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^\w\s-]/g, "")
-      .replace(/\s+/g, "-");
-  };
-
   if (!mounted) {
     return (
       <div className="animate-pulse">
@@ -115,8 +106,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         components={{
           // Headers com IDs para ancoragem - MAIS ESPAÇOSOS
           h1: ({ children, ...props }) => {
-            const text = String(children);
-            const id = createHeadingId(text);
+            const id = slugifyHeading(extractTextFromNode(children));
             return (
               <h1
                 id={id}
@@ -128,8 +118,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             );
           },
           h2: ({ children, ...props }) => {
-            const text = String(children);
-            const id = createHeadingId(text);
+            const id = slugifyHeading(extractTextFromNode(children));
             return (
               <h2
                 id={id}
@@ -141,8 +130,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             );
           },
           h3: ({ children, ...props }) => {
-            const text = String(children);
-            const id = createHeadingId(text);
+            const id = slugifyHeading(extractTextFromNode(children));
             return (
               <h3
                 id={id}
@@ -154,8 +142,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             );
           },
           h4: ({ children, ...props }) => {
-            const text = String(children);
-            const id = createHeadingId(text);
+            const id = slugifyHeading(extractTextFromNode(children));
             return (
               <h4
                 id={id}

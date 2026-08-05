@@ -13,6 +13,10 @@ order: 2
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
+---
+
+> Uma variável não é uma caixa onde o valor fica guardado, e sim uma etiqueta que você cola em um dado. Entender essa diferença agora evita boa parte da confusão que aparece mais adiante, quando duas etiquetas apontarem para a mesma coisa.
+
 Uma das características mais importantes de uma linguagem de programação é a capacidade de __manipular variáveis__. 
 ---
 
@@ -31,7 +35,7 @@ Para criar uma nova variável e associá-la a um dado específico, utilizamos um
 - _message = 'And now for something...':_ Atribui uma string à variável message.
 
 > É importante notar que, em programação, a atribuição não é uma equação matemática de igualdade; enquanto na matemática a = 7 implica que 7 = a, no Python a instrução 7 = a resultaria em um erro, pois o lado esquerdo de uma atribuição deve ser sempre um nome de variável.
-___
+---
 # 2.2. Diagrama de Estado
 Uma forma eficiente de representar o que acontece na memória do computador é através de um __diagrama de estado__. 
 
@@ -40,7 +44,7 @@ Uma forma eficiente de representar o que acontece na memória do computador é a
 Este diagrama é uma representação gráfica que mostra cada variável acompanhada por uma flecha que aponta para o seu valor correspondente.
 
 > O objetivo do diagrama é mostrar o "estado" atual do programa, permitindo que o programador visualize para quais dados cada nome está apontando em um determinado momento da execução. Quando uma variável é reatribuída, o diagrama de estado muda para refletir que o nome agora se refere a um novo objeto, deixando de apontar para o valor anterior.
-___
+---
 # 2.3. Nomes de Variáveis e Palavras-chave
 
 A escolha dos nomes das variáveis é uma parte crucial da programação, pois bons nomes ajudam a documentar o código e torná-lo legível. 
@@ -69,7 +73,7 @@ __Exemplos incluem:__
 # Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, confira os seguintes recursos:
 
- [Data Types & Variables in Python - Neso Academy](https://youtu.be/R83OfbQeB7M?si=djA5FtbG1m8P3UiV)
+- [Data Types & Variables in Python - Neso Academy](https://youtu.be/R83OfbQeB7M?si=djA5FtbG1m8P3UiV)
 
 ```quiz
 - tipo: single

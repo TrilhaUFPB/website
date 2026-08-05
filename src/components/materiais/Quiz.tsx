@@ -371,7 +371,7 @@ function ResultScreen({
                 )}
               </span>
               <span className="text-[var(--ink)] flex-1 leading-relaxed" style={{ fontWeight: 450, fontSize: '14.5px' }}>
-                {q.pergunta}
+                <InlineMarkdown content={q.pergunta} />
               </span>
             </div>
           );

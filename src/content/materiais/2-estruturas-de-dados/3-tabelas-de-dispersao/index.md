@@ -191,9 +191,9 @@ for aluno, nota in alunos.items():
 
 Para aprofundar seus conhecimentos sobre Tabelas de Dispersão e Dicionários, confira os seguintes recursos:
 
- [Estruturas de Dados - Conceitos de Tabela Hash - UNIVESP](https://youtu.be/jQ0r7P8rC1M)
+- [Estruturas de Dados - Conceitos de Tabela Hash - UNIVESP](https://youtu.be/jQ0r7P8rC1M)
 
- [Curso Python #19 - Dicionários - Curso em Vídeo](https://youtu.be/ZWj8o692qGY)
+- [Curso Python #19 - Dicionários - Curso em Vídeo](https://youtu.be/ZWj8o692qGY)
 
 ```quiz
 - tipo: single

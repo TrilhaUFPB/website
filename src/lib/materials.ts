@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { slugifyHeading } from "./utils";
 
 export interface MaterialMetadata {
   area: string;        // Nova: área/categoria fixa
@@ -175,12 +176,8 @@ export function extractHeadings(
   while ((match = headingRegex.exec(contentWithoutCodeBlocks)) !== null) {
     const level = match[1].length;
     const text = match[2].trim();
-    const id = text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/\s+/g, "-");
 
-    headings.push({ id, text, level });
+    headings.push({ id: slugifyHeading(text), text, level });
   }
 
   return headings;

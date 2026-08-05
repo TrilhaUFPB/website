@@ -6,13 +6,20 @@ order: 5
 ---
 ## Sumário
 
-- [5.1 Introdução à Análise de Dados](#51-introducao-a-analise-de-dados)
-- [5.2 Classificação de Dados](#52-classificacao-de-dados)
-- [5.3 Ferramentas e bibliotecas essenciais](#53-ferramentas-e-bibliotecas-essenciais)
-- [5.4 Análise Exploratória de Dados (EDA)](#54-analise-exploratoria-de-dados-eda)
-- [5.5 Tipos de relação e quais gráficos usar](#55-tipos-de-relacao-e-quais-graficos-usar)
-- [5.6 Limpeza e Transformação de Dados](#56-limpeza-e-transformacao-de-dados)
+- [5.1. Introdução à Análise de Dados](#51-introducao-a-analise-de-dados)
+- [5.2. Classificação de Dados](#52-classificacao-de-dados)
+- [5.3. Ferramentas e bibliotecas essenciais](#53-ferramentas-e-bibliotecas-essenciais)
+- [5.4. Análise Exploratória de Dados (EDA)](#54-analise-exploratoria-de-dados-eda)
+- [5.5. Tipos de relação e quais gráficos usar](#55-tipos-de-relacao-e-quais-graficos-usar)
+- [5.6. Limpeza e Transformação de Dados](#56-limpeza-e-transformacao-de-dados)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+---
+
+> Uma tabela não responde nada sozinha. Antes de qualquer gráfico bonito vem um trabalho menos glamouroso, que é olhar o que chegou, descobrir o que está faltando e entender a forma dos dados antes de tirar qualquer conclusão deles.
+
+---
 
 # 5.1. Introdução à Análise de Dados
 >O que é análise de dados e por que ela é importante no dia a dia, Reconhecer propriedades e tipos de dados, Aplicar EDA (Análise Exploratória de Dados) em um dataset simples, Executar limpeza e transformação básicas de dados, Visualizar informações de forma clara e correta e Ganhar familiaridade com Pandas, Matplotlib, Seaborn e Jupyter Notebook
@@ -37,7 +44,7 @@ Vamos focar principalmente em:
 
 ![Ciclo de analise de dados](/api/materiais-assets/3-dados/5-analise-de-dados/assets/data-analysis-process.png)
 
-## 5.2 Classificação de Dados
+# 5.2. Classificação de Dados
 
 #### Dados estruturados
 Dados organizados em formato tabelar (linhas e colunas), com uma **estrutura bem definida** (tipos, chaves, restrições).  
@@ -80,7 +87,7 @@ Suportam operações aritméticas e estatísticas descritivas.
 ![dados qualitativos x dados quantitativos](/api/materiais-assets/3-dados/5-analise-de-dados/assets/tipos_variaveis.webp)
 
 
-## 5.3 Ferramentas e bibliotecas essenciais
+# 5.3. Ferramentas e bibliotecas essenciais
 
 Antes de falar de cada biblioteca, vale ver um **mini-exemplo** completo.
 
@@ -202,7 +209,7 @@ Uso conjunto (resumindo):
   df.sample(5, random_state=42)
   df.info()
 ```
-## 5.4 Análise Exploratória de Dados (EDA)
+# 5.4. Análise Exploratória de Dados (EDA)
 
 ## Inspeção inicial do dataset
 Pense no dataset como uma **caixa misteriosa**: antes de usar, você dá uma olhada rápida para saber o que tem dentro.
@@ -293,7 +300,7 @@ Perguntas clássicas:
 - Existe outlier distorcendo a leitura?  
 - A relação é linear, monotônica ou não linear?
 
-## 5.5 Tipos de relação e quais gráficos usar
+# 5.5. Tipos de relação e quais gráficos usar
 
 > df.plot.scatter(x="x", y="y")  df.sort_values("data").plot(x="data", y="y")
 ### - Numérica vs Numérica
@@ -363,7 +370,7 @@ df["coluna_num"].quantile([0.25, 0.5, 0.75])
 
 ---
 
-## 5.6 Limpeza e Transformação de Dados
+# 5.6. Limpeza e Transformação de Dados
 
 ### Tratamento de valores nulos
 Depois de detectar os nulos, você escolhe: **remover**, **preencher** ou **manter** (com justificativa).
@@ -533,12 +540,14 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
       explicacao: Há diferença, ignorar a ordem de uma variável ordinal na codificação ou na visualização joga fora alguma informação real atrapalha intensamente a analise.
 ```
 ---
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 - [O que é análise de dados? (Artigo Freecodecamp)](https://www.freecodecamp.org/portuguese/news/o-que-e-analise-de-dados/)
 - [Te ensino TUDO sobre criar gráficos com Python e Matplotlib (Vídeo)](https://www.youtube.com/watch?v=unEdvkCjL8U)
 - [Python para análise de dados (Artigo Alura)](https://www.alura.com.br/artigos/python-para-analise-de-dados?srsltid=AfmBOop21pv15vNxi8nTQILDqGnx77l-y4c2TEzVWWmFjT1YVM32weu3)
+
 ---
-## Referências
+
+# Referências
 
 - Documentação do Pandas (User Guide): https://pandas.pydata.org/docs/user_guide/index.html
 - Documentação do NumPy: https://numpy.org/doc/stable/

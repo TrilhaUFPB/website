@@ -11,12 +11,12 @@ order: 7
     - [Erro de Tempo de Execução (Exceção)](#712-erro-de-tempo-de-execucao-excecao)
     - [Erro de Lógica](#713-erro-de-logica)
 - [7.2. Tratamento de Erros: try/except](#72-tratamento-de-erros-tryexcept)
-    - [A estrutura básica de try/except](721-a-estrutura-basica)
-    - [Capturando erros específicos)](722-capturando-erros-especificos)
-    - [O bloco else](723-o-bloco-object-object)
-    - [A estrutura básica de try/except](721-a-estrutura-basica)
-    - [Capturando erros específicos)](722-capturando-erros-especificos)
-    - [O bloco](723-o-bloco-object-object)
+    - [A estrutura básica](#721-a-estrutura-basica)
+    - [Capturando erros específicos](#722-capturando-erros-especificos)
+    - [O bloco `else`](#723-o-bloco-else)
+    - [O bloco `finally`](#724-o-bloco-finally)
+    - [Lançando erros com `raise`](#725-lancando-erros-com-raise)
+    - [Exemplo completo](#726-exemplo-completo)
 - [7.3. A mentalidade do depurador](#73-a-mentalidade-do-depurador)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
@@ -269,7 +269,7 @@ Pense no computador como um funcionário extremamente **rápido e preciso**, mas
 Com o tempo, você vai se familiarizar com os erros mais comuns, vai ler as mensagens mais rápido, e o que hoje parece confuso vai se tornar natural. Erros fazem parte do processo, e lidar bem com eles é uma das habilidades que separa um bom programador de um ótimo programador.
 
 ---
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre erros e tratamento de exceções em Python, confira os seguintes recursos:
 
 - [Python Try Except - W3Schools](https://www.w3schools.com/python/python_try_except.asp)
