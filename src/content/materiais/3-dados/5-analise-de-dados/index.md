@@ -13,6 +13,13 @@ order: 5
 - [5.5. Tipos de relação e quais gráficos usar](#55-tipos-de-relacao-e-quais-graficos-usar)
 - [5.6. Limpeza e Transformação de Dados](#56-limpeza-e-transformacao-de-dados)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+---
+
+> Uma tabela não responde nada sozinha. Antes de qualquer gráfico bonito vem um trabalho menos glamouroso, que é olhar o que chegou, descobrir o que está faltando e entender a forma dos dados antes de tirar qualquer conclusão deles.
+
+---
 
 # 5.1. Introdução à Análise de Dados
 >O que é análise de dados e por que ela é importante no dia a dia, Reconhecer propriedades e tipos de dados, Aplicar EDA (Análise Exploratória de Dados) em um dataset simples, Executar limpeza e transformação básicas de dados, Visualizar informações de forma clara e correta e Ganhar familiaridade com Pandas, Matplotlib, Seaborn e Jupyter Notebook
