@@ -106,7 +106,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         components={{
           // Headers com IDs para ancoragem - MAIS ESPAÇOSOS
           h1: ({ children, ...props }) => {
-            const id = slugifyHeading(String(children));
+            const id = slugifyHeading(extractTextFromNode(children));
             return (
               <h1
                 id={id}
@@ -118,7 +118,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             );
           },
           h2: ({ children, ...props }) => {
-            const id = slugifyHeading(String(children));
+            const id = slugifyHeading(extractTextFromNode(children));
             return (
               <h2
                 id={id}
@@ -130,7 +130,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             );
           },
           h3: ({ children, ...props }) => {
-            const id = slugifyHeading(String(children));
+            const id = slugifyHeading(extractTextFromNode(children));
             return (
               <h3
                 id={id}
@@ -142,7 +142,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             );
           },
           h4: ({ children, ...props }) => {
-            const id = slugifyHeading(String(children));
+            const id = slugifyHeading(extractTextFromNode(children));
             return (
               <h4
                 id={id}
