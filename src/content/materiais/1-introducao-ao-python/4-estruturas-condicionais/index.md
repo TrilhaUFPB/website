@@ -61,8 +61,8 @@ As instruções condicionais permitem que o programa mude seu comportamento de a
 # Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre estruturas condicionais, confira os seguintes recursos:
 
- [Conditional Statements in Python - Real Python](https://realpython.com/python-conditional-statements/)
- [Coding Basics: If Statements, If Else, Else - Transcode](https://youtu.be/HQ3dCWjfRZ4?si=Az5sBmkDaL05rl1e)
+- [Conditional Statements in Python - Real Python](https://realpython.com/python-conditional-statements/)
+- [Coding Basics: If Statements, If Else, Else - Transcode](https://youtu.be/HQ3dCWjfRZ4?si=Az5sBmkDaL05rl1e)
 
 
 ```quiz

@@ -69,7 +69,7 @@ __Exemplos incluem:__
 # Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, confira os seguintes recursos:
 
- [Data Types & Variables in Python - Neso Academy](https://youtu.be/R83OfbQeB7M?si=djA5FtbG1m8P3UiV)
+- [Data Types & Variables in Python - Neso Academy](https://youtu.be/R83OfbQeB7M?si=djA5FtbG1m8P3UiV)
 
 ```quiz
 - tipo: single

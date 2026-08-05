@@ -89,7 +89,7 @@ print(dados.index(30))  # Saída: 3
 
 Para aprofundar seus conhecimentos sobre Tuplas, confira os seguintes recursos:
 
- [Curso Python #16 - Tuplas - Curso em Vídeo](https://youtu.be/0LB3FSfjvao)
+- [Curso Python #16 - Tuplas - Curso em Vídeo](https://youtu.be/0LB3FSfjvao)
 
 ```quiz
 - tipo: single

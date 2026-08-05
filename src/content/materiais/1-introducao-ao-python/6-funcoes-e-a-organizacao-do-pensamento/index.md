@@ -114,7 +114,7 @@ print(resultado)  # None
 # Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre funções, confira os seguintes recursos:
 
-[Funções em Python (def, parâmetros e retorno) - Python do Zero](https://www.youtube.com/watch?v=CSWx1Mr2xms)
+- [Funções em Python (def, parâmetros e retorno) - Python do Zero](https://www.youtube.com/watch?v=CSWx1Mr2xms)
 
 ```quiz
 - tipo: single

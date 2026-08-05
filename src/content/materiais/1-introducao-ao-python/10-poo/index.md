@@ -575,7 +575,7 @@ print(f"CPF do Professor: {prof.get_cpf_mascarado()}")
 
 Para aprofundar seus conhecimentos sobre Programação Orientada a Objetos, confira os seguintes recursos:
 
- [Programação Orientada a Objetos | Explicação Simples - Dobra de Bits](https://youtu.be/pbb0jzXt_xA?si=MSZmoF3TafRUPjSC)
+- [Programação Orientada a Objetos | Explicação Simples - Dobra de Bits](https://youtu.be/pbb0jzXt_xA?si=MSZmoF3TafRUPjSC)
 
 ---
 

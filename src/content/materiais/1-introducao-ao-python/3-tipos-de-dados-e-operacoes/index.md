@@ -113,11 +113,11 @@ As principais operações são:
 
 Para aprofundar seus conhecimentos sobre tipos de dados e operações, confira os seguintes recursos:
 
- [Python for Beginners: Data Types - The New Stack](https://thenewstack.io/python-for-beginners-data-types/)
+- [Python for Beginners: Data Types - The New Stack](https://thenewstack.io/python-for-beginners-data-types/)
 
- [String methods in Python are easy! - Bro Code](https://youtu.be/tb6EYiHtcXU?si=ZQHcEYagaH2iMJ0k)
+- [String methods in Python are easy! - Bro Code](https://youtu.be/tb6EYiHtcXU?si=ZQHcEYagaH2iMJ0k)
 
- [Python Tutorial: Strings - Working with Textual Data - Corey Schafer](https://youtu.be/k9TUPpGqYTo?si=c4rdceQ1iH4blUWJ)
+- [Python Tutorial: Strings - Working with Textual Data - Corey Schafer](https://youtu.be/k9TUPpGqYTo?si=c4rdceQ1iH4blUWJ)
 
 ```quiz
 - tipo: single

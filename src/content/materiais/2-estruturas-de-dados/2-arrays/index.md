@@ -746,7 +746,7 @@ def inverter(head):
 
 Para aprofundar seus conhecimentos sobre arrays, listas e estruturas de dados, confira os seguintes recursos:
 
- [Criação de uma primeira estrutura - UNIVESP](https://www.youtube.com/watch?v=x2DwllnUZDg)
+- [Criação de uma primeira estrutura - UNIVESP](https://www.youtube.com/watch?v=x2DwllnUZDg)
  
 
 ```quiz

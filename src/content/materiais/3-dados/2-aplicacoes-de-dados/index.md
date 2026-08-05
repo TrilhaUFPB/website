@@ -86,7 +86,7 @@ Esse ciclo se repete e se aprimora continuamente, à medida que novos dados, per
 
 Para aprofundar seus conhecimentos sobre aplicações e pipelines de dados, confira os seguintes recursos:
 
- [Cientista de Dados vs Analista de Dados vs Engenheiro de Dados - Entenda as profissões - Stack](https://youtu.be/y-iLp5tp6K0)
+- [Cientista de Dados vs Analista de Dados vs Engenheiro de Dados - Entenda as profissões - Stack](https://youtu.be/y-iLp5tp6K0)
 
 ```quiz
 - tipo: single
