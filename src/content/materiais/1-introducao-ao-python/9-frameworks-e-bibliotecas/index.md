@@ -362,7 +362,7 @@ Django divide o código em arquivos diferentes: um para definir as páginas (vie
 
 # Complemente o Aprendizado
 
-Confira os recursos abaixo para aprofundar seus conhecimentos:
+Para aprofundar seus conhecimentos sobre frameworks e bibliotecas, confira os seguintes recursos:
 
 **Bibliotecas**:
 
