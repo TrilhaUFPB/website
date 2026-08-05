@@ -10,7 +10,7 @@ order: 3
 
 - [3.1. Valores e Tipos](#31-valores-e-tipos)
 - [3.2. Operadores Aritméticos](#32-operadores-aritmeticos)
-- [3.3. Ordem das Operações (PEMDAS)](#33-ordem-das-operacoes)
+- [3.3. Ordem das Operações (PEMDAS)](#33-ordem-das-operacoes-pemdas)
 - [3.4. Operações com Strings](#34-operacoes-com-strings)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
@@ -48,7 +48,7 @@ Operadores são símbolos que representam operações. Além dos operadores mate
 
 ---
 
-# 3.3. Ordem das Operações
+# 3.3. Ordem das Operações (PEMDAS)
 
 Quando uma expressão contém vários operadores, o Python segue a **ordem padrão da matemática**, conhecida pela sigla **PEMDAS**:
 
@@ -113,11 +113,11 @@ As principais operações são:
 
 Para aprofundar seus conhecimentos sobre tipos de dados e operações, confira os seguintes recursos:
 
- [Python for Beginners: Data Types - The New Stack](https://thenewstack.io/python-for-beginners-data-types/)
+- [Python for Beginners: Data Types - The New Stack](https://thenewstack.io/python-for-beginners-data-types/)
 
- [String methods in Python are easy! - Bro Code](https://youtu.be/tb6EYiHtcXU?si=ZQHcEYagaH2iMJ0k)
+- [String methods in Python are easy! - Bro Code](https://youtu.be/tb6EYiHtcXU?si=ZQHcEYagaH2iMJ0k)
 
- [Python Tutorial: Strings - Working with Textual Data - Corey Schafer](https://youtu.be/k9TUPpGqYTo?si=c4rdceQ1iH4blUWJ)
+- [Python Tutorial: Strings - Working with Textual Data - Corey Schafer](https://youtu.be/k9TUPpGqYTo?si=c4rdceQ1iH4blUWJ)
 
 ```quiz
 - tipo: single

@@ -25,6 +25,10 @@ order: 2
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
+---
+
+> Guardar a nota de quatro alunos em quatro variáveis funciona. O problema aparece quando são quatrocentos. Nessa hora fica claro que o que faltava não era mais variáveis, e sim uma forma de tratar muitos valores como um só conjunto.
+
 Arrays são uma das estruturas de dados mais fundamentais da computação. Dominar listas em Python — e entender o que acontece por baixo dos panos — é o primeiro passo para escrever código eficiente e resolver problemas complexos.
 
 ---
@@ -432,7 +436,7 @@ Se você quiser **quebrar uma string em palavras**, você pode usar o método `s
 
 ---
 
-# 2.11. Objetos e valores
+# 2.11. Objetos e Valores
 
 Se executarmos a = 'banana' e b = 'banana', sabemos que a e b se referem a uma string, mas não sabemos se elas se referem à mesma string.
 
@@ -746,7 +750,7 @@ def inverter(head):
 
 Para aprofundar seus conhecimentos sobre arrays, listas e estruturas de dados, confira os seguintes recursos:
 
- [Criação de uma primeira estrutura - UNIVESP](https://www.youtube.com/watch?v=x2DwllnUZDg)
+- [Criação de uma primeira estrutura - UNIVESP](https://www.youtube.com/watch?v=x2DwllnUZDg)
  
 
 ```quiz

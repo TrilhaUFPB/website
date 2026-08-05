@@ -113,7 +113,7 @@ Esse modelo funciona bem quando temos poucos dados. Porém, quando a quantidade 
 
 ---
 
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre Big O e Estruturas de Dados, confira os seguintes recursos:
 
 - [O que é a notação Big O: complexidade de tempo e de espaço - freeCodeCamp](https://www.freecodecamp.org/portuguese/news/o-que-e-a-notacao-big-o-complexidade-de-tempo-e-de-espaco/)

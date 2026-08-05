@@ -7,11 +7,17 @@ order: 4
 
 ## Sumário
 
-- [4.1. Expressões Booleanas](#41-expressões-booleanas)
+- [4.1. Expressões Booleanas](#41-expressoes-booleanas)
 - [4.2. Operadores Lógicos](#42-operadores-logicos)
-- [4.3. Execução Condicional (if,else,elif)](#43-execução-condicional-(if,else,elif))
+- [4.3. Execução Condicional (if, else, elif)](#43-execucao-condicional-if-else-elif)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
+
+---
+
+> Até aqui, seus programas fizeram sempre exatamente a mesma coisa, na mesma ordem. É o equivalente a uma receita que ignora se a panela já está quente. As estruturas condicionais são o que permite ao programa olhar para o estado atual e escolher o caminho.
+
+---
 
 # 4.1. Expressões Booleanas
 
@@ -33,7 +39,7 @@ Para criar essas expressões, utilizamos os operadores relacionais:
 
 > Note o uso de dois sinais de igual; um sinal único = é para **atribuição**.
 
-___
+---
 
 # 4.2. Operadores Lógicos
 
@@ -45,7 +51,7 @@ Existem três operadores lógicos que permitem combinar ou negar expressões boo
 
 - *not (não):* Nega a expressão booleana; o que era True torna-se False e vice-versa.
 
-___
+---
 
 # 4.3. Execução Condicional (if, else, elif)
 
@@ -58,11 +64,11 @@ As instruções condicionais permitem que o programa mude seu comportamento de a
 - *elif:* Abreviação de "else if", é utilizada quando há mais de duas possibilidades. O Python verifica cada condição em ordem: se a primeira for falsa, verifica a próxima, e assim por diante. Apenas o primeiro ramo cuja condição for verdadeira será executado.
 
 ---
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre estruturas condicionais, confira os seguintes recursos:
 
- [Conditional Statements in Python - Real Python](https://realpython.com/python-conditional-statements/)
- [Coding Basics: If Statements, If Else, Else - Transcode](https://youtu.be/HQ3dCWjfRZ4?si=Az5sBmkDaL05rl1e)
+- [Conditional Statements in Python - Real Python](https://realpython.com/python-conditional-statements/)
+- [Coding Basics: If Statements, If Else, Else - Transcode](https://youtu.be/HQ3dCWjfRZ4?si=Az5sBmkDaL05rl1e)
 
 
 ```quiz

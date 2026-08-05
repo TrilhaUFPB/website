@@ -9,7 +9,7 @@ order: 5
 
 - [5.1. Tupla (Tuple)](#51-tupla-tuple)
 - [5.2. Operações Principais](#52-operacoes-principais)
-- [5.3. Por que não usar apenas Listas?](#53-uso-por-que-nao-usar-apenas-listas)
+- [5.3. Por que não usar apenas Listas?](#53-por-que-nao-usar-apenas-listas)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
@@ -75,7 +75,7 @@ print(dados.index(30))  # Saída: 3
 
 ---
 
-# 5.3. Uso: Por que não usar apenas Listas?
+# 5.3. Por que não usar apenas Listas?
 
 - **Eficiência de Memória e Desempenho:** As tuplas, por serem imutáveis, têm um tamanho fixo exato alocado na memória no momento da criação. Isso significa que elas ocupam menos espaço e são instanciadas de forma mais rápida.
 
@@ -89,7 +89,7 @@ print(dados.index(30))  # Saída: 3
 
 Para aprofundar seus conhecimentos sobre Tuplas, confira os seguintes recursos:
 
- [Curso Python #16 - Tuplas - Curso em Vídeo](https://youtu.be/0LB3FSfjvao)
+- [Curso Python #16 - Tuplas - Curso em Vídeo](https://youtu.be/0LB3FSfjvao)
 
 ```quiz
 - tipo: single

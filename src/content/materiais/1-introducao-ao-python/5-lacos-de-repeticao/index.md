@@ -16,7 +16,7 @@ order: 5
 ---
 > Em computação, a capacidade de executar um bloco de instruções repetidamente é chamada de **iteração**. O Python oferece duas ferramentas principais para isso: os laços _while_ e _for_.
 
-___
+---
 # 5.1. Instrução while (repetição por condição)
 
 A instrução _while_ é usada para repetir um código enquanto uma condição for verdadeira. Seu fluxo de execução funciona da seguinte forma:
@@ -53,7 +53,7 @@ Hello World!\
 Hello World!\
 Hello World!\
 ...
-___
+---
 # 5.2. Instrução for (repetição por iteração)
 
 Diferente do _while_, o laço __for__ é frequentemente usado quando se quer percorrer os elementos de uma sequência ou repetir uma ação um número específico de vezes.
@@ -81,7 +81,7 @@ for i in range(5):
 - Use __for__ quando souber o número de repetições ou quando estiver percorrendo uma lista/string.
 
 - Use __while__ quando a repetição depender de uma condição que pode mudar a qualquer momento.
-___
+---
 # 5.3. Controle de Fluxo: A instrução break
 
 Às vezes, você não sabe que o loop deve terminar até chegar à metade do código. Nesses casos, utiliza-se a instrução __break__ para sair do laço imediatamente. É muito comum ver o __break__ sendo usado em estruturas do tipo _while True_ (um loop que seria tecnicamente infinito), onde uma entrada do usuário ou uma verificação interna decide o momento exato da parada. Assim que o break é executado, o Python salta para a instrução logo após o bloco do loop.
@@ -95,10 +95,10 @@ for i in range(10):
 ```
 
 ---
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre laços de repetição, confira os seguintes recursos:
 
-[Loops em PYTHON sem enrolação pra facilitar sua vida (for e while) - Lan Code](https://youtu.be/n5ETibjJcAE?si=uAP4N9YeIQQHOCLL)
+- [Loops em PYTHON sem enrolação pra facilitar sua vida (for e while) - Lan Code](https://youtu.be/n5ETibjJcAE?si=uAP4N9YeIQQHOCLL)
 
 ```quiz
 - tipo: single

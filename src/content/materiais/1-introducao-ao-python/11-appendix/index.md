@@ -13,8 +13,12 @@ order: 11
 - [pip – Gerenciador de Pacotes](#pip-gerenciador-de-pacotes)
 - [uv – Alternativa Moderna](#uv-alternativa-moderna)
 - [Resumo dos Comandos](#resumo-dos-comandos)
-- [Complemente o seu aprendizado](#complemente-o-aprendizado)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
+
+---
+
+> Todo bom trabalho depende da bancada estar organizada antes da primeira peça ser cortada. Preparar o ambiente Python custa alguns minutos e evita horas de conflito entre projetos que precisam de versões diferentes da mesma biblioteca.
 
 ---
 
@@ -334,7 +338,7 @@ Se você tem um projeto antigo com `requirements.txt`, o uv é compatível:
 uv pip install -r requirements.txt
 ```
 
-## Resumo dos comandos
+## Resumo dos Comandos
 
 ### venv
 
@@ -371,7 +375,7 @@ uv pip install -r requirements.txt
 
 ---
 
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 
 Para aprofundar seus conhecimentos sobre gerenciamento de ambientes Python, confira os seguintes recursos:
 

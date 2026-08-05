@@ -1,11 +1,9 @@
 ---
 title: 1. Tipos de Dados
-description: Quais são os tipos de dados?
+description: Entenda o que são dados e como classificá-los em estruturados, semi-estruturados e não estruturados conforme o grau de organização
 category: Dados
 order: 1
 ---
-
-## Sumário
 
 - [1.1. Estruturado](#11-estruturado)
 - [1.2. Semi-estruturado](#12-semi-estruturado)
@@ -50,7 +48,7 @@ Fonte: https://www.dataviking.com.br/post/estruturas-de-dados-entendendo-os-dife
 
 # Complemente o Aprendizado
 
-Para aprofundar seus conhecimentos sobre os tipos de dados, confira o seguintes recurso:
+Para aprofundar seus conhecimentos sobre os tipos de dados, confira o seguinte recurso:
 
  - [Tipos de Estrutura de Dados: Estruturados, Semi Estruturados e Não Estruturados](https://www.youtube.com/watch?v=n0QaQHs5VA0)
 

@@ -12,6 +12,12 @@ order: 4
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
+---
+
+> Dado bruto é matéria-prima, não produto. Entre a fonte e o relatório existe um percurso de extrair, transformar e carregar, e é nesse meio do caminho que a informação de fato ganha forma.
+
+---
+
 # 4.1. O que é ETL
 
 ETL (Extract, Transform, Load) é um dos principais padrões de integração e processamento de dados usados para mover informações de suas fontes originais para um sistema de destino, geralmente com foco analítico.
@@ -153,7 +159,7 @@ Essas arquiteturas costumam coexistir em uma **plataforma de dados moderna**, pe
 
 ---
 
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre ETL, confira os seguintes recursos:
 
 - [ETL Made Simple | What Data Analysts Should Know](https://youtu.be/rnmoT0P6Oyg?si=90R5RS71LmHlDCr_)

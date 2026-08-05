@@ -95,11 +95,11 @@ O [PythonAnywhere](https://www.pythonanywhere.com/) permite que você comece a p
 
 Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, confira os seguintes recursos:
 
- [PROGRAMAÇÃO e SISTEMAS de INFORMAÇÃO - Manual do Mundo](https://youtu.be/ML1fgVfxuRU?si=JdHpSeCM2j1kiUGl)
+- [PROGRAMAÇÃO e SISTEMAS de INFORMAÇÃO - Manual do Mundo](https://youtu.be/ML1fgVfxuRU?si=JdHpSeCM2j1kiUGl)
 
- [Compiler vs Interpreter In animated Way - CodeVerse](https://youtu.be/E3TDMVETp08?si=4Q2iIDY0Cam7L9ki)
+- [Compiler vs Interpreter In animated Way - CodeVerse](https://youtu.be/E3TDMVETp08?si=4Q2iIDY0Cam7L9ki)
 
- [Como Baixar, Instalar e Configurar Visual Studio Code - Canal TI](https://youtu.be/oDgjp7PfX7c?si=PhpkmxqDCG7fIKyk)
+- [Como Baixar, Instalar e Configurar Visual Studio Code - Canal TI](https://youtu.be/oDgjp7PfX7c?si=PhpkmxqDCG7fIKyk)
 
 ```quiz
 - tipo: single
