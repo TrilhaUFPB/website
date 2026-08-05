@@ -1,5 +1,5 @@
 ---
-title: 9. Concorrência e Paralelismo
+title: 10. Concorrência e Paralelismo
 description: Programação concorrente
 category: Backend
 order: 10

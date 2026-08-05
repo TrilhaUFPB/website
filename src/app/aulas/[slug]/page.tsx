@@ -43,6 +43,10 @@ type Aula = {
   date?: string;
   deadline?: string;
   taskType?: string;
+  noSubmission?: boolean;
+  demoUrl?: string;
+  demoTitle?: string;
+  demoNote?: string;
   homework?: string;
   links?: AulaLink[];
 };
@@ -171,6 +175,25 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
           </ul>
         )}
 
+        {/* Demo rodando — o resultado esperado da entrega */}
+        {aula.demoUrl && (
+          <div className="aula-demo">
+            {aula.demoTitle && <h2 className="aula-tarefa-h2">{aula.demoTitle}</h2>}
+            {aula.demoNote && <p className="aula-demo-note">{aula.demoNote}</p>}
+            <div className="aula-demo-frame">
+              <iframe
+                loading="lazy"
+                src={aula.demoUrl}
+                title={aula.demoTitle ?? aula.title}
+                allow="fullscreen; clipboard-write"
+              />
+            </div>
+            <a href={aula.demoUrl} target="_blank" rel="noopener noreferrer" className="aula-canva-link">
+              {t('aulas.demoOpen')}
+            </a>
+          </div>
+        )}
+
         {/* Tarefa / Mini-Projeto — only when deadline is set */}
         {aula.deadline && <div className="aula-tarefa">
           <h1 className="aula-tarefa-h1">{taskTitle}</h1>
@@ -191,7 +214,7 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
             </div>
           )}
 
-          <div className="aula-tarefa-grid">
+          <div className={`aula-tarefa-grid${aula.noSubmission ? ' aula-tarefa-grid--single' : ''}`}>
             {/* Descrição */}
             <div>
               <h2 className="aula-tarefa-h2">{t('aulas.descricaoTitle')}</h2>
@@ -202,7 +225,8 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
               )}
             </div>
 
-            {/* Submeter */}
+            {/* Submeter: hidden when the task is graded elsewhere (e.g. a judge platform) */}
+            {!aula.noSubmission && (
             <div>
               <h2 className="aula-tarefa-h2">{t('aulas.submeterTitle')}</h2>
               {sent ? (
@@ -280,6 +304,7 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
                 </form>
               )}
             </div>
+            )}
           </div>
         </div>}
 

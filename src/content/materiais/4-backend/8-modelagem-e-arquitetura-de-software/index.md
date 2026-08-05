@@ -1,5 +1,5 @@
 ---
-title: 7. Modelagem e Arquitetura de Software
+title: 8. Modelagem e Arquitetura de Software
 description: Como pensar e implementar um sistema
 category: Backend
 order: 8

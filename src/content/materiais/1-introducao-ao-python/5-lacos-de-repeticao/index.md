@@ -26,25 +26,13 @@ A instrução _while_ é usada para repetir um código enquanto uma condição f
 3. Se for True, executa o corpo do loop e volta ao passo 1 para testar a condição novamente.
 
 __Exemplo clássico:__ Um contador regressivo que subtrai 1 a cada volta até chegar a zero.
-```python
+```python-run
 i = 10
 
 while i >= 0:
     print(f"O número é {i}")
-    i -= 1 (ou i = i-1)
+    i -= 1 # (ou i = i-1)
 ```
-> Saída:\
-O número é 10\
-O número é 9\
-O número é 8\
-O número é 7\
-O número é 6\
-O número é 5\
-O número é 4\
-O número é 3\
-O número é 2\
-O número é 1\
-O número é 0
 
 **O Perigo do Loop Infinito:** O corpo do loop deve alterar o valor de uma ou mais variáveis para que, eventualmente, a condição se torne falsa. Se a variável testada nunca mudar, o programa entrará em um loop infinito, repetindo-se para sempre (ou até o computador travar).
 
@@ -73,33 +61,20 @@ Diferente do _while_, o laço __for__ é frequentemente usado quando se quer per
 - __Travessia de Sequências:__ Processar um caractere de cada vez em uma string é chamado de travessia. O for facilita isso: a cada volta, ele atribui o próximo caractere da string a uma variável até que não sobre nenhum.
 
 __Exemplo de Travessia de Sequências:__
-```python
+```python-run
 palavra = "Python"
 
 for letra in palavra:
     print(letra)
 ```
-> Saída:\
-P\
-y\
-t\
-h\
-o\
-n
 
 - __Uso com range:__ Para repetir uma ação um número fixo de vezes (como desenhar os 4 lados de um quadrado), usamos a função range(n), que gera uma sequência de números de 0 a n−1.
 
 __Exemplo de uso com range:__
-```python
+```python-run
 for i in range(5):
     print(f"O número é {i}")
 ```
-> Saída:\
-O número é 0\
-O número é 1\
-O número é 2\
-O número é 3\
-O número é 4
 
 ## Diferença Fundamental:
 
@@ -112,18 +87,12 @@ ___
 Às vezes, você não sabe que o loop deve terminar até chegar à metade do código. Nesses casos, utiliza-se a instrução __break__ para sair do laço imediatamente. É muito comum ver o __break__ sendo usado em estruturas do tipo _while True_ (um loop que seria tecnicamente infinito), onde uma entrada do usuário ou uma verificação interna decide o momento exato da parada. Assim que o break é executado, o Python salta para a instrução logo após o bloco do loop.
 
 __Exemplo da instrução break:__
-```python
+```python-run
 for i in range(10):
     if i == 5:
         break
     print(i)
 ```
-> Saída:\
-0\
-1\
-2\
-3\
-4
 
 ---
 ## Complemente o Aprendizado
