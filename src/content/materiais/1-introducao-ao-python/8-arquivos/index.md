@@ -9,7 +9,7 @@ order: 8
 - [8.1. Introdução - Por que trabalhar com arquivos?](#81-introducao---por-que-trabalhar-com-arquivos)
 - [8.2. Conceitos básicos](#82-conceitos-basicos)
 - [8.3. Abrindo e fechando arquivos](#83-abrindo-e-fechando-arquivos)
-- [8.4. O contexto](#84-o-contexto-object-object)
+- [8.4. O contexto `with`](#84-o-contexto-with)
 - [8.5. Leitura de arquivos](#85-leitura-de-arquivos)
 - [8.6. Escrita em arquivos](#86-escrita-em-arquivos)
 - [8.7. Exemplo prático integrado](#87-exemplo-pratico-integrado)

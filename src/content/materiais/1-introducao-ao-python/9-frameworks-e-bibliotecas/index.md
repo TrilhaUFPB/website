@@ -17,7 +17,7 @@ order: 9
 - [9.7. Vantagens de usar um framework](#97-vantagens-principais-de-utilizar-um-framework)
 - [9.8. Framework vs. Biblioteca](#98-framework-vs-biblioteca)
 - [9.9. Frameworks Populares](#99-frameworks-populares)
-- [Exemplos Práticos](#exemplos-simples-de-frameworks-em-python)
+- [Exemplos práticos de Frameworks em Python](#exemplos-praticos-de-frameworks-em-python)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 

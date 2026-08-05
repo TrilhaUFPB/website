@@ -7,9 +7,9 @@ order: 4
 
 ## Sumário
 
-- [4.1. Expressões Booleanas](#41-expressões-booleanas)
+- [4.1. Expressões Booleanas](#41-expressoes-booleanas)
 - [4.2. Operadores Lógicos](#42-operadores-logicos)
-- [4.3. Execução Condicional (if,else,elif)](#43-execução-condicional-(if,else,elif))
+- [4.3. Execução Condicional (if, else, elif)](#43-execucao-condicional-if-else-elif)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
