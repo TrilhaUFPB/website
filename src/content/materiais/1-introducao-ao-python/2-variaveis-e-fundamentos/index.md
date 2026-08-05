@@ -13,6 +13,10 @@ order: 2
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
+---
+
+> Uma variável não é uma caixa onde o valor fica guardado, e sim uma etiqueta que você cola em um dado. Entender essa diferença agora evita boa parte da confusão que aparece mais adiante, quando duas etiquetas apontarem para a mesma coisa.
+
 Uma das características mais importantes de uma linguagem de programação é a capacidade de __manipular variáveis__. 
 ---
 

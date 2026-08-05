@@ -18,6 +18,10 @@ order: 11
 
 ---
 
+> Todo bom trabalho depende da bancada estar organizada antes da primeira peça ser cortada. Preparar o ambiente Python custa alguns minutos e evita horas de conflito entre projetos que precisam de versões diferentes da mesma biblioteca.
+
+---
+
 # 11.1. Ferramentas Úteis
 
 Bem-vindo à aula sobre Ferramentas Úteis! Este é um guia essencial para entender como preparar corretamente seu ambiente de desenvolvimento Python.

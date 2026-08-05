@@ -22,6 +22,12 @@ order: 6
 - [Teste seu Conhecimento](#exercicios)
 - [Referências](#referencias)
 
+---
+
+> Em vez de escrever uma regra para cada situação possível, mostramos ao computador muitos exemplos do passado e deixamos que ele encontre o padrão. É basicamente como nós aprendemos, e é essa mudança de abordagem que sustenta tudo neste capítulo.
+
+---
+
 # 6.1. Introdução a Machine Learning
 
 ## Definição geral 

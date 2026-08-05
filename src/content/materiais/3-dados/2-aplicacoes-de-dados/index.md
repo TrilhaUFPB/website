@@ -13,6 +13,10 @@ order: 2
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
+---
+
+> Engenharia, ciência e análise de dados costumam ser tratadas como profissões concorrentes. Na prática, são três etapas do mesmo percurso, em que alguém constrói o caminho, alguém explora o que chegou e alguém traduz o resultado para quem decide.
+
 O universo de dados envolve diferentes áreas que atuam de forma integrada para transformar dados brutos em insights e produtos que geram valor para empresas e usuários.
 Cada subárea — engenharia, ciência e análise de dados — cumpre um papel complementar dentro de um mesmo fluxo: a **pipeline de criação de uma aplicação de dados**.
 

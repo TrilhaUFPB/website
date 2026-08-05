@@ -13,6 +13,12 @@ order: 4
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
+---
+
+> Até aqui, seus programas fizeram sempre exatamente a mesma coisa, na mesma ordem. É o equivalente a uma receita que ignora se a panela já está quente. As estruturas condicionais são o que permite ao programa olhar para o estado atual e escolher o caminho.
+
+---
+
 # 4.1. Expressões Booleanas
 
 Uma expressão booleana é uma expressão que pode ser avaliada como **verdadeira (True)** ou **falsa (False)**. No Python, esses valores pertencem ao tipo especial *bool* e não são strings.

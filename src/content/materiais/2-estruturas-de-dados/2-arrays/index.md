@@ -25,6 +25,10 @@ order: 2
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
+---
+
+> Guardar a nota de quatro alunos em quatro variáveis funciona. O problema aparece quando são quatrocentos. Nessa hora fica claro que o que faltava não era mais variáveis, e sim uma forma de tratar muitos valores como um só conjunto.
+
 Arrays são uma das estruturas de dados mais fundamentais da computação. Dominar listas em Python — e entender o que acontece por baixo dos panos — é o primeiro passo para escrever código eficiente e resolver problemas complexos.
 
 ---
