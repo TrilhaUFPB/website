@@ -33,7 +33,7 @@ Para criar essas expressões, utilizamos os operadores relacionais:
 
 > Note o uso de dois sinais de igual; um sinal único = é para **atribuição**.
 
-___
+---
 
 # 4.2. Operadores Lógicos
 
@@ -45,7 +45,7 @@ Existem três operadores lógicos que permitem combinar ou negar expressões boo
 
 - *not (não):* Nega a expressão booleana; o que era True torna-se False e vice-versa.
 
-___
+---
 
 # 4.3. Execução Condicional (if, else, elif)
 

@@ -18,7 +18,7 @@ order: 6
 ---
 > No contexto da programação, uma função é uma sequência nomeada de instruções que executa uma operação de computação.
 
-___
+---
 # 6.1. Definição e Chamada de Funções
 
 Para criar uma nova função, utilizamos a palavra-chave _def_, definindo um cabeçalho (que termina em dois pontos) e um corpo indentado.
@@ -35,7 +35,7 @@ def saudacao():
 # A função só executa quando é chamada
 saudacao()
 ```
-___
+---
 # 6.2. Fluxo de Execução
 
 Para entender como um programa funciona, é preciso seguir a ordem em que as instruções são executadas, chamada de _fluxo de execução_.
@@ -54,7 +54,7 @@ print("Antes da função")
 mostrar_msg()
 print("Depois da função")
 ```
-___
+---
 # 6.3. Parâmetros e Argumentos
 As funções podem exigir valores para realizar seu trabalho.
 
@@ -72,7 +72,7 @@ print_twice('Spam')
 
 Nesse exemplo:
 _spam_ é o argumento e _bruce_ é o parâmetro.
-___
+---
 # 6.4. Variáveis e Parâmetros são Locais
 Variáveis criadas dentro de uma função são _locais_, ou seja, existem apenas enquanto a função está sendo executada. Quando a função termina, essas variáveis são destruídas.
 
@@ -86,7 +86,7 @@ print(cat)  # ERRO
 ```
 
 O erro ocorre porque cat é uma variável local da função e não existe fora dela.
-___
+---
 # 6.5. Funções com Resultado vs. Funções Nulas
 Nem toda função devolve um valor para quem a chamou.
 Funções com Resultado
