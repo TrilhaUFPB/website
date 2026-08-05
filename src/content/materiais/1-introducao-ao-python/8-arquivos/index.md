@@ -30,7 +30,7 @@ Imagine que você criou um programa de lista de tarefas. Você adiciona várias 
 
 >Arquivos permitem que você **salve informações de forma permanente no disco rígido do computador**. Assim, seus dados sobrevivem mesmo depois que o programa é fechado. Pense em situações do dia a dia: salvar o progresso de um jogo, guardar uma lista de contatos, armazenar suas anotações pessoais, ou manter um histórico de gastos mensais. Todos esses casos precisam de arquivos.
 
-# 8.2. Conceitos basicos
+# 8.2. Conceitos básicos
 
 Antes de começarmos a programar, é importante entender alguns conceitos fundamentais.
 

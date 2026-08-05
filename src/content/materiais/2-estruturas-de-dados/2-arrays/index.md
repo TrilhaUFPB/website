@@ -432,7 +432,7 @@ Se você quiser **quebrar uma string em palavras**, você pode usar o método `s
 
 ---
 
-# 2.11. Objetos e valores
+# 2.11. Objetos e Valores
 
 Se executarmos a = 'banana' e b = 'banana', sabemos que a e b se referem a uma string, mas não sabemos se elas se referem à mesma string.
 

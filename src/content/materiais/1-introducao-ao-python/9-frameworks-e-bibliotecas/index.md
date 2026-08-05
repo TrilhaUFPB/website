@@ -14,7 +14,7 @@ order: 9
 - [9.4. Criando sua própria biblioteca](#94-criando-sua-propria-biblioteca)
 - [9.5. O que é um Framework?](#95-o-que-e-um-framework)
 - [9.6. Por que usar um framework?](#96-por-que-usar-um-framework)
-- [9.7. Vantagens de usar um framework](#97-vantagens-principais-de-utilizar-um-framework)
+- [9.7. Vantagens principais de utilizar um framework](#97-vantagens-principais-de-utilizar-um-framework)
 - [9.8. Framework vs. Biblioteca](#98-framework-vs-biblioteca)
 - [9.9. Frameworks Populares](#99-frameworks-populares)
 - [Exemplos práticos de Frameworks em Python](#exemplos-praticos-de-frameworks-em-python)

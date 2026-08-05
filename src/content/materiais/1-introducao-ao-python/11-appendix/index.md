@@ -13,7 +13,7 @@ order: 11
 - [pip – Gerenciador de Pacotes](#pip-gerenciador-de-pacotes)
 - [uv – Alternativa Moderna](#uv-alternativa-moderna)
 - [Resumo dos Comandos](#resumo-dos-comandos)
-- [Complemente o seu aprendizado](#complemente-o-aprendizado)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
 ---
@@ -334,7 +334,7 @@ Se você tem um projeto antigo com `requirements.txt`, o uv é compatível:
 uv pip install -r requirements.txt
 ```
 
-## Resumo dos comandos
+## Resumo dos Comandos
 
 ### venv
 

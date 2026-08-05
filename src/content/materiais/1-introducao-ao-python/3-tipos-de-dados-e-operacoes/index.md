@@ -10,7 +10,7 @@ order: 3
 
 - [3.1. Valores e Tipos](#31-valores-e-tipos)
 - [3.2. Operadores Aritméticos](#32-operadores-aritmeticos)
-- [3.3. Ordem das Operações (PEMDAS)](#33-ordem-das-operacoes)
+- [3.3. Ordem das Operações (PEMDAS)](#33-ordem-das-operacoes-pemdas)
 - [3.4. Operações com Strings](#34-operacoes-com-strings)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
@@ -48,7 +48,7 @@ Operadores são símbolos que representam operações. Além dos operadores mate
 
 ---
 
-# 3.3. Ordem das Operações
+# 3.3. Ordem das Operações (PEMDAS)
 
 Quando uma expressão contém vários operadores, o Python segue a **ordem padrão da matemática**, conhecida pela sigla **PEMDAS**:
 

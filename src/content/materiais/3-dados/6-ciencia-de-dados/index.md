@@ -13,8 +13,8 @@ order: 6
 - [6.3. Pipeline Geral de Machine Learning](#63-pipeline-geral-de-machine-learning)
 - [6.4. Fundamentos Matemáticos do Aprendizado Supervisionado](#64-fundamentos-matematicos-do-aprendizado-supervisionado)
 - [6.5. Regressão Linear](#65-regressao-linear)
-- [6.6. Classificação](#66-classificacao-prever-classe-nao-numero)
-- [6.7. Tipos de Problemas Supervisionados](#67-tipos-de-problemas-supervisionados--essencial)
+- [6.6. Classificação (prever classe, não número)](#66-classificacao-prever-classe-nao-numero)
+- [6.7. Tipos de Problemas Supervisionados](#67-tipos-de-problemas-supervisionados)
 - [6.8. Outros Modelos Supervisionados Clássicos](#68-outros-modelos-supervisionados-classicos)
 - [6.9. Critérios de Avaliação](#69-criterios-de-avaliacao)
 - [6.10. Overfitting, Underfitting e Estratégias de Mitigação](#610-overfitting-underfitting-e-estrategias-de-mitigacao)
@@ -384,7 +384,7 @@ Quando o modelo dá \(p\) alto e erra (ou \(p\) baixo e erra), ele é penalizado
 
 ![Classificação gráfico](/api/materiais-assets/3-dados/6-ciencia-de-dados/assets/classify_example.png)
 
-# 6.7. Tipos de problemas supervisionados — **Essencial**
+# 6.7. Tipos de Problemas Supervisionados
 
 > Como reconhecer o tipo de problema e o que isso muda no treinamento e na avaliação?
 
@@ -403,7 +403,7 @@ Na prática, isso determina três escolhas que sempre andam juntas: **saída do 
 
 
 
-# 6.8. Outros Modelos supervisionados clássicos
+# 6.8. Outros Modelos Supervisionados Clássicos
 
 ## Regressão logística
 
@@ -456,7 +456,7 @@ Redes neurais são uma família de modelos composta por camadas que vão transfo
 
 Elas tendem a brilhar quando existe muito dado e padrões ricos (imagens, texto, áudio). Em dados tabulares pequenos, no entanto, redes neurais nem sempre ganham de boosting/Random Forest e podem overfitar com facilidade se não houver regularização e um bom procedimento de validação.
 
-# 6.9. Critérios de avaliação 
+# 6.9. Critérios de Avaliação
 
 Quando treinamos um modelo, ele “aprende” olhando para o conjunto de treino. O problema é que um modelo pode ir muito bem no treino e ainda assim ir mal no mundo real. Por isso, avaliar em Machine Learning é checar **generalização**: como o modelo se comporta em dados que ele **não viu**.
 
