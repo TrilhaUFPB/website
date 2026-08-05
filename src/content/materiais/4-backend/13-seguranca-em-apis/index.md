@@ -66,9 +66,9 @@ Uma forma direta de aplicar modelo de ameaças é seguir quatro passos.
 
 Escolha um recorte pequeno e claro. Exemplo:
 
-* apenas o fluxo de inscrição em um curso
-* apenas o fluxo de listar cursos e ver detalhes
-* apenas o fluxo de upload de um arquivo
+* Apenas o fluxo de inscrição em um curso
+* Apenas o fluxo de listar cursos e ver detalhes
+* Apenas o fluxo de upload de um arquivo
 
 Escopo pequeno evita que o modelo vire uma lista genérica que não muda nada no projeto.
 
@@ -76,10 +76,10 @@ Escopo pequeno evita que o modelo vire uma lista genérica que não muda nada no
 
 Neste passo você lista o que é valioso e por onde o sistema é acessado.
 
-* Ativos: quais dados ou recursos são críticos aqui
-* Pontos de entrada: quais endpoints e integrações recebem dados
-* Dependências externas: banco, serviços de e-mail, pagamentos, storage, etc.
-* Limites de confiança: onde você deixa de controlar o ambiente e precisa assumir risco
+* **Ativos:** quais dados ou recursos são críticos aqui
+* **Pontos de entrada:** quais endpoints e integrações recebem dados
+* **Dependências externas:** banco, serviços de e-mail, pagamentos, storage, etc.
+* **Limites de confiança:** onde você deixa de controlar o ambiente e precisa assumir risco
 
 ### 3) Levantar ameaças
 
@@ -87,14 +87,14 @@ Agora você olha para o mapa e pergunta: como alguém pode abusar disso?
 
 Um jeito eficiente de pensar é por categorias, como:
 
-* fingir ser outra pessoa ou outro serviço
-* alterar dados no caminho ou no armazenamento
-* negar que fez uma ação porque o sistema não registra direito
-* acessar dados que não deveria
-* derrubar o serviço consumindo recursos
-* conseguir privilégios além do permitido
+* Fingir ser outra pessoa ou outro serviço
+* Alterar dados no caminho ou no armazenamento
+* Negar que fez uma ação porque o sistema não registra direito
+* Acessar dados que não deveria
+* Derrubar o serviço consumindo recursos
+* Conseguir privilégios além do permitido
 
-Você não precisa conhecer nomes de técnicas. O importante é treinar o olhar para essas intenções.
+Você não precisa conhecer nomes de técnicas. O importante é **treinar o olhar** para essas intenções.
 
 ### 4) Decidir mitigações e validar se ficou bom o suficiente
 
@@ -102,8 +102,8 @@ Para cada ameaça importante, você escolhe um controle.
 
 Dois cuidados aqui:
 
-* Mitigação tem custo. Não adianta propor dez controles caros para um endpoint irrelevante.
-* Controle precisa ser verificável. Se você não consegue testar, monitorar ou auditar, ele vira sensação de segurança.
+* **Mitigação tem custo.** Não adianta propor dez controles caros para um endpoint irrelevante.
+* **Controle precisa ser verificável.** Se você não consegue testar, monitorar ou auditar, ele vira sensação de segurança.
 
 O resultado final é uma lista priorizada: o que será tratado agora, o que fica registrado para depois e o que é aceito como risco.
 
@@ -113,36 +113,36 @@ Considere uma API de inscrição em cursos. O recorte é: criar inscrição e co
 
 O que normalmente aparece rápido no modelo:
 
-* Ativo: registros de inscrição e dados pessoais do aluno
-* Ponto de entrada: endpoint que cria inscrição
-* Ameaças plausíveis:
+* **Ativo:** registros de inscrição e dados pessoais do aluno
+* **Ponto de entrada:** endpoint que cria inscrição
+* **Ameaças plausíveis:**
 
-  * criar inscrições em excesso para degradar o serviço
-  * consultar inscrições de outra pessoa
-  * enviar dados malformados para explorar falhas de validação
-* Mitigações típicas:
+  * Criar inscrições em excesso para degradar o serviço
+  * Consultar inscrições de outra pessoa
+  * Enviar dados malformados para explorar falhas de validação
+* **Mitigações típicas:**
 
-  * limites de consumo por cliente
-  * checagem de permissão antes de retornar dados
-  * validação consistente do formato de entrada
-  * logs de auditoria para ações relevantes
+  * Limites de consumo por cliente
+  * Checagem de permissão antes de retornar dados
+  * Validação consistente do formato de entrada
+  * Logs de auditoria para ações relevantes
 
-A utilidade do modelo é transformar uma discussão vaga de segurança em decisões concretas e verificáveis.
+A utilidade do modelo é transformar uma discussão vaga de segurança em **decisões concretas e verificáveis.**
 
 ## Checklist rápido
 
-* Eu consigo dizer qual é o escopo do que estou modelando.
-* Eu consigo listar ativos, pontos de entrada e dependências externas.
-* Eu consigo descrever ameaças como intenções do atacante, não como detalhes de implementação.
-* Eu consigo propor mitigigações que são testáveis e monitoráveis.
-* Eu termino com uma lista priorizada, não com uma lista infinita.
+* Eu consigo dizer qual é o **escopo** do que estou modelando.
+* Eu consigo **listar ativos**, pontos de entrada e dependências externas.
+* Eu consigo **descrever ameaças** como intenções do atacante, não como detalhes de implementação.
+* Eu consigo **propor mitigigações** que são testáveis e monitoráveis.
+* Eu termino com uma **lista priorizada**, não com uma lista infinita.
 
 ---
 # 13.2. OWASP API Security Top 10
 
 Depois de ter um modelo mental de ameaças, você precisa de um mapa prático do que mais dá errado em APIs no mundo real. É exatamente isso que o OWASP API Security Top 10 entrega: uma lista dos riscos mais comuns, com foco em como APIs falham na prática.
 
-A intenção não é decorar a lista. A intenção é treinar o olhar para reconhecer padrões de risco enquanto você projeta e implementa endpoints.
+A intenção não é decorar a lista. A intenção é **treinar o olhar para reconhecer padrões de risco** enquanto você projeta e implementa endpoints.
 
 ## Como usar esta lista
 
@@ -150,11 +150,11 @@ Use o Top 10 como checklist de revisão, não como receita de implementação.
 
 Quando você desenhar uma rota, pergunte:
 
-- isso pode vazar dados de outro usuário
-- isso pode permitir ações sem permissão
-- isso pode ser abusado para derrubar o serviço
-- isso depende de uma configuração frágil
-- isso depende de segredo exposto ou autenticação fraca
+- Isso pode vazar dados de outro usuário
+- Isso pode permitir ações sem permissão
+- Isso pode ser abusado para derrubar o serviço
+- Isso depende de uma configuração frágil
+- Isso depende de segredo exposto ou autenticação fraca
 
 O Top 10 ajuda porque cobre exatamente esse tipo de pergunta recorrente.
 
@@ -224,15 +224,15 @@ Você confia demais no retorno, não valida, não impõe timeouts, não controla
 
 ## O que esta lista te ajuda a priorizar
 
-O Top 10 destaca um padrão que você vai ver muitas vezes: os maiores riscos de APIs costumam vir de autorização incorreta, consumo descontrolado de recursos e integração mal tratada.
+O Top 10 destaca um padrão que você vai ver muitas vezes: os maiores riscos de APIs costumam vir de **autorização incorreta, consumo descontrolado de recursos e integração mal tratada.**
 
 Isso orienta onde colocar atenção mesmo em projetos pequenos:
 
-- autorização por objeto e por função
-- limites de consumo e controle de carga
-- validação de entrada e saída
-- visibilidade do que está exposto
-- rigor ao consumir serviços externos
+- Autorização por objeto e por função
+- Limites de consumo e controle de carga
+- Validação de entrada e saída
+- Visibilidade do que está exposto
+- Rigor ao consumir serviços externos
 
 ## Checklist rápido
 
@@ -246,7 +246,7 @@ Isso orienta onde colocar atenção mesmo em projetos pequenos:
 
 Os tópicos anteriores ajudam a enxergar ameaças e riscos comuns. Agora a pergunta vira: quais princípios básicos guiam decisões seguras em uma API, mesmo antes de você conhecer técnicas avançadas?
 
-A ideia aqui é simples: princípios são regras de projeto que reduzem risco de forma consistente. Eles não substituem implementação, mas evitam erros estruturais.
+A ideia aqui é simples: princípios são regras de projeto que reduzem risco de forma consistente. **Eles não substituem implementação, mas evitam erros estruturais.**
 
 ## Privilégio mínimo
 
