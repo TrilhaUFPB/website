@@ -5,7 +5,20 @@ category: Backend
 order: 15
 ---
 
-# 14.1. Basic Authentication
+## Sumário
+
+- [15.1. Basic Authentication](#151-basic-authentication)
+- [15.2. API Keys](#152-api-keys)
+- [15.3. Sessões e cookies](#153-sessoes-e-cookies)
+- [15.4. JSON Web Tokens (JWT)](#154-json-web-tokens-jwt)
+- [15.5. OAuth 2.0](#155-oauth-20)
+- [15.6. Mutual TLS (mTLS)](#156-mutual-tls-mtls)
+- [15.7. Matriz de Decisão: Qual autenticação escolher?](#157-matriz-de-decisao-qual-autenticacao-escolher)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+- [Referências](#referencias)
+
+# 15.1. Basic Authentication
 
 É a forma mais primitiva de autenticação HTTP. Definida na RFC 7617.
 
@@ -16,10 +29,10 @@ order: 15
 ## Como funciona?
 
 O cliente pega `usuario:senha`, concatena com dois pontos e codifica em Base64.
-*   User: `aladdin`
-*   Pass: `opensesame`
-*   String: `aladdin:opensesame`
-*   Base64: `YWxhZGRpbjpvcGVuc2VzYW1l`
+*   **User:** `aladdin`
+*   **Pass:** `opensesame`
+*   **String:** `aladdin:opensesame`
+*   **Base64:** `YWxhZGRpbjpvcGVuc2VzYW1l`
 
 Header enviado:
 `Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l`
@@ -78,7 +91,7 @@ def read_current_user(credentials: HTTPBasicCredentials = Depends(security)):
 ```
 
 ---
-# 14.2. API Keys
+# 15.2. API Keys
 
 Muito comum para autenticação máquina-máquina (SaaS, APIs Públicas). Você entrega uma chave longa para o desenvolvedor e ele envia em toda requisição.
 
@@ -151,7 +164,7 @@ async def secure_endpoint(user_data: dict = Security(get_api_key)):
 ```
 
 ---
-# 14.3. Sessões e cookies
+# 15.3. Sessões e cookies
 
 O método clássico da web "stateful" (com estado). O servidor cria um espaço na memória para aquele usuário e entrega um "crachá" (Cookie) com o ID da sessão.
 
@@ -198,7 +211,7 @@ response.set_cookie(
 ```
 
 ---
-# 14.4. JSON Web Tokens (JWT)
+# 15.4. JSON Web Tokens (JWT)
 
 O padrão da web moderna e microserviços. É **Stateless** (Sem estado). O servidor não guarda nada na memória. Todo o dado está dentro do token, assinado criptograficamente.
 
@@ -283,7 +296,7 @@ def verify_token(token: str):
 ```
 
 ---
-# 14.5. OAuth 2.0
+# 15.5. OAuth 2.0
 
 OAuth 2.0 não é sobre autenticação (quem você é), é sobre **autorização** (o que você pode acessar). Mas na prática, usamos para "Logar com Google/Facebook".
 
@@ -346,7 +359,7 @@ Um atacante pode iniciar um fluxo de login e enganar você para logar na conta *
 Não tente implementar OAuth 2.0 do zero. Use bibliotecas como `Authlib` ou `python-social-auth`.
 
 ---
-# 14.6. Mutual TLS (mTLS)
+# 15.6. Mutual TLS (mTLS)
 
 Em cenários de altíssima segurança (Zero Trust) ou comunicação entre microserviços sensíveis, não basta o cliente verificar se o servidor é seguro (o cadeado HTTPS). O servidor também quer verificar se o cliente é quem diz ser.
 
@@ -386,7 +399,7 @@ O mTLS adiciona um peso no "Handshake" inicial (troca de chaves). Em conexões d
 *   **Service Mesh:** Ferramentas como Istio implementam mTLS automaticamente, tirando essa complexidade do código da aplicação.
 
 ---
-# 14.7. Matriz de Decisão: Qual autenticação escolher?
+# 15.7. Matriz de Decisão: Qual autenticação escolher?
 
 Não existe "o melhor". Existe o melhor para o seu cenário. Use esta tabela para guiar sua decisão.
 
@@ -422,3 +435,55 @@ Não existe "o melhor". Existe o melhor para o seu cenário. Use esta tabela par
 
 5.  **É um script rápido ou ferramenta de dev?**
     *   **Basic Auth** ou **API Key**.
+
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre Mecanismos de Autenticação, confira os recursos abaixo:
+
+- [API Authentication Explained (Finally) — Basic Auth, Bearer & JWT](https://www.youtube.com/watch?v=I747kI_y9eQ)
+
+```quiz
+- tipo: single
+  pergunta: |
+    Uma SPA em React guarda o JWT no `localStorage` para simplificar o envio do token no header `Authorization`. Meses depois, um atacante consegue injetar um script malicioso na página (uma vulnerabilidade de XSS).
+    Qual é a consequência direta dessa escolha de armazenamento?
+  opcoes:
+    - texto: "Nenhuma, pois o JWT é assinado criptograficamente e não pode ser lido mesmo com um script malicioso rodando na página"
+      correta: false
+      explicacao: "A assinatura do JWT protege contra adulteração do conteúdo, não contra leitura. Qualquer script JS rodando na página, incluindo um malicioso via XSS, consegue ler `localStorage.getItem(...)` normalmente."
+    - texto: "O ataque seria bloqueado automaticamente pela flag Secure, já que o site usa HTTPS"
+      correta: false
+      explicacao: "A flag Secure é uma propriedade de Cookies (exige HTTPS para o cookie trafegar), não do localStorage. Como o token está no localStorage e não em um cookie, essa flag nem se aplica ao cenário."
+    - texto: "O Access Token expiraria antes do atacante conseguir usá-lo, tornando o roubo inofensivo"
+      correta: false
+      explicacao: "O Access Token realmente tem vida curta, mas isso só limita a janela de uso — não impede o roubo em si. Enquanto o token não expira (geralmente minutos), o atacante já consegue se autenticar como o usuário."
+    - texto: "O script malicioso consegue ler o token no localStorage e roubá-lo, permitindo que o atacante se autentique como o usuário"
+      correta: true
+      explicacao: "Correto! Diferente de um Cookie HttpOnly, o `localStorage` é acessível via JavaScript. Se existe XSS na página, o script do atacante consegue ler o token e enviá-lo para si mesmo, se autenticando como a vítima."
+      explicacao_erro: "Pense em quem tem acesso ao localStorage: qualquer JavaScript que rode na página, incluindo o do atacante via XSS. Um Cookie HttpOnly não teria esse problema, pois é bloqueado para leitura via JS — mas não é isso que está sendo usado aqui."
+
+- tipo: single
+  pergunta: |
+    Duas instituições financeiras (cenário Open Banking) precisam garantir que só servidores autorizados, com certificado emitido pela própria organização, consigam se conectar entre si — o HTTPS padrão não é suficiente, pois também querem verificar a identidade do cliente na camada de transporte, antes de qualquer requisição HTTP.
+    Qual mecanismo de autenticação é o mais indicado para esse cenário?
+  opcoes:
+    - texto: "API Keys, pois são simples de implementar e de rotacionar"
+      correta: false
+      explicacao: "API Keys autenticam na camada de aplicação (HTTP), não na camada de transporte. Elas não atendem ao requisito de verificar a identidade do cliente antes mesmo da conexão HTTPS ser estabelecida."
+    - texto: "Sessions/Cookies, pois são um mecanismo maduro e testado em produção"
+      correta: false
+      explicacao: "Sessions/Cookies dependem de um navegador e de um fluxo de login de usuário final — não fazem sentido para comunicação servidor-a-servidor, e não oferecem verificação de identidade na camada de transporte."
+    - texto: "Mutual TLS (mTLS), pois exige um certificado do cliente validado na camada de transporte, antes mesmo da requisição HTTP"
+      correta: true
+      explicacao: "Correto! No mTLS, o servidor verifica o certificado do cliente durante o handshake TLS, antes de qualquer dado HTTP trafegar. Se o certificado não for assinado por uma CA confiável, a conexão é rejeitada de imediato — exatamente o nível de garantia que o cenário exige."
+      explicacao_erro: "Repare que o requisito é verificar a identidade do cliente na camada de transporte, antes do HTTP. Isso é justamente o que o mTLS resolve: o servidor exige e valida o certificado do cliente no handshake TLS, e não depois, via token ou chave na aplicação."
+    - texto: "OAuth 2.0 com Authorization Code, pois delega a autenticação a um provedor confiável"
+      correta: false
+      explicacao: "OAuth 2.0 Authorization Code é pensado para autorizar um usuário final através de um provedor (ex.: login social), não para verificar a identidade mútua entre dois servidores na camada de transporte."
+```
+
+# Referências
+
+- RFC 7617 – The 'Basic' HTTP Authentication Scheme: https://datatracker.ietf.org/doc/html/rfc7617
+- RFC 6749 – The OAuth 2.0 Authorization Framework: https://datatracker.ietf.org/doc/html/rfc6749
+- Introduction to JSON Web Tokens (JWT.io): https://jwt.io/introduction
+- Session Management Cheat Sheet (OWASP): https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html
