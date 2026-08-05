@@ -450,16 +450,16 @@ Para aprofundar seus conhecimentos sobre Mecanismos de Autenticação, confira o
     - texto: "Nenhuma, pois o JWT é assinado criptograficamente e não pode ser lido mesmo com um script malicioso rodando na página"
       correta: false
       explicacao: "A assinatura do JWT protege contra adulteração do conteúdo, não contra leitura. Qualquer script JS rodando na página, incluindo um malicioso via XSS, consegue ler `localStorage.getItem(...)` normalmente."
-    - texto: "O script malicioso consegue ler o token no localStorage e roubá-lo, permitindo que o atacante se autentique como o usuário"
-      correta: true
-      explicacao: "Correto! Diferente de um Cookie HttpOnly, o `localStorage` é acessível via JavaScript. Se existe XSS na página, o script do atacante consegue ler o token e enviá-lo para si mesmo, se autenticando como a vítima."
-      explicacao_erro: "Pense em quem tem acesso ao localStorage: qualquer JavaScript que rode na página, incluindo o do atacante via XSS. Um Cookie HttpOnly não teria esse problema, pois é bloqueado para leitura via JS — mas não é isso que está sendo usado aqui."
     - texto: "O ataque seria bloqueado automaticamente pela flag Secure, já que o site usa HTTPS"
       correta: false
       explicacao: "A flag Secure é uma propriedade de Cookies (exige HTTPS para o cookie trafegar), não do localStorage. Como o token está no localStorage e não em um cookie, essa flag nem se aplica ao cenário."
     - texto: "O Access Token expiraria antes do atacante conseguir usá-lo, tornando o roubo inofensivo"
       correta: false
       explicacao: "O Access Token realmente tem vida curta, mas isso só limita a janela de uso — não impede o roubo em si. Enquanto o token não expira (geralmente minutos), o atacante já consegue se autenticar como o usuário."
+    - texto: "O script malicioso consegue ler o token no localStorage e roubá-lo, permitindo que o atacante se autentique como o usuário"
+      correta: true
+      explicacao: "Correto! Diferente de um Cookie HttpOnly, o `localStorage` é acessível via JavaScript. Se existe XSS na página, o script do atacante consegue ler o token e enviá-lo para si mesmo, se autenticando como a vítima."
+      explicacao_erro: "Pense em quem tem acesso ao localStorage: qualquer JavaScript que rode na página, incluindo o do atacante via XSS. Um Cookie HttpOnly não teria esse problema, pois é bloqueado para leitura via JS — mas não é isso que está sendo usado aqui."
 
 - tipo: single
   pergunta: |
@@ -469,13 +469,13 @@ Para aprofundar seus conhecimentos sobre Mecanismos de Autenticação, confira o
     - texto: "API Keys, pois são simples de implementar e de rotacionar"
       correta: false
       explicacao: "API Keys autenticam na camada de aplicação (HTTP), não na camada de transporte. Elas não atendem ao requisito de verificar a identidade do cliente antes mesmo da conexão HTTPS ser estabelecida."
+    - texto: "Sessions/Cookies, pois são um mecanismo maduro e testado em produção"
+      correta: false
+      explicacao: "Sessions/Cookies dependem de um navegador e de um fluxo de login de usuário final — não fazem sentido para comunicação servidor-a-servidor, e não oferecem verificação de identidade na camada de transporte."
     - texto: "Mutual TLS (mTLS), pois exige um certificado do cliente validado na camada de transporte, antes mesmo da requisição HTTP"
       correta: true
       explicacao: "Correto! No mTLS, o servidor verifica o certificado do cliente durante o handshake TLS, antes de qualquer dado HTTP trafegar. Se o certificado não for assinado por uma CA confiável, a conexão é rejeitada de imediato — exatamente o nível de garantia que o cenário exige."
       explicacao_erro: "Repare que o requisito é verificar a identidade do cliente na camada de transporte, antes do HTTP. Isso é justamente o que o mTLS resolve: o servidor exige e valida o certificado do cliente no handshake TLS, e não depois, via token ou chave na aplicação."
-    - texto: "Sessions/Cookies, pois são um mecanismo maduro e testado em produção"
-      correta: false
-      explicacao: "Sessions/Cookies dependem de um navegador e de um fluxo de login de usuário final — não fazem sentido para comunicação servidor-a-servidor, e não oferecem verificação de identidade na camada de transporte."
     - texto: "OAuth 2.0 com Authorization Code, pois delega a autenticação a um provedor confiável"
       correta: false
       explicacao: "OAuth 2.0 Authorization Code é pensado para autorizar um usuário final através de um provedor (ex.: login social), não para verificar a identidade mútua entre dois servidores na camada de transporte."
