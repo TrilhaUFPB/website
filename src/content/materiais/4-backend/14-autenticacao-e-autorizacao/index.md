@@ -286,6 +286,8 @@ O que isso ilustra: permissões e escopos servem para restringir ações, mas a 
 ## Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre Autenticação e Autorização, confira os seguintes recursos:
 
+- [API Authentication: JWT, OAuth2, and More](https://www.youtube.com/watch?v=xJA8tP74KD0)
+
 ```quiz
 - tipo: single
   pergunta: |
