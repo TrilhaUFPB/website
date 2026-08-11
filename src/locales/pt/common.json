@@ -581,18 +581,31 @@
       {
         "number": "13",
         "category": "dados",
-        "title": "Introdução ao Machine Learning",
-        "description": "Introdução ao Machine Learning: modelos supervisionados, treino, teste e avaliação de performance.",
-        "embedUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?utm_content=DAHAHCMaCH0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "11 de setembro de 2026",
-        "deadline": "17 de setembro de 2026",
+        "title": "Explorando uma Plataforma de Dados na Prática",
+        "description": "Aplicação prática da engenharia de dados para explorar uma plataforma de dados e entender seu uso em um cenário real.",
+        "embedUrl": "https://www.canva.com/design/DAHR8lWfqtU/O-SAjUIKx8Rv49g-Aeo7aA/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHR8lWfqtU/O-SAjUIKx8Rv49g-Aeo7aA/view?utm_content=DAHR8lWfqtU&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "4 de setembro de 2026",
+        "deadline": "10 de setembro de 2026",
         "homework": "Tarefa em breve.",
         "links": [],
         "dateISO": "2026-09-11"
       },
       {
         "number": "14",
+        "category": "dados",
+        "title": "Introdução ao Machine Learning",
+        "description": "Introdução ao Machine Learning: modelos supervisionados, treino, teste e avaliação de performance.",
+        "embedUrl": "",
+        "canvaUrl": "",
+        "date": "11 de setembro de 2026",
+        "deadline": "17 de setembro de 2026",
+        "homework": "Tarefa em breve.",
+        "links": [],
+        "dateISO": "2026-09-18"
+      },
+      {
+        "number": "15",
         "category": "dados",
         "title": "Tópicos Avançados de ML",
         "description": "Tópicos avançados e mini-projeto de Machine Learning. Como aplicar modelos em problemas reais.",
@@ -606,7 +619,7 @@
         "dateISO": "2026-09-18"
       },
       {
-        "number": "15",
+        "number": "16",
         "category": "fullstack",
         "title": "Introdução ao Full Stack",
         "description": "Introdução ao desenvolvimento full stack: o que é um software, redes e os fundamentos de APIs.",
@@ -619,7 +632,7 @@
         "dateISO": "2026-09-25"
       },
       {
-        "number": "16",
+        "number": "17",
         "category": "fullstack",
         "title": "API com FastAPI e Postman",
         "description": "Finalização do backend na prática: API com FastAPI e Postman. Como persistir dados de forma durável.",
@@ -632,7 +645,7 @@
         "dateISO": "2026-10-02"
       },
       {
-        "number": "17",
+        "number": "18",
         "category": "fullstack",
         "title": "Banco de Dados",
         "description": "Banco de dados teórico: modelagem relacional, SQL e como conectar dados ao servidor.",
@@ -645,7 +658,7 @@
         "dateISO": "2026-10-09"
       },
       {
-        "number": "18",
+        "number": "19",
         "category": "fullstack",
         "title": "SQLAlchemy e Integração de Banco",
         "description": "Aprimoramento da API com schemas, base models e SQLAlchemy. Integração completa do banco ao backend.",
@@ -658,14 +671,14 @@
         "dateISO": "2026-10-16"
       },
       {
-        "number": "19",
+        "number": "20",
         "category": "fullstack",
         "title": "Frontend na Prática",
         "description": "Teoria e prática de frontend. O mini-projeto fecha o ciclo com uma aplicação completa.",
         "embedUrl": "",
         "canvaUrl": "",
         "date": "23 de outubro de 2026",
-        "deadline": "31 de outubro de 2026",
+        "deadline": "30 de outubro de 2026",
         "taskType": "miniprojeto",
         "homework": "Mini-Projeto em breve.",
         "links": [],
