@@ -237,6 +237,57 @@ button { font-family: inherit; cursor: pointer; }
 .btn--mint { background: var(--mint); color: var(--midnight); }
 .btn--mint:hover { background: var(--mint-deep); color: #fff; }
 
+/* ============== NOT FOUND ============== */
+.notfound-section {
+  min-height: calc(100vh - var(--nav-h));
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--nav-h) + clamp(48px, 8vw, 96px));
+  padding-bottom: clamp(48px, 8vw, 96px);
+}
+.notfound-container { width: 100%; }
+.notfound-inner {
+  max-width: 780px;
+  border-top: 1px solid var(--rule);
+  padding-top: 32px;
+  position: relative;
+}
+.notfound-inner::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 64px;
+  height: 2px;
+  background: var(--mint);
+}
+.notfound-code {
+  font-family: var(--font-mono);
+  font-size: clamp(64px, 14vw, 180px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--mint);
+  margin-bottom: 8px;
+}
+.notfound-headline {
+  margin: 0;
+  font-size: clamp(36px, 5.5vw, 72px);
+  max-width: 16ch;
+}
+.notfound-lede {
+  margin: 24px 0 0;
+  max-width: 52ch;
+  color: var(--ink-soft);
+  font-size: clamp(16px, 1.6vw, 19px);
+}
+.notfound-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 40px;
+}
+
 /* ============== UTILITIES ============== */
 .tag-dot::before {
   content: "";
@@ -848,7 +899,7 @@ button { font-family: inherit; cursor: pointer; }
   text-decoration: none;
   transition: background .15s ease;
 }
-.aula-scard:hover { background: var(--paper); margin-inline: -24px; padding-inline: 24px; border-radius: var(--radius-s); }
+.aula-scard:hover { background: var(--paper); margin-inline: calc(var(--pad-x) * -1); padding-inline: var(--pad-x); border-radius: var(--radius-s); }
 .aula-scard-num {
   width: 56px;
   height: 56px;
@@ -893,7 +944,7 @@ button { font-family: inherit; cursor: pointer; }
 /* Date-state variants */
 .aula-scard--past { opacity: 0.45; }
 .aula-scard--past:hover { opacity: 0.75; }
-.aula-scard--today { border-bottom-color: transparent; background: color-mix(in srgb, var(--mint-deep) 6%, transparent); border-radius: var(--radius-s); margin-inline: -24px; padding-inline: 24px; }
+.aula-scard--today { border-bottom-color: transparent; background: color-mix(in srgb, var(--mint-deep) 6%, transparent); border-radius: var(--radius-s); margin-inline: calc(var(--pad-x) * -1); padding-inline: var(--pad-x); }
 .aula-scard--today:hover { background: color-mix(in srgb, var(--mint-deep) 10%, transparent); }
 .aula-scard--today .aula-scard-num { background: var(--mint-deep); color: var(--cream); border-color: transparent; }
 
@@ -929,7 +980,7 @@ button { font-family: inherit; cursor: pointer; }
   color: inherit;
   transition: background .15s ease;
 }
-.aulas-group-header:hover { background: color-mix(in srgb, var(--ink) 3%, transparent); margin-inline: -24px; padding-inline: 24px; border-radius: var(--radius-s); }
+.aulas-group-header:hover { background: color-mix(in srgb, var(--ink) 3%, transparent); margin-inline: calc(var(--pad-x) * -1); padding-inline: var(--pad-x); border-radius: var(--radius-s); }
 .aulas-group-chevron {
   display: inline-flex;
   align-items: center;
@@ -1090,6 +1141,30 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: center;
   color: var(--ink-soft);
 }
+.aula-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+}
+.aula-demo-note {
+  color: var(--ink-soft);
+  margin: 0;
+}
+.aula-demo-frame {
+  width: 100%;
+  height: clamp(420px, 68vh, 640px);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+.aula-demo-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
 .aula-canva-link {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -1210,6 +1285,9 @@ button { font-family: inherit; cursor: pointer; }
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: start;
+}
+.aula-tarefa-grid--single {
+  grid-template-columns: 1fr;
 }
 .aula-tarefa-h2 {
   font-size: 18px;

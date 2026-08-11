@@ -12,6 +12,14 @@
     "artigos": "Artigos",
     "aulas": "Aulas"
   },
+  "notFound": {
+    "code": "404",
+    "titleA": "Essa trilha",
+    "titleFlip": "não existe.",
+    "lede": "A página que você procura não existe. Talvez o link esteja quebrado ou o conteúdo tenha mudado de lugar. Vamos te levar de volta ao caminho.",
+    "ctaPrimary": "Voltar ao início",
+    "ctaSecondary": "Ver materiais"
+  },
   "hero": {
     "eyebrow": "Trilha",
     "titleA": "Um caminho prático para",
@@ -315,6 +323,7 @@
     "aboutTitle": "Sobre esta aula",
     "linksTitle": "Materiais úteis",
     "homeworkTitle": "Tarefa",
+    "demoOpen": "Abrir a demo em outra aba",
     "descricaoTitle": "Descrição",
     "submeterTitle": "Submissão",
     "guidelines": {
@@ -459,31 +468,41 @@
         "category": "python",
         "title": "Listas, Filas e Pilhas",
         "description": "Estruturas lineares: arrays/listas, filas e pilhas. Como armazenar e organizar dados em memória.",
-        "embedUrl": "",
-        "canvaUrl": "",
-        "date": "10 de julho de 2026",
-        "deadline": "16 de julho de 2026",
-        "homework": "Tarefa em breve.",
+        "embedUrl": "https://www.canva.com/design/DAGqu5uy3Ak/sqfU70yeOCRc1Kpk88uqSw/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAGqu5uy3Ak/sqfU70yeOCRc1Kpk88uqSw/view?utm_content=DAGqu5uy3Ak&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "17 de julho de 2026",
+        "deadline": "23 de julho de 2026",
+        "noSubmission": true,
+        "homework": "A atividade desta aula é um contest no beecrowd. A correção é automática, não é preciso enviar nada por aqui.\n 1. Acesse a página de torneios do beecrowd: https://judge.beecrowd.com/pt/tournaments\n 2. Faça login na sua conta do beecrowd (crie uma, caso ainda não tenha) e certifique-se de estar em um time.\n 3. Entre no torneio Trilha ED 26.2 usando a senha TRILHETE.\n 4. Resolva as questões do contest diretamente pela plataforma.",
         "links": [
+          {
+            "label": "Torneios do beecrowd",
+            "url": "https://judge.beecrowd.com/pt/tournaments"
+          },
           {
             "label": "Mundo 3: Estruturas Compostas - Curso em Vídeo",
             "url": "https://youtube.com/playlist?list=PLHz_AreHm4dksnH2jVTIVNviIMBVYyFnH&si=y6N-qV0OQF9Qfnbf"
           }
         ],
-        "dateISO": "2026-07-10"
+        "dateISO": "2026-07-17"
       },
       {
         "number": "08",
         "category": "python",
         "title": "Hash, Sets e Complexidade",
         "description": "Tabelas hash, sets e complexidade computacional. Eficiência e escolha da estrutura certa para cada problema.",
-        "embedUrl": "",
-        "canvaUrl": "",
-        "date": "17 de julho de 2026",
-        "deadline": "23 de julho de 2026",
-        "homework": "Tarefa em breve.",
-        "links": [],
-        "dateISO": "2026-07-17"
+        "embedUrl": "https://www.canva.com/design/DAHQTOk2ajk/3oRwmOIRevcJksjoToWN8w/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHQTOk2ajk/3oRwmOIRevcJksjoToWN8w/view?utm_content=DAHQTOk2ajk&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "24 de julho de 2026",
+        "deadline": "30 de julho de 2026",
+        "homework": "A atividade desta aula é um torneio no beecrowd.\n 1. Acesse a página de torneios do beecrowd: https://judge.beecrowd.com/pt/tournaments\n 2. Faça login na sua conta do beecrowd (crie uma, caso ainda não tenha) e certifique-se de estar em um time.\n 3. Entre no torneio 10611 — Estrutura de Dados - aula 2 usando a senha trilhaehtop.\n 4. Resolva e submeta cada questão diretamente pela plataforma do beecrowd.\n 5. Além disso, coloque os arquivos com a resolução de cada exercício em um repositório do GitHub e envie o link desse repositório pelo formulário de submissão à direita.",
+        "links": [
+          {
+            "label": "Torneios do beecrowd",
+            "url": "https://judge.beecrowd.com/pt/tournaments"
+          }
+        ],
+        "dateISO": "2026-07-24"
       },
       {
         "number": "09",
@@ -492,12 +511,24 @@
         "description": "Aula prática em formato de competição. O mini-projeto integra tudo que você aprendeu sobre estruturas de dados.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "24 de julho de 2026",
-        "deadline": "30 de julho de 2026",
+        "date": "31 de julho de 2026",
+        "deadline": "7 de agosto de 2026",
         "taskType": "miniprojeto",
-        "homework": "Mini-Projeto em breve.",
-        "links": [],
-        "dateISO": "2026-07-24"
+        "demoUrl": "https://joaoliveirarruda.github.io/trilhasonora-demo/?embed=1",
+        "demoTitle": "O resultado esperado",
+        "demoNote": "Esta é a solução de referência rodando aqui no navegador: o CLI do mini-projeto, com o catálogo de 60 conteúdos. É exatamente o comportamento que a entrega de vocês precisa reproduzir. Mexam à vontade antes de escrever a primeira linha de código.",
+        "homework": "O mini-projeto é o analisador do catálogo da TrilhaSonora: a classe Catalogo, um CLI interativo e um modo batch que responde 10 mil consultas de uma vez. Zero dependências externas.\n 1. Dê fork no repositório do mini-projeto e trabalhe no seu fork: https://github.com/joaoliveirarruda/miniprojeto-1\n 2. Leia o README do repositório: ele tem o enunciado completo, o schema do catálogo, as sujeiras intencionais do dado, os 16 métodos obrigatórios da classe Catalogo e as 17 regras canônicas que decidem se uma resposta está certa.\n 3. Use a demo acima como referência do resultado esperado enquanto implementam.\n 4. Preencham catalogo.py, main.py e cli.py, gerem o respostas.json rodando o main.py e reescrevam o README.md justificando as decisões de modelagem.\n 5. Envie o link do seu fork pelo formulário à direita. Só o link, nada de zip, nada de email.",
+        "links": [
+          {
+            "label": "Repositório do mini-projeto",
+            "url": "https://github.com/joaoliveirarruda/miniprojeto-1"
+          },
+          {
+            "label": "collections.deque — documentação",
+            "url": "https://docs.python.org/3/library/collections.html#collections.deque"
+          }
+        ],
+        "dateISO": "2026-07-31"
       },
       {
         "number": "10",
@@ -528,11 +559,11 @@
         "description": "Conceitos e prática de análise exploratória de dados com pandas e matplotlib.",
         "embedUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?utm_content=DAHBCznivZs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "7 de agosto de 2026",
-        "deadline": "27 de agosto de 2026",
+        "date": "14 de agosto de 2026",
+        "deadline": "3 de setembro de 2026",
         "homework": "Tarefa em breve.",
         "links": [],
-        "dateISO": "2026-08-07"
+        "dateISO": "2026-08-14"
       },
       {
         "number": "12",
@@ -541,11 +572,11 @@
         "description": "Apresentação e discussão dos notebooks desenvolvidos na tarefa anterior. Refinamento e insights.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "28 de agosto de 2026",
-        "deadline": "3 de setembro de 2026",
+        "date": "4 de setembro de 2026",
+        "deadline": "10 de setembro de 2026",
         "homework": "Tarefa em breve.",
         "links": [],
-        "dateISO": "2026-08-28"
+        "dateISO": "2026-09-04"
       },
       {
         "number": "13",
@@ -554,11 +585,11 @@
         "description": "Introdução ao Machine Learning: modelos supervisionados, treino, teste e avaliação de performance.",
         "embedUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHAHCMaCH0/PyXe12SA5RgEn51XZqCOFA/view?utm_content=DAHAHCMaCH0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "4 de setembro de 2026",
-        "deadline": "10 de setembro de 2026",
+        "date": "11 de setembro de 2026",
+        "deadline": "17 de setembro de 2026",
         "homework": "Tarefa em breve.",
         "links": [],
-        "dateISO": "2026-09-04"
+        "dateISO": "2026-09-11"
       },
       {
         "number": "14",
@@ -567,12 +598,12 @@
         "description": "Tópicos avançados e mini-projeto de Machine Learning. Como aplicar modelos em problemas reais.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "11 de setembro de 2026",
-        "deadline": "17 de setembro de 2026",
+        "date": "18 de setembro de 2026",
+        "deadline": "24 de setembro de 2026",
         "taskType": "miniprojeto",
         "homework": "Mini-Projeto em breve.",
         "links": [],
-        "dateISO": "2026-09-11"
+        "dateISO": "2026-09-18"
       },
       {
         "number": "15",
@@ -581,11 +612,11 @@
         "description": "Introdução ao desenvolvimento full stack: o que é um software, redes e os fundamentos de APIs.",
         "embedUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?utm_content=DAHCdA8c7fI&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "18 de setembro de 2026",
-        "deadline": "24 de setembro de 2026",
+        "date": "25 de setembro de 2026",
+        "deadline": "1 de outubro de 2026",
         "homework": "Tarefa em breve.",
         "links": [],
-        "dateISO": "2026-09-18"
+        "dateISO": "2026-09-25"
       },
       {
         "number": "16",
@@ -594,11 +625,11 @@
         "description": "Finalização do backend na prática: API com FastAPI e Postman. Como persistir dados de forma durável.",
         "embedUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?utm_content=DAHBC_b0Jbs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "25 de setembro de 2026",
-        "deadline": "1 de outubro de 2026",
+        "date": "2 de outubro de 2026",
+        "deadline": "8 de outubro de 2026",
         "homework": "Tarefa em breve.",
         "links": [],
-        "dateISO": "2026-09-25"
+        "dateISO": "2026-10-02"
       },
       {
         "number": "17",
@@ -607,11 +638,11 @@
         "description": "Banco de dados teórico: modelagem relacional, SQL e como conectar dados ao servidor.",
         "embedUrl": "https://www.canva.com/design/DAHIPYNNMlM/gZ7J69hsNILgyqoOJsBing/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHIPYNNMlM/gZ7J69hsNILgyqoOJsBing/view?utm_content=DAHIPYNNMlM&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "2 de outubro de 2026",
-        "deadline": "8 de outubro de 2026",
+        "date": "9 de outubro de 2026",
+        "deadline": "15 de outubro de 2026",
         "homework": "Tarefa em breve.",
         "links": [],
-        "dateISO": "2026-10-02"
+        "dateISO": "2026-10-09"
       },
       {
         "number": "18",
@@ -620,11 +651,11 @@
         "description": "Aprimoramento da API com schemas, base models e SQLAlchemy. Integração completa do banco ao backend.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "9 de outubro de 2026",
-        "deadline": "15 de outubro de 2026",
+        "date": "16 de outubro de 2026",
+        "deadline": "22 de outubro de 2026",
         "homework": "Tarefa em breve.",
         "links": [],
-        "dateISO": "2026-10-09"
+        "dateISO": "2026-10-16"
       },
       {
         "number": "19",
@@ -633,12 +664,12 @@
         "description": "Teoria e prática de frontend. O mini-projeto fecha o ciclo com uma aplicação completa.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "16 de outubro de 2026",
-        "deadline": "24 de outubro de 2026",
+        "date": "23 de outubro de 2026",
+        "deadline": "31 de outubro de 2026",
         "taskType": "miniprojeto",
         "homework": "Mini-Projeto em breve.",
         "links": [],
-        "dateISO": "2026-10-16"
+        "dateISO": "2026-10-23"
       }
     ],
     "form": {
