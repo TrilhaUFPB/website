@@ -508,8 +508,17 @@
         "canvaUrl": "https://www.canva.com/design/DAHLV2G9YO0/5bx-5OZsT2mNbsUo6jxHzw/view?utm_content=DAHLV2G9YO0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "31 de julho de 2026",
         "deadline": "6 de agosto de 2026",
-        "homework": "Tarefa em breve.",
-        "links": [],
+        "homework": "1. Clone o repositório da atividade e leia o Guia do Aluno.\n2. Construa o pipeline da loja Boa Compra seguindo as camadas landing → bronze → silver → gold.\n3. Implemente as funções marcadas com TODO para ingestão, limpeza, padronização, agregação e ETL reverso.\n4. Execute os scripts verificar_*.py até que todos exibam TUDO CERTO!.\n5. Ao final, execute streamlit run application/app.py para visualizar o relatório. Não utilize pandas: a atividade deve ser feita com Python puro e a biblioteca padrão.",
+        "links": [
+          {
+            "label": "Repositório da atividade — Engenharia de Dados 101",
+            "url": "https://github.com/joaovictor42/engenharia-de-dados-101"
+          },
+          {
+            "label": "Guia do Aluno",
+            "url": "https://github.com/joaovictor42/engenharia-de-dados-101/blob/main/docs/GUIA_DO_ALUNO.md"
+          }
+        ],
         "dateISO": "2026-07-31"
       },
       {

@@ -509,8 +509,17 @@
         "canvaUrl": "https://www.canva.com/design/DAHLV2G9YO0/5bx-5OZsT2mNbsUo6jxHzw/view?utm_content=DAHLV2G9YO0&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
         "date": "July 31, 2026",
         "deadline": "August 6, 2026",
-        "homework": "Homework coming soon.",
-        "links": [],
+        "homework": "1. Clone the activity repository and read the Student Guide.\n2. Build the Boa Compra store pipeline following the landing → bronze → silver → gold layers.\n3. Implement the functions marked with TODO for ingestion, cleaning, standardization, aggregation, and reverse ETL.\n4. Run the verificar_*.py scripts until they all display TUDO CERTO!.\n5. Finally, run streamlit run application/app.py to view the report. Do not use pandas: complete the activity with pure Python and the standard library.",
+        "links": [
+          {
+            "label": "Activity repository — Data Engineering 101",
+            "url": "https://github.com/joaovictor42/engenharia-de-dados-101"
+          },
+          {
+            "label": "Student Guide",
+            "url": "https://github.com/joaovictor42/engenharia-de-dados-101/blob/main/docs/GUIA_DO_ALUNO.md"
+          }
+        ],
         "dateISO": "2026-07-31"
       },
       {
