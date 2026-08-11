@@ -83,7 +83,7 @@ export const GabrielCarvalho: Person = {
     course: "Engenharia de Software (IFPB)",
     semester: "2",
     role: "Software Engineer",
-    company: "Brief",
+    company: "Sable",
     link: "https://www.linkedin.com/in/gabrielcarvvlho/",
     photo: "/assets/pessoas/2024.2/gabriel.jpg",
     class: "2024.2",

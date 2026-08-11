@@ -12,6 +12,14 @@
     "artigos": "Papers",
     "aulas": "Classes"
   },
+  "notFound": {
+    "code": "404",
+    "titleA": "This trail",
+    "titleFlip": "doesn't exist.",
+    "lede": "The page you're looking for doesn't exist. The link may be broken or the content may have moved. Let's get you back on track.",
+    "ctaPrimary": "Back to home",
+    "ctaSecondary": "Browse materials"
+  },
   "hero": {
     "eyebrow": "Trilha",
     "titleA": "A practical path to",
@@ -316,6 +324,7 @@
     "aboutTitle": "About this class",
     "linksTitle": "Useful links",
     "homeworkTitle": "Homework",
+    "demoOpen": "Open the demo in a new tab",
     "descricaoTitle": "Description",
     "submeterTitle": "Submission",
     "guidelines": {
@@ -460,31 +469,41 @@
         "category": "python",
         "title": "Lists, Queues, and Stacks",
         "description": "Linear structures: arrays/lists, queues, and stacks. How to store and organize data in memory.",
-        "embedUrl": "",
-        "canvaUrl": "",
-        "date": "July 10, 2026",
-        "deadline": "July 16, 2026",
-        "homework": "Homework coming soon.",
+        "embedUrl": "https://www.canva.com/design/DAGqu5uy3Ak/sqfU70yeOCRc1Kpk88uqSw/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAGqu5uy3Ak/sqfU70yeOCRc1Kpk88uqSw/view?utm_content=DAGqu5uy3Ak&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "July 17, 2026",
+        "deadline": "July 23, 2026",
+        "noSubmission": true,
+        "homework": "This class's activity is a beecrowd contest. Grading is automatic, so there is nothing to submit here.\n 1. Go to the beecrowd tournaments page: https://judge.beecrowd.com/pt/tournaments\n 2. Log in to your beecrowd account (create one if you don't have it yet) and make sure you belong to a team.\n 3. Join the tournament Trilha ED 26.2 using the password TRILHETE.\n 4. Solve the contest problems directly on the platform.",
         "links": [
+          {
+            "label": "beecrowd Tournaments",
+            "url": "https://judge.beecrowd.com/pt/tournaments"
+          },
           {
             "label": "Mundo 3: Estruturas Compostas - Curso em Vídeo (Portuguese)",
             "url": "https://youtube.com/playlist?list=PLHz_AreHm4dksnH2jVTIVNviIMBVYyFnH&si=y6N-qV0OQF9Qfnbf"
           }
         ],
-        "dateISO": "2026-07-10"
+        "dateISO": "2026-07-17"
       },
       {
         "number": "08",
         "category": "python",
         "title": "Hash Tables, Sets, and Complexity",
         "description": "Hash tables, sets, and computational complexity. Efficiency and choosing the right structure for each problem.",
-        "embedUrl": "",
-        "canvaUrl": "",
-        "date": "July 17, 2026",
-        "deadline": "July 23, 2026",
-        "homework": "Homework coming soon.",
-        "links": [],
-        "dateISO": "2026-07-17"
+        "embedUrl": "https://www.canva.com/design/DAHQTOk2ajk/3oRwmOIRevcJksjoToWN8w/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHQTOk2ajk/3oRwmOIRevcJksjoToWN8w/view?utm_content=DAHQTOk2ajk&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "date": "July 24, 2026",
+        "deadline": "July 30, 2026",
+        "homework": "This class's activity is a beecrowd tournament.\n 1. Go to the beecrowd tournaments page: https://judge.beecrowd.com/pt/tournaments\n 2. Log in to your beecrowd account (create one if you don't have it yet) and make sure you belong to a team.\n 3. Join tournament 10611 — Estrutura de Dados - aula 2 using the password trilhaehtop.\n 4. Solve and submit each problem directly on the beecrowd platform.\n 5. In addition, put the files with the solution to each exercise in a GitHub repository and send that repository link through the submission form on the right.",
+        "links": [
+          {
+            "label": "beecrowd Tournaments",
+            "url": "https://judge.beecrowd.com/pt/tournaments"
+          }
+        ],
+        "dateISO": "2026-07-24"
       },
       {
         "number": "09",
@@ -493,12 +512,24 @@
         "description": "Hands-on class in competition format. The mini-project brings together everything you've learned about data structures.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "July 24, 2026",
-        "deadline": "July 30, 2026",
+        "date": "July 31, 2026",
+        "deadline": "August 7, 2026",
         "taskType": "miniprojeto",
-        "homework": "Mini-Project coming soon.",
-        "links": [],
-        "dateISO": "2026-07-24"
+        "demoUrl": "https://joaoliveirarruda.github.io/trilhasonora-demo/?embed=1",
+        "demoTitle": "The expected result",
+        "demoNote": "This is the reference solution running right here in your browser: the mini-project CLI, loaded with the 60-item catalog. It is exactly the behavior your submission has to reproduce. Play with it before writing your first line of code.",
+        "homework": "The mini-project is the TrilhaSonora catalog analyzer: the Catalogo class, an interactive CLI and a batch mode that answers 10,000 queries in one run. Zero external dependencies.\n 1. Fork the mini-project repository and work on your fork: https://github.com/joaoliveirarruda/miniprojeto-1\n 2. Read the repository README: it has the full brief, the catalog schema, the intentional data messiness, the 16 required methods of the Catalogo class and the 17 canonical rules that decide whether an answer is correct.\n 3. Use the demo above as the reference for the expected result while you implement.\n 4. Fill in catalogo.py, main.py and cli.py, generate respostas.json by running main.py, and rewrite README.md justifying your modeling decisions.\n 5. Submit the link to your fork through the form on the right. Just the link — no zip, no email.",
+        "links": [
+          {
+            "label": "Mini-project repository",
+            "url": "https://github.com/joaoliveirarruda/miniprojeto-1"
+          },
+          {
+            "label": "collections.deque — docs",
+            "url": "https://docs.python.org/3/library/collections.html#collections.deque"
+          }
+        ],
+        "dateISO": "2026-07-31"
       },
       {
         "number": "10",
@@ -529,11 +560,11 @@
         "description": "Concepts and practice of exploratory data analysis with pandas and matplotlib.",
         "embedUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?utm_content=DAHBCznivZs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "August 7, 2026",
-        "deadline": "August 27, 2026",
+        "date": "August 14, 2026",
+        "deadline": "September 3, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-08-07"
+        "dateISO": "2026-08-14"
       },
       {
         "number": "12",
@@ -542,11 +573,11 @@
         "description": "Presentation and discussion of notebooks from the previous assignment. Refinement and insights.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "August 28, 2026",
-        "deadline": "September 3, 2026",
+        "date": "September 4, 2026",
+        "deadline": "September 10, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-08-28"
+        "dateISO": "2026-09-04"
       },
       {
         "number": "13",
@@ -559,7 +590,7 @@
         "deadline": "September 10, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-09-04"
+        "dateISO": "2026-09-11"
       },
       {
         "number": "14",
@@ -572,7 +603,7 @@
         "deadline": "September 17, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-09-11"
+        "dateISO": "2026-09-18"
       },
       {
         "number": "15",

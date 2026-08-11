@@ -23,10 +23,30 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://otrilha.com';
+const description =
+  'O Trilha é um programa gratuito feito por estudantes da UFPB para apoiar quem está chegando ao Centro de Informática.';
+
 export const metadata: Metadata = {
-  title: 'Trilha',
-  description:
-    'O Trilha é um programa gratuito feito por estudantes da UFPB para apoiar quem está chegando ao Centro de Informática.',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Trilha',
+    template: '%s | Trilha',
+  },
+  description,
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: siteUrl,
+    siteName: 'Trilha',
+    title: 'Trilha',
+    description,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Trilha',
+    description,
+  },
 };
 
 export default function RootLayout({
