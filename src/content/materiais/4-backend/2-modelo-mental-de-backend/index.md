@@ -1196,7 +1196,7 @@ O ganho prático:
 
 ---
 
-## Complemente o Aprendizado
+# Complemente o Aprendizado
 Para aprofundar seus conhecimentos sobre cliente-servidor, APIs e arquitetura backend, confira os recursos abaixo, organizados por tópico:
 
 **2.1. Cliente–Servidor**
