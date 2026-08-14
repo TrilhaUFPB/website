@@ -557,12 +557,22 @@
         "category": "dados",
         "title": "Análise Exploratória de Dados",
         "description": "Conceitos e prática de análise exploratória de dados com pandas e matplotlib.",
-        "embedUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHBCznivZs/KwjP6zx1W-DSx_kOyn6dUg/view?utm_content=DAHBCznivZs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "embedUrl": "https://www.canva.com/design/DAHACu4IEG8/b1gsp8ruqDxZPIVKGdzyLA/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHACu4IEG8/b1gsp8ruqDxZPIVKGdzyLA/view",
         "date": "14 de agosto de 2026",
         "deadline": "3 de setembro de 2026",
-        "homework": "Tarefa em breve.",
-        "links": [],
+        
+        "homework": "Atividade EDA possui dois links:\n1 - Notebook da atividade onde vão colocar em pratica os conceitos passados em aula como matplotlib, seaborn e pandas.\n2 - Notebook que foi utilizado como exemplo e pode ser usado como base e material de estudo\nQualquer dúvida podem entrar em contato com a organização. Boa atividade!!",
+        "links": [
+          {
+            "label": "JupyterNotebook da atividade — Análise Exploratória de Dado",
+            "url": "https://colab.research.google.com/drive/1VyJLMp63gIFUo8PxTEmvJjlhhJgw0jXV?usp=sharing"
+          },
+          {
+            "label": "JupyterNotebook — Titanic",
+            "url": "https://colab.research.google.com/drive/1BHVM3F8kM-AEknrAcmnpYzkRbddmzfm7?usp=sharing"
+          }
+        ],
         "dateISO": "2026-08-14"
       },
       {
