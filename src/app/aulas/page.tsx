@@ -15,6 +15,7 @@ type Aula = {
   dateISO?: string;
   deadline?: string;
   taskType?: string;
+  openable?: boolean;
 };
 
 function getDateState(dateISO?: string): 'past' | 'today' | 'upcoming' {
@@ -182,12 +183,9 @@ export default function AulasPage() {
                             const hasSlide = Boolean(aula.embedUrl);
                             const isMini = aula.taskType === 'miniprojeto';
                             const dateState = getDateState(aula.dateISO);
-                            return (
-                              <Link
-                                key={aula.number}
-                                href={`/aulas/${aula.number}`}
-                                className={`aula-scard aula-scard--${dateState}`}
-                              >
+                            const cardClassName = `aula-scard aula-scard--${dateState}`;
+                            const cardContent = (
+                              <>
                                 <div className="aula-scard-num">
                                   <span>{aula.number}</span>
                                 </div>
@@ -221,7 +219,27 @@ export default function AulasPage() {
                                   </span>
                                 </div>
 
-                                <span className="aula-scard-arrow">→</span>
+                                {aula.openable !== false && (
+                                  <span className="aula-scard-arrow" aria-hidden="true">→</span>
+                                )}
+                              </>
+                            );
+
+                            return aula.openable === false ? (
+                              <div
+                                key={aula.number}
+                                className={`${cardClassName} aula-scard--static`}
+                                role="article"
+                              >
+                                {cardContent}
+                              </div>
+                            ) : (
+                              <Link
+                                key={aula.number}
+                                href={`/aulas/${aula.number}`}
+                                className={cardClassName}
+                              >
+                                {cardContent}
                               </Link>
                             );
                           })}
