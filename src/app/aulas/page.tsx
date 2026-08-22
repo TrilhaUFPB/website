@@ -171,11 +171,10 @@ export default function AulasPage() {
                       <motion.div
                         id={`aulas-group-body-${category}`}
                         className="aulas-group-body"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.28, ease: [0.2, 0.8, 0.3, 1] }}
-                        style={{ overflow: 'hidden' }}
                       >
                         <div className="aulas-group-inner">
                           {items.map((aula) => {
