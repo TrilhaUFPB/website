@@ -44,6 +44,7 @@ type Aula = {
   deadline?: string;
   taskType?: string;
   noSubmission?: boolean;
+  openable?: boolean;
   demoUrl?: string;
   demoTitle?: string;
   demoNote?: string;
@@ -71,6 +72,7 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
   const edicoes = ['2025.2', '2026.1'];
 
   if (!aula) return null;
+  if (aula.openable === false) return null;
 
   const isMini = aula.taskType === 'miniprojeto';
   const taskTitle = isMini ? t('aulas.miniprojetoTitle') : t('aulas.homeworkTitle');

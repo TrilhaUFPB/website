@@ -576,15 +576,14 @@
       {
         "number": "12",
         "category": "dados",
-        "title": "Notebook Presentations",
-        "description": "Presentation and discussion of notebooks from the previous assignment. Refinement and insights.",
+        "title": "Conversation circle",
+        "description": "A space for conversation and sharing experiences about the journey through the course.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "August 28, 2026",
-        "deadline": "September 3, 2026",
-        "homework": "Homework coming soon.",
+        "date": "September 4, 2026",
         "links": [],
-        "dateISO": "2026-08-28"
+        "dateISO": "2026-09-04",
+        "openable": false
       },
       {
         "number": "13",
@@ -593,11 +592,11 @@
         "description": "A practical application of data engineering to explore a data platform and understand its use in a real-world scenario.",
         "embedUrl": "https://www.canva.com/design/DAHR8lWfqtU/O-SAjUIKx8Rv49g-Aeo7aA/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHR8lWfqtU/O-SAjUIKx8Rv49g-Aeo7aA/view?utm_content=DAHR8lWfqtU&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "September 4, 2026",
-        "deadline": "September 10, 2026",
+        "date": "September 11, 2026",
+        "deadline": "September 17, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-09-04"
+        "dateISO": "2026-09-11"
       },
       {
         "number": "14",
@@ -606,11 +605,11 @@
         "description": "Introduction to Machine Learning: supervised models, training, testing, and performance evaluation.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "September 11, 2026",
-        "deadline": "September 17, 2026",
+        "date": "September 18, 2026",
+        "deadline": "September 24, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-09-11"
+        "dateISO": "2026-09-18"
       },
       {
         "number": "15",
@@ -619,12 +618,12 @@
         "description": "Advanced topics and Machine Learning mini-project. How to apply models to real-world problems.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "September 18, 2026",
-        "deadline": "September 24, 2026",
+        "date": "September 25, 2026",
+        "deadline": "October 1, 2026",
         "taskType": "miniprojeto",
         "homework": "Mini-Project coming soon.",
         "links": [],
-        "dateISO": "2026-09-18"
+        "dateISO": "2026-09-25"
       },
       {
         "number": "16",
@@ -633,11 +632,11 @@
         "description": "Introduction to full stack development: what software is, networks, and the fundamentals of APIs.",
         "embedUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?utm_content=DAHCdA8c7fI&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "September 25, 2026",
-        "deadline": "October 1, 2026",
+        "date": "October 2, 2026",
+        "deadline": "October 8, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-09-25"
+        "dateISO": "2026-10-02"
       },
       {
         "number": "17",
@@ -646,11 +645,11 @@
         "description": "Backend in practice: API with FastAPI and Postman. How to persist data durably.",
         "embedUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?utm_content=DAHBC_b0Jbs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "October 2, 2026",
-        "deadline": "October 8, 2026",
+        "date": "October 9, 2026",
+        "deadline": "October 15, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-10-02"
+        "dateISO": "2026-10-09"
       },
       {
         "number": "18",
@@ -659,11 +658,11 @@
         "description": "Database theory: relational modeling, SQL, and connecting data to the server.",
         "embedUrl": "https://www.canva.com/design/DAHIPYNNMlM/gZ7J69hsNILgyqoOJsBing/view?embed",
         "canvaUrl": "https://www.canva.com/design/DAHIPYNNMlM/gZ7J69hsNILgyqoOJsBing/view?utm_content=DAHIPYNNMlM&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
-        "date": "October 9, 2026",
-        "deadline": "October 15, 2026",
+        "date": "October 16, 2026",
+        "deadline": "October 22, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-10-09"
+        "dateISO": "2026-10-16"
       },
       {
         "number": "19",
@@ -672,11 +671,11 @@
         "description": "API refinement with schemas, base models, and SQLAlchemy. Full integration of the database with the backend.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "October 16, 2026",
-        "deadline": "October 22, 2026",
+        "date": "October 23, 2026",
+        "deadline": "October 29, 2026",
         "homework": "Homework coming soon.",
         "links": [],
-        "dateISO": "2026-10-16"
+        "dateISO": "2026-10-23"
       },
       {
         "number": "20",
@@ -685,12 +684,12 @@
         "description": "Frontend theory and practice. The mini-project closes the cycle with a complete application.",
         "embedUrl": "",
         "canvaUrl": "",
-        "date": "October 23, 2026",
-        "deadline": "October 30, 2026",
+        "date": "October 30, 2026",
+        "deadline": "November 6, 2026",
         "taskType": "miniprojeto",
         "homework": "Mini-Project coming soon.",
         "links": [],
-        "dateISO": "2026-10-23"
+        "dateISO": "2026-10-30"
       }
     ],
     "form": {
