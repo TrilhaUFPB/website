@@ -1,8 +1,28 @@
 ---
 title: 4. JSON e Contratos de API
-description: Introdução a JSON e contratatos
+subtitle: JSON, serialização e contratos estáveis para APIs
+description: Aprenda a estruturar JSON corretamente, entender serialização e deserialização, definir contratos de entrada e saída, evoluir APIs sem quebrar clientes e documentar tudo com OpenAPI.
 category: Backend
 order: 5
+---
+
+## Sumário
+
+- [4.0. Visão Geral: Dados e Contratos](#40-visao-geral-dados-e-contratos)
+- [4.1. JSON como formato de troca de dados](#41-json-como-formato-de-troca-de-dados)
+- [4.2. Tipos, estruturas e armadilhas comuns](#42-tipos-estruturas-e-armadilhas-comuns)
+- [4.3. Serialização e deserialização](#43-serializacao-e-deserializacao)
+- [4.4. Contratos de entrada e saída](#44-contratos-de-entrada-e-saida)
+- [4.5. Evolução de contratos e compatibilidade](#45-evolucao-de-contratos-e-compatibilidade)
+- [4.6. OpenAPI como contrato formal](#46-openapi-como-contrato-formal)
+- [4.7. Modelagem consistente de erros](#47-modelagem-consistente-de-erros)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+---
+
+> Um front-end em JavaScript e um back-end em Python só conseguem trocar dados porque concordam em falar a mesma língua: JSON. Mas concordar no formato não é suficiente, pois é preciso um contrato claro sobre o que cada lado promete enviar e esperar receber.
+
 ---
 
 # 4.0. Visão Geral: Dados e Contratos
@@ -10,8 +30,6 @@ order: 5
 Bem-vindo à **Parte 2** da trilha. Na Parte 1, entendemos como o HTTP funciona (o "transporte"). Agora, vamos focar na **carga** que esse transporte leva.
 
 Em um sistema de backend, não basta conectar cabos; é preciso garantir que os dois lados falem a mesma língua e respeitem as mesmas regras. É aqui que entram os **Dados** e os **Contratos**.
-
-
 
 ## O que você vai aprender neste módulo?
 
@@ -32,8 +50,6 @@ Este módulo (Seção 4) foi desenhado para te levar do "zero" ao "profissional"
 ### O Tratamento de Problemas
 *   **Seção 4.7:** Por fim, vamos padronizar como sua API diz que algo deu errado. Modelagem de erros consistente é o que separa APIs amadoras de APIs profissionais.
 
-
-
 ## Por que isso é importante?
 
 Muitos desenvolvedores focam apenas em "fazer o código funcionar". Mas em sistemas distribuídos (microserviços, frontend separado, mobile), o **acoplamento** se dá pelos dados.
@@ -43,6 +59,7 @@ Se você muda o formato de um dado sem aviso, o sistema quebra. Se você não va
 Este módulo vai te dar a mentalidade de **"API First"**: pensar no contrato e nos dados antes mesmo de escrever a primeira linha de lógica de negócio.
 
 ---
+
 # 4.1. JSON como formato de troca de dados
 
 No desenvolvimento de backend moderno, sistemas precisam conversar entre si. O **JSON (JavaScript Object Notation)** se tornou a língua universal para essa conversa.
@@ -59,8 +76,6 @@ Antes de entrar na estrutura, é importante conhecer os "dados de identidade" de
 *   **Padronização:** RFC 8259.
 
 Embora tenha "JavaScript" no nome, o JSON hoje é **agnóstico de linguagem**. Isso significa que Python, Java, Go, Ruby, C# e praticamente qualquer outra linguagem moderna conseguem ler e gerar JSON nativamente.
-
-
 
 ## Estrutura do JSON
 
@@ -87,8 +102,6 @@ O JSON é construído sobre duas estruturas fundamentais:
 }
 ```
 
-
-
 ## Por que JSON domina o mercado
 
 ### 1) Simplicidade e Leveza
@@ -100,8 +113,6 @@ Como nasceu do JavaScript, qualquer navegador processa JSON nativamente. No back
 ### 3) Legibilidade
 Um ser humano consegue abrir um arquivo JSON e entender o conteúdo sem precisar de ferramentas complexas.
 
-
-
 ## Contexto Histórico e Outros Usos
 
 O JSON foi popularizado no início dos anos 2000 por Douglas Crockford. Na época, o XML (com SOAP) era o padrão corporativo, mas era pesado e difícil de manipular no navegador (AJAX). O JSON surgiu como uma alternativa leve.
@@ -111,8 +122,6 @@ Hoje, além de APIs, o JSON é usado para:
 *   **Bancos de Dados NoSQL:** MongoDB e CouchDB armazenam dados em formatos que são essencialmente JSON (ou BSON).
 *   **Logs:** Logs estruturados em servidores geralmente são salvos linha a linha como JSON para facilitar a busca.
 
-
-
 ## Regras de Ouro (Sintaxe Estrita)
 
 Diferente do JavaScript, o JSON é **estrito**:
@@ -120,8 +129,6 @@ Diferente do JavaScript, o JSON é **estrito**:
 *   **Aspas:** Chaves e Strings **devem** usar aspas duplas (`"`). Aspas simples (`'`) causam erro.
 *   **Vírgulas:** Não é permitido vírgula após o último elemento (trailing comma).
 *   **Comentários:** JSON **não suporta** comentários. Se você precisa comentar, o dado provavelmente não deveria estar ali ou você deveria usar um campo de documentação.
-
-
 
 ## Exemplo guiado: De objeto para JSON
 
@@ -143,8 +150,6 @@ Quando esse dado viaja pela rede, ele é convertido para uma **string** no forma
 
 Note que `False` (Python) virou `false` (JSON). Essa conversão de tipos é automática, mas exige atenção, como veremos no próximo tópico.
 
-
-
 ## Checklist rápido
 
 *   [ ] Entendi que JSON é texto (string) usado para transportar dados.
@@ -153,8 +158,6 @@ Note que `False` (Python) virou `false` (JSON). Essa conversão de tipos é auto
 *   [ ] Lembro que chaves precisam de aspas duplas.
 *   [ ] Sei que não posso deixar vírgula sobrando no final.
 
-
-
 ## Fontes
 
 *   **[JSON.org]:** Especificação oficial (json.org)
@@ -162,11 +165,10 @@ Note que `False` (Python) virou `false` (JSON). Essa conversão de tipos é auto
 *   **[FAST]:** FastAPI e JSON (fastapi.tiangolo.com)
 
 ---
+
 # 4.2. Tipos, estruturas e armadilhas comuns
 
 O JSON parece simples, mas a simplicidade esconde armadilhas que podem causar bugs sérios em produção. O problema principal é a **conversão de tipos**: o que é um número no seu banco de dados nem sempre chega igual no JSON, e vice-versa.
-
-
 
 ## Os Tipos de Dados do JSON
 
@@ -178,8 +180,6 @@ O padrão JSON define apenas 6 tipos de dados. Todo o resto é invenção ou con
 4.  **Null:** `null` (Representa ausência de valor).
 5.  **Object:** `{ ... }`.
 6.  **Array:** `[ ... ]`.
-
-
 
 ## Armadilhas Comuns (Onde os bugs moram)
 
@@ -218,8 +218,6 @@ Nunca confie em `floats` para dinheiro devido a erros de arredondamento binário
 *   Envie como inteiros (centavos): `1500` (para R$ 15,00).
 *   Ou envie como String: `"15.00"`.
 
-
-
 ## Exemplo guiado: Um JSON robusto
 
 Vamos ver um JSON mal formatado e como corrigi-lo.
@@ -242,16 +240,12 @@ Vamos ver um JSON mal formatado e como corrigi-lo.
 }
 ```
 
-
-
 ## Checklist rápido
 
 *   [ ] Estou usando ISO 8601 para datas?
 *   [ ] IDs gigantes e valores monetários estão protegidos (string ou inteiros)?
 *   [ ] Defini se listas vazias retornam `[]` ou `null`? (Prefira `[]`).
 *   [ ] Estou tratando a diferença entre `null` e "chave inexistente"?
-
-
 
 ## Fontes
 
@@ -260,11 +254,10 @@ Vamos ver um JSON mal formatado e como corrigi-lo.
 *   **[Google Style]:** JSON Style Guide (Google)
 
 ---
+
 # 4.3. Serialização e deserialização
 
 O seu código não "fala" JSON nativamente. Ele fala objetos Python (dicionários, listas, classes). Para que o dado saia da memória do seu servidor e viaje pela rede, ocorre um processo de transformação.
-
-
 
 ## O Conceito
 
@@ -278,16 +271,12 @@ O seu código não "fala" JSON nativamente. Ele fala objetos Python (dicionário
 *   **De:** `String` (JSON/Wire)
 *   **Para:** `Object` (Python/Memory)
 
-
-
 ## O Custo Oculto
 
 Serializar e deserializar custa CPU. Em APIs de altíssimo tráfego, esse processo pode ser o gargalo.
 Frameworks modernos como **FastAPI** (usando Pydantic) são otimizados para fazer isso rápido, mas é importante saber que "não é de graça".
 
 Enviar campos desnecessários no JSON significa gastar CPU à toa serializando dados que ninguém vai usar.
-
-
 
 ## Convenções de Nomes (Case Styles)
 
@@ -302,8 +291,6 @@ Se seu backend é Python, é comum a API aceitar/retornar `snake_case` para evit
 
 > **Regra:** Escolha um padrão e siga-o na API inteira. Não misture `user_id` com `userId`.
 
-
-
 ## Segurança na Deserialização
 
 Deserializar dados é perigoso. Você está pegando uma entrada externa e instanciando objetos na memória do seu servidor.
@@ -312,8 +299,6 @@ Deserializar dados é perigoso. Você está pegando uma entrada externa e instan
 1.  **Injeção de Objetos:** Em algumas linguagens (como Java ou Python com `pickle`), deserializar cegamente pode permitir execução de código. **Com JSON padrão (`json.loads`), isso é seguro quanto à execução**, mas ainda exige validação.
 2.  **Negação de Serviço (DoS):** Um atacante pode enviar um JSON aninhado profundamente (ex: 10.000 arrays dentro de arrays) para estourar a pilha de memória do seu parser.
 3.  **Tipagem Incorreta:** Se você espera um número e recebe um objeto, seu código pode quebrar se não validar.
-
-
 
 ## Exemplo guiado: Serialização com Pydantic (FastAPI)
 
@@ -340,8 +325,6 @@ produto_novo = Produto.model_validate_json(json_entrada)
 
 Se o JSON de entrada estiver errado (ex: `preco` for "abc"), o processo de deserialização falha automaticamente com um erro claro. Isso é segurança.
 
-
-
 ## Checklist rápido
 
 *   [ ] Entendi que objetos na memória precisam virar texto para viajar na rede.
@@ -349,19 +332,16 @@ Se o JSON de entrada estiver errado (ex: `preco` for "abc"), o processo de deser
 *   [ ] Nunca confio cegamente no que foi deserializado (validação é obrigatória).
 *   [ ] Evito enviar campos inúteis para economizar processamento.
 
-
-
 ## Fontes
 
 *   **[FAST]:** Pydantic e Validação
 *   **[OWASP]:** Deserialization Cheat Sheet
 
 ---
+
 # 4.4. Contratos de entrada e saída
 
 Uma API robusta funciona com base em contratos claros. "Contrato" aqui não é burocracia, é a definição exata do que entra e do que sai.
-
-
 
 ## Responsabilidades Distintas
 
@@ -375,8 +355,6 @@ Uma API robusta funciona com base em contratos claros. "Contrato" aqui não é b
 *   **Filosofia:** Seja previsível e conservador.
 *   Garanta que a resposta sempre tenha o mesmo formato, mesmo em caso de erro ou dados parciais. O cliente não deve quebrar porque um campo opcional veio faltando sem aviso.
 
-
-
 ## Lei de Postel (Princípio da Robustez)
 
 > "Seja conservador no que você faz (envia), seja liberal no que você aceita dos outros."
@@ -384,8 +362,6 @@ Uma API robusta funciona com base em contratos claros. "Contrato" aqui não é b
 Na prática moderna de APIs REST/JSON, adaptamos isso:
 *   **Saída:** Extremamente conservadora (siga o contrato à risca).
 *   **Entrada:** Valide estritamente a estrutura (segurança), mas ignore campos extras desconhecidos (para permitir evolução do cliente sem quebrar o servidor).
-
-
 
 ## Exemplo Guiado: Cadastro no Trilha
 
@@ -419,8 +395,6 @@ O que o servidor promete devolver em caso de sucesso (201 Created):
 **Note a diferença:**
 1.  A `senha` entrou, mas **não saiu**. (Segurança básica).
 2.  Campos de sistema (`id`, `criado_em`, `status`) aparecem na saída, mas não são aceitos na entrada (o servidor decide esses valores, não o cliente).
-
-
 
 ## DTOs (Data Transfer Objects)
 
@@ -457,16 +431,12 @@ _Implementação de DTOs usando Pydantic_
 - **_UserCreateRequest_** aceita _senha_, mas não aceita _id_ (o servidor gera).
 - **_UserResponse_** retorna _id_ e "_criado_em_", mas nunca retorna _senha_.
 
-
-
 ## Checklist rápido
 
 *   [ ] Tenho modelos separados para Entrada e Saída?
 *   [ ] Removi dados sensíveis (senhas) do contrato de saída?
 *   [ ] Campos de controle (ID, data criação) são ignorados se enviados na entrada?
 *   [ ] O cliente sabe quais campos são opcionais e quais são obrigatórios?
-
-
 
 ## Fontes
 
@@ -475,13 +445,12 @@ _Implementação de DTOs usando Pydantic_
 *   **[OWASP]:** Mass Assignment Prevention
 
 ---
+
 # 4.5. Evolução de contratos e compatibilidade
 
 Uma API é "para sempre". Diferente de um site que você pode atualizar o HTML e todos os usuários veem a versão nova instantaneamente, uma API tem clientes (apps mobile, integrações de parceiros) que podem demorar meses ou anos para atualizar.
 
 Você precisa evoluir o backend sem quebrar quem ainda usa a versão antiga.
-
-
 
 ## Breaking Changes (Mudanças de Quebra)
 
@@ -505,8 +474,6 @@ São mudanças que clientes antigos podem ignorar sem erro.
 2. **Adicionar um novo campo na resposta** (clientes velhos apenas ignoram o campo novo).
 3. **Adicionar um campo opcional na entrada** (o servidor lida com a ausência dele).
 4. **Relaxar uma validação** (ex: aumentar o limite de caracteres de um nome).
-
-
 
 ## Estratégias de Evolução
 
@@ -536,15 +503,11 @@ Quando a mudança é drástica e impossível de ser retrocompatível, você cria
 
 Isso permite que clientes antigos continuem na v1 enquanto novos usam a v2. (Veremos versionamento em detalhes na seção de REST).
 
-
-
 ## O Mito do "Vou mudar rapidinho"
 
 Em backend, "mudar rapidinho" um nome de campo pode derrubar o aplicativo móvel de milhares de usuários. Apps móveis dependem da aprovação das lojas (Apple/Google) e da vontade do usuário de atualizar. Um app velho pode continuar rodando por anos.
 
 > **Regra:** Trate seu contrato JSON como se estivesse gravado em pedra.
-
-
 
 ## Checklist rápido
 
@@ -553,21 +516,18 @@ Em backend, "mudar rapidinho" um nome de campo pode derrubar o aplicativo móvel
 * [ ] Se for remover algo, avisei os consumidores com antecedência (Deprecation)?
 * [ ] Lembrei que apps mobile antigos continuam existindo?
 
-
-
 ## Fontes
 
 * **[SemVer]:** Semantic Versioning
 * **[Google]:** API Design Guide - Compatibility
 
 ---
+
 # 4.6. OpenAPI como contrato formal
 
 Até agora falamos de contratos conceituais. Mas como formalizar isso tecnicamente? Como documentar de um jeito que máquinas e humanos entendam?
 
 A resposta é **OpenAPI** (antigamente conhecido como Swagger).
-
-
 
 ## O que é OpenAPI?
 
@@ -579,8 +539,6 @@ A resposta é **OpenAPI** (antigamente conhecido como Swagger).
 
 Ele funciona como um "manual de instruções" legível por máquina.
 
-
-
 ## Por que usar?
 
 ### 1) Documentação Interativa
@@ -591,8 +549,6 @@ Com o contrato OpenAPI, você pode usar ferramentas para gerar automaticamente o
 
 ### 3) Testes Automatizados
 Ferramentas de QA podem ler o OpenAPI e bombardear sua API com dados de teste para verificar se ela realmente respeita o contrato definido.
-
-
 
 ## Code-First vs Schema-First
 
@@ -607,8 +563,6 @@ Você escreve o código Python (com Pydantic) e o framework **gera** o arquivo O
 Você escreve o arquivo OpenAPI (YAML) primeiro, discute e aprova ele. Só depois escreve o código.
 *   **Vantagem:** O contrato é independente da implementação. Permite que front e back trabalhem em paralelo desde o dia zero.
 *   **Uso:** Grandes corporações, APIs públicas críticas ou times muito separados.
-
-
 
 ## Exemplo de OpenAPI (YAML)
 
@@ -639,15 +593,11 @@ paths:
                       type: string
 ```
 
-
-
 ## Checklist rápido
 
 *   [ ] Minha API possui uma documentação OpenAPI acessível?
 *   [ ] As descrições dos campos no OpenAPI estão claras para quem vai consumir?
 *   [ ] Estou usando o OpenAPI para garantir que front e back falem a mesma língua?
-
-
 
 ## Fontes
 
@@ -656,13 +606,12 @@ paths:
 *   **[FAST]:** FastAPI e OpenAPI
 
 ---
+
 # 4.7. Modelagem consistente de erros
 
 Nada frustra mais um desenvolvedor frontend do que receber um erro `500 Internal Server Error` sem explicação, ou cada endpoint retornar erro num formato diferente.
 
 Erros fazem parte do contrato. Eles precisam ser **previsíveis**.
-
-
 
 ## O Anti-padrão do "200 OK com erro"
 
@@ -677,8 +626,6 @@ Algumas APIs antigas retornam sempre status `200 OK`, mas no corpo do JSON manda
 Isso quebra ferramentas de monitoramento, proxies e caches que dependem do código HTTP para saber se a requisição falhou.
 *   Se falhou, use **4xx** (erro do cliente) ou **5xx** (erro do servidor).
 *   Se deu certo, use **2xx**.
-
-
 
 ## Padronizando o Formato (RFC 7807)
 
@@ -702,8 +649,6 @@ A recomendação é retornar um JSON com campos padrão:
 *   **status:** O código HTTP (repetido aqui para facilitar).
 *   **detail:** Explicação específica daquela ocorrência (variável).
 *   **instance:** Onde o erro ocorreu (opcional).
-
-
 
 ## Erros de Validação (Múltiplos erros)
 
@@ -731,15 +676,11 @@ Você pode estender o padrão acima com um campo `errors` ou `issues`:
 
 O FastAPI já faz algo muito similar a isso automaticamente para erros de validação (status 422).
 
-
-
 ## Segurança nos Erros
 
 **Cuidado:** Nunca vaze detalhes de infraestrutura no erro.
 *   **Errado:** `DatabaseConnectionError: Connection refused at 192.168.0.5` (Dá munição para hackers).
 *   **Certo:** `Erro interno ao processar pagamento. Tente novamente mais tarde.` (Logue o erro real internamente, mostre o genérico para fora).
-
-
 
 ## Checklist rápido
 
@@ -748,10 +689,93 @@ O FastAPI já faz algo muito similar a isso automaticamente para erros de valida
 *   [ ] Erros de validação retornam qual campo está errado?
 *   [ ] Garanti que stack traces e senhas de banco não vazam no JSON de erro?
 
-
-
 ## Fontes
 
 *   **[RFC 7807]:** Problem Details for HTTP APIs
 *   **[MDN]:** HTTP Status Codes
 *   **[Google]:** API Errors Design
+
+---
+
+# Complemente o Aprendizado
+
+Para aprofundar seus conhecimentos sobre JSON e contratos de API, confira os seguintes recursos:
+
+- [JSON - Especificação Oficial](https://www.json.org/json-en.html)
+
+- [OpenAPI Specification - Swagger](https://swagger.io/specification/)
+
+- [RFC 7807 - Problem Details for HTTP APIs](https://www.rfc-editor.org/rfc/rfc7807)
+
+---
+
+```quiz
+- tipo: single
+  pergunta: |
+    Uma API bancária armazena IDs de transação como inteiros de 64 bits (ex: `9007199254740993`). Um desenvolvedor front-end percebe que, ao processar a resposta JSON no navegador, o ID chega alterado (`9007199254740992`). Qual é a causa mais provável desse problema?
+  opcoes:
+    - texto: O servidor está com um bug na serialização e precisa ser corrigido urgentemente
+      correta: false
+      explicacao: |
+        O servidor pode estar enviando o valor corretamente. O problema geralmente acontece ao interpretar o número no cliente, não ao gerá-lo no servidor.
+    - texto: Números em JSON são todos tratados como ponto flutuante de dupla precisão, e o JavaScript perde precisão em inteiros muito grandes
+      correta: true
+      explicacao: |
+        Exato! O JSON tem apenas um tipo numérico, tratado como ponto flutuante de dupla precisão. Ao ser lido em JavaScript, IDs muito grandes ultrapassam a precisão segura e são arredondados. A solução é enviar esses valores como String.
+      explicacao_erro: |
+        Lembre-se que o JSON só tem um tipo numérico, tratado como ponto flutuante de dupla precisão. IDs muito grandes perdem precisão nessa conversão — por isso a recomendação é enviá-los como string.
+    - texto: O JSON não suporta números com mais de 10 dígitos
+      correta: false
+      explicacao: |
+        Não existe esse limite de dígitos na especificação do JSON. O problema é de precisão na representação em ponto flutuante, não de quantidade de dígitos.
+    - texto: O problema é exclusivo de conexões HTTP sem HTTPS
+      correta: false
+      explicacao: |
+        O protocolo de transporte não interfere na forma como os números são interpretados. Isso é uma questão de tipos de dados, não de segurança de rede.
+
+- tipo: single
+  pergunta: |
+    Ao implementar o cadastro de usuários, um desenvolvedor usa a mesma classe Pydantic para receber os dados de entrada e devolver a resposta da API. Um usuário mal-intencionado consegue enviar um campo `is_admin: true` no corpo da requisição e se tornar administrador. Qual prática de design de contratos evitaria essa vulnerabilidade?
+  opcoes:
+    - texto: Adicionar mais validação de força de senha no cadastro
+      correta: false
+      explicacao: |
+        A força da senha não tem relação com esse problema. A vulnerabilidade está em aceitar campos que o cliente não deveria poder definir.
+    - texto: Usar DTOs separados para entrada e saída, garantindo que apenas os campos esperados sejam aceitos pelo servidor
+      correta: true
+      explicacao: |
+        Exato! Esse é um caso clássico de Mass Assignment Vulnerability. Separar os schemas de entrada e saída garante que campos sensíveis, como permissões, só sejam definidos pelo próprio servidor, nunca pelo cliente.
+      explicacao_erro: |
+        O problema é usar o mesmo modelo para entrada e saída, aceitando implicitamente qualquer campo que o cliente envie. DTOs separados resolvem isso ao definir explicitamente o que pode ser recebido.
+    - texto: Trocar o formato de troca de dados de JSON para XML
+      correta: false
+      explicacao: |
+        O formato de serialização não influencia esse tipo de vulnerabilidade. O problema está na modelagem do contrato, não no formato dos dados.
+    - texto: Aumentar o tempo de expiração do token de autenticação
+      correta: false
+      explicacao: |
+        O tempo de expiração do token está relacionado à sessão do usuário, não ao controle de quais campos podem ser enviados no corpo da requisição.
+
+- tipo: single
+  pergunta: |
+    Uma equipe de backend precisa renomear o campo `address` para `billing_address` em uma API já usada por milhares de apps mobile em produção. Qual abordagem evita quebrar os clientes que ainda não atualizaram?
+  opcoes:
+    - texto: Renomear o campo diretamente e avisar os clientes por e-mail
+      correta: false
+      explicacao: |
+        Renomear um campo é uma mudança de quebra: para o cliente antigo, é como remover um campo que ele espera e adicionar outro que ele não conhece. Um aviso por e-mail não impede o app de quebrar em tempo de execução.
+    - texto: Adicionar o novo campo billing_address mantendo address funcionando, e marcar address como deprecated até todos migrarem
+      correta: true
+      explicacao: |
+        Exato! Essa é a estratégia de mudanças aditivas: nunca remover ou renomear de uma vez, apenas adicionar o campo novo e manter o antigo funcionando até que os clientes migrem, removendo-o com segurança só depois.
+      explicacao_erro: |
+        A saída segura é sempre aditiva: criar o campo novo, manter o antigo ativo e só removê-lo depois que os clientes migrarem.
+    - texto: Criar uma nova versão da API (/v2/) só por causa dessa mudança de nome
+      correta: false
+      explicacao: |
+        Versionar a API inteira é muito mais custoso do que necessário para uma mudança pontual como essa. Versionamento costuma ser reservado para mudanças mais drásticas e difíceis de tornar retrocompatíveis.
+    - texto: Remover o campo address e documentar a mudança no changelog
+      correta: false
+      explicacao: |
+        Documentar não impede que apps antigos, que não leem o changelog em tempo real, parem de funcionar ao não encontrarem mais o campo address na resposta.
+```
