@@ -1,13 +1,22 @@
 ---
-title: 12. Segurança em APIs
+title: 13. Segurança em APIs
 description: Como implementar um API segura e o que isso significa
 category: Backend
 order: 13
 ---
 
-# 12.1 Modelo de ameaças
+## Sumário
 
-Antes de pensar em soluções de segurança, vale responder uma pergunta simples: o que pode dar errado, para quem, e por qual caminho?
+- [13.1. Modelo de ameaças](#131-modelo-de-ameacas)
+- [13.2. OWASP API Security Top 10](#132-owasp-api-security-top-10)
+- [13.3. Princípios básicos de segurança](#133-principios-basicos-de-seguranca)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+- [Referências](#referencias)
+
+# 13.1. Modelo de ameaças
+
+Antes de pensar em soluções de segurança, vale responder uma pergunta simples: **o que pode dar errado, para quem, e por qual caminho?**
 
 Modelo de ameaças, threat modeling, é um jeito estruturado de fazer isso. Você descreve o sistema do ponto de vista de um atacante e, com base nessa visão, levanta ameaças plausíveis e decide quais controles valem a pena.
 
@@ -57,9 +66,9 @@ Uma forma direta de aplicar modelo de ameaças é seguir quatro passos.
 
 Escolha um recorte pequeno e claro. Exemplo:
 
-* apenas o fluxo de inscrição em um curso
-* apenas o fluxo de listar cursos e ver detalhes
-* apenas o fluxo de upload de um arquivo
+* Apenas o fluxo de inscrição em um curso
+* Apenas o fluxo de listar cursos e ver detalhes
+* Apenas o fluxo de upload de um arquivo
 
 Escopo pequeno evita que o modelo vire uma lista genérica que não muda nada no projeto.
 
@@ -67,10 +76,10 @@ Escopo pequeno evita que o modelo vire uma lista genérica que não muda nada no
 
 Neste passo você lista o que é valioso e por onde o sistema é acessado.
 
-* Ativos: quais dados ou recursos são críticos aqui
-* Pontos de entrada: quais endpoints e integrações recebem dados
-* Dependências externas: banco, serviços de e-mail, pagamentos, storage, etc.
-* Limites de confiança: onde você deixa de controlar o ambiente e precisa assumir risco
+* **Ativos:** quais dados ou recursos são críticos aqui
+* **Pontos de entrada:** quais endpoints e integrações recebem dados
+* **Dependências externas:** banco, serviços de e-mail, pagamentos, storage, etc.
+* **Limites de confiança:** onde você deixa de controlar o ambiente e precisa assumir risco
 
 ### 3) Levantar ameaças
 
@@ -78,14 +87,14 @@ Agora você olha para o mapa e pergunta: como alguém pode abusar disso?
 
 Um jeito eficiente de pensar é por categorias, como:
 
-* fingir ser outra pessoa ou outro serviço
-* alterar dados no caminho ou no armazenamento
-* negar que fez uma ação porque o sistema não registra direito
-* acessar dados que não deveria
-* derrubar o serviço consumindo recursos
-* conseguir privilégios além do permitido
+* Fingir ser outra pessoa ou outro serviço
+* Alterar dados no caminho ou no armazenamento
+* Negar que fez uma ação porque o sistema não registra direito
+* Acessar dados que não deveria
+* Derrubar o serviço consumindo recursos
+* Conseguir privilégios além do permitido
 
-Você não precisa conhecer nomes de técnicas. O importante é treinar o olhar para essas intenções.
+Você não precisa conhecer nomes de técnicas. O importante é **treinar o olhar** para essas intenções.
 
 ### 4) Decidir mitigações e validar se ficou bom o suficiente
 
@@ -93,8 +102,8 @@ Para cada ameaça importante, você escolhe um controle.
 
 Dois cuidados aqui:
 
-* Mitigação tem custo. Não adianta propor dez controles caros para um endpoint irrelevante.
-* Controle precisa ser verificável. Se você não consegue testar, monitorar ou auditar, ele vira sensação de segurança.
+* **Mitigação tem custo.** Não adianta propor dez controles caros para um endpoint irrelevante.
+* **Controle precisa ser verificável.** Se você não consegue testar, monitorar ou auditar, ele vira sensação de segurança.
 
 O resultado final é uma lista priorizada: o que será tratado agora, o que fica registrado para depois e o que é aceito como risco.
 
@@ -104,46 +113,36 @@ Considere uma API de inscrição em cursos. O recorte é: criar inscrição e co
 
 O que normalmente aparece rápido no modelo:
 
-* Ativo: registros de inscrição e dados pessoais do aluno
-* Ponto de entrada: endpoint que cria inscrição
-* Ameaças plausíveis:
+* **Ativo:** registros de inscrição e dados pessoais do aluno
+* **Ponto de entrada:** endpoint que cria inscrição
+* **Ameaças plausíveis:**
 
-  * criar inscrições em excesso para degradar o serviço
-  * consultar inscrições de outra pessoa
-  * enviar dados malformados para explorar falhas de validação
-* Mitigações típicas:
+  * Criar inscrições em excesso para degradar o serviço
+  * Consultar inscrições de outra pessoa
+  * Enviar dados malformados para explorar falhas de validação
+* **Mitigações típicas:**
 
-  * limites de consumo por cliente
-  * checagem de permissão antes de retornar dados
-  * validação consistente do formato de entrada
-  * logs de auditoria para ações relevantes
+  * Limites de consumo por cliente
+  * Checagem de permissão antes de retornar dados
+  * Validação consistente do formato de entrada
+  * Logs de auditoria para ações relevantes
 
-A utilidade do modelo é transformar uma discussão vaga de segurança em decisões concretas e verificáveis.
+A utilidade do modelo é transformar uma discussão vaga de segurança em **decisões concretas e verificáveis.**
 
 ## Checklist rápido
 
-* Eu consigo dizer qual é o escopo do que estou modelando.
-* Eu consigo listar ativos, pontos de entrada e dependências externas.
-* Eu consigo descrever ameaças como intenções do atacante, não como detalhes de implementação.
-* Eu consigo propor mitigigações que são testáveis e monitoráveis.
-* Eu termino com uma lista priorizada, não com uma lista infinita.
-
-## Fontes 
-
-https://owasp.org/www-community/Threat_Modeling  
-https://owasp.org/www-community/Threat_Modeling_Process  
-https://owasp.org/www-project-threat-modelling-guide/  
-https://owasp.org/www-project-threat-modeling/  
-
-
-
+* Eu consigo dizer qual é o **escopo** do que estou modelando.
+* Eu consigo **listar ativos**, pontos de entrada e dependências externas.
+* Eu consigo **descrever ameaças** como intenções do atacante, não como detalhes de implementação.
+* Eu consigo **propor mitigigações** que são testáveis e monitoráveis.
+* Eu termino com uma **lista priorizada**, não com uma lista infinita.
 
 ---
-# 12.2 OWASP API Security Top 10
+# 13.2. OWASP API Security Top 10
 
 Depois de ter um modelo mental de ameaças, você precisa de um mapa prático do que mais dá errado em APIs no mundo real. É exatamente isso que o OWASP API Security Top 10 entrega: uma lista dos riscos mais comuns, com foco em como APIs falham na prática.
 
-A intenção não é decorar a lista. A intenção é treinar o olhar para reconhecer padrões de risco enquanto você projeta e implementa endpoints.
+A intenção não é decorar a lista. A intenção é **treinar o olhar para reconhecer padrões de risco** enquanto você projeta e implementa endpoints.
 
 ## Como usar esta lista
 
@@ -151,11 +150,11 @@ Use o Top 10 como checklist de revisão, não como receita de implementação.
 
 Quando você desenhar uma rota, pergunte:
 
-- isso pode vazar dados de outro usuário
-- isso pode permitir ações sem permissão
-- isso pode ser abusado para derrubar o serviço
-- isso depende de uma configuração frágil
-- isso depende de segredo exposto ou autenticação fraca
+- Isso pode vazar dados de outro usuário
+- Isso pode permitir ações sem permissão
+- Isso pode ser abusado para derrubar o serviço
+- Isso depende de uma configuração frágil
+- Isso depende de segredo exposto ou autenticação fraca
 
 O Top 10 ajuda porque cobre exatamente esse tipo de pergunta recorrente.
 
@@ -225,15 +224,15 @@ Você confia demais no retorno, não valida, não impõe timeouts, não controla
 
 ## O que esta lista te ajuda a priorizar
 
-O Top 10 destaca um padrão que você vai ver muitas vezes: os maiores riscos de APIs costumam vir de autorização incorreta, consumo descontrolado de recursos e integração mal tratada.
+O Top 10 destaca um padrão que você vai ver muitas vezes: os maiores riscos de APIs costumam vir de **autorização incorreta, consumo descontrolado de recursos e integração mal tratada.**
 
 Isso orienta onde colocar atenção mesmo em projetos pequenos:
 
-- autorização por objeto e por função
-- limites de consumo e controle de carga
-- validação de entrada e saída
-- visibilidade do que está exposto
-- rigor ao consumir serviços externos
+- Autorização por objeto e por função
+- Limites de consumo e controle de carga
+- Validação de entrada e saída
+- Visibilidade do que está exposto
+- Rigor ao consumir serviços externos
 
 ## Checklist rápido
 
@@ -242,18 +241,12 @@ Isso orienta onde colocar atenção mesmo em projetos pequenos:
 - Eu sei que consumo de recursos e abuso de fluxo são riscos de segurança, não só de performance.
 - Eu sei que integrações externas precisam de validação, limites e timeouts.
 
-## Fontes 
-
-https://owasp.org/API-Security/editions/2023/en/0x11-t10/  
-
-
-
 ---
-# 12.3 Princípios básicos de segurança
+# 13.3. Princípios básicos de segurança
 
 Os tópicos anteriores ajudam a enxergar ameaças e riscos comuns. Agora a pergunta vira: quais princípios básicos guiam decisões seguras em uma API, mesmo antes de você conhecer técnicas avançadas?
 
-A ideia aqui é simples: princípios são regras de projeto que reduzem risco de forma consistente. Eles não substituem implementação, mas evitam erros estruturais.
+A ideia aqui é simples: princípios são regras de projeto que reduzem risco de forma consistente. **Eles não substituem implementação, mas evitam erros estruturais.**
 
 ## Privilégio mínimo
 
@@ -308,9 +301,58 @@ Isso envolve impor limites de consumo, tratar payloads grandes, controlar concor
 - Eu não vazo detalhes internos nem segredos em erros e logs.
 - Eu defino limites para proteger disponibilidade.
 
-## Fontes 
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre Segurança em APIs, confira os seguintes recursos:
 
-https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html  
+- [Top 12 Tips For API Security](https://www.youtube.com/watch?v=6WZ6S-qmtqY)
 
-https://owasp.org/www-project-application-security-verification-standard/  
+```quiz
+- tipo: single
+  pergunta: |
+    Um endpoint `GET /pedidos/{id}` retorna os dados do pedido correspondente ao `id` informado na URL, sem checar se o pedido pertence ao usuário autenticado que fez a requisição.
+    Qual risco do OWASP API Security Top 10 isso representa?
+  opcoes:
+    - texto: "Security Misconfiguration (API8), pois é um problema de configuração do servidor"
+      correta: false
+      explicacao: "Misconfiguration envolve headers, TLS, CORS, permissões de infraestrutura e afins. Aqui o problema é de lógica de autorização por objeto, não de configuração do ambiente."
+    - texto: "Unsafe Consumption of APIs (API10), pois o endpoint consome dados de outro pedido"
+      correta: false
+      explicacao: "API10 trata de riscos ao consumir APIs externas (confiar demais no retorno de terceiros). O cenário descrito é interno: o próprio endpoint da aplicação falha em checar autorização."
+    - texto: "Broken Object Level Authorization (API1), pois o sistema não verifica se o usuário tem permissão sobre aquele objeto específico"
+      correta: true
+      explicacao: "Correto! Esse é o caso clássico de BOLA: o endpoint recebe um ID e devolve os dados daquele objeto sem checar se o usuário autenticado tem permissão para acessá-lo, permitindo que qualquer pessoa veja pedidos de outros usuários trocando o ID na URL."
+      explicacao_erro: "Pense no que falta: o servidor confia no ID enviado pelo cliente e não verifica se aquele pedido pertence a quem está pedindo. Essa falta de checagem por objeto é exatamente o que a API1 (BOLA) descreve."
+    - texto: "Unrestricted Resource Consumption (API4), pois o endpoint pode ser chamado sem limites"
+      correta: false
+      explicacao: "API4 é sobre ausência de limites de uso (rate limiting, tamanho de payload etc.). O problema aqui não é quantas vezes o endpoint pode ser chamado, e sim a falta de checagem de permissão sobre o objeto retornado."
+
+- tipo: single
+  pergunta: |
+    Ao fazer o modelo de ameaças de uma API de inscrição em cursos, um desenvolvedor identifica que "um atacante pode criar centenas de inscrições falsas para sobrecarregar o serviço".
+    Nos termos do vocabulário de modelo de ameaças, o que essa frase descreve?
+  opcoes:
+    - texto: "Uma vulnerabilidade — uma fraqueza específica do endpoint que permite o abuso"
+      correta: false
+      explicacao: "Vulnerabilidade seria, por exemplo, 'o endpoint não tem limite de requisições por cliente'. A frase dada descreve o evento indesejado em si (o abuso acontecendo), não a fraqueza técnica que o torna possível."
+    - texto: "Uma ameaça (threat) — uma possibilidade de evento indesejado contra o sistema"
+      correta: true
+      explicacao: "Correto! A frase descreve um evento indesejado que pode acontecer (alguém abusando do endpoint de inscrição para sobrecarregar o serviço), o que é exatamente a definição de ameaça no modelo de ameaças."
+      explicacao_erro: "Repare que a frase não aponta uma fraqueza específica do código (isso seria vulnerabilidade) nem um controle (mitigação) — ela descreve algo ruim que *pode acontecer*, que é a definição de ameaça."
+    - texto: "Uma mitigação — um controle que reduz a probabilidade do ataque"
+      correta: false
+      explicacao: "Mitigação seria a solução, como 'aplicar limite de inscrições por usuário'. A frase descreve o problema que ainda não tem controle nenhum, não a medida de defesa."
+    - texto: "Um ativo — algo de valor que precisa ser protegido"
+      correta: false
+      explicacao: "O ativo aqui seria a disponibilidade do serviço ou os registros de inscrição. A frase, porém, descreve a ação de abuso contra esse ativo, não o próprio ativo."
+```
+
+# Referências
+
+- REST Security Cheat Sheet (OWASP): https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html
+- Application Security Verification Standard (OWASP): https://owasp.org/www-project-application-security-verification-standard/
+- API Security Top 10 2023 (OWASP): https://owasp.org/API-Security/editions/2023/en/0x11-t10/
+- Threat Modeling (OWASP): https://owasp.org/www-community/Threat_Modeling
+- Threat Modeling Process (OWASP): https://owasp.org/www-community/Threat_Modeling_Process
+- Threat Modeling Guide (OWASP): https://owasp.org/www-project-threat-modelling-guide/
+- Threat Modeling Project (OWASP): https://owasp.org/www-project-threat-modeling/
 

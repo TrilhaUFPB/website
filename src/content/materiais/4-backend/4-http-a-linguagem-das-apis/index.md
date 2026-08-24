@@ -1,11 +1,30 @@
 ---
-title: 3. HTTP a Linguagem das APIs
+title: 4. HTTP a Linguagem das APIs
 description: Introdução a HTTP
 category: Backend
 order: 4
 ---
 
-# 3.1. O que é HTTP
+## Sumário
+
+- [4.1. O que é HTTP](#41-o-que-e-http)
+- [4.10. CORS e políticas de mesma origem](#410-cors-e-politicas-de-mesma-origem)
+- [4.11. HTTP/1.1, HTTP/2 e HTTP/3](#411-http11-http2-e-http3)
+- [4.2. Estrutura de uma requisição HTTP](#42-estrutura-de-uma-requisicao-http)
+- [4.3. Estrutura de uma resposta HTTP](#43-estrutura-de-uma-resposta-http)
+- [4.4. Métodos HTTP e semântica](#44-metodos-http-e-semantica)
+- [4.5. Códigos de status HTTP](#45-codigos-de-status-http)
+- [4.6. Cabeçalhos fundamentais para APIs](#46-cabecalhos-fundamentais-para-apis)
+- [4.7. Negociação de conteúdo](#47-negociacao-de-conteudo)
+- [4.8. Caching em APIs HTTP](#48-caching-em-apis-http)
+- [4.9. Cookies, sessões e APIs](#49-cookies-sessoes-e-apis)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+- [Referências](#referencias)
+
+---
+
+# 4.1. O que é HTTP
 
 O HTTP (Hypertext Transfer Protocol) é um protocolo de comunicação para documentos hipermídia como HTTP, utilizado na web e que funciona por meio do modelo cliente-servidor que já foi trabalho anteriormente,  além disso outro ponto importante é o fato dele ser stateless(sem estado), ou seja as respostas do servidor não podem depender de requisições anteriores.
 
@@ -123,21 +142,9 @@ Repare no que esse par de mensagens já comunica, mesmo sem você conhecer o bac
 * Eu sei que status e headers são parte essencial da comunicação.
 * Eu sei diferenciar HTTP (mensagens) de HTTPS (mensagens dentro de um canal seguro).
 
-## Fontes 
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP) 
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview) 
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages) 
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP) 
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html) 
-
-
 ---
-# 3.10. CORS e políticas de mesma origem
+
+# 4.10. CORS e políticas de mesma origem
 
 Quando você está construindo uma API, existe um tipo de consumidor muito comum: um front-end rodando no navegador. E o navegador tem regras de segurança próprias que não existem do mesmo jeito em scripts e backends.
 
@@ -279,27 +286,9 @@ A partir daí, o navegador autoriza a requisição real.
 * Eu entendo por que existe preflight com OPTIONS em alguns casos.
 * Eu sei que credenciais entre origens exigem configurações específicas.
 
-## Fontes (para leitura)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/Security/Same-origin_policy](https://developer.mozilla.org/pt-BR/docs/Web/Security/Same-origin_policy)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods/OPTIONS](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods/OPTIONS)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Origin](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Methods)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Headers)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
-
-[https://www.rfc-editor.org/rfc/rfc6454](https://www.rfc-editor.org/rfc/rfc6454)
-
-
 ---
-# 3.11. HTTP/1.1, HTTP/2 e HTTP/3
+
+# 4.11. HTTP/1.1, HTTP/2 e HTTP/3
 
 Até aqui você aprendeu o que é HTTP e como ele organiza requisições e respostas. Agora entra uma dúvida comum quando você começa a olhar ferramentas, logs e configurações de deploy: se HTTP é HTTP, por que existem versões diferentes.
 
@@ -412,29 +401,9 @@ Se você está apenas começando, o mais produtivo é dominar bem a semântica e
 * Eu sei que a API pode estar atrás de proxy, e a versão externa pode ser diferente da interna.
 * Eu sei quando vale a pena olhar para versões como otimização, não como requisito de design.
 
-## Fontes (para leitura)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Basics_of_HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Basics_of_HTTP)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Versioning](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Versioning)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_2](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_2)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_3](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_3)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
-[https://www.rfc-editor.org/rfc/rfc9114.html](https://www.rfc-editor.org/rfc/rfc9114.html)
-
-[https://www.rfc-editor.org/rfc/rfc9000.html](https://www.rfc-editor.org/rfc/rfc9000.html)
-
-
-
 ---
 
-# 3.2. Estrutura de uma requisição HTTP
+# 4.2. Estrutura de uma requisição HTTP
 
 Quando um cliente acessa uma API, existe um caminho por trás: ele precisa localizar o servidor, abrir uma conexão e, em muitos casos, estabelecer um canal seguro. Depois que esse caminho está pronto, o que efetivamente viaja entre cliente e servidor é uma mensagem HTTP.
 
@@ -581,30 +550,9 @@ O que muda em relação ao primeiro exemplo:
 * Eu sei que `Accept` indica o formato preferido da resposta.
 * Eu consigo ler uma requisição e dizer onde estão intenção, alvo, contexto e dados.
 
-
-
-## Fontes
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Host](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Host)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Accept](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Accept)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Content-Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Content-Type)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
-
-
 ---
-# 3.3. Estrutura de uma resposta HTTP
+
+# 4.3. Estrutura de uma resposta HTTP
 
 Depois que o servidor recebe uma requisição e decide o que fazer com ela, ele devolve uma resposta HTTP. Essa resposta é a forma padronizada de dizer ao cliente duas coisas:
 
@@ -732,26 +680,9 @@ Aqui não existe corpo. O status já comunica que a operação deu certo e que n
 * Eu sei que nem toda resposta tem corpo.
 * Eu consigo ler uma resposta e separar resultado, metadados e dados.
 
-
-
-## Fontes 
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Status](https://developer.mozilla.org/pt-BR/docs/Glossary/Status)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
-
-
 ---
-# 3.4. Métodos HTTP e semântica
+
+# 4.4. Métodos HTTP e semântica
 
 Na estrutura de uma requisição, o método aparece logo no começo. Ele não é um detalhe de sintaxe. Ele é a forma padrão de expressar a intenção do cliente.
 
@@ -881,24 +812,9 @@ A intenção é mudar apenas um campo sem reenviar todo o recurso.
 * Eu sei o que significa um método ser idempotente.
 * Eu entendo por que usar POST para tudo reduz previsibilidade da API.
 
-## Fontes
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Idempotent](https://developer.mozilla.org/pt-BR/docs/Glossary/Idempotent)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Safe](https://developer.mozilla.org/pt-BR/docs/Glossary/Safe)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
-[https://www.rfc-editor.org/rfc/rfc5789](https://www.rfc-editor.org/rfc/rfc5789)
-
-
-
 ---
-# 3.5. Códigos de status HTTP
+
+# 4.5. Códigos de status HTTP
 
 Quando o servidor responde, a primeira informação que o cliente costuma olhar é o status code. Ele é um número que resume o resultado da requisição de forma padronizada, antes mesmo do cliente ler o corpo.
 
@@ -1115,22 +1031,9 @@ Esse exemplo é útil porque mostra que o status pode refletir um problema na ca
 * Eu entendo que 502, 503 e 504 aparecem por causa de intermediários e tempo.
 * Eu consigo escolher um conjunto mínimo de status codes e manter consistência.
 
-## Fontes 
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Status](https://developer.mozilla.org/pt-BR/docs/Glossary/Status)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
-
-
 ---
-# 3.6. Cabeçalhos fundamentais para APIs
+
+# 4.6. Cabeçalhos fundamentais para APIs
 
 Até aqui você já viu que a linha inicial da requisição define a intenção do cliente e que o status code resume o resultado. Falta uma peça que amarra o comportamento real da comunicação: os cabeçalhos.
 
@@ -1314,33 +1217,9 @@ Repare que o cliente consegue confirmar que o conteúdo é o mesmo sem receber o
 * Eu sei por que `Location` aparece em criação.
 * Eu entendo o papel de `Cache-Control` e a ideia de `ETag` com `If-None-Match`.
 
-## Fontes 
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Host](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Host)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Authorization](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Authorization)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Location](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Location)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
-
 ---
-# 3.7. Negociação de conteúdo
+
+# 4.7. Negociação de conteúdo
 
 Até aqui você já viu que cabeçalhos como `Accept` e `Content-Type` dão contexto para a comunicação. Negociação de conteúdo é exatamente a parte do HTTP que usa esses cabeçalhos para responder a uma pergunta simples:
 
@@ -1504,28 +1383,9 @@ Aqui, o dado principal do erro é o código `error`. A mensagem pode variar por 
 * Eu consigo olhar uma requisição e prever qual representação faz sentido responder.
 * Eu sei que muitas APIs simplificam e suportam apenas JSON, mas ainda usam os headers para clareza.
 
-## Fontes 
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Content_negotiation](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Content_negotiation)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Language](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Language)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Encoding](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Encoding)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Language](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Language)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Encoding](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Encoding)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/406](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/406)
-
-[https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
-
 ---
-# 3.8. Caching em APIs HTTP
+
+# 4.8. Caching em APIs HTTP
 
 Em HTTP, cache é uma estratégia para evitar trabalho repetido. Se uma resposta pode ser reutilizada, o cliente ou algum intermediário pode guardar essa resposta e evitar pedir a mesma coisa de novo.
 
@@ -1699,24 +1559,8 @@ Aqui a regra é clara: não guarde.
 * Eu sei que `ETag` e `If-None-Match` permitem revalidar e receber 304 quando não mudou.
 * Eu sei que dados sensíveis devem evitar cache, muitas vezes com `no-store`.
 
-## Fontes 
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304)
-
-[https://www.rfc-editor.org/rfc/rfc9111.html](https://www.rfc-editor.org/rfc/rfc9111.html)
-
-
-
 ---
-# 3.9. Cookies, sessões e APIs
+# 4.9. Cookies, sessões e APIs
 
 HTTP é stateless por padrão. Isso significa que cada requisição chega ao servidor como uma mensagem independente. Para muitas APIs, isso é ótimo: o cliente envia tudo o que o servidor precisa em cada chamada e pronto.
 
@@ -1856,13 +1700,167 @@ A abordagem comum é manter dados sensíveis no servidor e usar o cookie apenas 
 * Eu sei que `Set-Cookie` cria cookie e `Cookie` envia cookie de volta.
 * Eu sei que cookies de autenticação exigem HTTPS e atributos de segurança.
 
-## Fontes 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies)
+---
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Set-Cookie](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Set-Cookie)
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre o protocolo HTTP, confira o seguinte recurso:
 
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cookie](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cookie)
+- [HTTP: um guia completo sobre o que é e como funciona o protocolo da web - Alura](https://www.alura.com.br/artigos/http)
 
-[https://developer.mozilla.org/pt-BR/docs/Web/Security/Types_of_attacks](https://developer.mozilla.org/pt-BR/docs/Web/Security/Types_of_attacks)
+---
 
-[https://www.rfc-editor.org/rfc/rfc6265](https://www.rfc-editor.org/rfc/rfc6265)
+```quiz
+- tipo: single
+  pergunta: O que significa dizer que o HTTP é stateless (sem estado)?
+  opcoes:
+    - texto: Cada requisição é tratada de forma independente, sem que o servidor precise lembrar requisições anteriores
+      correta: true
+      explicacao: Exato! Por padrão, o servidor não guarda memória entre requisições. Quando existe sessão ou autenticação, ela é construída por cima do HTTP usando mecanismos como cookies e tokens.
+      explicacao_erro: Stateless significa que cada requisição é independente e o servidor não é obrigado a lembrar o que aconteceu antes. Sessão, login e carrinho de compras existem, mas são construídos por cima do HTTP, não fazem parte dele por padrão.
+    - texto: Significa que o HTTP não permite autenticação nem sessões de usuário
+      correta: false
+      explicacao: HTTP permite sim autenticação e sessões, mas elas não fazem parte do protocolo em si. Elas são implementadas por cima dele, usando cookies, tokens e outros mecanismos.
+    - texto: Significa que o servidor sempre responde com o mesmo conteúdo, independente da requisição
+      correta: false
+      explicacao: Stateless não tem relação com o conteúdo da resposta ser sempre igual. Significa apenas que o servidor não depende de requisições anteriores para processar a atual.
+    - texto: Significa que a comunicação não usa cabeçalhos
+      correta: false
+      explicacao: Cabeçalhos fazem parte de toda requisição e resposta HTTP. Stateless se refere à independência entre requisições, não à ausência de cabeçalhos.
+
+- tipo: single
+  pergunta: Qual é a função principal dos headers (cabeçalhos) em uma mensagem HTTP?
+  opcoes:
+    - texto: Carregar metadados sobre a requisição ou resposta, como tipo de conteúdo, autenticação e cache
+      correta: true
+      explicacao: Exato! Headers carregam informações que não devem ficar misturadas no corpo, ajudando cliente e servidor a coordenar formato, autenticação, cache e segurança.
+      explicacao_erro: Os headers carregam metadados como formato do conteúdo, autenticação e informações de cache — dados que ajudam cliente e servidor a se coordenarem sem misturar isso no corpo da mensagem.
+    - texto: Armazenar o conteúdo principal que está sendo enviado ou recebido
+      correta: false
+      explicacao: O conteúdo principal fica no corpo (body) da mensagem, não nos headers. Os headers carregam metadados sobre esse conteúdo.
+    - texto: Definir apenas a URL que está sendo acessada
+      correta: false
+      explicacao: A URL e o método ficam na linha inicial da requisição, não nos headers. Os headers carregam metadados adicionais sobre a mensagem.
+    - texto: Substituir a necessidade de status code na resposta
+      correta: false
+      explicacao: O status code é uma parte separada e essencial da resposta, indicando o resultado. Os headers complementam a mensagem, mas não substituem o status.
+
+- tipo: single
+  pergunta: Por que o CORS existe?
+  opcoes:
+    - texto: Para permitir, de forma controlada, que um front-end de uma origem acesse uma API em outra origem, relaxando a política de mesma origem do navegador
+      correta: true
+      explicacao: Exato! A política de mesma origem existe para proteger o usuário, e o CORS é o mecanismo que permite ao servidor autorizar, de forma explícita e controlada, o acesso a partir de outras origens.
+      explicacao_erro: O CORS existe porque o navegador aplica uma política de segurança que bloqueia requisições entre origens diferentes por padrão. O CORS permite que o servidor autorize esse acesso de forma controlada.
+    - texto: Para criptografar a comunicação entre cliente e servidor
+      correta: false
+      explicacao: Criptografia é função do HTTPS/TLS, não do CORS. O CORS trata de permissões entre origens diferentes no navegador.
+    - texto: Para armazenar cookies de forma mais segura
+      correta: false
+      explicacao: Armazenamento seguro de cookies envolve atributos como HttpOnly e Secure, não o CORS. O CORS controla quais origens podem acessar recursos de uma API.
+    - texto: Para acelerar requisições feitas por scripts e backends
+      correta: false
+      explicacao: O CORS não tem relação com velocidade. Ele é uma regra de segurança do navegador que controla acesso entre origens diferentes, e nem se aplica a comunicação backend-a-backend.
+```
+
+---
+
+# Referências
+
+**4.1. Introdução ao HTTP**
+- [HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)
+- [Uma visão geral do HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview)
+- [Mensagens HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
+- [HTTP - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP)
+- [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+
+**4.10. CORS e Same-Origin Policy**
+- [CORS - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS)
+- [Same-origin policy - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/Security/Same-origin_policy)
+- [OPTIONS - MDN Web Docs (Método HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods/OPTIONS)
+- [Access-Control-Allow-Origin - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+- [Access-Control-Allow-Methods - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Methods)
+- [Access-Control-Allow-Headers - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Headers)
+- [Access-Control-Allow-Credentials - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+- [RFC 6454: The Web Origin Concept](https://www.rfc-editor.org/rfc/rfc6454)
+
+**4.11. Versões do HTTP**
+- [Visão geral do HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview)
+- [Fundamentos do HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Basics_of_HTTP)
+- [Versionamento HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Versioning)
+- [HTTP/2 - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_2)
+- [HTTP/3 - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTP_3)
+- [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+- [RFC 9114: HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
+- [RFC 9000: QUIC](https://www.rfc-editor.org/rfc/rfc9000.html)
+
+**4.2. Estrutura das Mensagens HTTP**
+- [HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)
+- [Mensagens HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
+- [Métodos HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods)
+- [Cabeçalhos HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers)
+- [Host - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Host)
+- [Accept - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Accept)
+- [Content-Type - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers/Content-Type)
+- [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+
+**4.3. Status e Cabeçalhos**
+- [Mensagens HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages)
+- [Códigos de status HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status)
+- [Cabeçalhos HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers)
+- [Content-Type - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
+- [Status - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Status)
+- [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+
+**4.4. Métodos HTTP**
+- [Métodos HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods)
+- [Métodos HTTP (referência) - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Methods)
+- [Idempotent - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Idempotent)
+- [Safe - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Safe)
+- [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+- [RFC 5789: PATCH Method for HTTP](https://www.rfc-editor.org/rfc/rfc5789)
+
+**4.5. Códigos de Status**
+- [Códigos de status HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status)
+- [Códigos de status HTTP (referência) - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status)
+- [Métodos HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods)
+- [Status - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Status)
+- [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+
+**4.6. Cabeçalhos HTTP**
+- [Cabeçalhos HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers)
+- [Host - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Host)
+- [Accept - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept)
+- [Content-Type - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
+- [Authorization - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Authorization)
+- [Location - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Location)
+- [Cache-Control - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control)
+- [ETag - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag)
+- [If-None-Match - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match)
+- [304 Not Modified - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304)
+- [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+
+**4.7. Negociação de Conteúdo**
+- [Negociação de conteúdo - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Content_negotiation)
+- [Accept - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept)
+- [Content-Type - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
+- [Accept-Language - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Language)
+- [Accept-Encoding - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Accept-Encoding)
+- [Content-Language - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Language)
+- [Content-Encoding - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Encoding)
+- [406 Not Acceptable - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/406)
+- [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+
+**4.8. Cache HTTP**
+- [Cache HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Caching)
+- [Cache-Control - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cache-Control)
+- [ETag - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/ETag)
+- [If-None-Match - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/If-None-Match)
+- [304 Not Modified - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/304)
+- [RFC 9111: HTTP Caching](https://www.rfc-editor.org/rfc/rfc9111.html)
+
+**4.9. Cookies**
+- [Cookies HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies)
+- [Set-Cookie - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Set-Cookie)
+- [Cookie - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Cookie)
+- [Tipos de ataques - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/Security/Types_of_attacks)
+- [RFC 6265: HTTP State Management Mechanism](https://www.rfc-editor.org/rfc/rfc6265)

@@ -5,23 +5,13 @@ category: Dados
 order: 1
 ---
 
-## Sumário
-
 - [1.1. Estruturado](#11-estruturado)
 - [1.2. Semi-estruturado](#12-semi-estruturado)
 - [1.3. Não estruturado](#13-nao-estruturado)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
----
-
-> Uma planilha de vendas e uma pasta de fotos guardam informação, mas você consulta uma com uma fórmula e a outra abrindo arquivo por arquivo. Essa diferença de organização é o que classifica os dados e determina o que dá para fazer com eles.
-
-Para começar, é importante entender o que significa “dado” no nosso contexto.
-
-De forma resumida, **dados** são **registros de fatos ou eventos** que, isoladamente, ainda não carregam interpretação ou significado de negócio.
-
-Esses dados podem ser classificados em diferentes tipos, de acordo com o grau de organização e a forma como são armazenados e acessados.
+>Para começar, é importante entender o que significa “dado” no nosso contexto. De forma resumida, **dados** são **registros de fatos ou eventos** que, isoladamente, ainda não carregam interpretação ou significado de negócio. Esses dados podem ser classificados em diferentes tipos, de acordo com o grau de organização e a forma como são armazenados e acessados.
 
 # 1.1. Estruturado
 
@@ -58,70 +48,59 @@ Fonte: https://www.dataviking.com.br/post/estruturas-de-dados-entendendo-os-dife
 
 # Complemente o Aprendizado
 
-Para aprofundar seus conhecimentos sobre tipos de dados, confira os seguintes recursos:
+Para aprofundar seus conhecimentos sobre os tipos de dados, confira o seguinte recurso:
 
-- [Estruturas de dados: entendendo os diferentes tipos - Data Viking](https://www.dataviking.com.br/post/estruturas-de-dados-entendendo-os-diferentes-tipos)
-
-- [Structured vs. unstructured data - IBM](https://www.ibm.com/think/topics/structured-vs-unstructured-data)
-
-- [O que são dados estruturados? - AWS](https://aws.amazon.com/what-is/structured-data/)
+ - [Tipos de Estrutura de Dados: Estruturados, Semi Estruturados e Não Estruturados](https://www.youtube.com/watch?v=n0QaQHs5VA0)
 
 ```quiz
 - tipo: single
-  pergunta: |
-    Uma equipe precisa integrar dois sistemas e escolhe trocar as informações em **JSON**, com campos e hierarquias definidos, mas sem um esquema fixo de colunas.
-    Como esses dados são classificados?
+  pergunta: O que caracteriza um dado estruturado?
   opcoes:
-    - texto: "Estruturados, porque possuem campos nomeados"
-      correta: false
-      explicacao: |
-        Ter campos nomeados não basta. Dados estruturados seguem um esquema bem definido no formato tabular, em que cada coluna tem um tipo específico e cada linha é um registro — como em uma tabela de banco de dados ou planilha.
-    - texto: "Semi-estruturados, porque têm estrutura explícita mas não seguem o modelo tabular"
+    - texto: Está organizado em um esquema bem definido, geralmente em formato tabular
       correta: true
-      explicacao: |
-        Correto! JSON, XML e YAML têm estrutura explícita (campos, chaves e hierarquias), mas não se encaixam no modelo tabular tradicional. Essa flexibilidade de esquema é justamente o que os torna comuns em integrações entre sistemas.
-      explicacao_erro: |
-        Pergunte-se: existe estrutura? Sim, há campos e hierarquias. Ela é tabular e de esquema fixo? Não. Quando as duas respostas são essas, o dado está no meio-termo entre estruturado e não estruturado.
-    - texto: "Não estruturados, porque o esquema não é fixo"
+      explicacao: Exato! Dados estruturados seguem um esquema fixo, com colunas e linhas bem definidas, como em tabelas de banco de dados.
+      explicacao_erro: Dados estruturados são organizados em um esquema bem definido, geralmente tabular, com colunas representando atributos e linhas representando registros.
+    - texto: Não segue nenhum modelo fixo de organização
       correta: false
-      explicacao: |
-        Dados não estruturados não têm modelo de organização nenhum — textos livres, imagens, vídeos e áudios. O JSON descrito tem campos e hierarquias explícitos, então há estrutura.
+      explicacao: Isso descreve dados não estruturados, como textos livres e imagens. Dados estruturados seguem um esquema rígido e bem definido.
+    - texto: Combina flexibilidade de esquema com campos e hierarquias explícitas
+      correta: false
+      explicacao: Isso descreve dados semi-estruturados, como JSON e XML. Dados estruturados seguem um esquema fixo e tabular, sem essa flexibilidade.
+    - texto: Só pode ser armazenado em arquivos de texto
+      correta: false
+      explicacao: Dados estruturados são armazenados principalmente em tabelas de banco de dados ou planilhas, não apenas em arquivos de texto.
 
 - tipo: single
-  pergunta: |
-    O que caracteriza os dados **estruturados** e permite consultá-los com facilidade usando SQL?
+  pergunta: Quais são exemplos comuns de formatos usados para representar dados semi-estruturados?
   opcoes:
-    - texto: "O fato de estarem armazenados na nuvem"
-      correta: false
-      explicacao: |
-        O local de armazenamento não determina o tipo do dado. Dados de qualquer um dos três tipos podem estar na nuvem ou em servidores próprios.
-    - texto: "A organização em um esquema bem definido, com colunas tipadas e linhas como registros"
+    - texto: JSON, XML e YAML
       correta: true
-      explicacao: |
-        Isso mesmo! É esse esquema previsível que permite buscas, filtros, agregações e junções com linguagens como SQL — o banco sabe de antemão o tipo de cada coluna.
-      explicacao_erro: |
-        Pense no que o SQL precisa saber para funcionar: quais colunas existem e que tipo de dado cada uma guarda. Essa previsibilidade vem do esquema.
-    - texto: "O volume reduzido, que facilita o processamento"
+      explicacao: Exato! Esses formatos possuem estrutura explícita, como campos e hierarquias, mas não seguem o modelo tabular rígido.
+      explicacao_erro: Dados semi-estruturados são comumente representados por formatos como JSON, XML e YAML, usados em integrações entre sistemas.
+    - texto: Tabelas de banco de dados relacionais
       correta: false
-      explicacao: |
-        Volume e tipo de dado são coisas independentes. Tabelas estruturadas podem ter bilhões de registros e ainda assim serem consultadas por SQL.
+      explicacao: Tabelas de banco de dados são o exemplo clássico de dados estruturados, não semi-estruturados.
+    - texto: Vídeos e áudios
+      correta: false
+      explicacao: Vídeos e áudios são exemplos de dados não estruturados, pois não seguem nenhum esquema fixo.
+    - texto: Planilhas Excel
+      correta: false
+      explicacao: Planilhas seguem um modelo tabular organizado, sendo um exemplo de dados estruturados, não semi-estruturados.
 
 - tipo: single
-  pergunta: |
-    Por que dados **não estruturados** costumam exigir mais processamento e técnicas específicas para gerar informação útil?
+  pergunta: Por que dados não estruturados exigem mais processamento para extrair informações úteis?
   opcoes:
-    - texto: "Porque ocupam sempre mais espaço em disco que os demais"
-      correta: false
-      explicacao: |
-        Arquivos de vídeo e imagem realmente tendem a ser grandes, mas não é o tamanho que cria a dificuldade — é a ausência de um modelo de organização que possa ser consultado diretamente.
-    - texto: "Porque não seguem modelo fixo nem esquema pré-definido, então a informação precisa ser extraída do conteúdo"
+    - texto: Porque não seguem um modelo fixo de organização nem um esquema pré-definido
       correta: true
-      explicacao: |
-        Exato! Textos livres, e-mails, imagens, vídeos, áudios e logs não têm campos que se possa filtrar. Para extrair informação é preciso interpretar o conteúdo em si, o que demanda técnicas específicas.
-      explicacao_erro: |
-        Compare com uma tabela: para saber a média de vendas basta uma consulta. Agora imagine responder à mesma pergunta a partir de mil e-mails — não há coluna para consultar, o dado precisa ser interpretado antes.
-    - texto: "Porque só podem ser armazenados em bancos de dados relacionais"
+      explicacao: Exato! Como textos livres, imagens e vídeos não têm estrutura definida, técnicas específicas são necessárias para extrair informações deles.
+      explicacao_erro: Dados não estruturados não seguem um esquema pré-definido, o que exige técnicas específicas de processamento para extrair informações úteis.
+    - texto: Porque são armazenados apenas em nuvem
       correta: false
-      explicacao: |
-        É o oposto: bancos relacionais são projetados para dados estruturados. Dados não estruturados normalmente ficam em sistemas de arquivos, object storage ou bancos especializados.
+      explicacao: O local de armazenamento não define se um dado é estruturado ou não. A característica principal é a ausência de um esquema fixo.
+    - texto: Porque ocupam mais espaço em disco que outros tipos de dados
+      correta: false
+      explicacao: O espaço em disco não é o motivo. A dificuldade está na ausência de estrutura, o que exige processamento específico para extrair sentido dos dados.
+    - texto: Porque só podem ser lidos por linguagens de programação específicas
+      correta: false
+      explicacao: Dados não estruturados podem ser lidos por várias linguagens. O desafio é a falta de organização, não a linguagem usada para processá-los.
 ```

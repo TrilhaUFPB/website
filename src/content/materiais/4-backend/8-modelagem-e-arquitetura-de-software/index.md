@@ -1,11 +1,27 @@
 ---
-title: 7. Modelagem e Arquitetura de Software
+title: 8. Modelagem e Arquitetura de Software
 description: Como pensar e implementar um sistema
 category: Backend
 order: 8
 ---
 
-# 7.0. Visão Geral: Modelagem e Arquitetura
+## Sumário
+
+- [8.0. Visão Geral: Modelagem e Arquitetura](#80-visao-geral-modelagem-e-arquitetura)
+- [8.1. Requisitos funcionais e não funcionais](#81-requisitos-funcionais-e-nao-funcionais)
+- [8.2. Limites, contexto e responsabilidades](#82-limites-contexto-e-responsabilidades)
+- [8.3. Coesão e acoplamento](#83-coesao-e-acoplamento)
+- [8.4. Monólitos, monólitos modulares e microserviços](#84-monolitos-monolitos-modulares-e-microservicos)
+- [8.5. Comunicação síncrona e assíncrona](#85-comunicacao-sincrona-e-assincrona)
+- [8.6. Padrões arquiteturais em APIs](#86-padroes-arquiteturais-em-apis)
+- [8.7. Modelos de documentação arquitetural (C4)](#87-modelos-de-documentacao-arquitetural-c4)
+- [8.8. Registros de decisão arquitetural (ADR)](#88-registros-de-decisao-arquitetural-adr)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+---
+
+# 8.0. Visão Geral: Modelagem e Arquitetura
 
 Bem-vindo à **Parte 3**. Até agora, falamos sobre *como* construir APIs (HTTP, REST, JSON). Agora, vamos falar sobre *como* organizar sistemas para que eles sobrevivam ao tempo e ao crescimento.
 
@@ -19,22 +35,22 @@ Este módulo (Seção 7) foi estruturado para te dar as ferramentas mentais de u
 
 ### As Fundações
 
-* **Seção 7.1:** Entenderemos a diferença entre o que o sistema *faz* (Funcional) e *como* ele se comporta (Não Funcional). Performance, segurança e escalabilidade nascem aqui.
-* **Seção 7.2:** Como definir fronteiras? Onde termina o módulo de "Vendas" e começa o de "Logística"? Vamos falar de **Bounded Contexts**.
-* **Seção 7.3:** Os dois conceitos mais importantes da engenharia de software: **Coesão** (fazer uma coisa bem feita) e **Acoplamento** (depender pouco dos outros).
+* **Seção 8.1:** Entenderemos a diferença entre o que o sistema *faz* (Funcional) e *como* ele se comporta (Não Funcional). Performance, segurança e escalabilidade nascem aqui.
+* **Seção 8.2:** Como definir fronteiras? Onde termina o módulo de "Vendas" e começa o de "Logística"? Vamos falar de **Bounded Contexts**.
+* **Seção 8.3:** Os dois conceitos mais importantes da engenharia de software: **Coesão** (fazer uma coisa bem feita) e **Acoplamento** (depender pouco dos outros).
 
 ### A Estrutura Macro (Deployment)
 
-* **Seção 7.4:** A eterna briga: **Monólito vs Microserviços**. Quando quebrar? Quando manter junto? Vamos desmistificar o hype.
-* **Seção 7.5:** Como as peças conversam? Síncrono (HTTP) ou Assíncrono (Filas)? Entenderemos os trade-offs de resiliência.
+* **Seção 8.4:** A eterna briga: **Monólito vs Microserviços**. Quando quebrar? Quando manter junto? Vamos desmistificar o hype.
+* **Seção 8.5:** Como as peças conversam? Síncrono (HTTP) ou Assíncrono (Filas)? Entenderemos os trade-offs de resiliência.
 
 ### A Estrutura Micro (Código)
 
-* **Seção 7.6:** Como organizar suas pastas e classes? Vamos ver **Clean Architecture** e **Ports & Adapters** para criar sistemas testáveis e independentes de framework.
+* **Seção 8.6:** Como organizar suas pastas e classes? Vamos ver **Clean Architecture** e **Ports & Adapters** para criar sistemas testáveis e independentes de framework.
 
 ### A Comunicação (Documentação)
 
-* **Seção 7.7 e 7.8:** Como explicar sua arquitetura para outros devs sem desenhar diagramas gigantes que ninguém lê? Conheceremos o **Modelo C4** e os **ADRs** (Registros de Decisão).
+* **Seção 8.7 e 8.8:** Como explicar sua arquitetura para outros devs sem desenhar diagramas gigantes que ninguém lê? Conheceremos o **Modelo C4** e os **ADRs** (Registros de Decisão).
 
 
 
@@ -45,7 +61,7 @@ Você pode escrever o melhor código Python do mundo, mas se a arquitetura for r
 Arquitetura é o que permite que 50 desenvolvedores trabalhem no mesmo produto sem um quebrar o código do outro.
 
 ---
-# 7.1. Requisitos funcionais e não funcionais
+# 8.1. Requisitos funcionais e não funcionais
 
 Quando começamos a desenhar um sistema, a primeira pergunta é: "O que ele deve fazer?". Mas tão importante quanto isso é: "Como ele deve se comportar?".
 
@@ -111,7 +127,7 @@ Em sistemas distribuídos (como microserviços ou bancos replicados), o Teorema 
 *   **AP (Disponibilidade):** Se a rede cair, eu respondo com o que tenho, mesmo que desatualizado. (Ex: Feed do Instagram, Likes).
 
 ---
-# 7.2. Limites, contexto e responsabilidades
+# 8.2. Limites, contexto e responsabilidades
 
 O maior erro em sistemas grandes não é técnico, é semântico. Quando a palavra "Produto" significa coisas diferentes para o time de Vendas e para o time de Logística, você tem um problema.
 
@@ -172,7 +188,7 @@ class LegadoAdapter:
 Graças à ACL, sua regra de negócio só conhece `Pedido` e nem sabe que o XML existe. Se o legado mudar, você só arruma o `Adapter`.
 
 ---
-# 7.3. Coesão e acoplamento
+# 8.3. Coesão e acoplamento
 
 Estes são os dois pilares fundamentais da qualidade de software. Se você entender isso, entenderá porque microserviços, classes ou funções são bons ou ruins.
 
@@ -241,7 +257,7 @@ Isso é ruim porque qualquer mudança no sistema (email, banco, regras de cpf) o
 *   **Connascence of Meaning:** "O valor -1 significa erro". Se você mudar para `None`, quebra quem espera `-1`. (Perigoso).
 
 ---
-# 7.4. Monólitos, monólitos modulares e microserviços
+# 8.4. Monólitos, monólitos modulares e microserviços
 
 A decisão de "quebrar" um sistema é uma das mais caras e arriscadas. Não faça por hype.
 
@@ -294,7 +310,7 @@ Não use microserviços se você não tiver:
 3. **Automação de Deploy (CI/CD):** Se o deploy é manual, microserviços serão um inferno.
 
 ---
-# 7.5. Comunicação síncrona e assíncrona
+# 8.5. Comunicação síncrona e assíncrona
 
 Como seus serviços conversam define a resiliência do sistema.
 
@@ -347,7 +363,7 @@ def criar_pedido(pedido):
 ```
 
 ---
-# 7.6. Padrões arquiteturais em APIs
+# 8.6. Padrões arquiteturais em APIs
 
 Não jogue código solto no `main.py`. Use padrões para organizar a casa.
 
@@ -394,7 +410,7 @@ src/
     *   O Core **não depende** do Repository concreto. Ele depende de uma abstração. Isso é a **Inversão de Dependência**.
 
 ---
-# 7.7. Modelos de documentação arquitetural (C4)
+# 8.7. Modelos de documentação arquitetural (C4)
 
 Como documentar arquitetura sem criar diagramas gigantes que ninguém entende? O Modelo C4 resolve isso usando níveis de zoom, como o Google Maps.
 
@@ -429,7 +445,7 @@ Diagramas no Visio/Draw.io morrem. O ideal é usar **Diagrams as Code**.
 Ferramentas como **Structurizr** permitem escrever o modelo C4 em código (DSL) e gerar os desenhos automaticamente. Assim, a arquitetura fica versionada no Git.
 
 ---
-# 7.8. Registros de decisão arquitetural (ADR)
+# 8.8. Registros de decisão arquitetural (ADR)
 
 Você já entrou num projeto e pensou: *"Por que diabos escolheram MongoDB para um sistema financeiro?"*
 Sem documentação, isso vira "conhecimento tribal" ou crítica vazia. O ADR (Architecture Decision Record) serve para registrar o **contexto** e a **decisão** no momento em que ela foi tomada.
@@ -476,4 +492,65 @@ Vamos usar PostgreSQL versão 15.
 *   (+) Garante transações financeiras seguras.
 *   (+) Ecossistema maduro e hospedagem barata (RDS, CloudSQL).
 *   (-) Escalar escrita horizontalmente (Sharding) será mais difícil que um NoSQL, mas nossa volumetria prevista para 2 anos não exige isso.
+```
+---
+
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre modelagem e arquitetura de software, confira o seguinte recurso:
+
+- [Descomplicando a Clean Architecture (Arquitetura Limpa) - DEV Community](https://dev.to/yuripeixinho/clean-architecture-arquitetura-limpa-33e1)
+
+---
+
+```quiz
+- tipo: single
+  pergunta: Segundo o Teorema CAP, por que sistemas distribuídos na nuvem geralmente precisam escolher entre Consistência (C) e Disponibilidade (A)?
+  opcoes:
+    - texto: Porque a Tolerância a Partição (P) é praticamente obrigatória, restando escolher entre C e A quando a rede falha
+      correta: true
+      explicacao: Exato! Como P é obrigatório na nuvem, a escolha real do sistema acontece entre CP (travar para manter consistência) e AP (responder mesmo com dado desatualizado).
+      explicacao_erro: O Teorema CAP diz que você só pode ter 2 de 3 garantias. Como Tolerância a Partição é praticamente obrigatória na nuvem, a escolha real está entre Consistência e Disponibilidade quando a rede falha.
+    - texto: Porque bancos de dados relacionais não suportam Disponibilidade
+      correta: false
+      explicacao: Bancos relacionais podem sim priorizar disponibilidade dependendo da configuração. O Teorema CAP trata de um trade-off geral em sistemas distribuídos, não de uma limitação específica de um tipo de banco.
+    - texto: Porque Consistência e Disponibilidade são a mesma coisa em sistemas distribuídos
+      correta: false
+      explicacao: São conceitos diferentes. Consistência significa que todos os nós veem os mesmos dados; Disponibilidade significa que todo pedido recebe resposta, mesmo que o dado esteja desatualizado.
+    - texto: Porque o CAP se aplica apenas a sistemas com um único servidor
+      correta: false
+      explicacao: O CAP se aplica justamente a sistemas distribuídos, com múltiplos nós ou réplicas — não faz sentido em um sistema de servidor único.
+
+- tipo: single
+  pergunta: O que caracteriza um módulo com alta coesão e baixo acoplamento, o objetivo ideal de design?
+  opcoes:
+    - texto: O módulo depende fortemente de vários outros módulos, mas faz várias coisas diferentes internamente
+      correta: false
+      explicacao: Isso descreve o oposto do ideal — alto acoplamento (muita dependência de outros módulos) e baixa coesão (fazer coisas diferentes ao invés de uma coisa bem feita).
+    - texto: O módulo não depende de nenhum outro módulo e não tem nenhuma responsabilidade definida
+      correta: false
+      explicacao: Um módulo sem responsabilidade definida não tem coesão, mesmo que não dependa de outros. O objetivo é justamente ter uma responsabilidade clara (alta coesão) combinada com pouca dependência externa (baixo acoplamento).
+    - texto: O módulo faz uma coisa bem feita internamente e depende pouco de outros módulos para funcionar
+      correta: true
+      explicacao: Exato! Alta coesão significa que o módulo tem uma responsabilidade bem definida e focada. Baixo acoplamento significa que ele depende pouco de outros módulos, então mudanças em um não quebram o outro.
+      explicacao_erro: O ideal é alta coesão (o módulo faz uma coisa bem feita) combinada com baixo acoplamento (depende pouco de outros módulos para funcionar).
+    - texto: O módulo muda sempre que qualquer outro módulo do sistema muda
+      correta: false
+      explicacao: Isso é sintoma de alto acoplamento, o oposto do que se busca. Em um bom design, mudar um módulo não deveria forçar mudanças em cascata pelos outros.
+
+- tipo: single
+  pergunta: Qual é o propósito principal de um ADR (Architecture Decision Record)?
+  opcoes:
+    - texto: Documentar o código-fonte linha por linha para facilitar a manutenção
+      correta: false
+      explicacao: Documentação de código é um objetivo diferente. O ADR foca especificamente em decisões arquiteturais, não em explicar o funcionamento interno do código.
+    - texto: Gerar diagramas automáticos da arquitetura do sistema
+      correta: false
+      explicacao: Geração automática de diagramas é o objetivo de ferramentas como o Structurizr (Docs as Code), não do ADR. O ADR é um registro textual de decisões.
+    - texto: Substituir a necessidade de testes automatizados no projeto
+      correta: false
+      explicacao: ADR e testes automatizados resolvem problemas completamente diferentes. O ADR documenta decisões arquiteturais; testes garantem que o código funciona como esperado.
+    - texto: Registrar o contexto e a decisão tomada em um momento específico, explicando o porquê de uma escolha arquitetural
+      correta: true
+      explicacao: Exato! Como resume o material — "o código diz COMO, o ADR diz PORQUÊ" — o ADR existe para que decisões estruturais não virem "conhecimento tribal" perdido com o tempo.
+      explicacao_erro: O ADR serve para registrar o contexto e a decisão arquitetural tomada em um momento específico, evitando que o motivo de uma escolha se perca ou vire crítica vazia no futuro.
 ```

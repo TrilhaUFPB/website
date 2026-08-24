@@ -1,24 +1,33 @@
 ---
-title: 13. Autenticação e Autorização
+title: 14. Autenticação e Autorização
 description: O que é autenticação e autorização
 category: Backend
 order: 14
 ---
 
-# 13.1 Autenticação versus autorização
+## Sumário
+
+- [14.1. Autenticação versus autorização](#141-autenticacao-versus-autorizacao)
+- [14.2. Identidade de usuário e de serviço](#142-identidade-de-usuario-e-de-servico)
+- [14.3. Papéis, permissões e escopos](#143-papeis-permissoes-e-escopos)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+- [Referências](#referencias)
+
+# 14.1. Autenticação versus autorização
 
 Em segurança de APIs, duas perguntas aparecem o tempo todo, e elas não são a mesma coisa.
 
-Autenticação responde: quem é você.  
-Autorização responde: o que você pode fazer.
+**Autenticação responde: quem é você.**  
+**Autorização responde: o que você pode fazer.**
 
 Essa separação é essencial porque um sistema pode autenticar corretamente e ainda assim falhar em autorização, permitindo acesso indevido. Também pode bloquear alguém no lugar errado e virar um sistema difícil de usar.
 
 ## Autenticação (AuthN)
 
-Autenticação é o processo de confirmar identidade.
+Autenticação é o processo de **confirmar identidade.**
 
-Em APIs, isso normalmente significa que o cliente prova quem é usando algum tipo de credencial, como senha, token, certificado ou chave. Se a prova falha, o sistema não sabe quem está do outro lado, então não deve permitir acesso a recursos protegidos.
+Em APIs, isso normalmente significa que o cliente prova quem é usando algum tipo de **credencial**, como senha, token, certificado ou chave. **Se a prova falha**, o sistema não sabe quem está do outro lado, **então não deve permitir acesso** a recursos protegidos.
 
 O resultado típico de falha de autenticação é o servidor responder que falta credencial ou que a credencial é inválida.
 
@@ -26,15 +35,15 @@ O resultado típico de falha de autenticação é o servidor responder que falta
 
 Autorização acontece depois que a identidade é conhecida.
 
-Ela verifica permissões: se aquela identidade pode acessar aquele recurso específico ou executar aquela ação.
+**Ela verifica permissões:** se aquela identidade pode acessar aquele recurso específico ou executar aquela ação.
 
 Aqui entram regras como:
-- este usuário pode ver apenas os próprios dados
-- este papel pode criar cursos, mas não pode deletar
-- este serviço pode ler, mas não pode escrever
-- este token pode acessar apenas certos escopos
+- Este usuário pode ver apenas os próprios dados
+- Este papel pode criar cursos, mas não pode deletar
+- Este serviço pode ler, mas não pode escrever
+- Este token pode acessar apenas certos escopos
 
-O resultado típico de falha de autorização é o servidor entender quem você é, mas negar a ação por falta de permissão.
+O resultado típico de **falha de autorização** é o servidor entender quem você é, mas **negar a ação por falta de permissão.**
 
 ## Exemplo
 
@@ -44,14 +53,14 @@ Imagine um endpoint que devolve detalhes de uma inscrição:
 
 Requisição:
 
-```http
+```python http
 GET /inscricoes/123 HTTP/1.1
 Host: api.exemplo.com
 ````
 
 Resposta típica:
 
-```http
+```python http
 HTTP/1.1 401 Unauthorized
 Content-Type: application/json
 
@@ -61,13 +70,13 @@ Content-Type: application/json
 }
 ```
 
-o servidor não aceitou a identidade apresentada, então não segue para verificar permissões.
+O servidor não aceitou a identidade apresentada, então não segue para verificar permissões.
 
 ### Caso 2: credencial válida, mas sem permissão
 
 Requisição:
 
-```http
+```python http
 GET /inscricoes/123 HTTP/1.1
 Host: api.exemplo.com
 Authorization: Bearer <token_valido>
@@ -75,7 +84,7 @@ Authorization: Bearer <token_valido>
 
 Resposta típica:
 
-```http
+```python http
 HTTP/1.1 403 Forbidden
 Content-Type: application/json
 
@@ -85,9 +94,9 @@ Content-Type: application/json
 }
 ```
 
-o servidor reconheceu quem é você, mas você não pode acessar esse recurso ou executar essa ação.
+O servidor reconheceu quem é você, mas você não pode acessar esse recurso ou executar essa ação.
 
-Esse exemplo também mostra por que autorização precisa ser pensada por recurso, não apenas por rota. Não basta proteger o endpoint, é preciso garantir que o objeto acessado pertence ao usuário ou que a regra de permissão permite aquele acesso.
+Esse exemplo também mostra por que **autorização precisa ser pensada por recurso, não apenas por rota.** Não basta proteger o endpoint, é preciso garantir que o objeto acessado pertence ao usuário ou que a regra de permissão permite aquele acesso.
 
 ## Checklist rápido
 
@@ -96,55 +105,43 @@ Esse exemplo também mostra por que autorização precisa ser pensada por recurs
 * Eu sei diferenciar 401 (identidade não confirmada) de 403 (identidade confirmada, permissão negada).
 * Eu entendo que falhas de autorização podem vazar dados mesmo com autenticação correta.
 
-## Fontes 
-
-https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
-
-https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
-
-https://owasp.org/www-community/Access_Control
-
-https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html
-
-
-
 ---
-# 13.2 Identidade de usuário e de serviço
+# 14.2. Identidade de usuário e de serviço
 
-Em APIs, identidade não é só sobre pessoas. Também existe identidade de sistemas.
+Em APIs, identidade não é só sobre pessoas. Também existe **identidade de sistemas**.
 
 Um erro comum de iniciante é tratar qualquer chamada como se sempre viesse de um usuário final. Na prática, muitas chamadas importantes acontecem entre serviços, e essas chamadas precisam de identidade própria, com permissões próprias.
 
 A diferença principal é:
 
-- Identidade de usuário representa uma pessoa usando o sistema.
-- Identidade de serviço representa um componente automático, como um backend, um worker, um job ou uma integração.
+- **Identidade de usuário:** representa uma pessoa usando o sistema.
+- **Identidade de serviço:** representa um componente automático, como um backend, um worker, um job ou uma integração.
 
 ## Identidade de usuário
 
-Identidade de usuário é usada quando existe uma pessoa por trás da ação.
+Identidade de usuário é usada quando **existe uma pessoa por trás da ação.**
 
 Em geral, o cliente apresenta alguma credencial, o sistema confirma a identidade e associa aquela requisição a um usuário. A partir disso, você aplica autorização: o que esse usuário pode ver e fazer.
 
-O ponto importante é que a identidade do usuário precisa ser rastreável e consistente. Você quer conseguir responder perguntas como:
+O ponto importante é que a **identidade do usuário precisa ser rastreável e consistente.** Você quer conseguir responder perguntas como:
 
-- qual usuário executou esta ação
-- quais recursos esse usuário deveria poder acessar
-- como revogar o acesso do usuário se necessário
+- Qual usuário executou esta ação
+- Quais recursos esse usuário deveria poder acessar
+- Como revogar o acesso do usuário se necessário
 
 ## Identidade de serviço
 
-Identidade de serviço aparece quando um sistema fala com outro sistema.
+Identidade de serviço aparece quando um **sistema fala com outro sistema.**
 
 Exemplos típicos:
 
-- sua API chama um serviço de e-mail para disparar notificações
-- um worker processa jobs em segundo plano
-- um serviço interno chama outro serviço interno para buscar dados
+- Sua API chama um serviço de e-mail para disparar notificações
+- Um worker processa jobs em segundo plano
+- Um serviço interno chama outro serviço interno para buscar dados
 
 Nesses casos não existe uma pessoa digitando senha a cada chamada. O serviço precisa provar quem ele é usando uma credencial própria, que não depende de um usuário final estar presente.
 
-O ponto importante é que a identidade do serviço deve ter permissões mínimas e bem definidas, porque um serviço comprometido pode causar estrago grande, já que ele costuma ter acesso a muitos dados e operações.
+O ponto importante é que a identidade do serviço **deve ter permissões mínimas e bem definidas**, porque um serviço comprometido pode causar estrago grande, já que ele costuma ter acesso a muitos dados e operações.
 
 ## O caso que mais confunde: quando um serviço age em nome de um usuário
 
@@ -152,9 +149,9 @@ Em muitos sistemas, o backend recebe uma requisição autenticada de um usuário
 
 Aqui existem dois jeitos comuns de pensar, e confundir os dois gera problemas:
 
-1) O serviço chama o outro serviço como ele mesmo, com identidade de serviço, e repassa apenas o que for necessário do contexto do usuário.
+1) **O serviço chama o outro serviço como ele mesmo**, com identidade de serviço, e repassa apenas o que for necessário do contexto do usuário.
 
-2) O serviço chama o outro serviço em nome do usuário, ou seja, a identidade do usuário influencia permissões no serviço downstream.
+2) **O serviço chama o outro serviço em nome do usuário**, ou seja, a identidade do usuário influencia permissões no serviço downstream.
 
 O primeiro modelo costuma ser mais simples de operar e controlar, mas exige que você defina claramente quais dados e permissões o serviço tem e como você garante que ele não viola regras de acesso do usuário.
 
@@ -168,7 +165,7 @@ Considere um usuário gerando um certificado.
 - A API confirma a identidade do usuário e checa se ele tem direito ao certificado.
 - A API envia um job para um worker gerar o PDF.
 
-Nesse momento, o worker não é o usuário. Ele é um serviço.
+Nesse momento, o worker não é o usuário. **Ele é um serviço**.
 
 O que deve ficar claro é:
 
@@ -185,61 +182,50 @@ Essa separação impede que um serviço interno vire um atalho para acessar dado
 - Eu garanto que serviços têm permissões mínimas para cumprir sua função.
 - Eu mantenho a autorização por recurso consistente, mesmo quando existe processamento em background.
 
-## Fontes 
-
-https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html  
-
-https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html  
-
-https://owasp.org/www-community/Access_Control  
-
-https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html  
-
-
 ---
-# 13.3 Papéis, permissões e escopos
+# 14.3. Papéis, permissões e escopos
 
-Quando uma API decide se uma ação é permitida, ela precisa transformar uma identidade em regras práticas. Três conceitos aparecem o tempo todo nesse ponto: papéis, permissões e escopos.
+Quando uma API decide se uma ação é permitida, ela precisa **transformar uma identidade em regras práticas.** Três conceitos aparecem o tempo todo nesse ponto: papéis, permissões e escopos.
 
 Eles parecem parecidos, mas servem para coisas diferentes. Se você entende bem a diferença, fica muito mais difícil cair em erros como dar acesso demais por conveniência ou confiar em um token de forma ingênua.
 
 ## Permissão
 
-Permissão é a unidade mais direta: é uma autorização específica para fazer algo.
+Permissão é a unidade mais direta: **é uma autorização específica para fazer algo.**
 
 Pense em permissões como verbos sobre recursos, por exemplo:
 
-- ler cursos
-- criar cursos
-- atualizar inscrição
-- cancelar inscrição
-- ver relatórios
+- Ler cursos
+- Criar cursos
+- Atualizar inscrição
+- Cancelar inscrição
+- Ver relatórios
 
 Uma permissão é pequena e objetiva. Ela diz exatamente o que pode ser feito.
 
 ## Papel
 
-Papel é um agrupamento de permissões.
+Papel é um **agrupamento de permissões.**
 
 Em vez de atribuir permissões uma a uma para cada usuário, você cria papéis que refletem funções do sistema e associa permissões a esses papéis. Exemplo:
 
-- aluno: pode ler cursos e criar inscrição
-- instrutor: pode criar e atualizar cursos
-- admin: pode gerenciar usuários e ver relatórios
+- Aluno: pode ler cursos e criar inscrição
+- Instrutor: pode criar e atualizar cursos
+- Admin: pode gerenciar usuários e ver relatórios
 
-O papel simplifica gestão, porque você não precisa repetir a mesma configuração para cada pessoa. Mas ele também tem um risco: quando você cria um papel grande demais, ele vira uma autorização genérica que dá mais poder do que o necessário.
+O papel simplifica gestão, porque **você não precisa repetir a mesma configuração para cada pessoa.** Mas ele também tem um risco: quando você cria um papel grande demais, ele vira uma autorização genérica que dá mais poder do que o necessário.
 
 Uma regra prática útil é: papel bom é o que representa uma função real e não vira um pacote de permissões aleatórias.
 
 ## Escopo
 
-Escopo é uma forma de representar permissões dentro de uma credencial, normalmente dentro de um token.
+Escopo é uma forma de **representar permissões dentro de uma credencial**, normalmente dentro de um token.
 
 Em vez de apenas dizer quem é a identidade, o token também pode dizer o que essa identidade está autorizada a fazer. Isso aparece como uma lista de escopos, por exemplo:
 
-- cursos:read
-- cursos:write
-- inscricoes:read
+- Cursos: read
+- Cursos: write
+- Inscricoes: read
 
 O ponto importante é que escopo não é magia. Ele é só um sinal enviado junto com a requisição. Sua API ainda precisa validar e aplicar esses limites corretamente.
 
@@ -247,8 +233,8 @@ O ponto importante é que escopo não é magia. Ele é só um sinal enviado junt
 
 Em uma requisição típica, você recebe um token. Esse token carrega uma identidade e, muitas vezes, algum conjunto de permissões ou escopos. A autorização da rota então cruza duas coisas:
 
-- o que a rota exige para ser chamada
-- o que aquela identidade tem permissão ou escopo para fazer
+- O que a rota exige para ser chamada
+- O que aquela identidade tem permissão ou escopo para fazer
 
 Se faltar permissão, a ação é negada.
 
@@ -258,25 +244,25 @@ O cuidado aqui é que isso não resolve tudo sozinho. Mesmo que o usuário tenha
 
 Imagine duas rotas:
 
-1) listar cursos  
-2) criar curso
+1) Listar cursos  
+2) Criar curso
 
 Suponha que o token venha com escopos.
 
 Requisição para listar cursos:
 
-```http
+```python http
 GET /cursos HTTP/1.1
 Host: api.exemplo.com
 Authorization: Bearer <token_com_cursos:read>
 Accept: application/json
 ````
 
-Aqui, cursos:read é suficiente.
+Aqui, cursos: read é suficiente.
 
 Agora, tentativa de criar curso com o mesmo token:
 
-```http
+```python http
 POST /cursos HTTP/1.1
 Host: api.exemplo.com
 Authorization: Bearer <token_com_cursos:read>
@@ -285,7 +271,7 @@ Content-Type: application/json
 { "titulo": "Backend com Python" }
 ```
 
-Se a rota exige cursos:write e o token só tem cursos:read, a API deve negar.
+Se a rota exige cursos: write e o token só tem cursos: read, **a API deve negar.**
 
 O que isso ilustra: permissões e escopos servem para restringir ações, mas a API é quem aplica.
 
@@ -297,10 +283,55 @@ O que isso ilustra: permissões e escopos servem para restringir ações, mas a 
 * Eu não trato papel como atalho para ignorar autorização por recurso.
 * Eu consigo definir o que cada rota exige e aplicar isso de forma consistente.
 
-## Fontes 
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre Autenticação e Autorização, confira os seguintes recursos:
 
-https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html  
+- [API Authentication: JWT, OAuth2, and More](https://www.youtube.com/watch?v=xJA8tP74KD0)
 
-https://owasp.org/www-community/Access_Control  
+```quiz
+- tipo: single
+  pergunta: |
+    Um cliente faz uma requisição para `GET /inscricoes/123` sem enviar nenhum token. O servidor responde `401 Unauthorized`.
+    Em seguida, o mesmo cliente envia um token válido, mas de um usuário que não é dono da inscrição 123, e o servidor responde `403 Forbidden`.
+    O que essas duas respostas ilustram?
+  opcoes:
+    - texto: "Que o servidor confundiu autenticação com autorização, já que deveria retornar 401 nos dois casos"
+      correta: false
+      explicacao: "Não há confusão aqui — os dois códigos estão corretos para cada situação. 401 é para identidade não confirmada, 403 é para identidade confirmada mas sem permissão. Retornar 401 nos dois casos é que estaria errado."
+    - texto: "Que o 401 indica falha de autenticação (identidade não confirmada) e o 403 indica falha de autorização (identidade confirmada, mas sem permissão)"
+      correta: true
+      explicacao: "Correto! Sem token, o servidor não sabe quem está fazendo a requisição (401 — falha de autenticação). Com token válido mas sem permissão sobre aquele recurso específico, o servidor sabe quem você é mas nega a ação (403 — falha de autorização)."
+      explicacao_erro: "Repare na diferença entre os dois cenários: no primeiro não há credencial nenhuma (o servidor não sabe quem é você), no segundo a credencial é válida mas não dá direito àquele recurso. Isso é exatamente a distinção entre autenticação (quem você é) e autorização (o que você pode fazer)."
+    - texto: "Que o token do segundo cliente estava expirado, por isso o servidor retornou 403"
+      correta: false
+      explicacao: "Um token expirado ou inválido normalmente gera 401 (falha de autenticação), não 403. O 403 aqui ocorre porque o token é válido, mas a identidade autenticada não tem permissão sobre aquela inscrição específica."
+    - texto: "Que ambos os erros são de autenticação, pois envolvem o header Authorization"
+      correta: false
+      explicacao: "Usar o header Authorization não torna os dois erros equivalentes. O primeiro é falta de credencial (autenticação); o segundo é credencial válida sem permissão sobre o recurso (autorização) — são camadas diferentes do processo."
 
-https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html  
+- tipo: single
+  pergunta: |
+    Uma API cria o papel "editor", que agrupa as permissões de criar, atualizar e deletar qualquer curso, além de gerenciar usuários — só porque era mais rápido do que criar papéis separados para cada função.
+    Qual é o principal risco dessa decisão, segundo os conceitos de papéis e permissões?
+  opcoes:
+    - texto: "Nenhum risco relevante, já que papéis servem justamente para agrupar o máximo de permissões possível"
+      correta: false
+      explicacao: "Papéis servem para agrupar permissões que refletem uma função *real* do sistema, não para acumular o máximo de poder possível por conveniência. Um papel grande demais é justamente o risco a evitar."
+    - texto: "O problema é só de nomenclatura — bastaria renomear o papel para deixar mais claro o que ele faz"
+      correta: false
+      explicacao: "O problema não é o nome do papel, é o conjunto de permissões que ele carrega. Renomear não muda o fato de que esse papel concede acesso muito além do que a função de 'editor' deveria ter."
+    - texto: "Escopos resolvem esse problema automaticamente, então não é necessário se preocupar com o desenho do papel"
+      correta: false
+      explicacao: "Escopos são um sinal enviado junto com a credencial, mas não corrigem sozinhos um papel mal desenhado — a API ainda aplica as permissões que aquele papel carrega. O cuidado precisa vir do desenho do próprio papel."
+    - texto: "O papel vira uma autorização genérica que concede mais poder do que o necessário para a função real do usuário"
+      correta: true
+      explicacao: "Correto! Quando um papel agrupa permissões demais por conveniência, ele deixa de representar uma função real e passa a violar o privilégio mínimo — qualquer usuário com esse papel ganha poder além do que sua função exige."
+      explicacao_erro: "Pense no princípio de privilégio mínimo: um papel deveria refletir exatamente as permissões de uma função real. Agrupar permissões de áreas distintas (conteúdo e gestão de usuários) por conveniência cria um papel poderoso demais, ampliando o estrago possível se essa conta for comprometida."
+```
+
+# Referências
+
+- Authentication Cheat Sheet (OWASP): https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
+- Authorization Cheat Sheet (OWASP): https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
+- Access Control (OWASP): https://owasp.org/www-community/Access_Control
+- Web Service Security Cheat Sheet (OWASP): https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html

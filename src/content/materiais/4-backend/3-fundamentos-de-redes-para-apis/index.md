@@ -1,11 +1,26 @@
 ---
-title: 2. Fundamentos de Redes para APIs
+title: 3. Fundamentos de Redes para APIs
 description: Introdução em redes de computadores
 category: Backend
 order: 3
 ---
 
-# 2.1. IP, porta e socket
+## Sumário
+
+- [3.1. IP, porta e socket](#31-ip-porta-e-socket)
+- [3.2. DNS e resolução de nomes](#32-dns-e-resolucao-de-nomes)
+- [3.3. TCP e confiabilidade](#33-tcp-e-confiabilidade)
+- [3.4. HTTPS/TLS e comunicação segura](#34-httpstls-e-comunicacao-segura)
+- [3.5. Anatomia de uma URL](#35-anatomia-de-uma-url)
+- [3.6. Proxy, reverse proxy e load balancer](#36-proxy-reverse-proxy-e-load-balancer)
+- [3.7. Ambientes de execução e problemas clássicos](#37-ambientes-de-execucao-e-problemas-classicos)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+- [Referências](#referencias)
+
+---
+
+# 3.1. IP, porta e socket
 
 Quando a gente fala de rede no dia a dia, é comum misturar termos como internet, web, site, servidor e rota, como se tudo fosse a mesma coisa. Nesta seção, a meta é só organizar o cenário para que IP, porta e socket façam sentido sem mistério.
 
@@ -90,21 +105,9 @@ Se o árbitro usar o IP errado, os dados vão para a máquina errada e o servido
 * Eu consigo ler `192.168.0.50:9000` e dizer qual parte é a máquina e qual parte é o serviço.
 * Eu consigo explicar por que IP certo com porta errada não funciona.
 
-## Fontes (para leitura)
-
-Tanenbaum, Redes de Computadores (4ª edição):
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/IP_Address](https://developer.mozilla.org/pt-BR/docs/Glossary/IP_Address)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Port](https://developer.mozilla.org/pt-BR/docs/Glossary/Port)
-
-[https://docs.python.org/pt-br/3/howto/sockets.html](https://docs.python.org/pt-br/3/howto/sockets.html)
-
-[https://docs.python.org/3/library/socket.html](https://docs.python.org/3/library/socket.html)
-
 ---
 
-# 2.2. DNS e resolução de nomes
+# 3.2. DNS e resolução de nomes
 
 DNS é o sistema de nomes da internet. Ele permite que você use nomes fáceis como `api.exemplo.com` em vez de decorar endereços IP.
 
@@ -236,23 +239,9 @@ Esse exemplo também explica um sintoma comum em times: pessoas relatando result
 - Eu entendo que cache e TTL fazem mudanças demorarem a aparecer para todos.
 - Eu sei diferenciar falha de resolução de falha de conexão.
 
-## Fontes
-
-Tanenbaum, Redes de Computadores (4ª edição):
-
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_domain_name
-
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works
-
-https://developer.mozilla.org/pt-BR/docs/Glossary/Domain
-
-https://www.rfc-editor.org/rfc/rfc1034
-
-https://www.cloudflare.com/pt-br/learning/dns/what-is-dns/
-
 ---
 
-# 2.3. TCP e confiabilidade
+# 3.3. TCP e confiabilidade
 
 Depois que um cliente descobre o IP do servidor e decide a porta correta, ainda falta uma etapa essencial: transportar dados de forma confiável entre as duas máquinas.
 
@@ -386,23 +375,9 @@ Agora um segundo cenário: o cliente envia a requisição, o servidor processa e
 - Eu entendo que confiabilidade de transporte não garante consistência de operações de negócio.
 - Eu consigo explicar por que um cliente pode repetir uma requisição após uma falha sem saber o que ocorreu no servidor.
 
-## Fontes
-
-Tanenbaum, Redes de Computadores (4ª edição):
-
-https://developer.mozilla.org/pt-BR/docs/Glossary/TCP
-
-https://developer.mozilla.org/pt-BR/docs/Glossary/Transmission_Control_Protocol
-
-https://www.rfc-editor.org/rfc/rfc9293
-
-https://www.cloudflare.com/pt-br/learning/ddos/glossary/tcp-ip/
-
-https://docs.python.org/3/library/socket.html
-
 ---
 
-# 2.4. HTTPS/TLS e comunicação segura
+# 3.4. HTTPS/TLS e comunicação segura
 
 Em uma rede, dados podem atravessar roteadores, provedores, redes públicas e equipamentos que você não controla. Mesmo quando a conexão é confiável, isso não significa que ela é segura.
 
@@ -533,20 +508,11 @@ Esse exemplo também mostra por que apenas adicionar validações na aplicação
 - Eu sei explicar que TLS fornece confidencialidade, integridade e autenticação do servidor.
 - Eu entendo que a segurança do canal acontece antes da API processar a requisição.
 - Eu sei o que é um certificado e por que o cliente valida domínio, expiração e cadeia de confiança.
-- Eu entendo por que HTTP em rede pública é um risco real, mesmo quando tudo funciona.
-
-## Fontes (para leitura)
-
-https://developer.mozilla.org/pt-BR/docs/Glossary/HTTPS  
-https://developer.mozilla.org/pt-BR/docs/Glossary/TLS  
-https://developer.mozilla.org/pt-BR/docs/Web/Security/Transport_Layer_Security  
-https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview  
-https://www.rfc-editor.org/rfc/rfc8446  
-https://www.cloudflare.com/pt-br/learning/ssl/what-is-tls/  
+- Eu entendo por que HTTP em rede pública é um risco real, mesmo quando tudo funciona. 
 
 ---
 
-# 2.5. Anatomia de uma URL
+# 3.5. Anatomia de uma URL
 
 Uma URL (Uniform Resource Locator) é um endereço usado para identificar e localizar um recurso. Na prática, é o que você coloca no navegador e é o que um cliente usa para chamar uma API.
 
@@ -670,23 +636,9 @@ Esse tipo de detalhe explica por que, às vezes, você vê uma URL no navegador 
 * Eu entendo por que às vezes aparecem sequências como `%20` em URLs.
 * Eu consigo ler `&` e `=` em query string sem me confundir.
 
-## Fontes (para leitura)
-
-[https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/API/URL](https://developer.mozilla.org/pt-BR/docs/Web/API/URL)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/API/URLSearchParams](https://developer.mozilla.org/pt-BR/docs/Web/API/URLSearchParams)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/URL](https://developer.mozilla.org/pt-BR/docs/Glossary/URL)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/URI](https://developer.mozilla.org/pt-BR/docs/Glossary/URI)
-
-[https://www.rfc-editor.org/rfc/rfc3986](https://www.rfc-editor.org/rfc/rfc3986)
-
 ---
 
-# 2.6. Proxy, reverse proxy e load balancer
+# 3.6. Proxy, reverse proxy e load balancer
 
 Em sistemas reais, uma requisição quase nunca sai do cliente e chega direto na aplicação. No meio do caminho, normalmente existem intermediários. Eles fazem o tráfego ficar mais seguro, mais rápido e mais confiável.
 
@@ -822,27 +774,9 @@ Esse é o benefício prático: você mantém um ponto de entrada estável e ganh
 * Eu entendo por que a aplicação pode não ver o IP real do cliente e por que existem headers de forwarding.
 * Eu consigo imaginar uma cadeia com reverse proxy na borda e load balancer atrás, antes das instâncias.
 
-## Fontes (para leitura)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Proxy_server](https://developer.mozilla.org/pt-BR/docs/Glossary/Proxy_server)
-
-[https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_proxy](https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_proxy)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded)
-
-[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/X-Forwarded-For](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/X-Forwarded-For)
-
-[https://www.cloudflare.com/pt-br/learning/cdn/glossary/reverse-proxy/](https://www.cloudflare.com/pt-br/learning/cdn/glossary/reverse-proxy/)
-
-[https://www.cloudflare.com/pt-br/learning/performance/what-is-load-balancing/](https://www.cloudflare.com/pt-br/learning/performance/what-is-load-balancing/)
-
-[https://nginx.org/en/docs/http/ngx_http_proxy_module.html](https://nginx.org/en/docs/http/ngx_http_proxy_module.html)
-
-[https://www.haproxy.com/documentation/haproxy-configuration-tutorials/load-balancing/](https://www.haproxy.com/documentation/haproxy-configuration-tutorials/load-balancing/)
-
 ---
 
-# 2.7. Ambientes de execução e problemas clássicos
+# 3.7. Ambientes de execução e problemas clássicos
 
 Um backend não existe no vazio. Ele sempre está rodando em algum lugar, com alguma rede ao redor, com alguma forma de expor uma porta e, muitas vezes, com intermediários no caminho. É por isso que um sistema pode funcionar no seu computador e falhar quando você coloca em outra máquina ou em outro ambiente.
 
@@ -964,20 +898,125 @@ Esse tipo de problema parece misterioso no começo, mas fica previsível quando 
 - Eu sei que intermediários podem mudar o que a aplicação enxerga e que isso exige configuração.
 - Eu entendo que falhas podem acontecer antes de a requisição chegar na aplicação.
 
-## Fontes (para leitura)
+---
 
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview
+## Complemente o Aprendizado
+Para aprofundar seus conhecimentos sobre redes e infraestrutura de backend, confira os recursos abaixo, organizados por tópico:
 
-https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works
+- [O Guia Definitivo dos Protocolos de Rede que Movem a Web - Medium](https://medium.com/@guilhermejorgee/o-guia-definitivo-dos-protocolos-de-rede-que-movem-a-web-47dad38c59e3)
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Localhost
+---
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Port
+```quiz
+- tipo: single
+  pergunta: Qual é a diferença entre IP e porta em uma comunicação de rede?
+  opcoes:
+    - texto: O IP identifica a máquina na rede, enquanto a porta identifica o serviço específico dentro dessa máquina
+      correta: true
+      explicacao: Exato! O IP te leva até a máquina certa, e a porta te leva até o programa certo dentro dela, permitindo que vários serviços rodem na mesma máquina.
+      explicacao_erro: O IP identifica a máquina, e a porta identifica o serviço dentro dela. É por isso que uma mesma máquina pode rodar vários programas em portas diferentes.
+    - texto: IP e porta são a mesma coisa, apenas escritos de formas diferentes
+      correta: false
+      explicacao: São conceitos diferentes. O IP aponta para a máquina, e a porta aponta para o serviço específico dentro dessa máquina.
+    - texto: A porta identifica a máquina, e o IP identifica o serviço
+      correta: false
+      explicacao: É o contrário. O IP identifica a máquina na rede, e a porta identifica o serviço dentro dela.
+    - texto: IP é usado apenas em redes locais, e porta apenas na internet
+      correta: false
+      explicacao: Tanto IP quanto porta são usados em qualquer tipo de rede, seja local ou pela internet. A diferença entre eles é a função, não o tipo de rede.
 
-https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_pr
-oxy
-https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded
+- tipo: single
+  pergunta: Por que o DNS existe?
+  opcoes:
+    - texto: Para permitir o uso de nomes fáceis de lembrar em vez de decorar endereços IP, mesmo quando o IP por trás muda
+      correta: true
+      explicacao: Exato! O DNS permite publicar um nome estável, mesmo que a infraestrutura por trás (o IP) mude com o tempo, sem quebrar integrações existentes.
+      explicacao_erro: O DNS traduz nomes fáceis de lembrar (como api.exemplo.com) para o endereço IP correspondente, permitindo que a infraestrutura mude sem afetar quem usa o nome.
+    - texto: Para criptografar a comunicação entre cliente e servidor
+      correta: false
+      explicacao: Criptografia é função do HTTPS/TLS, não do DNS. O DNS serve apenas para traduzir nomes em endereços IP.
+    - texto: Para acelerar a velocidade da conexão de internet
+      correta: false
+      explicacao: O DNS não tem relação direta com a velocidade da conexão. Sua função é resolver nomes para endereços IP.
+    - texto: Para impedir que dois programas usem a mesma porta
+      correta: false
+      explicacao: Isso é controlado pelo sistema operacional, não pelo DNS. O DNS resolve nomes de domínio para endereços IP.
 
-https://docs.python.org/pt-br/3/howto/sockets.html
+- tipo: single
+  pergunta: O que costuma causar o problema de "funciona no localhost, mas não funciona quando outro dispositivo tenta acessar pela rede"?
+  opcoes:
+    - texto: O DNS está com problema de cache
+      correta: false
+      explicacao: Problemas de cache DNS causam sintomas diferentes, como pessoas acessando destinos diferentes. O sintoma descrito é característico de escuta apenas no loopback.
+    - texto: O servidor está escutando apenas no endereço de loopback, aceitando conexões apenas da própria máquina
+      correta: true
+      explicacao: Exato! Quando o servidor escuta só no loopback, ele responde à própria máquina, mas nenhum outro dispositivo na rede consegue alcançá-lo.
+      explicacao_erro: Esse sintoma geralmente indica que o servidor está escutando apenas no loopback. Para aceitar conexões externas, ele precisa escutar em um endereço acessível pela rede.
+    - texto: A porta está sendo usada por outro processo
+      correta: false
+      explicacao: Porta em uso normalmente impede o próprio servidor de iniciar, gerando erro na hora de subir o processo, não um funcionamento parcial como o localhost funcionando e a rede não.
+    - texto: O certificado HTTPS expirou
+      correta: false
+      explicacao: Problemas de certificado geram erros específicos de conexão segura recusada, não o padrão de "funciona local mas não funciona de fora" descrito.
+```
 
-https://fastapi.tiangolo.com/deployment/concepts/
+# Referências
+
+**3.1. IP, Porta e Socket**
+- *Tanenbaum, Redes de Computadores (4ª edição)*
+- [IP Address - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/IP_Address)
+- [Port - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Port)
+- [Socket Programming HOWTO - Documentação Python (pt-BR)](https://docs.python.org/pt-br/3/howto/sockets.html)
+- [socket — Low-level networking interface - Documentação Python](https://docs.python.org/3/library/socket.html)
+
+**3.2. DNS e Resolução de Nomes**
+- *Tanenbaum, Redes de Computadores (4ª edição)*
+- [O que é um nome de domínio? - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_domain_name)
+- [Como a Web funciona - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works)
+- [Domain - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Domain)
+- [RFC 1034: Domain Names - Concepts and Facilities](https://www.rfc-editor.org/rfc/rfc1034)
+- [O que é DNS? - Cloudflare](https://www.cloudflare.com/pt-br/learning/dns/what-is-dns/)
+
+**3.3. TCP e Confiabilidade**
+- *Tanenbaum, Redes de Computadores (4ª edição)*
+- [TCP - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/TCP)
+- [Transmission Control Protocol - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Transmission_Control_Protocol)
+- [RFC 9293: Transmission Control Protocol (TCP)](https://www.rfc-editor.org/rfc/rfc9293)
+- [TCP/IP - Cloudflare](https://www.cloudflare.com/pt-br/learning/ddos/glossary/tcp-ip/)
+- [socket — Low-level networking interface - Documentação Python](https://docs.python.org/3/library/socket.html)
+
+**3.4. HTTPS/TLS e Comunicação Segura**
+- [HTTPS - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/HTTPS)
+- [TLS - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/TLS)
+- [Transport Layer Security (TLS) - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/Security/Transport_Layer_Security)
+- [Uma visão geral do HTTP - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview)
+- [RFC 8446: The Transport Layer Security (TLS) Protocol Version 1.3](https://www.rfc-editor.org/rfc/rfc8446)
+- [O que é TLS? - Cloudflare](https://www.cloudflare.com/pt-br/learning/ssl/what-is-tls/)
+
+**3.5. Anatomia de uma URL**
+- [O que é uma URL? - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL)
+- [URL - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/API/URL)
+- [URLSearchParams - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/API/URLSearchParams)
+- [URL - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/URL)
+- [URI - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/URI)
+- [RFC 3986: Uniform Resource Identifier (URI) - Generic Syntax](https://www.rfc-editor.org/rfc/rfc3986)
+
+**3.6. Proxy, Reverse Proxy e Load Balancer**
+- [Proxy server - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Proxy_server)
+- [Reverse proxy - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_proxy)
+- [Forwarded - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded)
+- [X-Forwarded-For - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/X-Forwarded-For)
+- [O que é um reverse proxy? - Cloudflare](https://www.cloudflare.com/pt-br/learning/cdn/glossary/reverse-proxy/)
+- [O que é load balancing? - Cloudflare](https://www.cloudflare.com/pt-br/learning/performance/what-is-load-balancing/)
+- [Module ngx_http_proxy_module - Documentação NGINX](https://nginx.org/en/docs/http/ngx_http_proxy_module.html)
+- [Load Balancing - Documentação HAProxy](https://www.haproxy.com/documentation/haproxy-configuration-tutorials/load-balancing/)
+
+**3.7. Ambientes de Execução e Problemas Clássicos**
+- [Visão geral do cliente-servidor - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview)
+- [Como a Web funciona - MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works)
+- [Localhost - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Localhost)
+- [Port - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Port)
+- [Reverse proxy - MDN Web Docs (Glossário)](https://developer.mozilla.org/pt-BR/docs/Glossary/Reverse_proxy)
+- [Forwarded - MDN Web Docs (Cabeçalho HTTP)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Forwarded)
+- [Socket Programming HOWTO - Documentação Python (pt-BR)](https://docs.python.org/pt-br/3/howto/sockets.html)
+- [Concepts - Deployment - Documentação FastAPI](https://fastapi.tiangolo.com/deployment/concepts/)
