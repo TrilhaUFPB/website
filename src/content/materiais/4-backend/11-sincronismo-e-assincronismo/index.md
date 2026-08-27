@@ -4,12 +4,17 @@ description: Diferentes formas de um sistema se comunicar entre si e para o exte
 category: Backend
 order: 11
 ---
+- [11.0 Comunicação síncrona e assíncrona](#111-comunicacao-sincrona-e-assincrona)
+- [11.1. Workloads CPU-bound e I/O-bound](#112-execucao-sincrona-e-assincrona)
+- [11.2. Limites, contexto e responsabilidades](#113-backpressure-e-sistemas-sob-carga)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
 
-# 10.1 Comunicação síncrona e assíncrona
+# 11.0 Comunicação síncrona e assíncrona
 
-Quando um backend cresce, ele deixa de ser apenas um código que responde HTTP e passa a ser um conjunto de partes que precisam conversar entre si e com outros sistemas. Nessa conversa, existe uma decisão que muda profundamente o comportamento do sistema sob latência, falhas e picos de carga nesses casos a comunicação vai ser síncrona ou assíncrona.
+Quando um backend cresce, ele deixa de ser apenas um código que responde HTTP e passa a ser um conjunto de partes que precisam conversar entre si e com outros sistemas. Nessa conversa, existe uma decisão que muda profundamente o comportamento do sistema sob latência, falhas e picos de carga nesses casos a comunicação vai ser **síncrona** ou **assíncrona**.
 
-Aqui, o foco é comunicação entre componentes, serviços ou sistemas. Não é sobre como uma função roda dentro do seu código, e sim sobre como um lado depende do outro para seguir em frente.
+> Aqui, o foco é comunicação entre componentes, serviços ou sistemas. Não é sobre como uma função roda dentro do seu código, e sim sobre como um lado depende do outro para seguir em frente.
 
 ## Comunicação síncrona
 
@@ -43,7 +48,7 @@ Imagine duas operações comuns em um sistema de cursos.
 
 Listar cursos precisa responder rápido e devolver dados imediatamente. O padrão natural é síncrono.
 
-Requisição:
+**Requisição:**
 
 ```http
 GET /cursos HTTP/1.1
@@ -51,7 +56,7 @@ Host: api.exemplo.com
 Accept: application/json
 ````
 
-Resposta:
+**Resposta:**
 
 ```http
 HTTP/1.1 200 OK
@@ -79,26 +84,13 @@ A diferença principal não é o formato do HTTP. É a expectativa de tempo e a 
 
 ## Checklist rápido
 
-* Eu sei explicar comunicação síncrona como esperar a resposta para continuar.
-* Eu sei explicar comunicação assíncrona como separar pedido de conclusão.
-* Eu entendo que síncrono é mais simples, mas propaga latência e falhas.
-* Eu entendo que assíncrono melhora controle sob pico, mas exige rastrear estado e lidar com consistência.
-
-## Fontes 
-
-https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous
-
-https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous
-
-https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication
-
-https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply
-
-
-
+* Eu sei explicar comunicação síncrona como esperar a resposta para continuar ?.
+* Eu sei explicar comunicação assíncrona como separar pedido de conclusão ?.
+* Eu entendo que síncrono é mais simples, mas propaga latência e falhas ?.
+* Eu entendo que assíncrono melhora controle sob pico, mas exige rastrear estado e lidar com consistência ?.
 
 ---
-# 10.2 Execução síncrona e assíncrona
+# 11.2 Execução síncrona e assíncrona
 
 Até agora falamos de sincronismo e assincronismo como forma de um sistema conversar com outro. Agora a lente muda: dentro de um mesmo processo, como o seu código progride enquanto operações acontecem.
 
@@ -134,7 +126,7 @@ No modelo síncrono, você faz um pedido, espera, depois faz o outro, espera de 
 3) buscar inscrições
 4) esperar resposta
 5) montar resposta final
-````
+```
 
 No modelo assíncrono, você pode iniciar os dois pedidos e só esperar quando realmente precisar juntar os resultados:
 
@@ -154,7 +146,7 @@ Em backend, muita coisa é I/O: banco, rede, filas, cache. Por isso, execução 
 
 Ao mesmo tempo, execução assíncrona não é vantagem automática. Se a rota é dominada por CPU, iniciar mais tarefas ao mesmo tempo não cria capacidade. Você só aumenta disputa por CPU e pode aumentar latência.
 
-O ponto é: execução assíncrona é principalmente uma ferramenta para lidar bem com espera.
+O ponto é: **"execução assíncrona é principalmente uma ferramenta para lidar bem com espera."**
 
 ## Erros comuns quando o assunto é novo
 
@@ -199,22 +191,13 @@ async def rota_async():
 Em carga alta, a rota assíncrona tende a escalar melhor quando a maior parte do tempo é espera por I/O, porque o servidor não fica preso em sleep.
 ## Checklist rápido
 
-* Eu sei explicar execução síncrona como um fluxo que espera cada etapa terminar.
-* Eu sei explicar execução assíncrona como um fluxo que inicia trabalho e continua, aguardando depois.
-* Eu entendo que a principal vantagem da assincronia aparece quando existe I/O.
-* Eu entendo que CPU-bound não melhora só porque eu iniciei mais coisas ao mesmo tempo.
-
-## Fontes 
-
-https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous
-
-https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous
-
-https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Asynchronous
-
+* Eu sei explicar execução síncrona como um fluxo que espera cada etapa terminar ?.
+* Eu sei explicar execução assíncrona como um fluxo que inicia trabalho e continua, aguardando depois ?.
+* Eu entendo que a principal vantagem da assincronia aparece quando existe I/O ?.
+* Eu entendo que CPU-bound não melhora só porque eu iniciei mais coisas ao mesmo tempo ?.
 
 ---
-# 10.3 Trade-offs arquiteturais
+# 11.3 Trade-offs arquiteturais
 
 Escolher entre síncrono e assíncrono é uma decisão arquitetural porque ela muda o comportamento do sistema em latência, falhas, picos de carga e experiência do consumidor. Não existe escolha universalmente melhor. Existe a escolha que combina com o tipo de operação e com o que o consumidor precisa naquele momento.
 
@@ -227,16 +210,16 @@ No síncrono, o consumidor recebe a resposta final na mesma chamada. Isso simpli
 O custo aparece quando a operação demora ou depende de coisas instáveis. Como o chamador precisa esperar, a latência se propaga. Se o serviço chamado ficar lento, você prende recursos esperando e aumenta fila. Isso piora a situação justamente em momentos de pico, que é quando você mais precisa de previsibilidade.
 
 Síncrono costuma funcionar muito bem quando:
-- o resultado é necessário agora
-- o tempo de execução é curto e estável
-- a taxa de chamadas não é tão explosiva
-- falhar rápido é aceitável e o cliente consegue lidar bem
+- o resultado é necessário agora!
+- o tempo de execução é curto e estável!
+- a taxa de chamadas não é tão explosiva!
+- falhar rápido é aceitável e o cliente consegue lidar bem!
 
 ## O que o assíncrono te dá e o que ele cobra
 
 No assíncrono, você separa o pedido da conclusão. O sistema aceita a solicitação e processa depois. Isso te dá controle melhor sobre carga, porque você consegue regular quantos trabalhos estão em andamento e absorver picos com filas ou workers.
 
-O custo é que você cria um novo problema de produto: como o consumidor acompanha o andamento. Você passa a ter estado, rastreabilidade, casos de duplicação e a necessidade de comunicar progresso ou conclusão. Além disso, o sistema pode ficar eventualmente consistente, ou seja, o usuário pode pedir algo e não ver o resultado imediatamente.
+O custo é que, você cria um novo problema de produto: como o consumidor acompanha o andamento. Você passa a ter estado, rastreabilidade, casos de duplicação e a necessidade de comunicar progresso ou conclusão. Além disso, o sistema pode ficar eventualmente consistente, ou seja, o usuário pode pedir algo e não ver o resultado imediatamente.
 
 Assíncrono costuma funcionar muito bem quando:
 - o trabalho é demorado ou variável
@@ -246,7 +229,7 @@ Assíncrono costuma funcionar muito bem quando:
 
 ## Critérios práticos para escolher
 
-O critério mais importante é a necessidade do resultado imediato. Se o consumidor não consegue seguir sem o resultado, síncrono é natural. Se o consumidor só precisa saber que o pedido foi aceito, assíncrono começa a fazer sentido.
+> O critério mais importante é a necessidade do resultado imediato. Se o consumidor não consegue seguir sem o resultado, síncrono é natural. Se o consumidor só precisa saber que o pedido foi aceito, assíncrono começa a fazer sentido.
 
 Outro critério é o tempo de execução. Operações rápidas e previsíveis tendem a ficar síncronas. Operações longas, incertas ou que podem envolver múltiplas dependências tendem a ficar melhores como assíncronas.
 
@@ -264,25 +247,13 @@ A diferença não é o HTTP em si. É o compromisso que você está assumindo co
 
 ## Checklist rápido
 
-- Eu sei quando o resultado precisa ser imediato e quando pode chegar depois.
-- Eu sei que síncrono é mais simples, mas propaga latência e falhas.
-- Eu sei que assíncrono melhora controle sob pico, mas exige rastrear estado e lidar com casos de reprocessamento.
-- Eu consigo justificar a escolha com base em tempo de execução, falhas e experiência do consumidor.
-
-## Fontes 
-
-https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication  
-
-https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply  
-
-https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous  
-
-https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous  
-
-
+- Eu sei quando o resultado precisa ser imediato e quando pode chegar depois ?.
+- Eu sei que síncrono é mais simples, mas propaga latência e falhas ?.
+- Eu sei que assíncrono melhora controle sob pico, mas exige rastrear estado e lidar com casos de reprocessamento ?.
+- Eu consigo justificar a escolha com base em tempo de execução, falhas e experiência do consumidor ?.
 
 ---
-# 10.4 Padrões práticos de execução
+# 11.4 Padrões práticos de execução
 
 Depois de entender os trade-offs, o que falta é transformar a decisão em um formato prático: como um sistema normalmente implementa comunicação e execução assíncrona sem virar um conjunto de gambiarras.
 
@@ -362,9 +333,75 @@ Isso reduz pressão na API porque você não segura uma conexão aberta enquanto
 - Eu sei que filas e workers são a forma comum de controlar execução em sistemas assíncronos.
 - Eu sei que duplicação é esperada e idempotência é uma proteção essencial.
 
+
+## Complemento o aprendizado
+São vídeos em inglês e por causa do sotaque deles é um pouco mais díficil de entender mas o contéudo visual é bastante explicativo: 
+
+- https://www.youtube.com/watch?v=6XTGcgt5clQ
+
+- https://www.youtube.com/watch?v=DYFocSiPOl8
+
+```quiz
+- tipo: single
+  pergunta: "Sua API possui uma rota que gera um relatório financeiro em PDF, um processo que leva cerca de 45 segundos. Atualmente, os clientes fazem a requisição HTTP e ficam aguardando, mas durante picos de uso, muitos recebem erro de '504 Gateway Timeout'. Qual é a melhor abordagem arquitetural para resolver esse problema de forma definitiva?"
+  opcoes:
+    - texto: "Mudar para um fluxo assíncrono: a API aceita o pedido, coloca em uma fila, e devolve imediatamente um 'Job ID' para o cliente consultar o status (polling) depois."
+      correta: true
+      explicacao: "Perfeito! Para operações longas, separar o pedido da conclusão evita que conexões fiquem presas e estourem timeouts. A fila absorve o pico e o cliente ganha previsibilidade."
+      explicacao_erro: "Em operações muito longas e variáveis (como gerar um PDF pesado), manter a conexão síncrona aberta consome recursos do servidor à toa e aumenta o risco de timeouts no meio do caminho. O modelo assíncrono com devolução de um ID resolve isso."
+    - texto: "Aumentar o timeout do Load Balancer e do servidor web para 120 segundos, mantendo a comunicação síncrona."
+      correta: false
+      explicacao: "Aumentar o timeout apenas mascara o problema. Em momentos de pico, as conexões presas por 45+ segundos vão esgotar a memória e os workers do servidor, causando instabilidade."
+    - texto: "Exigir que o cliente (um navegador web) forneça um Webhook para que o servidor consiga avisá-lo quando terminar."
+      correta: false
+      explicacao: "Navegadores web (frontends de usuários comuns) não possuem IPs públicos estáticos nem portas abertas para receber chamadas de Webhooks. Isso funciona entre servidores (backend-to-backend), não para clientes finais."
+    - texto: "Mudar a execução do código Python para 'async/await' para que o PDF seja gerado paralelamente em vários núcleos."
+      correta: false
+      explicacao: "A sintaxe async/await lida com concorrência e liberação de I/O, não com paralelismo de CPU. Gerar um PDF costuma ser CPU-bound, então apenas usar 'async' não resolve o problema do gargalo nem o timeout do cliente."
+
+- tipo: single
+  pergunta: "Você refatorou uma rota do seu backend FastAPI, trocando requisições síncronas (`requests.get`) por requisições assíncronas (`httpx.AsyncClient().get`). As chamadas vão para um banco de dados e uma API externa (ambos I/O-bound). O que acontece de fato no servidor quando essa rota recebe alto tráfego?"
+  opcoes:
+    - texto: "A API externa e o banco de dados processarão a requisição mais rápido, pois recebem um comando assíncrono."
+      correta: false
+      explicacao: "O assincronismo do seu código afeta apenas a forma como o SEU servidor gerencia a espera. O banco e a API externa não sabem (nem se importam) se você usou código bloqueante ou não bloqueante."
+    - texto: "O servidor executará múltiplas tarefas ao mesmo tempo em diferentes núcleos do processador (paralelismo real)."
+      correta: false
+      explicacao: "Execução assíncrona baseada em event loop (como no asyncio do Python) lida com concorrência, não paralelismo. As tarefas se alternam na mesma thread, aproveitando o tempo de espera."
+    - texto: "A rota se tornará imune a timeouts, pois requisições assíncronas não possuem tempo limite de conexão."
+      correta: false
+      explicacao: "Requisições de rede assíncronas também estão sujeitas a timeouts de rede. A diferença é que elas não travam a aplicação inteira enquanto esperam esse tempo limite."
+    - texto: "O servidor consegue atender mais requisições concorrentes, pois a thread não fica bloqueada (parada) enquanto aguarda a resposta do banco ou da API."
+      correta: true
+      explicacao: "Isso mesmo! A grande vantagem da execução assíncrona (não-bloqueante) em I/O é liberar a thread do servidor para fazer outras coisas úteis (como aceitar novas requisições) em vez de ficar ociosa esperando a rede responder."
+      explicacao_erro: "A execução assíncrona não acelera as dependências externas. O ganho está na eficiência do servidor: em vez de a thread dormir esperando o I/O, ela é liberada para atender outras conexões simultâneas."
+
+- tipo: single
+  pergunta: "Dois microsserviços internos, 'Pedidos' e 'Notas Fiscais', precisam se comunicar. 'Pedidos' solicita a emissão de uma nota, o que leva cerca de 5 minutos. Como 'Pedidos' não pode ficar parado esperando, qual padrão de comunicação assíncrona é o mais eficiente para evitar tráfego de rede desnecessário?"
+  opcoes:
+    - texto: "Polling com intervalo de 1 segundo. 'Pedidos' pergunta a cada segundo se a nota já está pronta."
+      correta: false
+      explicacao: "Se a nota leva 5 minutos, consultar a cada segundo geraria 300 requisições inúteis por pedido. Isso sobrecarrega a rede e o banco de dados desnecessariamente."
+    - texto: "Webhooks (Callbacks). O microsserviço 'Pedidos' informa uma URL, e o serviço de 'Notas Fiscais' faz um POST nessa URL assim que terminar."
+      correta: true
+      explicacao: "Correto! Como ambos são serviços de backend, eles podem expor endpoints. O Webhook é perfeito aqui porque elimina a necessidade de ficar 'perguntando' (polling), notificando apenas quando o trabalho realmente acaba."
+      explicacao_erro: "Para comunicação assíncrona entre backends em tarefas longas, Webhooks evitam requisições inúteis. O serviço consumidor é passivo e só é acionado pelo produtor no momento exato da conclusão."
+    - texto: "Comunicação síncrona HTTP padrão, mantendo a conexão aberta por 5 minutos."
+      correta: false
+      explicacao: "Manter uma conexão HTTP aberta por 5 minutos é um péssimo design. Qualquer falha na rede no minuto 4 resultaria na perda da comunicação, além de bloquear recursos."
+    - texto: "Uso de chaves de Idempotência no banco de dados."
+      correta: false
+      explicacao: "A idempotência é uma técnica para evitar duplicação em caso de retries, e não um padrão de notificação de que um trabalho terminou."
+
+```
 ## Fontes 
 
+https://developer.mozilla.org/pt-BR/docs/Glossary/Synchronous
+
+https://developer.mozilla.org/pt-BR/docs/Glossary/Asynchronous
+
+https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication
+
+https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Asynchronous
+
 https://learn.microsoft.com/pt-br/azure/architecture/patterns/async-request-reply  
-
-https://learn.microsoft.com/pt-br/azure/architecture/microservices/design/interservice-communication  
-

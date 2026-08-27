@@ -4,8 +4,13 @@ description: Como fazer um código concorrênte em Python
 category: Backend
 order: 12
 ---
+- [12.0 Comunicação síncrona e assíncrona](#121-global-interpreter-lock-gil)
+- [12.1. Workloads CPU-bound e I/O-bound](#122-threading)
+- [12.2. Limites, contexto e responsabilidades](#123-multiprocessing)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
 
-# 11.1 Global Interpreter Lock (GIL)
+# 12.1 Global Interpreter Lock (GIL)
 
 Quando você começa a pensar em fazer um backend em Python lidar com várias coisas ao mesmo tempo, uma ideia aparece rápido: usar threads.
 
@@ -51,27 +56,13 @@ A partir do Python 3.13, existe uma build opcional chamada free-threaded, na qua
 
 ## Checklist rápido
 
-- Eu sei que o GIL limita a execução simultânea de código Python por threads dentro do mesmo processo no CPython.
-- Eu entendo por que threads não são a solução padrão para acelerar CPU-bound em Python.
-- Eu entendo por que threads ainda fazem sentido quando o tempo é dominado por espera de I/O.
-- Eu sei que o GIL não elimina problemas de dados compartilhados em concorrência.
-
-## Fontes 
-
-https://docs.python.org/3/howto/free-threading-python.html  
-
-https://peps.python.org/pep-0703/  
-
-https://docs.python.org/3/library/threading.html  
-
-https://docs.python.org/3/library/multiprocessing.html  
-
-https://pages.cs.wisc.edu/~remzi/OSTEP/  
-
-
+- Eu sei que o GIL limita a execução simultânea de código Python por threads dentro do mesmo processo no CPython ?.
+- Eu entendo por que threads não são a solução padrão para acelerar CPU-bound em Python ?.
+- Eu entendo por que threads ainda fazem sentido quando o tempo é dominado por espera de I/O ?.
+- Eu sei que o GIL não elimina problemas de dados compartilhados em concorrência ?.
 
 ---
-# 11.2 Threading
+# 12.2 Threading
 
 Threading é uma forma de executar múltiplas linhas de execução dentro do mesmo processo. Em vez de um programa fazer uma única sequência do início ao fim, ele pode ter mais de uma sequência avançando e o sistema operacional alterna entre elas rapidamente.
 
@@ -122,7 +113,7 @@ t1.join()
 t2.join()
 
 print(contador)
-````
+```
 
 Em um mundo perfeito, o resultado seria sempre 200.000. Porém,  na prática você pode ver valores menores.
 
@@ -161,17 +152,9 @@ No mundo real, a forma mais comum de usar threads em backend é para paralelizar
 
 O cuidado essencial é evitar compartilhar estado mutável entre threads sem proteção. Em APIs, isso costuma aparecer quando alguém coloca caches simples em variáveis globais, acumula métricas na mão, ou reutiliza objetos não thread-safe sem controle.
 
-## Fontes 
-
-https://docs.python.org/3/library/threading.html  
-
-https://docs.python.org/3/library/_thread.html  
-
-https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf  
-
 
 ---
-# 11.3 Multiprocessing
+# 12.3 Multiprocessing
 
 Multiprocessing é a abordagem mais direta em Python para ganhar paralelismo real em tarefas pesadas de CPU.
 
@@ -225,27 +208,16 @@ def main():
 
 if __name__ == "__main__":
     main()
-````
+```
 
 A leitura que você deve fazer aqui é: o trabalho foi dividido em vários processos e cada processo executa a função em uma parte das entradas. Como o trabalho é computacional, isso é o tipo de cenário em que multiprocessing tende a trazer ganho.
 
 ## Checklist rápido
 
-* Eu entendo que multiprocessing usa processos, não threads.
-* Eu sei que processos têm memória separada e não compartilham variáveis automaticamente.
-* Eu sei que multiprocessing é uma boa escolha para CPU-bound.
-* Eu entendo que comunicação entre processos tem custo e pode anular ganhos se as tarefas forem pequenas.
-
-## Fontes 
-
-https://docs.python.org/3/library/multiprocessing.html
-
-https://docs.python.org/3/library/concurrent.futures.html
-
-https://pages.cs.wisc.edu/~remzi/OSTEP/
-
-https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf
-
+* Eu entendo que multiprocessing usa processos, não threads ?.
+* Eu sei que processos têm memória separada e não compartilham variáveis automaticamente ?.
+* Eu sei que multiprocessing é uma boa escolha para CPU-bound ?.
+* Eu entendo que comunicação entre processos tem custo e pode anular ganhos se as tarefas forem pequenas ?.
 
 
 ---
@@ -307,7 +279,7 @@ async def main():
     print(cursos, inscricoes)
 
 asyncio.run(main())
-````
+```
 
 A leitura correta é: as duas funções ficam muito tempo esperando, então faz sentido coordenar essas esperas no event loop. Em vez de esperar uma terminar para começar a outra, elas progridem em conjunto e o tempo total tende a ficar próximo do tempo da espera mais longa.
 
@@ -319,23 +291,11 @@ Outro erro comum é achar que `async` significa mais rápido sempre. Ele signifi
 
 ## Checklist rápido
 
-* Eu sei que asyncio é focado em I/O-bound.
-* Eu sei que o event loop coordena várias tarefas em progresso.
-* Eu sei que `async def` define uma coroutine e `await` marca um ponto de espera cooperativa.
-* Eu entendo que CPU pesado dentro do event loop pode travar outras tarefas.
-* Eu sei que misturar código bloqueante com asyncio pode anular os benefícios.
-
-## Fontes 
-
-https://docs.python.org/3/library/asyncio.html
-
-https://docs.python.org/3/library/asyncio-task.html
-
-https://docs.python.org/3/library/asyncio-eventloop.html
-
-https://fastapi.tiangolo.com/async/
-
-
+* Eu sei que asyncio é focado em I/O-bound ?.
+* Eu sei que o event loop coordena várias tarefas em progresso ?.
+* Eu sei que `async def` define uma coroutine e `await` marca um ponto de espera cooperativa ?.
+* Eu entendo que CPU pesado dentro do event loop pode travar outras tarefas ?.
+* Eu sei que misturar código bloqueante com asyncio pode anular os benefícios ?.
 
 
 ---
@@ -373,7 +333,7 @@ t1.join()   # espera a primeira thread terminar
 t2.join()   # espera a segunda thread terminar
 
 print(contador)
-````
+```
 
 O que você esperaria: `200_000`.
 O que pode acontecer: um valor menor, porque algumas atualizações foram perdidas por disputa.
@@ -446,7 +406,7 @@ t1.start()
 t2.start()
 t1.join()
 t2.join()
-````
+```
 
 Se o timing bater do jeito ruim, `tarefa_1` fica esperando `lock_b` e `tarefa_2` fica esperando `lock_a`, e o programa não termina.
 
@@ -474,7 +434,7 @@ async def main():
     print(resultados)
 
 asyncio.run(main())
-````
+```
 
 Apesar de parecer duas tarefas em paralelo, elas não progridem bem porque o `time.sleep` trava tudo.
 
@@ -521,21 +481,50 @@ Um erro comum é alterar uma variável global em um worker e esperar que o proce
 
 ## Checklist rápido
 
-* Eu evito compartilhar estado mutável entre threads sem proteção.
-* Eu sei identificar e evitar padrões de deadlock.
-* Eu não uso threads esperando acelerar CPU pesado sem considerar processos.
-* Eu não uso chamadas bloqueantes dentro de coroutines em asyncio.
-* Eu evito concorrência sem limites que apenas cria fila e aumenta latência.
-* Eu lembro que processos têm memória separada e exigem comunicação explícita.
+* Eu evito compartilhar estado mutável entre threads sem proteção ?.
+* Eu sei identificar e evitar padrões de deadlock ?.
+* Eu não uso threads esperando acelerar CPU pesado sem considerar processos ?.
+* Eu não uso chamadas bloqueantes dentro de coroutines em asyncio ?.
+* Eu evito concorrência sem limites que apenas cria fila e aumenta latência ?.
+* Eu lembro que processos têm memória separada e exigem comunicação explícita ?.
 
-## Fontes 
+# Complemente o Aprendizado
+Conteúdo da pycom de 2010 bastante denso mas possui uma mostragem prática do GIL:
 
-https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf
+- https://www.youtube.com/watch?v=Obt-vMVdM8s
 
-https://docs.python.org/3/library/threading.html
+```quiz
+- tipo: single
+  pergunta: "Você decidiu otimizar uma rotina pesada de processamento de imagens (cálculos matemáticos densos) no CPython padrão. Para isso, dividiu o trabalho usando `threading`, criando 10 threads. No entanto, ao medir o tempo, o ganho de performance foi quase nulo em comparação à execução com uma única thread. Por que isso acontece?"
+  opcoes:
+    - texto: "O GIL (Global Interpreter Lock) permite que apenas uma thread execute código Python por vez, fazendo com que as threads disputem a execução em vez de rodarem em paralelo real."
+      correta: true
+      explicacao: "Exato! Em workloads focados em CPU (CPU-bound), o GIL impede que threads executem bytecode Python simultaneamente em múltiplos núcleos. Elas acabam se revezando, não gerando ganho de tempo."
+      explicacao_erro: "As threads no CPython não executam código Python puro em paralelo real por causa do GIL. Por isso, para tarefas CPU-bound pesadas, usar `threading` gera overhead de coordenação sem ganho real de velocidade."
+    - texto: "O event loop do Python travou porque você não utilizou a palavra-chave `await` dentro da função das threads."
+      correta: false
+      explicacao: "O event loop e as palavras-chave `async/await` pertencem ao modelo do `asyncio`, que é diferente do modelo de `threading` clássico."
+    - texto: "Threads no Python têm memórias totalmente isoladas, então o tempo foi gasto copiando as imagens para cada uma delas."
+      correta: false
+      explicacao: "Threads do mesmo processo compartilham a mesma memória. O isolamento de memória é uma característica do `multiprocessing` (processos)."
+    - texto: "Ocorreu um deadlock silencioso, onde as 10 threads pausaram a execução porque tentaram acessar a mesma imagem sem um `Lock`."
+      correta: false
+      explicacao: "Acessar a mesma variável sem lock causa 'condição de corrida' (dados corrompidos ou inconsistentes), mas não trava o programa sozinho. O travamento sem erro geralmente aponta para um deadlock envolvendo Locks disputados ou, neste caso do enunciado, apenas o comportamento esperado do GIL."
 
-https://docs.python.org/3/library/multiprocessing.html
-
-https://docs.python.org/3/library/asyncio.html
-
-https://docs.python.org/3/library/asyncio-task.html
+- tipo: single
+  pergunta: "Você refatorou uma rota de relatórios para usar `multiprocessing`, já que é uma tarefa estritamente CPU-bound. Na função que o processo worker executa, você incrementa uma variável global chamada `total_relatorios_gerados += 1`. Ao final da execução, o processo principal imprime essa variável e o valor continua sendo 0. Qual foi o erro conceitual?"
+  opcoes:
+    - texto: "Faltou proteger o incremento da variável utilizando um `Lock` (criando uma seção crítica), o que causou uma condição de corrida."
+      correta: false
+      explicacao: "Condição de corrida com variável global simples é um problema típico de `threading`. Em `multiprocessing`, o problema é que eles sequer acessam a mesma variável física em memória."
+    - texto: "O bloco `if __name__ == '__main__':` não foi utilizado, o que resetou a variável durante a execução dos workers."
+      correta: false
+      explicacao: "Embora a falta do `if __name__ == '__main__':` cause erros graves (como loops de criação de processos no Windows), o fato da variável não atualizar se deve estritamente ao isolamento de memória entre processos."
+    - texto: "Em `multiprocessing`, cada processo tem sua própria memória isolada. A variável alterada no worker não é a mesma do processo principal."
+      correta: true
+      explicacao: "Correto! Diferente das threads, processos não compartilham estado automaticamente. Alterar uma variável global dentro de um worker altera apenas a cópia daquele worker. Para compartilhar dados, é necessário enviar os resultados explicitamente (ex: retorno da função ou Filas inter-processo)."
+      explicacao_erro: "Processos no sistema operacional possuem espaços de memória separados. Variáveis globais não são sincronizadas entre o processo 'Pai' (principal) e os processos 'Filhos' (workers)."
+    - texto: "O interpretador ativou o GIL para proteger a variável global, bloqueando a escrita pelos processos filhos."
+      correta: false
+      explicacao: "O GIL atua no nível da thread dentro de um único processo. Processos separados têm interpretadores separados e GILs separados, não interferindo uns nos outros."
+```

@@ -5,6 +5,14 @@ category: Backend
 order: 9
 ---
 
+- [9.0. Visão Geral: Infraestrutura de APIs](#90-visao-geral-infraestrutura-de-apis)
+- [9.1. API Gateway e suas responsabilidades](#91-api-gateway-e-suas-responsabilidades)
+- [9.2. Comunicação entre serviços](#92-comunicacao-entre-servicos)
+- [9.3. Service Mesh](#93-service-mesh)
+- [9.4. Estratégias de deploy e release](#94-estrategias-de-deploy-e-release)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
 # 9.0. Visão Geral: Infraestrutura de APIs
 
 Se a Arquitetura (Seção 8) é o projeto da casa, a Infraestrutura (Seção 9) é o encanamento, a elétrica e a segurança.
@@ -320,3 +328,79 @@ Você tem o ambiente **Blue** (Atual) e sobe um **Green** (Novo) idêntico. O ro
 Manda 1% do tráfego para a versão nova. Se não tiver erros (monitoramento automático), aumenta para 10%, 50%, 100%.
 *   **Pró:** Risco mínimo para o usuário final.
 *   **Contra:** Complexo de configurar roteamento.
+
+## Complemente o Aprendizado
+- [Artigo Martin Fowler](https://martinfowler.com/articles/feature-toggles.html)
+
+- [Vídeo bastante visual e explicativo: O que é Service Mesh? Entenda Istio de Uma Vez por Todas!](https://www.youtube.com/watch?v=T-GNfSGt9-8)
+
+```quiz
+- tipo: single
+  pergunta: "Em roteamentos de requisições API v2 se o cabeçalho HTTP contiver 'Header: Mobile'. Por que um Load Balancer tradicional de Camada 4 (L4) não vai realizar essa tarefa sozinho?"
+  opcoes:
+    - texto: "Porque o Load Balancer L4 é para comunicação assíncrona entre microsserviços internos."
+      correta: false
+      explicacao: "Load Balancers L4 são amplamente utilizados na borda para balanceamento de tráfego de rede bruto, sem relação com comunicação assíncrona."
+    - texto: "Porque o Load Balancer L4 atua no nível TCP/IP, exigindo um API Gateway (L7) para trabalhos mais complexos."
+      correta: true
+      explicacao: "Load Balancers L4 enxerga apenas IP e porta. Somente componentes da Camada 7 (como API Gateways) conseguem ler cabeçalhos e caminhos HTTP para tomar decisões de roteamento."
+      explicacao_erro: "Load Balancers de Camada 4 operam apenas com endereços IP e portas TCP. Eles não abrem nem inspecionam o pacote HTTP, portanto não conseguem ler cabeçalhos."
+    - texto: "Porque o Load Balancer L4 só suporta conexões genéricas, ignorando o protocolo TCP."
+      correta: false
+      explicacao: "O Load Balancer L4 trabalha perfeitamente com TCP, mas não inspeciona a camada de aplicação (HTTP) que roda acima dele."
+    - texto: "Porque o Load Balancer L4 limita o tráfego apenas a endereços IP estáticos configurados manualmente."
+      correta: false
+      explicacao: "A limitação do L4 não é o IP estático, mas sim o fato de ser 'cego' para o protocolo HTTP e seus cabeçalhos."
+
+- tipo: single
+  pergunta: "Um API Gateway foi configurado com o algoritmo Leaky Bucket para conter picos imprevisíveis de tráfego. O que acontece com as requisições excedentes quando a taxa de entrada ultrapassa a capacidade total do balde?"
+  opcoes:
+    - texto: "As requisições ficam armazenadas no banco de dados até que o servidor termine de processá-las."
+      correta: false
+      explicacao: "O Gateway não persiste requisições excedentes em banco de dados isso gera sobrecarga de armazenamento e latência inaceitável."
+    - texto: "O Gateway redireciona o tráfego excedente para o ambiente de testes (staging)."
+      correta: false
+      explicacao: "Ambientes de testes não devem receber tráfego produtivo de usuários reais não faz sentido em um ambiente de teste."
+    - texto: "O servidor força a reinicialização das instâncias da aplicação para absorver a carga."
+      correta: false
+      explicacao: "O Rate Limiting serve justamente para proteger o servidor de sobrecarga, não para disparar reinicializações da infraestrutura."
+    - texto: "As requisições excedentes são descartadas imediatamente com o código HTTP 429 (Too Many Requests)."
+      correta: true
+      explicacao: "No Leaky Bucket, o balde processa requisições a uma taxa constante. Se o fluxo de entrada enche a capacidade máxima, o excesso é rejeitado na hora com erro."
+      explicacao_erro: "Quando a capacidade de retenção do Leaky Bucket transborda, o Gateway para imediatamente as requisições adicionais para proteger os serviços internos contra sobrecarga."
+
+- tipo: single
+  pergunta: "Em uma arquitetura de Service Mesh, qual é o papel desempenhado pelos proxies Sidecar (como o Envoy) localizados no Data Plane?"
+  opcoes:
+    - texto: "Interceptar todo o tráfego de rede para aplicar regras."
+      correta: true
+      explicacao: "O Data Plane é composto pelos proxies Sidecar que rodam junto de cada serviço, interceptando os pacotes e executando as políticas na prática."
+      explicacao_erro: "Os proxies Sidecar no Data Plane são os 'executores' do tráfego sem alterar o código da aplicação."
+    - texto: "Gerenciar o painel administrativo e enviar as configurações gerais do cluster para os nós."
+      correta: false
+      explicacao: "Essa é a responsabilidade do Control Plane (o cérebro do Service Mesh), e não dos proxies no Data Plane."
+    - texto: "Executar o código de negócio da aplicação Python e realizar consultas no banco de dados."
+      correta: false
+      explicacao: "O Sidecar é um proxy de rede isolado que roda ao lado do container da aplicação; ele não executa o código de negócio nem substitui a aplicação."
+    - texto: "Armazenar os logs de auditoria em disco rígido para análise forense posterior."
+      correta: false
+      explicacao: "Apesar de coletar métricas, o objetivo primário do Data Plane é o roteamento e tratamento de tráfego de rede em tempo real."
+
+- tipo: single
+  pergunta: "Qual é a principal vantagem do uso de Feature Flags (Toggles) em comparação a realizar um rollback tradicional de código em caso de bug em produção?"
+  opcoes:
+    - texto: "Garante que o banco de dados desfaça automaticamente as alterações de esquema mais recentes."
+      correta: false
+      explicacao: "Feature Flags controlam caminhos de execução no código, não possuem controle automatizado sobre migrações de banco de dados."
+    - texto: "Elimina totalmente a necessidade de escrever testes unitários antes da publicação."
+      correta: false
+      explicacao: "Feature Flags ajudam na mitigação de riscos em produção, mas nunca substituem a garantia de qualidade por testes automatizados."
+    - texto: "Permite desativar a funcionalidade em segundos via chave de configuração, sem precisar re-executar pipelines de deploy."
+      correta: true
+      explicacao: "Perfeito! Alterar o valor de uma Feature Flag é uma mudança de configuração instantânea, enquanto um rollback de código pode levar minutos e exigir re-build da imagem Docker."
+      explicacao_erro: "Feature Flags desacoplam o Deploy do Release. Se a novidade der erro, basta desligar a chave no painel de controle em 1 segundo, sem passar pelo processo demorado de re-deploy."
+    - texto: "Impede que requisições com falhas cheguem ao API Gateway do ambiente de produção."
+      correta: false
+      explicacao: "A Feature Flag é avaliada dentro da aplicação ou serviço, não atuando como um filtro de borda no API Gateway."
+
+```

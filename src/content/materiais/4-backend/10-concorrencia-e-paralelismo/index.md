@@ -4,8 +4,14 @@ description: Programação concorrente
 category: Backend
 order: 10
 ---
+- [10.0. Concorrência versus paralelismo](#100-concorrencia-versus-paralelismo)
+- [10.1. Workloads CPU-bound e I/O-bound](#101-workloads-cpu-bound-e-io-bound)
+- [10.2. Limites, contexto e responsabilidades](#102-impactos-em-servidores-web)
+- [10.3. Limites, contexto e responsabilidades](#103-backpressure-e-sistemas-sob-carga)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
 
-# 9.1. Concorrência versus paralelismo
+# 10.0. Concorrência versus paralelismo
 
 Quando uma API está em produção, ela raramente atende um usuário por vez. Várias requisições chegam ao mesmo tempo, cada uma com seu próprio tempo de execução e suas próprias esperas. O servidor precisa decidir como organizar esse trabalho para continuar respondendo com previsibilidade.
 
@@ -28,7 +34,7 @@ Aqui a ideia é capacidade de execução simultânea, normalmente usando múltip
 
 Paralelismo não resolve espera. Se a tarefa está parada aguardando I/O, colocar mais núcleos não acelera essa espera. Por outro lado, se a tarefa é cálculo pesado, paralelismo pode ser a diferença entre atender em segundos ou em minutos.
 
-## Diferença prática
+### Diferença prática
 
 Uma forma confiável de separar:
 
@@ -41,7 +47,7 @@ Você também pode ter paralelismo sem muita concorrência. Por exemplo, rodar p
 
 Em APIs, os dois costumam aparecer juntos, mas o que domina depende do tipo de trabalho que sua aplicação faz, algo que fica mais claro no próximo tópico.
 
-## Exemplo
+#### Exemplo
 
 Imagine um backend recebendo três requisições ao mesmo tempo:
 
@@ -56,7 +62,7 @@ Tempo:        t0   t1   t2   t3   t4
 Req A:       CPU  I/O  I/O  CPU  fim
 Req B:       I/O  CPU  I/O  CPU  fim
 Req C:       CPU  CPU  CPU  CPU  fim
-````
+```
 >I/O significa input/output, ou entrada e saída. Em backend, é qualquer parte do processamento em que o programa precisa esperar dados virem de fora ou precisa enviar dados para fora.
 
 Concorrência é o que permite que, enquanto A e B estão em espera (I/O), o servidor avance em outra coisa, em vez de ficar parado. Paralelismo é o que permite que C não bloqueie todo o sistema quando o trabalho é essencialmente CPU.
@@ -70,18 +76,9 @@ O objetivo, em ambos os casos, é manter o servidor responsivo e previsível mes
 * Eu entendo que concorrência pode existir mesmo em um único núcleo.
 * Eu entendo que paralelismo depende de recursos de execução, principalmente CPU.
 
-## Fontes 
-
-[https://go.dev/blog/waza-talk](https://go.dev/blog/waza-talk) 
-
-[https://go.dev/talks/2012/waza.slide](https://go.dev/talks/2012/waza.slide)
-
-[https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf](https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf)
-
-[https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf](https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf) 
-
 ---
-# 9.2. Workloads CPU-bound e I/O-bound
+
+# 10.1. Workloads CPU-bound e I/O-bound
 
 Depois de entender a diferença entre concorrência e paralelismo, o próximo passo é aprender a classificar o tipo de trabalho que uma requisição executa. Isso importa porque o gargalo muda completamente a estratégia.
 
@@ -167,18 +164,8 @@ Esse exemplo deixa claro o ponto principal: os dois endpoints podem ter a mesma 
 - Eu entendo que aumentar concorrência sem controle pode piorar dependências e filas.
 - Eu consigo olhar para um endpoint e apontar o que provavelmente domina o tempo.
 
-## Fontes 
-
-https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf  
-
-https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf  
-
-https://www.kegel.com/c10k.html  
-
-
-
 ---
-# 9.3. Impactos em servidores web
+# 10.2. Impactos em servidores web
 
 
 Quando você coloca uma API no ar, ela passa a ser um sistema que recebe tráfego, organiza requisições e disputa recursos limitados. O servidor web é justamente a camada que sustenta esse ciclo: aceitar conexões, transformar dados em requisições e coordenar a execução do seu código para produzir respostas.
@@ -229,17 +216,8 @@ A conclusão prática é que o servidor web precisa ser pensado como uma máquin
 - Eu entendo que aumentar concorrência pode ajudar em I/O bound, mas pode piorar quando passa do limite.
 - Eu sei que o gargalo costuma aparecer em dependências como banco e serviços externos antes de aparecer no endpoint em si.
 
-## Fontes
-
-https://www.kegel.com/c10k.html
-
-https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf
-
-https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf
-
-
 ---
-# 9.4. Backpressure e sistemas sob carga
+# 10.3. Backpressure e sistemas sob carga
 
 Quando uma API começa a receber mais requisições do que consegue concluir, o problema não é apenas ficar mais lenta. O problema é que ela pode entrar em um ciclo em que cada segundo piora o próximo.
 
@@ -299,9 +277,79 @@ Isso também melhora o processo de encontrar onde estão os erros. Quando o serv
 - Eu consigo citar pelo menos um mecanismo de backpressure: limite de concorrência, limite de fila, rate limiting, timeouts ou degradação controlada.
 - Eu sei que o objetivo é previsibilidade sob carga, não apenas performance.
 
+## Complemente o Aprendizado
+Vídeo da playlist de aulas de backend do Fábio Akita ( ele é meio robotico mas a explicação é muito boa)!
+
+- [Concurrency and Parallelism - Part 1 | Understanding Back-End for Beginners in Programming - Part 3](https://www.youtube.com/watch?v=cx1ULv4wYxM)
+
+```quiz
+- tipo: single
+  pergunta: "Seu servidor backend roda em uma máquina com apenas 1 núcleo de CPU. Ele recebe três requisições: a primeira vai consultar o banco de dados, a segunda vai chamar uma API externa de pagamentos e a terceira vai ler um arquivo do disco. O servidor intercala essas requisições, adiantando uma enquanto as outras aguardam a resposta de suas operações. Qual conceito arquitetural descreve exatamente esse cenário?"
+  opcoes:
+    - texto: "Paralelismo, pois as três requisições estão sendo executadas simultaneamente."
+      correta: false
+      explicacao: "Como há apenas 1 núcleo de CPU, é fisicamente impossível executar as tarefas de forma simultânea (paralelismo). O que há é uma alternância rápida de contexto."
+    - texto: "Concorrência, pois o servidor está coordenando múltiplas tarefas em progresso no mesmo intervalo de tempo, aproveitando os momentos de espera (I/O)."
+      correta: true
+      explicacao: "Exato! O servidor gerencia múltiplas tarefas sobrepondo os tempos de espera. Ele não está executando as três ao mesmo milissegundo (já que só tem 1 núcleo), mas intercala o trabalho para não ficar ocioso."
+      explicacao_erro: "Em uma máquina de núcleo único, a execução simultânea (paralelismo) não é possível. O que ocorre aqui é a coordenação de tarefas em espera, o que define a concorrência."
+    - texto: "Backpressure, porque o servidor está limitando as requisições ativas."
+      correta: false
+      explicacao: "O cenário não descreve rejeição de requisições sob carga (backpressure), apenas a forma como o servidor lida com esperas por I/O."
+    - texto: "Processamento CPU-bound, pois ler disco e chamar APIs consome muita CPU."
+      correta: false
+      explicacao: "Consultar banco, chamar API externa e ler disco são clássicos exemplos de operações I/O-bound (espera por entrada/saída), e não CPU-bound."
+
+- tipo: single
+  pergunta: "Uma rota da sua API recebe um arquivo CSV enorme, faz parse na memória, realiza cálculos matemáticos pesados em cada linha e gera um relatório consolidado. Conforme a carga aumenta, o endpoint fica muito lento, e você tenta resolver aumentando o limite de concorrência (threads/workers). A latência acaba piorando ainda mais. Qual é a causa técnica desse problema?"
+  opcoes:
+    - texto: "O workload é I/O-bound. A lentidão ocorre porque o disco não consegue ler o CSV rápido o suficiente para muitas threads."
+      correta: false
+      explicacao: "O cenário foca nos cálculos matemáticos pesados na memória e na consolidação, que são características de operações limitadas pela CPU, não por I/O."
+    - texto: "Falta implementar Rate Limiting no banco de dados para evitar gargalos de leitura."
+      correta: false
+      explicacao: "A rota descrita não faz chamadas ao banco de dados; ela opera com processamento de um CSV em memória."
+    - texto: "O servidor atingiu um estado de backpressure automático, suspendendo a CPU para resfriamento físico."
+      correta: false
+      explicacao: "Backpressure é uma técnica de arquitetura de software para recusar tráfego extra, não um mecanismo térmico da CPU."
+    - texto: "O workload é CPU-bound. Aumentar a concorrência sem adicionar núcleos reais só aumenta a competição pela CPU e o overhead de alternância do sistema operacional."
+      correta: true
+      explicacao: "Perfeito! Tarefas dominadas por processamento (CPU-bound) não se beneficiam de concorrência excessiva. Ao colocar várias requisições pesadas disputando a mesma CPU, você gasta mais tempo trocando de contexto do que processando os dados de fato."
+      explicacao_erro: "Em cenários CPU-bound, as requisições não 'esperam', elas 'calculam'. Aumentar a concorrência apenas empilha tarefas pesadas na mesma CPU, gerando lentidão por disputa de recursos em vez de resolver o gargalo."
+      
+
+- tipo: single
+  pergunta: "Durante um pico de acessos, o banco de dados da sua aplicação começou a responder 500ms mais devagar. A CPU da API continuou baixa, mas em poucos minutos o servidor backend crashou por falta de memória (OOM) e esgotamento de conexões. O que explica esse colapso em cascata?"
+  opcoes:
+    - texto: "A lentidão no banco fez com que as requisições ficassem vivas (em espera) por mais tempo na API, acumulando conexões e memória até estourar os limites do servidor."
+      correta: true
+      explicacao: "Isso mesmo! Requisições em espera (I/O) não consomem muita CPU, mas mantêm o estado em memória e seguram conexões. Se o gargalo externo fica lento, a API acumula trabalho pendente até colapsar."
+      explicacao_erro: "Embora a CPU esteja ociosa durante a espera, a memória e o pool de conexões não estão. A fila de requisições presas esperando o banco encheu a memória do backend, levando ao crash."
+    - texto: "O banco de dados enviou um sinal de interrupção que forçou o servidor web a reiniciar suas portas de conexão."
+      correta: false
+      explicacao: "Bancos de dados não enviam sinais de interrupção para derrubar servidores web; o colapso foi causado pelo acúmulo de estado no lado do cliente (a API)."
+    - texto: "A API ativou sua política de Timeouts precocemente, o que consome grandes quantidades de memória para gerar os logs de erro."
+      correta: false
+      explicacao: "Timeouts bem configurados na verdade protegeriam a aplicação, derrubando as conexões antes que a memória estourasse. O problema foi a falta deles."
+    - texto: "Como o workload virou CPU-bound de repente, a concorrência não conseguiu dar conta do número de requisições."
+      correta: false
+      explicacao: "Esperar pelo banco de dados caracteriza um cenário I/O-bound, não CPU-bound. A CPU continuou baixa, comprovando que o limite foi de memória/conexões."
+```
+
+
 ## Fontes 
 
 https://sre.google/sre-book/handling-overload/  
 
 https://sre.google/sre-book/addressing-cascading-failures/  
+
+[https://go.dev/blog/waza-talk](https://go.dev/blog/waza-talk) 
+
+[https://go.dev/talks/2012/waza.slide](https://go.dev/talks/2012/waza.slide)
+
+https://www.kegel.com/c10k.html
+
+https://www.cs.cmu.edu/afs/cs/academic/class/15213-m23/www/lectures/23-concprog.pdf
+
+https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf
 
