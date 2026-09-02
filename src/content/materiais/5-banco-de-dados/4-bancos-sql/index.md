@@ -4,6 +4,13 @@ description: Quais as principais características dos bancos de dados relacionai
 category: Banco de Dados
 order: 4
 ---
+- [4.1 Comunicação síncrona e assíncrona](#41-introducao)
+- [4.2 Workloads CPU-bound e I/O-bound](#42-conceitos-fundamentais)
+- [4.3 Limites, contexto e responsabilidades](#43-tipos-de-relacionamentos)
+- [4.4 Limites, contexto e responsabilidades](#44-principais-bancos-relacionais)
+- [4.4 Limites, contexto e responsabilidades](#45-use-sql-quando-voce-tem)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
 
 ![Imagem 8](/api/materiais-assets/5-banco-de-dados/4-bancos-sql/assets/imagem8.webp)
 
@@ -19,16 +26,7 @@ A grande força do SQL é a **base teórica sólida** (álgebra relacional) e a 
 
 Uma **tabela** é como uma planilha Excel/csv: tem linhas e colunas, e cada coluna tem um tipo específico de dado.
 
-```
-Tabela: usuarios
-+----+--------------+----------------------+---------------------+-------+
-| id | nome         | email                | data_cadastro       | ativo |
-+----+--------------+----------------------+---------------------+-------+
-| 1  | Beatriz      | beatriz@email.com        | 2024-01-15 10:30:00 | true  |
-| 2  | Nicholas     | nicholas@email.com     | 2024-02-20 14:45:00 | true  |
-| 3  | Maria Clara  | maria@email.com      | 2024-03-10 09:15:00 | false |
-+----+--------------+----------------------+---------------------+-------+
-```
+![Imagem 1](/api/materiais-assets/5-banco-de-dados/4-bancos-sql/assets/tabela_1.png)
 
 Cada tabela representa uma **entidade** do seu sistema (usuários, produtos, pedidos, etc).
 
@@ -81,13 +79,13 @@ CREATE TABLE usuarios (
 
 ### Características da PK:
 
-✅ **Única**: não pode repetir
+ - **Única**: não pode repetir
 
-✅ **Não nula**: sempre tem que ter valor
+ - **Não nula**: sempre tem que ter valor
 
-✅ **Imutável**: não deve mudar depois de criada
+ -  **Imutável**: não deve mudar depois de criada
 
-✅ **Simples**: geralmente um número inteiro
+ -  **Simples**: geralmente um número inteiro
 
 ### Tipos comuns:
 
@@ -121,19 +119,7 @@ A **chave estrangeira** é o que conecta uma tabela a outra. É a PK de uma tabe
 
 Exemplo:
 
-```
-Tabela: usuarios                      Tabela: pedidos
-+----+-----------+                    +----+------------+--------+------------+
-| id | nome      |                    | id | usuario_id | valor  | data       |
-+----+-----------+                    +----+------------+--------+------------+
-| 1  | Felipe    | <----------------> | 1  | 1          | 150.00 | 2024-01-20 |
-| 2  | Daniel    | <--                | 2  | 1          | 200.00 | 2024-01-25 |
-+----+-----------+    \               | 3  | 2          | 75.50  | 2024-02-01 |
-                       -------------> +----+------------+--------+------------+
-                                                ↑
-                                      Chave Estrangeira (usuario_id)
-                                      (referencia usuarios.id)
-```
+![Imagem 1](/api/materiais-assets/5-banco-de-dados/4-bancos-sql/assets/tabela_2.png)
 
 A coluna `usuario_id` na tabela `pedidos` é uma FK que aponta para `id` na tabela `usuarios`.
 
@@ -152,11 +138,11 @@ CREATE TABLE pedidos (
 
 ### O que a FK garante?
 
-✅ **Integridade referencial**: não pode criar um pedido para um usuário que não existe
+ - **Integridade referencial**: não pode criar um pedido para um usuário que não existe
 
-✅ **Cascata**: pode configurar para deletar pedidos quando o usuário for deletado
+ - **Cascata**: pode configurar para deletar pedidos quando o usuário for deletado
 
-✅ **Consistência**: garante que as relações fazem sentido
+ - **Consistência**: garante que as relações fazem sentido
 
 # 4.3 Tipos de Relacionamentos
 
@@ -170,17 +156,7 @@ Cada registro de uma tabela se relaciona com **apenas um** registro de outra tab
 - Cada pessoa tem apenas 1 passaporte
 - Cada passaporte pertence a apenas 1 pessoa
 
-```
-Tabela: pessoas                       Tabela: passaportes
-+----+--------+                       +----+-----------+-----------+
-| id | nome   |                       | id | pessoa_id | numero    |
-+----+--------+                       +----+-----------+-----------+
-| 1  | Ana    | <-------------------> | 1  | 1         | ABC123456 |
-| 2  | Pedro  | <-------------------> | 2  | 2         | XYZ789012 |
-+----+--------+                       +----+-----------+-----------+
-```
-
----
+![Imagem 1](/api/materiais-assets/5-banco-de-dados/4-bancos-sql/assets/tabela_3.png)
 
 ## 1:N (Um para Muitos)
 
@@ -190,20 +166,7 @@ Um registro de uma tabela se relaciona com **vários** registros de outra tabela
 - 1 cliente pode ter vários pedidos
 - Cada pedido pertence a apenas 1 cliente
 
-```
-Tabela: clientes                      Tabela: pedidos
-+----+--------+                       +----+------------+--------+
-| id | nome   |                       | id | cliente_id | valor  |
-+----+--------+                       +----+------------+--------+
-| 1  | Emily  | <-----------------+-- | 1  | 1          | 100.00 |
-|    |        | <--------------+  |   | 2  | 1          | 200.00 |
-|    |        | <-----------+  |  |   | 3  | 1          | 50.00  |
-| 2  | Marcus | <--------+  |  |  |   | 4  | 2          | 300.00 |
-+----+--------+          |  |  |  |   +----+------------+--------+
-                         |  |  |  |
-                         +--+--+--+
-                         1  2  3  4
-```
+![Imagem 1](/api/materiais-assets/5-banco-de-dados/4-bancos-sql/assets/tabela_4.png)
 
 ---
 
@@ -217,19 +180,7 @@ Múltiplos registros de uma tabela se relacionam com múltiplos registros de out
 
 Para implementar N:N, é ideal criar uma **tabela intermediária**, responsável por registrar as ligações entre as duas tabelas:
 
-```
-Tabela: alunos          Tabela: matriculas              Tabela: cursos
-+----+--------+         +----+-----------+-----------+   +----+-------------+
-| id | nome   |         | id | aluno_id  | curso_id  |   | id | nome        |
-+----+--------+         +----+-----------+-----------+   +----+-------------+
-| 1  | Ana    | <----+  | 1  | 1         | 1         +-> | 1  | Python      |
-| 2  | Davi   | <-+  |  | 2  | 1         | 2         +-> | 2  | JavaScript  |
-| 3  | Miguel | <-|--+  | 3  | 2         | 1         |   | 3  | SQL         |
-+----+--------+   |     | 4  | 2         | 3         +-> |    |             |
-                  |     | 5  | 3         | 2         +-+ +----+-------------+
-                  +---+ +----+-----------+-----------+
-                      +------------------------------+
-```
+![Imagem 1](/api/materiais-assets/5-banco-de-dados/4-bancos-sql/assets/tabela_5.png)
 
 É ideal que seja feita dessa forma e não utilizando uma lista de ids, pois seguindo a implementação de listas acaba atrapalhando a contrução de queries mais complexas, além de diminuir a sua eficiência (para descobrirmos as ligações de um registro precisariamos iterar a lista atrelada a ele para cada um dos valores e idenficar esses ids na outra tabela, ao invés de só buscar pelo registro na tabela intermediária)
 
@@ -251,7 +202,7 @@ CREATE TABLE matriculas (
 
 # 4.4 Principais Bancos Relacionais
 
-## PostgreSQL
+### PostgreSQL
 
 **Características:**
 - Open-source e totalmente gratuito
@@ -261,7 +212,7 @@ CREATE TABLE matriculas (
 
 ---
 
-## MySQL
+### MySQL
 
 **Características:**
 - Open-source 
@@ -272,7 +223,7 @@ CREATE TABLE matriculas (
 
 ---
 
-## SQL Server 
+### SQL Server 
 
 **Características:**
 - Proprietário (pago), da Microsoft
@@ -283,7 +234,7 @@ CREATE TABLE matriculas (
 
 ---
 
-## SQLite
+### SQLite
 
 **Características:**
 - **Embedded** (sem servidor separado!)
@@ -303,3 +254,40 @@ CREATE TABLE matriculas (
 - Schema não muda frequentemente
 - Relacionamentos entre entidades são importantes
 - Precisa fazer queries complexas
+
+```quiz
+- tipo: single
+  pergunta: "Você está criando a tabela 'usuarios' e precisa definir a Chave Primária (PK). Por questões de segurança, você não quer que os IDs sejam previsíveis (como 1, 2, 3), preferindo uma string complexa gerada automaticamente pelo banco. Qual tipo de chave primária, citado no material, resolve esse problema?"
+  opcoes:
+    - texto: "INT com AUTO_INCREMENT."
+      correta: false
+      explicacao: "O AUTO_INCREMENT gera números sequenciais e totalmente previsíveis (1, 2, 3...), o que vai contra o requisito de segurança descrito na pergunta."
+    - texto: "UUID."
+      correta: true
+      explicacao: "Exato O UUID gera strings únicas e complexas (ex: '550e8400-e29b-41d4-a716-446655440000'), evitando a previsibilidade dos números inteiros sequenciais."
+      explicacao_erro: "O UUID é o tipo ideal para gerar identificadores complexos em formato de string, substituindo o tradicional número sequencial."
+    - texto: "SERIAL."
+      correta: false
+      explicacao: "SERIAL é apenas a nomenclatura do PostgreSQL equivalente ao AUTO_INCREMENT, ou seja, também gera números sequenciais previsíveis."
+    - texto: "VARCHAR com NOT NULL."
+      correta: false
+- tipo: single
+  pergunta: "Você possui a tabela 'usuarios' e a tabela 'pedidos' conectadas por uma Chave Estrangeira (FK). Você quer configurar o banco para que, caso um usuário seja excluído do sistema, todos os pedidos vinculados a ele sejam automaticamente apagados, evitando deixar os dados referentes a ele no banco. Qual característica da Chave Estrangeira permite isso?"
+  opcoes:
+    - texto: "A configuração de exclusão em Cascata."
+      correta: true
+      explicacao: "Exatamente! A Foreign Key pode ser configurada com ações em 'Cascata' (CASCADE). Isso faz com que operações feitas na tabela principal, como deleções, reflitam automaticamente nas tabelas dependentes, mantendo a consistência e economizando trabalho no código da aplicação."
+      explicacao_erro: "A exclusão em Cascata é o recurso específico da Chave Estrangeira que automatiza a deleção de registros associados em outras tabelas."
+    - texto: "A Integridade Referencial restrita."
+      correta: false
+      explicacao: "A integridade referencial padrão do banco bloqueia a exclusão para evitar dados órfãos (o que geraria um erro)."
+    - texto: "O uso da restrição UNIQUE na Chave Estrangeira, forçando a exclusão dupla."
+      correta: false
+      explicacao: "A restrição UNIQUE (Única) serve para impedir dados repetidos em uma mesma coluna. Ela não tem função de apagar registros em outras tabelas."
+    - texto: "A conversão da Chave Estrangeira (FK) em uma Chave Primária (PK) do tipo AUTO_INCREMENT."
+      correta: false
+      explicacao: "Chaves Primárias servem para identificar registros dentro de sua própria tabela. Mudar a FK para PK não cria mecanismos de deleção automática entre tabelas diferentes."
+
+
+
+```
