@@ -190,9 +190,6 @@ export default function CommunityHome() {
                 loading="lazy"
                 alt="Estudantes do Trilha aprendendo juntos com notebooks e um quadro"
               />
-              <figcaption>
-                01 / Um começo compartilhado · Trilha UFPB
-              </figcaption>
             </figure>
             <div className="journal-origin">
               <span className="journal-date">19.07.2024</span>
@@ -232,9 +229,6 @@ export default function CommunityHome() {
                 loading="lazy"
                 alt="Integrantes da comunidade Trilha reunidos em um encontro"
               />
-              <figcaption>
-                02 / A comunidade que continua construindo essa história.
-              </figcaption>
             </figure>
           </section>
           <section className="impact-section" aria-labelledby="impact-title">
@@ -273,7 +267,6 @@ export default function CommunityHome() {
                   <span>organizadores ativos registrados no site</span>
                 </div>
               </div>
-              <span className="globe-hint">UMA REDE FEITA DE GENTE</span>
             </div>
           </section>
           <section
