@@ -3491,3 +3491,28 @@ body:has(.trilha-site)::before {
 .trilha-site .design .initiative-layout .initiative.htp {
   border: 0;
 }
+
+/* Swap the artwork's light and dark tones without moving the banner. */
+.trilha-site .design .htp .initiative-art {
+  transition: background-color 300ms ease;
+}
+.trilha-site .design .htp .htp-art,
+.trilha-site .design .htp .htp-wordmark {
+  transition: filter 300ms ease;
+}
+.trilha-site .design .htp:is(:hover, :focus-visible) .initiative-art {
+  background-color: #000;
+}
+.trilha-site .design .htp:is(:hover, :focus-visible) .htp-wordmark {
+  filter: invert(1);
+}
+.trilha-site .design .htp:is(:hover, :focus-visible) .htp-art {
+  filter: invert(1) hue-rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .trilha-site .design .htp .initiative-art,
+  .trilha-site .design .htp .htp-art,
+  .trilha-site .design .htp .htp-wordmark {
+    transition: none;
+  }
+}
