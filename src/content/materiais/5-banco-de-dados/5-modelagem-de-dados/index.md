@@ -1,13 +1,29 @@
 ---
 title: 5. Modelagem de Dados
-description: Como estruturar os dados para o formato de um banco de dados?
+subtitle: Entidades, normalização e boas práticas para projetar bancos de dados
+description: Aprenda a identificar entidades, atributos e relacionamentos, normalizar tabelas e aplicar boas práticas de modelagem de dados.
 category: Banco de Dados
 order: 5
 ---
 
-![Imagem 10](/api/materiais-assets/5-banco-de-dados/5-modelagem-de-dados/assets/imagem10.png)
+## Sumário
 
-# 5.1 Introdução
+- [5.1. Introdução](#51-introducao)
+- [5.2. Entidades, Atributos e Relacionamentos](#52-entidades-atributos-e-relacionamentos)
+- [5.3. Normalização](#53-normalizacao)
+- [5.4. Boas Práticas](#54-boas-praticas)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+---
+
+> Antes de escrever a primeira linha de SQL, alguém precisa decidir que tabelas vão existir, quais colunas cada uma tem e como elas se conectam. Essa decisão, tomada com cuidado no início, é o que separa um banco fácil de manter de um que quebra a cada mudança.
+
+---
+
+# 5.1. Introdução
+
+![Imagem 10](/api/materiais-assets/5-banco-de-dados/5-modelagem-de-dados/assets/imagem10.png)
 
 **Modelagem de dados** é o processo de planejar como seus dados serão estruturados no banco de dados. É tipo fazer a planta de uma casa antes de construir.
 
@@ -22,26 +38,27 @@ Imagina criar um e-commerce sem planejar:
 
 **Consequências de uma modelagem ruim:**
 
-❌ **Redundância** - mesma informação repetida em vários lugares
+- **Redundância** - mesma informação repetida em vários lugares
 
-❌ **Inconsistência** - informações contraditórias
+- **Inconsistência** - informações contraditórias
 
-❌ **Performance ruim** - queries lentas e ineficientes
+- **Performance ruim** - queries lentas e ineficientes
 
-❌ **Dificuldade de manutenção** - qualquer mudança vira um pesadelo
+- **Dificuldade de manutenção** - qualquer mudança vira um pesadelo
 
-❌ **Bugs e erros** - dados corrompidos, relatórios errados
+- **Bugs e erros** - dados corrompidos, relatórios errados
 
-❌ **Desperdício de espaço** - dados duplicados ocupam mais espaço
-
+- **Desperdício de espaço** - dados duplicados ocupam mais espaço
 
 > **Tempo investido em modelagem = tempo economizado depois!**
 
-# 5.2 Entidades, Atributos e Relacionamentos
+---
+
+# 5.2. Entidades, Atributos e Relacionamentos
 
 Esses são os 3 conceitos fundamentais da modelagem. Vamos entender cada um:
 
-## 5.2.1 Entidades
+## Entidades
 
 **Entidade** é qualquer "coisa" do mundo real que você quer guardar informações. Pode ser uma pessoa, objeto, conceito, evento...
 
@@ -60,7 +77,7 @@ Esses são os 3 conceitos fundamentais da modelagem. Vamos entender cada um:
 
 **Dica:** Pegue uma descrição do sistema e circule todos os substantivos. A maioria vai ser uma entidade!
 
-```
+```plaintext
 "O CLIENTE faz um PEDIDO contendo vários PRODUTOS. 
 Cada PRODUTO pertence a uma CATEGORIA."
 
@@ -69,12 +86,12 @@ Entidades: Cliente, Pedido, Produto, Categoria
 
 ---
 
-## 5.2.2 Atributos
+## Atributos
 
 **Atributos** são as características/propriedades de uma entidade. São as informações que você quer guardar sobre ela.
 
 **Exemplo:**
-```
+```plaintext
 Entidade: Cliente
 
 Atributos:
@@ -90,7 +107,7 @@ Atributos:
 
 ---
 
-## 5.2.3 Relacionamentos
+## Relacionamentos
 
 **Relacionamentos** são as conexões entre entidades. Como elas se relacionam?
 
@@ -107,7 +124,7 @@ Atributos:
 
 ---
 
-# 5.3 Normalização
+# 5.3. Normalização
 
 Agora chegamos em um dos conceitos mais importantes da modelagem: **normalização**!
 
@@ -115,7 +132,7 @@ Agora chegamos em um dos conceitos mais importantes da modelagem: **normalizaç�
 
 Imagina que você fez essa tabela:
 
-```
+```plaintext
 Tabela: pedidos_completos
 +----+-------------+-------------+-------------+------------------+
 | id | cliente_nome| cliente_cpf | cliente_end | produtos         |
@@ -128,25 +145,32 @@ Tabela: pedidos_completos
 
 **Problemas dessa tabela:**
 
-🔴 **Redundância**
-- Dados de Ana repetidos 2 vezes (nome, CPF, endereço)
-- Quanto mais pedidos, mais repetição!
+- **Redundância**
 
-🔴 **Anomalia de Atualização**
-- Ana mudou de endereço? Tem que atualizar em TODAS as linhas
-- Se esquecer uma, fica inconsistente
+  - Dados de Ana repetidos 2 vezes (nome, CPF, endereço)
+  - Quanto mais pedidos, mais repetição!
 
-🔴 **Anomalia de Inserção**
-- E se quiser cadastrar um cliente que ainda não fez pedido?
-- Não dá, porque a tabela é de pedidos!
+- **Anomalia de Atualização**
 
-🔴 **Anomalia de Exclusão**
-- Se Ana cancelar todos os pedidos e deletarmos, perdemos os dados dela
-- Ela deixa de existir no sistema!
+  - Ana mudou de endereço? Tem que atualizar em TODAS as linhas
+  - Se esquecer uma, fica inconsistente
 
-🔴 **Múltiplos valores em uma célula**
-- "Notebook Dell, Mouse Logitech" - como dito antes, manipular listas em bancos é algo ruim!
-- Como contar quantos produtos? Como buscar um produto específico?
+- **Anomalia de Inserção**
+
+  - E se quiser cadastrar um cliente que ainda não fez pedido?
+  - Não dá, porque a tabela é de pedidos!
+
+- **Anomalia de Exclusão**
+
+  - Se Ana cancelar todos os pedidos e deletarmos, perdemos os dados dela
+  - Ela deixa de existir no sistema!
+
+- **Múltiplos valores em uma célula**
+
+  ```plaintext
+  - "Notebook Dell, Mouse Logitech" - como dito antes, manipular listas em bancos é algo ruim!
+  - Como contar quantos produtos? Como buscar um produto específico?
+  ```
 
 ---
 
@@ -158,12 +182,12 @@ A **normalização** é um processo de organizar os dados para eliminar esses pr
 
 ---
 
-### 1ª Forma Normal (1FN)
+## 1ª Forma Normal (1FN)
 
 **Regra:** Eliminar atributos multivalorados - cada célula deve ter APENAS um valor.
 
 **ANTES (Errado):**
-```
+```plaintext
 +----+-------------+--------------------+
 | id | cliente_nome| produtos           |
 +----+-------------+--------------------+
@@ -172,7 +196,7 @@ A **normalização** é um processo de organizar os dados para eliminar esses pr
 ```
 
 **DEPOIS (1FN):**
-```
+```plaintext
 +----+-------------+---------------+
 | id | cliente_nome| produto       |
 +----+-------------+---------------+
@@ -185,14 +209,14 @@ A **normalização** é um processo de organizar os dados para eliminar esses pr
 
 ---
 
-### 2ª Forma Normal (2FN)
+## 2ª Forma Normal (2FN)
 
 **Regra:** Deve estar em 1FN + eliminar dependências parciais.
 
 **Dependência parcial** = quando um atributo depende só de PARTE da chave primária.
 
 **ANTES (só 1FN):**
-```
+```plaintext
 +-------------+-------------+-------------------+---------------+
 | pedido_id   | produto_id  | produto_nome      | cliente_nome  |
 +-------------+-------------+-------------------+---------------+
@@ -207,7 +231,7 @@ E `cliente_nome` depende só de `pedido_id` (não do produto!)
 
 **DEPOIS (2FN):** Separar em tabelas diferentes!
 
-```
+```plaintext
 Tabela: pedidos
 +-----------+---------------+
 | pedido_id | cliente_nome  |
@@ -236,14 +260,14 @@ Tabela: pedidos_produtos (intermediária)
 
 ---
 
-### 3ª Forma Normal (3FN)
+## 3ª Forma Normal (3FN)
 
 **Regra:** Deve estar em 2FN + eliminar dependências transitivas.
 
 **Dependência transitiva** = quando um atributo não-chave depende de outro atributo não-chave.
 
 **ANTES (só 2FN):**
-```
+```plaintext
 Tabela: pedidos
 +-----------+---------------+-------------+-------------------+
 | pedido_id | cliente_nome  | cliente_cpf | cliente_endereco  |
@@ -257,7 +281,7 @@ Problema: `cliente_nome`, `cliente_cpf` e `cliente_endereco` dependem uns dos ou
 
 **DEPOIS (3FN):** Criar tabela separada para clientes!
 
-```
+```plaintext
 Tabela: clientes
 +------------+---------------+-------------+-------------------+
 | cliente_id | nome          | cpf         | endereco          |
@@ -293,7 +317,7 @@ Tabela: pedidos_produtos
 +-----------+------------+----------+
 ```
 
-**Agora sim!! ✅** Dados organizados, sem redundância, sem anomalias!
+**Agora sim!!** Dados organizados, sem redundância, sem anomalias!
 
 ---
 
@@ -307,24 +331,27 @@ Conseguimos separar tudo em tabelas coesas:
 4. **pedidos_produtos** - quais produtos em cada pedido (tabela N:N)
 
 **Benefícios:**
-✅ Zero redundância
-✅ Fácil atualizar dados (muda em 1 lugar só)
-✅ Integridade garantida
-✅ Flexível para crescer
-✅ Performance otimizada
+
+- Zero redundância
+- Fácil atualizar dados (muda em 1 lugar só)
+- Integridade garantida
+- Flexível para crescer
+- Performance otimizada
 
 **Quando NÃO normalizar?**
 - Data warehouses e analytics (desnormalização proposital para queries rápidas)
 - Sistemas que priorizam leitura sobre escrita
 - Quando a performance de leitura é crítica
 
-# 5.4 Boas Práticas
+---
 
-## 5.4.1 Nomenclatura
+# 5.4. Boas Práticas
 
-**Nomes de tabelas:**
+## Nomenclatura
 
-✅ **BOM:**
+- **Nomes de tabelas:**
+
+**BOM:**
 ```sql
 -- Escolha um padrão e mantenha!
 usuarios        -- plural em minúsculo
@@ -332,7 +359,7 @@ produtos
 pedidos
 ```
 
-❌ **RUIM:**
+**RUIM:**
 ```sql
 usuario         -- Mistura singular/plural
 Produtos        -- Mistura maiúscula/minúscula  
@@ -340,9 +367,9 @@ PEDIDOS
 tbl_cliente     -- Prefixo desnecessário
 ```
 
-**Nomes de colunas:**
+- **Nomes de colunas:**
 
-✅ **BOM:**
+**BOM:**
 ```sql
 -- Use snake_case (palavras separadas por underline)
 data_cadastro
@@ -351,7 +378,7 @@ usuario_id
 primeiro_nome
 ```
 
-❌ **RUIM:**
+**RUIM:**
 ```sql
 dataCadastro    -- camelCase não é padrão SQL
 PrecoTotal      -- PascalCase também não
@@ -361,11 +388,11 @@ nome1           -- Use nomes descritivos!
 
 ---
 
-## 5.4.2 Tipos de Dados
+## Tipos de Dados
 
 **Escolher o tipo certo economiza espaço e melhora performance!**
 
-| Dado | ❌ Tipo RUIM | ✅ Tipo BOM | Por quê |
+| Dado | **Tipo RUIM** | **Tipo BOM** | Por quê |
 |------|--------------|-------------|---------|
 | CPF | `VARCHAR(100)` | `CHAR(11)` ou `VARCHAR(14)` | Tamanho fixo e conhecido |
 | Idade | `VARCHAR(10)` | `SMALLINT` | É um número, não texto! |
@@ -378,7 +405,7 @@ nome1           -- Use nomes descritivos!
 
 **Exemplo prático:**
 
-❌ **RUIM:**
+**RUIM:**
 ```sql
 CREATE TABLE produtos (
     id VARCHAR(100),              -- ID deveria ser INT
@@ -390,7 +417,7 @@ CREATE TABLE produtos (
 );
 ```
 
-✅ **BOM:**
+**BOM:**
 ```sql
 CREATE TABLE produtos (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -412,7 +439,7 @@ CREATE TABLE produtos (
 
 ---
 
-## 5.4.3 Constraints (Restrições)
+## Constraints (Restrições)
 
 **Constraints** são regras que garantem a integridade dos dados:
 
@@ -487,10 +514,91 @@ CREATE TABLE produtos (
 ```
 
 **Benefícios das constraints:**
-✅ Dados sempre válidos
 
-✅ Menos bugs
+- Dados sempre válidos
+- Menos bugs
+- Integridade garantida pelo banco (não depende do código)
+- Documentação automática (deixa claro as regras)
 
-✅ Integridade garantida pelo banco (não depende do código)
+---
 
-✅ Documentação automática (deixa claro as regras)
+# Complemente o Aprendizado
+
+Para aprofundar seus conhecimentos sobre modelagem de dados, confira os seguintes recursos:
+
+- 
+
+- 
+
+---
+
+```quiz
+- tipo: single
+  pergunta: |
+    Uma tabela única `pedidos_completos` guarda nome, CPF e endereço do cliente repetidos em cada linha de pedido. Quando o cliente muda de endereço, é preciso atualizar em várias linhas — e se uma for esquecida, os dados ficam inconsistentes. Como se chama esse problema e qual a solução?
+  opcoes:
+    - texto: É a "Anomalia de Inserção", resolvida adicionando uma coluna de data de atualização
+      correta: false
+      explicacao: |
+        A anomalia de inserção é outro problema (não conseguir cadastrar um cliente sem pedido). O problema descrito é de atualização, e uma coluna de data não resolve a redundância.
+    - texto: É a "Anomalia de Atualização", causada pela redundância de dados, e a solução é normalizar separando o cliente em sua própria tabela
+      correta: true
+      explicacao: |
+        Exato! Repetir os dados do cliente em cada pedido cria redundância, que gera a anomalia de atualização. A normalização (criar uma tabela `clientes` separada, referenciada por `pedidos` via chave estrangeira) elimina a repetição e garante que o dado exista em um único lugar.
+      explicacao_erro: |
+        O nome do problema é "Anomalia de Atualização", e ele acontece porque o mesmo dado (endereço do cliente) está duplicado em várias linhas. A correção é normalizar: mover os dados do cliente para uma tabela própria.
+    - texto: É um comportamento esperado de bancos relacionais, não há solução
+      correta: false
+      explicacao: |
+        Bancos relacionais bem modelados evitam justamente esse tipo de problema. A normalização existe exatamente para eliminar essa redundância.
+    - texto: É a "Anomalia de Exclusão", resolvida adicionando um índice na coluna de endereço
+      correta: false
+      explicacao: |
+        Anomalia de exclusão é sobre perder dados ao deletar um registro. Um índice também não resolve redundância de dados, só acelera buscas.
+
+- tipo: single
+  pergunta: |
+    Uma tabela `produtos` foi criada com `preco FLOAT`. Depois de meses em produção, a equipe percebe que somas de preços às vezes fecham com centavos errados (ex: R$ 0,01 a mais ou a menos). Qual é a causa mais provável e a correção recomendada?
+  opcoes:
+    - texto: É um bug do banco de dados; a correção é trocar de banco
+      correta: false
+      explicacao: |
+        Não é um bug do banco — é uma limitação conhecida de como números de ponto flutuante representam decimais, comum a qualquer banco ou linguagem.
+    - texto: FLOAT tem erro de arredondamento binário; a correção é usar DECIMAL(10,2) para valores monetários
+      correta: true
+      explicacao: |
+        Exato! Tipos de ponto flutuante (FLOAT/DOUBLE) não representam certos valores decimais com exatidão, o que causa erros de arredondamento em somas. Para dinheiro, o tipo correto é DECIMAL (ou NUMERIC), que guarda o valor exato.
+      explicacao_erro: |
+        FLOAT armazena números em binário, e alguns decimais (como 0.1) não têm representação exata nessa base — isso causa pequenos erros de arredondamento. Por isso, valores monetários devem usar DECIMAL(10,2), não FLOAT.
+    - texto: O problema é falta de índice na coluna preco
+      correta: false
+      explicacao: |
+        Índices aceleram buscas, mas não têm relação nenhuma com precisão de armazenamento de números decimais.
+    - texto: O problema é usar INT em vez de FLOAT
+      correta: false
+      explicacao: |
+        INT armazenaria só números inteiros, sem casas decimais — pioraria o problema, não resolveria.
+
+- tipo: single
+  pergunta: |
+    No sistema da Trilha, um Aluno pode se inscrever em várias Disciplinas ao longo do curso, e cada Disciplina tem vários Alunos matriculados nela ao mesmo tempo. Qual cardinalidade representa essa relação, e como ela costuma ser implementada no banco?
+  opcoes:
+    - texto: 1:1, com uma coluna de chave estrangeira em qualquer uma das duas tabelas
+      correta: false
+      explicacao: |
+        1:1 seria se cada aluno pudesse cursar no máximo uma disciplina e vice-versa, o que não é o caso aqui.
+    - texto: 1:N, com uma chave estrangeira na tabela Aluno apontando para Disciplina
+      correta: false
+      explicacao: |
+        1:N funcionaria só se cada aluno pudesse cursar uma única disciplina por vez, mas o enunciado diz que um aluno cursa várias disciplinas e uma disciplina tem vários alunos — os dois lados são "muitos".
+    - texto: N:N, implementada com uma tabela intermediária que guarda os pares aluno-disciplina
+      correta: true
+      explicacao: |
+        Exato! Quando os dois lados da relação podem ter "muitos" do outro lado, a cardinalidade é N:N. Ela não pode ser representada com uma chave estrangeira simples — precisa de uma tabela intermediária (ex: `matriculas`) com `aluno_id` e `disciplina_id`, como fizemos com `pedidos_produtos` no exemplo de normalização.
+      explicacao_erro: |
+        Como um Aluno cursa várias Disciplinas E uma Disciplina tem vários Alunos, os dois lados são "muitos" — isso é cardinalidade N:N, resolvida com uma tabela intermediária, não com uma chave estrangeira direta.
+    - texto: Não é possível modelar essa relação em um banco relacional
+      correta: false
+      explicacao: |
+        É perfeitamente possível — é exatamente o padrão de tabela intermediária (N:N) usado em praticamente todo sistema com relações muitos-para-muitos.
+```

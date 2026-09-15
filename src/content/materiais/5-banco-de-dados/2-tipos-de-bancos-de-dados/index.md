@@ -5,6 +5,16 @@ category: Banco de Dados
 order: 2
 ---
 
+## Sumário
+
+- [2.1. Visão Geral](#21-visao-geral)
+- [2.2. SQL vs NoSQL](#22-sql-vs-nosql)
+- [2.2.1. Bancos Relacionais (SQL)](#221-bancos-relacionais-sql)
+- [2.2.2. Bancos Não-Relacionais (NoSQL)](#222-bancos-nao-relacionais-nosql)
+- [2.3. Quando escolher SQL vs NoSQL?](#23-quando-escolher-sql-vs-nosql)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
 ![Imagem 4](/api/materiais-assets/5-banco-de-dados/2-tipos-de-bancos-de-dados/assets/imagem4.jpg)
 
 # 2.1 Visão Geral
@@ -118,7 +128,7 @@ Bancos de dados NoSQL tendem a seguir uma estrutura mais simples, sacrificando v
 - Cassandra (colunar)
 - Pinecone (vetorial)
 
-## Quando escolher SQL vs NoSQL?
+# 2.3 Quando escolher SQL vs NoSQL?
 
 | Critério | SQL | NoSQL |
 |----------|-----|-------|
@@ -136,3 +146,62 @@ Bancos de dados NoSQL tendem a seguir uma estrutura mais simples, sacrificando v
 - PostgreSQL para dados críticos (usuários, pedidos, pagamentos)
 - Redis para cache e sessões (temporário, rápido)
 - MongoDB para logs e analytics (volumes grandes, estrutura variável)
+
+## Complemente o Aprendizado
+
+Para aprofundar seus conhecimentos sobre Tipos de Bancos de Dados, confira o seguinte recurso:
+
+- [SQL vs. NoSQL: What's the difference?](https://www.youtube.com/watch?v=Q5aTUc7c4jg)
+
+```quiz
+- tipo: single
+  pergunta: Qual é a principal diferença de estrutura entre bancos SQL e NoSQL?
+  opcoes:
+    - texto: NoSQL não permite armazenar texto ou números, apenas imagens
+      correta: false
+      explicacao: Bancos NoSQL armazenam qualquer tipo de dado (texto, números, documentos, etc.), assim como bancos SQL. A diferença está na flexibilidade da estrutura, não no tipo de conteúdo.
+    - texto: SQL só funciona em memória e perde os dados ao reiniciar o servidor
+      correta: false
+      explicacao: Bancos SQL persistem os dados em disco normalmente, como qualquer banco de dados. Isso não tem relação com a diferença entre SQL e NoSQL.
+    - texto: NoSQL é apenas um apelido para bancos SQL mais antigos
+      correta: false
+      explicacao: NoSQL significa "Not Only SQL" e representa uma categoria de bancos com modelos de dados diferentes dos relacionais, não uma versão antiga do SQL.
+    - texto: SQL exige uma estrutura rígida definida antes de inserir dados, enquanto NoSQL aceita estruturas flexíveis que podem variar entre registros
+      correta: true
+      explicacao: Exato! Nos bancos SQL você define o schema (tabelas, colunas, tipos) antes de inserir dados. Já nos bancos NoSQL cada registro pode ter uma estrutura diferente, o que dá mais flexibilidade.
+      explicacao_erro: A diferença central é a rigidez do schema. SQL exige que a estrutura seja definida antes de inserir dados; NoSQL permite estruturas flexíveis, que podem até variar de registro para registro.
+
+- tipo: single
+  pergunta: O que a propriedade "Isolamento" do ACID garante em um banco relacional?
+  opcoes:
+    - texto: Que transações simultâneas sejam executadas como se fossem sequenciais, sem interferir umas nas outras
+      correta: true
+      explicacao: Exato! O Isolamento evita que transações concorrentes vejam resultados parciais umas das outras, prevenindo inconsistências mesmo quando várias operações acontecem ao mesmo tempo.
+      explicacao_erro: Isolamento é a garantia de que transações simultâneas não interfiram umas nas outras, como se fossem executadas em sequência, uma de cada vez.
+    - texto: Que os dados fiquem isolados em um servidor sem backup
+      correta: false
+      explicacao: Isolamento não tem relação com backup ou distribuição física dos dados. Ele trata do comportamento de transações concorrentes.
+    - texto: Que uma transação nunca possa ser desfeita
+      correta: false
+      explicacao: Essa característica está mais próxima da Durabilidade (mudanças confirmadas persistem). O Isolamento trata de como transações simultâneas se comportam entre si.
+    - texto: Que apenas um usuário por vez possa se conectar ao banco
+      correta: false
+      explicacao: Bancos relacionais suportam múltiplas conexões simultâneas normalmente. O Isolamento garante apenas que transações concorrentes não interfiram no resultado umas das outras.
+
+- tipo: single
+  pergunta: Por que bancos NoSQL costumam escalar horizontalmente com mais facilidade do que bancos SQL tradicionais?
+  opcoes:
+    - texto: Porque bancos NoSQL não guardam dados em disco
+      correta: false
+      explicacao: Bancos NoSQL também persistem dados em disco. A facilidade de escalar horizontalmente vem da ausência de relações rígidas entre os dados, não de como eles são armazenados fisicamente.
+    - texto: Porque bancos SQL não podem rodar em mais de um servidor
+      correta: false
+      explicacao: Bancos SQL modernos também suportam escalabilidade horizontal (via read replicas e sharding, por exemplo), mas isso costuma ser mais complexo por causa dos relacionamentos rígidos entre tabelas.
+    - texto: Porque, sem relações rígidas entre tabelas, é mais simples distribuir os dados entre vários servidores
+      correta: true
+      explicacao: Exato! Como os dados não dependem de relacionamentos complexos entre tabelas, é mais fácil particioná-los e distribuí-los entre várias máquinas.
+      explicacao_erro: A ausência de relações rígidas entre tabelas facilita particionar e distribuir os dados entre múltiplos servidores, o que torna a escalabilidade horizontal mais natural em bancos NoSQL.
+    - texto: Porque bancos NoSQL sempre usam menos espaço em disco
+      correta: false
+      explicacao: O espaço em disco depende do volume e formato dos dados, não do modelo (SQL ou NoSQL). A facilidade de escalar horizontalmente vem da flexibilidade estrutural.
+```

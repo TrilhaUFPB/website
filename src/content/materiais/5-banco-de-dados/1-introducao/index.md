@@ -5,6 +5,16 @@ category: Banco de Dados
 order: 1
 ---
 
+## Sumário
+
+- [1.1. O que é e para que serve banco de dados?](#11-o-que-e-e-para-que-serve-banco-de-dados)
+- [1.2. Por que não usar arquivos ou memória?](#12-por-que-nao-usar-arquivos-ou-memoria)
+- [1.3. Quando usar Banco de Dados?](#13-quando-usar-banco-de-dados)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+---
+
 ![Imagem 1](/api/materiais-assets/5-banco-de-dados/1-introducao/assets/imagem1.jpeg)
 
 # 1.1 O que é e para que serve banco de dados?
@@ -127,24 +137,24 @@ Isso resolve o problema da persistência! Mas surgem OUTROS problemas:
 
 ## Use banco de dados quando você tiver um ou mais desses cenários:
 
-✅ **Sistema com múltiplos usuários simultâneos**
+**Sistema com múltiplos usuários simultâneos**
 - Exemplo: rede social, sistema de vendas etc
-
-✅ **Grande volume de dados**
+---
+**Grande volume de dados**
 - Milhares ou milhões de registros
 - Precisa buscar/filtrar rapidamente
-
-✅ **Necessidade de buscas complexas**
+---
+**Necessidade de buscas complexas**
 - "Mostre todos os produtos da categoria X, com preço entre Y e Z, em estoque, ordenados por popularidade"
-
-✅ **Relações entre dados**
+---
+**Relações entre dados**
 - Clientes têm pedidos, pedidos têm produtos, produtos têm categorias...
-
-✅ **Necessidade de segurança**
+---
+**Necessidade de segurança**
 - Controlar quem acessa o quê
 - Registrar quem fez cada mudança
-
-✅ **Backup e recuperação**
+---
+**Backup e recuperação**
 - Precisa garantir que os dados não se percam
 
 ## Por outro lado, você pode usar arquivos simples se:
@@ -152,3 +162,64 @@ Isso resolve o problema da persistência! Mas surgem OUTROS problemas:
 - Tem poucos dados (centenas de registros, no máximo)
 - Apenas 1 pessoa/processo acessa por vez
 - Não tem requisitos de segurança ou integridade críticos
+
+---
+
+# Complemente o Aprendizado
+
+Para aprofundar seus conhecimentos sobre banco de dados, confira o seguinte recurso:
+
+- [Introdução a Banco de Dados: Um Guia Rápido para iniciantes em Programação - Medium](https://elyzabethsilva.medium.com/introdu%C3%A7%C3%A3o-a-banco-de-dados-um-guia-r%C3%A1pido-para-iniciantes-em-programa%C3%A7%C3%A3o-213af29f6126)
+
+```quiz
+- tipo: single
+  pergunta: Por que salvar dados apenas em variáveis na memória (RAM) não é uma boa solução para persistência?
+  opcoes:
+    - texto: Porque a memória RAM é volátil e os dados desaparecem quando o programa fecha ou o computador desliga
+      correta: true
+      explicacao: Exato! A RAM só existe enquanto o programa está rodando. Assim que ele fecha, tudo que estava guardado ali se perde.
+      explicacao_erro: A memória RAM é volátil, ou seja, os dados somem assim que o programa é encerrado ou o computador desliga. Por isso ela não serve para persistência de dados.
+    - texto: Porque a memória RAM é mais lenta que um arquivo em disco
+      correta: false
+      explicacao: Na verdade é o contrário — a memória é muito mais rápida que arquivos em disco. O problema da memória não é velocidade, é a volatilidade.
+    - texto: Porque a memória RAM não permite guardar textos, apenas números
+      correta: false
+      explicacao: A memória RAM pode guardar qualquer tipo de dado, incluindo textos, listas e objetos. O problema é que esses dados não persistem depois que o programa termina.
+    - texto: Porque não é possível criar variáveis dentro de um programa Python
+      correta: false
+      explicacao: Claro que é possível criar variáveis em Python! O problema não está em criar variáveis, mas sim que elas somem quando o programa é encerrado.
+
+- tipo: single
+  pergunta: Qual é uma limitação real de salvar dados em arquivos (como JSON ou CSV) ao invés de um banco de dados?
+  opcoes:
+    - texto: Arquivos não conseguem ser lidos por nenhuma linguagem de programação
+      correta: false
+      explicacao: Arquivos JSON, CSV e TXT podem ser lidos por praticamente qualquer linguagem de programação. O problema não está na leitura em si.
+    - texto: Se duas pessoas tentarem editar o arquivo ao mesmo tempo, uma pode sobrescrever a mudança da outra ou corromper o arquivo
+      correta: true
+      explicacao: Exato! Arquivos não têm controle de concorrência nativo. Sem um banco de dados, gerenciar múltiplos acessos simultâneos vira um risco real de perda ou corrupção de dados.
+      explicacao_erro: Arquivos não lidam bem com concorrência. Quando duas pessoas ou processos tentam escrever no mesmo arquivo ao mesmo tempo, uma pode sobrescrever a mudança da outra ou até corromper o arquivo.
+    - texto: Arquivos ocupam mais espaço em disco que um banco de dados
+      correta: false
+      explicacao: O espaço em disco não é o problema central discutido. As limitações reais são performance em grandes volumes, concorrência, integridade e segurança.
+    - texto: Não é possível salvar números em arquivos, apenas texto
+      correta: false
+      explicacao: Arquivos podem armazenar números normalmente (como texto formatado ou em formatos como JSON). A limitação real está em performance, concorrência e integridade dos dados.
+
+- tipo: single
+  pergunta: Em qual desses cenários faz mais sentido usar um banco de dados ao invés de arquivos simples?
+  opcoes:
+    - texto: Um projeto pessoal pequeno, com poucas dezenas de registros, acessado por apenas uma pessoa
+      correta: false
+      explicacao: Esse é justamente um cenário onde arquivos simples ainda são aceitáveis — poucos dados, um único usuário e sem requisitos críticos de segurança ou integridade.
+    - texto: Um sistema onde múltiplos usuários acessam e modificam dados relacionados entre si, como clientes, pedidos e produtos
+      correta: true
+      explicacao: Exato! Múltiplos usuários simultâneos, grande volume de dados e relacionamentos entre entidades são exatamente os cenários onde um banco de dados se torna necessário.
+      explicacao_erro: Bancos de dados são indicados quando há múltiplos usuários simultâneos, grande volume de dados, buscas complexas ou relacionamentos entre entidades — como clientes que têm pedidos, que têm produtos.
+    - texto: Um script que roda uma única vez para gerar um relatório e depois é descartado
+      correta: false
+      explicacao: Para uma tarefa pontual e descartável, sem necessidade de persistência de longo prazo ou acesso simultâneo, um banco de dados normalmente seria um exagero desnecessário.
+    - texto: Uma lista de tarefas pessoal salva localmente, usada por apenas uma pessoa no próprio computador
+      correta: false
+      explicacao: Esse é um caso de uso simples, sem múltiplos acessos simultâneos nem grande volume de dados — um arquivo local já resolve bem esse cenário.
+```
