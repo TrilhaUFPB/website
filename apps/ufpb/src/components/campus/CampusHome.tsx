@@ -21,11 +21,11 @@ export default function CampusHome() {
           <Link
             href="/"
             className="campus-brand"
-            aria-label="Trilha UFPB, início"
+            aria-label="Trilha, início"
           >
             <img src="/campus/trilha.svg" width="60" height="45" alt="" />
             <span>
-              Trilha <b>UFPB</b>
+              Trilha
             </span>
           </Link>
           <div className="campus-nav-links">
@@ -42,7 +42,7 @@ export default function CampusHome() {
           <section className="campus-hero" aria-labelledby="campus-title">
             <div className="campus-hero-copy">
               <span className="campus-eyebrow">
-                TRILHA UFPB · APRENDER FAZENDO
+                APRENDER FAZENDO
               </span>
               <h1 id="campus-title">
                 Seu começo
@@ -53,7 +53,7 @@ export default function CampusHome() {
               </h1>
               <p>
                 Programação, projetos e gente por perto. Um programa gratuito,
-                feito por estudantes, para aprender construindo na UFPB.
+                feito por estudantes, para aprender construindo.
               </p>
               <div className="campus-actions">
                 <a className="campus-button" href="#sobre">
@@ -72,7 +72,6 @@ export default function CampusHome() {
                 alt="Estudantes do Trilha compartilhando conhecimento em sala"
               />
               <figcaption>
-                <img src="/campus/ufpb.png" width="35" height="58" alt="UFPB" />
                 <span>
                   O próximo passo
                   <br />
@@ -127,7 +126,7 @@ export default function CampusHome() {
             <a href="#turmas">Turmas</a>
             <a
               href={
-                process.env.NEXT_PUBLIC_TRILHA_URL || "http://localhost:4318"
+                process.env.NEXT_PUBLIC_TRILHA_URL || "https://otrilha.com"
               }
             >
               Conheça todo o Trilha <ArrowUpRight size={16} />

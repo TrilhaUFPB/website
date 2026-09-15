@@ -25,7 +25,7 @@ Para produção local: `npm run build`, seguido de `npm run start:trilha` e `npm
 Criar/configurar **dois projetos Next.js** no provedor, ligados ao mesmo repositório:
 
 - Projeto do `otrilha.com`: Root Directory **`apps/trilha`**.
-- Projeto do domínio Trilha UFPB: Root Directory **`apps/ufpb`**.
+- Projeto de `trilhaufpb.com`: Root Directory **`apps/ufpb`**.
 
 Usar o lockfile da raiz (npm workspaces). O build de cada projeto é `npm run build` dentro de sua Root Directory. As configurações Next incluem a raiz do monorepo para resolver dependências compartilhadas. No Vercel, permitir arquivos externos à Root Directory.
 
@@ -38,7 +38,7 @@ Definir antes do deploy:
 | UFPB | `NEXT_PUBLIC_SITE_URL` | URL pública completa do app UFPB |
 | UFPB | `NEXT_PUBLIC_TRILHA_URL` | URL pública do Trilha |
 
-Os valores locais estão em `.env.example` de cada app. As variáveis públicas são usadas no build. Os defaults são localhost; **configurar os domínios reais antes de publicar**.
+Os valores locais estão em `.env.example` de cada app. As variáveis públicas são usadas no build. Os destinos de produção são `otrilha.com` e `trilhaufpb.com`. Para conectar os previews locais, use `NEXT_PUBLIC_UFPB_URL=http://localhost:4319` em `apps/trilha/.env.local` e `NEXT_PUBLIC_TRILHA_URL=http://localhost:4318` em `apps/ufpb/.env.local`.
 
 Transferir para o projeto UFPB as variáveis de ambiente atualmente usadas para administração, SMTP, Firebase e analytics. Manter analytics do site institucional no projeto Trilha. O arquivo legado `env.local` não é automaticamente carregado pelo Next; usar `.env.local` local ou as variáveis do provedor, sem versionar segredos.
 

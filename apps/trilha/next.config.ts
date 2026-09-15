@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: path.resolve(process.cwd(), "../.."),
   async redirects() {
     const campus = (
-      process.env.NEXT_PUBLIC_UFPB_URL || "http://localhost:4319"
+      process.env.NEXT_PUBLIC_UFPB_URL || "https://trilhaufpb.com"
     ).replace(/\/$/, "");
     return [
       { source: "/ufpb", destination: campus, permanent: false },
