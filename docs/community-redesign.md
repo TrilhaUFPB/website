@@ -5,19 +5,19 @@ The homepage now presents Trilha as a community spanning UFPB, Momento, Hack The
 ## Routes
 
 - `/`: community landing page, initiatives, history, impact and leadership.
-- `/ufpb`: university program; links to the existing `/aulas` and `/materiais`.
+- `/ufpb`: redirects to the standalone campus app (`NEXT_PUBLIC_UFPB_URL`).
 - `/ufpe`: coming-soon destination.
 - `/historia`: the community's history.
 - `/equipe`: organization directory.
 - Momento and Hack The Path cards link to `https://momento.sh` and `https://hackthepath.com.br`.
 
-Existing class, material, admin and API routes remain in place.
+Class, material, admin and API routes now live in `apps/ufpb`, with their existing paths. The community app redirects legacy page URLs there.
 
 ## Visuals and interactions
 
-`src/components/community/community.css` scopes the approved prototype styles to `.trilha-site`. Other pages retain their existing styling. Poppins and Space Grotesk are loaded using Next fonts. Assets live under `/community/` to avoid replacing assets used by existing pages.
+`apps/trilha/src/components/community/community.css` scopes the approved prototype styles to `.trilha-site`. Other pages retain their existing styling. Poppins and Space Grotesk are loaded using Next fonts. Assets live under `/community/` to avoid replacing assets used by existing pages.
 
-`CommunityEffects.tsx` mounts the canvas globe and pointer lighting and cleans up on navigation. Reduced motion disables pointer lighting; touch devices keep portraits in color. Keyboard arrows rotate the globe and Home returns it to its initial view.
+`apps/trilha/src/components/community/CommunityEffects.tsx` mounts the canvas globe and pointer lighting and cleans up on navigation. Reduced motion disables pointer lighting; touch devices keep portraits in color. Keyboard arrows rotate the globe and Home returns it to its initial view.
 
 The globe uses the vendored COBE 2.0.1 build, with its MIT license alongside it. The selected globe uses the COBE Default showcase styling with Trilha electric blue (#1C4AE5). Each curve has a destination marker; these include confirmed connections and illustrative national expansion locations. Counts and initiative leadership reflect the content approved during design review. The organization directory is based on the existing project data, with Ralf added and his supplied portrait and LinkedIn profile.
 
@@ -25,5 +25,5 @@ The stylesheet retains the ordered visual overrides from the approved design so 
 
 ## Local validation
 
-Run `npm ci`, `npm run build`, then `npm run start -- --port 4318`.
+Run `npm ci`, `npm run build`, then `npm run start:trilha` and `npm run start:ufpb` in separate terminals. See the root README for deployment and domain configuration.
 The production build also generates the existing material and class routes.

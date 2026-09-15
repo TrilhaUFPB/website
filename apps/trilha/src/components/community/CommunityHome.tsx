@@ -1,3 +1,4 @@
+import { ufpbUrl } from "@/lib/sites";
 import ArrowIcon from "./ArrowIcon";
 import Link from "next/link";
 /* eslint-disable @next/next/no-img-element */
@@ -59,7 +60,7 @@ export default function CommunityHome() {
               <h2>Encontre seu próximo começo.</h2>
             </div>
             <div className="initiative-layout">
-              <Link href="/ufpb/" className="initiative ufpb">
+              <Link href={ufpbUrl} className="initiative ufpb">
                 <div className="initiative-art campus-art">
                   <div className="campus-lockup">
                     <img
@@ -411,11 +412,11 @@ export default function CommunityHome() {
             </nav>
             <nav aria-label="Iniciativas">
               <span className="section-label">INICIATIVAS</span>
-              <Link href="/ufpb/">Trilha UFPB</Link>
+              <Link href={ufpbUrl}>Trilha UFPB</Link>
               <Link href="https://momento.sh">Momento</Link>
               <Link href="https://hackthepath.com.br">Hack The Path</Link>
               <Link href="/ufpe/">Trilha UFPE</Link>
-              <Link href="/materiais" target="_blank" rel="noopener">
+              <Link href={`${ufpbUrl}/materiais`} target="_blank" rel="noopener">
                 Materiais abertos
               </Link>
             </nav>

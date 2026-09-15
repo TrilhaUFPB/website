@@ -39,28 +39,28 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://otrilha.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:4319";
 const description =
-  "Uma comunidade de estudantes que abre caminhos para aprender, se conectar e construir, com Trilha UFPB, Momento, Hack The Path e Trilha UFPE.";
+  "Programa gratuito de programação, projetos e mentoria na UFPB. Aulas, materiais e uma comunidade de estudantes para aprender fazendo.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Trilha",
-    template: "%s | Trilha",
+    default: "Trilha UFPB",
+    template: "%s | Trilha UFPB",
   },
   description,
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: siteUrl,
-    siteName: "Trilha",
-    title: "Trilha",
+    siteName: "Trilha UFPB",
+    title: "Trilha UFPB",
     description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trilha",
+    title: "Trilha UFPB",
     description,
   },
 };

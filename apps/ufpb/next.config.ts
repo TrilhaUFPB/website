@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -13,7 +14,8 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   transpilePackages: [],
-  turbopack: {},
+  turbopack: { root: path.resolve(process.cwd(), "../..") },
+  outputFileTracingRoot: path.resolve(process.cwd(), "../.."),
   async rewrites() {
     return [
       {

@@ -1,3 +1,4 @@
+import { ufpbUrl } from "@/lib/sites";
 import ArrowIcon from "./ArrowIcon";
 import Link from "next/link";
 /* eslint-disable @next/next/no-img-element */
@@ -131,7 +132,7 @@ export default function History() {
           </nav>
           <nav aria-label="Iniciativas">
             <span className="section-label">INICIATIVAS</span>
-            <Link href="/ufpb/">Trilha UFPB</Link>
+            <Link href={ufpbUrl}>Trilha UFPB</Link>
             <Link href="https://momento.sh">
               Momento <ArrowIcon direction="up-right" />
             </Link>
@@ -139,7 +140,7 @@ export default function History() {
               Hack The Path <ArrowIcon direction="up-right" />
             </Link>
             <Link href="/ufpe/">Trilha UFPE</Link>
-            <Link href="/materiais" target="_blank" rel="noopener">
+            <Link href={`${ufpbUrl}/materiais`} target="_blank" rel="noopener">
               Materiais abertos <ArrowIcon direction="up-right" />
             </Link>
           </nav>

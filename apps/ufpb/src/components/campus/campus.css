@@ -1,0 +1,341 @@
+.campus-home {
+  --cream: #fcfaf5;
+  --mint: #00d468;
+  --ink: #000928;
+  --midnight: #000928;
+  --font-body: var(--font-poppins), sans-serif;
+  --font-display: var(--font-space-grotesk), sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  position: relative;
+}
+body:has(.campus-home)::before {
+  display: none;
+}
+.campus-home * {
+  box-sizing: border-box;
+}
+.campus-home h1,
+.campus-home h2,
+.campus-home h3 {
+  font-family: var(--font-display);
+}
+.campus-nav {
+  max-width: 1320px;
+  margin: auto;
+  padding: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.campus-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  white-space: nowrap;
+}
+.campus-brand b {
+  font-size: 12px;
+  display: block;
+  letter-spacing: 3px;
+}
+.campus-nav-links {
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+}
+.campus-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #fdf4e5;
+  border: 1px solid #000928;
+  border-radius: 30px;
+  padding: 15px 22px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 3px 0 #000928;
+  transition: background 0.2s;
+}
+.campus-button:hover {
+  background: #00d468;
+}
+.campus-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+.campus-hero {
+  max-width: 1320px;
+  padding: 55px 40px 65px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.campus-eyebrow {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+.campus-hero h1 {
+  font-size: clamp(40px, 4.5vw, 65px);
+  line-height: 1.08;
+  letter-spacing: -3px;
+  margin: 26px 0;
+}
+.campus-hero em {
+  font-style: normal;
+  color: #009c4e;
+}
+.campus-hero p {
+  font-size: 16px;
+  line-height: 1.85;
+  max-width: 470px;
+}
+.campus-actions {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+.campus-hero-photo {
+  margin: 0;
+  position: relative;
+  padding: 0 0 35px;
+}
+.campus-hero-photo > img {
+  width: 100%;
+  height: 510px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+.campus-hero-photo figcaption {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  left: 50px;
+  background: #000928;
+  color: #fdf4e5;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 22px 30px;
+  border-radius: 8px;
+  font-size: 20px;
+  line-height: 1.4;
+}
+.campus-hero-photo figcaption img {
+  object-fit: contain;
+}
+.campus-shortcuts {
+  width: calc(100% - 80px);
+  max-width: 1240px;
+  margin: 0 auto 45px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.campus-shortcuts > a {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 30px;
+  background: #e5f8ec;
+  border-radius: 10px;
+  box-shadow: 0 3px #000928;
+}
+.campus-shortcuts > a:nth-child(2) {
+  background: #e8edff;
+}
+.campus-shortcuts > a > svg:last-child {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.campus-shortcuts span {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+.campus-shortcuts h2 {
+  font-size: 23px;
+  margin: 8px 0;
+}
+.campus-shortcuts p {
+  font-size: 12px;
+}
+.campus-shortcuts > a:hover {
+  filter: brightness(0.97);
+}
+.campus-home .section {
+  padding: 65px 40px;
+}
+.campus-home .container {
+  max-width: 1240px;
+}
+.campus-home .section-head {
+  border-top: 0;
+  padding-top: 0;
+}
+.campus-home .section-head::before {
+  display: none;
+}
+.campus-home .section-head h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -1.8px;
+}
+.campus-home .section-head .lede {
+  font-size: 15px;
+}
+.campus-home .serif-italic {
+  font-style: normal;
+}
+.campus-home .pillar,
+.campus-home .project-card,
+.campus-home .turma-card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.campus-home .pillar {
+  background: #fff;
+}
+.campus-home .section--ink {
+  background-image: none;
+  background-color: #000928;
+}
+.campus-home .reveal {
+  opacity: 1;
+  transform: none;
+}
+.campus-home .turmas-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+.campus-home .turma-card,
+.campus-home .turma-card.is-active {
+  flex: 1;
+  transform: none;
+}
+.campus-home .turma-title {
+  font-size: 22px;
+}
+.campus-footer {
+  background: #000928;
+  color: #fdf4e5;
+  padding: 55px max(40px, calc((100% - 1240px) / 2));
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+}
+.campus-footer > div > img {
+  filter: brightness(0) invert(1);
+}
+.campus-footer h2 {
+  font-size: 32px;
+  line-height: 1.2;
+  margin-top: 24px;
+}
+.campus-footer nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 14px;
+}
+.campus-footer nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.campus-footer small {
+  grid-column: 1/-1;
+  font-size: 11px;
+  opacity: 0.65;
+}
+@media (max-width: 900px) {
+  .campus-nav-links {
+    display: none;
+  }
+  .campus-hero {
+    gap: 25px;
+  }
+  .campus-hero h1 {
+    font-size: 42px;
+  }
+  .campus-hero-photo > img {
+    height: 430px;
+  }
+  .campus-shortcuts {
+    margin: 0 40px 30px;
+  }
+  .campus-shortcuts > a {
+    padding: 22px;
+    gap: 12px;
+  }
+  .campus-home .turmas-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .campus-nav {
+    padding: 20px;
+    gap: 10px;
+  }
+  .campus-brand {
+    font-size: 16px;
+  }
+  .campus-brand img {
+    width: 44px;
+  }
+  .campus-nav > .campus-button {
+    font-size: 11px;
+    padding: 12px;
+  }
+  .campus-hero {
+    grid-template-columns: 1fr;
+    padding: 30px 20px 40px;
+    gap: 35px;
+  }
+  .campus-hero h1 {
+    font-size: 43px;
+    letter-spacing: -2px;
+  }
+  .campus-hero-photo > img {
+    height: 340px;
+  }
+  .campus-hero-photo figcaption {
+    left: 25px;
+    right: 15px;
+    font-size: 18px;
+  }
+  .campus-shortcuts {
+    grid-template-columns: 1fr;
+    margin: 0 20px 20px;
+  }
+  .campus-home .section {
+    padding: 45px 20px;
+  }
+  .campus-home .turmas-row {
+    grid-template-columns: 1fr;
+  }
+  .campus-footer {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+  }
+  .campus-footer h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .campus-shortcuts {
+    width: calc(100% - 40px);
+  }
+}

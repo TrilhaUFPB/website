@@ -41,3 +41,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# App workspace outputs
+**/.next/
+**/node_modules/
+**/*.tsbuildinfo
+**/.env*
+!**/.env.example
