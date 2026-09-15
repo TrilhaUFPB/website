@@ -1,5 +1,5 @@
 import createGlobe from "./vendor/cobe-2.0.1.js";
-export default function mountGlobe(canvas) {
+export default function mountGlobe(canvas, design = 1) {
   const controller = new AbortController();
   const listen = (name, callback) =>
     canvas.addEventListener(name, callback, { signal: controller.signal });
@@ -14,7 +14,7 @@ export default function mountGlobe(canvas) {
       [-15.79, -47.88],
       [-8.5, -38],
     ];
-  // Additional paths illustrate national reach; only confirmed locations get markers.
+  // Additional locations illustrate national reach, alongside confirmed connections.
   const nationalPaths = [
     [-3.12, -60.02],
     [-1.46, -48.5],
@@ -39,6 +39,33 @@ export default function mountGlobe(canvas) {
     visible = false,
     frame = 0,
     width = 0;
+  // Visual settings from COBE's Default and CDN showcases.
+  const showcase = {
+    dark: 0,
+    diffuse: 1.5,
+    mapSamples: 16000,
+    mapBrightness: 10,
+    baseColor: [1, 1, 1],
+    glowColor: [0.94, 0.93, 0.91],
+    arcWidth: 0.5,
+    arcHeight: 0.25,
+    opacity: 0.7,
+  };
+  const designs = [
+    {},
+    {
+      ...showcase,
+      markerColor: [28 / 255, 74 / 255, 229 / 255],
+      arcColor: [28 / 255, 74 / 255, 229 / 255],
+      markerElevation: 0.01,
+    },
+    {
+      ...showcase,
+      markerColor: [0, 0, 0],
+      arcColor: [0, 0, 0],
+      markerElevation: 0.02,
+    },
+  ];
   const globe = createGlobe(canvas, {
     devicePixelRatio: Math.min(devicePixelRatio || 1, 2),
     width: canvas.clientWidth,
@@ -57,9 +84,22 @@ export default function mountGlobe(canvas) {
     arcWidth: 0.16,
     arcHeight: 0.12,
     markerElevation: 0.003,
+    ...designs[design],
     markers: [
-      { location: origin, size: 0.035, color: [0, 0.65, 0.32] },
-      ...destinations.map((location) => ({ location, size: 0.014 })),
+      {
+        location: origin,
+        size: 0.035,
+        color:
+          design === 1
+            ? [28 / 255, 74 / 255, 229 / 255]
+            : design === 2
+              ? [0, 0, 0]
+              : [0, 0.65, 0.32],
+      },
+      ...[...destinations, ...nationalPaths].map((location) => ({
+        location,
+        size: design === 1 ? 0.025 : design === 2 ? 0.012 : 0.014,
+      })),
     ],
     arcs: [...destinations, ...nationalPaths].map((to) => ({
       from: origin,
@@ -99,7 +139,7 @@ export default function mountGlobe(canvas) {
   canvas.tabIndex = 0;
   canvas.setAttribute(
     "aria-label",
-    "Globo interativo: pontos indicam conexões confirmadas; curvas adicionais ilustram a expansão pelo Brasil. Arraste ou use as setas para girar; retorna à Paraíba ao soltar.",
+    "Globo interativo: Pontos e curvas mostram conexões confirmadas e destinos ilustrativos de expansão pelo Brasil. Arraste ou use as setas para girar; retorna à Paraíba ao soltar.",
   );
   listen("pointerdown", (e) => {
     drag = true;

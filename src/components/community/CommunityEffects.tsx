@@ -2,7 +2,11 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-export default function CommunityEffects() {
+export default function CommunityEffects({
+  globeDesign = 1,
+}: {
+  globeDesign?: number;
+}) {
   const pathname = usePathname();
   useEffect(() => {
     const controller = new AbortController();
@@ -14,7 +18,7 @@ export default function CommunityEffects() {
     if (canvas) {
       import("./globe")
         .then(({ default: mountGlobe }) => {
-          if (!signal.aborted) disposeGlobe = mountGlobe(canvas);
+          if (!signal.aborted) disposeGlobe = mountGlobe(canvas, globeDesign);
         })
         .catch(() => {
           if (!signal.aborted)
@@ -72,6 +76,6 @@ export default function CommunityEffects() {
       frames.forEach(cancelAnimationFrame);
       disposeGlobe?.();
     };
-  }, [pathname]);
+  }, [pathname, globeDesign]);
   return null;
 }

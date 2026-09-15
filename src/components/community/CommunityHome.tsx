@@ -24,9 +24,6 @@ export default function CommunityHome() {
         </nav>
         <main>
           <div className="caderno-hero">
-            <div className="eyebrow">
-              TRILHA · DE ESTUDANTES PARA ESTUDANTES
-            </div>
             <h1>
               Seu primeiro passo.
               <br />

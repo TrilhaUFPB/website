@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <>
       <CommunityHome />
-      <CommunityEffects />
+      <CommunityEffects globeDesign={1} />
     </>
   );
 }
