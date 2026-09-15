@@ -39,7 +39,7 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://otrilha.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://otrilha.com";
 const description =
   "Uma comunidade de estudantes que abre caminhos para aprender, se conectar e construir, com Trilha UFPB, Momento, Hack The Path e Trilha UFPE.";
 

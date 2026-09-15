@@ -22,7 +22,7 @@ export default function HeroStickers() {
   };
   useEffect(() => {
     if (!desktop()) { setStickers(initial); return; }
-    const count = 2 + Math.floor(Math.random() * 3);
+    const count = 3 + Math.floor(Math.random() * 4);
     const available = models.map((_, index) => index);
     const rect = layer.current!.getBoundingClientRect();
     const sizePercent = Math.min(165, rect.width * .12) / rect.width * 100;
@@ -32,7 +32,8 @@ export default function HeroStickers() {
       const right = index % 2 === 1;
       // Two vertical lanes outside the central reading area, with separated rows.
       const edge = 1 + Math.random() * 2;
-      const y = count > 2 ? (index < 2 ? 12 : 58) + Math.random() * 12 : 20 + Math.random() * 46;
+      const rows = Math.ceil(count / 2);
+      const y = 8 + Math.floor(index / 2) * (60 / Math.max(1, rows - 1)) + Math.random() * 8;
       return {id:index, model, ...clamp(right ? 100-sizePercent-edge : edge, y), angle:Math.random()*50-25};
     });
     nextId.current = count;

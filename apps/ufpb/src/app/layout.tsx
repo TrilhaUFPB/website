@@ -41,7 +41,7 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://trilhaufpb.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://trilhaufpb.com";
 const description =
   "Programa gratuito de programação, projetos e mentoria na UFPB. Aulas, materiais e uma comunidade de estudantes para aprender fazendo.";
 
