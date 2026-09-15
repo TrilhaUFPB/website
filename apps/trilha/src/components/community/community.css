@@ -3516,3 +3516,183 @@ body:has(.trilha-site)::before {
     transition: none;
   }
 }
+
+/* Reversible background studies; the comparison controls only appear locally. */
+.trilha-site .umbrella-intro,
+.trilha-site .initiatives-wrap,
+.trilha-site .impact-section { position: relative; }
+.trilha-site .ambient-details { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:2; border-radius:inherit; }
+.trilha-site .ambient-mark { position:absolute; width:150px; color:#1c4ae5; }
+.trilha-site .ambient-mark-0 { left:-52px; top:13%; transform:rotate(-19deg); }
+.trilha-site .ambient-mark-1 { right:-50px; bottom:8%; transform:rotate(17deg); }
+.trilha-site .ambient-mark img,.trilha-site .ambient-mark svg { width:100%; height:auto; display:block; }
+.trilha-site .ambient-1 { opacity:.11; mix-blend-mode:multiply; }
+.trilha-site .ambient-2 { opacity:.12; }
+.trilha-site .ambient-2 .ambient-mark { width:210px; color:#80b7de; }
+.trilha-site .ambient-2 .ambient-mark-0 { transform:rotate(-5deg); left:-80px; }
+.trilha-site .ambient-2 .ambient-mark-1 { transform:rotate(5deg); right:-80px; }
+.trilha-site .ambient-3 { opacity:.14; }
+.trilha-site .ambient-3 .ambient-mark { width:110px; }
+.trilha-site .background-study { position:fixed; z-index:1000; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:5px; align-items:center; padding:8px; border-radius:12px; background:#000928; color:white; box-shadow:0 4px 20px #00092825; font:12px Arial,sans-serif; white-space:nowrap; }
+.trilha-site .background-study span { padding:0 8px; }
+.trilha-site .background-study button { border:0; padding:9px 11px; border-radius:6px; background:transparent; color:white; cursor:pointer; }
+.trilha-site .background-study button[aria-pressed=true] { background:#fdf4e5; color:#000928; }
+@media(max-width:600px) {
+ .trilha-site .ambient-mark { width:100px; }
+ .trilha-site .ambient-details { opacity:.07; }
+ .trilha-site .background-study { gap:1px; max-width:calc(100vw - 16px); }
+ .trilha-site .background-study span { display:none; }
+ .trilha-site .background-study button { padding:8px; font-size:11px; }
+}
+
+/* One full-width decoration layer, independent of section padding and clips. */
+.trilha-site .design > main { position:relative; }
+.trilha-site .design > main > .ambient-details {
+  top:100svh;
+  bottom:0;
+  left:0;
+  right:0;
+  overflow:visible;
+  border-radius:0;
+}
+.trilha-site .ambient-mark { width:116px; }
+.trilha-site .ambient-mark-0 { left:12px; bottom:auto; }
+.trilha-site .ambient-mark-1 { right:12px; bottom:auto; }
+.trilha-site .ambient-2 { opacity:.55; }
+.trilha-site .ambient-2 .ambient-mark { width:170px; transform:none !important; }
+.trilha-site .ambient-2 .ambient-mark-0 { left:6px; }
+.trilha-site .ambient-2 .ambient-mark-1 { right:6px; }
+@media(max-width:600px) {
+ .trilha-site .ambient-mark { width:68px; }
+ .trilha-site .ambient-mark-0 { left:8px; }
+ .trilha-site .ambient-mark-1 { right:8px; }
+ .trilha-site .ambient-2 .ambient-mark { width:100px; }
+ .trilha-site .ambient-2 { opacity:.3; }
+}
+
+/* Decorations sit behind content, never over initiative cards or panels. */
+.trilha-site .design > main { isolation:isolate; }
+.trilha-site .design > main > .ambient-details { z-index:-1; }
+.trilha-site .design > main > .ambient-details { z-index:0; }
+.trilha-site .initiative-layout .initiative,
+.trilha-site .community-journal,
+.trilha-site .team-section,
+.trilha-site .umbrella-intro > h2,
+.trilha-site .umbrella-intro > p,
+.trilha-site .initiative-heading,
+.trilha-site .hackathon-heading {
+  position:relative;
+  z-index:1;
+}
+.trilha-site .ambient-2 .ambient-mark { width:260px; }
+.trilha-site .ambient-2 .ambient-mark:nth-child(even) img { transform:scaleX(-1); }
+.trilha-site .ambient-2 .ambient-mark:nth-child(3n) { width:190px; }
+@media(max-width:600px) { .trilha-site .ambient-2 .ambient-mark { width:130px; } .trilha-site .ambient-2 .ambient-mark:nth-child(3n) { width:100px; } }
+/* Raise whole section stacking contexts above the decorative layer. */
+.trilha-site .design > main > section,
+.trilha-site .design > main > .caderno-hero {
+  position:relative;
+  z-index:1;
+}
+
+/* Keep the canvas visible through open sections; cards retain solid surfaces. */
+.trilha-site .design > main > .initiatives-wrap,
+.trilha-site .design > main > .umbrella-intro,
+.trilha-site .design > main > .impact-section {
+  background:transparent;
+}
+
+/* Pixel clusters revealed by the existing cursor spotlight. */
+.trilha-site .community-journal::after,
+.trilha-site .team-section::after {
+  background-image:
+    radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 50%), #a0b5ff24 0, transparent 160px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='%23a0b5ff' fill-opacity='.42'%3E%3Cpath d='M2 2h3v3H2zM14 2h3v3h-3zM26 14h3v3h-3zM38 2h3v3h-3zM2 26h3v3H2zM14 38h3v3h-3zM38 38h3v3h-3z'/%3E%3C/g%3E%3Cg fill='%23a0b5ff' fill-opacity='.25'%3E%3Cpath d='M14 14h6v3h-3v3h-3zM32 26h9v3h-6v3h-3zM2 38h3v6H2z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:auto,48px 48px;
+}
+
+/* Compact pixel spotlight around the pointer. */
+.trilha-site .community-journal::after,
+.trilha-site .team-section::after {
+  mask-image:radial-gradient(circle 75px at var(--spot-x, 50%) var(--spot-y, 50%), #000 0, transparent 100%);
+}
+
+/* Fine, evenly spaced pixels with a soft blue highlight. */
+.trilha-site .community-journal::after,
+.trilha-site .team-section::after {
+  background-image:
+    radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 50%), #a0b5ff20 0, #4774ff0d 32px, transparent 75px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23b9caff' fill-opacity='.32' d='M2 2h2v2H2zM14 14h2v2h-2z'/%3E%3Cpath fill='%237e9aff' fill-opacity='.16' d='M14 2h2v2h-2zM2 14h2v2H2z'/%3E%3C/svg%3E");
+  background-size:auto,24px 24px;
+  mask-image:radial-gradient(circle 75px at var(--spot-x, 50%) var(--spot-y, 50%), #000 0, #000b 25%, transparent 100%);
+  transition:opacity 450ms ease;
+}
+
+.trilha-site .landscape-footer .footer-identity p {
+  font-family:var(--font-poppins), "Poppins", sans-serif;
+  font-weight:600;
+}
+.trilha-site .landscape-footer .footer-invitation {
+  margin-bottom:28px;
+}
+@media(max-width:720px) {
+  .trilha-site .landscape-footer .footer-invitation { margin-bottom:24px; }
+}
+
+.trilha-site .landscape-footer .footer-top {
+  grid-template-columns:1fr 1.2fr 1fr;
+  grid-template-areas:"explore identity initiatives";
+}
+.trilha-site .landscape-footer .footer-identity {
+  grid-area:identity;
+  text-align:center;
+}
+.trilha-site .landscape-footer .footer-top > nav:first-of-type { grid-area:explore; }
+.trilha-site .landscape-footer .footer-top > nav:last-of-type { grid-area:initiatives; justify-self:end; }
+@media(max-width:720px) {
+  .trilha-site .landscape-footer .footer-top {
+    grid-template-columns:1fr 1fr;
+    grid-template-areas:"identity identity" "explore initiatives";
+  }
+}
+
+.trilha-site .landscape-footer .footer-top {
+  max-width:850px;
+  margin-inline:auto;
+  grid-template-columns:1fr 1.15fr 1fr;
+  column-gap:32px;
+}
+.trilha-site .landscape-footer .footer-identity p {
+  font-size:22px;
+  line-height:1.4;
+  letter-spacing:-.5px;
+}
+@media(max-width:720px) {
+  .trilha-site .landscape-footer .footer-top {
+    grid-template-columns:1fr 1fr;
+    column-gap:20px;
+  }
+  .trilha-site .landscape-footer .footer-identity p { font-size:20px; }
+}
+
+.trilha-site .landscape-footer .footer-top nav > .section-label {
+  font-family:var(--font-poppins), "Poppins", sans-serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:2px;
+  color:#52617b;
+  margin-bottom:12px;
+}
+.trilha-site .landscape-footer .footer-invitation { margin-bottom:8px; }
+.trilha-site .landscape-footer .footer-identity p {
+  font-size:18px;
+  line-height:1.45;
+  margin-top:8px;
+}
+.trilha-site .landscape-footer .footer-identity img {
+  width:64px;
+  height:46px;
+}
+
+/* Separate the invitation from footer navigation. */
+.trilha-site .landscape-footer .footer-invitation { margin-bottom:32px; }

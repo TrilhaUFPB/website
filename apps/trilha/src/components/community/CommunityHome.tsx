@@ -1,10 +1,12 @@
 import { ufpbUrl } from "@/lib/sites";
 import ArrowIcon from "./ArrowIcon";
+import BackgroundStudy from "./BackgroundStudy";
 import Link from "next/link";
 /* eslint-disable @next/next/no-img-element */
 export default function CommunityHome() {
   return (
     <div className="trilha-site">
+      <BackgroundStudy />
       <section
         id="inicio"
         className="design base neutral-controls hero-bold content-1"
