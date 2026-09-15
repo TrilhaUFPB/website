@@ -48,7 +48,7 @@ export default function mountGlobe(canvas, design = 1) {
     baseColor: [1, 1, 1],
     glowColor: [0.94, 0.93, 0.91],
     arcWidth: 0.5,
-    arcHeight: 0.1,
+    arcHeight: 0.05,
     opacity: 0.7,
   };
   const designs = [
