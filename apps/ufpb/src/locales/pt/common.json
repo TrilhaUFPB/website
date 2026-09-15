@@ -561,7 +561,6 @@
         "canvaUrl": "https://www.canva.com/design/DAHACu4IEG8/b1gsp8ruqDxZPIVKGdzyLA/view",
         "date": "14 de agosto de 2026",
         "deadline": "3 de setembro de 2026",
-        
         "homework": "Atividade EDA possui dois links:\n1 - Notebook da atividade onde vão colocar em pratica os conceitos passados em aula como matplotlib, seaborn e pandas.\n2 - Notebook que foi utilizado como exemplo e pode ser usado como base e material de estudo\nQualquer dúvida podem entrar em contato com a organização. Boa atividade!!",
         "links": [
           {
@@ -728,5 +727,40 @@
     "noResults": "Nenhuma aula encontrada para “{q}”.",
     "lessonSingular": "aula",
     "lessonPlural": "aulas"
+  },
+  "campus": {
+    "text0": "O programa",
+    "text1": "Turmas",
+    "text2": "Projetos",
+    "text3": "Materiais",
+    "text4": "Acompanhe as aulas",
+    "text5": "Conheça o Trilha",
+    "text6": "APRENDER FAZENDO",
+    "text7": "Seu começo",
+    "text8": "em tecnologia.",
+    "text9": "Em boa companhia.",
+    "text10": "Programação, projetos e gente por perto. Um programa gratuito, feito por estudantes, para aprender construindo.",
+    "text11": "Conheça o programa",
+    "text12": "Explore os materiais",
+    "text13": "O próximo passo",
+    "text14": "a gente dá junto.",
+    "text15": "NA PRÁTICA",
+    "text16": "Acompanhe as aulas",
+    "text17": "Encontros, atividades e o que vem a seguir.",
+    "text18": "NO SEU RITMO",
+    "text19": "Abra os materiais",
+    "text20": "Conteúdo aberto para estudar e experimentar.",
+    "text21": "De estudantes",
+    "text22": "para estudantes.",
+    "text23": "Aulas",
+    "text24": "Materiais",
+    "text25": "Turmas",
+    "text26": "Conheça todo o Trilha",
+    "text27": "Trilha UFPB · De estudantes para estudantes.",
+    "text28": "Navegação principal",
+    "text29": "Trilha, início",
+    "text30": "Estudantes do Trilha compartilhando conhecimento em sala",
+    "text31": "Continue aprendendo",
+    "text32": "Links do rodapé"
   }
 }

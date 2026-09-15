@@ -1,11 +1,12 @@
 import { ufpbUrl } from "@/lib/sites";
+import CommunityFooter from "./CommunityFooter";
 import ArrowIcon from "./ArrowIcon";
 import Link from "next/link";
 /* eslint-disable @next/next/no-img-element */
 export default function History() {
   return (
     <div className="trilha-site">
-      <main className="history-page">
+      <main className="history-page story-redesign story-journey">
         <nav className="history-nav">
           <Link href="/" aria-label="Trilha início">
             <img
@@ -14,23 +15,26 @@ export default function History() {
               width="65"
             />
           </Link>
-          <Link href="/#journal-title">
+          <Link className="button" href="/#journal-title">
             <ArrowIcon direction="left" /> Voltar ao Trilha
           </Link>
         </nav>
-        <header>
+        <header className="journey-hero">
+          <img className="journey-cloud" src="/community/cloud-pixel.png" alt="" />
           <span className="section-label">NOSSA HISTÓRIA</span>
           <h1>
-            Um começo compartilhado.
+            Toda história começa
             <br />
-            Muitos caminhos pela frente.
+            com um encontro.
           </h1>
           <p>
             O Trilha nasceu em João Pessoa, de estudantes que queriam ajudar
             outros estudantes a encontrar seu caminho.
           </p>
+          <nav className="story-jumps" aria-label="Capítulos da história"><a href="#primeira-aula">01 · O começo</a><a href="#comunidade">02 · A comunidade</a><a href="#hoje">03 · Hoje</a></nav>
         </header>
-        <section className="history-chapter">
+        <div className="journey-photo"><img src="/community/aula.jpg" alt="A sala onde estudantes começaram a aprender juntos" /><span>João Pessoa · 19.07.2024</span></div>
+        <section className="history-chapter" id="primeira-aula">
           <span className="section-label">19 DE JULHO DE 2024</span>
           <h2>A primeira aula.</h2>
           <p>
@@ -45,15 +49,7 @@ export default function History() {
             e Ícaro Mori se juntaram para organizar aulas e mentorias. Cerca de
             uma semana depois da ideia, aconteceu a primeira aula.
           </p>
-          <figure>
-            <img
-              src="/community/aula.jpg"
-              alt="Estudantes trabalhando juntos em uma sala do Trilha"
-              width="1600"
-              height="1200"
-            />
-            <figcaption>Um registro dos encontros do Trilha UFPB.</figcaption>
-          </figure>
+
           <p>
             O começo foi simples: uma sala pequena, puffes, cadeiras e
             estudantes reunidos em torno de dúvidas e descobertas. Luigi sugeriu
@@ -61,21 +57,7 @@ export default function History() {
             começou.
           </p>
         </section>
-        <section className="history-chapter">
-          <span className="section-label">QUEM APRENDE TAMBÉM CONSTRÓI</span>
-          <h2>Uma comunidade que se renova.</h2>
-          <p>
-            Depois da primeira turma, estudantes passaram a voltar para ajudar
-            na organização. A experiência de quem aprendia passou a fazer parte
-            de como o Trilha recebia as próximas pessoas.
-          </p>
-          <p>
-            O projeto ganhou divulgação, palestras, novas turmas e uma
-            organização mais estruturada. Compartilhar conhecimento continuou
-            sendo o ponto de partida.
-          </p>
-        </section>
-        <section className="history-chapter">
+<section className="cohort-history" id="comunidade"><span className="section-label">SEMESTRE A SEMESTRE</span><h2>As turmas que construíram o Trilha.</h2><p>A primeira experiência virou um programa que se renova a cada semestre. As aulas, as mentorias e os projetos ganharam novas formas com cada grupo.</p><article className="history-cohort"><img src="/community/turmas/trilha2024.jpg" alt="Primeira Turma do Trilha" loading="lazy"/><div><span className="section-label">2024.1</span><h3>Primeira Turma</h3><p>Onde tudo começou — Python, web, e o primeiro hackathon.</p><Link href={`${ufpbUrl}/turmas/2024.1`}>Conheça a turma <ArrowIcon /></Link></div></article><article className="history-cohort"><img src="/community/turmas/trilha2024-2.jpg" alt="Segunda Turma do Trilha" loading="lazy"/><div><span className="section-label">2024.2</span><h3>Segunda Turma</h3><p>Currículo expandido, primeira leva de palestrantes externos.</p><Link href={`${ufpbUrl}/turmas/2024.2`}>Conheça a turma <ArrowIcon /></Link></div></article><article className="history-cohort"><img src="/community/turmas/trilha2025.jpg" alt="Terceira Turma do Trilha" loading="lazy"/><div><span className="section-label">2025.1</span><h3>Terceira Turma</h3><p>Mentoria estruturada e nova frente de dados.</p><Link href={`${ufpbUrl}/turmas/2025.1`}>Conheça a turma <ArrowIcon /></Link></div></article><article className="history-cohort"><img src="/community/turmas/trilha2025-2.jpeg" alt="Quarta Turma do Trilha" loading="lazy"/><div><span className="section-label">2025.2</span><h3>Quarta Turma</h3><p>Mais turmas, mais projetos, comunidade consolidada.</p><Link href={`${ufpbUrl}/turmas/2025.2`}>Conheça a turma <ArrowIcon /></Link></div></article></section>        <section className="history-chapter" id="hoje">
           <span className="section-label">HOJE</span>
           <h2>Um Trilha. Diferentes iniciativas.</h2>
           <p>
@@ -106,53 +88,7 @@ export default function History() {
           </Link>
         </section>
       </main>
-      <footer className="site-footer">
-        <div className="footer-top">
-          <div className="footer-identity">
-            <Link href="/#inicio" aria-label="Trilha início">
-              <img
-                src="/community/montanha-oficial.svg"
-                alt="Trilha"
-                width="90"
-                height="65"
-              />
-            </Link>
-            <p>
-              De estudantes
-              <br />
-              para estudantes.
-            </p>
-          </div>
-          <nav aria-label="Navegação do rodapé">
-            <span className="section-label">EXPLORE</span>
-            <Link href="/#sobre1">Sobre o Trilha</Link>
-            <Link href="/#iniciativas1">Nossas iniciativas</Link>
-            <Link href="/#impact-title">Nosso impacto</Link>
-            <Link href="/#journal-title">Nossa história</Link>
-          </nav>
-          <nav aria-label="Iniciativas">
-            <span className="section-label">INICIATIVAS</span>
-            <Link href={ufpbUrl}>Trilha UFPB</Link>
-            <Link href="https://momento.sh">
-              Momento <ArrowIcon direction="up-right" />
-            </Link>
-            <Link href="https://hackthepath.com.br">
-              Hack The Path <ArrowIcon direction="up-right" />
-            </Link>
-            <Link href="/ufpe/">Trilha UFPE</Link>
-            <Link href={`${ufpbUrl}/materiais`} target="_blank" rel="noopener">
-              Materiais abertos <ArrowIcon direction="up-right" />
-            </Link>
-          </nav>
-        </div>
-        <div className="footer-bottom">
-          <span>Trilha · Desde 2024</span>
-          <span>Um começo. Muitos caminhos.</span>
-          <Link href="/#inicio">
-            Voltar ao topo <ArrowIcon direction="up" />
-          </Link>
-        </div>
-      </footer>
+      <div className="design"><CommunityFooter /></div>
     </div>
   );
 }

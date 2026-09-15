@@ -563,14 +563,16 @@
         "date": "August 14, 2026",
         "deadline": "September 3, 2026",
         "homework": "EDA activity has two links:\n1 - Activity notebook where you will put into practice the concepts covered in class, such as matplotlib, seaborn, and pandas.\n2 - Notebook that was used as an example and can be used as a reference and study material.\nIf you have any questions, feel free to contact the organizers. Have a great activity!!",
-        "links": [{
+        "links": [
+          {
             "label": "JupyterNotebook activity — Exploratory Data Analysis",
             "url": "https://colab.research.google.com/drive/1VyJLMp63gIFUo8PxTEmvJjlhhJgw0jXV?usp=sharing"
           },
           {
             "label": "JupyterNotebook — Titanic",
             "url": "https://colab.research.google.com/drive/1BHVM3F8kM-AEknrAcmnpYzkRbddmzfm7?usp=sharing"
-          }],
+          }
+        ],
         "dateISO": "2026-08-14"
       },
       {
@@ -726,5 +728,40 @@
     "noResults": "No lessons found for “{q}”.",
     "lessonSingular": "lesson",
     "lessonPlural": "lessons"
+  },
+  "campus": {
+    "text0": "The program",
+    "text1": "Cohorts",
+    "text2": "Projects",
+    "text3": "Resources",
+    "text4": "Follow the classes",
+    "text5": "Explore Trilha",
+    "text6": "LEARN BY DOING",
+    "text7": "Your start",
+    "text8": "in technology.",
+    "text9": "In good company.",
+    "text10": "Coding, projects and people by your side. A free student-led program to learn by building.",
+    "text11": "Explore the program",
+    "text12": "Explore the resources",
+    "text13": "The next step",
+    "text14": "we take together.",
+    "text15": "IN PRACTICE",
+    "text16": "Follow the classes",
+    "text17": "Sessions, activities and what comes next.",
+    "text18": "AT YOUR OWN PACE",
+    "text19": "Open the resources",
+    "text20": "Open resources to study and experiment.",
+    "text21": "By students,",
+    "text22": "for students.",
+    "text23": "Classes",
+    "text24": "Resources",
+    "text25": "Cohorts",
+    "text26": "Explore the Trilha community",
+    "text27": "Trilha UFPB · By students, for students.",
+    "text28": "Main navigation",
+    "text29": "Trilha home",
+    "text30": "Trilha students sharing knowledge in class",
+    "text31": "Keep learning",
+    "text32": "Footer links"
   }
 }

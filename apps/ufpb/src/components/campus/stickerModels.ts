@@ -1,0 +1,22 @@
+export const stickerModels = [
+  "selo-path-seekers-azul",
+  "oval-trilha",
+  "flamula-take-a-trilha",
+  "losango-trilha",
+  "marcador-vertical",
+  "icone-circulo-branco",
+  "icone-quadrado-verde",
+  "selo-path-seekers-noite",
+  "bandeira-trilha",
+  "icone-circulo-noite",
+  "cartao-assinatura",
+  "bode-circulo",
+  "flor-asterisco",
+  "lata-energy",
+  "never-stop-exploring",
+  "placa-path-seekers",
+  "retangulo-trilha",
+  "selo-ready-for-what-comes-next",
+  "tomada-seek-your-path",
+  "trilha-explosao"
+];

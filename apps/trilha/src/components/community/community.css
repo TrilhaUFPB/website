@@ -3696,3 +3696,320 @@ body:has(.trilha-site)::before {
 
 /* Separate the invitation from footer navigation. */
 .trilha-site .landscape-footer .footer-invitation { margin-bottom:32px; }
+
+/* Shared homepage panel edges. */
+.trilha-site .design > main > .team-section { width:auto; max-width:none; margin-inline:5%; }
+.trilha-site .network-page,.trilha-site .story-redesign { max-width:1280px; padding:32px 5% 90px; margin:auto; }
+.trilha-site .network-page > h1,.trilha-site .story-redesign header h1 { font-family:var(--font-poppins),sans-serif; font-size:clamp(36px,5vw,64px); line-height:1.12; letter-spacing:-2px; max-width:950px; }
+.trilha-site .network-page > .section-label { display:block; margin-top:64px; }
+.trilha-site .network-page > p { max-width:640px; }
+.trilha-site .people-network { margin:60px 0 90px; padding:40px 24px; background:var(--night); border-radius:14px; color:var(--cream); }
+.trilha-site .network-root { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.trilha-site .network-root img { width:65px; filter:brightness(0) invert(1); }
+.trilha-site .network-root span { font-size:24px; font-weight:600; }
+.trilha-site .people-network small { display:block; font-size:12px; opacity:.7; }
+.trilha-site .network-president { display:flex; align-items:center; gap:14px; width:max-content; max-width:100%; margin:32px auto 48px; padding:14px 20px; border:1px solid #a0b5ff50; border-radius:8px; position:relative; }
+.trilha-site .network-president:before { content:""; position:absolute; height:32px; width:1px; background:#a0b5ff60; top:-33px; left:50%; }
+.trilha-site .network-president img { width:48px; height:48px; object-fit:cover; border-radius:6px; }
+.trilha-site .network-branches { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; position:relative; }
+.trilha-site .network-branches:before { content:""; position:absolute; top:-24px; left:12%; right:12%; height:1px; background:#a0b5ff60; }
+.trilha-site .network-branches:after { content:""; position:absolute; top:-48px; left:50%; width:1px; height:24px; background:#a0b5ff60; }
+.trilha-site .network-branch { padding:22px 16px; border-radius:8px; background:#14234a; position:relative; }
+.trilha-site .network-branch:before { content:""; position:absolute; left:50%; top:-24px; width:1px; height:24px; background:#a0b5ff60; }
+.trilha-site .network-branch h2 { font-size:20px; letter-spacing:-.6px; margin:12px 0 20px; }
+.trilha-site .network-branch p { font-size:13px; line-height:1.7; }
+.trilha-site .network-branch .section-label { font-size:9px; color:#a0b5ff; }
+.trilha-site .network-branch a { display:flex; gap:10px; align-items:center; font-size:13px; padding:8px 0; }
+.trilha-site .network-branch a:hover,.trilha-site .network-president:hover { color:#a0b5ff; }
+.trilha-site .network-branch img { width:36px; height:42px; object-fit:cover; border-radius:4px; }
+.trilha-site .branch-momento { background:#493665; }.trilha-site .branch-campus { background:#123b37; }.trilha-site .branch-ufpe { background:#183783; }
+.trilha-site .directory-heading { margin-bottom:30px; max-width:620px; }
+.trilha-site .directory-heading h2 { font-size:36px; margin:12px 0; letter-spacing:-1px; }
+.trilha-site .directory-heading p { font-size:14px; line-height:1.8; }
+.trilha-site .network-page .team-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:36px 24px; margin-bottom:60px; }
+.trilha-site .network-page .person h3 { font-size:16px; }
+.trilha-site .network-page .person p { font-size:12px; }
+.trilha-site .network-page .person:target { outline:2px solid var(--electric); outline-offset:10px; border-radius:8px; }
+.trilha-site .story-redesign > header { padding:65px 0 50px; }
+.trilha-site .story-redesign > header > p { max-width:620px; font-size:18px; line-height:1.8; }
+.trilha-site .story-jumps { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+.trilha-site .story-jumps a { padding:12px 18px; border:1px solid #00092825; border-radius:30px; font-size:13px; }
+.trilha-site .story-jumps a:hover { background:#e8edff; }
+.trilha-site .story-redesign .history-chapter { display:grid; grid-template-columns:1fr 1fr; gap:24px 48px; max-width:none; padding:50px 0; margin:0; border-top:1px solid #00092820; scroll-margin-top:24px; }
+.trilha-site .story-redesign .history-chapter > .section-label,.trilha-site .story-redesign .history-chapter > h2 { grid-column:1/-1; }
+.trilha-site .story-redesign .history-chapter h2 { font-family:var(--font-poppins),sans-serif; font-size:clamp(28px,3vw,40px); margin:0; letter-spacing:-1px; }
+.trilha-site .story-redesign .history-chapter p { font-size:15px; line-height:1.9; margin:0; }
+.trilha-site .story-redesign .history-chapter figure { grid-column:1/-1; margin:12px 0; }
+.trilha-site .story-redesign .history-chapter img { width:100%; max-height:520px; object-fit:cover; border-radius:10px; }
+.trilha-site .story-redesign #comunidade { background:var(--night); color:var(--cream); border:0; padding:40px; border-radius:14px; margin:35px 0; }
+.trilha-site .story-redesign #comunidade .section-label { color:var(--sky); }
+.trilha-site .story-redesign .history-chapter .button { justify-self:start; align-self:start; }
+@media(max-width:720px) {
+ .trilha-site .design > main > .team-section { margin-inline:4%; }
+ .trilha-site .network-branches { grid-template-columns:1fr 1fr; gap:24px 16px; }
+ .trilha-site .network-branches:before,.trilha-site .network-branches:after,.trilha-site .network-branch:before { display:none; }
+ .trilha-site .network-page .team-grid { grid-template-columns:1fr 1fr; gap:30px 16px; }
+ .trilha-site .people-network { padding:30px 16px; }
+ .trilha-site .story-redesign .history-chapter { grid-template-columns:1fr; gap:20px; }
+ .trilha-site .story-redesign #comunidade { padding:28px; }
+}
+
+/* People first: a portrait map with initiative highlighting. */
+.trilha-site .network-page > h1 { text-align:left; margin:20px 0 24px; max-width:780px; font-weight:600; }
+.trilha-site .people-filters { display:flex; flex-wrap:wrap; gap:10px; margin:36px 0 64px; }
+.trilha-site .people-filters button { font:inherit; font-size:14px; border:1px solid #00092820; background:transparent; color:var(--night); border-radius:30px; padding:12px 22px; cursor:pointer; }
+.trilha-site .people-filters button[aria-pressed=true] { background:var(--night); color:var(--cream); box-shadow:0 3px 0 #a0b5ff; }
+.trilha-site .people-map-intro { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:30px; }
+.trilha-site .people-map-intro p { font-size:13px; color:#52617b; }
+.trilha-site .network-page .people-map { grid-template-columns:repeat(4,minmax(0,1fr)); gap:44px 28px; }
+.trilha-site .people-map .person { transition:opacity 250ms ease; }
+.trilha-site .people-map .person img { aspect-ratio:4/5; border-radius:12px; filter:grayscale(1); transition:filter 300ms ease; }
+.trilha-site .people-map .person:hover img,.trilha-site .people-map .person:focus-within img { filter:none; }
+.trilha-site .people-map .person:nth-child(4n+2),.trilha-site .people-map .person:nth-child(4n+4) { margin-top:38px; }
+.trilha-site .people-map[data-group="Trilha"] .person:not([data-initiative="Trilha"]),
+.trilha-site .people-map[data-group="Momento"] .person:not([data-initiative="Momento"]),
+.trilha-site .people-map[data-group="Hack The Path"] .person:not([data-initiative="Hack The Path"]) { opacity:.18; }
+.trilha-site .people-map[data-group="Trilha"] .person[data-initiative="Trilha"] img,
+.trilha-site .people-map[data-group="Momento"] .person[data-initiative="Momento"] img,
+.trilha-site .people-map[data-group="Hack The Path"] .person[data-initiative="Hack The Path"] img { filter:none; }
+@media(max-width:720px) {
+ .trilha-site .network-page .people-map { grid-template-columns:1fr 1fr; gap:28px 18px; }
+ .trilha-site .people-map-intro { display:block; }
+ .trilha-site .people-filters { margin-bottom:36px; }
+ .trilha-site .people-filters button { padding:10px 16px; }
+ .trilha-site .people-map .person:nth-child(even) { margin-top:28px; }
+}
+@media(prefers-reduced-motion:reduce) { .trilha-site .people-map .person,.trilha-site .people-map .person img { transition:none; } }
+
+/* History follows a visual trail, sharing the homepage's landscape and footer. */
+.trilha-site .story-journey { max-width:none; padding:28px 5% 90px; overflow:hidden; }
+.trilha-site .story-journey .history-nav { max-width:1200px; margin:auto; }
+.trilha-site .story-journey .journey-hero { position:relative; text-align:center; padding:90px 0 70px; isolation:isolate; }
+.trilha-site .story-journey .journey-hero h1 { margin:22px auto; max-width:900px; font-size:clamp(40px,6vw,78px); font-weight:600; }
+.trilha-site .story-journey .journey-hero > p { margin:0 auto; }
+.trilha-site .journey-hero .story-jumps { justify-content:center; }
+.trilha-site .journey-cloud { position:absolute; width:380px; right:-130px; top:30%; opacity:.55; z-index:-1; }
+.trilha-site .journey-photo { max-width:1120px; margin:0 auto 80px; position:relative; }
+.trilha-site .journey-photo img { width:100%; height:500px; object-fit:cover; object-position:center 48%; border-radius:12px; }
+.trilha-site .journey-photo span { position:absolute; bottom:24px; left:24px; background:var(--cream); padding:12px 20px; border-radius:30px; font-size:13px; }
+.trilha-site .story-journey .history-chapter { max-width:1120px; margin:0 auto; padding:55px 0 75px; border-top:0; position:relative; }
+.trilha-site .story-journey .history-chapter > .section-label { color:var(--electric); }
+.trilha-site .story-journey #primeira-aula { padding-left:8%; border-left:2px solid #a0b5ff60; }
+.trilha-site .story-journey #primeira-aula h2 { font-size:clamp(36px,4vw,52px); }
+.trilha-site .story-journey #comunidade { padding:60px; margin:35px auto 90px; background:var(--night); overflow:hidden; }
+.trilha-site .story-journey #comunidade h2 { max-width:750px; font-size:clamp(30px,4vw,48px); }
+.trilha-site .story-journey #comunidade .section-label { color:var(--sky); }
+.trilha-site .journey-cycle { grid-column:1/-1; display:flex; flex-wrap:wrap; gap:12px; padding:12px 0 22px; }
+.trilha-site .journey-cycle span { padding:14px 24px; border:1px solid #a0b5ff55; border-radius:6px; color:var(--sky); font-family:var(--font-poppins),sans-serif; font-size:18px; }
+.trilha-site .journey-cycle span:nth-child(2) { background:#1c4ae5; color:white; }
+.trilha-site .story-journey #hoje h2 { font-size:clamp(34px,4vw,52px); }
+.trilha-site .story-journey #hoje figure { margin-top:25px; }
+@media(max-width:720px) {
+ .trilha-site .story-journey .journey-hero { padding:55px 0 40px; }
+ .trilha-site .journey-photo img { height:320px; }
+ .trilha-site .journey-photo { margin-bottom:40px; }
+ .trilha-site .story-journey #comunidade { padding:30px 24px; margin-bottom:50px; }
+ .trilha-site .journey-cycle span { font-size:13px; padding:10px 14px; }
+ .trilha-site .journey-cloud { width:240px; }
+}
+
+/* Full-card color swaps, echoing the hackathon banner. */
+.trilha-site .design .initiative-layout .ufpb .initiative-art,
+.trilha-site .design .initiative-layout .ufpe .initiative-art,
+.trilha-site .design .initiative-layout .momento .initiative-art {
+  transition:background-color 300ms ease;
+}
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .initiative-art,
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .initiative-art {
+  background-color:var(--night);
+}
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .initiative-copy {
+  background:var(--mint);
+  color:var(--night);
+}
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .initiative-copy {
+  background:var(--electric);
+  color:white;
+}
+.trilha-site .design .initiative-layout .momento:is(:hover,:focus-visible) .initiative-art {
+  background-color:#ece5f2;
+}
+.trilha-site .design .initiative-layout .momento:is(:hover,:focus-visible) .initiative-art img {
+  filter:brightness(0) saturate(100%) invert(22%) sepia(20%) saturate(1734%) hue-rotate(225deg) brightness(92%) contrast(91%);
+}
+.trilha-site .design .initiative-layout .momento .initiative-art img { transition:filter 300ms ease; }
+.trilha-site .design .initiative-layout .momento:is(:hover,:focus-visible) .initiative-copy {
+  background:#523972;
+  color:#fdf4e5;
+}
+@media(prefers-reduced-motion:reduce) {
+ .trilha-site .design .initiative-layout .initiative .initiative-art,
+ .trilha-site .design .initiative-layout .momento .initiative-art img { transition:none; }
+}
+
+/* Render the vector symbol directly, without enlarging a wide artboard. */
+.trilha-site .design .momento .momento-wordmark {
+  width:80px;
+  height:auto;
+  max-width:none;
+  max-height:none;
+  transform:none;
+}
+
+/* Match the nav surfaces and restore the tactile CTA press. */
+.trilha-site .neutral-controls .nav .navlinks {
+  box-sizing:border-box;
+  height:48px;
+  align-items:center;
+}
+.trilha-site .neutral-controls .nav .navcta {
+  box-sizing:border-box;
+  height:45px;
+  padding:0 18px;
+  background:rgba(253,244,229,.36);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.trilha-site .neutral-controls .nav .navcta,
+.trilha-site .neutral-controls .caderno-hero .button {
+  transition:transform 160ms ease,box-shadow 160ms ease,background-color 200ms ease;
+}
+.trilha-site .neutral-controls .nav .navcta:hover,
+.trilha-site .neutral-controls .caderno-hero .button:hover {
+  transform:translateY(2px);
+  box-shadow:0 1px 0 var(--night);
+  background:var(--mint);
+}
+.trilha-site .neutral-controls .nav .navcta:active,
+.trilha-site .neutral-controls .caderno-hero .button:active {
+  transform:translateY(3px);
+  box-shadow:0 0 0 var(--night);
+}
+@media(prefers-reduced-motion:reduce) {
+ .trilha-site .neutral-controls .nav .navcta,.trilha-site .neutral-controls .caderno-hero .button { transition:none; }
+}
+
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .campus-art,
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .campus-art { background:var(--night) !important; }
+.trilha-site .design .initiative-layout .momento .initiative-art img { transition:none; }
+.trilha-site .landing-invitation { padding:50px 5% 0; text-align:center; background:var(--canvas); }
+.trilha-site .landing-invitation h2 { font-family:var(--font-poppins),sans-serif; font-size:clamp(32px,4vw,48px); line-height:1.2; letter-spacing:-1.5px; margin:20px auto; }
+.trilha-site .landing-invitation p { font-size:16px; line-height:1.8; margin-bottom:16px; }
+.trilha-site .landing-invitation .footer-invitation { margin-bottom:0; }
+.trilha-site .founders-section { padding-top:45px; margin-bottom:60px; }
+.trilha-site .founders-section h2 { font-size:36px; margin:16px 0 30px; }
+.trilha-site .founders-section .team-grid { grid-template-columns:repeat(5,minmax(0,1fr)); }
+.trilha-site .story-journey .journey-photo { max-width:720px; margin-bottom:45px; }
+.trilha-site .story-journey .journey-photo img { height:320px; }
+.trilha-site .cohort-history { max-width:1120px; margin:35px auto 70px; }
+.trilha-site .cohort-history > h2 { font-size:clamp(28px,3.5vw,44px); letter-spacing:-1px; }
+.trilha-site .cohort-history > p { max-width:700px; line-height:1.9; }
+.trilha-site .history-cohort { display:grid; grid-template-columns:280px 1fr; gap:35px; align-items:center; padding:30px 0; border-bottom:1px solid #00092818; }
+.trilha-site .history-cohort img { width:100%; height:190px; object-fit:cover; border-radius:8px; }
+.trilha-site .history-cohort h3 { font-size:25px; margin:12px 0; }
+.trilha-site .history-cohort p { line-height:1.8; }
+.trilha-site .history-cohort a { display:inline-flex; gap:12px; align-items:center; font-size:14px; color:var(--electric); margin-top:12px; }
+.trilha-site .story-journey #hoje figure { max-width:650px; }
+.trilha-site .story-journey #hoje figure img { max-height:320px; }
+@media(max-width:720px) {
+ .trilha-site .founders-section .team-grid { grid-template-columns:1fr 1fr; }
+ .trilha-site .history-cohort { grid-template-columns:1fr; gap:18px; }
+}
+
+/* Exchange each campus card's top and bottom colors. */
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .campus-art {
+  background:#e5f8ec !important;
+}
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .campus-art {
+  background:#e8edff !important;
+}
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .campus-lockup img,
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .campus-lockup img {
+  filter:brightness(0) saturate(100%) invert(4%) sepia(57%) saturate(3880%) hue-rotate(220deg) brightness(92%) contrast(106%);
+}
+
+/* Match the simple founders grid throughout the team directory. */
+.trilha-site .network-page .people-map {
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:36px 24px;
+}
+.trilha-site .network-page .people-map .person:nth-child(n) { margin-top:0; }
+@media(max-width:1000px) and (min-width:721px) {
+  .trilha-site .network-page .people-map,
+  .trilha-site .founders-section .team-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:720px) {
+  .trilha-site .network-page .people-map { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 18px; }
+}
+
+/* All action buttons share the approved hero's surface and press. */
+.trilha-site .button.button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:25px;
+  padding:18px 25px;
+  font-family:var(--font-poppins),sans-serif;
+  font-size:14px;
+  font-weight:500;
+  line-height:1.5;
+  color:var(--night);
+  background:var(--cream);
+  border:1px solid var(--night);
+  border-radius:30px;
+  box-shadow:0 3px 0 var(--night);
+  text-decoration:none;
+  transition:transform 160ms ease,box-shadow 160ms ease,background-color 200ms ease;
+}
+.trilha-site .button.button:is(:hover,:focus-visible) {
+  background:var(--mint);
+  color:var(--night);
+  transform:translateY(2px);
+  box-shadow:0 1px 0 var(--night);
+}
+.trilha-site .button.button:active { transform:translateY(3px); box-shadow:none; }
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .university-badge img,
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .university-badge img {
+  filter:brightness(0) saturate(100%) invert(4%) sepia(57%) saturate(3880%) hue-rotate(220deg) brightness(92%) contrast(106%);
+}
+@media(prefers-reduced-motion:reduce) { .trilha-site .button.button { transition:none; } }
+
+.trilha-site .quiet-arrival,.trilha-site .lost-path {
+  min-height:100svh; display:grid; place-items:center; position:relative;
+  overflow:hidden; padding:60px 24px; text-align:center; background:var(--canvas);
+}
+.trilha-site .arrival-content { position:relative; z-index:1; max-width:760px; }
+.trilha-site .arrival-logo { display:block; margin:0 auto 28px; }
+.trilha-site .arrival-content .section-label { display:block; font-size:11px; letter-spacing:2px; }
+.trilha-site .arrival-content h1 { font-family:var(--font-poppins),sans-serif; font-size:clamp(44px,6vw,76px); font-weight:600; letter-spacing:-2.5px; line-height:1.12; margin:24px 0; }
+.trilha-site .arrival-content h1 em { font-style:normal; color:var(--electric); }
+.trilha-site .arrival-content p { font-size:16px; line-height:1.8; margin:0 0 30px; }
+.trilha-site .arrival-cloud { position:absolute; width:380px; opacity:.5; pointer-events:none; }
+.trilha-site .arrival-cloud-left { left:-90px; top:22%; }
+.trilha-site .arrival-cloud-right { right:-90px; bottom:18%; }
+.trilha-site .lost-path { background:url('/community/landscape.png') center bottom / cover no-repeat; padding-bottom:22svh; }
+@media(max-width:600px) {
+ .trilha-site .arrival-content h1 { letter-spacing:-1.5px; }
+ .trilha-site .arrival-cloud { width:240px; opacity:.35; }
+ .trilha-site .lost-path { background-position:center bottom; }
+}
+
+/* Pressable initiative cards, with no transparent border seam. */
+.trilha-site .design .initiative-layout .initiative {
+  border:0 !important;
+  transition:transform 160ms ease,box-shadow 160ms ease;
+}
+.trilha-site .design .initiative-layout .initiative:is(:hover,:focus-visible) {
+  transform:translateY(2px) !important;
+  box-shadow:0 2px 0 var(--night) !important;
+}
+.trilha-site .design .initiative-layout .initiative:active {
+  transform:translateY(4px) !important;
+  box-shadow:0 0 0 var(--night) !important;
+}
+@media(prefers-reduced-motion:reduce) {
+ .trilha-site .design .initiative-layout .initiative { transition:none; }
+}
+
+.trilha-site .button.button:not(:hover):not(:active),
+.trilha-site .nav .navcta:not(:hover):not(:active) { background:#fffbf4; }

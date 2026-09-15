@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function Team() {
   return (
     <div className="trilha-site">
-      <main className="team-directory">
-        <Link className="team-back" href="/">
+      <main className="team-directory network-page">
+        <Link className="team-back button" href="/">
           <ArrowIcon direction="left" /> Voltar ao Trilha
         </Link>
         <span className="section-label">QUEM SOMOS</span>
@@ -14,8 +14,9 @@ export default function Team() {
           Conheça quem constrói o Trilha, compartilha conhecimento e faz nossas
           iniciativas acontecerem.
         </p>
-        <div className="team-grid">
-          <article className="person" id="pessoa-Clara">
+        <div className="people-map-intro"><span className="section-label">TODOS</span><p>Uma comunidade, muitas formas de contribuir.</p></div>
+        <div className="team-grid people-map">
+          <article className="person" data-initiative="Trilha" id="pessoa-Clara">
             <img
               src="/community/pessoas/2024.1/clara.png"
               alt="Maria Clara Dantas"
@@ -26,139 +27,7 @@ export default function Team() {
             <h3>Maria Clara Dantas</h3>
             <p>Presidência · Trilha</p>
           </article>
-          <article className="person" id="pessoa-Guilherme">
-            <img
-              src="/community/pessoas/guilherme.png"
-              alt="Guilherme Huther"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Guilherme Huther</h3>
-            <p>Aulas · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-Kruta">
-            <img
-              src="/community/pessoas/2024.1/kruta.png"
-              alt="Pedro Kruta"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Pedro Kruta</h3>
-            <p>Organização · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-Bea">
-            <img
-              src="/community/pessoas/2024.1/bea.png"
-              alt="Beatriz Pessôa"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Beatriz Pessôa</h3>
-            <p>Mídias · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-Daniel">
-            <img
-              src="/community/pessoas/daniel.jpg"
-              alt="Daniel Brandão"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Daniel Brandão</h3>
-            <p>Organização · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-Davi">
-            <img
-              src="/community/pessoas/davi.png"
-              alt="Davi Nasiasene"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Davi Nasiasene</h3>
-            <p>Organização · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-Emyle">
-            <img
-              src="/community/pessoas/2024.1/emyle.png"
-              alt="Emyle Santos"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Emyle Santos</h3>
-            <p>Organização · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-Luigi">
-            <img
-              src="/community/pessoas/2024.1/luigi.png"
-              alt="Luigi Schmitt"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Luigi Schmitt</h3>
-            <p>Liderança · Hack The Path</p>
-          </article>
-          <article className="person" id="pessoa-Beatriz">
-            <img
-              src="/community/pessoas/2024.2/beatriz.png"
-              alt="Ana Beatriz Mota da Cruz"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Ana Beatriz Mota da Cruz</h3>
-            <p>Organização · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-MiguelQueiroz">
-            <img
-              src="/community/pessoas/2024.1/miguel.png"
-              alt="Miguel Queiroz Fernandes Soares"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Miguel Queiroz Fernandes Soares</h3>
-            <p>Organização · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-Marcus">
-            <img
-              src="/community/pessoas/2024.1/marcus.jpg"
-              alt="Marcus Vinicius da Silva Araujo"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Marcus Vinicius da Silva Araujo</h3>
-            <p>Organização · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-GabrielCarvalho">
-            <img
-              src="/community/pessoas/2024.2/gabriel.jpg"
-              alt="Gabriel Carvalho"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Gabriel Carvalho</h3>
-            <p>Organização · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-JoaoGabrielArruda">
-            <img
-              src="/community/pessoas/2025.1/arruda.jpg"
-              alt="João Gabriel Oliveira de Arruda"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>João Gabriel Oliveira de Arruda</h3>
-            <p>Organização · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-NicoleCosta">
+          <article className="person" data-initiative="Momento" id="pessoa-NicoleCosta">
             <img
               src="/community/pessoas/2025.1/nicole.jpg"
               alt="Nicole Costa e Silva"
@@ -169,7 +38,7 @@ export default function Team() {
             <h3>Nicole Costa e Silva</h3>
             <p>Liderança · Momento</p>
           </article>
-          <article className="person" id="pessoa-MariaLuisaQuintela">
+          <article className="person" data-initiative="Hack The Path" id="pessoa-MariaLuisaQuintela">
             <img
               src="/community/pessoas/2025.1/quintela.jpg"
               alt="Maria Luisa Moreira Quintela"
@@ -180,40 +49,18 @@ export default function Team() {
             <h3>Maria Luisa Moreira Quintela</h3>
             <p>Liderança · Hack The Path</p>
           </article>
-          <article className="person" id="pessoa-Joaquim">
+          <article className="person" data-initiative="Hack The Path" id="pessoa-Luigi">
             <img
-              src="/community/pessoas/2025.1/joaquim.jpg"
-              alt="Joaquim Germano"
+              src="/community/pessoas/2024.1/luigi.png"
+              alt="Luigi Schmitt"
               loading="lazy"
               width="400"
               height="480"
             />
-            <h3>Joaquim Germano</h3>
-            <p>Organização · Trilha</p>
+            <h3>Luigi Schmitt</h3>
+            <p>Liderança · Hack The Path</p>
           </article>
-          <article className="person" id="pessoa-EduardoOliveira">
-            <img
-              src="/community/pessoas/2025.1/eduardo.jpg"
-              alt="Eduardo Oliveira Silva"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Eduardo Oliveira Silva</h3>
-            <p>Organização · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-MariaLuizaCavalcanti">
-            <img
-              src="/community/pessoas/2025.1/uchoa.jpg"
-              alt="Maria Luíza Uchoa Cavalcanti"
-              loading="lazy"
-              width="400"
-              height="480"
-            />
-            <h3>Maria Luíza Uchoa Cavalcanti</h3>
-            <p>Organização · Trilha</p>
-          </article>
-          <article className="person" id="pessoa-Ralf">
+          <article className="person" data-initiative="Hack The Path" id="pessoa-Ralf">
             <img
               src="/community/pessoas/ralf.jpeg"
               alt="Ralf Ferreira"
@@ -233,8 +80,162 @@ export default function Team() {
             </h3>
             <p>Líder · Hack The Path</p>
           </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-Guilherme">
+            <img
+              src="/community/pessoas/guilherme.png"
+              alt="Guilherme Huther"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Guilherme Huther</h3>
+            <p>Aulas · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-Kruta">
+            <img
+              src="/community/pessoas/2024.1/kruta.png"
+              alt="Pedro Kruta"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Pedro Kruta</h3>
+            <p>Organização · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-Bea">
+            <img
+              src="/community/pessoas/2024.1/bea.png"
+              alt="Beatriz Pessôa"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Beatriz Pessôa</h3>
+            <p>Mídias · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-Daniel">
+            <img
+              src="/community/pessoas/daniel.jpg"
+              alt="Daniel Brandão"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Daniel Brandão</h3>
+            <p>Organização · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-Davi">
+            <img
+              src="/community/pessoas/davi.png"
+              alt="Davi Nasiasene"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Davi Nasiasene</h3>
+            <p>Organização · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-Emyle">
+            <img
+              src="/community/pessoas/2024.1/emyle.png"
+              alt="Emyle Santos"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Emyle Santos</h3>
+            <p>Organização · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-Beatriz">
+            <img
+              src="/community/pessoas/2024.2/beatriz.png"
+              alt="Ana Beatriz Mota da Cruz"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Ana Beatriz Mota da Cruz</h3>
+            <p>Organização · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-MiguelQueiroz">
+            <img
+              src="/community/pessoas/2024.1/miguel.png"
+              alt="Miguel Queiroz Fernandes Soares"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Miguel Queiroz Fernandes Soares</h3>
+            <p>Organização · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-Marcus">
+            <img
+              src="/community/pessoas/2024.1/marcus.jpg"
+              alt="Marcus Vinicius da Silva Araujo"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Marcus Vinicius da Silva Araujo</h3>
+            <p>Organização · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-GabrielCarvalho">
+            <img
+              src="/community/pessoas/2024.2/gabriel.jpg"
+              alt="Gabriel Carvalho"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Gabriel Carvalho</h3>
+            <p>Organização · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-JoaoGabrielArruda">
+            <img
+              src="/community/pessoas/2025.1/arruda.jpg"
+              alt="João Gabriel Oliveira de Arruda"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>João Gabriel Oliveira de Arruda</h3>
+            <p>Organização · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-Joaquim">
+            <img
+              src="/community/pessoas/2025.1/joaquim.jpg"
+              alt="Joaquim Germano"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Joaquim Germano</h3>
+            <p>Organização · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-EduardoOliveira">
+            <img
+              src="/community/pessoas/2025.1/eduardo.jpg"
+              alt="Eduardo Oliveira Silva"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Eduardo Oliveira Silva</h3>
+            <p>Organização · Trilha</p>
+          </article>
+          <article className="person" data-initiative="Trilha" id="pessoa-MariaLuizaCavalcanti">
+            <img
+              src="/community/pessoas/2025.1/uchoa.jpg"
+              alt="Maria Luíza Uchoa Cavalcanti"
+              loading="lazy"
+              width="400"
+              height="480"
+            />
+            <h3>Maria Luíza Uchoa Cavalcanti</h3>
+            <p>Organização · Trilha</p>
+          </article>
         </div>
-        <Link className="button" href="/">
+<section className="founders-section"><h2>Fundadores</h2><div className="team-grid"><article className="person"><img src="/community/pessoas/tiago.jpg" alt="Tiago Trindade" loading="lazy"/><h3>Tiago Trindade</h3><p>Fundador · Trilha</p></article><article className="person"><img src="/community/pessoas/felipe.png" alt="Felipe Duarte" loading="lazy"/><h3>Felipe Duarte</h3><p>Fundador · Trilha</p></article><article className="person"><img src="/community/pessoas/nicholas.png" alt="Nicholas Rodrigues" loading="lazy"/><h3>Nicholas Rodrigues</h3><p>Fundador · Trilha</p></article><article className="person"><img src="/community/pessoas/guilherme.png" alt="Guilherme Huther" loading="lazy"/><h3>Guilherme Huther</h3><p>Fundador · Trilha</p></article><article className="person"><img src="/community/pessoas/icaro.png" alt="Ícaro Mori" loading="lazy"/><h3>Ícaro Mori</h3><p>Fundador · Trilha</p></article></div></section>        <Link className="button" href="/">
           Voltar ao Trilha <ArrowIcon direction="up-right" />
         </Link>
       </main>

@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import { useTranslation } from "@/hooks/useTranslation";
 import { ArrowUpRight, ArrowRight, BookOpen, CalendarDays } from "lucide-react";
 import Sobre from "@/components/Sobre";
 import Numbers from "@/components/Numbers";
@@ -12,58 +13,32 @@ import Materiais from "@/components/Materiais";
 import FAQ from "@/components/FAQ";
 import { TickProvider, useReveal } from "@/components/home/shared";
 
+import CampusNavigation from "./CampusNavigation";
+import CampusFooter from "./CampusFooter";
+import CampusStickers from "./CampusStickers";
+import HeroStickers from "./HeroStickers";
+
 export default function CampusHome() {
   useReveal();
+  const { t } = useTranslation();
   return (
     <TickProvider interval={4500}>
       <div className="campus-home" id="inicio">
-        <nav className="campus-nav" aria-label="Navegação principal">
-          <Link
-            href="/"
-            className="campus-brand"
-            aria-label="Trilha, início"
-          >
-            <img src="/campus/trilha.svg" width="60" height="45" alt="" />
-            <span>
-              Trilha
-            </span>
-          </Link>
-          <div className="campus-nav-links">
-            <a href="#sobre">O programa</a>
-            <a href="#turmas">Turmas</a>
-            <a href="#projetos">Projetos</a>
-            <Link href="/materiais">Materiais</Link>
-          </div>
-          <Link className="campus-button" href="/aulas">
-            Acompanhe as aulas <ArrowUpRight size={17} />
-          </Link>
-          <a className="campus-main-site" href={process.env.NEXT_PUBLIC_TRILHA_URL || "https://otrilha.com"}>
-            Conheça o Trilha <ArrowUpRight size={16} />
-          </a>
-        </nav>
+        <CampusNavigation />
         <main>
+          <CampusStickers />
           <section className="campus-hero" aria-labelledby="campus-title">
             <div className="campus-hero-copy">
-              <span className="campus-eyebrow">
-                APRENDER FAZENDO
-              </span>
-              <h1 id="campus-title">
-                Seu começo
-                <br />
-                em tecnologia.
-                <br />
-                <em>Em boa companhia.</em>
+              <HeroStickers />
+              <span className="campus-eyebrow">{t("campus.text6")}</span>
+              <h1 id="campus-title">{t("campus.text7")}{" "}<br />{t("campus.text8")}<br />
+                <em>{t("campus.text9")}</em>
               </h1>
-              <p>
-                Programação, projetos e gente por perto. Um programa gratuito,
-                feito por estudantes, para aprender construindo.
-              </p>
+              <p>{t("campus.text10")}</p>
               <div className="campus-actions">
-                <a className="campus-button" href="#sobre">
-                  Conheça o programa <ArrowRight size={18} />
+                <a className="campus-button" href="#sobre">{t("campus.text11")}<ArrowRight size={18} />
                 </a>
-                <Link href="/materiais" className="campus-text-link">
-                  Explore os materiais <ArrowUpRight size={17} />
+                <Link href="/materiais" className="campus-text-link">{t("campus.text12")}<ArrowUpRight size={17} />
                 </Link>
               </div>
             </div>
@@ -72,36 +47,30 @@ export default function CampusHome() {
                 src="/campus/aula.jpg"
                 width="1600"
                 height="1200"
-                alt="Estudantes do Trilha compartilhando conhecimento em sala"
+                alt={t("campus.text30")}
               />
-              <figcaption>
-                <span>
-                  O próximo passo
-                  <br />
-                  <strong>a gente dá junto.</strong>
-                </span>
-              </figcaption>
+
             </figure>
           </section>
           <section
             className="campus-shortcuts"
-            aria-label="Continue aprendendo"
+            aria-label={t("campus.text31")}
           >
             <Link href="/aulas">
               <CalendarDays size={24} />
               <div>
-                <span>NA PRÁTICA</span>
-                <h2>Acompanhe as aulas</h2>
-                <p>Encontros, atividades e o que vem a seguir.</p>
+                <span>{t("campus.text15")}</span>
+                <h2>{t("campus.text16")}</h2>
+                <p>{t("campus.text17")}</p>
               </div>
               <ArrowUpRight />
             </Link>
             <Link href="/materiais">
               <BookOpen size={24} />
               <div>
-                <span>NO SEU RITMO</span>
-                <h2>Abra os materiais</h2>
-                <p>Conteúdo aberto para estudar e experimentar.</p>
+                <span>{t("campus.text18")}</span>
+                <h2>{t("campus.text19")}</h2>
+                <p>{t("campus.text20")}</p>
               </div>
               <ArrowUpRight />
             </Link>
@@ -115,28 +84,7 @@ export default function CampusHome() {
           <Materiais />
           <FAQ />
         </main>
-        <footer className="campus-footer">
-          <div>
-            <img src="/campus/trilha.svg" width="65" height="50" alt="Trilha" />
-            <h2>
-              Aprendeu? Compartilha.
-              <br />É assim que a gente cresce.
-            </h2>
-          </div>
-          <nav aria-label="Links do rodapé">
-            <Link href="/aulas">Aulas</Link>
-            <Link href="/materiais">Materiais</Link>
-            <a href="#turmas">Turmas</a>
-            <a
-              href={
-                process.env.NEXT_PUBLIC_TRILHA_URL || "https://otrilha.com"
-              }
-            >
-              Conheça todo o Trilha <ArrowUpRight size={16} />
-            </a>
-          </nav>
-          <small>Trilha UFPB · De estudantes para estudantes.</small>
-        </footer>
+        <CampusFooter />
       </div>
     </TickProvider>
   );

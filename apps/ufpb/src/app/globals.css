@@ -26,8 +26,8 @@
   --radius-m: 12px;
   --radius-l: 22px;
 
-  --font-body: var(--font-dm-sans), 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: var(--font-dm-sans), 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: var(--font-poppins), 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: var(--font-poppins), 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --pad-x: clamp(24px, 5vw, 88px);
