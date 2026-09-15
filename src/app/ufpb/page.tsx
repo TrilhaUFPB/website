@@ -1,11 +1,11 @@
-import CommunityHome from "@/components/community/CommunityHome";
+import Ufpb from "@/components/community/Ufpb";
 import CommunityEffects from "@/components/community/CommunityEffects";
 import "@/components/community/community.css";
-export const metadata = { title: "Trilha — de estudantes para estudantes" };
+export const metadata = { title: "Trilha UFPB" };
 export default function Page() {
   return (
     <>
-      <CommunityHome />
+      <Ufpb />
       <CommunityEffects />
     </>
   );
