@@ -1,52 +1,19 @@
 {
-  "name": "trilha-website",
+  "name": "trilha-sites",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint .",
-    "test": "node --test tests/*.test.mjs"
-  },
-  "dependencies": {
-    "@radix-ui/react-accordion": "^1.2.2",
-    "@tabler/icons-react": "^3.26.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "firebase": "^12.0.0",
-    "framer-motion": "^11.17.0",
-    "gray-matter": "^4.0.3",
-    "highlight.js": "^11.11.1",
-    "lucide-react": "^0.469.0",
-    "next": "16.1.6",
-    "nodemailer": "^9.0.3",
-    "posthog-js": "^1.258.5",
-    "posthog-node": "^5.6.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-icons": "^5.4.0",
-    "react-markdown": "^10.1.0",
-    "react-simple-code-editor": "^0.14.1",
-    "rehype-highlight": "^7.0.2",
-    "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.1",
-    "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7",
-    "yaml": "^2.8.4",
-    "zod": "^4.4.3"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/nodemailer": "^8.0.1",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "copy-webpack-plugin": "^13.0.1",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.6",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "dev": "npm run dev --workspace=@trilha/community",
+    "dev:trilha": "npm run dev --workspace=@trilha/community",
+    "dev:ufpb": "npm run dev --workspace=@trilha/ufpb",
+    "build": "npm run build --workspaces",
+    "start:trilha": "npm run start --workspace=@trilha/community",
+    "start:ufpb": "npm run start --workspace=@trilha/ufpb",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspace=@trilha/ufpb",
+    "check:sites": "node scripts/check-sites.mjs"
   }
 }

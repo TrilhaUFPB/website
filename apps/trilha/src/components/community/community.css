@@ -1,0 +1,4015 @@
+.trilha-site {
+  --electric: #1c4ae5;
+  --mint: #00d468;
+  --sky: #a0b5ff;
+  --cream: #fdf4e5;
+  --night: #000928;
+}
+.trilha-site * {
+  box-sizing: border-box;
+}
+.trilha-site {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+.trilha-site {
+  margin: 0;
+  background: var(--cream);
+  color: var(--night);
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 16px;
+}
+.trilha-site a {
+  color: inherit;
+  text-decoration: none;
+}
+.trilha-site button {
+  font: inherit;
+}
+.trilha-site a,
+.trilha-site button {
+  -webkit-tap-highlight-color: transparent;
+}
+.trilha-site a:focus-visible,
+.trilha-site button:focus-visible {
+  outline: 3px solid var(--electric);
+  outline-offset: 5px;
+}
+.trilha-site [hidden] {
+  display: none !important;
+}
+.trilha-site h1,
+.trilha-site h2,
+.trilha-site h3,
+.trilha-site p {
+  margin: 0;
+}
+.trilha-site h1,
+.trilha-site h2,
+.trilha-site h3,
+.trilha-site .brand {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+}
+.trilha-site em {
+  font-style: normal;
+  color: var(--electric);
+}
+.trilha-site .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 82px;
+  margin: 0 5%;
+  position: relative;
+  z-index: 2;
+}
+.trilha-site .brand {
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.trilha-site .brand img {
+  width: 37px;
+  height: 37px;
+}
+.trilha-site .navlinks {
+  display: flex;
+  gap: 8px;
+  border: 1px solid #00092825;
+  padding: 5px;
+  border-radius: 35px;
+}
+.trilha-site .navlinks a {
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 25px;
+  transition: background 0.2s;
+}
+.trilha-site .navlinks a:hover {
+  background: var(--sky);
+}
+.trilha-site .navcta {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 12px 18px;
+  background: var(--mint);
+  border: 1px solid var(--night);
+  border-radius: 30px;
+}
+.trilha-site .caderno-hero {
+  position: relative;
+  min-height: 730px;
+  text-align: center;
+  padding: 67px 20px 0;
+  background: #f9f8ed url("/community/landscape.png") center bottom/cover
+    no-repeat;
+  overflow: hidden;
+}
+.trilha-site .eyebrow,
+.trilha-site .section-label,
+.trilha-site .explore-cue {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  font-weight: 500;
+}
+.trilha-site .eyebrow {
+  color: var(--night);
+}
+.trilha-site h1 {
+  font-size: clamp(49px, 5.8vw, 80px);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -4px;
+  margin: 25px auto;
+}
+.trilha-site h1 em {
+  color: var(--electric);
+}
+.trilha-site .intro {
+  font-size: 17px;
+  line-height: 1.65;
+}
+.trilha-site .button {
+  display: inline-flex;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 25px;
+  font-size: 14px;
+  font-weight: 500;
+  background: var(--mint);
+  color: var(--night);
+  border: 1px solid var(--night);
+  border-radius: 30px;
+  box-shadow: 0 3px 0 var(--night);
+  margin-top: 26px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+}
+.trilha-site .button:hover {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--night);
+}
+.trilha-site .explore-cue {
+  position: absolute;
+  bottom: 23px;
+  left: 0;
+  right: 0;
+  font-size: 11px;
+  text-align: center;
+  color: white;
+  text-shadow: 0 1px 8px #000928;
+}
+.trilha-site .plain-intro {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 55px;
+  margin: 0 5%;
+  padding: 65px 0;
+  border-bottom: 1px solid #00092830;
+}
+.trilha-site .plain-intro .section-label {
+  padding-top: 10px;
+  max-width: 190px;
+  line-height: 1.6;
+}
+.trilha-site .plain-intro p {
+  font-size: 23px;
+  line-height: 1.6;
+  letter-spacing: -0.6px;
+}
+.trilha-site .plain-intro strong {
+  font-weight: 500;
+  color: var(--electric);
+}
+.trilha-site .program {
+  padding: 85px 5%;
+}
+.trilha-site .section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  margin: 22px 0 44px;
+}
+.trilha-site h2 {
+  font-size: 43px;
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+.trilha-site .section-heading > p {
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 365px;
+}
+.trilha-site .pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.trilha-site .pillars article {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 28px;
+  min-height: 285px;
+  background: var(--mint);
+  transition:
+    transform 0.4s,
+    box-shadow 0.4s;
+}
+.trilha-site .pillars article:nth-child(2) {
+  background: var(--sky);
+}
+.trilha-site .pillars article:nth-child(3) {
+  background: var(--electric);
+  color: var(--cream);
+}
+.trilha-site .pillars article:nth-child(4) {
+  background: var(--night);
+  color: var(--cream);
+}
+.trilha-site .pillars article > span {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.trilha-site .pillars h3 {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin: 40px 0 17px;
+}
+.trilha-site .pillars p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+.trilha-site .pillars article:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  bottom: -145px;
+  right: -40px;
+  background: radial-gradient(circle, #fff9, transparent 65%);
+  transition:
+    transform 0.8s,
+    opacity 0.8s;
+  opacity: 0.6;
+}
+.trilha-site .pillars article:hover:after {
+  transform: translate(-30px, -90px) scale(1.8);
+  opacity: 1;
+}
+.trilha-site .pillars article:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 28px #00092815;
+}
+.trilha-site .people {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 65px;
+  align-items: center;
+  padding: 20px 5% 90px;
+}
+.trilha-site .people > img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.trilha-site .people h2 {
+  font-size: 36px;
+  margin: 25px 0;
+}
+.trilha-site .people p {
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 470px;
+}
+.trilha-site .people strong {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--sky);
+  border-radius: 7px;
+  padding: 15px 18px;
+  margin-top: 25px;
+  line-height: 1.5;
+}
+.trilha-site .materials-callout {
+  margin: 0 5% 70px;
+  padding: 38px 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  border: 1px solid #00092830;
+  border-radius: 20px;
+  background: var(--cream);
+}
+.trilha-site .materials-callout h2 {
+  font-size: 33px;
+  margin: 13px 0;
+}
+.trilha-site .materials-callout p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+.trilha-site .materials-callout .button {
+  flex-shrink: 0;
+  margin: 0;
+}
+.trilha-site footer {
+  padding: 45px 5%;
+  background: var(--night);
+  color: var(--cream);
+  font:
+    700 35px var(--font-space-grotesk),
+    "Space Grotesk",
+    sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.trilha-site footer span {
+  font:
+    12px var(--font-poppins),
+    "Poppins",
+    sans-serif;
+}
+/* 01: open navigation, Poppins-led headline, blue CTA, larger two-column cards. */
+/* 02: framed navigation, compact strong type, square buttons, ordered program rows. */
+/* Backgrounds reach both viewport edges, including on wide desktop screens. */
+.trilha-site .design {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+@media (max-width: 1000px) {
+  .trilha-site .nav {
+    gap: 15px;
+  }
+  .trilha-site .navlinks a {
+    padding: 8px 10px;
+  }
+  .trilha-site .navcta {
+    font-size: 11px;
+    padding: 11px 13px;
+  }
+  .trilha-site .section-heading > p {
+    max-width: 300px;
+  }
+  .trilha-site .pillars {
+    grid-template-columns: 1fr 1fr;
+  }
+  .trilha-site .people {
+    gap: 30px;
+  }
+  .trilha-site .people h2 {
+    font-size: 33px;
+  }
+  .trilha-site .materials-callout {
+    padding: 30px;
+  }
+}
+@media (max-width: 650px) {
+  .trilha-site {
+    scroll-padding-top: 115px;
+  }
+  .trilha-site .nav {
+    min-height: 80px;
+    margin: 0 6%;
+    gap: 12px;
+  }
+  .trilha-site .brand {
+    font-size: 29px;
+  }
+  .trilha-site .brand img {
+    width: 30px;
+    height: 30px;
+  }
+  .trilha-site .navlinks {
+    display: none;
+  }
+  .trilha-site .navcta {
+    font-size: 10px;
+    padding: 11px 12px;
+  }
+  .trilha-site .eyebrow {
+    font-size: 10px;
+  }
+  .trilha-site .caderno-hero {
+    min-height: 660px;
+    padding-top: 55px;
+  }
+  .trilha-site h1 {
+    font-size: 47px;
+    letter-spacing: -2.8px;
+  }
+  .trilha-site .intro {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .trilha-site .button {
+    font-size: 13px;
+    padding: 16px 22px;
+  }
+  .trilha-site .explore-cue {
+    font-size: 9px;
+  }
+  .trilha-site .plain-intro {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 35px 0;
+  }
+  .trilha-site .plain-intro .section-label {
+    max-width: none;
+  }
+  .trilha-site .plain-intro p {
+    font-size: 20px;
+  }
+  .trilha-site .program {
+    padding: 55px 6%;
+  }
+  .trilha-site .section-heading {
+    display: block;
+    margin-bottom: 28px;
+  }
+  .trilha-site h2 {
+    font-size: 33px;
+    letter-spacing: -1.5px;
+  }
+  .trilha-site .section-heading > p {
+    max-width: none;
+    font-size: 15px;
+    margin-top: 20px;
+  }
+  .trilha-site .pillars {
+    gap: 10px;
+  }
+  .trilha-site .pillars article {
+    padding: 20px;
+    min-height: 295px;
+  }
+  .trilha-site .pillars h3 {
+    font-size: 24px;
+    letter-spacing: -0.8px;
+  }
+  .trilha-site .pillars p {
+    font-size: 14px;
+  }
+  .trilha-site .people {
+    grid-template-columns: 1fr;
+    padding: 20px 6% 50px;
+    gap: 25px;
+  }
+  .trilha-site .people > img {
+    height: 260px;
+  }
+  .trilha-site .people h2 {
+    font-size: 32px;
+    margin: 18px 0;
+  }
+  .trilha-site .people p {
+    font-size: 15px;
+  }
+  .trilha-site .people strong {
+    font-size: 12px;
+  }
+  .trilha-site .materials-callout {
+    padding: 25px;
+    align-items: start;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 40px;
+  }
+  .trilha-site .materials-callout h2 {
+    font-size: 29px;
+  }
+  .trilha-site .materials-callout .button {
+    margin: 0;
+  }
+  .trilha-site footer {
+    padding: 30px 6%;
+    align-items: start;
+    gap: 15px;
+    flex-direction: column;
+  }
+  .trilha-site footer span {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trilha-site {
+    scroll-behavior: auto;
+  }
+  .trilha-site *,
+  .trilha-site *:after {
+    transition: none !important;
+  }
+  .trilha-site .pillars article:hover,
+  .trilha-site .button:hover {
+    transform: none !important;
+  }
+}
+
+/* Selected combination: 01 typography with 03 navigation, colour and rounded controls. */
+.trilha-site .base h1 {
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-weight: 500;
+  letter-spacing: -3.7px;
+  font-size: clamp(47px, 5.3vw, 74px);
+  line-height: 1.15;
+  margin: 24px auto;
+}
+.trilha-site .base h1 em {
+  font-weight: 600;
+}
+@media (max-width: 650px) {
+  .trilha-site .base h1 {
+    font-size: 43px;
+    letter-spacing: -2px;
+    line-height: 1.17;
+  }
+}
+
+/* Colour comparison on the selected composition. */
+.trilha-site .neutral-controls {
+  --text-green: #006b38;
+}
+.trilha-site .neutral-controls em,
+.trilha-site .neutral-controls .plain-intro strong {
+  color: var(--text-green);
+}
+.trilha-site .neutral-controls .button,
+.trilha-site .neutral-controls .navcta {
+  background: var(--cream);
+  color: var(--night);
+  border-color: var(--night);
+}
+.trilha-site .neutral-controls .button:hover,
+.trilha-site .neutral-controls .navcta:hover {
+  background: var(--night);
+  color: var(--cream);
+}
+/* Preferred neutral controls with official vibrant mint text accents. */
+.trilha-site .neutral-controls {
+  --text-green: var(--mint);
+}
+/* Let the selected navigation float directly over the hero landscape. */
+.trilha-site .neutral-controls {
+  position: relative;
+}
+.trilha-site .neutral-controls .nav {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  margin: 0;
+  z-index: 5;
+  background: transparent;
+}
+.trilha-site .neutral-controls .caderno-hero {
+  padding-top: 149px;
+  min-height: 812px;
+}
+.trilha-site .neutral-controls .navlinks {
+  background: rgba(253, 244, 229, 0.36);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+@media (max-width: 650px) {
+  .trilha-site .neutral-controls .nav {
+    left: 6%;
+    right: 6%;
+  }
+  .trilha-site .neutral-controls .caderno-hero {
+    padding-top: 135px;
+    min-height: 740px;
+  }
+}
+/* Official symbol alone gives the corner a quieter, recognisable signature. */
+.trilha-site .neutral-controls .brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  min-height: 48px;
+  letter-spacing: normal;
+}
+.trilha-site .neutral-controls .brand img {
+  width: 58px;
+  height: auto;
+  aspect-ratio: 1244/870;
+  object-fit: contain;
+}
+@media (max-width: 650px) {
+  .trilha-site .neutral-controls .brand {
+    min-width: 48px;
+  }
+  .trilha-site .neutral-controls .brand img {
+    width: 48px;
+    height: auto;
+  }
+}
+.trilha-site .neutral-controls .caderno-hero .button:hover,
+.trilha-site .neutral-controls .caderno-hero .button:focus-visible {
+  background: var(--mint);
+  color: var(--night);
+  border-color: var(--night);
+}
+/* Center navigation against the page, independent of unequal side controls. */
+.trilha-site .neutral-controls .nav {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+}
+.trilha-site .neutral-controls .nav .brand {
+  justify-self: start;
+}
+.trilha-site .neutral-controls .nav .navlinks {
+  justify-self: center;
+}
+.trilha-site .neutral-controls .nav .navcta {
+  justify-self: end;
+}
+@media (max-width: 650px) {
+  .trilha-site .neutral-controls .nav {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .trilha-site .neutral-controls .nav .navcta {
+    grid-column: 2;
+  }
+}
+/* One interaction treatment for navigation and calls to action. */
+.trilha-site .neutral-controls .navlinks a,
+.trilha-site .neutral-controls .navcta,
+.trilha-site .neutral-controls .button {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+  transform: none;
+}
+.trilha-site .neutral-controls .navlinks a:hover,
+.trilha-site .neutral-controls .navlinks a:focus-visible,
+.trilha-site .neutral-controls .navcta:hover,
+.trilha-site .neutral-controls .navcta:focus-visible,
+.trilha-site .neutral-controls .button:hover,
+.trilha-site .neutral-controls .button:focus-visible,
+.trilha-site .neutral-controls .caderno-hero .button:hover,
+.trilha-site .neutral-controls .caderno-hero .button:focus-visible {
+  background: var(--mint);
+  color: var(--night);
+  border-color: var(--night);
+  transform: none;
+}
+.trilha-site .neutral-controls .button:hover,
+.trilha-site .neutral-controls .button:focus-visible {
+  box-shadow: 0 3px 0 var(--night);
+}
+@media (prefers-reduced-motion: reduce) {
+  .trilha-site .neutral-controls .navlinks a,
+  .trilha-site .neutral-controls .navcta,
+  .trilha-site .neutral-controls .button {
+    transition: none;
+  }
+}
+/* Group spacing study. Identical typography; vary only the three gaps. */
+.trilha-site .hero-bold h1 {
+  margin-top: 40px;
+  margin-bottom: 36px;
+}
+.trilha-site .hero-bold .caderno-hero .button {
+  margin-top: 18px;
+}
+@media (max-width: 650px) {
+  .trilha-site .hero-bold h1 {
+    margin-top: 32px;
+    margin-bottom: 30px;
+  }
+}
+/* Umbrella homepage: approved hero remains identical across all studies. */
+.trilha-site .umbrella-intro {
+  padding: 100px 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 70px;
+}
+.trilha-site .umbrella-intro > .section-label {
+  grid-column: 1/-1;
+}
+.trilha-site .umbrella-intro h2 {
+  font-size: 46px;
+}
+.trilha-site .umbrella-intro p {
+  font-size: 17px;
+  line-height: 1.85;
+  max-width: 550px;
+}
+.trilha-site .initiatives-wrap {
+  padding: 30px 6% 95px;
+}
+.trilha-site .initiative-heading {
+  margin-bottom: 40px;
+}
+.trilha-site .initiative-heading h2 {
+  margin-top: 18px;
+  max-width: 720px;
+}
+.trilha-site .initiative-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+.trilha-site .initiative {
+  border: 1px solid #00092822;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fffaf2;
+}
+.trilha-site .initiative-art {
+  height: 230px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.trilha-site .ufpb .initiative-art {
+  background: var(--mint);
+}
+.trilha-site .ufpe .initiative-art {
+  background: var(--sky);
+}
+.trilha-site .momento .initiative-art {
+  background: #523972;
+}
+.trilha-site .momento-wordmark {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+.trilha-site .htp .initiative-art {
+  background: #7a94fd;
+  justify-content: start;
+  padding: 30px;
+}
+.trilha-site .htp-wordmark {
+  position: relative;
+  width: 43%;
+  max-height: 160px;
+  object-fit: contain;
+  z-index: 1;
+}
+.trilha-site .htp-art {
+  position: absolute;
+  right: -10px;
+  top: 0;
+  width: 49%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s;
+}
+.trilha-site .initiative:hover .htp-art {
+  transform: scale(1.07);
+}
+.trilha-site .initiative-copy {
+  padding: 32px;
+}
+.trilha-site .initiative-copy .section-label {
+  font-size: 10px;
+}
+.trilha-site .initiative-copy h3 {
+  font-size: 31px;
+  letter-spacing: -1.1px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 19px 0 16px;
+}
+.trilha-site .initiative-copy > p {
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 520px;
+}
+@media (max-width: 1000px) {
+  .trilha-site .initiative-copy {
+    padding: 25px;
+  }
+  .trilha-site .umbrella-intro {
+    gap: 25px;
+  }
+  .trilha-site .umbrella-intro h2 {
+    font-size: 39px;
+  }
+}
+@media (max-width: 650px) {
+  .trilha-site .umbrella-intro {
+    padding: 55px 6%;
+    grid-template-columns: 1fr;
+    gap: 23px;
+  }
+  .trilha-site .umbrella-intro h2 {
+    font-size: 34px;
+  }
+  .trilha-site .umbrella-intro p {
+    font-size: 15px;
+  }
+  .trilha-site .initiatives-wrap {
+    padding: 40px 6% 55px;
+  }
+  .trilha-site .initiative-heading h2 {
+    font-size: 33px;
+  }
+  .trilha-site .initiative-layout {
+    grid-template-columns: 1fr;
+  }
+  .trilha-site .initiative-art {
+    height: 205px;
+  }
+  .trilha-site .initiative-copy h3 {
+    font-size: 28px;
+  }
+}
+.trilha-site .impact-section {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 25px;
+  padding: 90px 6%;
+  overflow: hidden;
+  background: #f5f0e5;
+}
+.trilha-site .impact-copy h2 {
+  font-size: 46px;
+  line-height: 1.12;
+  margin: 25px 0;
+}
+.trilha-site .impact-copy > p {
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 470px;
+}
+.trilha-site .impact-stats {
+  display: flex;
+  gap: 28px;
+  margin: 32px 0;
+}
+.trilha-site .impact-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.trilha-site .impact-stats strong {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 34px;
+}
+.trilha-site .impact-stats span {
+  font-size: 10px;
+  max-width: 115px;
+}
+.trilha-site .globe-stage {
+  position: relative;
+  min-width: 0;
+}
+.trilha-site .globe-stage canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+}
+.trilha-site .globe-hint {
+  display: block;
+  text-align: center;
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  margin-top: -15px;
+}
+@media (max-width: 900px) {
+  .trilha-site .impact-section {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .trilha-site .impact-copy {
+    max-width: 600px;
+  }
+  .trilha-site .globe-stage {
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+  }
+  .trilha-site .impact-copy h2 {
+    font-size: 39px;
+  }
+}
+@media (max-width: 650px) {
+  .trilha-site .impact-section {
+    padding: 55px 6%;
+  }
+  .trilha-site .impact-copy h2 {
+    font-size: 34px;
+  }
+  .trilha-site .impact-stats {
+    gap: 24px;
+  }
+  .trilha-site .globe-stage {
+    margin-top: 0;
+  }
+}
+/* Three compact initiatives, followed by the full-width hackathon. */
+.trilha-site .design .initiative-layout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.trilha-site .design .initiative-layout .initiative {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-radius: 19px;
+  background: #fffcf6;
+  border-color: #00092820;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+.trilha-site .design .initiative:hover {
+  border-color: #00092855;
+  box-shadow: 0 8px 28px #00092808;
+}
+.trilha-site .design .initiative .initiative-art {
+  order: 0;
+  height: 125px;
+  min-height: 125px;
+  padding: 24px;
+  flex: none;
+}
+.trilha-site .design .initiative .initiative-copy {
+  padding: 25px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.trilha-site .design .initiative .initiative-copy h3 {
+  font-size: 27px;
+  line-height: 1.18;
+  margin: 14px 0 12px;
+  letter-spacing: -0.8px;
+}
+.trilha-site .design .initiative .initiative-copy > p {
+  font-size: 13px;
+  line-height: 1.75;
+}
+.trilha-site .design .initiative .campus-art {
+  background: #eceae4;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid #0009280c;
+}
+.trilha-site .campus-lockup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.trilha-site .campus-trilha {
+  width: 39px;
+  height: 33px;
+  object-fit: contain;
+}
+.trilha-site .campus-lockup > span {
+  font-size: 29px;
+  letter-spacing: -1px;
+  font-weight: 600;
+  line-height: 1;
+}
+.trilha-site .campus-lockup small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin-top: 9px;
+}
+.trilha-site .university-badge {
+  width: 56px;
+  height: 76px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: none;
+  border-radius: 6px;
+  padding: 7px;
+  background: white;
+}
+.trilha-site .university-badge img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.trilha-site .university-badge.ufpe-badge {
+  background: var(--night);
+  width: 56px;
+}
+.trilha-site .design .momento .initiative-art {
+  background: #523972;
+  padding: 14px 10px;
+}
+.trilha-site .design .momento-wordmark {
+  height: 96px;
+  max-height: none;
+  object-fit: contain;
+}
+.trilha-site .design .initiative-layout .htp {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  min-height: 240px;
+  margin-top: 4px;
+  background: #fff;
+}
+.trilha-site .design .htp .initiative-art {
+  height: 100%;
+  min-height: 240px;
+  padding: 35px;
+  background: #7a94fd;
+}
+.trilha-site .design .htp .initiative-copy {
+  padding: 34px 40px;
+  justify-content: center;
+}
+.trilha-site .design .htp .initiative-copy h3 {
+  font-size: 35px;
+}
+.trilha-site .design .htp .htp-wordmark {
+  width: 43%;
+  max-height: 150px;
+}
+@media (max-width: 1000px) {
+  .trilha-site .design .initiative .initiative-copy {
+    padding: 20px;
+  }
+  .trilha-site .design .initiative .initiative-copy h3 {
+    font-size: 24px;
+  }
+  .trilha-site .design .initiative .initiative-art {
+    padding: 18px;
+  }
+  .trilha-site .campus-lockup {
+    gap: 8px;
+  }
+  .trilha-site .campus-trilha {
+    width: 28px;
+  }
+  .trilha-site .campus-lockup > span {
+    font-size: 25px;
+  }
+  .trilha-site .university-badge {
+    width: 42px;
+    height: 65px;
+  }
+  .trilha-site .university-badge.ufpe-badge {
+    width: 42px;
+  }
+}
+@media (max-width: 720px) {
+  .trilha-site .design .initiative-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .trilha-site .design .initiative .initiative-art {
+    height: 105px;
+    min-height: 105px;
+    padding: 18px 24px;
+  }
+  .trilha-site .design .initiative .initiative-copy {
+    padding: 24px;
+  }
+  .trilha-site .design .initiative-layout .htp {
+    display: flex;
+    grid-column: auto;
+  }
+  .trilha-site .design .htp .initiative-art {
+    height: 190px;
+    min-height: 190px;
+    padding: 28px;
+  }
+  .trilha-site .design .htp .initiative-copy {
+    padding: 24px;
+  }
+  .trilha-site .design .htp .initiative-copy h3 {
+    font-size: 29px;
+  }
+  .trilha-site .design .momento-wordmark {
+    height: 90px;
+  }
+  .trilha-site .design .momento .initiative-art {
+    padding: 7px;
+  }
+  .trilha-site .campus-trilha {
+    width: 38px;
+  }
+  .trilha-site .campus-lockup > span {
+    font-size: 29px;
+  }
+}
+/* University lockups: only the two symbols, integrated into the card. */
+.trilha-site .design .initiative .campus-art {
+  justify-content: center;
+  gap: 35px;
+  padding: 21px 25px;
+}
+.trilha-site .design .campus-lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.trilha-site .design .campus-trilha {
+  width: 67px;
+  height: 55px;
+  object-fit: contain;
+}
+.trilha-site .design .university-badge,
+.trilha-site .design .university-badge.ufpe-badge {
+  width: 46px;
+  height: 78px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.trilha-site .design .ufpb-badge img {
+  mix-blend-mode: multiply;
+}
+.trilha-site .design .ufpe-badge img {
+  filter: brightness(0);
+  opacity: 0.9;
+}
+@media (max-width: 720px) {
+  .trilha-site .design .campus-trilha {
+    width: 58px;
+    height: 46px;
+  }
+  .trilha-site .design .university-badge,
+  .trilha-site .design .university-badge.ufpe-badge {
+    width: 38px;
+    height: 65px;
+  }
+}
+
+.trilha-site .impact-stats {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 22px;
+}
+.trilha-site .impact-stats strong {
+  white-space: nowrap;
+}
+.trilha-site .impact-stats span {
+  max-width: 155px;
+  line-height: 1.65;
+}
+@media (max-width: 650px) {
+  .trilha-site .impact-stats {
+    gap: 15px;
+  }
+  .trilha-site .impact-stats strong {
+    font-size: 29px;
+  }
+}
+/* A continuous editorial composition, with distinct initiative identities. */
+.trilha-site .umbrella-intro {
+  padding: 95px 8% 85px;
+  position: relative;
+}
+.trilha-site .umbrella-intro > .section-label {
+  color: #425354;
+}
+.trilha-site .umbrella-intro h2 {
+  font-size: 52px;
+  letter-spacing: -2.5px;
+  max-width: 560px;
+}
+.trilha-site .initiatives-wrap {
+  position: relative;
+  padding: 85px 6% 110px;
+  background: #e9ece6;
+}
+.trilha-site .initiative-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+.trilha-site .initiative-heading > .section-label {
+  max-width: 170px;
+  padding-top: 8px;
+  line-height: 1.8;
+}
+.trilha-site .initiative-heading h2 {
+  max-width: 650px;
+  margin: 0;
+  font-size: 48px;
+  flex: 1;
+}
+.trilha-site .design .initiative-layout {
+  gap: 22px;
+  align-items: stretch;
+}
+.trilha-site .design .initiative-layout .initiative {
+  position: relative;
+  border: 0;
+  border-radius: 7px 7px 26px 7px;
+  background: #fdfaf3;
+  box-shadow: 0 5px 0 #00092807;
+  overflow: hidden;
+  transition: box-shadow 0.25s;
+}
+.trilha-site .design .initiative:hover {
+  box-shadow: 0 12px 35px #00092815;
+}
+.trilha-site .design .initiative .campus-art {
+  height: 180px;
+  min-height: 180px;
+  background: transparent;
+  border: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  gap: 20px;
+  position: relative;
+}
+.trilha-site .design .campus-trilha {
+  width: 112px;
+  height: 90px;
+}
+.trilha-site .design .university-badge,
+.trilha-site .design .university-badge.ufpe-badge {
+  width: 34px;
+  height: 57px;
+  position: relative;
+  z-index: 1;
+}
+.trilha-site .design .campus-art:after {
+  content: "";
+  position: absolute;
+  right: 13px;
+  top: 22px;
+  width: 91px;
+  height: 130px;
+  border: 1px solid #00092815;
+  border-radius: 50%;
+  transform: rotate(28deg);
+  pointer-events: none;
+}
+.trilha-site .design .initiative .initiative-copy {
+  padding: 8px 30px 28px;
+  position: relative;
+}
+.trilha-site .initiative-name {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  margin-bottom: 16px;
+}
+.trilha-site .design .initiative .initiative-copy .section-label {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+.trilha-site .design .initiative .initiative-copy h3 {
+  font-size: 30px;
+  margin: 15px 0;
+  letter-spacing: -1px;
+}
+.trilha-site .design .initiative .initiative-copy > p {
+  font-size: 13px;
+}
+.trilha-site .design .ufpe {
+  background: #dfe5e9 !important;
+}
+.trilha-site .design .ufpe .campus-art {
+  background: transparent;
+}
+.trilha-site .design .ufpe .campus-art:after {
+  border-style: dashed;
+}
+.trilha-site .design .momento {
+  background: #ede6f2 !important;
+}
+.trilha-site .design .momento .initiative-art {
+  background: #523972;
+  height: 180px;
+  min-height: 180px;
+  padding: 15px;
+  border-radius: 0 0 50% 0;
+}
+.trilha-site .design .momento-wordmark {
+  height: auto;
+  width: 100%;
+  max-height: 135px;
+}
+.trilha-site .design .momento .initiative-copy {
+  padding-top: 25px;
+}
+.trilha-site .design .initiative-layout .htp {
+  margin-top: 14px;
+  grid-template-columns: 1.05fr 1fr;
+  border-radius: 7px 7px 36px 7px;
+  background: #000 !important;
+  color: white;
+  min-height: 285px;
+}
+.trilha-site .design .htp .initiative-art {
+  min-height: 285px;
+  background: #7a94fd;
+  padding: 40px;
+}
+.trilha-site .design .htp .htp-art {
+  width: 53%;
+}
+.trilha-site .design .htp .initiative-copy {
+  padding: 42px;
+}
+.trilha-site .design .htp .initiative-copy h3 {
+  font-size: 39px;
+}
+.trilha-site .impact-section {
+  background: #e9ece6;
+  position: relative;
+  padding-top: 30px;
+  padding-bottom: 115px;
+}
+.trilha-site .impact-section:before {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 0;
+  border-top: 1px solid #00092820;
+}
+.trilha-site .impact-section .impact-copy {
+  padding-top: 30px;
+}
+.trilha-site .globe-stage {
+  mix-blend-mode: multiply;
+}
+.trilha-site footer {
+  background: #dfe6de;
+  border-top: 1px solid #00092820;
+}
+@media (max-width: 1000px) {
+  .trilha-site .design .campus-trilha {
+    width: 90px;
+    height: 73px;
+  }
+  .trilha-site .design .initiative .campus-art {
+    padding: 24px;
+  }
+  .trilha-site .design .initiative .initiative-copy {
+    padding-left: 23px;
+    padding-right: 23px;
+  }
+  .trilha-site .design .initiative .initiative-copy h3 {
+    font-size: 27px;
+  }
+  .trilha-site .initiative-heading h2 {
+    font-size: 40px;
+  }
+  .trilha-site .umbrella-intro h2 {
+    font-size: 43px;
+  }
+}
+@media (max-width: 720px) {
+  .trilha-site .umbrella-intro {
+    padding: 55px 6%;
+  }
+  .trilha-site .umbrella-intro h2 {
+    font-size: 36px;
+  }
+  .trilha-site .initiatives-wrap {
+    padding: 55px 6% 65px;
+  }
+  .trilha-site .initiative-heading {
+    display: block;
+    margin-bottom: 30px;
+  }
+  .trilha-site .initiative-heading > .section-label {
+    max-width: none;
+  }
+  .trilha-site .initiative-heading h2 {
+    font-size: 35px;
+    margin-top: 18px;
+  }
+  .trilha-site .design .initiative .campus-art {
+    height: 145px;
+    min-height: 145px;
+    padding: 25px 30px;
+  }
+  .trilha-site .design .campus-trilha {
+    width: 110px;
+    height: 85px;
+  }
+  .trilha-site .design .university-badge,
+  .trilha-site .design .university-badge.ufpe-badge {
+    width: 34px;
+    height: 55px;
+  }
+  .trilha-site .design .initiative .initiative-copy {
+    padding: 5px 30px 28px;
+  }
+  .trilha-site .design .momento .initiative-art {
+    height: 145px;
+    min-height: 145px;
+  }
+  .trilha-site .design .momento-wordmark {
+    max-width: 310px;
+  }
+  .trilha-site .design .momento .initiative-copy {
+    padding-top: 25px;
+  }
+  .trilha-site .design .htp .initiative-art {
+    min-height: 210px;
+  }
+  .trilha-site .design .htp .initiative-copy {
+    padding: 30px;
+  }
+  .trilha-site .design .htp .initiative-copy h3 {
+    font-size: 32px;
+  }
+  .trilha-site .impact-section {
+    padding: 35px 6% 85px;
+  }
+}
+.trilha-site .design .momento .initiative-copy {
+  padding-top: 8px;
+}
+.trilha-site .design .momento-wordmark {
+  transform: scale(1.65);
+  transform-origin: center;
+}
+.trilha-site .design .momento .initiative-art {
+  overflow: hidden;
+}
+/* One warm canvas; initiative cards provide the color and separation. */
+.trilha-site .design .initiative .campus-art:after {
+  display: none;
+}
+.trilha-site .initiatives-wrap {
+  background: var(--cream);
+  isolation: isolate;
+}
+.trilha-site .initiatives-wrap:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 40px;
+  left: calc(6% + 50px);
+  width: 27%;
+  height: 190px;
+  border-left: 1px dashed #00092825;
+  border-bottom: 1px dashed #00092825;
+  border-radius: 0 0 0 65px;
+  pointer-events: none;
+}
+.trilha-site .initiative-heading > .section-label {
+  background: var(--cream);
+  position: relative;
+  padding-bottom: 12px;
+}
+.trilha-site .design .initiative-layout .ufpb {
+  background: #fffdf8;
+  box-shadow:
+    0 5px 0 #00092807,
+    inset 0 0 0 1px #0009280c;
+}
+.trilha-site .impact-section {
+  background: var(--cream);
+}
+@media (max-width: 720px) {
+  .trilha-site .initiatives-wrap:before {
+    top: 120px;
+    left: 22px;
+    width: 20px;
+    height: 140px;
+    border-radius: 0 0 0 20px;
+  }
+  .trilha-site .initiative-heading > .section-label {
+    padding-bottom: 0;
+  }
+}
+/* Lighter neutral canvas; retain the brand cream as a small accent. */
+.trilha-site {
+  --canvas: #fcfaf5;
+  --soft-cream: #faf5eb;
+}
+.trilha-site {
+  background: var(--canvas);
+}
+.trilha-site .umbrella-intro,
+.trilha-site .initiatives-wrap,
+.trilha-site .initiative-heading > .section-label,
+.trilha-site .impact-section {
+  background: var(--canvas);
+}
+.trilha-site .design .initiative-layout .ufpb {
+  background: #fffefa;
+}
+/* Visual narrative: one expansive globe and an asymmetric photo journal. */
+.trilha-site .impact-section {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 30px;
+  padding: 75px 6% 100px;
+  align-items: center;
+}
+.trilha-site .impact-section .impact-copy {
+  padding-top: 0;
+  max-width: 440px;
+}
+.trilha-site .impact-copy h2 {
+  font-size: 49px;
+  letter-spacing: -2px;
+}
+.trilha-site .globe-stage canvas {
+  width: 100%;
+  margin-top: -30px;
+}
+.trilha-site .globe-stage .impact-stats {
+  position: relative;
+  margin: -10px 5% 25px;
+  padding-top: 23px;
+  border-top: 1px solid #00092820;
+  gap: 25px;
+}
+.trilha-site .globe-stage .impact-stats strong {
+  font-size: 35px;
+}
+.trilha-site .globe-stage .impact-stats span {
+  font-size: 10px;
+}
+.trilha-site .globe-hint {
+  margin-top: 20px;
+  color: #00092870;
+}
+.trilha-site .community-journal {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 28px;
+  padding: 80px 7% 0;
+  background: var(--canvas);
+}
+.trilha-site .community-journal > header {
+  grid-column: 3/12;
+  padding-bottom: 70px;
+}
+.trilha-site .community-journal header h2 {
+  font-size: 68px;
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -3px;
+  margin: 25px 0;
+}
+.trilha-site .community-journal header p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.trilha-site .community-journal figure {
+  margin: 0;
+}
+.trilha-site .community-journal img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.trilha-site .community-journal figcaption {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  margin-top: 13px;
+  color: #00092890;
+}
+.trilha-site .journal-class {
+  grid-column: 1/8;
+  grid-row: 2;
+}
+.trilha-site .journal-origin {
+  grid-column: 9/13;
+  grid-row: 2;
+  align-self: end;
+  padding-bottom: 12px;
+}
+.trilha-site .journal-date {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 57px;
+  line-height: 1;
+  letter-spacing: -3px;
+  display: block;
+  margin-bottom: 28px;
+}
+.trilha-site .journal-date > span {
+  font-size: 16px;
+  display: block;
+  letter-spacing: 0.15em;
+  margin-top: 12px;
+  color: #00092880;
+}
+.trilha-site .community-journal h3 {
+  font-size: 29px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+}
+.trilha-site .community-journal p {
+  font-size: 14px;
+  line-height: 1.9;
+}
+.trilha-site .journal-return {
+  grid-column: 2/6;
+  grid-row: 3;
+  padding-top: 130px;
+  align-self: center;
+}
+.trilha-site .journal-return h3 {
+  margin-top: 24px;
+  font-size: 33px;
+}
+.trilha-site .journal-people {
+  grid-column: 7/13;
+  grid-row: 3;
+  padding-top: 85px;
+}
+.trilha-site footer {
+  background: #e4eade;
+  border-top: 0;
+}
+@media (max-width: 1000px) {
+  .trilha-site .impact-copy h2 {
+    font-size: 40px;
+  }
+  .trilha-site .globe-stage .impact-stats strong {
+    font-size: 28px;
+  }
+  .trilha-site .community-journal {
+    gap: 0 22px;
+  }
+  .trilha-site .community-journal header h2 {
+    font-size: 56px;
+  }
+  .trilha-site .journal-origin {
+    grid-column: 8/13;
+  }
+  .trilha-site .journal-class {
+    grid-column: 1/7;
+  }
+  .trilha-site .journal-return {
+    grid-column: 1/6;
+    padding-top: 80px;
+  }
+}
+@media (max-width: 720px) {
+  .trilha-site .impact-section {
+    grid-template-columns: 1fr;
+    padding: 55px 6%;
+    gap: 5px;
+  }
+  .trilha-site .impact-copy h2 {
+    font-size: 37px;
+  }
+  .trilha-site .globe-stage canvas {
+    margin-top: 0;
+  }
+  .trilha-site .globe-stage .impact-stats {
+    margin: -5px 0 25px;
+    gap: 12px;
+  }
+  .trilha-site .globe-stage .impact-stats strong {
+    font-size: 27px;
+  }
+  .trilha-site .community-journal {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 55px 6% 0;
+  }
+  .trilha-site .community-journal > header,
+  .trilha-site .journal-class,
+  .trilha-site .journal-origin,
+  .trilha-site .journal-return,
+  .trilha-site .journal-people {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .trilha-site .community-journal > header {
+    padding-bottom: 35px;
+  }
+  .trilha-site .community-journal header h2 {
+    font-size: 44px;
+    letter-spacing: -2px;
+  }
+  .trilha-site .community-journal header p br {
+    display: none;
+  }
+  .trilha-site .journal-origin {
+    padding: 35px 6% 50px;
+  }
+  .trilha-site .journal-date {
+    font-size: 48px;
+  }
+  .trilha-site .journal-people {
+    padding-top: 35px;
+  }
+  .trilha-site .journal-return {
+    padding: 10px 6% 0;
+  }
+  .trilha-site .journal-return h3 {
+    font-size: 30px;
+  }
+}
+.trilha-site .globe-stage {
+  mix-blend-mode: normal;
+}
+.trilha-site .globe-stage canvas {
+  filter: none;
+}
+.trilha-site .globe-stage .impact-stats {
+  border-top-color: #00092812;
+}
+/* Contained chapters on the light page canvas. */
+.trilha-site .impact-section {
+  margin: 25px 5% 80px;
+  padding: 50px 4% 45px;
+  background: #eaf0eb;
+  border: 1px solid #00092812;
+  border-radius: 32px;
+  gap: 30px;
+  overflow: hidden;
+}
+.trilha-site .impact-section:before {
+  display: none;
+}
+.trilha-site .impact-section .globe-stage {
+  mix-blend-mode: multiply;
+}
+.trilha-site .impact-section .globe-stage canvas {
+  margin-top: 0;
+}
+.trilha-site .impact-copy h2 {
+  font-size: 43px;
+}
+.trilha-site .impact-section .globe-stage .impact-stats {
+  margin-bottom: 15px;
+}
+.trilha-site .community-journal {
+  margin: 0 5% 75px;
+  padding: 60px 4% 0;
+  background: #f5f1e9;
+  border: 1px solid #00092812;
+  border-radius: 32px;
+  overflow: hidden;
+}
+.trilha-site .community-journal > header {
+  grid-column: 2/12;
+  padding-bottom: 50px;
+}
+.trilha-site .community-journal header h2 {
+  font-size: 59px;
+}
+.trilha-site footer {
+  background: var(--canvas);
+  border-top: 1px solid #00092812;
+}
+.trilha-site .umbrella-intro {
+  padding-top: 75px;
+  padding-bottom: 65px;
+}
+@media (max-width: 1000px) {
+  .trilha-site .impact-section {
+    grid-template-columns: 1fr 1.15fr;
+    gap: 20px;
+  }
+  .trilha-site .impact-copy h2 {
+    font-size: 35px;
+  }
+  .trilha-site .community-journal header h2 {
+    font-size: 49px;
+  }
+  .trilha-site .community-journal h3 {
+    font-size: 26px;
+  }
+  .trilha-site .globe-stage .impact-stats strong {
+    font-size: 25px;
+  }
+}
+@media (max-width: 720px) {
+  .trilha-site .impact-section {
+    margin: 15px 4% 45px;
+    padding: 30px 6% 35px;
+    grid-template-columns: 1fr;
+    border-radius: 24px;
+  }
+  .trilha-site .impact-copy h2 {
+    font-size: 34px;
+  }
+  .trilha-site .impact-section .globe-stage .impact-stats {
+    gap: 10px;
+  }
+  .trilha-site .globe-stage .impact-stats strong {
+    font-size: 24px;
+  }
+  .trilha-site .community-journal {
+    margin: 0 4% 45px;
+    padding: 35px 6% 0;
+    border-radius: 24px;
+  }
+  .trilha-site .community-journal > header {
+    grid-column: 1;
+    padding-bottom: 30px;
+  }
+  .trilha-site .community-journal header h2 {
+    font-size: 38px;
+  }
+}
+/* Consistent, restrained hover across all initiative cards. */
+.trilha-site .design .initiative-layout .initiative {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.trilha-site .design .initiative-layout .initiative:hover,
+.trilha-site .design .initiative-layout .initiative:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px #00092814;
+}
+.trilha-site .design .initiative:hover .htp-art {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .trilha-site .design .initiative-layout .initiative:hover,
+  .trilha-site .design .initiative-layout .initiative:focus-within {
+    transform: none;
+  }
+}
+@media (hover: none) {
+  .trilha-site .design .initiative-layout .initiative:hover {
+    transform: none;
+  }
+}
+/* Shared neutral panels; color is reserved for initiative identities and footer. */
+.trilha-site {
+  --panel-surface: #f5f5f2;
+  --panel-border: #00092814;
+}
+.trilha-site .impact-section,
+.trilha-site .community-journal {
+  background: var(--panel-surface);
+  border-color: var(--panel-border);
+}
+.trilha-site .community-journal {
+  padding-bottom: 65px;
+}
+.trilha-site .site-footer {
+  display: block;
+  background: var(--night);
+  color: var(--cream);
+  padding: 65px 7% 25px;
+  border: 0;
+}
+.trilha-site .footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 55px;
+  padding-bottom: 55px;
+}
+.trilha-site .footer-identity img {
+  width: 90px;
+  height: 65px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+.trilha-site .footer-identity p {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  margin-top: 23px;
+}
+.trilha-site .site-footer nav {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 14px;
+}
+.trilha-site .site-footer nav .section-label {
+  color: var(--sky);
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+.trilha-site .site-footer nav a {
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.trilha-site .site-footer a {
+  transition: color 0.2s;
+}
+.trilha-site .site-footer a:hover {
+  color: var(--mint);
+}
+.trilha-site .footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding-top: 25px;
+  border-top: 1px solid #fdf4e525;
+}
+.trilha-site .site-footer .footer-bottom span,
+.trilha-site .footer-bottom a {
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.trilha-site .site-footer .footer-bottom span {
+  color: #fdf4e599;
+}
+@media (max-width: 720px) {
+  .trilha-site .community-journal {
+    padding-bottom: 35px;
+  }
+  .trilha-site .site-footer {
+    padding: 45px 7% 25px;
+  }
+  .trilha-site .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 35px 20px;
+    padding-bottom: 35px;
+  }
+  .trilha-site .footer-identity {
+    grid-column: 1/-1;
+  }
+  .trilha-site .footer-identity p {
+    font-size: 25px;
+  }
+  .trilha-site .footer-bottom {
+    align-items: start;
+    flex-direction: column;
+    gap: 13px;
+  }
+}
+.trilha-site .impact-section,
+.trilha-site .community-journal {
+  border-radius: 14px;
+}
+.trilha-site .design .initiative-layout .initiative {
+  border-radius: 10px;
+  transition:
+    box-shadow 0.2s,
+    filter 0.2s;
+  transform: none !important;
+}
+.trilha-site .design .initiative-layout .initiative:hover,
+.trilha-site .design .initiative-layout .initiative:focus-visible,
+.trilha-site .design .initiative-layout .initiative:focus-within {
+  transform: none !important;
+  box-shadow: inset 0 0 0 2px #00092850;
+  filter: brightness(0.97);
+}
+.trilha-site .design .initiative-layout .htp:hover,
+.trilha-site .design .initiative-layout .htp:focus-visible {
+  box-shadow: inset 0 0 0 2px #7a94fd;
+  filter: brightness(1.08);
+}
+.trilha-site .design .momento .initiative-art {
+  border-radius: 0;
+}
+.trilha-site .design .initiative .initiative-copy {
+  padding: 18px 24px 24px;
+  gap: 0;
+}
+.trilha-site .design .initiative-name {
+  font-size: 15px;
+  margin: 0 0 4px;
+}
+.trilha-site .initiative-scope {
+  font-size: 11px;
+  opacity: 0.65;
+}
+.trilha-site .design .initiative .initiative-copy h3 {
+  font-size: 23px;
+  margin: 19px 0 10px;
+  letter-spacing: -0.6px;
+}
+.trilha-site .design .initiative .initiative-copy > p {
+  font-size: 12px;
+  line-height: 1.7;
+}
+.trilha-site .design .htp .initiative-copy {
+  padding: 28px 35px;
+}
+.trilha-site .design .htp .initiative-copy h3 {
+  font-size: 31px;
+}
+.trilha-site #impact-globe {
+  cursor: grab;
+  touch-action: pan-y;
+}
+.trilha-site #impact-globe.dragging {
+  cursor: grabbing;
+}
+.trilha-site .globe-stage canvas {
+  margin-top: 0;
+}
+.trilha-site .initiative-detail {
+  max-width: 850px;
+  margin: auto;
+  padding: 55px 7%;
+}
+.trilha-site .initiative-detail > img {
+  display: block;
+  margin: 50px 0 25px;
+}
+.trilha-site .initiative-detail h1 {
+  font-size: 55px;
+  letter-spacing: -2px;
+}
+.trilha-site .initiative-detail h2 {
+  font-size: 32px;
+}
+.trilha-site .initiative-detail p {
+  margin-top: 25px;
+  line-height: 1.8;
+}
+.trilha-site .globe-stage .impact-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (max-width: 720px) {
+  .trilha-site .globe-stage .impact-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 18px;
+  }
+}
+/* Alternate framed impact with an open history composition. */
+.trilha-site .community-journal {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  margin: 0 5% 75px;
+  padding-top: 35px;
+  overflow: visible;
+}
+.trilha-site .journal-today {
+  font-size: 52px;
+  letter-spacing: -2px;
+  margin-bottom: 25px;
+}
+.trilha-site .journal-return .button {
+  font-size: 13px;
+  margin-top: 24px;
+}
+.trilha-site .journal-people {
+  align-self: center;
+}
+.trilha-site .history-page {
+  max-width: 1080px;
+  margin: auto;
+  padding: 30px 6% 90px;
+}
+.trilha-site .history-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  font-size: 13px;
+}
+.trilha-site .history-page header {
+  padding: 90px 0 65px;
+}
+.trilha-site .history-page h1 {
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: clamp(36px, 4.3vw, 60px);
+  line-height: 1.15;
+  letter-spacing: -2px;
+  margin: 25px 0;
+}
+.trilha-site .history-page p {
+  max-width: 730px;
+  font-size: 16px;
+  line-height: 1.9;
+  margin: 20px 0;
+}
+.trilha-site .history-chapter {
+  padding: 45px 0;
+  border-top: 1px solid #00092815;
+}
+.trilha-site .history-chapter h2 {
+  margin: 20px 0;
+  font-size: 39px;
+}
+.trilha-site .history-chapter figure {
+  margin: 35px 0;
+}
+.trilha-site .history-chapter img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+.trilha-site .history-chapter figcaption {
+  font-size: 11px;
+  opacity: 0.65;
+  margin-top: 10px;
+}
+.trilha-site .history-page .button {
+  background: var(--canvas);
+  transition: background 0.2s;
+  transform: none;
+}
+.trilha-site .history-page .button:hover {
+  background: var(--mint);
+  transform: none;
+  box-shadow: 0 3px 0 var(--night);
+}
+@media (max-width: 720px) {
+  .trilha-site .community-journal {
+    margin: 0 4% 45px;
+    padding-top: 10px;
+  }
+  .trilha-site .journal-today {
+    font-size: 42px;
+  }
+  .trilha-site .history-page header {
+    padding: 55px 0 35px;
+  }
+  .trilha-site .history-chapter h2 {
+    font-size: 32px;
+  }
+  .trilha-site .history-page p {
+    font-size: 15px;
+  }
+}
+.trilha-site .impact-section .globe-stage {
+  mix-blend-mode: normal;
+}
+/* Solid section marker, open impact, framed story. */
+.trilha-site .initiatives-wrap:before {
+  display: none;
+}
+.trilha-site .initiative-heading > .section-label {
+  border-left: 3px solid var(--mint);
+  padding: 3px 0 3px 14px;
+  max-width: 190px;
+}
+.trilha-site .community-journal {
+  background: var(--panel-surface);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  margin: 25px 5% 70px;
+  padding: 55px 4% 60px;
+  overflow: hidden;
+}
+.trilha-site .impact-section {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  margin: 0 5% 70px;
+  padding: 25px 4% 45px;
+  overflow: visible;
+}
+/* Color reveal inside each card; its outline and position stay steady. */
+.trilha-site .design .initiative-layout .initiative {
+  filter: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.trilha-site .design .initiative-layout .initiative .initiative-copy {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+.trilha-site .design .initiative-layout .initiative .initiative-copy:after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  top: 18px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--night);
+  color: var(--cream);
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.trilha-site
+  .design
+  .initiative-layout
+  .initiative:hover
+  .initiative-copy:after,
+.trilha-site
+  .design
+  .initiative-layout
+  .initiative:focus-visible
+  .initiative-copy:after {
+  opacity: 1;
+}
+.trilha-site .design .initiative-layout .ufpb:hover .initiative-copy,
+.trilha-site .design .initiative-layout .ufpb:focus-visible .initiative-copy {
+  background: #e9eee7;
+}
+.trilha-site .design .initiative-layout .ufpe:hover .initiative-copy,
+.trilha-site .design .initiative-layout .ufpe:focus-visible .initiative-copy {
+  background: #ccd7e5;
+}
+.trilha-site .design .initiative-layout .momento:hover .initiative-copy,
+.trilha-site
+  .design
+  .initiative-layout
+  .momento:focus-visible
+  .initiative-copy {
+  background: #dfd1eb;
+}
+.trilha-site .design .initiative-layout .htp:hover .initiative-copy,
+.trilha-site .design .initiative-layout .htp:focus-visible .initiative-copy {
+  background: #7a94fd;
+  color: #000;
+}
+.trilha-site .design .initiative-layout .initiative .initiative-name {
+  padding-right: 32px;
+}
+.trilha-site .design .initiative-layout .initiative:focus-visible {
+  outline: 3px solid var(--electric);
+  outline-offset: 4px;
+}
+@media (max-width: 720px) {
+  .trilha-site .community-journal {
+    margin: 15px 4% 45px;
+    padding: 35px 6%;
+    border-radius: 14px;
+  }
+  .trilha-site .impact-section {
+    margin: 0 4% 45px;
+    padding: 15px 6% 25px;
+  }
+  .trilha-site .initiative-heading > .section-label {
+    display: block;
+    max-width: none;
+    padding: 3px 0 3px 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trilha-site .design .initiative-layout .initiative .initiative-copy,
+  .trilha-site .design .initiative-layout .initiative .initiative-copy:after {
+    transition: none;
+  }
+}
+/* Brand-led colors and centered initiative headings. */
+.trilha-site .initiative-heading {
+  display: block;
+  text-align: center;
+}
+.trilha-site .initiative-heading h2 {
+  max-width: none;
+  margin: 0 auto;
+  font-size: 46px;
+}
+.trilha-site .hackathon-heading {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 45px 0 12px;
+}
+.trilha-site .hackathon-heading .section-label {
+  color: var(--electric);
+}
+.trilha-site .hackathon-heading h2 {
+  font-size: 37px;
+  margin-top: 16px;
+  letter-spacing: -1.4px;
+}
+.trilha-site .design .initiative-layout .ufpb {
+  background: var(--cream) !important;
+}
+.trilha-site .design .initiative-layout .ufpe {
+  background: var(--sky) !important;
+}
+.trilha-site .design .initiative-layout .ufpb .campus-art {
+  background: var(--night);
+}
+.trilha-site .design .initiative-layout .ufpb .campus-trilha {
+  filter: brightness(0) invert(1);
+}
+.trilha-site .design .initiative-layout .ufpb .ufpb-badge img {
+  filter: invert(1) grayscale(1);
+  mix-blend-mode: screen;
+}
+.trilha-site .design .initiative-layout .ufpe .campus-art {
+  background: var(--sky);
+}
+.trilha-site .design .initiative-layout .ufpb:hover .initiative-copy,
+.trilha-site .design .initiative-layout .ufpb:focus-visible .initiative-copy {
+  background: var(--sky);
+  color: var(--night);
+}
+.trilha-site .design .initiative-layout .ufpe:hover .initiative-copy,
+.trilha-site .design .initiative-layout .ufpe:focus-visible .initiative-copy {
+  background: var(--electric);
+  color: var(--cream);
+}
+.trilha-site .design .initiative-layout .momento:hover .initiative-copy,
+.trilha-site
+  .design
+  .initiative-layout
+  .momento:focus-visible
+  .initiative-copy {
+  background: #523972;
+  color: #fdf4e5;
+}
+.trilha-site .design .initiative-layout .htp:hover .initiative-copy,
+.trilha-site .design .initiative-layout .htp:focus-visible .initiative-copy {
+  background: #7a94fd;
+  color: #000;
+}
+.trilha-site .design .initiative-layout .ufpe .initiative-copy:after,
+.trilha-site .design .initiative-layout .momento .initiative-copy:after {
+  background: var(--cream);
+  color: var(--night);
+}
+.trilha-site .community-journal {
+  background: var(--night);
+  color: var(--cream);
+  border-color: var(--night);
+}
+.trilha-site .community-journal .section-label,
+.trilha-site .community-journal .journal-date > span {
+  color: var(--sky);
+}
+.trilha-site .community-journal figcaption {
+  color: #fdf4e5a6;
+}
+.trilha-site .community-journal .journal-origin > p,
+.trilha-site .community-journal .journal-return > p,
+.trilha-site .community-journal header > p {
+  color: #fdf4e5cc;
+}
+.trilha-site .community-journal .journal-today {
+  color: var(--mint);
+}
+.trilha-site .community-journal .button {
+  border-color: var(--cream);
+  box-shadow: none;
+}
+.trilha-site .community-journal .button:hover {
+  box-shadow: none;
+}
+@media (max-width: 720px) {
+  .trilha-site .initiative-heading h2 {
+    font-size: 34px;
+  }
+  .trilha-site .hackathon-heading {
+    padding-top: 30px;
+  }
+  .trilha-site .hackathon-heading h2 {
+    font-size: 30px;
+  }
+  .trilha-site .hackathon-heading {
+    grid-column: 1;
+  }
+}
+/* Consistent story rows and quiet university cards. */
+.trilha-site .community-journal {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 55px;
+  row-gap: 55px;
+}
+.trilha-site .community-journal > header {
+  grid-column: 1/-1;
+  grid-row: 1;
+  padding-bottom: 0;
+  max-width: 760px;
+}
+.trilha-site .community-journal .journal-class {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: center;
+}
+.trilha-site .community-journal .journal-origin {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  padding: 0;
+}
+.trilha-site .community-journal .journal-people {
+  grid-column: 1;
+  grid-row: 3;
+  align-self: center;
+  padding: 0;
+}
+.trilha-site .community-journal .journal-return {
+  grid-column: 2;
+  grid-row: 3;
+  align-self: center;
+  padding: 0;
+}
+.trilha-site .community-journal .journal-date {
+  margin-bottom: 22px;
+}
+.trilha-site .community-journal .journal-origin p,
+.trilha-site .community-journal .journal-return p {
+  max-width: 440px;
+}
+.trilha-site .design .initiative-layout .ufpb,
+.trilha-site .design .initiative-layout .ufpe {
+  background: #fffdf8 !important;
+}
+.trilha-site .design .initiative-layout .ufpb .campus-art,
+.trilha-site .design .initiative-layout .ufpe .campus-art {
+  background: #f0f0ec;
+}
+.trilha-site .design .initiative-layout .ufpb .campus-trilha {
+  filter: none;
+}
+.trilha-site .design .initiative-layout .ufpb .ufpb-badge img {
+  filter: none;
+  mix-blend-mode: multiply;
+}
+.trilha-site .design .initiative-layout .momento:hover .initiative-copy,
+.trilha-site
+  .design
+  .initiative-layout
+  .momento:focus-visible
+  .initiative-copy {
+  background: #dfd1eb;
+  color: var(--night);
+}
+.trilha-site .design .initiative-layout .momento .initiative-copy:after {
+  background: var(--night);
+  color: var(--cream);
+}
+@media (max-width: 720px) {
+  .trilha-site .community-journal {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .trilha-site .community-journal > header {
+    grid-column: 1;
+    grid-row: 1;
+    padding-bottom: 10px;
+  }
+  .trilha-site .community-journal .journal-class {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .trilha-site .community-journal .journal-origin {
+    grid-column: 1;
+    grid-row: 3;
+    padding-bottom: 25px;
+  }
+  .trilha-site .community-journal .journal-people {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  .trilha-site .community-journal .journal-return {
+    grid-column: 1;
+    grid-row: 5;
+  }
+}
+/* Center the university lockups as a single, closely spaced pair. */
+.trilha-site .design .initiative-layout .initiative .campus-art {
+  justify-content: center;
+  gap: 18px;
+}
+@media (max-width: 720px) {
+  .trilha-site .design .initiative-layout .initiative .campus-art {
+    gap: 16px;
+  }
+}
+.trilha-site .community-journal .journal-today {
+  color: var(--cream);
+}
+/* Vivid campus colors, with university marks integrated into the surface. */
+.trilha-site .design .initiative-layout .ufpb,
+.trilha-site .design .initiative-layout .ufpb .campus-art {
+  background: var(--mint) !important;
+  color: var(--night);
+}
+.trilha-site .design .initiative-layout .ufpe,
+.trilha-site .design .initiative-layout .ufpe .campus-art {
+  background: var(--electric) !important;
+  color: var(--cream);
+}
+.trilha-site .design .initiative-layout .ufpb .university-badge {
+  mix-blend-mode: multiply;
+  background: transparent;
+}
+.trilha-site .design .initiative-layout .ufpb .ufpb-badge img {
+  filter: none;
+  mix-blend-mode: multiply;
+}
+.trilha-site .design .initiative-layout .ufpe .campus-trilha {
+  filter: brightness(0) invert(1);
+}
+.trilha-site .design .initiative-layout .ufpe .ufpe-badge img {
+  filter: none;
+  opacity: 1;
+}
+.trilha-site .design .initiative-layout .ufpb:hover .initiative-copy,
+.trilha-site .design .initiative-layout .ufpb:focus-visible .initiative-copy {
+  background: var(--mint);
+  color: var(--night);
+}
+.trilha-site .design .initiative-layout .ufpe:hover .initiative-copy,
+.trilha-site .design .initiative-layout .ufpe:focus-visible .initiative-copy {
+  background: var(--electric);
+  color: var(--cream);
+}
+.trilha-site .design .initiative-layout .ufpb:hover .initiative-art,
+.trilha-site .design .initiative-layout .ufpb:focus-visible .initiative-art,
+.trilha-site .design .initiative-layout .ufpe:hover .initiative-art,
+.trilha-site .design .initiative-layout .ufpe:focus-visible .initiative-art {
+  box-shadow: inset 0 -3px 0 currentColor;
+}
+/* Bright logo panels, neutral reading areas. */
+.trilha-site .design .initiative-layout .ufpb,
+.trilha-site .design .initiative-layout .ufpe {
+  background: #fffdf8 !important;
+  color: var(--night);
+}
+.trilha-site .design .initiative-layout .ufpb .initiative-copy,
+.trilha-site .design .initiative-layout .ufpe .initiative-copy {
+  background: #fffdf8;
+  color: var(--night);
+}
+.trilha-site .design .initiative-layout .ufpb:hover .initiative-copy,
+.trilha-site .design .initiative-layout .ufpb:focus-visible .initiative-copy,
+.trilha-site .design .initiative-layout .ufpe:hover .initiative-copy,
+.trilha-site .design .initiative-layout .ufpe:focus-visible .initiative-copy {
+  background: var(--cream);
+  color: var(--night);
+}
+.trilha-site .design .initiative-layout .ufpe .initiative-copy:after {
+  background: var(--night);
+  color: var(--cream);
+}
+.trilha-site .design .initiative-layout .ufpe .campus-art {
+  color: var(--cream);
+}
+.trilha-site .design .initiative-layout .ufpb:hover .initiative-art,
+.trilha-site .design .initiative-layout .ufpb:focus-visible .initiative-art,
+.trilha-site .design .initiative-layout .ufpe:hover .initiative-art,
+.trilha-site .design .initiative-layout .ufpe:focus-visible .initiative-art {
+  box-shadow: none;
+}
+/* White Trilha and UFPB marks on the green logo panel. */
+.trilha-site .design .initiative-layout .ufpb .campus-trilha {
+  filter: brightness(0) invert(1);
+}
+.trilha-site .design .initiative-layout .ufpb .university-badge {
+  mix-blend-mode: screen;
+}
+.trilha-site .design .initiative-layout .ufpb .ufpb-badge img {
+  filter: grayscale(1) invert(1) brightness(4);
+  mix-blend-mode: screen;
+}
+.trilha-site .design .initiative-layout .initiative .campus-art {
+  gap: 8px;
+}
+.trilha-site .design .initiative-layout .ufpb .university-badge {
+  mix-blend-mode: normal;
+}
+.trilha-site .design .initiative-layout .ufpb .ufpb-badge img {
+  filter: none;
+  mix-blend-mode: normal;
+}
+.trilha-site .design .initiative-layout .ufpb .ufpb-badge {
+  width: 42px;
+  height: 70px;
+}
+/* Taller Hack The Path banner. */
+.trilha-site .design .initiative-layout .htp {
+  min-height: 370px;
+}
+.trilha-site .design .htp .initiative-art {
+  min-height: 370px;
+}
+@media (max-width: 720px) {
+  .trilha-site .design .htp .initiative-art {
+    height: 260px;
+    min-height: 260px;
+  }
+  .trilha-site .design .initiative-layout .htp {
+    min-height: 0;
+  }
+}
+/* Matched section headings and alternating history images. */
+.trilha-site .initiative-heading h2,
+.trilha-site .hackathon-heading h2 {
+  font-size: 46px;
+  line-height: 1.12;
+  letter-spacing: -2px;
+  font-weight: 500;
+}
+.trilha-site .hackathon-heading h2 {
+  margin: 0;
+}
+.trilha-site .community-journal .journal-return {
+  grid-column: 1;
+  grid-row: 3;
+}
+.trilha-site .community-journal .journal-people {
+  grid-column: 2;
+  grid-row: 3;
+}
+@media (max-width: 720px) {
+  .trilha-site .initiative-heading h2,
+  .trilha-site .hackathon-heading h2 {
+    font-size: 34px;
+    letter-spacing: -1.5px;
+  }
+  .trilha-site .community-journal .journal-people {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  .trilha-site .community-journal .journal-return {
+    grid-column: 1;
+    grid-row: 5;
+  }
+}
+/* Full-viewport hero, with room to grow on short screens. */
+.trilha-site .neutral-controls .caderno-hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-bottom: 100px;
+}
+/* Light campus tints distinguish card copy from the page canvas. */
+.trilha-site .design .initiative-layout .ufpb .initiative-copy {
+  background: #e5f8ec;
+  color: var(--night);
+}
+.trilha-site .design .initiative-layout .ufpe .initiative-copy {
+  background: #e8edff;
+  color: var(--night);
+}
+.trilha-site .design .initiative-layout .ufpb:hover .initiative-copy,
+.trilha-site .design .initiative-layout .ufpb:focus-visible .initiative-copy {
+  background: #cef1dc;
+  color: var(--night);
+}
+.trilha-site .design .initiative-layout .ufpe:hover .initiative-copy,
+.trilha-site .design .initiative-layout .ufpe:focus-visible .initiative-copy {
+  background: #d5dfff;
+  color: var(--night);
+}
+.trilha-site .community-journal .journal-origin .journal-date {
+  font-size: clamp(34px, 4.2vw, 52px);
+  letter-spacing: -2px;
+  white-space: nowrap;
+}
+/* Shared landscape detail: the artwork responds, the card stays still. */
+.trilha-site .design .initiative-layout .campus-art {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+}
+.trilha-site .design .initiative-layout .campus-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("/community/landscape.png") center 62% / cover;
+  mix-blend-mode: luminosity;
+  opacity: 0.13;
+  pointer-events: none;
+}
+.trilha-site .design .initiative-layout .campus-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    180px circle at var(--light-x, 50%) var(--light-y, 50%),
+    #ffffff35,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.trilha-site .design .initiative-layout .initiative:hover .campus-art::after,
+.trilha-site
+  .design
+  .initiative-layout
+  .initiative:focus-visible
+  .campus-art::after {
+  opacity: 1;
+}
+.trilha-site .team-section {
+  max-width: 1120px;
+  margin: 90px auto;
+  padding: 48px;
+  background: #e8edff;
+  border-radius: 14px;
+  color: var(--night);
+}
+.trilha-site .team-section header {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 34px;
+}
+.trilha-site .team-section h2 {
+  font-size: clamp(30px, 3.5vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -1.8px;
+  margin: 16px 0 0;
+}
+.trilha-site .team-section header p,
+.trilha-site .team-directory > p {
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0;
+}
+.trilha-site .team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.trilha-site .person {
+  min-width: 0;
+  scroll-margin-top: 40px;
+}
+.trilha-site .person img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/4.5;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  background: #d8def0;
+}
+.trilha-site .person h3 {
+  font-size: 18px;
+  letter-spacing: -0.5px;
+  margin: 16px 0 5px;
+}
+.trilha-site .person p {
+  font-size: 12px;
+  margin: 0;
+  opacity: 0.75;
+}
+.trilha-site .team-section > .button,
+.trilha-site .team-directory > .button {
+  margin-top: 32px;
+}
+.trilha-site .team-directory {
+  max-width: 1120px;
+  padding: 50px 30px 80px;
+  margin: auto;
+  color: var(--night);
+}
+.trilha-site .team-back {
+  display: block;
+  margin-bottom: 55px;
+}
+.trilha-site .team-directory h1 {
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+.trilha-site .team-directory .team-grid {
+  margin: 45px 0;
+  row-gap: 40px;
+}
+@media (max-width: 720px) {
+  .trilha-site .team-section {
+    margin: 55px 20px;
+    padding: 28px 22px;
+  }
+  .trilha-site .team-section header {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .trilha-site .team-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+  }
+  .trilha-site .team-section .team-grid {
+    grid-template-columns: 1fr;
+  }
+  .trilha-site .team-section .person img {
+    aspect-ratio: 4/3;
+    object-position: center 30%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trilha-site .design .initiative-layout .campus-art::after {
+    transition: none;
+  }
+}
+/* Five leaders, equal portrait sizes and a compact rhythm. */
+.trilha-site .team-section .leadership-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+}
+.trilha-site .leadership-grid .person h3 {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.trilha-site .leadership-grid .person img {
+  aspect-ratio: 3/4;
+  object-position: center 35%;
+}
+@media (max-width: 950px) {
+  .trilha-site .team-section .leadership-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .trilha-site .team-section .leadership-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 16px;
+  }
+  .trilha-site .leadership-grid .person h3 {
+    font-size: 15px;
+  }
+}
+/* Portraits reveal their original color without moving or scaling. */
+.trilha-site .person img {
+  filter: grayscale(1);
+  transition: filter 0.4s ease;
+}
+.trilha-site .person:hover img,
+.trilha-site .person:focus-within img {
+  filter: grayscale(0);
+}
+@media (hover: none) {
+  .trilha-site .person img {
+    filter: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trilha-site .person img {
+    transition: none;
+  }
+}
+.trilha-site .person h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.trilha-site .person h3 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.trilha-site .person h3 a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+/* Momento shares the landscape texture while keeping its purple identity. */
+.trilha-site .design .initiative-layout .momento .initiative-art {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.trilha-site .design .initiative-layout .momento .initiative-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url("/community/landscape.png") center 62% / cover;
+  mix-blend-mode: luminosity;
+  opacity: 0.13;
+}
+/* The people section shares the history section's dark blue surface. */
+.trilha-site .team-section {
+  background: var(--night);
+  color: var(--cream);
+}
+.trilha-site .team-section .section-label {
+  color: var(--sky);
+}
+.trilha-site .team-section .person p {
+  opacity: 1;
+  color: #c4cbdf;
+}
+.trilha-site .team-section header p {
+  color: #d2d6e2;
+}
+.trilha-site .team-section .button {
+  color: var(--night);
+  background: var(--cream);
+}
+.trilha-site .team-section .button:hover {
+  background: var(--mint);
+}
+/* Compact branded cursor; native text and accessibility cursors stay available. */
+@media (hover: hover) and (pointer: fine) {
+  .trilha-site {
+    cursor:
+      url("/community/cursor.svg") 3 2,
+      auto;
+  }
+  .trilha-site a,
+  .trilha-site button {
+    cursor:
+      url("/community/cursor-link.svg") 3 2,
+      pointer;
+  }
+  .trilha-site input,
+  .trilha-site textarea,
+  .trilha-site [contenteditable="true"] {
+    cursor: text;
+  }
+}
+/* A quiet spotlight reveals dots on dark panels. */
+.trilha-site .community-journal,
+.trilha-site .team-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.trilha-site .community-journal::after,
+.trilha-site .team-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      #a0b5ff24 0,
+      transparent 270px
+    ),
+    radial-gradient(circle, #a0b5ff70 1px, transparent 1.4px);
+  background-size:
+    auto,
+    14px 14px;
+  mask-image: radial-gradient(
+    circle 290px at var(--spot-x, 50%) var(--spot-y, 50%),
+    #000 0,
+    transparent 100%
+  );
+  transition: opacity 0.35s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .trilha-site .community-journal.spot-active::after,
+  .trilha-site .team-section.spot-active::after {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trilha-site .community-journal::after,
+  .trilha-site .team-section::after {
+    display: none;
+  }
+}
+/* Tighter spotlight and denser dots on dark panels. */
+.trilha-site .community-journal::after,
+.trilha-site .team-section::after {
+  background:
+    radial-gradient(
+      circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      #a0b5ff24 0,
+      transparent 160px
+    ),
+    radial-gradient(circle, #a0b5ff70 0.8px, transparent 1.2px);
+  background-size:
+    auto,
+    9px 9px;
+  mask-image: radial-gradient(
+    circle 170px at var(--spot-x, 50%) var(--spot-y, 50%),
+    #000 0,
+    transparent 100%
+  );
+}
+/* Reversible experiment: the closing landscape becomes the footer itself. */
+.trilha-site .design .landscape-footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--canvas);
+  color: var(--night);
+  border-radius: 14px;
+  margin: 65px auto 24px;
+  max-width: 1120px;
+  padding: 55px 45px 230px;
+}
+.trilha-site .landscape-footer::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 240px;
+  background: url("/community/landscape.png") center 65% / cover;
+  mask-image: linear-gradient(transparent, #000 38%);
+  pointer-events: none;
+  z-index: -1;
+}
+.trilha-site .footer-invitation {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 58px;
+}
+.trilha-site .footer-invitation h2 {
+  font-size: clamp(32px, 4vw, 49px);
+  line-height: 1.15;
+  letter-spacing: -2px;
+  margin: 22px 0;
+}
+.trilha-site .footer-invitation p {
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0 0 25px;
+}
+.trilha-site .landscape-footer .footer-top {
+  border-top: 1px solid #00092820;
+  padding-top: 35px;
+  gap: 35px;
+}
+.trilha-site .landscape-footer .footer-identity img {
+  filter: brightness(0) saturate(100%);
+}
+.trilha-site .landscape-footer .footer-identity p,
+.trilha-site .landscape-footer a,
+.trilha-site .landscape-footer .section-label {
+  color: var(--night);
+}
+.trilha-site .landscape-footer .footer-bottom {
+  border-color: #00092820;
+  color: #444c60;
+}
+@media (max-width: 720px) {
+  .trilha-site .design .landscape-footer {
+    margin: 40px 20px 20px;
+    padding: 35px 24px 190px;
+  }
+  .trilha-site .landscape-footer::after {
+    height: 190px;
+  }
+  .trilha-site .footer-invitation {
+    margin-bottom: 38px;
+  }
+  .trilha-site .footer-invitation h2 {
+    letter-spacing: -1px;
+  }
+}
+.trilha-site .site-footer.landscape-footer .footer-bottom span {
+  color: #444c60;
+}
+.trilha-site .site-footer.landscape-footer .section-label {
+  color: #46536b;
+}
+.trilha-site .site-footer.landscape-footer .footer-invitation p {
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 15px;
+  line-height: 1.8;
+}
+/* Compact landscape footer: tighter groups and a higher landscape. */
+.trilha-site .design .landscape-footer {
+  padding: 34px 45px 155px;
+  margin-top: 45px;
+}
+.trilha-site .landscape-footer::after {
+  height: 205px;
+}
+.trilha-site .footer-invitation {
+  margin-bottom: 28px;
+}
+.trilha-site .footer-invitation h2 {
+  margin: 14px 0;
+}
+.trilha-site .site-footer.landscape-footer .footer-invitation p {
+  margin: 0 0 16px;
+}
+.trilha-site .landscape-footer .footer-top {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  gap: 28px;
+}
+.trilha-site .landscape-footer .footer-top nav {
+  gap: 10px;
+}
+.trilha-site .landscape-footer .footer-identity p {
+  margin: 14px 0 0;
+}
+.trilha-site .landscape-footer .footer-bottom {
+  padding-top: 16px;
+  gap: 16px;
+}
+@media (max-width: 720px) {
+  .trilha-site .design .landscape-footer {
+    padding: 28px 24px 135px;
+    margin-top: 30px;
+  }
+  .trilha-site .landscape-footer::after {
+    height: 175px;
+  }
+  .trilha-site .footer-invitation {
+    margin-bottom: 24px;
+  }
+  .trilha-site .landscape-footer .footer-top {
+    gap: 24px 18px;
+  }
+}
+/* Show the foreground path instead of cropping to the mountain tops. */
+.trilha-site .design .landscape-footer::after {
+  background-position: center bottom;
+  background-size: cover;
+  height: 240px;
+  mask-image: linear-gradient(transparent, #000 28%);
+}
+@media (max-width: 720px) {
+  .trilha-site .design .landscape-footer::after {
+    height: 190px;
+  }
+}
+/* Shorter fade keeps more of the footer landscape visible. */
+.trilha-site .design .landscape-footer::after {
+  mask-image: linear-gradient(transparent, #000 12%);
+}
+/* Footer landscape without a fade. */
+.trilha-site .design .landscape-footer::after {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+/* Render the whole landscape in normal flow, below all footer links. */
+.trilha-site .design .landscape-footer {
+  padding-bottom: 0;
+}
+.trilha-site .design .landscape-footer::after {
+  display: none;
+}
+.trilha-site .landscape-footer .footer-landscape-image {
+  display: block;
+  width: calc(100% + 90px);
+  max-width: none;
+  height: auto;
+  margin: 24px -45px 0;
+  object-fit: contain;
+}
+@media (max-width: 720px) {
+  .trilha-site .design .landscape-footer {
+    padding-bottom: 0;
+  }
+  .trilha-site .landscape-footer .footer-landscape-image {
+    width: calc(100% + 48px);
+    margin: 20px -24px 0;
+  }
+}
+/* Landscape first, footer content below it. */
+.trilha-site .design .landscape-footer {
+  padding-top: 0;
+  padding-bottom: 28px;
+}
+.trilha-site .landscape-footer .footer-landscape-image {
+  margin: 0 -45px 32px;
+}
+@media (max-width: 720px) {
+  .trilha-site .design .landscape-footer {
+    padding-top: 0;
+    padding-bottom: 24px;
+  }
+  .trilha-site .landscape-footer .footer-landscape-image {
+    margin: 0 -24px 26px;
+  }
+}
+/* Footer content over the landscape, not above or below a separate image. */
+.trilha-site .design .landscape-footer {
+  padding: 40px 45px 30px;
+  background: var(--canvas);
+  position: relative;
+  isolation: isolate;
+}
+.trilha-site .landscape-footer .footer-landscape-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: cover;
+  object-position: center bottom;
+  z-index: -2;
+}
+.trilha-site .landscape-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(253, 244, 229, 0.72);
+  z-index: -1;
+  pointer-events: none;
+}
+.trilha-site .landscape-footer .footer-invitation,
+.trilha-site .landscape-footer .footer-top,
+.trilha-site .landscape-footer .footer-bottom {
+  position: relative;
+}
+@media (max-width: 720px) {
+  .trilha-site .design .landscape-footer {
+    padding: 30px 24px 24px;
+  }
+  .trilha-site .landscape-footer .footer-landscape-image {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+/* Show the footer landscape without the light overlay. */
+.trilha-site .landscape-footer::before {
+  display: none;
+}
+/* Keep footer content high and reserve foreground landscape below it. */
+.trilha-site .design .landscape-footer {
+  padding-top: 28px;
+  padding-bottom: 230px;
+}
+.trilha-site .landscape-footer .footer-invitation {
+  margin-bottom: 24px;
+}
+@media (max-width: 720px) {
+  .trilha-site .design .landscape-footer {
+    padding-top: 24px;
+    padding-bottom: 170px;
+  }
+}
+/* Tighter footer content, more clear landscape, no separator rules. */
+.trilha-site .design .landscape-footer {
+  padding-top: 20px;
+  padding-bottom: 270px;
+}
+.trilha-site .landscape-footer .footer-invitation {
+  margin-bottom: 16px;
+}
+.trilha-site .landscape-footer .footer-invitation h2 {
+  margin: 10px 0;
+}
+.trilha-site .site-footer.landscape-footer .footer-invitation p {
+  margin-bottom: 12px;
+}
+.trilha-site .landscape-footer .footer-top {
+  border: 0;
+  padding-top: 14px;
+  padding-bottom: 16px;
+  gap: 22px;
+}
+.trilha-site .landscape-footer .footer-top nav {
+  gap: 8px;
+}
+.trilha-site .landscape-footer .footer-identity p {
+  margin-top: 10px;
+}
+.trilha-site .landscape-footer .footer-bottom {
+  border: 0;
+  padding-top: 8px;
+  gap: 12px;
+}
+@media (max-width: 720px) {
+  .trilha-site .design .landscape-footer {
+    padding-top: 18px;
+    padding-bottom: 200px;
+  }
+  .trilha-site .landscape-footer .footer-top {
+    gap: 20px 16px;
+  }
+}
+/* Full-width landscape footer with a soft transition at the top only. */
+.trilha-site .design .landscape-footer {
+  max-width: none;
+  width: 100%;
+  margin: 45px 0 0;
+  border-radius: 0;
+  padding-left: max(45px, calc((100% - 1030px) / 2));
+  padding-right: max(45px, calc((100% - 1030px) / 2));
+}
+.trilha-site .landscape-footer .footer-landscape-image {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 110px);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 110px);
+}
+@media (max-width: 720px) {
+  .trilha-site .design .landscape-footer {
+    margin: 30px 0 0;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .trilha-site .landscape-footer .footer-landscape-image {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 75px);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 75px);
+  }
+}
+/* Place the footer's final line at the bottom of the landscape. */
+.trilha-site .site-footer.landscape-footer .footer-bottom {
+  position: absolute;
+  bottom: 24px;
+  left: max(45px, calc((100% - 1030px) / 2));
+  right: max(45px, calc((100% - 1030px) / 2));
+  padding: 0;
+  color: #fff;
+}
+.trilha-site .site-footer.landscape-footer .footer-bottom span,
+.trilha-site .site-footer.landscape-footer .footer-bottom a {
+  color: #fff;
+  text-shadow: 0 1px 4px #0008;
+}
+@media (max-width: 720px) {
+  .trilha-site .site-footer.landscape-footer .footer-bottom {
+    left: 24px;
+    right: 24px;
+    bottom: 20px;
+    gap: 8px;
+  }
+}
+/* Group the closing CTA with its message, separate from footer navigation. */
+.trilha-site .site-footer.landscape-footer .footer-invitation p {
+  margin-bottom: 10px;
+}
+.trilha-site .landscape-footer .footer-invitation .button {
+  margin-top: 0;
+}
+.trilha-site .landscape-footer .footer-invitation {
+  margin-bottom: 48px;
+}
+@media (max-width: 720px) {
+  .trilha-site .landscape-footer .footer-invitation {
+    margin-bottom: 36px;
+  }
+}
+/* Navigation follows the current homepage sections. */
+.trilha-site .neutral-controls .navlinks a {
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .trilha-site .neutral-controls .nav {
+    gap: 12px;
+  }
+  .trilha-site .neutral-controls .navlinks {
+    gap: 2px;
+  }
+  .trilha-site .neutral-controls .navlinks a {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 650px) {
+  .trilha-site .neutral-controls .nav .navlinks {
+    display: flex;
+    grid-column: 1/-1;
+    grid-row: 2;
+    justify-self: center;
+    max-width: 100%;
+    gap: 0;
+  }
+  .trilha-site .neutral-controls .nav .brand,
+  .trilha-site .neutral-controls .nav .navcta {
+    grid-row: 1;
+  }
+  .trilha-site .neutral-controls .nav {
+    padding-top: 12px;
+    row-gap: 10px;
+  }
+  .trilha-site .neutral-controls .navlinks a {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .trilha-site .neutral-controls .caderno-hero {
+    padding-top: 165px;
+  }
+}
+/* Shared CTA treatment, taken from the approved hero button. */
+.trilha-site .button,
+.trilha-site .nav .navcta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 18px 25px;
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+  border: 1px solid var(--night);
+  border-radius: 30px;
+  background: var(--cream);
+  color: var(--night);
+  box-shadow: 0 3px 0 var(--night);
+  transform: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+.trilha-site .button:hover,
+.trilha-site .button:focus-visible,
+.trilha-site .nav .navcta:hover,
+.trilha-site .nav .navcta:focus-visible {
+  background: var(--mint);
+  color: var(--night);
+  border-color: var(--night);
+  box-shadow: 0 3px 0 var(--night);
+  transform: none;
+}
+.trilha-site .nav .navcta {
+  padding: 12px 18px;
+  font-size: 12px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .trilha-site .button,
+  .trilha-site .nav .navcta {
+    transition: none;
+  }
+}
+/* Initiative cards echo the hero CTA's outlined, solid-shadow treatment. */
+.trilha-site .design .initiative-layout .initiative {
+  border: 1px solid var(--night);
+  box-shadow: 0 4px 0 var(--night) !important;
+  transform: none !important;
+}
+.trilha-site .design .initiative-layout .initiative:hover,
+.trilha-site .design .initiative-layout .initiative:focus-visible {
+  box-shadow: 0 4px 0 var(--night) !important;
+  transform: none !important;
+}
+/* Test cards with the solid shadow only, without an outline. */
+.trilha-site .design .initiative-layout .initiative {
+  border-color: transparent;
+}
+
+/* Reset inherited legacy typography only inside the new pages. */
+html:has(.trilha-site) {
+  scroll-padding-top: 90px;
+}
+body:has(.trilha-site)::before {
+  display: none;
+}
+.trilha-site {
+  line-height: normal;
+  position: relative;
+  font-feature-settings: normal;
+  --font-body: var(--font-poppins), sans-serif;
+  --font-display: var(--font-space-grotesk), sans-serif;
+}
+.trilha-site .eyebrow {
+  padding: 0;
+  border: 0;
+  background: none;
+  text-transform: none;
+}
+.trilha-site img {
+  max-width: 100%;
+}
+.trilha-site .campus-materials-link {
+  display: block;
+  padding: 110px 6% 20px;
+  background: var(--canvas);
+}
+
+.trilha-site .arrow-icon{display:inline-block;vertical-align:middle;flex-shrink:0}
+.trilha-site .design .initiative-layout .initiative .initiative-copy:after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fdf4e5' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M7 7h10v10'/%3E%3C/svg%3E");background-size:18px 18px;background-position:center;background-repeat:no-repeat}
+
+/* A transparent border still exposes the banner's black background. */
+.trilha-site .design .initiative-layout .initiative.htp {
+  border: 0;
+}
+
+/* Swap the artwork's light and dark tones without moving the banner. */
+.trilha-site .design .htp .initiative-art {
+  transition: background-color 300ms ease;
+}
+.trilha-site .design .htp .htp-art,
+.trilha-site .design .htp .htp-wordmark {
+  transition: filter 300ms ease;
+}
+.trilha-site .design .htp:is(:hover, :focus-visible) .initiative-art {
+  background-color: #000;
+}
+.trilha-site .design .htp:is(:hover, :focus-visible) .htp-wordmark {
+  filter: invert(1);
+}
+.trilha-site .design .htp:is(:hover, :focus-visible) .htp-art {
+  filter: invert(1) hue-rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .trilha-site .design .htp .initiative-art,
+  .trilha-site .design .htp .htp-art,
+  .trilha-site .design .htp .htp-wordmark {
+    transition: none;
+  }
+}
+
+/* Reversible background studies; the comparison controls only appear locally. */
+.trilha-site .umbrella-intro,
+.trilha-site .initiatives-wrap,
+.trilha-site .impact-section { position: relative; }
+.trilha-site .ambient-details { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:2; border-radius:inherit; }
+.trilha-site .ambient-mark { position:absolute; width:150px; color:#1c4ae5; }
+.trilha-site .ambient-mark-0 { left:-52px; top:13%; transform:rotate(-19deg); }
+.trilha-site .ambient-mark-1 { right:-50px; bottom:8%; transform:rotate(17deg); }
+.trilha-site .ambient-mark img,.trilha-site .ambient-mark svg { width:100%; height:auto; display:block; }
+.trilha-site .ambient-1 { opacity:.11; mix-blend-mode:multiply; }
+.trilha-site .ambient-2 { opacity:.12; }
+.trilha-site .ambient-2 .ambient-mark { width:210px; color:#80b7de; }
+.trilha-site .ambient-2 .ambient-mark-0 { transform:rotate(-5deg); left:-80px; }
+.trilha-site .ambient-2 .ambient-mark-1 { transform:rotate(5deg); right:-80px; }
+.trilha-site .ambient-3 { opacity:.14; }
+.trilha-site .ambient-3 .ambient-mark { width:110px; }
+.trilha-site .background-study { position:fixed; z-index:1000; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:5px; align-items:center; padding:8px; border-radius:12px; background:#000928; color:white; box-shadow:0 4px 20px #00092825; font:12px Arial,sans-serif; white-space:nowrap; }
+.trilha-site .background-study span { padding:0 8px; }
+.trilha-site .background-study button { border:0; padding:9px 11px; border-radius:6px; background:transparent; color:white; cursor:pointer; }
+.trilha-site .background-study button[aria-pressed=true] { background:#fdf4e5; color:#000928; }
+@media(max-width:600px) {
+ .trilha-site .ambient-mark { width:100px; }
+ .trilha-site .ambient-details { opacity:.07; }
+ .trilha-site .background-study { gap:1px; max-width:calc(100vw - 16px); }
+ .trilha-site .background-study span { display:none; }
+ .trilha-site .background-study button { padding:8px; font-size:11px; }
+}
+
+/* One full-width decoration layer, independent of section padding and clips. */
+.trilha-site .design > main { position:relative; }
+.trilha-site .design > main > .ambient-details {
+  top:100svh;
+  bottom:0;
+  left:0;
+  right:0;
+  overflow:visible;
+  border-radius:0;
+}
+.trilha-site .ambient-mark { width:116px; }
+.trilha-site .ambient-mark-0 { left:12px; bottom:auto; }
+.trilha-site .ambient-mark-1 { right:12px; bottom:auto; }
+.trilha-site .ambient-2 { opacity:.55; }
+.trilha-site .ambient-2 .ambient-mark { width:170px; transform:none !important; }
+.trilha-site .ambient-2 .ambient-mark-0 { left:6px; }
+.trilha-site .ambient-2 .ambient-mark-1 { right:6px; }
+@media(max-width:600px) {
+ .trilha-site .ambient-mark { width:68px; }
+ .trilha-site .ambient-mark-0 { left:8px; }
+ .trilha-site .ambient-mark-1 { right:8px; }
+ .trilha-site .ambient-2 .ambient-mark { width:100px; }
+ .trilha-site .ambient-2 { opacity:.3; }
+}
+
+/* Decorations sit behind content, never over initiative cards or panels. */
+.trilha-site .design > main { isolation:isolate; }
+.trilha-site .design > main > .ambient-details { z-index:-1; }
+.trilha-site .design > main > .ambient-details { z-index:0; }
+.trilha-site .initiative-layout .initiative,
+.trilha-site .community-journal,
+.trilha-site .team-section,
+.trilha-site .umbrella-intro > h2,
+.trilha-site .umbrella-intro > p,
+.trilha-site .initiative-heading,
+.trilha-site .hackathon-heading {
+  position:relative;
+  z-index:1;
+}
+.trilha-site .ambient-2 .ambient-mark { width:260px; }
+.trilha-site .ambient-2 .ambient-mark:nth-child(even) img { transform:scaleX(-1); }
+.trilha-site .ambient-2 .ambient-mark:nth-child(3n) { width:190px; }
+@media(max-width:600px) { .trilha-site .ambient-2 .ambient-mark { width:130px; } .trilha-site .ambient-2 .ambient-mark:nth-child(3n) { width:100px; } }
+/* Raise whole section stacking contexts above the decorative layer. */
+.trilha-site .design > main > section,
+.trilha-site .design > main > .caderno-hero {
+  position:relative;
+  z-index:1;
+}
+
+/* Keep the canvas visible through open sections; cards retain solid surfaces. */
+.trilha-site .design > main > .initiatives-wrap,
+.trilha-site .design > main > .umbrella-intro,
+.trilha-site .design > main > .impact-section {
+  background:transparent;
+}
+
+/* Pixel clusters revealed by the existing cursor spotlight. */
+.trilha-site .community-journal::after,
+.trilha-site .team-section::after {
+  background-image:
+    radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 50%), #a0b5ff24 0, transparent 160px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='%23a0b5ff' fill-opacity='.42'%3E%3Cpath d='M2 2h3v3H2zM14 2h3v3h-3zM26 14h3v3h-3zM38 2h3v3h-3zM2 26h3v3H2zM14 38h3v3h-3zM38 38h3v3h-3z'/%3E%3C/g%3E%3Cg fill='%23a0b5ff' fill-opacity='.25'%3E%3Cpath d='M14 14h6v3h-3v3h-3zM32 26h9v3h-6v3h-3zM2 38h3v6H2z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:auto,48px 48px;
+}
+
+/* Compact pixel spotlight around the pointer. */
+.trilha-site .community-journal::after,
+.trilha-site .team-section::after {
+  mask-image:radial-gradient(circle 75px at var(--spot-x, 50%) var(--spot-y, 50%), #000 0, transparent 100%);
+}
+
+/* Fine, evenly spaced pixels with a soft blue highlight. */
+.trilha-site .community-journal::after,
+.trilha-site .team-section::after {
+  background-image:
+    radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 50%), #a0b5ff20 0, #4774ff0d 32px, transparent 75px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23b9caff' fill-opacity='.32' d='M2 2h2v2H2zM14 14h2v2h-2z'/%3E%3Cpath fill='%237e9aff' fill-opacity='.16' d='M14 2h2v2h-2zM2 14h2v2H2z'/%3E%3C/svg%3E");
+  background-size:auto,24px 24px;
+  mask-image:radial-gradient(circle 75px at var(--spot-x, 50%) var(--spot-y, 50%), #000 0, #000b 25%, transparent 100%);
+  transition:opacity 450ms ease;
+}
+
+.trilha-site .landscape-footer .footer-identity p {
+  font-family:var(--font-poppins), "Poppins", sans-serif;
+  font-weight:600;
+}
+.trilha-site .landscape-footer .footer-invitation {
+  margin-bottom:28px;
+}
+@media(max-width:720px) {
+  .trilha-site .landscape-footer .footer-invitation { margin-bottom:24px; }
+}
+
+.trilha-site .landscape-footer .footer-top {
+  grid-template-columns:1fr 1.2fr 1fr;
+  grid-template-areas:"explore identity initiatives";
+}
+.trilha-site .landscape-footer .footer-identity {
+  grid-area:identity;
+  text-align:center;
+}
+.trilha-site .landscape-footer .footer-top > nav:first-of-type { grid-area:explore; }
+.trilha-site .landscape-footer .footer-top > nav:last-of-type { grid-area:initiatives; justify-self:end; }
+@media(max-width:720px) {
+  .trilha-site .landscape-footer .footer-top {
+    grid-template-columns:1fr 1fr;
+    grid-template-areas:"identity identity" "explore initiatives";
+  }
+}
+
+.trilha-site .landscape-footer .footer-top {
+  max-width:850px;
+  margin-inline:auto;
+  grid-template-columns:1fr 1.15fr 1fr;
+  column-gap:32px;
+}
+.trilha-site .landscape-footer .footer-identity p {
+  font-size:22px;
+  line-height:1.4;
+  letter-spacing:-.5px;
+}
+@media(max-width:720px) {
+  .trilha-site .landscape-footer .footer-top {
+    grid-template-columns:1fr 1fr;
+    column-gap:20px;
+  }
+  .trilha-site .landscape-footer .footer-identity p { font-size:20px; }
+}
+
+.trilha-site .landscape-footer .footer-top nav > .section-label {
+  font-family:var(--font-poppins), "Poppins", sans-serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:2px;
+  color:#52617b;
+  margin-bottom:12px;
+}
+.trilha-site .landscape-footer .footer-invitation { margin-bottom:8px; }
+.trilha-site .landscape-footer .footer-identity p {
+  font-size:18px;
+  line-height:1.45;
+  margin-top:8px;
+}
+.trilha-site .landscape-footer .footer-identity img {
+  width:64px;
+  height:46px;
+}
+
+/* Separate the invitation from footer navigation. */
+.trilha-site .landscape-footer .footer-invitation { margin-bottom:32px; }
+
+/* Shared homepage panel edges. */
+.trilha-site .design > main > .team-section { width:auto; max-width:none; margin-inline:5%; }
+.trilha-site .network-page,.trilha-site .story-redesign { max-width:1280px; padding:32px 5% 90px; margin:auto; }
+.trilha-site .network-page > h1,.trilha-site .story-redesign header h1 { font-family:var(--font-poppins),sans-serif; font-size:clamp(36px,5vw,64px); line-height:1.12; letter-spacing:-2px; max-width:950px; }
+.trilha-site .network-page > .section-label { display:block; margin-top:64px; }
+.trilha-site .network-page > p { max-width:640px; }
+.trilha-site .people-network { margin:60px 0 90px; padding:40px 24px; background:var(--night); border-radius:14px; color:var(--cream); }
+.trilha-site .network-root { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.trilha-site .network-root img { width:65px; filter:brightness(0) invert(1); }
+.trilha-site .network-root span { font-size:24px; font-weight:600; }
+.trilha-site .people-network small { display:block; font-size:12px; opacity:.7; }
+.trilha-site .network-president { display:flex; align-items:center; gap:14px; width:max-content; max-width:100%; margin:32px auto 48px; padding:14px 20px; border:1px solid #a0b5ff50; border-radius:8px; position:relative; }
+.trilha-site .network-president:before { content:""; position:absolute; height:32px; width:1px; background:#a0b5ff60; top:-33px; left:50%; }
+.trilha-site .network-president img { width:48px; height:48px; object-fit:cover; border-radius:6px; }
+.trilha-site .network-branches { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; position:relative; }
+.trilha-site .network-branches:before { content:""; position:absolute; top:-24px; left:12%; right:12%; height:1px; background:#a0b5ff60; }
+.trilha-site .network-branches:after { content:""; position:absolute; top:-48px; left:50%; width:1px; height:24px; background:#a0b5ff60; }
+.trilha-site .network-branch { padding:22px 16px; border-radius:8px; background:#14234a; position:relative; }
+.trilha-site .network-branch:before { content:""; position:absolute; left:50%; top:-24px; width:1px; height:24px; background:#a0b5ff60; }
+.trilha-site .network-branch h2 { font-size:20px; letter-spacing:-.6px; margin:12px 0 20px; }
+.trilha-site .network-branch p { font-size:13px; line-height:1.7; }
+.trilha-site .network-branch .section-label { font-size:9px; color:#a0b5ff; }
+.trilha-site .network-branch a { display:flex; gap:10px; align-items:center; font-size:13px; padding:8px 0; }
+.trilha-site .network-branch a:hover,.trilha-site .network-president:hover { color:#a0b5ff; }
+.trilha-site .network-branch img { width:36px; height:42px; object-fit:cover; border-radius:4px; }
+.trilha-site .branch-momento { background:#493665; }.trilha-site .branch-campus { background:#123b37; }.trilha-site .branch-ufpe { background:#183783; }
+.trilha-site .directory-heading { margin-bottom:30px; max-width:620px; }
+.trilha-site .directory-heading h2 { font-size:36px; margin:12px 0; letter-spacing:-1px; }
+.trilha-site .directory-heading p { font-size:14px; line-height:1.8; }
+.trilha-site .network-page .team-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:36px 24px; margin-bottom:60px; }
+.trilha-site .network-page .person h3 { font-size:16px; }
+.trilha-site .network-page .person p { font-size:12px; }
+.trilha-site .network-page .person:target { outline:2px solid var(--electric); outline-offset:10px; border-radius:8px; }
+.trilha-site .story-redesign > header { padding:65px 0 50px; }
+.trilha-site .story-redesign > header > p { max-width:620px; font-size:18px; line-height:1.8; }
+.trilha-site .story-jumps { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+.trilha-site .story-jumps a { padding:12px 18px; border:1px solid #00092825; border-radius:30px; font-size:13px; }
+.trilha-site .story-jumps a:hover { background:#e8edff; }
+.trilha-site .story-redesign .history-chapter { display:grid; grid-template-columns:1fr 1fr; gap:24px 48px; max-width:none; padding:50px 0; margin:0; border-top:1px solid #00092820; scroll-margin-top:24px; }
+.trilha-site .story-redesign .history-chapter > .section-label,.trilha-site .story-redesign .history-chapter > h2 { grid-column:1/-1; }
+.trilha-site .story-redesign .history-chapter h2 { font-family:var(--font-poppins),sans-serif; font-size:clamp(28px,3vw,40px); margin:0; letter-spacing:-1px; }
+.trilha-site .story-redesign .history-chapter p { font-size:15px; line-height:1.9; margin:0; }
+.trilha-site .story-redesign .history-chapter figure { grid-column:1/-1; margin:12px 0; }
+.trilha-site .story-redesign .history-chapter img { width:100%; max-height:520px; object-fit:cover; border-radius:10px; }
+.trilha-site .story-redesign #comunidade { background:var(--night); color:var(--cream); border:0; padding:40px; border-radius:14px; margin:35px 0; }
+.trilha-site .story-redesign #comunidade .section-label { color:var(--sky); }
+.trilha-site .story-redesign .history-chapter .button { justify-self:start; align-self:start; }
+@media(max-width:720px) {
+ .trilha-site .design > main > .team-section { margin-inline:4%; }
+ .trilha-site .network-branches { grid-template-columns:1fr 1fr; gap:24px 16px; }
+ .trilha-site .network-branches:before,.trilha-site .network-branches:after,.trilha-site .network-branch:before { display:none; }
+ .trilha-site .network-page .team-grid { grid-template-columns:1fr 1fr; gap:30px 16px; }
+ .trilha-site .people-network { padding:30px 16px; }
+ .trilha-site .story-redesign .history-chapter { grid-template-columns:1fr; gap:20px; }
+ .trilha-site .story-redesign #comunidade { padding:28px; }
+}
+
+/* People first: a portrait map with initiative highlighting. */
+.trilha-site .network-page > h1 { text-align:left; margin:20px 0 24px; max-width:780px; font-weight:600; }
+.trilha-site .people-filters { display:flex; flex-wrap:wrap; gap:10px; margin:36px 0 64px; }
+.trilha-site .people-filters button { font:inherit; font-size:14px; border:1px solid #00092820; background:transparent; color:var(--night); border-radius:30px; padding:12px 22px; cursor:pointer; }
+.trilha-site .people-filters button[aria-pressed=true] { background:var(--night); color:var(--cream); box-shadow:0 3px 0 #a0b5ff; }
+.trilha-site .people-map-intro { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:30px; }
+.trilha-site .people-map-intro p { font-size:13px; color:#52617b; }
+.trilha-site .network-page .people-map { grid-template-columns:repeat(4,minmax(0,1fr)); gap:44px 28px; }
+.trilha-site .people-map .person { transition:opacity 250ms ease; }
+.trilha-site .people-map .person img { aspect-ratio:4/5; border-radius:12px; filter:grayscale(1); transition:filter 300ms ease; }
+.trilha-site .people-map .person:hover img,.trilha-site .people-map .person:focus-within img { filter:none; }
+.trilha-site .people-map .person:nth-child(4n+2),.trilha-site .people-map .person:nth-child(4n+4) { margin-top:38px; }
+.trilha-site .people-map[data-group="Trilha"] .person:not([data-initiative="Trilha"]),
+.trilha-site .people-map[data-group="Momento"] .person:not([data-initiative="Momento"]),
+.trilha-site .people-map[data-group="Hack The Path"] .person:not([data-initiative="Hack The Path"]) { opacity:.18; }
+.trilha-site .people-map[data-group="Trilha"] .person[data-initiative="Trilha"] img,
+.trilha-site .people-map[data-group="Momento"] .person[data-initiative="Momento"] img,
+.trilha-site .people-map[data-group="Hack The Path"] .person[data-initiative="Hack The Path"] img { filter:none; }
+@media(max-width:720px) {
+ .trilha-site .network-page .people-map { grid-template-columns:1fr 1fr; gap:28px 18px; }
+ .trilha-site .people-map-intro { display:block; }
+ .trilha-site .people-filters { margin-bottom:36px; }
+ .trilha-site .people-filters button { padding:10px 16px; }
+ .trilha-site .people-map .person:nth-child(even) { margin-top:28px; }
+}
+@media(prefers-reduced-motion:reduce) { .trilha-site .people-map .person,.trilha-site .people-map .person img { transition:none; } }
+
+/* History follows a visual trail, sharing the homepage's landscape and footer. */
+.trilha-site .story-journey { max-width:none; padding:28px 5% 90px; overflow:hidden; }
+.trilha-site .story-journey .history-nav { max-width:1200px; margin:auto; }
+.trilha-site .story-journey .journey-hero { position:relative; text-align:center; padding:90px 0 70px; isolation:isolate; }
+.trilha-site .story-journey .journey-hero h1 { margin:22px auto; max-width:900px; font-size:clamp(40px,6vw,78px); font-weight:600; }
+.trilha-site .story-journey .journey-hero > p { margin:0 auto; }
+.trilha-site .journey-hero .story-jumps { justify-content:center; }
+.trilha-site .journey-cloud { position:absolute; width:380px; right:-130px; top:30%; opacity:.55; z-index:-1; }
+.trilha-site .journey-photo { max-width:1120px; margin:0 auto 80px; position:relative; }
+.trilha-site .journey-photo img { width:100%; height:500px; object-fit:cover; object-position:center 48%; border-radius:12px; }
+.trilha-site .journey-photo span { position:absolute; bottom:24px; left:24px; background:var(--cream); padding:12px 20px; border-radius:30px; font-size:13px; }
+.trilha-site .story-journey .history-chapter { max-width:1120px; margin:0 auto; padding:55px 0 75px; border-top:0; position:relative; }
+.trilha-site .story-journey .history-chapter > .section-label { color:var(--electric); }
+.trilha-site .story-journey #primeira-aula { padding-left:8%; border-left:2px solid #a0b5ff60; }
+.trilha-site .story-journey #primeira-aula h2 { font-size:clamp(36px,4vw,52px); }
+.trilha-site .story-journey #comunidade { padding:60px; margin:35px auto 90px; background:var(--night); overflow:hidden; }
+.trilha-site .story-journey #comunidade h2 { max-width:750px; font-size:clamp(30px,4vw,48px); }
+.trilha-site .story-journey #comunidade .section-label { color:var(--sky); }
+.trilha-site .journey-cycle { grid-column:1/-1; display:flex; flex-wrap:wrap; gap:12px; padding:12px 0 22px; }
+.trilha-site .journey-cycle span { padding:14px 24px; border:1px solid #a0b5ff55; border-radius:6px; color:var(--sky); font-family:var(--font-poppins),sans-serif; font-size:18px; }
+.trilha-site .journey-cycle span:nth-child(2) { background:#1c4ae5; color:white; }
+.trilha-site .story-journey #hoje h2 { font-size:clamp(34px,4vw,52px); }
+.trilha-site .story-journey #hoje figure { margin-top:25px; }
+@media(max-width:720px) {
+ .trilha-site .story-journey .journey-hero { padding:55px 0 40px; }
+ .trilha-site .journey-photo img { height:320px; }
+ .trilha-site .journey-photo { margin-bottom:40px; }
+ .trilha-site .story-journey #comunidade { padding:30px 24px; margin-bottom:50px; }
+ .trilha-site .journey-cycle span { font-size:13px; padding:10px 14px; }
+ .trilha-site .journey-cloud { width:240px; }
+}
+
+/* Full-card color swaps, echoing the hackathon banner. */
+.trilha-site .design .initiative-layout .ufpb .initiative-art,
+.trilha-site .design .initiative-layout .ufpe .initiative-art,
+.trilha-site .design .initiative-layout .momento .initiative-art {
+  transition:background-color 300ms ease;
+}
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .initiative-art,
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .initiative-art {
+  background-color:var(--night);
+}
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .initiative-copy {
+  background:var(--mint);
+  color:var(--night);
+}
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .initiative-copy {
+  background:var(--electric);
+  color:white;
+}
+.trilha-site .design .initiative-layout .momento:is(:hover,:focus-visible) .initiative-art {
+  background-color:#ece5f2;
+}
+.trilha-site .design .initiative-layout .momento:is(:hover,:focus-visible) .initiative-art img {
+  filter:brightness(0) saturate(100%) invert(22%) sepia(20%) saturate(1734%) hue-rotate(225deg) brightness(92%) contrast(91%);
+}
+.trilha-site .design .initiative-layout .momento .initiative-art img { transition:filter 300ms ease; }
+.trilha-site .design .initiative-layout .momento:is(:hover,:focus-visible) .initiative-copy {
+  background:#523972;
+  color:#fdf4e5;
+}
+@media(prefers-reduced-motion:reduce) {
+ .trilha-site .design .initiative-layout .initiative .initiative-art,
+ .trilha-site .design .initiative-layout .momento .initiative-art img { transition:none; }
+}
+
+/* Render the vector symbol directly, without enlarging a wide artboard. */
+.trilha-site .design .momento .momento-wordmark {
+  width:80px;
+  height:auto;
+  max-width:none;
+  max-height:none;
+  transform:none;
+}
+
+/* Match the nav surfaces and restore the tactile CTA press. */
+.trilha-site .neutral-controls .nav .navlinks {
+  box-sizing:border-box;
+  height:48px;
+  align-items:center;
+}
+.trilha-site .neutral-controls .nav .navcta {
+  box-sizing:border-box;
+  height:45px;
+  padding:0 18px;
+  background:rgba(253,244,229,.36);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.trilha-site .neutral-controls .nav .navcta,
+.trilha-site .neutral-controls .caderno-hero .button {
+  transition:transform 160ms ease,box-shadow 160ms ease,background-color 200ms ease;
+}
+.trilha-site .neutral-controls .nav .navcta:hover,
+.trilha-site .neutral-controls .caderno-hero .button:hover {
+  transform:translateY(2px);
+  box-shadow:0 1px 0 var(--night);
+  background:var(--mint);
+}
+.trilha-site .neutral-controls .nav .navcta:active,
+.trilha-site .neutral-controls .caderno-hero .button:active {
+  transform:translateY(3px);
+  box-shadow:0 0 0 var(--night);
+}
+@media(prefers-reduced-motion:reduce) {
+ .trilha-site .neutral-controls .nav .navcta,.trilha-site .neutral-controls .caderno-hero .button { transition:none; }
+}
+
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .campus-art,
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .campus-art { background:var(--night) !important; }
+.trilha-site .design .initiative-layout .momento .initiative-art img { transition:none; }
+.trilha-site .landing-invitation { padding:50px 5% 0; text-align:center; background:var(--canvas); }
+.trilha-site .landing-invitation h2 { font-family:var(--font-poppins),sans-serif; font-size:clamp(32px,4vw,48px); line-height:1.2; letter-spacing:-1.5px; margin:20px auto; }
+.trilha-site .landing-invitation p { font-size:16px; line-height:1.8; margin-bottom:16px; }
+.trilha-site .landing-invitation .footer-invitation { margin-bottom:0; }
+.trilha-site .founders-section { padding-top:45px; margin-bottom:60px; }
+.trilha-site .founders-section h2 { font-size:36px; margin:16px 0 30px; }
+.trilha-site .founders-section .team-grid { grid-template-columns:repeat(5,minmax(0,1fr)); }
+.trilha-site .story-journey .journey-photo { max-width:720px; margin-bottom:45px; }
+.trilha-site .story-journey .journey-photo img { height:320px; }
+.trilha-site .cohort-history { max-width:1120px; margin:35px auto 70px; }
+.trilha-site .cohort-history > h2 { font-size:clamp(28px,3.5vw,44px); letter-spacing:-1px; }
+.trilha-site .cohort-history > p { max-width:700px; line-height:1.9; }
+.trilha-site .history-cohort { display:grid; grid-template-columns:280px 1fr; gap:35px; align-items:center; padding:30px 0; border-bottom:1px solid #00092818; }
+.trilha-site .history-cohort img { width:100%; height:190px; object-fit:cover; border-radius:8px; }
+.trilha-site .history-cohort h3 { font-size:25px; margin:12px 0; }
+.trilha-site .history-cohort p { line-height:1.8; }
+.trilha-site .history-cohort a { display:inline-flex; gap:12px; align-items:center; font-size:14px; color:var(--electric); margin-top:12px; }
+.trilha-site .story-journey #hoje figure { max-width:650px; }
+.trilha-site .story-journey #hoje figure img { max-height:320px; }
+@media(max-width:720px) {
+ .trilha-site .founders-section .team-grid { grid-template-columns:1fr 1fr; }
+ .trilha-site .history-cohort { grid-template-columns:1fr; gap:18px; }
+}
+
+/* Exchange each campus card's top and bottom colors. */
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .campus-art {
+  background:#e5f8ec !important;
+}
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .campus-art {
+  background:#e8edff !important;
+}
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .campus-lockup img,
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .campus-lockup img {
+  filter:brightness(0) saturate(100%) invert(4%) sepia(57%) saturate(3880%) hue-rotate(220deg) brightness(92%) contrast(106%);
+}
+
+/* Match the simple founders grid throughout the team directory. */
+.trilha-site .network-page .people-map {
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:36px 24px;
+}
+.trilha-site .network-page .people-map .person:nth-child(n) { margin-top:0; }
+@media(max-width:1000px) and (min-width:721px) {
+  .trilha-site .network-page .people-map,
+  .trilha-site .founders-section .team-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:720px) {
+  .trilha-site .network-page .people-map { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 18px; }
+}
+
+/* All action buttons share the approved hero's surface and press. */
+.trilha-site .button.button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:25px;
+  padding:18px 25px;
+  font-family:var(--font-poppins),sans-serif;
+  font-size:14px;
+  font-weight:500;
+  line-height:1.5;
+  color:var(--night);
+  background:var(--cream);
+  border:1px solid var(--night);
+  border-radius:30px;
+  box-shadow:0 3px 0 var(--night);
+  text-decoration:none;
+  transition:transform 160ms ease,box-shadow 160ms ease,background-color 200ms ease;
+}
+.trilha-site .button.button:is(:hover,:focus-visible) {
+  background:var(--mint);
+  color:var(--night);
+  transform:translateY(2px);
+  box-shadow:0 1px 0 var(--night);
+}
+.trilha-site .button.button:active { transform:translateY(3px); box-shadow:none; }
+.trilha-site .design .initiative-layout .ufpb:is(:hover,:focus-visible) .university-badge img,
+.trilha-site .design .initiative-layout .ufpe:is(:hover,:focus-visible) .university-badge img {
+  filter:brightness(0) saturate(100%) invert(4%) sepia(57%) saturate(3880%) hue-rotate(220deg) brightness(92%) contrast(106%);
+}
+@media(prefers-reduced-motion:reduce) { .trilha-site .button.button { transition:none; } }
+
+.trilha-site .quiet-arrival,.trilha-site .lost-path {
+  min-height:100svh; display:grid; place-items:center; position:relative;
+  overflow:hidden; padding:60px 24px; text-align:center; background:var(--canvas);
+}
+.trilha-site .arrival-content { position:relative; z-index:1; max-width:760px; }
+.trilha-site .arrival-logo { display:block; margin:0 auto 28px; }
+.trilha-site .arrival-content .section-label { display:block; font-size:11px; letter-spacing:2px; }
+.trilha-site .arrival-content h1 { font-family:var(--font-poppins),sans-serif; font-size:clamp(44px,6vw,76px); font-weight:600; letter-spacing:-2.5px; line-height:1.12; margin:24px 0; }
+.trilha-site .arrival-content h1 em { font-style:normal; color:var(--electric); }
+.trilha-site .arrival-content p { font-size:16px; line-height:1.8; margin:0 0 30px; }
+.trilha-site .arrival-cloud { position:absolute; width:380px; opacity:.5; pointer-events:none; }
+.trilha-site .arrival-cloud-left { left:-90px; top:22%; }
+.trilha-site .arrival-cloud-right { right:-90px; bottom:18%; }
+.trilha-site .lost-path { background:url('/community/landscape.png') center bottom / cover no-repeat; padding-bottom:22svh; }
+@media(max-width:600px) {
+ .trilha-site .arrival-content h1 { letter-spacing:-1.5px; }
+ .trilha-site .arrival-cloud { width:240px; opacity:.35; }
+ .trilha-site .lost-path { background-position:center bottom; }
+}
+
+/* Pressable initiative cards, with no transparent border seam. */
+.trilha-site .design .initiative-layout .initiative {
+  border:0 !important;
+  transition:transform 160ms ease,box-shadow 160ms ease;
+}
+.trilha-site .design .initiative-layout .initiative:is(:hover,:focus-visible) {
+  transform:translateY(2px) !important;
+  box-shadow:0 2px 0 var(--night) !important;
+}
+.trilha-site .design .initiative-layout .initiative:active {
+  transform:translateY(4px) !important;
+  box-shadow:0 0 0 var(--night) !important;
+}
+@media(prefers-reduced-motion:reduce) {
+ .trilha-site .design .initiative-layout .initiative { transition:none; }
+}
+
+.trilha-site .button.button:not(:hover):not(:active),
+.trilha-site .nav .navcta:not(:hover):not(:active) { background:#fffbf4; }
