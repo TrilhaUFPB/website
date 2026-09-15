@@ -154,10 +154,11 @@ export default function CommunityHome() {
                   <span className="initiative-scope">
                     Hackathon · Fevereiro de 2027
                   </span>
-                  <h3>Ideias encontram propósito.</h3>
+                  <h3>O próximo grande desafio começa no Nordeste.</h3>
                   <p>
-                    Um encontro para trocar experiências, formar equipes e
-                    transformar ideias em projetos.
+                    Estamos construindo o maior hackathon do Nordeste. Reúna sua
+                    equipe, coloque suas habilidades à prova e faça parte dessa
+                    primeira edição.
                   </p>
                 </div>
               </Link>
