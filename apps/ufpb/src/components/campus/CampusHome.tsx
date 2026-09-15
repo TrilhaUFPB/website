@@ -37,6 +37,9 @@ export default function CampusHome() {
           <Link className="campus-button" href="/aulas">
             Acompanhe as aulas <ArrowUpRight size={17} />
           </Link>
+          <a className="campus-main-site" href={process.env.NEXT_PUBLIC_TRILHA_URL || "https://otrilha.com"}>
+            Conheça o Trilha <ArrowUpRight size={16} />
+          </a>
         </nav>
         <main>
           <section className="campus-hero" aria-labelledby="campus-title">

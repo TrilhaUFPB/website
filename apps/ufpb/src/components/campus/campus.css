@@ -339,3 +339,6 @@ body:has(.campus-home)::before {
     width: calc(100% - 40px);
   }
 }
+.campus-main-site{display:inline-flex;align-items:center;gap:6px;font-size:12px;white-space:nowrap}.campus-main-site:hover{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:1100px){.campus-nav{flex-wrap:wrap}.campus-main-site{margin-left:auto}}
+@media(max-width:600px){.campus-main-site{flex-basis:100%;justify-content:flex-end}}
