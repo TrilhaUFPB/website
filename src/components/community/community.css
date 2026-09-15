@@ -353,11 +353,11 @@
 }
 /* 01: open navigation, Poppins-led headline, blue CTA, larger two-column cards. */
 /* 02: framed navigation, compact strong type, square buttons, ordered program rows. */
-@media (min-width: 1600px) {
-  .trilha-site .design {
-    max-width: 1600px;
-    margin: auto;
-  }
+/* Backgrounds reach both viewport edges, including on wide desktop screens. */
+.trilha-site .design {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
 }
 @media (max-width: 1000px) {
   .trilha-site .nav {
