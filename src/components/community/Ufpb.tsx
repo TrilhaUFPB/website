@@ -1,3 +1,4 @@
+import ArrowIcon from "./ArrowIcon";
 import Link from "next/link";
 /* eslint-disable @next/next/no-img-element */
 export default function Ufpb() {
@@ -12,7 +13,7 @@ export default function Ufpb() {
             <Link href="#programa3">Aprender</Link>
             <Link href="#pessoas3">Comunidade</Link>
             <Link href="/materiais" target="_blank" rel="noopener">
-              Materiais ↗
+              Materiais <ArrowIcon direction="up-right" />
             </Link>
           </div>
           <Link className="navcta" href="#programa3">
@@ -21,7 +22,7 @@ export default function Ufpb() {
         </nav>
         <main>
           <Link className="campus-materials-link" href="/aulas">
-            Acompanhe as aulas ↗
+            Acompanhe as aulas <ArrowIcon direction="up-right" />
           </Link>
           <div className="caderno-hero">
             <div className="eyebrow">
@@ -38,9 +39,11 @@ export default function Ufpb() {
               Descubra caminhos que você ainda nem imaginou.
             </p>
             <Link className="button" href="#programa3">
-              Conheça o programa <span>↓</span>
+              Conheça o programa <ArrowIcon direction="down" />
             </Link>
-            <span className="explore-cue">UM NOVO CAMINHO COMEÇA AQUI ↓</span>
+            <span className="explore-cue">
+              UM NOVO CAMINHO COMEÇA AQUI <ArrowIcon direction="down" />
+            </span>
           </div>
           <div className="plain-intro">
             <span className="section-label">O TRILHA, EM POUCAS PALAVRAS</span>
@@ -124,7 +127,7 @@ export default function Ufpb() {
               target="_blank"
               rel="noopener"
             >
-              Explorar materiais ↗
+              Explorar materiais <ArrowIcon direction="up-right" />
             </Link>
           </section>
         </main>

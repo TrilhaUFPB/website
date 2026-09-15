@@ -2207,7 +2207,7 @@
     color 0.25s ease;
 }
 .trilha-site .design .initiative-layout .initiative .initiative-copy:after {
-  content: "↗";
+  content: "";
   position: absolute;
   right: 22px;
   top: 18px;
@@ -3483,3 +3483,6 @@ body:has(.trilha-site)::before {
   padding: 110px 6% 20px;
   background: var(--canvas);
 }
+
+.trilha-site .arrow-icon{display:inline-block;vertical-align:middle;flex-shrink:0}
+.trilha-site .design .initiative-layout .initiative .initiative-copy:after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fdf4e5' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M7 7h10v10'/%3E%3C/svg%3E");background-size:18px 18px;background-position:center;background-repeat:no-repeat}

@@ -1,3 +1,4 @@
+import ArrowIcon from "./ArrowIcon";
 import Link from "next/link";
 /* eslint-disable @next/next/no-img-element */
 export default function CommunityHome() {
@@ -37,9 +38,11 @@ export default function CommunityHome() {
               Descubra caminhos que você ainda nem imaginou.
             </p>
             <Link className="button" href="#iniciativas1">
-              Explore as iniciativas <span>↓</span>
+              Explore as iniciativas <ArrowIcon direction="down" />
             </Link>
-            <span className="explore-cue">UM NOVO CAMINHO COMEÇA AQUI ↓</span>
+            <span className="explore-cue">
+              UM NOVO CAMINHO COMEÇA AQUI <ArrowIcon direction="down" />
+            </span>
           </div>
           <section className="umbrella-intro" id="sobre1">
             <span className="section-label">UM TRILHA. MUITOS CAMINHOS.</span>
@@ -220,7 +223,7 @@ export default function CommunityHome() {
                 prepara um novo começo.
               </p>
               <Link className="button" href="/historia/">
-                Saiba mais <span>↗</span>
+                Saiba mais <ArrowIcon direction="up-right" />
               </Link>
             </div>
             <figure className="journal-people">
@@ -358,7 +361,7 @@ export default function CommunityHome() {
               </article>
             </div>
             <Link className="button" href="/equipe/">
-              Conheça toda a equipe <span>↗</span>
+              Conheça toda a equipe <ArrowIcon direction="up-right" />
             </Link>
           </section>
         </main>

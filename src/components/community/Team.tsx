@@ -1,3 +1,4 @@
+import ArrowIcon from "./ArrowIcon";
 import Link from "next/link";
 /* eslint-disable @next/next/no-img-element */
 export default function Team() {
@@ -5,7 +6,7 @@ export default function Team() {
     <div className="trilha-site">
       <main className="team-directory">
         <Link className="team-back" href="/">
-          ← Voltar ao Trilha
+          <ArrowIcon direction="left" /> Voltar ao Trilha
         </Link>
         <span className="section-label">QUEM SOMOS</span>
         <h1>Uma rede feita de gente.</h1>
@@ -234,7 +235,7 @@ export default function Team() {
           </article>
         </div>
         <Link className="button" href="/">
-          Voltar ao Trilha <span>↗</span>
+          Voltar ao Trilha <ArrowIcon direction="up-right" />
         </Link>
       </main>
     </div>

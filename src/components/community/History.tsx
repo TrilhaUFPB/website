@@ -1,3 +1,4 @@
+import ArrowIcon from "./ArrowIcon";
 import Link from "next/link";
 /* eslint-disable @next/next/no-img-element */
 export default function History() {
@@ -12,7 +13,9 @@ export default function History() {
               width="65"
             />
           </Link>
-          <Link href="/#journal-title">← Voltar ao Trilha</Link>
+          <Link href="/#journal-title">
+            <ArrowIcon direction="left" /> Voltar ao Trilha
+          </Link>
         </nav>
         <header>
           <span className="section-label">NOSSA HISTÓRIA</span>
@@ -98,7 +101,7 @@ export default function History() {
             </figcaption>
           </figure>
           <Link className="button" href="/#iniciativas1">
-            Conheça as iniciativas <span>↗</span>
+            Conheça as iniciativas <ArrowIcon direction="up-right" />
           </Link>
         </section>
       </main>
@@ -129,18 +132,24 @@ export default function History() {
           <nav aria-label="Iniciativas">
             <span className="section-label">INICIATIVAS</span>
             <Link href="/ufpb/">Trilha UFPB</Link>
-            <Link href="https://momento.sh">Momento ↗</Link>
-            <Link href="https://hackthepath.com.br">Hack The Path ↗</Link>
+            <Link href="https://momento.sh">
+              Momento <ArrowIcon direction="up-right" />
+            </Link>
+            <Link href="https://hackthepath.com.br">
+              Hack The Path <ArrowIcon direction="up-right" />
+            </Link>
             <Link href="/ufpe/">Trilha UFPE</Link>
             <Link href="/materiais" target="_blank" rel="noopener">
-              Materiais abertos ↗
+              Materiais abertos <ArrowIcon direction="up-right" />
             </Link>
           </nav>
         </div>
         <div className="footer-bottom">
           <span>Trilha · Desde 2024</span>
           <span>Um começo. Muitos caminhos.</span>
-          <Link href="/#inicio">Voltar ao topo ↑</Link>
+          <Link href="/#inicio">
+            Voltar ao topo <ArrowIcon direction="up" />
+          </Link>
         </div>
       </footer>
     </div>
