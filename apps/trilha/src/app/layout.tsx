@@ -1,33 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {
-  DM_Sans,
-  Instrument_Serif,
-  JetBrains_Mono,
-  Poppins,
-  Space_Grotesk,
-} from "next/font/google";
+import { Poppins, Space_Grotesk } from "next/font/google";
 
 import { PostHogProvider } from "./posthog-provider";
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-dm-sans",
-});
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jetbrains-mono",
-});
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -73,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br" data-bg="grid">
       <body
-        className={`${poppins.variable} ${spaceGrotesk.variable} ${dmSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${poppins.variable} ${spaceGrotesk.variable} antialiased`}
       >
         <PostHogProvider>{children}</PostHogProvider>
       </body>
