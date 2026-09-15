@@ -88,7 +88,7 @@ export default function mountGlobe(canvas, design = 1) {
     markers: [
       {
         location: origin,
-        size: 0.035,
+        size: 0.022,
         color:
           design === 1
             ? [28 / 255, 74 / 255, 229 / 255]
@@ -98,7 +98,7 @@ export default function mountGlobe(canvas, design = 1) {
       },
       ...[...destinations, ...nationalPaths].map((location) => ({
         location,
-        size: design === 1 ? 0.025 : design === 2 ? 0.012 : 0.014,
+        size: design === 1 ? 0.015 : design === 2 ? 0.009 : 0.01,
       })),
     ],
     arcs: [...destinations, ...nationalPaths].map((to) => ({
