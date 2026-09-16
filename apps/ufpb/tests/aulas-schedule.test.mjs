@@ -23,16 +23,14 @@ test('substitui a apresentação por uma roda de conversa em 04/09', () => {
   assert.equal(lesson(portuguese, '12').title.includes('Apresentação'), false);
 });
 
-test('desloca as aulas seguintes e seus prazos em uma semana', () => {
+test('publica os materiais e o prazo da atividade da aula 13', () => {
   const aula13 = lesson(portuguese, '13');
-  const aula20 = lesson(portuguese, '20');
 
   assert.equal(aula13.date, '11 de setembro de 2026');
-  assert.equal(aula13.deadline, '17 de setembro de 2026');
+  assert.equal(aula13.deadline, '20 de setembro de 2026');
   assert.equal(aula13.dateISO, '2026-09-11');
-  assert.equal(aula20.date, '30 de outubro de 2026');
-  assert.equal(aula20.deadline, '6 de novembro de 2026');
-  assert.equal(aula20.dateISO, '2026-10-30');
+  assert.equal(aula13.canvaUrl, 'https://www.canva.com/design/DAHU1gadhaw/JCMw2QRgJII3t3jJemMcBA/edit');
+  assert.equal(aula13.links[0].url, 'https://github.com/joaovictor42/data-lakehouse-101');
 });
 
 test('mantém o cronograma equivalente em inglês', () => {
@@ -44,7 +42,9 @@ test('mantém o cronograma equivalente em inglês', () => {
   assert.equal(aula12.dateISO, '2026-09-04');
   assert.equal(aula12.openable, false);
   assert.equal(aula13.date, 'September 11, 2026');
-  assert.equal(aula13.deadline, 'September 17, 2026');
+  assert.equal(aula13.deadline, 'September 20, 2026');
+  assert.equal(aula13.canvaUrl, 'https://www.canva.com/design/DAHU1gadhaw/JCMw2QRgJII3t3jJemMcBA/edit');
+  assert.equal(aula13.links[0].url, 'https://github.com/joaovictor42/data-lakehouse-101');
 });
 
 test('não renderiza uma página para aulas marcadas como não abertas', async () => {
