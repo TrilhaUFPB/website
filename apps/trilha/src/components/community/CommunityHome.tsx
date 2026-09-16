@@ -1,10 +1,30 @@
+"use client";
 import CommunityFooter from "./CommunityFooter";
 import { ufpbUrl } from "@/lib/sites";
 import ArrowIcon from "./ArrowIcon";
 import BackgroundStudy from "./BackgroundStudy";
 import Link from "next/link";
+import { useState } from "react";
+
+const LANDSCAPES = [
+  "/community/landscape/landscape-cabra-v1.png",
+  "/community/landscape/landscape-cabra-v2.png",
+  "/community/landscape/landscape-cabra-v3.png",
+  "/community/landscape/landscape-cabra-v4.png",
+  "/community/landscape/landscape-cabra-v5.png",
+  "/community/landscape/landscape-cabra-v6.png",
+  "/community/landscape/landscape-cabra-v7.png",
+  "/community/landscape/landscape-cabra-v8.png",
+  "/community/landscape/landscape-cabra-v9.png",
+  "/community/landscape/landscape-cabra-v10.png",
+];
+
 /* eslint-disable @next/next/no-img-element */
 export default function CommunityHome() {
+  const [landscape] = useState(
+    () => LANDSCAPES[Math.floor(Math.random() * LANDSCAPES.length)]
+  );
+
   return (
     <div className="trilha-site">
       <BackgroundStudy />
@@ -27,7 +47,12 @@ export default function CommunityHome() {
           </Link>
         </nav>
         <main>
-          <div className="caderno-hero">
+          <div
+            className="caderno-hero"
+            style={{
+              backgroundImage: `url('${landscape}')`,
+            }}
+          >
             <h1>
               Seu primeiro passo.
               <br />
@@ -360,7 +385,8 @@ export default function CommunityHome() {
             </Link>
           </section>
         </main>
-        <section className="landing-invitation">          <div className="footer-invitation">
+        <section className="landing-invitation">
+          <div className="footer-invitation">
             <span className="section-label">O QUE MOVE A GENTE</span>
             <h2>
               O que você aprende
@@ -376,7 +402,7 @@ export default function CommunityHome() {
               Encontre seu caminho{" "}
             </Link>
           </div>
-</section>
+        </section>
         <CommunityFooter />
       </section>
     </div>
