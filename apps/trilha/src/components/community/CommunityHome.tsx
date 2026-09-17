@@ -1,4 +1,4 @@
-"use client";
+import HeroLandscape from "./HeroLandscape";
 import CommunityFooter from "./CommunityFooter";
 import { ufpbUrl } from "@/lib/sites";
 import ArrowIcon from "./ArrowIcon";
@@ -112,103 +112,21 @@ export default function CommunityHome() {
           </Link>
         </nav>
         <main>
-          <div className="caderno-hero" ref={heroRef}>
-            <div className="hero-landscape-stage" aria-hidden="true">
-              <img
-                src="/community/landscape/fundo-landscape.png"
-                alt=""
-                className="hero-layer hero-fundo"
-              />
-
-              <div className="hero-clouds-container layer-distante">
-                <div className="hero-clouds-track drift-slow">
-                  <img
-                    src="/community/cloud-pixel-2.png"
-                    alt=""
-                    className="cloud-tile"
-                  />
-                  <img
-                    src="/community/cloud-pixel-2.png"
-                    alt=""
-                    className="cloud-tile"
-                  />
-                </div>
-              </div>
-
-              <div className="hero-clouds-container layer-proxima">
-                <div className="hero-clouds-track drift-fast">
-                  <img
-                    src="/community/cloud-pixel.png"
-                    alt=""
-                    className="cloud-tile"
-                  />
-                  <img
-                    src="/community/cloud-pixel.png"
-                    alt=""
-                    className="cloud-tile"
-                  />
-                </div>
-              </div>
-
-              <img
-                src="/community/landscape/montanhas-fundo-landscape.png"
-                alt=""
-                className="hero-layer hero-montanhas"
-              />
-
-              <img
-                src="/community/landscape/grama-landscape.png"
-                alt=""
-                className="hero-layer hero-grama"
-              />
-            </div>
-
-            {/* Cabra interativa com clique prioritário e posição nos topos das montanhas */}
-            {goatCoords && goatSpot && (
-              <div
-                className="hero-goat-positioner"
-                style={{
-                  left: `${goatCoords.left}px`,
-                  bottom: `${goatCoords.bottom}px`,
-                  width: `${goatCoords.width}px`,
-                  height: `${goatCoords.height}px`,
-                }}
-                onClick={handleGoatJump}
-                onPointerDown={handleGoatJump}
-                role="button"
-                tabIndex={0}
-                aria-label="Cabra do Trilha - clique para dar um mortal 360"
-                title="Bééé! 🐐 Clique para ela dar um salto mortal 360!"
-              >
-                <div
-                  className={`hero-goat-animator ${isJumping ? "jumping" : ""}`}
-                >
-                  <img
-                    src="/community/landscape/cabra.png"
-                    alt=""
-                    className={`hero-goat-sprite ${
-                      goatSpot.mirrored ? "is-mirrored" : ""
-                    }`}
-                  />
-                </div>
-              </div>
-            )}
-
-            <div className="caderno-hero-content">
-              <h1>
-                Seu primeiro passo.
-                <br />
-                <em>Com gente do lado.</em>
-              </h1>
-              <p className="intro">
-                Aprenda a construir. Encontre quem te apoia.
-                <br />
-                Descubra caminhos que você ainda nem imaginou.
-              </p>
-              <Link className="button" href="#iniciativas1">
-                Explore as iniciativas <ArrowIcon direction="down" />
-              </Link>
-            </div>
+          <div className="caderno-hero">
+            <HeroLandscape />
+            <h1>
+              Seu primeiro passo.
+              <br />
+              <em>Com gente do lado.</em>
+            </h1>
+            <p className="intro">
+              Aprenda a construir. Encontre quem te apoia.
+              <br />
+              Descubra caminhos que você ainda nem imaginou.
+            </p>
+            <Link className="button" href="#iniciativas1">
+              Explore as iniciativas <ArrowIcon direction="down" />
+            </Link>
             <span className="explore-cue">
               UM NOVO CAMINHO COMEÇA AQUI <ArrowIcon direction="down" />
             </span>
