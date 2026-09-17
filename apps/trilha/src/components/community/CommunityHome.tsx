@@ -1,3 +1,4 @@
+import HeroLandscape from "./HeroLandscape";
 import CommunityFooter from "./CommunityFooter";
 import { ufpbUrl } from "@/lib/sites";
 import ArrowIcon from "./ArrowIcon";
@@ -28,6 +29,7 @@ export default function CommunityHome() {
         </nav>
         <main>
           <div className="caderno-hero">
+            <HeroLandscape />
             <h1>
               Seu primeiro passo.
               <br />

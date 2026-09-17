@@ -482,3 +482,12 @@ body:has(.campus-home)::before {
 }
 
 .campus-hero-copy { -webkit-user-select:none; user-select:none; }
+
+/* Keep the hero broad, with a more compact content column below it. */
+@media(min-width:901px) {
+ .campus-home .section { padding-inline:max(8%,calc((100% - 1100px)/2)); }
+ .campus-home .container { max-width:1100px; }
+ .campus-home .campus-shortcuts,
+ .campus-home .campus-project-showcase { width:84%; max-width:1100px; margin-inline:auto; }
+ .campus-home .campus-footer { padding-inline:max(8%,calc((100% - 1100px)/2)); }
+}
