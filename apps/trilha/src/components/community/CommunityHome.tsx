@@ -4,92 +4,9 @@ import { ufpbUrl } from "@/lib/sites";
 import ArrowIcon from "./ArrowIcon";
 import BackgroundStudy from "./BackgroundStudy";
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
-
-interface GoatSpot {
-  x: number;
-  y: number;
-  mirrored: boolean;
-}
-
-const GOAT_SPOTS: Array<Omit<GoatSpot, "mirrored">> = [
-  { x: 230, y: 370 },  // Topo da montanha esquerda
-  { x: 365, y: 366 },  // Cume da segunda montanha
-  { x: 510, y: 343 },  // Topo montanha centro-esquerda
-  { x: 695, y: 371 },  // Pico central da montanha
-  { x: 825, y: 339 },  // Topo montanha centro-direita
-  { x: 900, y: 360 },  // Cume montanha direita
-  { x: 1055, y: 406 }, // Pico mais alto da cordilheira
-  { x: 1150, y: 376 }, // Cume extremo direito
-  { x: 600, y: 280 },  // Crista alta do relevo
-  { x: 980, y: 290 },  // Encosta alta do relevo
-];
 
 /* eslint-disable @next/next/no-img-element */
 export default function CommunityHome() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const [goatSpot, setGoatSpot] = useState<GoatSpot | null>(null);
-  const [goatCoords, setGoatCoords] = useState<{
-    left: number;
-    bottom: number;
-    width: number;
-    height: number;
-  } | null>(null);
-  const [isJumping, setIsJumping] = useState(false);
-
-  // Sorteia a posicao inicial e orientacao
-  useEffect(() => {
-    const spot = GOAT_SPOTS[Math.floor(Math.random() * GOAT_SPOTS.length)];
-    const mirrored = Math.random() > 0.5;
-    setGoatSpot({ ...spot, mirrored });
-  }, []);
-
-  // Mantem a cabra perfeitamente ancorada no relevo mesmo com zoom (Ctrl + / Ctrl -) e redimensionamento
-  useEffect(() => {
-    if (!goatSpot || !heroRef.current) return;
-
-    const updateCoords = () => {
-      if (!heroRef.current || !goatSpot) return;
-      const rect = heroRef.current.getBoundingClientRect();
-      const W = rect.width;
-      const H = rect.height;
-      if (!W || !H) return;
-
-      const S = Math.max(W / 1536, H / 1024);
-      const left = W / 2 + (goatSpot.x - 768) * S;
-      const bottom = goatSpot.y * S;
-      const width = 43 * S;
-      const height = 31 * S;
-
-      setGoatCoords({
-        left: Math.round(left),
-        bottom: Math.round(bottom),
-        width: Math.round(width),
-        height: Math.round(height),
-      });
-    };
-
-    updateCoords();
-
-    const observer = new ResizeObserver(updateCoords);
-    observer.observe(heroRef.current);
-    window.addEventListener("resize", updateCoords);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", updateCoords);
-    };
-  }, [goatSpot]);
-
-  const handleGoatJump = (e?: React.MouseEvent) => {
-    if (e) {
-      e.stopPropagation();
-    }
-    if (isJumping) return;
-    setIsJumping(true);
-    setTimeout(() => setIsJumping(false), 650);
-  };
-
   return (
     <div className="trilha-site">
       <BackgroundStudy />
@@ -112,7 +29,7 @@ export default function CommunityHome() {
           </Link>
         </nav>
         <main>
-          <div className="caderno-hero">
+                              <div className="caderno-hero">
             <HeroLandscape />
             <h1>
               Seu primeiro passo.

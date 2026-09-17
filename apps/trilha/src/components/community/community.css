@@ -112,84 +112,7 @@
 /* =========================================================
    Landscape Multilayer Parallax & Interactivity
    ========================================================= */
-.trilha-site .hero-landscape-stage {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.trilha-site .hero-layer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center bottom;
-  user-select: none;
-  -webkit-user-select: none;
-  pointer-events: none;
-}
-
-.trilha-site .hero-fundo {
-  z-index: 1;
-}
-
 /* Nuvens em pixel art com movimento continuo de vento */
-.trilha-site .hero-clouds-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 52%;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.trilha-site .hero-clouds-container.layer-distante {
-  z-index: 2;
-  opacity: 0.72;
-  top: 1%;
-}
-
-.trilha-site .hero-clouds-container.layer-proxima {
-  z-index: 3;
-  opacity: 0.95;
-  top: 4%;
-}
-
-.trilha-site .hero-clouds-track {
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: max-content;
-  will-change: transform;
-}
-
-.trilha-site .hero-clouds-track.drift-slow {
-  animation: heroCloudDrift 85s linear infinite;
-}
-
-.trilha-site .hero-clouds-track.drift-fast {
-  animation: heroCloudDrift 55s linear infinite;
-}
-
-.trilha-site .cloud-tile {
-  height: 100%;
-  width: auto;
-  object-fit: contain;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-  flex-shrink: 0;
-  user-select: none;
-  -webkit-user-select: none;
-  pointer-events: none;
-}
-
 @keyframes heroCloudDrift {
   0% {
     transform: translate3d(0, 0, 0);
@@ -199,94 +122,9 @@
   }
 }
 
-.trilha-site .hero-montanhas {
-  z-index: 4;
-}
-
-/* Cabra nos topos das montanhas com clique confiavel */
-.trilha-site .hero-goat-positioner {
-  position: absolute;
-  z-index: 50;
-  pointer-events: auto !important;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  transform: translate(-50%, 0);
-  touch-action: manipulation;
-}
-
-.trilha-site .hero-goat-animator {
-  display: block;
-  width: 100%;
-  height: 100%;
-  transform-origin: center center;
-}
-
-/* Salto mortal 360 completo */
-.trilha-site .hero-goat-animator.jumping {
-  animation: goatFlip360 0.65s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-@keyframes goatFlip360 {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  15% {
-    transform: translateY(3px) rotate(0deg) scale(1.15, 0.85);
-  }
-  50% {
-    transform: translateY(-55px) rotate(180deg) scale(0.95, 1.05);
-  }
-  80% {
-    transform: translateY(1px) rotate(360deg) scale(1.1, 0.9);
-  }
-  100% {
-    transform: translateY(0) rotate(360deg) scale(1, 1);
-  }
-}
-
-.trilha-site .hero-goat-sprite {
-  display: block;
-  width: 100%;
-  height: 100%;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-  pointer-events: none;
-  transform-origin: center center;
-}
-
-.trilha-site .hero-goat-sprite.is-mirrored {
-  transform: scaleX(-1);
-}
-
-.trilha-site .hero-grama {
-  z-index: 6;
-}
-
 /* Deixa cliques passarem pela area vazia de texto para atingir a cabra */
-.trilha-site .caderno-hero-content {
-  position: relative;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.trilha-site .caderno-hero-content h1,
-.trilha-site .caderno-hero-content p,
-.trilha-site .caderno-hero-content a,
-.trilha-site .caderno-hero-content button {
-  pointer-events: auto;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .trilha-site .hero-clouds-track {
-    animation: none;
   }
-  .trilha-site .hero-goat-animator.jumping {
-    animation: none !important;
-  }
-}
 
 .trilha-site .eyebrow,
 .trilha-site .section-label,
@@ -4238,3 +4076,138 @@ body:has(.trilha-site)::before {
 .trilha-site .design[data-hero-time=sunset] > .nav { background:#fff0d8; }
 @keyframes hero-cloud-drift { from { translate:-35px 0; } to { translate:65px 0; } }
 @media(prefers-reduced-motion:reduce) { .hero-cloud { animation:none; } .hero-terrain,.hero-foreground,.hero-cloud-layer { transform:none; } }
+
+/* =================================================================
+   HeroLandscape – Nuvens com Vento Contínuo + Cabra Interativa
+   ================================================================= */
+
+/* Vento contínuo: duas cópias da nuvem lado a lado em loop contínuo */
+.hero-wind-track {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.hero-wind-track.hero-wind-slow {
+  top: 10%;
+  opacity: 0.75;
+  animation: heroWindDrift 85s linear infinite;
+}
+
+.hero-wind-track.hero-wind-fast {
+  top: 22%;
+  opacity: 0.95;
+  animation: heroWindDrift 52s linear infinite;
+}
+
+.hero-wind-cloud {
+  height: 38%;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-wind-cloud.hero-wind-front {
+  height: 46%;
+}
+
+@keyframes heroWindDrift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Cabra nos topos das montanhas – integrada naturalmente à paisagem */
+.goat-positioner {
+  position: absolute;
+  z-index: 20;
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transform: translateX(-50%);
+  transition: transform 0.15s ease;
+}
+
+.goat-positioner:hover,
+.goat-positioner:focus,
+.goat-positioner:active,
+.goat-positioner:focus-visible {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.goat-animator {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: center bottom;
+}
+
+/* Mortal 360° para frente (olhando para a direita) */
+.goat-animator.jumping-flip {
+  animation: goatMortalForward 0.68s cubic-bezier(0.25, 0.1, 0.25, 1) forwards !important;
+}
+
+@keyframes goatMortalForward {
+  0%   { transform: translateY(0) rotate(0deg) scale(1, 1); }
+  15%  { transform: translateY(2px) rotate(0deg) scale(1.15, 0.85); }
+  45%  { transform: translateY(-50px) rotate(180deg) scale(0.92, 1.08); }
+  75%  { transform: translateY(1px) rotate(360deg) scale(1.12, 0.88); }
+  100% { transform: translateY(0) rotate(360deg) scale(1, 1); }
+}
+
+/* Mortal 360° para frente (olhando para a esquerda / mirrored) */
+.goat-animator.jumping-flip-reverse {
+  animation: goatMortalReverse 0.68s cubic-bezier(0.25, 0.1, 0.25, 1) forwards !important;
+}
+
+@keyframes goatMortalReverse {
+  0%   { transform: translateY(0) rotate(0deg) scale(1, 1); }
+  15%  { transform: translateY(2px) rotate(0deg) scale(1.15, 0.85); }
+  45%  { transform: translateY(-50px) rotate(-180deg) scale(0.92, 1.08); }
+  75%  { transform: translateY(1px) rotate(-360deg) scale(1.12, 0.88); }
+  100% { transform: translateY(0) rotate(-360deg) scale(1, 1); }
+}
+
+.goat-sprite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  pointer-events: none;
+  transform-origin: center center;
+}
+
+.goat-sprite.mirrored {
+  transform: scaleX(-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-wind-track { animation: none; }
+  .goat-animator.jumping-flip,
+  .goat-animator.jumping-flip-reverse { animation: none !important; }
+}
+
+
