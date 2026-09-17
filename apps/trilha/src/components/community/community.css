@@ -105,10 +105,189 @@
   min-height: 730px;
   text-align: center;
   padding: 67px 20px 0;
-  background: #f9f8ed url("/community/landscape.png") center bottom/cover
-    no-repeat;
+  background: #f9f8ed;
   overflow: hidden;
 }
+
+/* =========================================================
+   Landscape Multilayer Parallax & Interactivity
+   ========================================================= */
+.trilha-site .hero-landscape-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.trilha-site .hero-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+
+.trilha-site .hero-fundo {
+  z-index: 1;
+}
+
+/* Nuvens em pixel art com movimento continuo de vento */
+.trilha-site .hero-clouds-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.trilha-site .hero-clouds-container.layer-distante {
+  z-index: 2;
+  opacity: 0.72;
+  top: 1%;
+}
+
+.trilha-site .hero-clouds-container.layer-proxima {
+  z-index: 3;
+  opacity: 0.95;
+  top: 4%;
+}
+
+.trilha-site .hero-clouds-track {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+}
+
+.trilha-site .hero-clouds-track.drift-slow {
+  animation: heroCloudDrift 85s linear infinite;
+}
+
+.trilha-site .hero-clouds-track.drift-fast {
+  animation: heroCloudDrift 55s linear infinite;
+}
+
+.trilha-site .cloud-tile {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+
+@keyframes heroCloudDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.trilha-site .hero-montanhas {
+  z-index: 4;
+}
+
+/* Cabra nos topos das montanhas com clique confiavel */
+.trilha-site .hero-goat-positioner {
+  position: absolute;
+  z-index: 50;
+  pointer-events: auto !important;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate(-50%, 0);
+  touch-action: manipulation;
+}
+
+.trilha-site .hero-goat-animator {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+}
+
+/* Salto mortal 360 completo */
+.trilha-site .hero-goat-animator.jumping {
+  animation: goatFlip360 0.65s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+}
+
+@keyframes goatFlip360 {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  15% {
+    transform: translateY(3px) rotate(0deg) scale(1.15, 0.85);
+  }
+  50% {
+    transform: translateY(-55px) rotate(180deg) scale(0.95, 1.05);
+  }
+  80% {
+    transform: translateY(1px) rotate(360deg) scale(1.1, 0.9);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg) scale(1, 1);
+  }
+}
+
+.trilha-site .hero-goat-sprite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  pointer-events: none;
+  transform-origin: center center;
+}
+
+.trilha-site .hero-goat-sprite.is-mirrored {
+  transform: scaleX(-1);
+}
+
+.trilha-site .hero-grama {
+  z-index: 6;
+}
+
+/* Deixa cliques passarem pela area vazia de texto para atingir a cabra */
+.trilha-site .caderno-hero-content {
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.trilha-site .caderno-hero-content h1,
+.trilha-site .caderno-hero-content p,
+.trilha-site .caderno-hero-content a,
+.trilha-site .caderno-hero-content button {
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trilha-site .hero-clouds-track {
+    animation: none;
+  }
+  .trilha-site .hero-goat-animator.jumping {
+    animation: none !important;
+  }
+}
+
 .trilha-site .eyebrow,
 .trilha-site .section-label,
 .trilha-site .explore-cue {
