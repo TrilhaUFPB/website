@@ -29,7 +29,7 @@ export default function CommunityHome() {
           </Link>
         </nav>
         <main>
-                              <div className="caderno-hero">
+          <div className="caderno-hero">
             <HeroLandscape />
             <h1>
               Seu primeiro passo.

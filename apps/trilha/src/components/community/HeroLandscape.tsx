@@ -57,6 +57,8 @@ export default function HeroLandscape() {
   } | null>(null);
 
   const [isJumping, setIsJumping] = useState(false);
+  const jumpTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => { if (jumpTimer.current) clearTimeout(jumpTimer.current); }, []);
 
   useEffect(() => {
     const hero = scene.current?.parentElement;
@@ -145,7 +147,7 @@ export default function HeroLandscape() {
     e.stopPropagation();
     if (isJumping) return;
     setIsJumping(true);
-    setTimeout(() => setIsJumping(false), 700);
+    jumpTimer.current = setTimeout(() => setIsJumping(false), 700);
   };
 
   return (
@@ -153,7 +155,6 @@ export default function HeroLandscape() {
       ref={scene}
       className="hero-landscape"
       data-time={time}
-      aria-hidden="true"
     >
       <div className="hero-sky" />
       <div className="hero-stars" />
@@ -204,8 +205,10 @@ export default function HeroLandscape() {
 
       {/* Cabra interativa */}
       {goatCoords && (
-        <div
+        <button
+          type="button"
           className="goat-positioner"
+          data-layer={goatSpot.y >= 350 ? "far" : "near"}
           style={{
             left: `${goatCoords.left}px`,
             bottom: `${goatCoords.bottom}px`,
@@ -213,8 +216,6 @@ export default function HeroLandscape() {
             height: `${goatCoords.height}px`,
           }}
           onClick={handleGoatClick}
-          role="button"
-          tabIndex={0}
           title="Bééé! 🐐 Clique para ver o mortal 360!"
           aria-label="Cabra interativa"
         >
@@ -233,7 +234,7 @@ export default function HeroLandscape() {
               className={`goat-sprite${goatSpot.mirrored ? " mirrored" : ""}`}
             />
           </div>
-        </div>
+        </button>
       )}
     </div>
   );

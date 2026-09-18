@@ -109,23 +109,6 @@
   overflow: hidden;
 }
 
-/* =========================================================
-   Landscape Multilayer Parallax & Interactivity
-   ========================================================= */
-/* Nuvens em pixel art com movimento continuo de vento */
-@keyframes heroCloudDrift {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-/* Deixa cliques passarem pela area vazia de texto para atingir a cabra */
-@media (prefers-reduced-motion: reduce) {
-  }
-
 .trilha-site .eyebrow,
 .trilha-site .section-label,
 .trilha-site .explore-cue {
@@ -4134,7 +4117,7 @@ body:has(.trilha-site)::before {
   cursor: pointer;
   background: transparent !important;
   border: none !important;
-  outline: none !important;
+
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
@@ -4152,7 +4135,7 @@ body:has(.trilha-site)::before {
 .goat-positioner:focus-visible {
   background: transparent !important;
   border: none !important;
-  outline: none !important;
+
   box-shadow: none !important;
 }
 
@@ -4211,3 +4194,13 @@ body:has(.trilha-site)::before {
 }
 
 
+
+/* Keep the easter egg attached to its landscape layer. */
+.goat-positioner[data-layer=far] { transform:translate(-50%,var(--far-shift,0px)); }
+.goat-positioner[data-layer=near] { transform:translate(-50%,var(--near-shift,0px)); }
+.goat-positioner:focus-visible { outline:2px solid #fff8eb; outline-offset:4px; }
+.hero-landscape[data-time=sunset] .hero-wind-track { filter:sepia(.6) saturate(1.3); }
+.hero-landscape[data-time=night] .hero-wind-track { opacity:.32; filter:brightness(.6) saturate(.5); }
+@media(prefers-reduced-motion:reduce) {
+ .goat-positioner[data-layer] { transform:translateX(-50%); }
+}
