@@ -4,6 +4,7 @@ import { ufpbUrl } from "@/lib/sites";
 import ArrowIcon from "./ArrowIcon";
 import BackgroundStudy from "./BackgroundStudy";
 import Link from "next/link";
+
 /* eslint-disable @next/next/no-img-element */
 export default function CommunityHome() {
   return (
@@ -362,7 +363,8 @@ export default function CommunityHome() {
             </Link>
           </section>
         </main>
-        <section className="landing-invitation">          <div className="footer-invitation">
+        <section className="landing-invitation">
+          <div className="footer-invitation">
             <span className="section-label">O QUE MOVE A GENTE</span>
             <h2>
               O que você aprende
@@ -378,7 +380,7 @@ export default function CommunityHome() {
               Encontre seu caminho{" "}
             </Link>
           </div>
-</section>
+        </section>
         <CommunityFooter />
       </section>
     </div>

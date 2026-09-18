@@ -105,10 +105,10 @@
   min-height: 730px;
   text-align: center;
   padding: 67px 20px 0;
-  background: #f9f8ed url("/community/landscape.png") center bottom/cover
-    no-repeat;
+  background: #f9f8ed;
   overflow: hidden;
 }
+
 .trilha-site .eyebrow,
 .trilha-site .section-label,
 .trilha-site .explore-cue {
@@ -4059,3 +4059,148 @@ body:has(.trilha-site)::before {
 .trilha-site .design[data-hero-time=sunset] > .nav { background:#fff0d8; }
 @keyframes hero-cloud-drift { from { translate:-35px 0; } to { translate:65px 0; } }
 @media(prefers-reduced-motion:reduce) { .hero-cloud { animation:none; } .hero-terrain,.hero-foreground,.hero-cloud-layer { transform:none; } }
+
+/* =================================================================
+   HeroLandscape – Nuvens com Vento Contínuo + Cabra Interativa
+   ================================================================= */
+
+/* Vento contínuo: duas cópias da nuvem lado a lado em loop contínuo */
+.hero-wind-track {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.hero-wind-track.hero-wind-slow {
+  top: 10%;
+  opacity: 0.75;
+  animation: heroWindDrift 85s linear infinite;
+}
+
+.hero-wind-track.hero-wind-fast {
+  top: 22%;
+  opacity: 0.95;
+  animation: heroWindDrift 52s linear infinite;
+}
+
+.hero-wind-cloud {
+  height: 38%;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-wind-cloud.hero-wind-front {
+  height: 46%;
+}
+
+@keyframes heroWindDrift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Cabra nos topos das montanhas – integrada naturalmente à paisagem */
+.goat-positioner {
+  position: absolute;
+  z-index: 20;
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent !important;
+  border: none !important;
+
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transform: translateX(-50%);
+  transition: transform 0.15s ease;
+}
+
+.goat-positioner:hover,
+.goat-positioner:focus,
+.goat-positioner:active,
+.goat-positioner:focus-visible {
+  background: transparent !important;
+  border: none !important;
+
+  box-shadow: none !important;
+}
+
+.goat-animator {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: center bottom;
+}
+
+/* Mortal 360° para frente (olhando para a direita) */
+.goat-animator.jumping-flip {
+  animation: goatMortalForward 0.68s cubic-bezier(0.25, 0.1, 0.25, 1) forwards !important;
+}
+
+@keyframes goatMortalForward {
+  0%   { transform: translateY(0) rotate(0deg) scale(1, 1); }
+  15%  { transform: translateY(2px) rotate(0deg) scale(1.15, 0.85); }
+  45%  { transform: translateY(-50px) rotate(180deg) scale(0.92, 1.08); }
+  75%  { transform: translateY(1px) rotate(360deg) scale(1.12, 0.88); }
+  100% { transform: translateY(0) rotate(360deg) scale(1, 1); }
+}
+
+/* Mortal 360° para frente (olhando para a esquerda / mirrored) */
+.goat-animator.jumping-flip-reverse {
+  animation: goatMortalReverse 0.68s cubic-bezier(0.25, 0.1, 0.25, 1) forwards !important;
+}
+
+@keyframes goatMortalReverse {
+  0%   { transform: translateY(0) rotate(0deg) scale(1, 1); }
+  15%  { transform: translateY(2px) rotate(0deg) scale(1.15, 0.85); }
+  45%  { transform: translateY(-50px) rotate(-180deg) scale(0.92, 1.08); }
+  75%  { transform: translateY(1px) rotate(-360deg) scale(1.12, 0.88); }
+  100% { transform: translateY(0) rotate(-360deg) scale(1, 1); }
+}
+
+.goat-sprite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  pointer-events: none;
+  transform-origin: center center;
+}
+
+.goat-sprite.mirrored {
+  transform: scaleX(-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-wind-track { animation: none; }
+  .goat-animator.jumping-flip,
+  .goat-animator.jumping-flip-reverse { animation: none !important; }
+}
+
+
+
+/* Keep the easter egg attached to its landscape layer. */
+.goat-positioner[data-layer=far] { transform:translate(-50%,var(--far-shift,0px)); }
+.goat-positioner[data-layer=near] { transform:translate(-50%,var(--near-shift,0px)); }
+.goat-positioner:focus-visible { outline:2px solid #fff8eb; outline-offset:4px; }
+.hero-landscape[data-time=sunset] .hero-wind-track { filter:sepia(.6) saturate(1.3); }
+.hero-landscape[data-time=night] .hero-wind-track { opacity:.32; filter:brightness(.6) saturate(.5); }
+@media(prefers-reduced-motion:reduce) {
+ .goat-positioner[data-layer] { transform:translateX(-50%); }
+}
