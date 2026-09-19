@@ -66,3 +66,24 @@ body:has(.campus-internal-nav)::before { display: none; }
 .campus-internal-nav ~ .shell .section { padding-inline:0; }
 .campus-internal-nav ~ .shell .container { max-width:100%; }
 @media(max-width:900px) { .campus-internal-nav ~ .shell { width:92%; } }
+
+/* A quiet paper grain on page surfaces, beneath content and photographs. */
+body,
+body:has(.campus-internal-nav),
+.campus-home {
+  background-image: url('/textures/paper.svg');
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Lighter grain remains visible against the navy numbers section. */
+.campus-home .section--ink-numbers {
+  background-image: url('/textures/paper-dark.svg');
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+.section--ink-numbers .stats-grid,
+.section--ink-numbers .stat {
+  background: transparent;
+}

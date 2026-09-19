@@ -18,31 +18,30 @@ export default function Depoimentos() {
             const cohort = p.class ? `${cohortLabel} ${p.class}` : '';
             const company = p.company?.trim() ?? '';
             const job = p.role.trim();
-            const role = [cohort, company, job].filter(Boolean).join(' · ');
+            const role = [job, company].filter(Boolean).join(' · ');
             return (
-              <figure key={i} className={`depo ${i % 3 === 1 ? 'depo--tall' : ''}`}>
+              <figure key={i} className="depo">
+                <div className="depo-topline">
+                  <span className="depo-quote-mark" aria-hidden="true">“</span>
+                  {cohort && <span className="depo-cohort">{cohort}</span>}
+                </div>
                 <blockquote>
-                  <span
-                    className="display serif-italic"
-                    style={{ fontSize: 36, lineHeight: 1, marginRight: 4 }}
-                  >
-                    “
-                  </span>
                   {item.short![locale]}
                 </blockquote>
                 <figcaption>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={p.photo}
-                    alt={p.name}
+                    alt=""
+                    loading="lazy"
                     onError={(e) => {
                       (e.currentTarget as HTMLImageElement).style.visibility = 'hidden';
                     }}
                   />
                   <div>
-                    <div style={{ fontWeight: 500 }}>{p.name}</div>
+                    <div className="depo-name">{p.name}</div>
                     {role && (
-                      <div className="kicker" style={{ marginTop: 2 }}>
+                      <div className="depo-role">
                         {role}
                       </div>
                     )}

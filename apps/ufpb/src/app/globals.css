@@ -671,41 +671,28 @@ button { font-family: inherit; cursor: pointer; }
 /* TESTIMONIALS */
 .depo-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 .depo {
   margin: 0;
-  padding: 28px 28px 24px;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-m);
-  background: var(--cream);
-  box-shadow: 0 0 0 rgba(0, 196, 99, 0);
-  transition:
-    transform .35s cubic-bezier(.2,.8,.3,1),
-    border-color .2s ease,
-    box-shadow .25s ease;
+  padding: 24px 22px;
+  border: 1px solid rgba(0, 9, 40, .10);
+  border-radius: 18px;
+  background: rgba(255, 253, 249, .65);
   display: flex;
   flex-direction: column;
 }
-.depo:hover {
-  border-color: var(--mint-deep);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 196, 99, 0.08);
-}
-.depo:nth-child(3n+1) { background: var(--mint-soft); }
-.depo:nth-child(3n+2) { background: var(--electric-soft); }
-.depo blockquote { margin: 0; font-size: 17px; line-height: 1.5; color: var(--ink); font-weight: 400; font-style: italic }
-.depo blockquote .display { color: var(--mint-deep); }
-.depo--tall blockquote { font-size: 17px }
-.depo figcaption { margin-top: auto; padding-top: 22px; display: flex; align-items: center; gap: 12px; }
-.depo figcaption img {
-  width: 40px; height: 40px; border-radius: 50%;
-  object-fit: cover;
-  background: var(--paper);
-}
-@media (max-width: 1100px) { .depo-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 700px) { .depo-grid { grid-template-columns: 1fr; } }
+.depo-topline { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.depo-quote-mark { color: var(--mint-deep); font: 64px/0.8 Georgia, serif; height: 32px; }
+.depo-cohort { font-size: 11px; font-weight: 500; letter-spacing: .03em; color: var(--mint-deep); background: rgba(0, 139, 72, .07); border-radius: 999px; padding: 6px 12px; }
+.depo blockquote { margin: 0 0 24px; font-size: 15px; line-height: 1.65; color: var(--ink); font-weight: 400; }
+.depo figcaption { margin-top: auto; padding-top: 18px; border-top: 1px solid rgba(0, 9, 40, .08); display: flex; align-items: center; gap: 10px; }
+.depo figcaption img { width: 38px; height: 38px; flex-shrink: 0; border-radius: 50%; object-fit: cover; background: var(--paper); }
+.depo-name { font-size: 13px; font-weight: 600; line-height: 1.5; }
+.depo-role { margin-top: 4px; font-size: 12px; line-height: 1.5; color: var(--ink-soft); }
+@media (max-width: 1000px) { .depo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .depo-grid { grid-template-columns: 1fr; gap: 16px; } }
 
 /* TEAM */
 .team-toolbar {

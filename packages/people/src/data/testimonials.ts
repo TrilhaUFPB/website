@@ -91,6 +91,10 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     person: LuisAranha,
+    short: {
+      pt: "O Trilha me proporcionou muito aprendizado, desde a base da programação até produzir um projeto em grupo.",
+      en: "Trilha taught me a lot, from programming fundamentals to building a group project.",
+    },
     long: {
       pt: "O trilha foi uma experiência que me proporcionou muito aprendizado e conexão com pessoas importantes da área, explicando desde a base do que é programar e o que é uma linguagem de programação, em especial o Python, até como produzir um projeto em grupo com pessoas extremamente competentes que trilharam o caminho comigo. Acredito ter sido de grande importância para mim, visto que iniciei no curso de Ciência da Computação com um conhecimento quase nulo da área, e me proporcionou preencher esse vazio!",
       en: "Trilha was an experience that provided me with a lot of learning and connection with important people in the field, explaining everything from the basics of what programming is and what a programming language is, especially Python, to how to produce a group project with extremely competent people who walked the path with me. I believe it was of great importance to me, since I started the Computer Science course with almost zero knowledge of the area, and it helped me fill this void!",
