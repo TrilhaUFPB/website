@@ -22,19 +22,33 @@ export default function HeroStickers() {
   };
   useEffect(() => {
     if (!desktop()) { setStickers(initial); return; }
-    const count = 3 + Math.floor(Math.random() * 4);
+    const count = 5 + Math.floor(Math.random() * 5);
     const available = models.map((_, index) => index);
     const rect = layer.current!.getBoundingClientRect();
-    const sizePercent = Math.min(165, rect.width * .12) / rect.width * 100;
+    const size = Math.min(165, rect.width * .12);
+    // Five balanced anchors first; extra stickers fill the spaces between them.
+    // Coordinates describe sticker centers, with small independent offsets.
+    const anchors = [
+      [14, 23], [76, 17], [88, 56], [64, 82], [17, 76],
+      [43, 14], [40, 70], [62, 44], [12, 49],
+    ];
+    const mirror = Math.random() < .5;
     const generated = Array.from({length:count}, (_, index) => {
       const choice = Math.floor(Math.random() * available.length);
       const model = available.splice(choice, 1)[0];
-      const right = index % 2 === 1;
-      // Two vertical lanes outside the central reading area, with separated rows.
-      const edge = 1 + Math.random() * 2;
-      const rows = Math.ceil(count / 2);
-      const y = 8 + Math.floor(index / 2) * (60 / Math.max(1, rows - 1)) + Math.random() * 8;
-      return {id:index, model, ...clamp(right ? 100-sizePercent-edge : edge, y), angle:Math.random()*50-25};
+      const [baseX, baseY] = anchors[index];
+      let centerX = (mirror ? 100 - baseX : baseX) + (Math.random() - .5) * 8;
+      const centerY = baseY + (Math.random() - .5) * 8;
+      // Reserve the middle of the copy for reading; only initial placement is constrained.
+      const halfWidth = size / rect.width * 50;
+      const halfHeight = size / rect.height * 50;
+      if (centerY + halfHeight > 30 && centerY - halfHeight < 68 &&
+          centerX + halfWidth > 34 && centerX - halfWidth < 66) {
+        centerX = centerX < 50 ? 34 - halfWidth : 66 + halfWidth;
+      }
+      const x = centerX - halfWidth;
+      const y = centerY - halfHeight;
+      return {id:index, model, ...clamp(x, y), angle:Math.random()*60-30};
     });
     nextId.current = count;
     setStickers(generated);
@@ -44,9 +58,9 @@ export default function HeroStickers() {
     if (!layer.current) return;
     const add = (event: MouseEvent) => {
       if (!desktop() || !(event.target instanceof Element)) return;
-      if (event.target.closest('a,button,input,textarea,select,label,h1,h2,h3,p,span,svg,img,figure,[role="button"]')) return;
+      if (event.target.closest('a,button,input,textarea,select,label,[contenteditable],[role="button"]')) return;
       const rect = layer.current!.getBoundingClientRect();
-      if(event.clientY < rect.top || event.clientY > rect.bottom) return;
+      if(event.clientY < rect.top || event.clientY > rect.bottom || event.clientX < rect.left || event.clientX > rect.right) return;
       const size = Math.min(165, rect.width * .12);
       const pos = clamp((event.clientX - rect.left - size / 2) / rect.width * 100, (event.clientY - rect.top - size / 2) / rect.height * 100);
       setStickers(items => [...items, {id:nextId.current++, model:Math.floor(Math.random()*models.length), ...pos, angle:Math.random()*40-20}]);

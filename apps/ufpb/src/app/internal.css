@@ -60,3 +60,9 @@ body:has(.campus-internal-nav)::before { display: none; }
 }
 .campus-internal-nav ~ .shell .materiais-areas { gap: 20px; background: transparent; border: 0; }
 .campus-internal-nav ~ .shell .materiais-sidebar-header { background: transparent; }
+
+/* The same reading width on classes, cohorts and materials pages. */
+.campus-internal-nav ~ .shell { width:var(--trilha-content-fluid); max-width:var(--trilha-content-width); margin-inline:auto; }
+.campus-internal-nav ~ .shell .section { padding-inline:0; }
+.campus-internal-nav ~ .shell .container { max-width:100%; }
+@media(max-width:900px) { .campus-internal-nav ~ .shell { width:92%; } }
