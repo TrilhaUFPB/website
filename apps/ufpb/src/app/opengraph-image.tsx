@@ -8,11 +8,14 @@ export const contentType = 'image/png';
 
 export default async function OpenGraphImage() {
   const sticker = async (name: string) => `data:image/png;base64,${(await readFile(join(process.cwd(), 'public/campus/stickers', name))).toString('base64')}`;
-  const [left, right] = await Promise.all([
+  const [left, right, exploring, flag, flower, energy, font] = await Promise.all([
     sticker('losango-trilha.png'), sticker('selo-path-seekers-azul.png'),
+    sticker('never-stop-exploring.png'), sticker('flamula-take-a-trilha.png'),
+    sticker('flor-asterisco.png'), sticker('lata-energy.png'),
+    readFile(join(process.cwd(), 'public/fonts/Poppins-SemiBold.ttf')),
   ]);
   return new ImageResponse(
-    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#fcfaf5', color: '#000928', padding: '42px 60px', position: 'relative' }}>
+    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#fcfaf5', fontFamily: 'Poppins', color: '#000928', padding: '42px 60px', position: 'relative' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <svg
           width={68}
@@ -37,14 +40,18 @@ export default async function OpenGraphImage() {
         <span style={{ fontSize: 36, fontWeight: 700, letterSpacing: '-1px' }}>trilha</span>
         <span style={{ fontSize: 18, marginLeft: 12, color: '#536079' }}>UFPB</span>
       </div>
-      <div style={{ display: 'flex', marginTop: 65, fontSize: 14, letterSpacing: '4px', color: '#536079' }}>APRENDER FAZENDO</div>
-      <div style={{ display: 'flex', marginTop: 24, fontSize: 62, fontWeight: 700, letterSpacing: '-3px' }}>Seu começo em tecnologia.</div>
-      <div style={{ display: 'flex', fontSize: 68, fontWeight: 700, letterSpacing: '-3px', color: '#00bd60', marginTop: 4 }}>Em boa companhia.</div>
-      <div style={{ display: 'flex', fontSize: 23, marginTop: 26 }}>Programação, projetos e gente por perto.</div>
-      <div style={{ display: 'flex', fontSize: 20, marginTop: 8, color: '#536079' }}>Gratuito. De estudantes para estudantes.</div>
-      <img src={left} alt="" width={130} height={130} style={{ position: 'absolute', left: 26, top: 385, objectFit: 'contain', transform: 'rotate(-14deg)' }} />
-      <img src={right} alt="" width={125} height={125} style={{ position: 'absolute', right: 28, top: 370, objectFit: 'contain', transform: 'rotate(13deg)' }} />
+      <div style={{ display: 'flex', marginTop: 68, fontSize: 14, letterSpacing: '4px', color: '#536079' }}>APRENDER FAZENDO</div>
+      <div style={{ display: 'flex', marginTop: 24, fontSize: 55, fontWeight: 700, letterSpacing: '-2px' }}>Seu começo em tecnologia.</div>
+      <div style={{ display: 'flex', fontSize: 60, fontWeight: 700, letterSpacing: '-2px', color: '#00bd60', marginTop: 4 }}>Em boa companhia.</div>
+      <div style={{ display: 'flex', fontSize: 20, marginTop: 26 }}>Programação, projetos e gente por perto.</div>
+      <div style={{ display: 'flex', fontSize: 17, marginTop: 8, color: '#536079' }}>Gratuito. De estudantes para estudantes.</div>
+      <img src={left} alt="" width={130} height={130} style={{ position: 'absolute', left: 30, top: 290, objectFit: 'contain', transform: 'rotate(-14deg)' }} />
+      <img src={right} alt="" width={125} height={125} style={{ position: 'absolute', right: 34, top: 330, objectFit: 'contain', transform: 'rotate(13deg)' }} />
+      <img src={exploring} alt="" width={140} height={120} style={{ position: 'absolute', left: 94, top: 67, objectFit: 'contain', transform: 'rotate(-12deg)' }} />
+      <img src={flower} alt="" width={105} height={105} style={{ position: 'absolute', right: 119, top: 79, objectFit: 'contain', transform: 'rotate(15deg)' }} />
+      <img src={flag} alt="" width={112} height={100} style={{ position: 'absolute', left: 233, bottom: 20, objectFit: 'contain', transform: 'rotate(10deg)' }} />
+      <img src={energy} alt="" width={95} height={112} style={{ position: 'absolute', right: 237, bottom: 12, objectFit: 'contain', transform: 'rotate(-15deg)' }} />
       <div style={{ display: 'flex', position: 'absolute', bottom: 36, fontSize: 18, color: '#536079' }}>trilhaufpb.com</div>
-    </div>, size,
+    </div>, { ...size, fonts: [{ name: 'Poppins', data: font, weight: 600, style: 'normal' }] },
   );
 }
