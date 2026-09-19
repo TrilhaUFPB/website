@@ -4466,3 +4466,6 @@ body:has(.trilha-site)::before {
  position:static; display:block; flex:none; width:100%; height:auto; max-height:none;
  margin:0; transform:none; object-fit:contain; opacity:1;
 }
+
+/* Give the hero call to action breathing room below its introduction. */
+.trilha-site .caderno-hero > .intro + .ui-button { margin-top:24px; }
