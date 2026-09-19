@@ -34,7 +34,9 @@
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "yaml": "^2.8.4",
-    "zod": "^4.4.3"
+    "zod": "^4.4.3",
+    "@trilha/ui": "*",
+    "@trilha/people": "*"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

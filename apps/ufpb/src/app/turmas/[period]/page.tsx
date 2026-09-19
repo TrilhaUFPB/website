@@ -1,27 +1,17 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ptCommon from '@/locales/pt/common.json';
-import type { TurmaItem } from '@/components/home/data';
 import TurmaStudents from './TurmaStudents';
 
-type Period = '2024.1' | '2024.2' | '2025.1' | '2025.2';
-
-const COVERS: Record<Period, string> = {
-  '2024.1': '/assets/turmas/trilha2024.jpg',
-  '2024.2': '/assets/turmas/trilha2024-2.jpg',
-  '2025.1': '/assets/turmas/trilha2025.jpg',
-  '2025.2': '/assets/turmas/trilha2025-2.jpeg',
-};
-
-export function generateStaticParams() {
-  return (Object.keys(COVERS) as Period[]).map((period) => ({ period }));
-}
+import { cohorts } from '@trilha/people/cohorts';
+export function generateStaticParams() { return cohorts.map(({period}) => ({period})); }
 
 export default async function TurmaPage({ params }: { params: Promise<{ period: string }> }) {
   const { period } = await params;
-  if (!(period in COVERS)) notFound();
+  const cohort = cohorts.find(item => item.period === period);
+  if (!cohort) notFound();
 
-  const meta = (ptCommon.turmas.items as TurmaItem[]).find((it) => it.period === period);
+  const meta = { title:cohort.title.pt, theme:cohort.description.pt };
   const back = ptCommon.turmaPage.back;
   const cohortLabel = ptCommon.turmaPage.cohortLabel;
 

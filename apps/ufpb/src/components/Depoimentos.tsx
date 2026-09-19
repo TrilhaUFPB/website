@@ -2,12 +2,12 @@
 
 import { useTranslation } from '@/hooks/useTranslation';
 import { SectionHead } from '@/components/home/shared';
-import { TESTIMONIALS } from '@/data/testimonials';
+import { PUBLIC_TESTIMONIALS } from '@trilha/people/testimonials';
 
 export default function Depoimentos() {
   const { t, locale } = useTranslation();
   const cohortLabel = t('depo.cohortLabel');
-  const featured = TESTIMONIALS.filter((tt) => tt.short);
+  const featured = PUBLIC_TESTIMONIALS;
   return (
     <section id="depoimentos" className="section">
       <div className="container">

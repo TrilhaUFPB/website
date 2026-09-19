@@ -2,16 +2,16 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
+import { peopleOrganizationCurrent } from '@trilha/people/current-organization';
 import { useTranslation } from '@/hooks/useTranslation';
 import { SectionHead } from '@/components/home/shared';
 import {
   peopleFounders,
-  peopleOrganizationCurrent,
   peopleStudents20241,
   peopleStudents20242,
   peopleStudents20251,
   peopleStudents20252,
-} from '@/data/people';
+} from '@trilha/people/profiles';
 
 const COHORTS = [peopleStudents20241, peopleStudents20242, peopleStudents20251, peopleStudents20252];
 

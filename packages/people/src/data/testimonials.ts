@@ -1,3 +1,5 @@
+import { organizations } from '../index.js';
+import { peopleById } from './directory';
 import {
   Artur,
   Bea,
@@ -244,3 +246,21 @@ export const TESTIMONIALS: Testimonial[] = [
     },
   },
 ];
+
+// Homepage quotes exclude current organizers from every initiative.
+// Retain the full archive for historical cohort pages.
+const organizerProfiles = new Set(Object.values(organizations).flatMap(org =>
+  org.members.map(member => peopleById[member.personId])
+));
+const featuredStudents = [DaviGurgel, SergioFreitas, RafaelTorres, RhuanOliveira, GabrielBringel, YasminBatista];
+export const PUBLIC_TESTIMONIALS = TESTIMONIALS
+  .filter(item => !organizerProfiles.has(item.person))
+  .sort((a, b) => {
+    const rank = (person: Person) => { const index = featuredStudents.indexOf(person); return index < 0 ? featuredStudents.length : index; };
+    return rank(a.person) - rank(b.person);
+  })
+  .slice(0, 6)
+  .map(item => ({ ...item, short: item.short ?? {
+    pt: item.long.pt.match(/^.*?[.!?](?:\s|$)/)?.[0].trim() || item.long.pt,
+    en: item.long.en.match(/^.*?[.!?](?:\s|$)/)?.[0].trim() || item.long.en,
+  } }));

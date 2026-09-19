@@ -1,0 +1,16 @@
+{
+  "name": "@trilha/ui",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.tsx",
+    "./styles.css": "./src/styles.css",
+    "./gallery": "./src/ComponentGallery.tsx"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ]
+}

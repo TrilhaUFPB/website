@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   poweredByHeader: false,
-  transpilePackages: [],
+  transpilePackages: ["@trilha/ui", "@trilha/people"],
   turbopack: { root: path.resolve(process.cwd(), "../..") },
   outputFileTracingRoot: path.resolve(process.cwd(), "../.."),
   async rewrites() {

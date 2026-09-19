@@ -13,18 +13,8 @@ export const EduardoOliveira: Person = {
     pos: ["Membro da Organização", "Membro da Organização"],
 };
 
-export const DanielSilva: Person = {
-    name: "Daniel Duarte e Silva",
-    course: "Ciência da Computação",
-    semester: "4",
-    role: "Data Analyst",
-    company: "Unipê",
-    link: "http://www.linkedin.com/in/daniel-duarte-aaa707352",
-    photo: "/assets/pessoas/2025.1/daniel.jpg",
-    class: "2025.1",
-    org: [],
-    pos: [],
-};
+// Same person as the 2024.2 roster; retain the historical export name.
+export { DanielDuarte as DanielSilva } from './students_2024_2';
 
 export const MariaLuizaCavalcanti: Person = {
     name: "Maria Luíza Uchoa Cavalcanti",

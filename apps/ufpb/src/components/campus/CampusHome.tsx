@@ -1,5 +1,6 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
+import { ButtonLink } from "@trilha/ui";
 import Link from "next/link";
 import { useTranslation } from "@/hooks/useTranslation";
 import { ArrowUpRight, ArrowRight, BookOpen, CalendarDays } from "lucide-react";
@@ -36,8 +37,8 @@ export default function CampusHome() {
               </h1>
               <p>{t("campus.text10")}</p>
               <div className="campus-actions">
-                <a className="campus-button" href="#sobre">{t("campus.text11")}<ArrowRight size={18} />
-                </a>
+                <ButtonLink href="#sobre">{t("campus.text11")}<ArrowRight size={18} />
+                </ButtonLink>
                 <Link href="/materiais" className="campus-text-link">{t("campus.text12")}<ArrowUpRight size={17} />
                 </Link>
               </div>

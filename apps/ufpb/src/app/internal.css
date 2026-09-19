@@ -1,10 +1,10 @@
 /* Public learning pages share the campus identity; content and code keep their own layout. */
 body:has(.campus-internal-nav) {
-  --cream: #fcfaf5;
+  --cream: var(--trilha-paper);
   --paper: #fffdf9;
   --paper-2: #edf0fa;
-  --ink: #000928;
-  --midnight: #000928;
+  --ink: var(--trilha-ink);
+  --midnight: var(--trilha-ink);
   --ink-soft: #536079;
   --rule: #00092820;
   color: var(--ink);
@@ -21,36 +21,36 @@ body:has(.campus-internal-nav)::before { display: none; }
 .campus-internal-nav ~ .shell .lede { font-size: 16px; line-height: 1.8; }
 .campus-internal-nav ~ .shell .btn,
 .campus-internal-nav ~ .shell .aula-back {
-  display: inline-flex; align-items: center; gap: 14px; border: 1px solid #000928;
-  border-radius: 30px; background: #fffbf4; color: #000928; padding: 12px 22px;
-  box-shadow: 0 3px 0 #000928; font: 500 13px var(--font-poppins);
+  display: inline-flex; align-items: center; gap: 14px; border: 1px solid var(--trilha-ink);
+  border-radius: 30px; background: var(--trilha-button); color: var(--trilha-ink); padding: 12px 22px;
+  box-shadow: 0 3px 0 var(--trilha-ink); font: 500 13px var(--font-poppins);
   transition: transform .18s, box-shadow .18s;
 }
 .campus-internal-nav ~ .shell .btn:hover,
-.campus-internal-nav ~ .shell .aula-back:hover { transform: translateY(2px); box-shadow: 0 1px 0 #000928; }
+.campus-internal-nav ~ .shell .aula-back:hover { transform: translateY(2px); box-shadow: 0 1px 0 var(--trilha-ink); }
 .campus-internal-nav ~ .shell .btn:active { transform: translateY(3px); box-shadow: none; }
 .campus-internal-nav ~ .shell .aulas-search { max-width: 620px; background: white; border-radius: 16px; padding: 16px 20px; margin-bottom: 40px; }
 .campus-internal-nav ~ .shell .aulas-group { border: 1px solid var(--rule); border-radius: 18px; background: #fffdf9; margin-bottom: 18px; overflow: hidden; }
 .campus-internal-nav ~ .shell .aulas-group-header { padding: 22px 24px; background: #e8edff; }
-.campus-internal-nav ~ .shell .aulas-group-label { background: transparent; color: #000928; font: 600 17px var(--font-poppins); letter-spacing: 0; text-transform: none; padding: 0; }
+.campus-internal-nav ~ .shell .aulas-group-label { background: transparent; color: var(--trilha-ink); font: 600 17px var(--font-poppins); letter-spacing: 0; text-transform: none; padding: 0; }
 .campus-internal-nav ~ .shell .aulas-group-count { font-family: var(--font-poppins); text-transform: none; letter-spacing: 0; opacity: 1; }
 .campus-internal-nav ~ .shell .aulas-group-inner { padding: 0 24px; }
 .campus-internal-nav ~ .shell .aula-scard { padding: 24px 0; }
 .campus-internal-nav ~ .shell .aula-scard--past { opacity: 1; }
-.campus-internal-nav ~ .shell .aula-scard-num { border: 0; border-radius: 12px; background: #edf0fa; color: #1c4ae5; }
+.campus-internal-nav ~ .shell .aula-scard-num { border: 0; border-radius: 12px; background: #edf0fa; color: var(--trilha-electric); }
 .campus-internal-nav ~ .shell .aula-scard-title { font-size: 18px; line-height: 1.4; }
 .campus-internal-nav ~ .shell .aula-page-title { font-size: clamp(32px,4.5vw,56px); line-height: 1.15; }
 .campus-internal-nav ~ .shell .aulas-input { background: white; border-radius: 10px; }
 .campus-internal-nav ~ .shell .materiais-area,
-.campus-internal-nav ~ .shell .paper-card { border-radius: 18px; background: #fffdf9; box-shadow: 0 3px 0 #000928; border: 1px solid var(--rule); }
+.campus-internal-nav ~ .shell .paper-card { border-radius: 18px; background: #fffdf9; box-shadow: 0 3px 0 var(--trilha-ink); border: 1px solid var(--rule); }
 .campus-internal-nav ~ .shell .materiais-area:hover,
-.campus-internal-nav ~ .shell .paper-card:hover { transform: translateY(2px); box-shadow: 0 1px 0 #000928; }
+.campus-internal-nav ~ .shell .paper-card:hover { transform: translateY(2px); box-shadow: 0 1px 0 var(--trilha-ink); }
 .campus-internal-nav ~ .shell .materiais-area-title,
 .campus-internal-nav ~ .shell .paper-card-title { line-height: 1.2; }
 .campus-internal-nav ~ .shell .materiais-sidebar-inner { background: #edf0fa; border-radius: 16px; padding: 20px; }
 .campus-internal-nav ~ .shell .materiais-sidebar-area .kicker { font-family: var(--font-poppins); }
 .campus-internal-nav ~ .shell .turma-img img { filter: none; }
-.campus-nav-links a:focus-visible, .campus-language:focus-visible { outline: 2px solid #1c4ae5; outline-offset: 5px; }
+.campus-nav-links a:focus-visible, .campus-language:focus-visible { outline: 2px solid var(--trilha-electric); outline-offset: 5px; }
 @media(max-width: 700px) {
   .campus-internal-nav ~ .shell .section { padding-top: 36px; padding-bottom: 56px; }
   .campus-internal-nav ~ .shell .aulas-group-header { padding: 18px 14px; }

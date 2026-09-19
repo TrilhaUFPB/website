@@ -3,20 +3,14 @@
 import { useTranslation } from '@/hooks/useTranslation';
 import { usePostHogTracking } from '@/hooks/usePostHogTracking';
 import { useTranslatedPeople } from '@/data/people-i18n';
-import type { Person } from '@/data/people';
+import { cohorts } from '@trilha/people/cohorts';
 
 export default function TurmaStudents({ period }: { period: string }) {
   const { locale } = useTranslation();
   const { trackStudentProfileClick } = usePostHogTracking();
   const translated = useTranslatedPeople();
 
-  const students = (() => {
-    if (period === '2024.1') return translated.peopleStudents20241 as Person[];
-    if (period === '2024.2') return translated.peopleStudents20242 as Person[];
-    if (period === '2025.1') return translated.peopleStudents20251 as Person[];
-    if (period === '2025.2') return translated.peopleStudents20252 as Person[];
-    return [] as Person[];
-  })();
+  const students = (cohorts.find(cohort => cohort.period === period)?.students ?? []).map(translated.translatePerson);
 
   // Touch `locale` so eslint doesn't complain — the hook above already reacts to it via translatePerson.
   void locale;
