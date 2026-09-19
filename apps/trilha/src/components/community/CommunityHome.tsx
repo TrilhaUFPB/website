@@ -1,3 +1,4 @@
+import CommunityNavigation from "./CommunityNavigation";
 import { allStudents } from '@trilha/people/cohorts';
 import CommunityTimeline from "./CommunityTimeline";
 import { ButtonLink } from "@trilha/ui";
@@ -17,20 +18,7 @@ export default function CommunityHome() {
         id="inicio"
         className="design base neutral-controls hero-bold content-1"
       >
-        <nav className="nav">
-          <Link className="brand" href="/" aria-label="Trilha início">
-            <img src="/community/montanha-oficial.svg" alt="Trilha" />
-          </Link>
-          <div className="navlinks">
-            <Link href="#iniciativas1">Iniciativas</Link>
-            <Link href="#journal-title">História</Link>
-            <Link href="#impact-title">Impacto</Link>
-            <Link href="#quem-somos">Quem somos</Link>
-          </div>
-          <Link className="navcta" href="#iniciativas1">
-            Encontre seu caminho
-          </Link>
-        </nav>
+        <CommunityNavigation />
         <main>
           <div className="caderno-hero">
             <HeroLandscape />

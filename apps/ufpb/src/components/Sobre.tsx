@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { SectionHead } from '@/components/home/shared';
-import { SpeakerReveal, type RevealPhoto } from '@/components/home/SpeakerReveal';
+import { SpeakerReveal, speakerPhotos, type RevealPhoto } from '@/components/home/SpeakerReveal';
 import type { Pillar } from '@/components/home/data';
 
 const groupPhoto = (original: string, artwork: string, alt: string, position = '50% 50%'): RevealPhoto =>
@@ -24,6 +24,11 @@ export default function Sobre() {
   const [active, setActive] = useState(0);
   const labels = locale === 'pt' ? ['Aulas', 'Palestras', 'Mentoria', 'Comunidade'] : ['Classes', 'Talks', 'Mentoring', 'Community'];
   const pillarIndex = [0, 2, 1, 3][active];
+  useEffect(() => {
+    // Preload the first pair of each tab before the visitor switches tabs.
+    const initial = [...Object.values(GROUP_GALLERIES).map(photos => photos[0]), speakerPhotos[0]];
+    initial.forEach(photo => photo.slice(0, 2).forEach(src => { const image = new Image(); image.src = src; }));
+  }, []);
   const pillars = t<Pillar[]>('sobre.pillars');
   return (
     <section id="sobre" className="section">

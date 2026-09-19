@@ -1,5 +1,6 @@
 'use client';
 
+import { ArrowUpRight } from 'lucide-react';
 import { peopleOrganizationCurrent } from '@trilha/people/current-organization';
 import { useTranslation } from '@/hooks/useTranslation';
 import { usePostHogTracking } from '@/hooks/usePostHogTracking';
@@ -67,7 +68,7 @@ export default function QuemSomos() {
                     </div>
                   )}
                 </div>
-                {p.link && <span className="team-arrow">↗</span>}
+                {p.link && <span className="team-arrow" aria-hidden="true"><ArrowUpRight size={18}/></span>}
               </a>
             );
           })}

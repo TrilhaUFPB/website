@@ -118,7 +118,7 @@ export const Luiz: Person = {
     photo: "/assets/pessoas/luiz.png",
     class: null,
     org: ["2024.1", "2024.2"],
-    pos: ["Fundador", "Membro da Organização"],
+    pos: ["Membro da Organização", "Membro da Organização"],
 };
 
 export const Gabriel: Person = {
@@ -131,7 +131,7 @@ export const Gabriel: Person = {
     photo: "/assets/pessoas/gabriel.png",
     class: null,
     org: ["2024.1", "2024.2"],
-    pos: ["Fundador", "Membro da Organização"],
+    pos: ["Membro da Organização", "Membro da Organização"],
 };
 
 export const Guilherme: Person = {

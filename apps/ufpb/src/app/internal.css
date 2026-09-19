@@ -97,16 +97,16 @@ body:has(.campus-internal-nav),
 .speaker-reveal-cycle { isolation: isolate; }
 .pillar--speakers .speaker-reveal img { position: absolute; inset: 0; width: 100%; height: 100%; transform: none; }
 .pillar--speakers .speaker-reveal .speaker-original { object-fit: cover; }
-/* Original for .8s, direct reveal in .36s, then time to read the artwork. */
-.speaker-reveal-cycle { animation: speaker-cycle 4s linear both; }
-.speaker-edited { animation: speaker-edit 4s cubic-bezier(.22,.61,.36,1) both; animation-play-state: inherit; }
+/* 3s total: .6s original, .27s artwork reveal, with .06s fades at either end. */
+.speaker-reveal-cycle { animation: speaker-cycle 3s linear both; }
+.speaker-edited { animation: speaker-edit 3s cubic-bezier(.22,.61,.36,1) both; animation-play-state: inherit; }
 @keyframes speaker-edit {
   0%, 20% { clip-path: inset(0 100% 0 0); }
   29%, 100% { clip-path: inset(0 0 0 0); }
 }
 @keyframes speaker-cycle {
   0% { opacity: 0; }
-  4%, 96% { opacity: 1; }
+  2%, 98% { opacity: 1; }
   100% { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {

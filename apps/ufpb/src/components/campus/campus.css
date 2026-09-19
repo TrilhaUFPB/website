@@ -551,3 +551,23 @@ body:has(.campus-home)::before {
 }
 .campus-home img { -webkit-user-drag: none; }
 .campus-home img::selection { background: transparent; }
+
+/* Text remains above the stickers visually, but lets gestures reach them. */
+.campus-hero-copy > :not(.hero-sticker-playground) { pointer-events:none; }
+.campus-hero-copy a,.campus-hero-copy button { pointer-events:auto; }
+.campus-menu-toggle { display:none; }
+@media(max-width:700px) {
+ .campus-nav { grid-template-columns:1fr auto; gap:12px; padding:16px 5%; }
+ .campus-nav .campus-brand { gap:8px; font-size:22px; }
+ .campus-nav .campus-brand img { width:34px; height:30px; }
+ .campus-nav-actions { gap:4px; }
+ .campus-nav-actions .campus-button { padding:8px 10px; font-size:10px; gap:6px; }
+ .campus-menu-toggle { display:grid; place-items:center; width:36px; height:36px; border:0; background:transparent; color:inherit; }
+ .campus-nav .campus-nav-links { display:none; }
+ .campus-nav-open .campus-nav-links { display:flex; width:100%; box-sizing:border-box; flex-direction:column; align-items:stretch; gap:0; padding:8px 16px; border-radius:14px; background:#fcfaf5; }
+ .campus-nav-open .campus-nav-links a { padding:12px 0; }
+ .campus-nav-open .campus-nav-links a::after { bottom:6px; }
+}
+
+.campus-class-short { display:none; }
+@media(max-width:380px) { .campus-class-label { display:none; } .campus-class-short { display:inline; } }
