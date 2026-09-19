@@ -58,7 +58,7 @@ export default function History() {
             começou.
           </p>
         </section>
-<section className="cohort-history" id="comunidade"><span className="section-label">SEMESTRE A SEMESTRE</span><h2>As turmas que construíram o Trilha.</h2><p>A primeira experiência virou um programa que se renova a cada semestre. As aulas, as mentorias e os projetos ganharam novas formas com cada grupo.</p>{cohorts.map(cohort => <article className="history-cohort" key={cohort.period}><img src={cohort.image.replace('/assets/turmas/', '/community/turmas/')} alt={cohort.title.pt} loading="lazy"/><div><span className="section-label">{cohort.period}</span><h3>{cohort.title.pt}</h3><p>{cohort.description.pt}</p><Link href={`${ufpbUrl}/turmas/${cohort.period}`}>Conheça a turma <ArrowIcon /></Link></div></article>)}</section>        <section className="history-chapter" id="hoje">
+<section className="cohort-history" id="comunidade"><span className="section-label">TURMA A TURMA</span><h2>As turmas que construíram o Trilha.</h2><p>A primeira experiência virou um programa que se renova a cada turma. As aulas, as mentorias e os projetos ganharam novas formas com cada grupo.</p>{cohorts.map(cohort => <article className="history-cohort" key={cohort.period}><img src={cohort.image.replace('/assets/turmas/', '/community/turmas/')} alt={cohort.title.pt} loading="lazy"/><div><span className="section-label">{cohort.period}</span><h3>{cohort.title.pt}</h3><p>{cohort.description.pt}</p><Link href={`${ufpbUrl}/turmas/${cohort.period}`}>Conheça a turma <ArrowIcon /></Link></div></article>)}</section>        <section className="history-chapter" id="hoje">
           <span className="section-label">HOJE</span>
           <h2>Um Trilha. Diferentes iniciativas.</h2>
           <p>

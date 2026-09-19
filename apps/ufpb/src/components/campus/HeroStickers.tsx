@@ -15,17 +15,18 @@ export default function HeroStickers() {
   const drag = useRef<{id:number; startX:number; startY:number; x:number; y:number; moved:boolean} | null>(null);
   const suppressClick = useRef(false);
   const desktop = () => window.matchMedia("(min-width: 951px) and (hover: hover) and (pointer: fine)").matches;
+  const stickerSize = (width:number) => window.matchMedia("(max-width: 700px)").matches ? 75 : Math.min(165, width * .12);
   const clamp = (x:number, y:number) => {
     const rect = layer.current!.getBoundingClientRect();
-    const size = Math.min(165, rect.width * .12);
+    const size = stickerSize(rect.width);
     return { x: Math.max(0, Math.min(x, 100 - size / rect.width * 100)), y: Math.max(0, Math.min(y, 100 - size / rect.height * 100)) };
   };
   useEffect(() => {
-    if (!desktop()) { setStickers(initial); return; }
+    if (!desktop()) { setStickers(initial.map(item => ({...item, ...clamp(item.x, item.y)}))); return; }
     const count = 5 + Math.floor(Math.random() * 5);
     const available = models.map((_, index) => index);
     const rect = layer.current!.getBoundingClientRect();
-    const size = Math.min(165, rect.width * .12);
+    const size = stickerSize(rect.width);
     // Five balanced anchors first; extra stickers fill the spaces between them.
     // Coordinates describe sticker centers, with small independent offsets.
     const anchors = [
@@ -57,27 +58,55 @@ export default function HeroStickers() {
     const host = document;
     if (!layer.current) return;
     const add = (event: MouseEvent) => {
-      if (!desktop() || !(event.target instanceof Element)) return;
+      if (!(event.target instanceof Element)) return;
       if (event.target.closest('a,button,input,textarea,select,label,[contenteditable],[role="button"]')) return;
       const rect = layer.current!.getBoundingClientRect();
       if(event.clientY < rect.top || event.clientY > rect.bottom || event.clientX < rect.left || event.clientX > rect.right) return;
-      const size = Math.min(165, rect.width * .12);
+      const size = stickerSize(rect.width);
       const pos = clamp((event.clientX - rect.left - size / 2) / rect.width * 100, (event.clientY - rect.top - size / 2) / rect.height * 100);
       setStickers(items => [...items, {id:nextId.current++, model:Math.floor(Math.random()*models.length), ...pos, angle:Math.random()*40-20}]);
     };
-    host.addEventListener("dblclick", add);
-    return () => host.removeEventListener("dblclick", add);
+    let down: {x:number;y:number;time:number} | null = null;
+    let lastTap: {x:number;y:number;time:number} | null = null;
+    let lastTouch = 0;
+    const start = (event:PointerEvent) => {
+      if (event.pointerType === 'mouse') return;
+      if (!event.isPrimary) { down=null; lastTap=null; return; }
+      down={x:event.clientX,y:event.clientY,time:Date.now()};
+    };
+    const end = (event:PointerEvent) => {
+      if (event.pointerType === 'mouse') return;
+      lastTouch=Date.now();
+      if (!down || lastTouch-down.time>350 || Math.hypot(event.clientX-down.x,event.clientY-down.y)>12) { down=null; lastTap=null; return; }
+      down=null;
+      if (lastTap && lastTouch-lastTap.time<320 && Math.hypot(event.clientX-lastTap.x,event.clientY-lastTap.y)<28) {
+        add(event);
+        lastTap=null;
+      } else lastTap={x:event.clientX,y:event.clientY,time:lastTouch};
+    };
+    const cancel = () => { down=null; lastTap=null; };
+    const doubleClick = (event:MouseEvent) => { if (Date.now()-lastTouch>600) add(event); };
+    host.addEventListener("dblclick", doubleClick);
+    host.addEventListener('pointerdown',start);
+    host.addEventListener('pointerup',end);
+    host.addEventListener('pointercancel',cancel);
+    return () => {
+      host.removeEventListener("dblclick", doubleClick);
+      host.removeEventListener('pointerdown',start);
+      host.removeEventListener('pointerup',end);
+      host.removeEventListener('pointercancel',cancel);
+    };
   }, []);
   return <div ref={layer} className="hero-sticker-playground">
     {stickers.map(sticker => <button key={sticker.id} type="button" className="hero-play-sticker"
       aria-label={locale === "pt" ? "Trocar adesivo; arraste para mover" : "Change sticker; drag to move"}
       style={{left:`${sticker.x}%`,top:`${sticker.y}%`}}
       onClick={() => {
-        if (!desktop() || suppressClick.current) { suppressClick.current = false; return; }
+        if (suppressClick.current) { suppressClick.current = false; return; }
         setStickers(items => items.map(item => item.id === sticker.id ? {...item, model:(item.model+1)%models.length, angle:Math.random()*50-25} : item));
       }}
       onPointerDown={event => {
-        if (!desktop() || event.button !== 0) return;
+        if (event.button !== 0 || !event.isPrimary) return;
         suppressClick.current = false;
         drag.current = {id:sticker.id,startX:event.clientX,startY:event.clientY,x:sticker.x,y:sticker.y,moved:false};
         event.currentTarget.setPointerCapture(event.pointerId);

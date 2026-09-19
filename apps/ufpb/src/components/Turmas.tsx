@@ -12,7 +12,7 @@ export default function Turmas() {
   const { trackTurmaSectionInteraction } = usePostHogTracking();
   const items: TurmaItem[] = cohorts.map(cohort => ({ period:cohort.period, title:cohort.title[locale === 'en' ? 'en' : 'pt'], theme:cohort.description[locale === 'en' ? 'en' : 'pt'], img:cohort.image, students:cohort.students.length }));
   const studentsSuffix = t('turmas.studentsSuffix');
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(cohorts.length - 1);
   return (
     <section id="turmas" className="section">
       <div className="container">

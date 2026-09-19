@@ -376,3 +376,5 @@ export const AntonioRoberio: Person = {
  link: "https://www.linkedin.com/in/roberiof/", photo: "/assets/pessoas/ufpe/roberio.png",
  class: null, org: [], pos: [],
 };
+
+export * from './students_2026_1';

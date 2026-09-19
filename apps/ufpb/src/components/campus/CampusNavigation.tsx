@@ -19,7 +19,6 @@ return (        <nav className="campus-nav" aria-label={t("campus.text28")}>
           <div className="campus-nav-links">
             <a href="/#sobre">{t("campus.text0")}</a>
             <a href="/#turmas">{t("campus.text1")}</a>
-            <a href="/#projetos">{t("campus.text2")}</a>
             <Link href="/materiais">{t("campus.text3")}</Link>
           <a className="campus-main-site" href={process.env.NEXT_PUBLIC_TRILHA_URL || "https://otrilha.com"}>{t("campus.text5")}<ArrowUpRight size={16} />
           </a>

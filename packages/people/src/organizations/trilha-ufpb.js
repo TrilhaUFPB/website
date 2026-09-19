@@ -90,6 +90,10 @@ export default {
     {
       "personId": "LucianaNascimento",
       "role": "Membro da Organização"
+    },
+    {
+      "personId": "SergioFreitas",
+      "role": "Membro da Organização"
     }
   ]
 };

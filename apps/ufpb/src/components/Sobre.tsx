@@ -6,7 +6,7 @@ import type { Pillar } from '@/components/home/data';
 
 const PILLAR_GALLERY: Record<number, string[]> = {
   0: ['/assets/aulas/aulas.jpg', '/assets/aulas/luigi.jpg'],
-  1: ['/assets/objetivos/aula.jpg'],
+  1: ['/assets/objetivos/aula.jpg', '/campus/aula.jpg'],
   2: [
     '/assets/palestras/herval.jpg',
     '/assets/palestras/itamar.jpg',

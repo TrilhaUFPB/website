@@ -7,7 +7,6 @@ import { ArrowUpRight, ArrowRight, BookOpen, CalendarDays } from "lucide-react";
 import Sobre from "@/components/Sobre";
 import Numbers from "@/components/Numbers";
 import Turmas from "@/components/Turmas";
-import Projects from "@/components/Projects";
 import Depoimentos from "@/components/Depoimentos";
 import QuemSomos from "@/components/QuemSomos";
 import Materiais from "@/components/Materiais";
@@ -18,6 +17,7 @@ import CampusNavigation from "./CampusNavigation";
 import CampusFooter from "./CampusFooter";
 import CampusStickers from "./CampusStickers";
 import HeroStickers from "./HeroStickers";
+import CampusPhotoStory from "./CampusPhotoStory";
 
 export default function CampusHome() {
   useReveal();
@@ -43,15 +43,7 @@ export default function CampusHome() {
                 </Link>
               </div>
             </div>
-            <figure className="campus-hero-photo">
-              <img
-                src="/campus/aula.jpg"
-                width="1600"
-                height="1200"
-                alt={t("campus.text30")}
-              />
-
-            </figure>
+            <CampusPhotoStory />
           </section>
           <section
             className="campus-shortcuts"
@@ -79,7 +71,6 @@ export default function CampusHome() {
           <Sobre />
           <Numbers />
           <Turmas />
-          <Projects />
           <Depoimentos />
           <QuemSomos />
           <Materiais />

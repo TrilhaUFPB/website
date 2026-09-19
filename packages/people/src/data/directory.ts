@@ -22,10 +22,14 @@ export function leaderMembership(personId: string) {
 }
 
 // Cohort rosters are the source of truth, including alumni who now organize.
-export const alumniIds = [...new Set(cohorts.flatMap(cohort => cohort.students))]
+export const alumniIds = [...new Set(cohorts.filter(cohort => cohort.status === 'completed').flatMap(cohort => cohort.students))]
  .map(person => Object.keys(peopleById).find(id => peopleById[id] === person)!)
  .sort((a, b) => peopleById[a].name.localeCompare(peopleById[b].name, "pt-BR"));
 
 export function cohortPeriodsFor(personId: string) {
  return cohorts.filter(cohort => cohort.students.includes(peopleById[personId])).map(cohort => cohort.period);
 }
+
+export const currentStudentIds = [...new Set(cohorts.filter(cohort => cohort.status === 'active').flatMap(cohort => cohort.students))]
+ .map(person => Object.keys(peopleById).find(id => peopleById[id] === person)!)
+ .sort((a,b) => peopleById[a].name.localeCompare(peopleById[b].name, 'pt-BR'));

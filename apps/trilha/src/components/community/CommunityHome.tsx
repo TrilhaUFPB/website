@@ -1,3 +1,4 @@
+import { allStudents } from '@trilha/people/cohorts';
 import CommunityTimeline from "./CommunityTimeline";
 import { ButtonLink } from "@trilha/ui";
 import HeroLandscape from "./HeroLandscape";
@@ -207,7 +208,7 @@ export default function CommunityHome() {
                   <span>mentores do Momento</span>
                 </div>
                 <div>
-                  <strong>87</strong>
+                  <strong>{allStudents.length}</strong>
                   <span>alunos do Trilha</span>
                 </div>
                 <div>

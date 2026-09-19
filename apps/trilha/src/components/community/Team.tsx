@@ -1,4 +1,4 @@
-import { alumniIds, founderIds, leaderIds, leaderMembership, organizerIds } from '@trilha/people/directory';
+import { currentStudentIds, alumniIds, founderIds, leaderIds, leaderMembership, organizerIds } from '@trilha/people/directory';
 import { ButtonLink, ArrowIcon } from '@trilha/ui';
 import PersonCard from './PersonCard';
 
@@ -26,6 +26,7 @@ export default function Team() {
    </section>)}
   </section>
   <section className="directory-group" aria-label="Organização"><h2>Organização</h2><div className="team-grid people-map">{organizerIds.map(id => <PersonCard key={id} personId={id} />)}</div></section>
+  <section className="directory-group" aria-labelledby="current-students-title"><h2 id="current-students-title">Alunos da turma atual</h2><p>2026.1 · Em andamento · 2 semestres de formação.</p><div className="team-grid people-map">{currentStudentIds.map(id => <PersonCard key={id} personId={id} alumni />)}</div></section>
   <section className="directory-group" aria-labelledby="alumni-title"><h2 id="alumni-title">Ex-alunos</h2><p>Todos que passaram pelas turmas do Trilha e seguem fazendo parte dessa história.</p><div className="team-grid people-map">{alumniIds.map(id => <PersonCard key={id} personId={id} alumni />)}</div></section>
   <ButtonLink href="/">Voltar ao Trilha <ArrowIcon /></ButtonLink>
  </main></div>;

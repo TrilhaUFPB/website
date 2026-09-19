@@ -8,6 +8,7 @@ import { ufpbUrl } from '@/lib/sites';
 const milestones = [
  { date:'19 de julho de 2024', title:'A primeira aula.', description:'Em João Pessoa, estudantes se reuniram para compartilhar o que sabiam com quem estava chegando. Uma sala e a vontade de aprender juntos.', image:'/community/aula.jpg', alt:'Estudantes reunidos em uma aula do Trilha', kind:'photo', cohortYear:'2024' },
  { date:'2025 · Momento', title:'Uma conversa abre caminhos.', description:'O Momento passa a fazer parte do Trilha. Estudantes encontram mentores, compartilham dúvidas e descobrem possibilidades dentro e fora do Brasil.', image:'/community/momento-symbol.svg', alt:'Momento', kind:'momento', cohortYear:'2025' },
+ { date:'2026 · Trilha UFPB', title:'Mais tempo para aprender juntos.', description:'A turma 2026.1 está em andamento, com uma formação de dois semestres de aulas, mentoria e projetos.', image:'/community/turmas/trilha2026-1.svg', alt:'Turma 2026.1 do Trilha UFPB', kind:'photo', cohortYear:'2026' },
  { date:'Hack The Path', title:'Mais gente para construir junto.', description:'A comunidade abre espaço para um novo encontro: um hackathon para formar equipes, experimentar e transformar ideias em projetos.', image:'/community/htp-logo.png', alt:'Hack The Path', kind:'htp' },
  { date:'Setembro de 2026 · Trilha UFPE', title:'O caminho chega a Recife.', description:'Uma nova organização nasce no CIn da UFPE. A primeira turma começa em outubro, conectando novos estudantes à mesma comunidade.', image:'/community/ufpe.png', alt:'Trilha UFPE', kind:'ufpe' },
 ];

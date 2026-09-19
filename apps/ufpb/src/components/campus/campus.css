@@ -481,13 +481,8 @@ body:has(.campus-home)::before {
 .hero-play-sticker:hover img { filter:drop-shadow(0 3px 2px #00092830); }
 .hero-play-sticker:active { cursor:grabbing; }
 .hero-play-sticker:focus-visible { outline:2px dashed var(--trilha-electric); border-radius:16px; }
-@media(max-width:950px), (hover:none), (pointer:coarse) {
- .hero-play-sticker { pointer-events:none; }
-}
 @media(max-width:700px) {
  .hero-play-sticker { width:75px; height:75px; padding:6px; }
- .hero-play-sticker:first-child { top:3%!important; left:2%!important; }
- .hero-play-sticker:nth-child(2) { top:auto!important; bottom:3%; left:auto!important; right:2%; }
 }
 
 .campus-hero-copy { -webkit-user-select:none; user-select:none; }
@@ -508,7 +503,7 @@ body:has(.campus-home)::before {
 .campus-hero-copy > :not(.hero-sticker-playground) { position:relative; z-index:1; }
 .campus-nav-links a { position:relative; transition:color 180ms ease; }
 .campus-nav-links a::after { content:""; position:absolute; left:0; right:0; bottom:-5px; height:2px; border-radius:2px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform 180ms ease; }
-.campus-nav-links a:hover,.campus-nav-links a:focus-visible { color:var(--trilha-electric); }
+.campus-nav-links a:hover,.campus-nav-links a:focus-visible { color:#008b48; }
 .campus-nav-links a:hover::after,.campus-nav-links a:focus-visible::after { transform:scaleX(1); }
 @media(prefers-reduced-motion:reduce) { .campus-nav-links a,.campus-nav-links a::after { transition:none; } }
 
@@ -524,3 +519,26 @@ body:has(.campus-home)::before {
  .campus-home .section > .container { width:92%; margin-inline:auto; }
  .campus-home .campus-project-showcase .container { width:100%; }
 }
+
+/* Three real moments, arranged like prints on a table. */
+.campus-photo-story { width:min(80vw,var(--trilha-content-width)); display:grid; grid-template-columns:1.6fr 1fr; grid-template-rows:1fr 1fr; gap:20px 28px; margin:24px auto 48px; padding:14px 6px; align-self:center; }
+.campus-photo-print { margin:0; padding:7px; background:#fffdf9; border:1px solid #00092812; border-radius:4px; box-shadow:0 5px 14px #00092812; }
+.campus-photo-print img { display:block; width:100%; height:100%; object-fit:cover; border-radius:2px; }
+.campus-photo-class { grid-row:1 / 3; transform:rotate(-2deg); }
+.campus-photo-class img { min-height:340px; object-position:58% center; }
+.campus-photo-project { transform:rotate(3deg); width:88%; justify-self:center; }
+.campus-photo-project img { aspect-ratio:350 / 196; }
+.campus-photo-community { transform:rotate(-3deg); }
+.campus-photo-community img { aspect-ratio:2 / 1; object-position:center 57%; }
+@media(max-width:700px) {
+ .campus-photo-story { width:92vw; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:30px; }
+ .campus-photo-class { grid-column:1 / -1; grid-row:auto; }
+ .campus-photo-class img { min-height:0; height:230px; }
+ .campus-photo-project { width:100%; }
+ .campus-photo-project img,.campus-photo-community img { aspect-ratio:4 / 3; }
+}
+
+/* Show all five cohorts together on desktop. */
+@media(min-width:901px) { .campus-home .turmas-row { grid-template-columns:repeat(5,minmax(0,1fr)); } }
+
+.campus-hero-copy { touch-action:manipulation; }
