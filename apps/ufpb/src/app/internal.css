@@ -97,9 +97,9 @@ body:has(.campus-internal-nav),
 .speaker-reveal-cycle { isolation: isolate; }
 .pillar--speakers .speaker-reveal img { position: absolute; inset: 0; width: 100%; height: 100%; transform: none; }
 .pillar--speakers .speaker-reveal .speaker-original { object-fit: cover; }
-/* Original for 1.2s, direct reveal in .54s, then time to read the artwork. */
-.speaker-reveal-cycle { animation: speaker-cycle 6s linear both; }
-.speaker-edited { animation: speaker-edit 6s cubic-bezier(.22,.61,.36,1) both; animation-play-state: inherit; }
+/* Original for .8s, direct reveal in .36s, then time to read the artwork. */
+.speaker-reveal-cycle { animation: speaker-cycle 4s linear both; }
+.speaker-edited { animation: speaker-edit 4s cubic-bezier(.22,.61,.36,1) both; animation-play-state: inherit; }
 @keyframes speaker-edit {
   0%, 20% { clip-path: inset(0 100% 0 0); }
   29%, 100% { clip-path: inset(0 0 0 0); }
