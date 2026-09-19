@@ -1,3 +1,5 @@
+import { peopleOrganization20241, peopleOrganization20242, peopleOrganization20251, peopleOrganization20252 } from './people';
+import { peopleOrganization20261 } from './current-organization';
 import { peopleStudents20241, peopleStudents20242, peopleStudents20251, peopleStudents20252, peopleStudents20261 } from './people';
 export const cohorts = [
 {status: "completed" as const, durationSemesters: 1, "period": "2024.1", "image": "/assets/turmas/trilha2024.jpg", "title": {"pt": "1ª Turma", "en": "1st cohort"}, "description": {"pt": "Onde tudo começou — Python, web, e o primeiro hackathon.", "en": "Where it all started — Python, web, and the first hackathon."}, students: peopleStudents20241},
@@ -8,3 +10,12 @@ export const cohorts = [
 ];
 export const allStudents = [...new Set(cohorts.flatMap(cohort => cohort.students))];
 export const completedCohorts = cohorts.filter(cohort => cohort.status === 'completed');
+
+// Historical membership and titles belong to the edition, not the current team.
+export const cohortOrganizations = {
+  "2024.1": peopleOrganization20241,
+  "2024.2": peopleOrganization20242,
+  "2025.1": peopleOrganization20251,
+  "2025.2": peopleOrganization20252,
+  "2026.1": peopleOrganization20261,
+};

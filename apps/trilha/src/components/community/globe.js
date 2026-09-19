@@ -6,33 +6,9 @@ export default function mountGlobe(canvas, design = 1) {
   const listen = (name, callback) =>
     canvas.addEventListener(name, callback, { signal: controller.signal });
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-  const origin = [-7.12, -34.86],
-    destinations = [
-      [-8.05, -34.95],
-      [42.36, -71.06],
-      [51.16, 10.45], // Germany (country-level marker)
-      [40.46, -3.75], // Spain (country-level marker)
-      [37.77, -122.42],
-      [-18.5, -44],
-      [-5.7, -36.5],
-      [-15.79, -47.88],
-      [-8.5, -38],
-    ];
-  // Additional locations illustrate national reach, alongside confirmed connections.
-  const nationalPaths = [
-    [-3.12, -60.02],
-    [-1.46, -48.5],
-    [-9.97, -67.81],
-    [-10.18, -48.33],
-    [-12.97, -38.5],
-    [-3.73, -38.52],
-    [-15.6, -56.1],
-    [-20.47, -54.62],
-    [-22.91, -43.17],
-    [-23.55, -46.63],
-    [-25.43, -49.27],
-    [-30.03, -51.23],
-  ];
+  const origin = [-7.12, -34.86];
+  // Use the same destinations for arcs, markers and city labels.
+  const destinations = connections.map(({ location }) => location);
   let phi = -0.44,
     theta = 0.18,
     drag = false,
@@ -100,12 +76,12 @@ export default function mountGlobe(canvas, design = 1) {
               ? [0, 0, 0]
               : [0, 0.65, 0.32],
       },
-      ...[...destinations, ...nationalPaths].map((location) => ({
+      ...destinations.map((location) => ({
         location,
         size: design === 1 ? 0.015 : design === 2 ? 0.009 : 0.01,
       })),
     ],
-    arcs: [...destinations, ...nationalPaths].map((to) => ({
+    arcs: destinations.map((to) => ({
       from: origin,
       to,
     })),

@@ -23,7 +23,7 @@ export default function CampusPhotoStory() {
  }, []);
  return <div className="campus-photo-story">
   {photos.map((photo, index) => <figure key={index} className={`campus-photo-print ${['campus-photo-class','campus-photo-project','campus-photo-community'][index]}`}>
-   <img src={photo.src} alt={locale === 'pt' ? photo.pt : photo.en} loading="lazy" />
+   <img draggable={false} src={photo.src} alt={locale === 'pt' ? photo.pt : photo.en} loading="lazy" />
   </figure>)}
  </div>;
 }

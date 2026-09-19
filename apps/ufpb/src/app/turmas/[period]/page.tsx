@@ -11,7 +11,7 @@ export default async function TurmaPage({ params }: { params: Promise<{ period: 
   if (!cohort) notFound();
 
   return (
-    <main className="shell">
+    <main className="shell cohort-page">
       <section className="section" style={{ paddingTop: 'clamp(40px, 6vw, 88px)', paddingBottom: 'clamp(56px, 7vw, 110px)' }}>
         <div className="container">
           <CohortHeader period={period} />
