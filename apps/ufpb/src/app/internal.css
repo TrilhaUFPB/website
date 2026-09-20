@@ -97,7 +97,7 @@ body:has(.campus-internal-nav),
 .speaker-reveal-cycle { isolation: isolate; }
 .pillar--speakers .speaker-reveal img { position: absolute; inset: 0; width: 100%; height: 100%; transform: none; }
 .pillar--speakers .speaker-reveal .speaker-original { object-fit: cover; }
-/* 3s total: .6s original, .27s artwork reveal, with an immediate first frame and a .06s fade out. */
+/* 3s total: .6s original, .27s artwork reveal, with the slide handoff overlapping the next original. */
 .speaker-reveal-cycle { animation: speaker-cycle 3s linear both; }
 .speaker-edited { animation: speaker-edit 3s cubic-bezier(.22,.61,.36,1) both; animation-play-state: inherit; }
 @keyframes speaker-edit {
@@ -105,8 +105,7 @@ body:has(.campus-internal-nav),
   29%, 100% { clip-path: inset(0 0 0 0); }
 }
 @keyframes speaker-cycle {
-  0%, 98% { opacity: 1; }
-  100% { opacity: 0; }
+  from, to { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .speaker-edited { animation-name: speaker-edit-fade; }
@@ -172,3 +171,9 @@ body:has(.campus-internal-nav),
  .cohort-facts strong { font-size:23px; }
 }
 @media(prefers-reduced-motion:reduce) { .cohort-person-photo img { transition:none; } }
+
+/* Keep the outgoing frame above the incoming photo for a continuous handoff. */
+.speaker-outgoing { position:absolute; inset:0; z-index:2; pointer-events:none; animation:speaker-handoff 240ms ease-out both; }
+@keyframes speaker-handoff { from { opacity:1; } to { opacity:0; } }
+.speaker-reveal .photo-controls { z-index:3; }
+@media(prefers-reduced-motion:reduce) { .speaker-outgoing { animation-duration:1ms; } }

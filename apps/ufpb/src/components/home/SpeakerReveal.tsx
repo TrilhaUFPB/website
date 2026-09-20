@@ -25,6 +25,7 @@ export function SpeakerReveal({ photos = speakerPhotos, controls = false, onComp
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [index, setIndex] = useState(0);
+  const [outgoing, setOutgoing] = useState<{ photo: RevealPhoto; clip: string; opacity: string } | null>(null);
   const [visible, setVisible] = useState(false);
   const [loaded, setLoaded] = useState<Record<string, boolean>>({});
   const root = useRef<HTMLDivElement>(null);
@@ -52,6 +53,13 @@ export function SpeakerReveal({ photos = speakerPhotos, controls = false, onComp
     next.slice(0, 2).forEach(src => { const image = new Image(); image.src = src; });
   }, [index, photos]);
 
+  function changePhoto(next: number) {
+    const artwork = root.current?.querySelector('.speaker-reveal-cycle .speaker-edited');
+    const style = artwork ? getComputedStyle(artwork) : null;
+    setOutgoing({ photo: photos[index], clip: style?.clipPath ?? 'inset(0 100% 0 0)', opacity: style?.visibility === 'hidden' ? '0' : (style?.opacity ?? '1') });
+    setIndex(next);
+  }
+
   return (
     <div ref={root} className="speaker-reveal" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setFocused(true)} onBlurCapture={e => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setFocused(false); }}>
@@ -59,7 +67,7 @@ export function SpeakerReveal({ photos = speakerPhotos, controls = false, onComp
         onAnimationEnd={event => {
           if (event.target !== event.currentTarget) return;
           if (index === photos.length - 1 && onComplete) onComplete();
-          else setIndex(i => (i + 1) % photos.length);
+          else changePhoto((index + 1) % photos.length);
         }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="speaker-original" src={original} alt={name}
@@ -68,10 +76,18 @@ export function SpeakerReveal({ photos = speakerPhotos, controls = false, onComp
         <img className="speaker-edited" style={{ visibility: ready ? 'visible' : 'hidden', animationName: ready ? undefined : 'none' }} src={edited} alt="" aria-hidden="true"
           onLoad={() => setLoaded(s => ({ ...s, [edited]: true }))} />
       </div>
+      {outgoing && <div key={original} className="speaker-outgoing" aria-hidden="true"
+        style={{ animationName: loaded[original] ? undefined : 'none' }}
+        onAnimationEnd={event => { if (event.target === event.currentTarget) setOutgoing(null); }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={outgoing.photo[0]} alt="" style={{ objectFit: 'cover', objectPosition: outgoing.photo[3] }} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={outgoing.photo[1]} alt="" style={{ objectFit: 'contain', clipPath: outgoing.clip, opacity: outgoing.opacity }} />
+      </div>}
       {controls && <div className="photo-controls">
-        <button type="button" aria-label={locale === 'pt' ? 'Foto anterior' : 'Previous photo'} onClick={() => setIndex(i => (i + photos.length - 1) % photos.length)}>←</button>
+        <button type="button" aria-label={locale === 'pt' ? 'Foto anterior' : 'Previous photo'} onClick={() => changePhoto((index + photos.length - 1) % photos.length)}>←</button>
         <span>{index + 1} / {photos.length}</span>
-        <button type="button" aria-label={locale === 'pt' ? 'Próxima foto' : 'Next photo'} onClick={() => setIndex(i => (i + 1) % photos.length)}>→</button>
+        <button type="button" aria-label={locale === 'pt' ? 'Próxima foto' : 'Next photo'} onClick={() => changePhoto((index + 1) % photos.length)}>→</button>
       </div>}
     </div>
   );

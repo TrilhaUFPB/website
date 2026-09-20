@@ -17,7 +17,7 @@ export default {
     },
     {
       "personId": "Kruta",
-      "role": "Líder de Logística"
+      "role": "Membro da Organização"
     },
     {
       "personId": "Emyle",
