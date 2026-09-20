@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { SectionHead } from '@/components/home/shared';
-import { SpeakerReveal, speakerPhotos, type RevealPhoto } from '@/components/home/SpeakerReveal';
+import { SpeakerReveal, speakerPhotos, galleryImage, type RevealPhoto } from '@/components/home/SpeakerReveal';
 import type { Pillar } from '@/components/home/data';
 
 const groupPhoto = (original: string, artwork: string, alt: string, position = '50% 50%'): RevealPhoto =>
-  [original, `/assets/community-edited/${artwork}-${artwork === 'festa' ? 'v2' : 'v1'}.png`, alt, position];
+  [galleryImage(original), galleryImage(`/assets/community-edited/${artwork}-${artwork === 'festa' ? 'v2' : 'v1'}.png`), alt, position];
 
 const GROUP_GALLERIES: Record<number, RevealPhoto[]> = {
   0: [groupPhoto('/assets/aulas/aulas.jpg', 'aulas', 'Estudantes trabalhando em sala'),
@@ -25,10 +25,14 @@ export default function Sobre() {
   const labels = locale === 'pt' ? ['Aulas', 'Palestras', 'Mentoria', 'Comunidade'] : ['Classes', 'Talks', 'Mentoring', 'Community'];
   const pillarIndex = [0, 2, 1, 3][active];
   useEffect(() => {
-    // Preload the first pair of each tab before the visitor switches tabs.
-    const initial = [...Object.values(GROUP_GALLERIES).map(photos => photos[0]), speakerPhotos[0]];
-    initial.forEach(photo => photo.slice(0, 2).forEach(src => { const image = new Image(); image.src = src; }));
-  }, []);
+    // Warm only the next tab, avoiding a burst of competing downloads.
+    const nextPillar = [0, 2, 1, 3][(active + 1) % 4];
+    const next = (GROUP_GALLERIES[nextPillar] ?? speakerPhotos)[0];
+    const timer = window.setTimeout(() => {
+      next.slice(0, 2).forEach(src => { const image = new Image(); image.src = src; });
+    }, 1500);
+    return () => window.clearTimeout(timer);
+  }, [active]);
   const pillars = t<Pillar[]>('sobre.pillars');
   return (
     <section id="sobre" className="section">

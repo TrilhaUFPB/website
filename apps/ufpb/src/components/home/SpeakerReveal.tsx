@@ -14,8 +14,10 @@ const speakers: RevealPhoto[] = [
   ['marcos-andre.png', 'marcos-andre', 'Marcos Candeia e André Costa', '85% 40%'],
 ];
 
+export const galleryImage = (path: string) => `/assets/gallery-web/${path.replace(/^\//, '').replaceAll('/', '-').replace(/\.[^.]+$/, '.webp')}`;
+
 export const speakerPhotos: RevealPhoto[] = speakers.map(([original, edited, alt, position]) => [
-  `/assets/palestras/${original}`, `/assets/palestras/edited/${edited}-v1.png`, alt, position,
+  galleryImage(`/assets/palestras/${original}`), galleryImage(`/assets/palestras/edited/${edited}-v1.png`), alt, position,
 ]);
 
 export function SpeakerReveal({ photos = speakerPhotos, controls = false, onComplete }: { photos?: RevealPhoto[]; controls?: boolean; onComplete?: () => void }) {
