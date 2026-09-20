@@ -37,6 +37,15 @@ export function SpeakerReveal({ photos = speakerPhotos, controls = false, onComp
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    root.current?.querySelectorAll('img').forEach(image => {
+      if (image.complete && image.naturalWidth > 0) {
+        const src = image.getAttribute('src');
+        if (src) setLoaded(previous => previous[src] ? previous : { ...previous, [src]: true });
+      }
+    });
+  }, [original, edited]);
+
   // Warm the next pair while the current photograph is on screen.
   useEffect(() => {
     const next = photos[(index + 1) % photos.length];
@@ -46,7 +55,7 @@ export function SpeakerReveal({ photos = speakerPhotos, controls = false, onComp
   return (
     <div ref={root} className="speaker-reveal" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setFocused(true)} onBlurCapture={e => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setFocused(false); }}>
-      <div key={edited} className="speaker-reveal-cycle" style={{ opacity: ready ? undefined : 1, animationPlayState: visible && ready && !hovered && !focused ? 'running' : 'paused' }}
+      <div key={edited} className="speaker-reveal-cycle" style={{ animationName: ready ? undefined : 'none', animationPlayState: visible && ready && !hovered && !focused ? 'running' : 'paused' }}
         onAnimationEnd={event => {
           if (event.target !== event.currentTarget) return;
           if (index === photos.length - 1 && onComplete) onComplete();
@@ -56,7 +65,7 @@ export function SpeakerReveal({ photos = speakerPhotos, controls = false, onComp
         <img className="speaker-original" src={original} alt={name}
           style={{ objectPosition: position }} onLoad={() => setLoaded(s => ({ ...s, [original]: true }))} />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="speaker-edited" style={{ visibility: ready ? 'visible' : 'hidden' }} src={edited} alt="" aria-hidden="true"
+        <img className="speaker-edited" style={{ visibility: ready ? 'visible' : 'hidden', animationName: ready ? undefined : 'none' }} src={edited} alt="" aria-hidden="true"
           onLoad={() => setLoaded(s => ({ ...s, [edited]: true }))} />
       </div>
       {controls && <div className="photo-controls">
