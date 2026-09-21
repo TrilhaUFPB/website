@@ -52,6 +52,8 @@ test('publica o Google Slides da aula 15 de Machine Learning', () => {
 
   assert.equal(aula15.embedUrl, 'https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/embed');
   assert.equal(aula15.canvaUrl, 'https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/edit?usp=sharing');
+  assert.equal(aula15.links[0].label, 'Conteúdo complementar — TensorFlow Playground');
+  assert.match(aula15.links[0].url, /^https:\/\/playground\.tensorflow\.org\/#activation=relu&/);
 });
 
 test('não renderiza uma página para aulas marcadas como não abertas', async () => {
