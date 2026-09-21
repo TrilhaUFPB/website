@@ -4450,10 +4450,9 @@ body:has(.trilha-site)::before {
  .trilha-site .community-menu-toggle:focus-visible { outline:2px solid currentColor; outline-offset:3px; border-radius:6px; }
 }
 
-/* Overlap the sky, reserving the lower 40% of the landscape for mountains. */
 .trilha-site .design .site-footer.landscape-footer {
  display:flex; flex-direction:column; height:auto; min-height:0; padding:40px 0 0;
- overflow:hidden;
+ position:relative; overflow-x:clip; overflow-y:visible;
 }
 .trilha-site .site-footer.landscape-footer .footer-top {
  width:var(--trilha-content-fluid); max-width:850px; margin:0 auto; position:relative; z-index:1;
@@ -4463,12 +4462,17 @@ body:has(.trilha-site)::before {
  margin:32px auto 0; padding:20px 0; color:var(--trilha-ink); box-sizing:border-box;
 }
 .trilha-site .site-footer.landscape-footer .footer-bottom :is(span,a) { color:inherit; text-shadow:none; }
+/* Positioned out of flow (not clamped by the footer's overflow) so nav content
+   can sit deep into the image; top edge fades into the page background. */
+.trilha-site .site-footer.landscape-footer .footer-landscape-wrap {
+ position:absolute; z-index:0; left:50%; top:-140px; transform:translateX(-50%);
+ width:max(100%, 900px); aspect-ratio:1536/840; overflow:hidden;
+ -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 130px);
+ mask-image:linear-gradient(to bottom, transparent 0, #000 130px);
+}
 .trilha-site .site-footer.landscape-footer .footer-landscape-image {
- position:relative; inset:auto; z-index:0; display:block; flex:none;
- width:max(100%, 900px); height:auto; max-height:none; align-self:center;
- /* Peaks start at 60% of this 3:2 image: 40% of its displayed width. */
- margin:calc(24px - max(40vw, 360px)) 0 0;
- transform:none; object-fit:contain; opacity:1;
+ position:absolute; inset:0; display:block;
+ width:100%; height:100%; object-fit:cover; object-position:bottom;
 }
 
 /* Give the hero call to action breathing room below its introduction. */

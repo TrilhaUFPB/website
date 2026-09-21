@@ -44,11 +44,13 @@ export default function CommunityFooter() { return (
             <span>Um começo. Muitos caminhos.</span>
             <Link href="/#inicio">Voltar ao topo</Link>
           </div>
-          <img
-            className="footer-landscape-image"
-            src="/community/landscape.png"
-            alt=""
-            loading="lazy"
-          />
+          <div className="footer-landscape-wrap">
+            <img
+              className="footer-landscape-image"
+              src="/community/landscape.png"
+              alt=""
+              loading="lazy"
+            />
+          </div>
         </footer>
 ); }
