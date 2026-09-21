@@ -47,6 +47,13 @@ test('mantém o cronograma equivalente em inglês', () => {
   assert.equal(aula13.links[0].url, 'https://github.com/joaovictor42/data-lakehouse-101');
 });
 
+test('publica o Google Slides da aula 15 de Machine Learning', () => {
+  const aula15 = lesson(portuguese, '15');
+
+  assert.equal(aula15.embedUrl, 'https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/embed');
+  assert.equal(aula15.canvaUrl, 'https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/edit?usp=sharing');
+});
+
 test('não renderiza uma página para aulas marcadas como não abertas', async () => {
   const source = await readFile(new URL('../src/app/aulas/[slug]/page.tsx', import.meta.url), 'utf8');
 
