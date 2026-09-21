@@ -610,25 +610,11 @@
         "category": "dados",
         "title": "Introduction to Machine Learning",
         "description": "Introduction to Machine Learning: supervised models, training, testing, and performance evaluation.",
-        "embedUrl": "",
-        "canvaUrl": "",
-        "date": "September 18, 2026",
-        "deadline": "September 24, 2026",
-        "homework": "Homework coming soon.",
-        "links": [],
-        "dateISO": "2026-09-18"
-      },
-      {
-        "number": "15",
-        "category": "dados",
-        "title": "Advanced ML Topics",
-        "description": "Advanced topics and Machine Learning mini-project. How to apply models to real-world problems.",
         "embedUrl": "https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/embed",
         "canvaUrl": "https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/edit?usp=sharing",
-        "date": "September 25, 2026",
-        "deadline": "October 1, 2026",
-        "taskType": "miniprojeto",
-        "homework": "Mini-Project coming soon.",
+        "date": "September 18, 2026",
+        "deadline": "September 24, 2026",
+        "homework": "Access the activity in the Google Colab below.",
         "links": [
           {
             "label": "Activity — Google Colab",
@@ -639,6 +625,20 @@
             "url": "https://playground.tensorflow.org/#activation=relu&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=3,3,4&seed=0.30000&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false"
           }
         ],
+        "dateISO": "2026-09-18"
+      },
+      {
+        "number": "15",
+        "category": "dados",
+        "title": "Advanced ML Topics",
+        "description": "Advanced topics and Machine Learning mini-project. How to apply models to real-world problems.",
+        "embedUrl": "",
+        "canvaUrl": "",
+        "date": "September 25, 2026",
+        "deadline": "October 1, 2026",
+        "taskType": "miniprojeto",
+        "homework": "Mini-Project coming soon.",
+        "links": [],
         "dateISO": "2026-09-25"
       },
       {

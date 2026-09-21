@@ -609,25 +609,11 @@
         "category": "dados",
         "title": "Introdução ao Machine Learning",
         "description": "Introdução ao Machine Learning: modelos supervisionados, treino, teste e avaliação de performance.",
-        "embedUrl": "",
-        "canvaUrl": "",
-        "date": "18 de setembro de 2026",
-        "deadline": "24 de setembro de 2026",
-        "homework": "Tarefa em breve.",
-        "links": [],
-        "dateISO": "2026-09-18"
-      },
-      {
-        "number": "15",
-        "category": "dados",
-        "title": "Tópicos Avançados de ML",
-        "description": "Tópicos avançados e mini-projeto de Machine Learning. Como aplicar modelos em problemas reais.",
         "embedUrl": "https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/embed",
         "canvaUrl": "https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/edit?usp=sharing",
-        "date": "25 de setembro de 2026",
-        "deadline": "1 de outubro de 2026",
-        "taskType": "miniprojeto",
-        "homework": "Mini-Projeto em breve.",
+        "date": "18 de setembro de 2026",
+        "deadline": "24 de setembro de 2026",
+        "homework": "Acesse a atividade no Google Colab abaixo.",
         "links": [
           {
             "label": "Atividade — Google Colab",
@@ -638,6 +624,20 @@
             "url": "https://playground.tensorflow.org/#activation=relu&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=3,3,4&seed=0.30000&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false"
           }
         ],
+        "dateISO": "2026-09-18"
+      },
+      {
+        "number": "15",
+        "category": "dados",
+        "title": "Tópicos Avançados de ML",
+        "description": "Tópicos avançados e mini-projeto de Machine Learning. Como aplicar modelos em problemas reais.",
+        "embedUrl": "",
+        "canvaUrl": "",
+        "date": "25 de setembro de 2026",
+        "deadline": "1 de outubro de 2026",
+        "taskType": "miniprojeto",
+        "homework": "Mini-Projeto em breve.",
+        "links": [],
         "dateISO": "2026-09-25"
       },
       {

@@ -47,15 +47,18 @@ test('mantém o cronograma equivalente em inglês', () => {
   assert.equal(aula13.links[0].url, 'https://github.com/joaovictor42/data-lakehouse-101');
 });
 
-test('publica o Google Slides da aula 15 de Machine Learning', () => {
+test('publica os materiais de Machine Learning na aula 14', () => {
+  const aula14 = lesson(portuguese, '14');
   const aula15 = lesson(portuguese, '15');
 
-  assert.equal(aula15.embedUrl, 'https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/embed');
-  assert.equal(aula15.canvaUrl, 'https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/edit?usp=sharing');
-  assert.equal(aula15.links[0].label, 'Atividade — Google Colab');
-  assert.equal(aula15.links[0].url, 'https://colab.research.google.com/drive/1X5U-rrCqsUKTtUz_2XyCK9yW_84Bvcbe#scrollTo=bfcc4f48');
-  assert.equal(aula15.links[1].label, 'Conteúdo complementar — TensorFlow Playground');
-  assert.match(aula15.links[1].url, /^https:\/\/playground\.tensorflow\.org\/#activation=relu&/);
+  assert.equal(aula14.embedUrl, 'https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/embed');
+  assert.equal(aula14.canvaUrl, 'https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/edit?usp=sharing');
+  assert.equal(aula14.links[0].label, 'Atividade — Google Colab');
+  assert.equal(aula14.links[0].url, 'https://colab.research.google.com/drive/1X5U-rrCqsUKTtUz_2XyCK9yW_84Bvcbe#scrollTo=bfcc4f48');
+  assert.equal(aula14.links[1].label, 'Conteúdo complementar — TensorFlow Playground');
+  assert.match(aula14.links[1].url, /^https:\/\/playground\.tensorflow\.org\/#activation=relu&/);
+  assert.equal(aula15.embedUrl, '');
+  assert.deepEqual(aula15.links, []);
 });
 
 test('não renderiza uma página para aulas marcadas como não abertas', async () => {
