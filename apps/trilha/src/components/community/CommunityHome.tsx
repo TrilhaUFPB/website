@@ -1,8 +1,14 @@
+import CommunityNavigation from "./CommunityNavigation";
+import { allStudents } from '@trilha/people/cohorts';
+import CommunityTimeline from "./CommunityTimeline";
+import { ButtonLink } from "@trilha/ui";
+import HeroLandscape from "./HeroLandscape";
 import CommunityFooter from "./CommunityFooter";
 import { ufpbUrl } from "@/lib/sites";
 import ArrowIcon from "./ArrowIcon";
 import BackgroundStudy from "./BackgroundStudy";
 import Link from "next/link";
+
 /* eslint-disable @next/next/no-img-element */
 export default function CommunityHome() {
   return (
@@ -12,22 +18,10 @@ export default function CommunityHome() {
         id="inicio"
         className="design base neutral-controls hero-bold content-1"
       >
-        <nav className="nav">
-          <Link className="brand" href="/" aria-label="Trilha início">
-            <img src="/community/montanha-oficial.svg" alt="Trilha" />
-          </Link>
-          <div className="navlinks">
-            <Link href="#iniciativas1">Iniciativas</Link>
-            <Link href="#journal-title">História</Link>
-            <Link href="#impact-title">Impacto</Link>
-            <Link href="#quem-somos">Quem somos</Link>
-          </div>
-          <Link className="navcta" href="#iniciativas1">
-            Encontre seu caminho
-          </Link>
-        </nav>
+        <CommunityNavigation />
         <main>
           <div className="caderno-hero">
+            <HeroLandscape />
             <h1>
               Seu primeiro passo.
               <br />
@@ -38,9 +32,9 @@ export default function CommunityHome() {
               <br />
               Descubra caminhos que você ainda nem imaginou.
             </p>
-            <Link className="button" href="#iniciativas1">
+            <ButtonLink size="lg" href="#iniciativas1">
               Explore as iniciativas <ArrowIcon direction="down" />
-            </Link>
+            </ButtonLink>
             <span className="explore-cue">
               UM NOVO CAMINHO COMEÇA AQUI <ArrowIcon direction="down" />
             </span>
@@ -107,7 +101,7 @@ export default function CommunityHome() {
                   </p>
                 </div>
               </Link>
-              <Link href="/ufpe/" className="initiative ufpe">
+              <Link href="https://trilhaufpe.com" className="initiative ufpe">
                 <div className="initiative-art campus-art">
                   <div className="campus-lockup">
                     <img
@@ -147,6 +141,12 @@ export default function CommunityHome() {
                     alt=""
                   />
                   <img
+                    className="htp-art htp-art-hover"
+                    src="/community/htp-art.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <img
                     className="htp-wordmark"
                     src="/community/htp-logo.png"
                     alt="Hack The Path"
@@ -167,74 +167,7 @@ export default function CommunityHome() {
               </Link>
             </div>
           </section>
-          <section
-            className="community-journal"
-            aria-labelledby="journal-title"
-          >
-            <header>
-              <span className="section-label">
-                DE ESTUDANTES PARA ESTUDANTES
-              </span>
-              <h2 id="journal-title">
-                Uma história feita
-                <br />
-                de encontros.
-              </h2>
-              <p>
-                Uma sala, algumas dúvidas e a vontade de ajudar.
-                <br />
-                Foi assim que o Trilha começou a ganhar forma.
-              </p>
-            </header>
-            <figure className="journal-class">
-              <img
-                src="/community/aula.jpg"
-                width="1600"
-                height="1200"
-                loading="lazy"
-                alt="Estudantes do Trilha aprendendo juntos com notebooks e um quadro"
-              />
-            </figure>
-            <div className="journal-origin">
-              <span className="journal-date">19.07.2024</span>
-              <h3>
-                A primeira aula.
-                <br />O começo de muita coisa.
-              </h3>
-              <p>
-                Em João Pessoa, estudantes se reuniram para compartilhar o que
-                sabiam com quem estava chegando. O que começou em uma sala
-                pequena abriu espaço para novos encontros, mentorias e
-                iniciativas.
-              </p>
-            </div>
-            <div className="journal-return">
-              <span className="journal-date journal-today">Hoje</span>
-              <h3>
-                Um começo.
-                <br />
-                Muitos caminhos.
-              </h3>
-              <p>
-                Da formação no Trilha UFPB às mentorias do Momento, a comunidade
-                ganhou novas formas de compartilhar conhecimento. O Hack The
-                Path abre espaço para encontros e projetos, e a Trilha UFPE
-                prepara um novo começo.
-              </p>
-              <Link className="button" href="/historia/">
-                Saiba mais <ArrowIcon direction="up-right" />
-              </Link>
-            </div>
-            <figure className="journal-people">
-              <img
-                src="/community/turma.jpg"
-                width="1280"
-                height="960"
-                loading="lazy"
-                alt="Integrantes da comunidade Trilha reunidos em um encontro"
-              />
-            </figure>
-          </section>
+          <CommunityTimeline />
           <section className="impact-section" aria-labelledby="impact-title">
             <div className="impact-copy">
               <span className="section-label">DA PARAÍBA PARA MAIS LONGE</span>
@@ -251,7 +184,7 @@ export default function CommunityHome() {
             <div className="globe-stage">
               <canvas
                 id="impact-globe"
-                aria-label="Globo com conexões da Paraíba a San Francisco, Boston, Minas Gerais, Rio Grande do Norte, Brasília, Pernambuco e à futura Trilha UFPE."
+                aria-label="Globo com conexões da Paraíba a San Francisco, Boston, Minas Gerais, Rio Grande do Norte, Brasília, Pernambuco, Alemanha e Espanha."
               ></canvas>
               <div className="impact-stats">
                 <div>
@@ -263,7 +196,7 @@ export default function CommunityHome() {
                   <span>mentores do Momento</span>
                 </div>
                 <div>
-                  <strong>87</strong>
+                  <strong>{allStudents.length}</strong>
                   <span>alunos do Trilha</span>
                 </div>
                 <div>
@@ -273,94 +206,21 @@ export default function CommunityHome() {
               </div>
             </div>
           </section>
-          <section
-            className="team-section"
-            id="quem-somos"
-            aria-labelledby="team-title"
-          >
-            <header>
-              <div>
-                <span className="section-label">QUEM SOMOS</span>
-                <h2 id="team-title">Quem caminha com você.</h2>
-              </div>
-              <p>
-                Gente que começou aprendendo junto e hoje abre espaço para quem
-                vem depois. Conheça algumas das pessoas à frente das nossas
-                iniciativas.
-              </p>
-            </header>
-            <div className="team-grid leadership-grid">
-              <article className="person" id="pessoa-Clara">
-                <img
-                  src="/community/pessoas/2024.1/clara.png"
-                  alt="Maria Clara Dantas"
-                  loading="lazy"
-                  width="400"
-                  height="480"
-                />
-                <h3>Maria Clara Dantas</h3>
-                <p>Presidente · Trilha</p>
-              </article>
-              <article className="person" id="pessoa-NicoleCosta">
-                <img
-                  src="/community/pessoas/2025.1/nicole.jpg"
-                  alt="Nicole Costa e Silva"
-                  loading="lazy"
-                  width="400"
-                  height="480"
-                />
-                <h3>Nicole Costa e Silva</h3>
-                <p>Líder · Momento</p>
-              </article>
-              <article className="person" id="pessoa-MariaLuisaQuintela">
-                <img
-                  src="/community/pessoas/2025.1/quintela.jpg"
-                  alt="Maria Luisa Moreira Quintela"
-                  loading="lazy"
-                  width="400"
-                  height="480"
-                />
-                <h3>Malu Quintela</h3>
-                <p>Líder · Hack The Path</p>
-              </article>
-              <article className="person" id="pessoa-Luigi">
-                <img
-                  src="/community/pessoas/2024.1/luigi.png"
-                  alt="Luigi Schmitt"
-                  loading="lazy"
-                  width="400"
-                  height="480"
-                />
-                <h3>Luigi Schmitt</h3>
-                <p>Líder · Hack The Path</p>
-              </article>
-              <article className="person" id="pessoa-Ralf">
-                <img
-                  src="/community/pessoas/ralf.jpeg"
-                  alt="Ralf Ferreira"
-                  loading="lazy"
-                  width="800"
-                  height="800"
-                />
-                <h3>
-                  <Link
-                    href="https://www.linkedin.com/in/ralfferreira/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Ralf Ferreira no LinkedIn"
-                  >
-                    Ralf Ferreira
-                  </Link>
-                </h3>
-                <p>Líder · Hack The Path</p>
-              </article>
+          <section className="community-team" id="quem-somos" aria-labelledby="team-title">
+            <div className="community-team-copy">
+              <span className="section-label">QUEM SOMOS</span>
+              <h2 id="team-title">A gente passou por aqui.<br />E escolheu continuar.</h2>
+              <p>Somos estudantes e recém-graduados que viveram o Trilha durante a graduação. Encontramos aqui pessoas, oportunidades e caminhos que queremos abrir para quem vem depois.</p>
+              <p>Agora, construímos juntos algo maior: novas possibilidades para futuros estudantes e um Brasil cada vez mais presente no mundo da tecnologia.</p>
+              <ButtonLink href="/equipe/">Conheça toda a equipe <ArrowIcon direction="up-right" /></ButtonLink>
             </div>
-            <Link className="button" href="/equipe/">
-              Conheça toda a equipe <ArrowIcon direction="up-right" />
-            </Link>
+            <figure className="community-team-photo">
+              <img src="/community/turma.jpg" alt="Integrantes da comunidade Trilha reunidos" loading="lazy" width="1280" height="960" />
+            </figure>
           </section>
         </main>
-        <section className="landing-invitation">          <div className="footer-invitation">
+        <section className="landing-invitation">
+          <div className="footer-invitation">
             <span className="section-label">O QUE MOVE A GENTE</span>
             <h2>
               O que você aprende
@@ -372,11 +232,11 @@ export default function CommunityHome() {
               perto.
               <br />É assim que uma comunidade continua crescendo.
             </p>
-            <Link className="button" href="/#iniciativas1">
+            <ButtonLink size="lg" href="/#iniciativas1">
               Encontre seu caminho{" "}
-            </Link>
+            </ButtonLink>
           </div>
-</section>
+        </section>
         <CommunityFooter />
       </section>
     </div>

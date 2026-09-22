@@ -3,12 +3,7 @@ import { ufpbUrl } from "@/lib/sites";
 /* eslint-disable @next/next/no-img-element */
 export default function CommunityFooter() { return (
         <footer id="footer" className="site-footer landscape-footer">
-          <img
-            className="footer-landscape-image"
-            src="/community/landscape.png"
-            alt=""
-            loading="lazy"
-          />
+
           <div className="footer-top">
             <div className="footer-identity">
               <Link href="/#inicio" aria-label="Trilha início">
@@ -48,6 +43,14 @@ export default function CommunityFooter() { return (
             <span>Trilha · Desde 2024</span>
             <span>Um começo. Muitos caminhos.</span>
             <Link href="/#inicio">Voltar ao topo</Link>
+          </div>
+          <div className="footer-landscape-wrap">
+            <img
+              className="footer-landscape-image"
+              src="/community/landscape.png"
+              alt=""
+              loading="lazy"
+            />
           </div>
         </footer>
 ); }

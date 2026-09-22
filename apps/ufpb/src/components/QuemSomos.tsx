@@ -1,9 +1,11 @@
 'use client';
 
+import { ArrowUpRight } from 'lucide-react';
+import { peopleOrganizationCurrent } from '@trilha/people/current-organization';
 import { useTranslation } from '@/hooks/useTranslation';
 import { usePostHogTracking } from '@/hooks/usePostHogTracking';
 import { SectionHead } from '@/components/home/shared';
-import { peopleFounders, peopleOrganizationCurrent, type Person } from '@/data/people';
+import { peopleFounders, type Person } from '@trilha/people/profiles';
 
 function useRoleTranslator() {
   const { t } = useTranslation();
@@ -48,11 +50,11 @@ export default function QuemSomos() {
               >
                 <div className="team-photo">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  {p.photo ? <img
                     src={p.photo}
                     alt={p.name}
                     onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = '0'; }}
-                  />
+                  /> : <div className="team-photo-initials" aria-label="Foto ainda não cadastrada">{p.name.split(" ").map(part => part[0]).slice(0, 2).join("")}</div>}
                   <div className="team-photo-bg"></div>
                 </div>
                 <div className="team-info">
@@ -66,7 +68,7 @@ export default function QuemSomos() {
                     </div>
                   )}
                 </div>
-                {p.link && <span className="team-arrow">↗</span>}
+                {p.link && <span className="team-arrow" aria-hidden="true"><ArrowUpRight size={18}/></span>}
               </a>
             );
           })}

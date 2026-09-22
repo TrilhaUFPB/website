@@ -92,7 +92,7 @@ export const GabrielCarvalho: Person = {
 };
 
 export const DanielDuarte: Person = {
-    name: "Daniel Duarte",
+    name: "Daniel Duarte e Silva",
     course: "Ciência da Computação",
     semester: "4",
     role: "Data Analyst",

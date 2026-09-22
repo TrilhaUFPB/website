@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "@trilha/ui/styles.css";
 import {
   DM_Sans,
   Instrument_Serif,

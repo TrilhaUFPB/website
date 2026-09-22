@@ -5,26 +5,14 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { usePostHogTracking } from '@/hooks/usePostHogTracking';
 import { SectionHead } from '@/components/home/shared';
 import type { TurmaItem } from '@/components/home/data';
-import {
-  peopleStudents20241,
-  peopleStudents20242,
-  peopleStudents20251,
-  peopleStudents20252,
-} from '@/data/people';
-
-const STUDENT_COUNTS: Record<string, number> = {
-  '2024.1': peopleStudents20241.length,
-  '2024.2': peopleStudents20242.length,
-  '2025.1': peopleStudents20251.length,
-  '2025.2': peopleStudents20252.length,
-};
+import { cohorts } from '@trilha/people/cohorts';
 
 export default function Turmas() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const { trackTurmaSectionInteraction } = usePostHogTracking();
-  const items = t<TurmaItem[]>('turmas.items');
+  const items: TurmaItem[] = cohorts.map(cohort => ({ period:cohort.period, title:cohort.title[locale === 'en' ? 'en' : 'pt'], theme:cohort.description[locale === 'en' ? 'en' : 'pt'], img:cohort.image, students:cohort.students.length }));
   const studentsSuffix = t('turmas.studentsSuffix');
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(cohorts.length - 1);
   return (
     <section id="turmas" className="section">
       <div className="container">
@@ -46,7 +34,7 @@ export default function Turmas() {
                 <div className="turma-overlay">
                   <span className="kicker">{it.period}</span>
                   <span className="kicker">
-                    {STUDENT_COUNTS[it.period] ?? it.students} {studentsSuffix}
+                    {it.students} {studentsSuffix}
                   </span>
                 </div>
               </div>

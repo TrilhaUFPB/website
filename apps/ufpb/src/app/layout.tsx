@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "@trilha/ui/styles.css";
 import "@/components/campus/campus.css";
 import "./internal.css";
 import {

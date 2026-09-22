@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "dev": "npm run dev --workspace=@trilha/community",
     "dev:trilha": "npm run dev --workspace=@trilha/community",
     "dev:ufpb": "npm run dev --workspace=@trilha/ufpb",
-    "build": "npm run build --workspaces",
+    "build": "npm run build --workspaces --if-present",
     "start:trilha": "npm run start --workspace=@trilha/community",
     "start:ufpb": "npm run start --workspace=@trilha/ufpb",
-    "lint": "npm run lint --workspaces",
+    "lint": "npm run lint --workspaces --if-present",
     "test": "npm run test --workspace=@trilha/ufpb",
     "check:sites": "node scripts/check-sites.mjs"
   }

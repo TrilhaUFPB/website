@@ -7,6 +7,7 @@ export interface Person {
     link: string;
     photo: string;
     class: string | null;
+    /** Historical Trilha UFPB organization periods only. Current memberships live in @trilha/people. */
     org: string[];
     pos: string[];
 }
@@ -117,7 +118,7 @@ export const Luiz: Person = {
     photo: "/assets/pessoas/luiz.png",
     class: null,
     org: ["2024.1", "2024.2"],
-    pos: ["Fundador", "Membro da Organização"],
+    pos: ["Membro da Organização", "Membro da Organização"],
 };
 
 export const Gabriel: Person = {
@@ -130,7 +131,7 @@ export const Gabriel: Person = {
     photo: "/assets/pessoas/gabriel.png",
     class: null,
     org: ["2024.1", "2024.2"],
-    pos: ["Fundador", "Membro da Organização"],
+    pos: ["Membro da Organização", "Membro da Organização"],
 };
 
 export const Guilherme: Person = {
@@ -308,8 +309,8 @@ export const peopleOrganization20251: Person[] = [
     CeciliaLog,
 ]
 
-// Current Organizaition ("Quem Somos" Section)
-export const peopleOrganizationCurrent: Person[] = [
+// Preserved organization snapshot before the 2026.1 update.
+export const peopleOrganization20252: Person[] = [
     Clara,
     Guilherme,
     Kruta,
@@ -332,6 +333,12 @@ export const peopleOrganizationCurrent: Person[] = [
     MariaLuizaCavalcanti,
 ]
 
+export const MatheusMarinho: Person = {
+    name: "Matheus Marinho", course: "Engenharia da Computação", semester: "",
+    role: "Software Engineer", company: "CEIA", link: "https://www.linkedin.com/in/matheusmrno/", photo: "/assets/pessoas/matheus-marinho.jpeg",
+    class: null, org: [], pos: [],
+};
+
 export const peopleFounders: Person[] = [
     Tiago,
     Felipe,
@@ -345,3 +352,29 @@ export { AnnaLivia, Carol, Bruno, Chaves, Beatriz, Caua, GabrielCarvalho, Daniel
 export { EduardoOliveira, DanielSilva, MariaLuizaCavalcanti, LarissaGondim, PedroMenegon, JoaoGabrielArruda, MariaMarianaCavalcante, MariaJullyaEloi, AnaVictoriaFerreira, NicoleCosta, MarianaPontes, ArthurTenorio, LuisAugustoOliveira, MariaCeciliaSouza, MariaLuisaQuintela, Joaquim } from './students_2025_1';
 export { RhuanOliveira, SergioFreitas, LucianaNascimento, GabrielPinto, GabrielBringel, YasminBatista, RicardoBorges, GuilhermeRibeiro, BiancaGuido, PierreQueiroz, MarcoGadelha, SofiaAraujo, MikaelRodrigues } from './students_2025_2';
 
+
+export const Ralf: Person = {
+ name: "Ralf Ferreira", course: "", semester: "", role: "", company: "",
+ link: "https://www.linkedin.com/in/ralfferreira/", photo: "/assets/pessoas/ralf.jpeg",
+ class: null, org: [], pos: [],
+};
+
+export const EricBarreto: Person = {
+ name: "Eric Barreto", course: "", semester: "", role: "", company: "",
+ link: "https://www.linkedin.com/in/ericlbarreto/", photo: "/assets/pessoas/ufpe/eric.jpeg",
+ class: null, org: [], pos: [],
+};
+
+export const MateusAtaide: Person = {
+ name: "Mateus Ataíde", course: "", semester: "", role: "", company: "",
+ link: "https://www.linkedin.com/in/mateus-ataide/", photo: "/assets/pessoas/ufpe/mateus-ataide.png",
+ class: null, org: [], pos: [],
+};
+
+export const AntonioRoberio: Person = {
+ name: "Antônio Robério", course: "", semester: "", role: "", company: "",
+ link: "https://www.linkedin.com/in/roberiof/", photo: "/assets/pessoas/ufpe/roberio.png",
+ class: null, org: [], pos: [],
+};
+
+export * from './students_2026_1';

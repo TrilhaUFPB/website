@@ -29,7 +29,7 @@
       "connect.",
       "start."
     ],
-    "lede": "Trilha is a free program built by UFPB students to support people arriving at the Computing Center. Classes, mentoring, talks, and a hackathon — all in one semester.",
+    "lede": "Trilha is a free program built by UFPB students to support people arriving at the Computing Center. Classes, mentoring, talks, and a hackathon — the 2026.1 cohort spans two semesters.",
     "ctaPrimary": "How it works",
     "ctaSecondary": "Meet the team"
   },
@@ -62,9 +62,9 @@
   },
   "numbers": {
     "eyebrow": "02 / Numbers",
-    "title": "Four cohorts, a growing network.",
+    "title": "Five cohorts, a growing network.",
     "labels": {
-      "studentsGraduated": "students graduated",
+      "studentsGraduated": "student participants",
       "activeOrganizers": "active organizers",
       "founders": "founders",
       "cohortsCompleted": "cohorts completed",
@@ -74,39 +74,9 @@
   },
   "turmas": {
     "eyebrow": "03 / Cohorts",
-    "title": "Four semesters, four stories.",
+    "title": "Every cohort, a new story.",
     "lede": "Each cohort marks a version of Trilha. Meet the people who came through and what each edition built.",
-    "studentsSuffix": "students",
-    "items": [
-      {
-        "period": "2024.1",
-        "title": "First cohort",
-        "students": 14,
-        "theme": "Where it all started — Python, web, and the first hackathon.",
-        "img": "/assets/turmas/trilha2024.jpg"
-      },
-      {
-        "period": "2024.2",
-        "title": "Second cohort",
-        "students": 19,
-        "theme": "Expanded curriculum, first wave of external guest speakers.",
-        "img": "/assets/turmas/trilha2024-2.jpg"
-      },
-      {
-        "period": "2025.1",
-        "title": "Third cohort",
-        "students": 16,
-        "theme": "Structured mentoring and a new data track.",
-        "img": "/assets/turmas/trilha2025.jpg"
-      },
-      {
-        "period": "2025.2",
-        "title": "Fourth cohort",
-        "students": 12,
-        "theme": "More cohorts, more projects, a community taking shape.",
-        "img": "/assets/turmas/trilha2025-2.jpeg"
-      }
-    ]
+    "studentsSuffix": "students"
   },
   "projects": {
     "eyebrow": "04 / Hackathon",
@@ -228,11 +198,11 @@
       },
       {
         "q": "How do I sign up?",
-        "a": "Registrations open periodically, when each cohort ends, at the start of each academic semester."
+        "a": "Applications open when a new cohort is announced. The 2026.1 cohort is in progress and lasts two semesters."
       },
       {
         "q": "How many cohorts run at once?",
-        "a": "Just one cohort per semester."
+        "a": "Five cohorts since 2024. The 2026.1 cohort is in progress and lasts two semesters."
       },
       {
         "q": "Do I need to know how to program?",
@@ -269,7 +239,8 @@
       "Engenharia da Computação": "Computer Engineering",
       "Engenharia de Software (IFPB)": "Software Engineering (IFPB)",
       "Ciência de Dados e IA": "Data Science & AI",
-      "Fonoaudiologia": "Speech Therapy"
+      "Fonoaudiologia": "Speech Therapy",
+      "Biotecnologia": "Biotechnology"
     },
     "roles": {
       "Software Engineer": "Software Engineer",

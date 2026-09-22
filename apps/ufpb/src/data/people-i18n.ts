@@ -1,7 +1,8 @@
 'use client';
 
 import { useTranslation } from '@/hooks/useTranslation';
-import * as PeopleData from './people';
+import * as PeopleData from '@trilha/people/profiles';
+import { peopleOrganizationCurrent as currentUfpbOrganization } from '@trilha/people/current-organization';
 
 /**
  * Translates a course name using the current locale
@@ -94,7 +95,7 @@ export function useTranslatedPeople() {
   const peopleOrganization20251 = PeopleData.peopleOrganization20251.map(translatePerson);
   const peopleStudents20251 = PeopleData.peopleStudents20251.map(translatePerson);
   const peopleStudents20252 = PeopleData.peopleStudents20252.map(translatePerson);
-  const peopleOrganizationCurrent = PeopleData.peopleOrganizationCurrent.map(translatePerson);
+  const peopleOrganizationCurrent = currentUfpbOrganization.map(translatePerson);
 
   // Create a mapping of courses
   const courses: Record<string, string> = {};
