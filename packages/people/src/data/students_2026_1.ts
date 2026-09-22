@@ -98,7 +98,7 @@ export const GiorgioNicolasdeArrudaBertino: Person = {
   "semester": "",
   "role": "",
   "company": "",
-  "link": "https://www.linkedin.com/in/giorgio-n%C3%ADcolas-undefined-a5ba82406/",
+  "link": "https://www.linkedin.com/in/giorgionicolas/",
   "photo": "/assets/pessoas/2026.1/GiorgioNicolasdeArrudaBertino.webp",
   "class": "2026.1",
   "org": [],
