@@ -5,6 +5,24 @@ category: Frontend
 order: 2
 ---
 
+## Sumário
+
+- [2.1. O que é HTML de verdade](#21-o-que-e-html-de-verdade)
+- [2.2. Estrutura básica de um documento HTML](#22-estrutura-basica-de-um-documento-html)
+- [2.3. Conteúdo e hierarquia: títulos e parágrafos](#23-conteudo-e-hierarquia-titulos-e-paragrafos)
+- [2.4. Listas (ul, ol, li)](#24-listas-ul-ol-li)
+- [2.5. Links e imagens (a, img)](#25-links-e-imagens-a-img)
+- [2.6. Estrutura semântica de página](#26-estrutura-semantica-de-pagina)
+- [2.7. Formulários básicos](#27-formularios-basicos)
+- [2.8. Boas práticas gerais e erros comuns](#28-boas-praticas-gerais-e-erros-comuns)
+- [2.9. Checklist mental](#29-checklist-mental)
+- [2.10. Glossário rápido](#210-glossario-rapido)
+- [2.11. Resumo final](#211-resumo-final)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
+---
+
 ## Objetivo da aula
 
 Entender o HTML como **linguagem de marcação** que descreve a **estrutura** e o **significado** do conteúdo de uma página, aprendendo a escrever documentos bem formados, legíveis e semanticamente corretos — base para acessibilidade, manutenção e para o navegador interpretar a página de forma consistente.
@@ -548,7 +566,9 @@ HTML é a base estrutural da web: ele organiza o conteúdo e comunica significad
 
 ---
 
-# 2.12. Projeto Prático
+# Complemente o Aprendizado
+
+### Projeto Prático
 
 Para consolidar o aprendizado desta aula, confira a implementação prática no repositório **to-do**:
 
@@ -556,4 +576,55 @@ Para consolidar o aprendizado desta aula, confira a implementação prática no 
 
 Nesta aula prática, você verá como aplicar os conceitos de estrutura semântica e formulários em um projeto real.
 
----
+```quiz
+- tipo: single
+  pergunta: Um desenvolvedor quer apenas deixar uma palavra em negrito visualmente, sem que ela tenha nenhum significado especial no texto. Qual é a abordagem correta segundo as boas práticas de HTML semântico?
+  opcoes:
+    - texto: Usar a tag strong, já que ela deixa o texto em negrito
+      correta: false
+      explicacao: strong não é sobre aparência — ela indica que o conteúdo tem importância no contexto. Usá-la apenas pelo efeito visual mistura estrutura com estilo.
+    - texto: Usar a tag em, já que ela deixa o texto em itálico
+      correta: false
+      explicacao: em também não é sobre aparência — ela indica ênfase de sentido no texto. Usá-la só pelo efeito visual é o mesmo erro de usar strong pela aparência.
+    - texto: Resolver isso com CSS, já que a intenção é puramente visual, sem carregar significado no conteúdo
+      correta: true
+      explicacao: Exato! strong e em carregam significado semântico (importância e ênfase). Quando o objetivo é só a aparência, sem nenhum sentido especial no conteúdo, isso é papel do CSS, não de tags semânticas.
+      explicacao_erro: strong e em existem para comunicar significado (importância e ênfase), não para gerar um efeito visual isolado. Quando a intenção é puramente estética, o correto é resolver isso com CSS.
+    - texto: Usar h1, pois títulos aparecem em destaque na página
+      correta: false
+      explicacao: h1 representa o título principal da página, uma estrutura hierárquica — não é uma ferramenta para destacar palavras soltas no meio de um texto.
+
+- tipo: single
+  pergunta: Qual é a função do atributo alt em uma imagem?
+  opcoes:
+    - texto: Definir a largura e altura da imagem na página
+      correta: false
+      explicacao: Largura e altura são definidas pelos atributos width e height, não pelo alt. O alt tem uma função diferente, ligada à acessibilidade.
+    - texto: Aumentar a velocidade de carregamento da imagem
+      correta: false
+      explicacao: O alt não afeta a velocidade de carregamento da imagem. Otimização de performance envolve outras técnicas, como compressão e formatos de arquivo.
+    - texto: Indicar em qual pasta a imagem está armazenada
+      correta: false
+      explicacao: Isso é função do atributo src, que aponta para o caminho do arquivo. O alt serve para outro propósito, relacionado à acessibilidade.
+    - texto: Fornecer uma alternativa textual para quando a imagem não pode ser vista, como em leitores de tela ou falhas de carregamento
+      correta: true
+      explicacao: Exato! O alt existe para que o conteúdo da imagem ainda seja compreensível mesmo quando ela não pode ser exibida — seja por um leitor de tela, uma conexão lenta ou um erro de carregamento.
+      explicacao_erro: O alt fornece uma alternativa textual para a imagem, usada por leitores de tela e exibida quando a imagem falha ao carregar. Ele não tem relação com tamanho, pasta ou velocidade de carregamento.
+
+- tipo: single
+  pergunta: Qual é a principal diferença entre usar a tag section e a tag div para agrupar um bloco de conteúdo?
+  opcoes:
+    - texto: div é mais rápida de carregar no navegador do que section
+      correta: false
+      explicacao: Não existe diferença de performance entre essas tags. A diferença entre elas é de significado semântico, não de velocidade.
+    - texto: section só pode ser usada dentro de formulários, enquanto div pode ser usada em qualquer lugar
+      correta: false
+      explicacao: section não tem essa restrição — ela pode ser usada em qualquer parte do documento para representar uma seção temática, não apenas em formulários.
+    - texto: section tem significado semântico e indica uma seção temática do documento, enquanto div é um contêiner genérico sem significado
+      correta: true
+      explicacao: Exato! section comunica que aquele bloco representa um tema ou capítulo do conteúdo, normalmente com um título próprio. div serve apenas para agrupar elementos sem carregar esse significado.
+      explicacao_erro: A diferença está no significado semântico. section indica uma seção temática do documento (geralmente com um título), enquanto div é um contêiner genérico usado quando não há necessidade de significado adicional.
+    - texto: div permite usar CSS, mas section não permite
+      correta: false
+      explicacao: Tanto div quanto section podem ser estilizadas normalmente com CSS. A diferença entre elas está no significado semântico, não na possibilidade de estilização.
+```
