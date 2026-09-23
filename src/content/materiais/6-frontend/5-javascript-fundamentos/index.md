@@ -4,12 +4,26 @@ description:
 category: Frontend
 order: 5
 ---
+- [5.2. Variáveis: let e const (e por que var não é foco)](#51-o-que-e-javascript-no-contexto-da-web)
+- [5.2. Variáveis: let e const (e por que var não é foco)](#52-variaveis-let-e-const-e-por-que-var-nao-e-foco)
+- [5.3. Tipos básicos (com intuição forte)](#53-tipos-basicos-com-intuicao-forte)
+- [5.4. Condicionais (decisão) e loops (repetição)](#54-condicionais-decisao-e-loops-repeticao)
+- [5.5. Funções (o conceito central)](#55-funcoes-o-conceito-central)
+- [5.6. Arrays e objetos (estruturas de dados do dia a dia)](#56-arrays-e-objetos-estruturas-de-dados-do-dia-a-dia)
+- [5.7. Métodos de array (map, filter) — pensar em transformação de dados](#57-metodos-de-array-map-filter-pensar-em-transformacao-de-dados)
+- [5.8. Escopo (noção) — onde as variáveis “existem”](#58-escopo-nocao-onde-as-variaveis-existem)
+- [5.9. O que vem depois (contexto sem aprofundar)](#59-o-que-vem-depois-contexto-sem-aprofundar)
+- [5.10. Erros comuns e confusões clássicas](#510-erros-comuns-e-confusoes-classicas)
+- [5.11. Glossário rápido](#511-glossario-rapido)
+- [5.12. Resumo final](#512-resumo-final)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
 
 <a id="topo"></a>
 
 ## Objetivo da aula
 
-Construir um **modelo mental correto** de como o JavaScript executa código no navegador e como pensamos em **valores, tipos, variáveis, decisões, repetições, funções e dados** (arrays e objetos). A meta não é decorar sintaxe, e sim entender “o que acontece na cabeça do JS” quando seu programa roda.
+> Construir um **modelo mental correto** de como o JavaScript executa código no navegador e como pensamos em **valores, tipos, variáveis, decisões, repetições, funções e dados** (arrays e objetos). A meta não é decorar sintaxe, e sim entender “o que acontece na cabeça do JS” quando seu programa roda.
 
 ## Pré-requisitos
 
@@ -792,7 +806,7 @@ JavaScript, no navegador, é a camada de **comportamento** da Web: ele executa i
 
 ---
 
-# 5.13. Projeto Prático
+# Complemente o Aprendizado
 
 Para consolidar o aprendizado desta aula, confira a implementação prática no repositório **to-do**:
 
@@ -802,3 +816,56 @@ Nesta aula prática, você verá como aplicar os conceitos de variáveis, tipos,
 
 ---
 
+```quiz
+- tipo: single
+    pergunta: "Segundo o material, qual é a diferença prática entre um layout 'responsivo' e um layout 'adaptativo'?"
+    opcoes:
+      - texto: "O responsivo funciona apenas em celulares, enquanto o adaptativo é a técnica usada exclusivamente para telas de desktop."
+        correta: false
+        explicacao: "Ambos os conceitos se aplicam a todas as telas (mobile, tablet, desktop). Eles diferem apenas em *como* a mudança de layout ocorre."
+      - texto: "O responsivo exige o uso exclusivo de Flexbox, enquanto o adaptativo funciona apenas com CSS Grid."
+        correta: false
+        explicacao: "A distinção não tem relação com ferramentas específicas (Flexbox ou Grid). O layout adaptativo já existia muito antes dessas tecnologias, usando apenas media queries."
+      - texto: "O responsivo muda de forma fluida e contínua (usando larguras relativas), enquanto o adaptativo troca de layout em etapas (geralmente guiado por breakpoints)."
+        correta: true
+        explicacao: "Correto! Enquanto o layout responsivo se ajusta continuamente e preenche o espaço de forma fluida, o adaptativo dá 'saltos' estruturais baseados em pontos de quebra predefinidos."
+        explicacao_erro: "A principal diferença está na transição: layouts responsivos são fluidos e contínuos, enquanto adaptativos mudam em blocos ou etapas distintas."
+      - texto: "Não há diferença prática; ambos são termos comerciais diferentes para o uso obrigatório de Media Queries no CSS moderno."
+        correta: false
+        explicacao: "Há uma diferença prática estrutural. O adaptativo foca em estados fixos em larguras específicas, enquanto o responsivo foca em flexibilidade contínua."
+
+- tipo: single
+    pergunta: "No Flexbox, é comum a confusão entre as propriedades `align-items` e `align-content`. Qual é a principal diferença entre elas descrita no texto?"
+    opcoes:
+      - texto: "`align-items` alinha os itens individualmente dentro de uma linha, enquanto `align-content` alinha o conjunto de linhas inteiras, funcionando apenas quando há múltiplas linhas."
+        correta: true
+        explicacao: "Exatamente! Se você tem apenas uma linha de itens, `align-content` não fará diferença. Ele serve para distribuir o espaço entre múltiplas linhas geradas pelo `flex-wrap`."
+        explicacao_erro: "`align-items` trabalha no posicionamento dos itens na linha atual, enquanto `align-content` gerencia o espaçamento de todo o bloco de linhas dentro do container."
+      - texto: "`align-items` funciona no eixo principal (main axis), enquanto `align-content` atua no eixo transversal (cross axis)."
+        correta: false
+        explicacao: "Ambas as propriedades operam no eixo transversal (cross axis). Quem opera no eixo principal (main axis) é o `justify-content`."
+      - texto: "`align-content` é usado exclusivamente para alinhar texto dentro dos itens, enquanto `align-items` move as caixas inteiras no layout."
+        correta: false
+        explicacao: "Ambas as propriedades afetam as caixas (itens). O alinhamento do texto interno é controlado por regras de texto ou transformando o próprio item em um novo container Flex."
+      - texto: "Ambas fazem exatamente a mesma coisa, mas `align-items` deve ser declarada nos filhos (flex items) e `align-content` no pai (flex container)."
+        correta: false
+        explicacao: "Falso. Tanto `align-items` quanto `align-content` são propriedades de container, ou seja, declaradas exclusivamente no elemento pai."
+
+- tipo: single 
+    pergunta: "Ao construir um layout com CSS Grid, o uso da unidade `fr` (fração) é altamente recomendado. O que a declaração `grid-template-columns: 1fr 2fr;` instrui o navegador a fazer?"
+    opcoes:
+      - texto: "Definir que a primeira coluna terá 100 pixels fixos e a segunda terá 200 pixels fixos."
+        correta: false
+        explicacao: "A unidade `fr` (fraction) não equivale a valores fixos em pixels. Ela é completamente fluida e dinâmica, dependendo do tamanho livre na tela."
+      - texto: "Forçar a primeira coluna a ficar alinhada à esquerda e a segunda à direita, criando um gap flexível entre elas."
+        correta: false
+        explicacao: "A unidade `fr` define o tamanho da track (coluna ou linha), e não o alinhamento ou espaçamento (gap) entre as colunas."
+      - texto: "Ocultar a primeira coluna em telas de celular e exibir apenas a segunda coluna que possui o valor maior."
+        correta: false
+        explicacao: "A unidade `fr` não oculta elementos sob nenhuma circunstância. Ambas as colunas serão exibidas normalmente."
+      - texto: "Dividir o espaço livre em 3 partes, onde a primeira coluna ocupa uma parte e a segunda coluna ocupa duas partes (o dobro da primeira)."
+        correta: true
+        explicacao: "Perfeito! O navegador soma as frações (1 + 2 = 3) e divide o espaço livre nessa proporção. A segunda coluna ficará duas vezes maior que a primeira."
+        explicacao_erro: "A unidade `fr` lida com a proporção do espaço livre, dividindo-o de acordo com os valores estipulados em cada coluna ou linha."
+
+```

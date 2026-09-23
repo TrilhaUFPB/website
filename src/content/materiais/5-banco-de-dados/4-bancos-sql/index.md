@@ -7,8 +7,8 @@ order: 4
 - [4.1 Comunicação síncrona e assíncrona](#41-introducao)
 - [4.2 Workloads CPU-bound e I/O-bound](#42-conceitos-fundamentais)
 - [4.3 Limites, contexto e responsabilidades](#43-tipos-de-relacionamentos)
-- [4.4 Limites, contexto e responsabilidades](#44-principais-bancos-relacionais)
-- [4.4 Limites, contexto e responsabilidades](#45-use-sql-quando-voce-tem)
+- [4.4 Principais Bancos Relacionais](#44-principais-bancos-relacionais)
+- [4.4 Use SQL quando você tem](#45-use-sql-quando-voce-tem)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
@@ -287,7 +287,5 @@ CREATE TABLE matriculas (
     - texto: "A conversão da Chave Estrangeira (FK) em uma Chave Primária (PK) do tipo AUTO_INCREMENT."
       correta: false
       explicacao: "Chaves Primárias servem para identificar registros dentro de sua própria tabela. Mudar a FK para PK não cria mecanismos de deleção automática entre tabelas diferentes."
-
-
 
 ```

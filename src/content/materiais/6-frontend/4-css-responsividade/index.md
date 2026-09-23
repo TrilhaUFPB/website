@@ -4,6 +4,17 @@ description:
 category: Frontend
 order: 4
 ---
+- [4.1. O que é layout responsivo (e o problema que ele resolve)](#41-o-que-e-layout-responsivo-e-o-problema-que-ele-resolve)
+- [4.2. Modelo mental de Flexbox (layout principal)](#42-modelo-mental-de-flexbox-layout-principal)
+- [4.3. Modelo mental de Grid (layout mais complexo)](#43-modelo-mental-de-grid-layout-mais-complexo)
+- [4.4. Responsividade na prática: Mobile-first e Media Queries](#44-responsividade-na-pratica-mobile-first-e-media-queries)
+- [4.5. Boas práticas de layout (para não virar “CSS de gambiarra”)](#45-boas-praticas-de-layout-para-nao-virar-css-de-gambiarra)
+- [4.6. Erros comuns e confusões clássicas](#46-erros-comuns-e-confusoes-classicas)
+- [4.7. Glossário rápido](#47-glossario-rapido)
+- [4.8. Resumo final](#48-resumo-final)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
+
 
 **Objetivo da aula**
 Entender como construir layouts que se adaptam bem a diferentes tamanhos de tela usando CSS puro, com foco em *modelo mental* (como pensar layout) e não em decorar propriedades.
@@ -801,10 +812,47 @@ Layout responsivo é, sobretudo, **pensar em regras sob restrição**: telas var
 * prefere soluções fluídas (`wrap`, `minmax`, unidades relativas) antes de “remendar” com dezenas de breakpoints,
 * mantém consistência com `gap`, containers com `max-width`, e CSS legível e pouco específico.
 
-# 4.9. Projeto Prático
+# Complemente o Aprendizado
 
 Para consolidar o aprendizado desta aula, confira a implementação prática no repositório **to-do**:
 
 📁 **[Aula 3 - CSS Responsivo](https://github.com/gabrielcarvvlho/to-do/tree/main/aula-3-css-responsivo)**
 
 Nesta aula prática, você verá como aplicar Flexbox, Grid e media queries para criar layouts responsivos em um projeto real.
+
+```quiz
+- tipo: single
+    pergunta: "Segundo o material, qual é a diferença prática entre um layout 'responsivo' e um layout 'adaptativo'?"
+    opcoes:
+      - texto: "O responsivo funciona apenas em celulares, enquanto o adaptativo é a técnica usada exclusivamente para telas de desktop."
+        correta: false
+        explicacao: "Ambos os conceitos se aplicam a todas as telas (mobile, tablet, desktop). Eles diferem apenas em *como* a mudança de layout ocorre."
+      - texto: "O responsivo exige o uso exclusivo de Flexbox, enquanto o adaptativo funciona apenas com CSS Grid."
+        correta: false
+        explicacao: "A distinção não tem relação com ferramentas específicas (Flexbox ou Grid). O layout adaptativo já existia muito antes dessas tecnologias, usando apenas media queries."
+      - texto: "O responsivo muda de forma fluida e contínua (usando larguras relativas), enquanto o adaptativo troca de layout em etapas (geralmente guiado por breakpoints)."
+        correta: true
+        explicacao: "Correto! Enquanto o layout responsivo se ajusta continuamente e preenche o espaço de forma fluida, o adaptativo dá 'saltos' estruturais baseados em pontos de quebra predefinidos."
+        explicacao_erro: "A principal diferença está na transição: layouts responsivos são fluidos e contínuos, enquanto adaptativos mudam em blocos ou etapas distintas."
+      - texto: "Não há diferença prática; ambos são termos comerciais diferentes para o uso obrigatório de Media Queries no CSS moderno."
+        correta: false
+        explicacao: "Há uma diferença prática estrutural. O adaptativo foca em estados fixos em larguras específicas, enquanto o responsivo foca em flexibilidade contínua."
+
+- tipo: single
+    pergunta: "No Flexbox, é comum a confusão entre as propriedades `align-items` e `align-content`. Qual é a principal diferença entre elas descrita no texto?"
+    opcoes:
+      - texto: "`align-items` alinha os itens individualmente dentro de uma linha, enquanto `align-content` alinha o conjunto de linhas inteiras, funcionando apenas quando há múltiplas linhas."
+        correta: true
+        explicacao: "Exatamente! Se você tem apenas uma linha de itens, `align-content` não fará diferença. Ele serve para distribuir o espaço entre múltiplas linhas geradas pelo `flex-wrap`."
+        explicacao_erro: "`align-items` trabalha no posicionamento dos itens na linha atual, enquanto `align-content` gerencia o espaçamento de todo o bloco de linhas dentro do container."
+      - texto: "`align-items` funciona no eixo principal (main axis), enquanto `align-content` atua no eixo transversal (cross axis)."
+        correta: false
+        explicacao: "Ambas as propriedades operam no eixo transversal (cross axis). Quem opera no eixo principal (main axis) é o `justify-content`."
+      - texto: "`align-content` é usado exclusivamente para alinhar texto dentro dos itens, enquanto `align-items` move as caixas inteiras no layout."
+        correta: false
+        explicacao: "Ambas as propriedades afetam as caixas (itens). O alinhamento do texto interno é controlado por regras de texto ou transformando o próprio item em um novo container Flex."
+      - texto: "Ambas fazem exatamente a mesma coisa, mas `align-items` deve ser declarada nos filhos (flex items) e `align-content` no pai (flex container)."
+        correta: false
+        explicacao: "Falso. Tanto `align-items` quanto `align-content` são propriedades de container, ou seja, declaradas exclusivamente no elemento pai."
+
+```

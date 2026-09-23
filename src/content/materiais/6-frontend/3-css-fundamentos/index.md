@@ -4,10 +4,22 @@ description:
 category: Frontend
 order: 3
 ---
+- [3.1. O que é CSS e por que ele existe](#31-o-que-e-css-e-por-que-ele-existe)
+- [3.2. Como aplicar CSS (arquivo externo)](#32-como-aplicar-css-arquivo-externo)
+- [3.3. Seletores fundamentais (tag, classe, id) => e o jeito certo de usar](#33-seletores-fundamentais-tag-classe-id-e-o-jeito-certo-de-usar)
+- [3.4. Box Model](#34-box-model)
+- [3.5. Propriedades essenciais](#35-propriedades-essenciais)
+- [3.6. Tipografia básica](#36-tipografia-basica)
+- [3.7. Unidades (px, %, rem)](#37-unidades-px-rem)
+- [3.8. display e fluxo básico (layout sem magia)](#38-display-e-fluxo-basico-layout-sem-magia)
+- [3.9. Erros comuns e confusões clássicas](#39-erros-comuns-e-confusoes-classicas)
+- [3.10. Glossário rápido](#310-glossario-rapido)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
 
 **Objetivo da aula**
 
-Entender o CSS “raiz” (puro), como ele é aplicado pelo navegador e como você controla aparência e layout básico de elementos usando regras, seletores, cascata, herança, especificidade, box model, unidades e `display`.
+> Entender o CSS “raiz” (puro), como ele é aplicado pelo navegador e como você controla aparência e layout básico de elementos usando regras, seletores, cascata, herança, especificidade, box model, unidades e `display`.
 
 ---
 
@@ -686,10 +698,65 @@ CSS é a linguagem que transforma a estrutura do HTML em uma interface legível 
 
 ---
 
-# 3.12. Projeto Prático
+# Complemente o Aprendizado
 
 Para consolidar o aprendizado desta aula, confira a implementação prática no repositório **to-do**:
 
 📁 **[Aula 2 - CSS Fundamentos](https://github.com/gabrielcarvvlho/to-do/tree/main/aula-2-css-fundamentos)**
 
 Nesta aula prática, você verá como aplicar os conceitos de seletores, box model, cores, tipografia e layout básico em um projeto real.
+
+# Teste seu conhecimento
+```quiz
+- tipo: single 
+  pergunta: "Ao iniciar um projeto responsivo, uma tag essencial precisa ser adicionada ao `<head>` do HTML: `<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />`. De acordo com o material, qual o principal problema de esquecer essa tag em dispositivos móveis?"
+  opcoes:
+    - texto: "O navegador desabilitará completamente o uso de Flexbox e CSS Grid, quebrando toda a estrutura 1D e 2D do projeto."
+      correta: false
+      explicacao: "O suporte a Flexbox e Grid independe da tag viewport. O problema será na escala e proporção da tela, não no suporte ao CSS."
+    - texto: "O CSS perderá a capacidade de usar as propriedades 'min-width', exigindo que todas as media queries sejam feitas com 'max-width'."
+      correta: false
+      explicacao: "A tag viewport não afeta a sintaxe das media queries, mas afeta o valor de largura (width) que o celular reporta para que essas media queries sejam ativadas."
+    - texto: "O navegador tentará simular a largura de um desktop e depois reduzirá tudo visualmente, deixando textos minúsculos e quebrando as escalas do CSS."
+      correta: true
+      explicacao: "Exatamente! Sem a tag viewport, o celular tenta 'espremer' a versão desktop na tela, ignorando suas regras responsivas. A tag garante que o navegador respeite a largura real do dispositivo."
+      explicacao_erro: "A tag viewport é responsável por dizer ao navegador mobile para usar sua largura real, evitando que ele renderize a página como um desktop encolhido."
+    - texto: "A propriedade 'gap' deixará de funcionar, forçando o desenvolvedor a usar margens manuais em todos os itens."
+      correta: false
+      explicacao: "A propriedade gap e o Box Model continuam funcionando; a omissão da tag afeta apenas o cálculo da largura geral da tela pelo navegador mobile."
+
+- tipo: single 
+  pergunta: "Uma confusão clássica no uso do Flexbox é não saber quando usar `justify-content` ou `align-items`. Qual é o modelo mental correto, segundo o texto, para entender essas duas propriedades?"
+  opcoes:
+    - texto: "'justify-content' é usado para centralizar itens horizontalmente na tela, e 'align-items' é usado exclusivamente para centralizar verticalmente, independentemente da direção."
+      correta: false
+      explicacao: "Isso é um erro muito comum. Se o `flex-direction` for alterado para 'column', o `justify-content` passará a alinhar verticalmente, e não horizontalmente."
+    - texto: "A função de ambas depende exclusivamente do Eixo Principal (Main Axis). 'justify-content' distribui ao longo do eixo principal, enquanto 'align-items' alinha no eixo transversal (Cross Axis)."
+      correta: true
+      explicacao: "Perfeito! A chave para o Flexbox é entender os eixos. Se o `flex-direction` for 'row' (linha), o `justify-content` atua na horizontal. Se for 'column', ele atua na vertical. O `align-items` faz sempre a perpendicular (cross axis)."
+      explicacao_erro: "Em Flexbox, alinhamentos dependem diretamente do Eixo Principal. 'justify-content' atua no Main Axis e 'align-items' no Cross Axis."
+    - texto: "'align-items' controla o posicionamento dos itens na linha, enquanto 'justify-content' serve para definir se os itens podem quebrar para a linha de baixo."
+      correta: false
+      explicacao: "Quem define a quebra de linhas é a propriedade `flex-wrap`. `justify-content` lida apenas com distribuição de espaço."
+    - texto: "Ambas funcionam exatamente da mesma forma, mas 'justify-content' só pode ser usado no contêiner (container), e 'align-items' só pode ser usado nos itens filhos."
+      correta: false
+      explicacao: "Tanto `justify-content` quanto `align-items` são declaradas no flex container (o elemento pai)."
+
+- tipo: single
+  pergunta: "Você está criando uma galeria de cards e quer que a responsividade seja natural, sem o uso de media queries. A ideia é criar uma grade (Grid) onde as colunas tenham no mínimo 220px, mas cresçam para preencher o espaço excedente, e que as colunas 'colapsem/quebrem' dependendo da tela. Qual declaração de Grid resolve isso de forma elegante?"
+  opcoes:
+    - texto: "grid-template-columns: 220px auto flex;"
+      correta: false
+      explicacao: "Essa sintaxe é inválida no CSS Grid. 'flex' não é um valor válido para tamanhos de track de Grid (deve-se usar 'fr')."
+    - texto: "grid-template-areas: repeat(minmax(220px), auto-fill);"
+      correta: false
+      explicacao: "`grid-template-areas` é usado para desenhar o layout nomeando regiões textualmente (ex: 'sidebar main'), e não aceita as funções `repeat` e `minmax`."
+    - texto: "grid-template-columns: auto-fit 220px 1fr;"
+      correta: false
+      explicacao: "A sintaxe está incorreta. `auto-fit` só funciona dentro da função `repeat()`."
+    - texto: "grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));"
+      correta: true
+      explicacao: "Isso mesmo! O `minmax(220px, 1fr)` garante que o item tenha um piso de 220px e cresça caso haja espaço. E o `auto-fit` garante que as colunas preencham o layout perfeitamente conforme a tela aumenta ou diminui."
+      explicacao_erro: "A combinação de `repeat`, `auto-fit` e `minmax` é a melhor forma de criar um Grid que se ajusta ao tamanho da tela sem a necessidade de media queries."
+
+```

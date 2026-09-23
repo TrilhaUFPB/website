@@ -4,6 +4,19 @@ description:
 category: Frontend
 order: 6
 ---
+- [6.1. Onde o JavaScript entra na página (modelo mental)](#61-onde-o-javascript-entra-na-pagina-modelo-mental)
+- [6.2. DOM na prática: selecionar elementos](#62-dom-na-pratica-selecionar-elementos)
+- [6.3. Alterar elementos (o básico que resolve 80% dos casos)](#63-alterar-elementos-o-basico-que-resolve-80-dos-casos)
+- [6.4. Eventos: como a página “escuta” o usuário](#64-eventos-como-a-pagina-escuta-o-usuario)
+- [6.5. Manipulação de formulários (com modelo mental sólido)](#65-manipulacao-de-formularios-com-modelo-mental-solido)
+- [6.6. Validação simples (sem complicar e sem bibliotecas)](#66-validacao-simples-sem-complicar-e-sem-bibliotecas)
+- [6.7. localStorage (noções) — persistência simples no navegador](#67-localstorage-nocoes-persistencia-simples-no-navegador)
+- [6.8. Boas práticas e “higiene” de código para DOM](#68-boas-praticas-e-higiene-de-codigo-para-dom)
+- [6.9. Erros comuns e confusões clássicas](#69-erros-comuns-e-confusoes-classicas)
+- [6.10. Glossário rápido](#610-glossario-rapido)
+- [6.11. Resumo final](#611-resumo-final)
+- [Complemente o Aprendizado](#complemente-o-aprendizado)
+- [Teste seu Conhecimento](#exercicios)
 
 ## Objetivo da aula
 
@@ -712,7 +725,7 @@ Nesta aula, você consolidou o modelo mental do JavaScript no navegador: o HTML 
 
 ---
 
-# 6.12. Projeto Prático
+# Complemente o Aprendizado
 
 Para consolidar o aprendizado desta aula, confira a implementação prática no repositório **to-do**:
 
@@ -721,4 +734,56 @@ Para consolidar o aprendizado desta aula, confira a implementação prática no 
 Nesta aula prática, você verá como aplicar os conceitos de DOM, eventos, formulários, validação e localStorage em um projeto real.
 
 ---
+```quiz
+- tipo: single
+    pergunta: "De acordo com o material, por que é fundamental garantir que o DOM (Document Object Model) exista antes de o JavaScript tentar manipular os elementos da página?"
+    opcoes:
+      - texto: "Porque o CSS precisa ser aplicado primeiro para que o JavaScript consiga ler as cores e tamanhos originais de cada elemento."
+        correta: false
+        explicacao: "A restrição não é sobre o CSS, mas sim sobre a própria existência estrutural do HTML. Sem o DOM carregado, não há elementos para o JS selecionar."
+      - texto: "Se o script rodar antes de o navegador construir o DOM, ele tentará selecionar elementos que ainda não existem, resultando em retornos 'null' e erros no código."
+        correta: true
+        explicacao: "Exatamente! O navegador lê o HTML de cima para baixo. Se o JS executa antes do HTML virar DOM, seletores como `querySelector` não encontrarão nada. É por isso que colocamos o script no fim do `<body>` ou usamos o atributo `defer`."
+        explicacao_erro: "Quando o JavaScript executa antes da criação do DOM, ele não encontra os elementos na página, causando erros de referência nula (`null`)."
+      - texto: "Porque o navegador bloqueia a execução de qualquer arquivo JavaScript até que o usuário interaja com a página pela primeira vez."
+        correta: false
+        explicacao: "O navegador não espera o usuário interagir para rodar os scripts; ele os roda assim que os encontra, a menos que atributos como `defer` sejam usados."
+      - texto: "Porque o DOM é um banco de dados temporário e o JavaScript precisa que ele esteja vazio antes de inserir os primeiros elementos."
+        correta: false
+        explicacao: "O DOM não é um banco de dados, mas sim a árvore de nós que representa o HTML vivo da página na memória do navegador."
 
+- tipo: single
+    pergunta: "Ao utilizar os seletores de elementos do DOM, qual é a diferença fundamental entre `document.querySelector` e `document.querySelectorAll`?"
+    opcoes:
+      - texto: "`querySelector` retorna apenas elementos com ID, enquanto `querySelectorAll` é usado exclusivamente para classes CSS."
+        correta: false
+        explicacao: "Ambos aceitam qualquer tipo de seletor CSS válido (ID, classe, tag, etc). A diferença está na quantidade de itens que eles retornam."
+      - texto: "`querySelector` retorna o primeiro elemento que bater com o seletor, enquanto `querySelectorAll` retorna uma lista (NodeList) com todos os elementos correspondentes."
+        correta: true
+        explicacao: "Correto! `querySelector` te dá uma referência direta para UM elemento (ou null). Já o `querySelectorAll` traz um NodeList que contém todos os matches, exigindo que você itere (com `forEach`, por exemplo) para manipulá-los."
+        explicacao_erro: "Lembre-se: `querySelector` traz um único elemento. `querySelectorAll` traz uma coleção (NodeList) de elementos."
+      - texto: "`querySelector` só pode ser usado dentro de funções, enquanto `querySelectorAll` deve ser declarado no escopo global."
+        correta: false
+        explicacao: "O escopo onde a função é chamada não afeta qual dos dois você deve usar. A escolha depende apenas se você quer um elemento ou vários."
+      - texto: "Não há diferença prática. Ambos retornam um Array de elementos, mas `querySelector` é mais rápido."
+        correta: false
+        explicacao: "`querySelector` não retorna um Array ou lista, ele retorna o próprio elemento HTML diretamente (ou null se não encontrar nada)."
+
+- tipo: single
+    pergunta: "O texto alerta para o perigo de usar a propriedade `innerHTML` ao invés de `textContent` em certas situações. Qual é o principal risco associado ao `innerHTML`?"
+    opcoes:
+      - texto: "Ele é incapaz de alterar o texto de elementos como `<button>` ou `<span>`, forçando o navegador a recarregar a página."
+        correta: false
+        explicacao: "`innerHTML` pode alterar o conteúdo de qualquer elemento container. O problema dele não é limitação de tag."
+      - texto: "Ele consome muita memória do navegador (Memory Leak), o que pode fazer a página travar em celulares antigos."
+        correta: false
+        explicacao: "Embora recriar nós usando `innerHTML` tenha um pequeno custo de performance, o risco destacado no material é relacionado à segurança."
+      - texto: "Ele não permite que classes CSS sejam lidas corretamente, quebrando todo o layout responsivo da página."
+        correta: false
+        explicacao: "O `innerHTML` não afeta as classes CSS do elemento pai, apenas altera os nós internos."
+      - texto: "Ele interpreta o valor recebido como código HTML. Se esse conteúdo vier do usuário, pode abrir brechas para injeção de scripts maliciosos (XSS)."
+        correta: true
+        explicacao: "Isso mesmo! O `textContent` é seguro porque trata tudo como texto puro. O `innerHTML` tenta renderizar as tags. Se um usuário digitar `<script>...</script>` em um input e você usar `innerHTML` para exibir isso, o script malicioso pode ser executado."
+        explicacao_erro: "Inserir dados vindos de usuários através do `innerHTML` é uma falha clássica de segurança (XSS), pois o navegador executa as tags injetadas."
+
+```
