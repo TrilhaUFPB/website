@@ -7,7 +7,7 @@ order: 11
 
 ## Sumário
 
-- [11.1. Ferramentas Úteis](#111-ferramentas-uteis)
+- [11.1 Ferramentas Úteis](#111-ferramentas-uteis)
 - [Por que preparar o ambiente?](#por-que-preparar-o-ambiente)
 - [venv – Ambiente Virtual](#venv-ambiente-virtual)
 - [pip – Gerenciador de Pacotes](#pip-gerenciador-de-pacotes)

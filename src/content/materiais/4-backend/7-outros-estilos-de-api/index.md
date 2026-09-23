@@ -7,18 +7,18 @@ order: 7
 
 ## Sumário
 
-- [6.1. Limitações do REST](#61-limitacoes-do-rest)
-- [6.2. Classificação de estilos de API](#62-classificacao-de-estilos-de-api)
-- [6.3. RPC sobre HTTP](#63-rpc-sobre-http)
-- [6.4. GraphQL](#64-graphql)
-- [6.5. WebSockets e Server-Sent Events](#65-websockets-e-server-sent-events)
-- [6.6. Webhooks](#66-webhooks)
-- [6.7. Mensageria e sistemas orientados a eventos](#67-mensageria-e-sistemas-orientados-a-eventos)
-- [6.8. Critérios para escolha do estilo de API](#68-criterios-para-escolha-do-estilo-de-api)
+- [7.1. Limitações do REST](#71-limitacoes-do-rest)
+- [7.2. Classificação de estilos de API](#72-classificacao-de-estilos-de-api)
+- [7.3. RPC sobre HTTP](#73-rpc-sobre-http)
+- [7.4. GraphQL](#74-graphql)
+- [7.5. WebSockets e Server-Sent Events](#75-websockets-e-server-sent-events)
+- [7.6. Webhooks](#76-webhooks)
+- [7.7. Mensageria e sistemas orientados a eventos](#77-mensageria-e-sistemas-orientados-a-eventos)
+- [7.8. Critérios para escolha do estilo de API](#78-criterios-para-escolha-do-estilo-de-api)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
-# 6.1. Limitações do REST
+# 7.1. Limitações do REST
 
 O REST é o "padrão ouro" para APIs públicas e CRUDs tradicionais. Ele é previsível, cacheável e funciona muito bem com a infraestrutura da Web. Porém, **não é uma bala de prata**. Existem cenários onde o REST se torna ineficiente ou complexo demais.
 
@@ -73,7 +73,7 @@ Ele falha em **flexibilidade de consulta** (Resolvido por GraphQL) e **tempo rea
 Entender essas limitações é o primeiro passo para escolher a ferramenta certa para o trabalho.
 
 ---
-# 6.2. Classificação de estilos de API
+# 7.2. Classificação de estilos de API
 
 Quando saímos do mundo REST, nos deparamos com uma sopa de letrinhas: gRPC, GraphQL, SOAP, Webhooks. Para organizar o pensamento, podemos classificar as APIs em quatro grandes estilos arquiteturais baseados em **"como elas expõem seus recursos"**.
 
@@ -122,7 +122,7 @@ O foco está no "o que aconteceu" (Passado). O servidor avisa os interessados qu
 Nos próximos capítulos, vamos mergulhar em cada um desses estilos com exemplos em Python.
 
 ---
-# 6.3. RPC sobre HTTP
+# 7.3. RPC sobre HTTP
 
 RPC (Remote Procedure Call) é o estilo mais antigo e intuitivo de API. A ideia é simples: **fazer uma chamada de função em outro computador parecer uma chamada de função local.**
 
@@ -228,7 +228,7 @@ Enquanto JSON-RPC é texto (legível), o **gRPC** (do Google) usa **Protobuf**, 
 No mundo Python, o gRPC é amplamente usado, mas requer uma biblioteca separada (`grpcio`) e arquivos `.proto` para definir os contratos. Ele foge um pouco do escopo "Web API padrão", mas é vital conhecer sua existência.
 
 ---
-# 6.4. GraphQL
+# 7.4. GraphQL
 
 O GraphQL (criado pelo Facebook) resolve os problemas de **Overfetching** e **Underfetching** do REST. Em vez de ter múltiplos endpoints fixos (`/users`, `/orders`), você tem **um único endpoint** inteligente que aceita uma "query".
 
@@ -328,7 +328,7 @@ query {
 - **Cuidado:** O cache HTTP não funciona bem (tudo é POST no mesmo endpoint). Consultas muito complexas podem derrubar o banco de dados ([Problema N+1](https://dev.to/danielcamucatto/entendendo-o-problema-n1-um-guia-pratico-para-desenvolvedores-4ocb)).
 
 ---
-# 6.5. WebSockets e Server-Sent Events
+# 7.5. WebSockets e Server-Sent Events
 
 Até agora, toda comunicação partiu do Cliente. Mas e se o servidor precisar mandar uma atualização em tempo real (ex: cotação do dólar ou nova mensagem no chat)?
 
@@ -415,7 +415,7 @@ async def stream_events():
 -   **SSE:** Dashboards, Notificações, Status de progresso, Tickers financeiros.
 
 ---
-# 6.6. Webhooks
+# 7.6. Webhooks
 
 Webhooks são a forma mais comum de integração entre sistemas na web moderna. Eles são frequentemente chamados de **"Reverse APIs"** (APIs Reversas) ou **HTTP Callbacks**.
 
@@ -559,7 +559,7 @@ Como seu endpoint de webhook é público, qualquer um pode mandar um POST falso 
 3.  **Idempotência:** Se o Stripe te mandar o mesmo aviso duas vezes (por erro de rede), seu código deve ser esperto o suficiente para não cobrar o cliente duas vezes ou enviar dois produtos.
 
 ---
-# 6.7. Mensageria e sistemas orientados a eventos
+# 7.7. Mensageria e sistemas orientados a eventos
 
 Quando seus sistemas crescem, chamadas HTTP diretas (síncronas) entre microserviços podem criar um efeito dominó de falhas. Se o Serviço A chama o B, que chama o C, e o C cai... tudo cai.
 
@@ -654,7 +654,7 @@ Isso é a essência da arquitetura orientada a eventos: **Desacoplamento tempora
 -   **Celery (Python):** A biblioteca padrão do Python para gerenciar Workers e Filas.
 
 ---
-# 6.8. Critérios para escolha do estilo de API
+# 7.8. Critérios para escolha do estilo de API
 
 Agora que você conhece as opções, como escolher?
 Não existe "melhor estilo", existe o melhor para o **contexto**.

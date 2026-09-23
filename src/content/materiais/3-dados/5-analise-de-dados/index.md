@@ -14,6 +14,7 @@ order: 5
 - [5.6. Limpeza e Transformação de Dados](#56-limpeza-e-transformacao-de-dados)
 - [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
+- [Referências](#referencias)
 
 ---
 
@@ -486,6 +487,12 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
 
 ![Gráficos](/api/materiais-assets/3-dados/5-analise-de-dados/assets/cheatsheet_graficos.png)
 
+---
+# Complemente o Aprendizado
+- [O que é análise de dados? (Artigo Freecodecamp)](https://www.freecodecamp.org/portuguese/news/o-que-e-analise-de-dados/)
+- [Te ensino TUDO sobre criar gráficos com Python e Matplotlib (Vídeo)](https://www.youtube.com/watch?v=unEdvkCjL8U)
+- [Python para análise de dados (Artigo Alura)](https://www.alura.com.br/artigos/python-para-analise-de-dados?srsltid=AfmBOop21pv15vNxi8nTQILDqGnx77l-y4c2TEzVWWmFjT1YVM32weu3)
+
 ```quiz
 - tipo: single
   pergunta: Uma turma tem notas 2, 3, 3 e 10. Por que a mediana (3) descreve melhor o "aluno típico" do que a média (4,5)?
@@ -539,11 +546,6 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
       correta: false
       explicacao: Há diferença, ignorar a ordem de uma variável ordinal na codificação ou na visualização joga fora alguma informação real atrapalha intensamente a analise.
 ```
----
-# Complemente o Aprendizado
-- [O que é análise de dados? (Artigo Freecodecamp)](https://www.freecodecamp.org/portuguese/news/o-que-e-analise-de-dados/)
-- [Te ensino TUDO sobre criar gráficos com Python e Matplotlib (Vídeo)](https://www.youtube.com/watch?v=unEdvkCjL8U)
-- [Python para análise de dados (Artigo Alura)](https://www.alura.com.br/artigos/python-para-analise-de-dados?srsltid=AfmBOop21pv15vNxi8nTQILDqGnx77l-y4c2TEzVWWmFjT1YVM32weu3)
 
 ---
 

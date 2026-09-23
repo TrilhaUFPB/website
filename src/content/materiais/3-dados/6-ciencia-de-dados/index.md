@@ -550,7 +550,7 @@ O cuidado mais importante é, de novo, vazamento: se você seleciona features ol
 
 Para aprofundar seus conhecimentos sobre Ciências de Dados, confira os seguintes recursos:
 
-- [nome](link)
+- [Introdução ao Machine Learning - Livro Online](https://dataat.github.io/introducao-ao-machine-learning/introducao.html)
 
 ---
 
