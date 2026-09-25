@@ -1199,7 +1199,7 @@ button { font-family: inherit; cursor: pointer; }
 .aula-useful-links {
   list-style: disc;
   padding-inline-start: 20px;
-  margin: 16px 0 0;
+  margin: 16px 0 32px;
   display: flex;
   flex-direction: column;
   gap: 6px;

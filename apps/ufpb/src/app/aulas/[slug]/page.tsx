@@ -143,40 +143,6 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
           <p className="aula-page-subtitle">{aula.description}</p>
         </header>
 
-        {/* Slide — only when embedUrl is set */}
-        {aula.embedUrl && (
-          <div className="aula-page-embed-outer">
-            <div className="aula-page-embed-ratio">
-              <iframe
-                loading="lazy"
-                className="aula-page-embed"
-                src={aula.embedUrl}
-                title={aula.title}
-                allow="fullscreen"
-                allowFullScreen
-              />
-            </div>
-            {aula.canvaUrl && (
-              <a href={aula.canvaUrl} target="_blank" rel="noopener noreferrer" className="aula-canva-link">
-                {aula.title} · Trilha
-              </a>
-            )}
-          </div>
-        )}
-
-        {/* Useful links — below slide, no title */}
-        {aula.links && aula.links.length > 0 && (
-          <ul className={`aula-useful-links${aula.links.length > 5 ? ' aula-useful-links--cols' : ''}`}>
-            {aula.links.map((link) => (
-              <li key={link.url}>
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
-
         {/* Demo rodando — o resultado esperado da entrega */}
         {aula.demoUrl && (
           <div className="aula-demo">
@@ -203,6 +169,40 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
             <p className="aula-page-deadline" style={{ marginBottom: 32 }}>
               {t('aulas.deadlineLabel')}: {aula.deadline}
             </p>
+          )}
+
+          {/* Slide — only when embedUrl is set */}
+          {aula.embedUrl && (
+            <div className="aula-page-embed-outer">
+              <div className="aula-page-embed-ratio">
+                <iframe
+                  loading="lazy"
+                  className="aula-page-embed"
+                  src={aula.embedUrl}
+                  title={aula.title}
+                  allow="fullscreen"
+                  allowFullScreen
+                />
+              </div>
+              {aula.canvaUrl && (
+                <a href={aula.canvaUrl} target="_blank" rel="noopener noreferrer" className="aula-canva-link">
+                  {aula.title} · Trilha
+                </a>
+              )}
+            </div>
+          )}
+
+          {/* Useful links — below slide, no title */}
+          {aula.links && aula.links.length > 0 && (
+            <ul className={`aula-useful-links${aula.links.length > 5 ? ' aula-useful-links--cols' : ''}`}>
+              {aula.links.map((link) => (
+                <li key={link.url}>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           )}
 
           {guidelines?.items?.length > 0 && (

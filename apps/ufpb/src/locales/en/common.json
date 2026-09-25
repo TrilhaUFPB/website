@@ -597,7 +597,7 @@
         "embedUrl": "https://www.youtube.com/embed/INOs47O8vm4",
         "canvaUrl": "",
         "date": "September 25, 2026",
-        "deadline": "October 1, 2026",
+        "deadline": "October 7, 2026",
         "taskType": "miniprojeto",
         "homework": "Use web scraping, data engineering, and ML to answer: when should Felipe and Nicholas return to João Pessoa to surf? Put public tide, wave, and wind data to work.\n\n1. Web scraping from https://tabuademares.com\n2. EDA and data processing\n3. Classify conditions and rank best times\n\nFull details: https://github.com/TrilhaUFPB/miniprojeto2",
         "links": [

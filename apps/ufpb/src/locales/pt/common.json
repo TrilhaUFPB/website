@@ -596,7 +596,7 @@
         "embedUrl": "https://www.youtube.com/embed/INOs47O8vm4",
         "canvaUrl": "",
         "date": "25 de setembro de 2026",
-        "deadline": "1 de outubro de 2026",
+        "deadline": "7 de outubro de 2026",
         "taskType": "miniprojeto",
         "homework": "Use web scraping, engenharia de dados e ML para responder: quando Felipe e Nicholas devem voltar a João Pessoa para surfar? Coloque dados públicos de marés, ondas e vento para trabalhar.\n\n1. Web scraping em https://tabuademares.com\n2. EDA e processamento dos dados\n3. Classificar condições e ranquear melhores horários\n\nDetalhes completos: https://github.com/TrilhaUFPB/miniprojeto2",
         "links": [
