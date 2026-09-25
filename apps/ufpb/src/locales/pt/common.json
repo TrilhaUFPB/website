@@ -593,13 +593,38 @@
         "category": "dados",
         "title": "Tópicos Avançados de ML",
         "description": "Tópicos avançados e mini-projeto de Machine Learning. Como aplicar modelos em problemas reais.",
-        "embedUrl": "",
+        "embedUrl": "https://www.youtube.com/embed/INOs47O8vm4",
         "canvaUrl": "",
         "date": "25 de setembro de 2026",
         "deadline": "1 de outubro de 2026",
         "taskType": "miniprojeto",
-        "homework": "## Mini-Projeto 2 - Descrição e o que é Web Scraping?\n\n<iframe width=\"100%\" height=\"400\" src=\"https://www.youtube.com/embed/INOs47O8vm4\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-full-screen\" allowfullscreen></iframe>\n\nUse web scraping, engenharia de dados e ML para responder: quando Felipe e Nicholas devem voltar a João Pessoa para surfar? Coloque dados públicos de marés, ondas e vento para trabalhar.\n\n1. Web scraping em https://tabuademares.com\n2. EDA e processamento dos dados\n3. Classificar condições e ranquear melhores horários\n\nDetalhes completos: https://github.com/TrilhaUFPB/miniprojeto2\n\n### Recursos úteis\n\n- [Repositório do mini-projeto 2](https://github.com/TrilhaUFPB/miniprojeto2)\n- [Tábua de Marés João Pessoa](https://tabuademares.com/br/paraiba/joao-pessoa)\n- [requests — HTTP requests in Python](https://requests.readthedocs.io/)\n- [BeautifulSoup — Web scraping](https://www.crummy.com/software/BeautifulSoup/)\n- [pandas — Data analysis](https://pandas.pydata.org/)\n- [scikit-learn — Machine learning](https://scikit-learn.org/)",
-        "links": [],
+        "homework": "Use web scraping, engenharia de dados e ML para responder: quando Felipe e Nicholas devem voltar a João Pessoa para surfar? Coloque dados públicos de marés, ondas e vento para trabalhar.\n\n1. Web scraping em https://tabuademares.com\n2. EDA e processamento dos dados\n3. Classificar condições e ranquear melhores horários\n\nDetalhes completos: https://github.com/TrilhaUFPB/miniprojeto2",
+        "links": [
+          {
+            "label": "Repositório do mini-projeto 2",
+            "url": "https://github.com/TrilhaUFPB/miniprojeto2"
+          },
+          {
+            "label": "Tábua de Marés João Pessoa",
+            "url": "https://tabuademares.com/br/paraiba/joao-pessoa"
+          },
+          {
+            "label": "requests — HTTP requests in Python",
+            "url": "https://requests.readthedocs.io/"
+          },
+          {
+            "label": "BeautifulSoup — Web scraping",
+            "url": "https://www.crummy.com/software/BeautifulSoup/"
+          },
+          {
+            "label": "pandas — Data analysis",
+            "url": "https://pandas.pydata.org/"
+          },
+          {
+            "label": "scikit-learn — Machine learning",
+            "url": "https://scikit-learn.org/"
+          }
+        ],
         "dateISO": "2026-09-25"
       },
       {
