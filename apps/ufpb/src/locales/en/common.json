@@ -581,12 +581,17 @@
         "category": "dados",
         "title": "Introduction to Machine Learning",
         "description": "Introduction to Machine Learning: supervised models, training, testing, and performance evaluation.",
-        "embedUrl": "",
-        "canvaUrl": "",
+        "embedUrl": "https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/embed",
+        "canvaUrl": "https://docs.google.com/presentation/d/1wUEpi-14Cd93H2KnsbVVb1L40TttSEfo6PYy1tZ1EJo/edit?usp=sharing",
         "date": "September 18, 2026",
         "deadline": "September 24, 2026",
-        "homework": "Homework coming soon.",
-        "links": [],
+        "homework": "Access the activity in Google Colab: https://colab.research.google.com/drive/1X5U-rrCqsUKTtUz_2XyCK9yW_84Bvcbe#scrollTo=bfcc4f48",
+        "links": [
+          {
+            "label": "Supplementary content — TensorFlow Playground",
+            "url": "https://playground.tensorflow.org/#activation=relu&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=3,3,4&seed=0.30000&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false"
+          }
+        ],
         "dateISO": "2026-09-18"
       },
       {
