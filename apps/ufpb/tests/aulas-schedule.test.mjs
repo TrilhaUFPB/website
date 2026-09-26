@@ -56,8 +56,9 @@ test('publica os materiais de Machine Learning na aula 14', () => {
   assert.match(aula14.homework, /https:\/\/colab\.research\.google\.com\/drive\/1X5U-rrCqsUKTtUz_2XyCK9yW_84Bvcbe#scrollTo=bfcc4f48/);
   assert.equal(aula14.links[0].label, 'Conteúdo complementar — TensorFlow Playground');
   assert.match(aula14.links[0].url, /^https:\/\/playground\.tensorflow\.org\/#activation=relu&/);
-  assert.equal(aula15.embedUrl, '');
-  assert.deepEqual(aula15.links, []);
+  assert.equal(aula15.embedUrl, 'https://www.canva.com/design/DAHWKc929OE/DHZYnsu-GPihKII8wcDpXA/view?embed');
+  assert.equal(aula15.demoUrl, 'https://www.youtube.com/embed/INOs47O8vm4');
+  assert.equal(aula15.demoTitle, 'Vídeo do mini-projeto');
 });
 
 test('não renderiza uma página para aulas marcadas como não abertas', async () => {
