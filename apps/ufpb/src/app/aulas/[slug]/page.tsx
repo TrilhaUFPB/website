@@ -143,7 +143,29 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
           <p className="aula-page-subtitle">{aula.description}</p>
         </header>
 
-        {/* Demo rodando — o resultado esperado da entrega */}
+        {/* Slides da aula */}
+        {aula.embedUrl && (
+          <div className="aula-page-embed-outer">
+            <h2 className="aula-tarefa-h2">{t('aulas.slidesTitle')}</h2>
+            <div className="aula-page-embed-ratio">
+              <iframe
+                loading="lazy"
+                className="aula-page-embed"
+                src={aula.embedUrl}
+                title={`${aula.title} — ${t('aulas.slidesTitle')}`}
+                allow="fullscreen"
+                allowFullScreen
+              />
+            </div>
+            {aula.canvaUrl && (
+              <a href={aula.canvaUrl} target="_blank" rel="noopener noreferrer" className="aula-canva-link">
+                {t('aulas.slidesOpen')}
+              </a>
+            )}
+          </div>
+        )}
+
+        {/* Vídeo / demo — associado ao mini-projeto quando configurado */}
         {aula.demoUrl && (
           <div className="aula-demo">
             {aula.demoTitle && <h2 className="aula-tarefa-h2">{aula.demoTitle}</h2>}
@@ -169,27 +191,6 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
             <p className="aula-page-deadline" style={{ marginBottom: 32 }}>
               {t('aulas.deadlineLabel')}: {aula.deadline}
             </p>
-          )}
-
-          {/* Slide — only when embedUrl is set */}
-          {aula.embedUrl && (
-            <div className="aula-page-embed-outer">
-              <div className="aula-page-embed-ratio">
-                <iframe
-                  loading="lazy"
-                  className="aula-page-embed"
-                  src={aula.embedUrl}
-                  title={aula.title}
-                  allow="fullscreen"
-                  allowFullScreen
-                />
-              </div>
-              {aula.canvaUrl && (
-                <a href={aula.canvaUrl} target="_blank" rel="noopener noreferrer" className="aula-canva-link">
-                  {aula.title} · Trilha
-                </a>
-              )}
-            </div>
           )}
 
           {/* Useful links — below slide, no title */}
