@@ -33,7 +33,7 @@ export default function CommunityFooter() { return (
               <Link href={ufpbUrl}>Trilha UFPB</Link>
               <Link href="https://momento.sh">Momento</Link>
               <Link href="https://hackthepath.com.br">Hack The Path</Link>
-              <Link href="/ufpe/">Trilha UFPE</Link>
+              <Link href="https://trilhaufpe.com">Trilha UFPE</Link>
               <Link href={`${ufpbUrl}/materiais`} target="_blank" rel="noopener">
                 Materiais abertos
               </Link>
