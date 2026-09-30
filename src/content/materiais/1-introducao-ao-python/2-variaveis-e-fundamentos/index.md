@@ -80,20 +80,20 @@ Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, 
   pergunta: |
     Com base no conceito de instrução de atribuição em Python, o que acontece se um programador tentar executar a linha de código `25 = idade`?
   opcoes:
+    - texto: "O Python cria automaticamente uma constante na memória."
+      correta: false
+      explicacao: |
+        Incorreto. O Python não cria constantes automaticamente dessa forma e números inteiros puros não podem receber atribuições.
+    - texto: "O valor da variável idade passa a ser 25."
+      correta: false
+      explicacao: |
+        Incorreto. Para atribuir o valor 25 à variável, a sintaxe correta obrigatoriamente teria que ser invertida: `idade = 25`.
     - texto: "O interpretador gera um erro de sintaxe, pois o lado esquerdo deve ser sempre um nome de variável."
       correta: true
       explicacao: |
         Exato! Em Python, o sinal de '=' é um operador de atribuição. O lado esquerdo define onde o valor será guardado, portanto precisa ser um identificador/variável válido, nunca um valor bruto como o número 25.
       explicacao_erro: |
         Lembre-se que em programação a atribuição não é uma igualdade matemática bidirecional. O lado esquerdo precisa ser obrigatoriamente um nome de variável.
-    - texto: "O valor da variável idade passa a ser 25."
-      correta: false
-      explicacao: |
-        Incorreto. Para atribuir o valor 25 à variável, a sintaxe correta obrigatoriamente teria que ser invertida: `idade = 25`.
-    - texto: "O Python cria automaticamente uma constante na memória."
-      correta: false
-      explicacao: |
-        Incorreto. O Python não cria constantes automaticamente dessa forma e números inteiros puros não podem receber atribuições.
     - texto: "O código é executado normalmente invertendo os valores."
       correta: false
       explicacao: |
@@ -103,12 +103,6 @@ Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, 
   pergunta: |
     Qual é o principal objetivo de utilizar um diagrama de estado ao analisar a execução de um programa?
   opcoes:
-    - texto: "Visualizar graficamente o estado atual da memória, mostrando para quais valores cada nome de variável está apontando."
-      correta: true
-      explicacao: |
-        Perfeito! O diagrama de estado funciona como um mapa visual da memória. Ele mostra cada variável acompanhada por uma flecha que aponta para o seu valor correspondente naquele momento da execução.
-      explicacao_erro: |
-        O diagrama de estado não serve para analisar a estrutura física do computador ou o código estático, mas sim para acompanhar de forma gráfica como as variáveis apontam para seus dados na memória durante a execução.
     - texto: "Contar automaticamente quantas linhas de código foram escritas pelo programador."
       correta: false
       explicacao: |
@@ -122,14 +116,16 @@ Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, 
       explicacao: |
         As palavras-chave são fixas da estrutura do Python. O diagrama de estado mapeia os dados dinâmicos que você cria e altera no programa.
 
+    - texto: "Visualizar graficamente o estado atual da memória, mostrando para quais valores cada nome de variável está apontando."
+      correta: true
+      explicacao: |
+        Perfeito! O diagrama de estado funciona como um mapa visual da memória. Ele mostra cada variável acompanhada por uma flecha que aponta para o seu valor correspondente naquele momento da execução.
+      explicacao_erro: |
+        O diagrama de estado não serve para analisar a estrutura física do computador ou o código estático, mas sim para acompanhar de forma gráfica como as variáveis apontam para seus dados na memória durante a execução.
 - tipo: single
   pergunta: |
     Qual das opções abaixo é uma palavra-chave reservada do Python e não pode ser usada como nome de variável?
   opcoes:
-    - texto: "`nome`"
-      correta: false
-      explicacao: |
-        `nome` é um identificador comum e pode ser usado como nome de variável normalmente dentro do programa.
     - texto: "`total_vendas`"
       correta: false
       explicacao: |
@@ -140,6 +136,10 @@ Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, 
         Perfeito! `def` é uma palavra-chave reservada pelo interpretador do Python utilizada exclusivamente para a definição de funções. Tentar usá-la como variável quebra a estrutura da linguagem.
       explicacao_erro: |
         A palavra `def` tem um propósito estrutural fixo no Python para criar funções e não pode ser reaproveitada como nome de variável, gerando erro de sintaxe.
+    - texto: "`nome`"
+      correta: false
+      explicacao: |
+        `nome` é um identificador comum e pode ser usado como nome de variável normalmente dentro do programa.
     - texto: "`contador2`"
       correta: false
       explicacao: |

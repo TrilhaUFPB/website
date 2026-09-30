@@ -915,12 +915,12 @@ Para aprofundar seus conhecimentos sobre redes e infraestrutura de backend, conf
       correta: true
       explicacao: Exato! O IP te leva até a máquina certa, e a porta te leva até o programa certo dentro dela, permitindo que vários serviços rodem na mesma máquina.
       explicacao_erro: O IP identifica a máquina, e a porta identifica o serviço dentro dela. É por isso que uma mesma máquina pode rodar vários programas em portas diferentes.
-    - texto: IP e porta são a mesma coisa, apenas escritos de formas diferentes
-      correta: false
-      explicacao: São conceitos diferentes. O IP aponta para a máquina, e a porta aponta para o serviço específico dentro dessa máquina.
     - texto: A porta identifica a máquina, e o IP identifica o serviço
       correta: false
       explicacao: É o contrário. O IP identifica a máquina na rede, e a porta identifica o serviço dentro dela.
+    - texto: IP e porta são a mesma coisa, apenas escritos de formas diferentes
+      correta: false
+      explicacao: São conceitos diferentes. O IP aponta para a máquina, e a porta aponta para o serviço específico dentro dessa máquina.
     - texto: IP é usado apenas em redes locais, e porta apenas na internet
       correta: false
       explicacao: Tanto IP quanto porta são usados em qualquer tipo de rede, seja local ou pela internet. A diferença entre eles é a função, não o tipo de rede.
@@ -928,36 +928,36 @@ Para aprofundar seus conhecimentos sobre redes e infraestrutura de backend, conf
 - tipo: single
   pergunta: Por que o DNS existe?
   opcoes:
-    - texto: Para permitir o uso de nomes fáceis de lembrar em vez de decorar endereços IP, mesmo quando o IP por trás muda
-      correta: true
-      explicacao: Exato! O DNS permite publicar um nome estável, mesmo que a infraestrutura por trás (o IP) mude com o tempo, sem quebrar integrações existentes.
-      explicacao_erro: O DNS traduz nomes fáceis de lembrar (como api.exemplo.com) para o endereço IP correspondente, permitindo que a infraestrutura mude sem afetar quem usa o nome.
     - texto: Para criptografar a comunicação entre cliente e servidor
       correta: false
       explicacao: Criptografia é função do HTTPS/TLS, não do DNS. O DNS serve apenas para traduzir nomes em endereços IP.
-    - texto: Para acelerar a velocidade da conexão de internet
-      correta: false
-      explicacao: O DNS não tem relação direta com a velocidade da conexão. Sua função é resolver nomes para endereços IP.
     - texto: Para impedir que dois programas usem a mesma porta
       correta: false
       explicacao: Isso é controlado pelo sistema operacional, não pelo DNS. O DNS resolve nomes de domínio para endereços IP.
 
+    - texto: Para permitir o uso de nomes fáceis de lembrar em vez de decorar endereços IP, mesmo quando o IP por trás muda
+      correta: true
+      explicacao: Exato! O DNS permite publicar um nome estável, mesmo que a infraestrutura por trás (o IP) mude com o tempo, sem quebrar integrações existentes.
+      explicacao_erro: O DNS traduz nomes fáceis de lembrar (como api.exemplo.com) para o endereço IP correspondente, permitindo que a infraestrutura mude sem afetar quem usa o nome.
+    - texto: Para acelerar a velocidade da conexão de internet
+      correta: false
+      explicacao: O DNS não tem relação direta com a velocidade da conexão. Sua função é resolver nomes para endereços IP.
 - tipo: single
   pergunta: O que costuma causar o problema de "funciona no localhost, mas não funciona quando outro dispositivo tenta acessar pela rede"?
   opcoes:
+    - texto: A porta está sendo usada por outro processo
+      correta: false
+      explicacao: Porta em uso normalmente impede o próprio servidor de iniciar, gerando erro na hora de subir o processo, não um funcionamento parcial como o localhost funcionando e a rede não.
     - texto: O DNS está com problema de cache
       correta: false
       explicacao: Problemas de cache DNS causam sintomas diferentes, como pessoas acessando destinos diferentes. O sintoma descrito é característico de escuta apenas no loopback.
+    - texto: O certificado HTTPS expirou
+      correta: false
+      explicacao: Problemas de certificado geram erros específicos de conexão segura recusada, não o padrão de "funciona local mas não funciona de fora" descrito.
     - texto: O servidor está escutando apenas no endereço de loopback, aceitando conexões apenas da própria máquina
       correta: true
       explicacao: Exato! Quando o servidor escuta só no loopback, ele responde à própria máquina, mas nenhum outro dispositivo na rede consegue alcançá-lo.
       explicacao_erro: Esse sintoma geralmente indica que o servidor está escutando apenas no loopback. Para aceitar conexões externas, ele precisa escutar em um endereço acessível pela rede.
-    - texto: A porta está sendo usada por outro processo
-      correta: false
-      explicacao: Porta em uso normalmente impede o próprio servidor de iniciar, gerando erro na hora de subir o processo, não um funcionamento parcial como o localhost funcionando e a rede não.
-    - texto: O certificado HTTPS expirou
-      correta: false
-      explicacao: Problemas de certificado geram erros específicos de conexão segura recusada, não o padrão de "funciona local mas não funciona de fora" descrito.
 ```
 
 # Referências

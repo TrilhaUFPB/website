@@ -127,20 +127,16 @@ Para aprofundar seus conhecimentos sobre funções, confira os seguintes recurso
     - texto: É o valor fornecido à função no momento da chamada
       correta: false
       explicacao: Isso descreve o argumento, não o parâmetro. O argumento é o valor que você passa; o parâmetro é o nome que a função usa para recebê-lo.
-    - texto: É o resultado devolvido pela função após a execução
-      correta: false
-      explicacao: Isso descreve o valor de retorno, definido pela instrução return. O parâmetro é o nome da variável que recebe o valor passado à função.
     - texto: É o nome dado à função no momento em que ela é definida
       correta: false
       explicacao: Isso descreve o nome da função, definido após a palavra-chave def. O parâmetro fica entre os parênteses da definição.
 
+    - texto: É o resultado devolvido pela função após a execução
+      correta: false
+      explicacao: Isso descreve o valor de retorno, definido pela instrução return. O parâmetro é o nome da variável que recebe o valor passado à função.
 - tipo: single
   pergunta: O que é um argumento em uma função Python?
   opcoes:
-    - texto: É o valor fornecido à função no momento da chamada
-      correta: true
-      explicacao: Exato! O argumento é o valor concreto que você passa quando chama a função.
-      explicacao_erro: O argumento é o valor fornecido na chamada da função, enquanto o parâmetro é o nome usado dentro dela para receber esse valor.
     - texto: É o nome usado dentro da função para se referir ao valor recebido
       correta: false
       explicacao: Isso descreve o parâmetro. O argumento é o valor real passado na chamada, como print_twice('Spam'), onde 'Spam' é o argumento.
@@ -151,9 +147,16 @@ Para aprofundar seus conhecimentos sobre funções, confira os seguintes recurso
       correta: false
       explicacao: Isso descreve o nome da função. O argumento é o valor que você passa entre os parênteses ao chamar a função.
 
+    - texto: É o valor fornecido à função no momento da chamada
+      correta: true
+      explicacao: Exato! O argumento é o valor concreto que você passa quando chama a função.
+      explicacao_erro: O argumento é o valor fornecido na chamada da função, enquanto o parâmetro é o nome usado dentro dela para receber esse valor.
 - tipo: single
   pergunta: O que acontece com uma variável local quando a função termina?
   opcoes:
+    - texto: Ela é salva na memória para ser usada na próxima chamada da função
+      correta: false
+      explicacao: Variáveis locais não persistem entre chamadas. A cada nova chamada da função, elas são criadas do zero e destruídas ao fim.
     - texto: Ela é destruída e deixa de existir fora da função
       correta: true
       explicacao: Exato! Variáveis locais existem apenas durante a execução da função. Tentar acessá-las fora causa um NameError.
@@ -164,7 +167,4 @@ Para aprofundar seus conhecimentos sobre funções, confira os seguintes recurso
     - texto: Ela é automaticamente convertida em uma variável global
       correta: false
       explicacao: Isso não acontece automaticamente. Para que uma variável exista fora da função, ela precisaria ser declarada com a palavra-chave global, o que é considerado má prática.
-    - texto: Ela é salva na memória para ser usada na próxima chamada da função
-      correta: false
-      explicacao: Variáveis locais não persistem entre chamadas. A cada nova chamada da função, elas são criadas do zero e destruídas ao fim.
 ```

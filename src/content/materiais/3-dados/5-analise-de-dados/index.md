@@ -497,41 +497,47 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
 - tipo: single
   pergunta: Uma turma tem notas 2, 3, 3 e 10. Por que a mediana (3) descreve melhor o "aluno típico" do que a média (4,5)?
   opcoes:
-    - texto: Porque a nota 10 puxa a média para cima, enquanto a mediana só olha a posição central
-      correta: true
-      explicacao: Exato, é o mesmo raciocínio do exemplo das notas — um valor extremo acaba distorcendo a média, mas não muda o "meio" real dos dados.
-      explicacao_erro: O ponto é que a média soma todos os valores (incluindo o extremo) e divide pelo total, então um único valor discrepante desloca o resultado. A mediana só mostra o centro de fato.
-    - texto: Porque a mediana sempre é a estatística mais confiável, independente da situação
-      correta: false
-      explicacao: Em distribuições sem valores extremos, média e mediana costumam contar histórias parecidas. Aqui a mediana ganha porque há um outlier específico (o 10).
     - texto: Porque a média está calculada errado nesse caso
       correta: false
       explicacao: A média está certa matematicamente (2+3+3+10)/4 = 4,5. O problema não é o cálculo, é que ela não representa bem o grupo quando existe um outlier.
+    - texto: Porque a mediana sempre é a estatística mais confiável, independente da situação
+      correta: false
+      explicacao: Em distribuições sem valores extremos, média e mediana costumam contar histórias parecidas. Aqui a mediana ganha porque há um outlier específico (o 10).
     - texto: Porque com apenas 4 alunos fazer a media não funciona
       correta: false
       explicacao: O tamanho pequeno da amostra não é o motivo da diferença — é a presença do valor 10, destoante dos demais, que puxa a média.
 
+    - texto: Porque a nota 10 puxa a média para cima, enquanto a mediana só olha a posição central
+      correta: true
+      explicacao: Exato, é o mesmo raciocínio do exemplo das notas — um valor extremo acaba distorcendo a média, mas não muda o "meio" real dos dados.
+      explicacao_erro: O ponto é que a média soma todos os valores (incluindo o extremo) e divide pelo total, então um único valor discrepante desloca o resultado. A mediana só mostra o centro de fato.
 - tipo: single
   pergunta: Você está comparando duas variáveis numéricas e já calculou a correlação entre elas. Por que ainda vale a pena olhar o gráfico de dispersão antes de confiar nesse número?
   opcoes:
-    - texto: Porque o gráfico substitui a necessidade da correlação
-      correta: false
-      explicacao: Um não substitui o outro, eles se complementam. A ideia é visualizar para validar (ou desconfiar) do que o número está dizendo.
     - texto: Porque calcular gráficos é mais rápido do que calcular correlação no Pandas
       correta: false
       explicacao: Não é questão de velocidade de processamento — confiar só no número, sem olhar o gráfico, pode levar a uma conclusão errada.
-    - texto: Porque a correlação só pode ser calculada depois que um gráfico existe
-      correta: false
-      explicacao: Dá para calcular correlação sem nunca ter plotado nada. A recomendação é sobre segurança da interpretação, não sobre dependência técnica
     - texto: Porque a mesma correlação pode aparecer em relações bem diferentes
       correta: true
       explicacao: Perfeito! A correlação resume tudo em um único valor, então esconde a forma real da relação, só o gráfico mostra se essa forma bate com o que o número sugere.
       explicacao_erro: O risco não é o cálculo estar errado, é que o número sozinho não mostra a forma da relação. Duas dispersões diferentes podem gerar valores de correlação
 
 
+    - texto: Porque o gráfico substitui a necessidade da correlação
+      correta: false
+      explicacao: Um não substitui o outro, eles se complementam. A ideia é visualizar para validar (ou desconfiar) do que o número está dizendo.
+    - texto: Porque a correlação só pode ser calculada depois que um gráfico existe
+      correta: false
+      explicacao: Dá para calcular correlação sem nunca ter plotado nada. A recomendação é sobre segurança da interpretação, não sobre dependência técnica
 - tipo: single
   pergunta: Uma coluna `satisfacao` tem valores "ruim", "médio", "bom", "ótimo". Uma coluna `cidade` tem valores como "Recife", "Natal", "Salvador". Qual a diferença real entre elas para fins de análise?
   opcoes:
+    - texto: "`cidade` deveria ter mais categorias do que `satisfacao`, e é por isso que são diferentes"
+      correta: false
+      explicacao: A quantidade de categorias não define o tipo e sim a existência (ou ausência) de uma ordem lógica entre os valores.
+    - texto: Não há diferença relevante, ambas podem ser tratadas do mesmo jeito em qualquer análise
+      correta: false
+      explicacao: Há diferença, ignorar a ordem de uma variável ordinal na codificação ou na visualização joga fora alguma informação real atrapalha intensamente a analise.
     - texto: "`satisfacao` é numérica e `cidade` é categórica"
       correta: false
       explicacao: Nenhuma das duas é numérica por natureza — ambas representam categorias (qualitativas). A diferença está em existir ordem ou não entre elas.
@@ -539,12 +545,6 @@ Dica prática: **gráfico primeiro, métrica depois** (reduz risco de conclusõe
       correta: true
       explicacao: Exato. "Ruim < médio < bom < ótimo" segue uma progressão, enquanto nenhuma cidade é "maior" ou "menor" que outra.
       explicacao_erro: As duas são categóricas, então a diferença não está aí. O que muda é que dá para por uma ordem entre os valores e a outra não.
-    - texto: "`cidade` deveria ter mais categorias do que `satisfacao`, e é por isso que são diferentes"
-      correta: false
-      explicacao: A quantidade de categorias não define o tipo e sim a existência (ou ausência) de uma ordem lógica entre os valores.
-    - texto: Não há diferença relevante, ambas podem ser tratadas do mesmo jeito em qualquer análise
-      correta: false
-      explicacao: Há diferença, ignorar a ordem de uma variável ordinal na codificação ou na visualização joga fora alguma informação real atrapalha intensamente a analise.
 ```
 
 ---

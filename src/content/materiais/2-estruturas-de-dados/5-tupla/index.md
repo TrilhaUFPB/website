@@ -103,13 +103,13 @@ Para aprofundar seus conhecimentos sobre Tuplas, confira os seguintes recursos:
 
     Se tentarmos fazer `var_b[0] = 50`, o que acontecerá?
   opcoes:
-    - texto: "`var_a` é uma Tupla e `var_b` é uma Lista. O comando alterará o primeiro valor de `var_b` para 50 com sucesso."
-      correta: false
-      explicacao: "var_a não é uma Tupla — ela usa colchetes, que definem uma Lista. var_b, com parênteses, é a Tupla."
     - texto: "`var_a` é uma Lista e `var_b` é uma Tupla. O comando resultará em um erro."
       correta: true
       explicacao: "Por `var_b` ser uma Tupla e tuplas serem imutáveis, a tentativa de alterar o índice [0] resultará em um TypeError."
       explicacao_erro: "var_a usa colchetes (Lista) e var_b usa parênteses (Tupla). Como tuplas são imutáveis, tentar atribuir var_b[0] = 50 gera um TypeError."
+    - texto: "`var_a` é uma Tupla e `var_b` é uma Lista. O comando alterará o primeiro valor de `var_b` para 50 com sucesso."
+      correta: false
+      explicacao: "var_a não é uma Tupla — ela usa colchetes, que definem uma Lista. var_b, com parênteses, é a Tupla."
     - texto: "O primeiro valor da `var_b` continuará sendo 10 sem mudanças e sem erro."
       correta: false
       explicacao: "Apresentará TypeError — tuplas imutáveis não permitem atribuição por índice, independentemente do valor."
@@ -121,12 +121,12 @@ Para aprofundar seus conhecimentos sobre Tuplas, confira os seguintes recursos:
   pergunta: |
     Ao declarar a variável `config = (80)`, o programador notou que o tipo reconhecido pelo Python era `int` e não `tuple`. Como corrigir essa declaração para criar uma tupla de um único elemento?
   opcoes:
-    - texto: "Deve-se usar colchetes em vez de parênteses, ficando `config = [80]`."
-      correta: false
-      explicacao: "Ao usar colchetes, você cria uma Lista, não uma Tupla."
     - texto: "O Python proíbe tuplas de tamanho um, logo, é impossível sem adicionar um segundo elemento."
       correta: false
       explicacao: "É perfeitamente possível criar tuplas de um único elemento em Python — basta usar a sintaxe correta com a vírgula."
+    - texto: "Deve-se usar colchetes em vez de parênteses, ficando `config = [80]`."
+      correta: false
+      explicacao: "Ao usar colchetes, você cria uma Lista, não uma Tupla."
     - texto: "É obrigatório incluir uma vírgula após o valor, declarando como `config = (80,)`."
       correta: true
       explicacao: "Sem a vírgula, o Python interpreta os parênteses apenas como agrupamento matemático. A vírgula é o que sinaliza ao interpretador que se trata de uma Tupla."
@@ -142,6 +142,9 @@ Para aprofundar seus conhecimentos sobre Tuplas, confira os seguintes recursos:
     - texto: "Lista, pois permite adicionar novas coordenadas futuramente caso a filial mude de endereço."
       correta: false
       explicacao: "Como os dados são descritos como fixos, o uso de listas abre brechas para modificações acidentais, diminuindo a segurança e integridade do código."
+    - texto: "Tupla, porque é a única estrutura em Python capaz de armazenar dados heterogêneos (tipos diferentes juntos)."
+      correta: false
+      explicacao: "Listas também armazenam dados de tipos diferentes. A real motivação aqui é a proteção e eficiência proporcionadas pela imutabilidade da Tupla."
     - texto: "Tupla, porque sua natureza imutável garante proteção contra alterações acidentais e consome menos memória."
       correta: true
       explicacao: "Tuplas servem como registros imutáveis. Elas blindam o dado contra modificações acidentais (side effects) e são alocadas com tamanho fixo, economizando recursos."
@@ -149,7 +152,4 @@ Para aprofundar seus conhecimentos sobre Tuplas, confira os seguintes recursos:
     - texto: "Lista, pois coordenadas precisam de cálculos matemáticos e tuplas não suportam operações numéricas."
       correta: false
       explicacao: "Tuplas suportam perfeitamente armazenar floats e inteiros usados em cálculos. A restrição é apenas não poder alterar seus itens após a criação."
-    - texto: "Tupla, porque é a única estrutura em Python capaz de armazenar dados heterogêneos (tipos diferentes juntos)."
-      correta: false
-      explicacao: "Listas também armazenam dados de tipos diferentes. A real motivação aqui é a proteção e eficiência proporcionadas pela imutabilidade da Tupla."
 ```

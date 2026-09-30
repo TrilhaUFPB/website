@@ -537,16 +537,6 @@ Para aprofundar seus conhecimentos sobre modelagem de dados, confira os seguinte
   pergunta: |
     Uma tabela única `pedidos_completos` guarda nome, CPF e endereço do cliente repetidos em cada linha de pedido. Quando o cliente muda de endereço, é preciso atualizar em várias linhas — e se uma for esquecida, os dados ficam inconsistentes. Como se chama esse problema e qual a solução?
   opcoes:
-    - texto: É a "Anomalia de Inserção", resolvida adicionando uma coluna de data de atualização
-      correta: false
-      explicacao: |
-        A anomalia de inserção é outro problema (não conseguir cadastrar um cliente sem pedido). O problema descrito é de atualização, e uma coluna de data não resolve a redundância.
-    - texto: É a "Anomalia de Atualização", causada pela redundância de dados, e a solução é normalizar separando o cliente em sua própria tabela
-      correta: true
-      explicacao: |
-        Exato! Repetir os dados do cliente em cada pedido cria redundância, que gera a anomalia de atualização. A normalização (criar uma tabela `clientes` separada, referenciada por `pedidos` via chave estrangeira) elimina a repetição e garante que o dado exista em um único lugar.
-      explicacao_erro: |
-        O nome do problema é "Anomalia de Atualização", e ele acontece porque o mesmo dado (endereço do cliente) está duplicado em várias linhas. A correção é normalizar: mover os dados do cliente para uma tabela própria.
     - texto: É um comportamento esperado de bancos relacionais, não há solução
       correta: false
       explicacao: |
@@ -556,24 +546,34 @@ Para aprofundar seus conhecimentos sobre modelagem de dados, confira os seguinte
       explicacao: |
         Anomalia de exclusão é sobre perder dados ao deletar um registro. Um índice também não resolve redundância de dados, só acelera buscas.
 
+    - texto: É a "Anomalia de Atualização", causada pela redundância de dados, e a solução é normalizar separando o cliente em sua própria tabela
+      correta: true
+      explicacao: |
+        Exato! Repetir os dados do cliente em cada pedido cria redundância, que gera a anomalia de atualização. A normalização (criar uma tabela `clientes` separada, referenciada por `pedidos` via chave estrangeira) elimina a repetição e garante que o dado exista em um único lugar.
+      explicacao_erro: |
+        O nome do problema é "Anomalia de Atualização", e ele acontece porque o mesmo dado (endereço do cliente) está duplicado em várias linhas. A correção é normalizar: mover os dados do cliente para uma tabela própria.
+    - texto: É a "Anomalia de Inserção", resolvida adicionando uma coluna de data de atualização
+      correta: false
+      explicacao: |
+        A anomalia de inserção é outro problema (não conseguir cadastrar um cliente sem pedido). O problema descrito é de atualização, e uma coluna de data não resolve a redundância.
 - tipo: single
   pergunta: |
     Uma tabela `produtos` foi criada com `preco FLOAT`. Depois de meses em produção, a equipe percebe que somas de preços às vezes fecham com centavos errados (ex: R$ 0,01 a mais ou a menos). Qual é a causa mais provável e a correção recomendada?
   opcoes:
-    - texto: É um bug do banco de dados; a correção é trocar de banco
+    - texto: O problema é falta de índice na coluna preco
       correta: false
       explicacao: |
-        Não é um bug do banco — é uma limitação conhecida de como números de ponto flutuante representam decimais, comum a qualquer banco ou linguagem.
+        Índices aceleram buscas, mas não têm relação nenhuma com precisão de armazenamento de números decimais.
     - texto: FLOAT tem erro de arredondamento binário; a correção é usar DECIMAL(10,2) para valores monetários
       correta: true
       explicacao: |
         Exato! Tipos de ponto flutuante (FLOAT/DOUBLE) não representam certos valores decimais com exatidão, o que causa erros de arredondamento em somas. Para dinheiro, o tipo correto é DECIMAL (ou NUMERIC), que guarda o valor exato.
       explicacao_erro: |
         FLOAT armazena números em binário, e alguns decimais (como 0.1) não têm representação exata nessa base — isso causa pequenos erros de arredondamento. Por isso, valores monetários devem usar DECIMAL(10,2), não FLOAT.
-    - texto: O problema é falta de índice na coluna preco
+    - texto: É um bug do banco de dados; a correção é trocar de banco
       correta: false
       explicacao: |
-        Índices aceleram buscas, mas não têm relação nenhuma com precisão de armazenamento de números decimais.
+        Não é um bug do banco — é uma limitação conhecida de como números de ponto flutuante representam decimais, comum a qualquer banco ou linguagem.
     - texto: O problema é usar INT em vez de FLOAT
       correta: false
       explicacao: |
@@ -583,22 +583,22 @@ Para aprofundar seus conhecimentos sobre modelagem de dados, confira os seguinte
   pergunta: |
     No sistema da Trilha, um Aluno pode se inscrever em várias Disciplinas ao longo do curso, e cada Disciplina tem vários Alunos matriculados nela ao mesmo tempo. Qual cardinalidade representa essa relação, e como ela costuma ser implementada no banco?
   opcoes:
-    - texto: 1:1, com uma coluna de chave estrangeira em qualquer uma das duas tabelas
+    - texto: Não é possível modelar essa relação em um banco relacional
       correta: false
       explicacao: |
-        1:1 seria se cada aluno pudesse cursar no máximo uma disciplina e vice-versa, o que não é o caso aqui.
+        É perfeitamente possível — é exatamente o padrão de tabela intermediária (N:N) usado em praticamente todo sistema com relações muitos-para-muitos.
     - texto: 1:N, com uma chave estrangeira na tabela Aluno apontando para Disciplina
       correta: false
       explicacao: |
         1:N funcionaria só se cada aluno pudesse cursar uma única disciplina por vez, mas o enunciado diz que um aluno cursa várias disciplinas e uma disciplina tem vários alunos — os dois lados são "muitos".
+    - texto: 1:1, com uma coluna de chave estrangeira em qualquer uma das duas tabelas
+      correta: false
+      explicacao: |
+        1:1 seria se cada aluno pudesse cursar no máximo uma disciplina e vice-versa, o que não é o caso aqui.
     - texto: N:N, implementada com uma tabela intermediária que guarda os pares aluno-disciplina
       correta: true
       explicacao: |
         Exato! Quando os dois lados da relação podem ter "muitos" do outro lado, a cardinalidade é N:N. Ela não pode ser representada com uma chave estrangeira simples — precisa de uma tabela intermediária (ex: `matriculas`) com `aluno_id` e `disciplina_id`, como fizemos com `pedidos_produtos` no exemplo de normalização.
       explicacao_erro: |
         Como um Aluno cursa várias Disciplinas E uma Disciplina tem vários Alunos, os dois lados são "muitos" — isso é cardinalidade N:N, resolvida com uma tabela intermediária, não com uma chave estrangeira direta.
-    - texto: Não é possível modelar essa relação em um banco relacional
-      correta: false
-      explicacao: |
-        É perfeitamente possível — é exatamente o padrão de tabela intermediária (N:N) usado em praticamente todo sistema com relações muitos-para-muitos.
 ```

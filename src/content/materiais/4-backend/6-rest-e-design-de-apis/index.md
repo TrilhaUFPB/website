@@ -1102,49 +1102,49 @@ Para aprofundar seus conhecimentos sobre REST e design de APIs, confira os recur
       correta: true
       explicacao: "Isso mesmo! O recurso é identificado por um substantivo (`/users/1`) e a ação de apagar fica a cargo do método HTTP, não da URL."
       explicacao_erro: "No REST, a URL identifica o recurso (substantivo) e o verbo HTTP (GET, POST, PUT, DELETE) é quem carrega a ação. `DELETE /users/1` segue exatamente essa separação."
-    - texto: "`POST /deleteUser?id=1`"
-      correta: false
-      explicacao: "Esse é o estilo RPC: a ação (`delete`) está embutida na própria URL como um verbo, o que o REST evita."
-    - texto: "`GET /users/1/delete`"
-      correta: false
-      explicacao: "Além de colocar um verbo na URL, usar GET para uma operação destrutiva quebra a garantia de que GET é seguro (não deveria alterar dados)."
     - texto: "`POST /users/1`"
       correta: false
       explicacao: "POST em um recurso específico normalmente é interpretado como uma ação de criação/processamento sobre ele, não como remoção — a semântica correta para apagar é o método DELETE."
 
+    - texto: "`GET /users/1/delete`"
+      correta: false
+      explicacao: "Além de colocar um verbo na URL, usar GET para uma operação destrutiva quebra a garantia de que GET é seguro (não deveria alterar dados)."
+    - texto: "`POST /deleteUser?id=1`"
+      correta: false
+      explicacao: "Esse é o estilo RPC: a ação (`delete`) está embutida na própria URL como um verbo, o que o REST evita."
 - tipo: single
   pergunta: Um cliente envia duas vezes a mesma requisição `PUT /pedidos/10` (por causa de uma falha de rede e um retry). O que deve acontecer, se a API for idempotente?
   opcoes:
-    - texto: O pedido 10 fica exatamente no mesmo estado final, como se a requisição tivesse sido enviada uma única vez.
-      correta: true
-      explicacao: "Exato! Idempotência significa que repetir a mesma operação não muda o resultado depois da primeira vez — é isso que torna o retry seguro."
-      explicacao_erro: "PUT é idempotente porque substitui o recurso por um estado definido. Enviar o mesmo PUT duas vezes deixa o recurso no mesmo estado final da primeira chamada, sem duplicar nada."
-    - texto: Um segundo pedido é criado com um novo ID.
-      correta: false
-      explicacao: "Isso é o que aconteceria com um POST não idempotente, não com um PUT — PUT substitui o recurso indicado pela URL, não cria um novo."
-    - texto: A API deveria retornar erro na segunda chamada, pois não é permitido repetir requisições.
-      correta: false
-      explicacao: "Retries são justamente o cenário que a idempotência foi projetada para suportar sem erro — a API não deve rejeitar a repetição."
     - texto: Isso depende exclusivamente do banco de dados usado, não do design da API.
       correta: false
       explicacao: "A idempotência é uma propriedade do contrato da API (como o endpoint foi desenhado), não uma característica do banco de dados por trás dela."
 
+    - texto: A API deveria retornar erro na segunda chamada, pois não é permitido repetir requisições.
+      correta: false
+      explicacao: "Retries são justamente o cenário que a idempotência foi projetada para suportar sem erro — a API não deve rejeitar a repetição."
+    - texto: Um segundo pedido é criado com um novo ID.
+      correta: false
+      explicacao: "Isso é o que aconteceria com um POST não idempotente, não com um PUT — PUT substitui o recurso indicado pela URL, não cria um novo."
+    - texto: O pedido 10 fica exatamente no mesmo estado final, como se a requisição tivesse sido enviada uma única vez.
+      correta: true
+      explicacao: "Exato! Idempotência significa que repetir a mesma operação não muda o resultado depois da primeira vez — é isso que torna o retry seguro."
+      explicacao_erro: "PUT é idempotente porque substitui o recurso por um estado definido. Enviar o mesmo PUT duas vezes deixa o recurso no mesmo estado final da primeira chamada, sem duplicar nada."
 - tipo: single
   pergunta: Qual a diferença essencial entre usar PUT e usar PATCH para atualizar um recurso?
   opcoes:
-    - texto: PUT substitui o recurso inteiro; PATCH aplica uma modificação parcial, mantendo o restante como está.
-      correta: true
-      explicacao: "Correto! PUT espera o objeto completo (o que não for enviado pode ser tratado como removido/nulo); PATCH só toca nos campos enviados."
-      explicacao_erro: "PUT é 'substitua o recurso inteiro por isto', enquanto PATCH é 'mude apenas estes campos e deixe o resto como está'. Por isso PATCH é a escolha certa quando só um campo precisa mudar."
-    - texto: PUT é usado para leitura e PATCH para escrita.
-      correta: false
-      explicacao: "Nenhum dos dois é usado para leitura — essa é a função do GET. Tanto PUT quanto PATCH enviam um body para atualizar o recurso."
     - texto: PATCH é mais antigo e por isso é o recomendado atualmente.
       correta: false
       explicacao: "A escolha entre eles não tem relação com qual é mais recente, e sim com a intenção: substituição completa (PUT) versus parcial (PATCH)."
     - texto: Não existe diferença prática, os dois têm o mesmo comportamento.
       correta: false
       explicacao: "Existe diferença de comportamento esperado: um PUT que omite campos pode apagá-los, enquanto um PATCH que omite campos simplesmente não os altera."
+    - texto: PUT é usado para leitura e PATCH para escrita.
+      correta: false
+      explicacao: "Nenhum dos dois é usado para leitura — essa é a função do GET. Tanto PUT quanto PATCH enviam um body para atualizar o recurso."
+    - texto: PUT substitui o recurso inteiro; PATCH aplica uma modificação parcial, mantendo o restante como está.
+      correta: true
+      explicacao: "Correto! PUT espera o objeto completo (o que não for enviado pode ser tratado como removido/nulo); PATCH só toca nos campos enviados."
+      explicacao_erro: "PUT é 'substitua o recurso inteiro por isto', enquanto PATCH é 'mude apenas estes campos e deixe o resto como está'. Por isso PATCH é a escolha certa quando só um campo precisa mudar."
 ```
 
 ---

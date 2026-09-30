@@ -725,9 +725,6 @@ Para aprofundar seus conhecimentos sobre os outros estilos de API, confira os re
       correta: true
       explicacao: "Exato! O GraphQL expõe um único endpoint onde o cliente pede perfil, pedidos e notificações numa query só, eliminando os múltiplos round-trips."
       explicacao_erro: "O problema é underfetching (dados de menos, exigindo várias chamadas). O GraphQL resolve isso justamente porque o cliente monta uma única query que agrega tudo que precisa, em vez de bater em 3 endpoints diferentes."
-    - texto: gRPC, porque é o protocolo mais rápido disponível.
-      correta: false
-      explicacao: "gRPC é ótimo para performance entre microsserviços internos, mas não foi desenhado para resolver agregação flexível de dados para um cliente — isso é o ponto forte do GraphQL."
     - texto: Webhooks, porque o servidor avisa o cliente quando os dados mudam.
       correta: false
       explicacao: "Webhooks resolvem 'ficar perguntando se mudou algo' (polling), não o problema de precisar juntar dados de várias fontes numa tela."
@@ -735,19 +732,22 @@ Para aprofundar seus conhecimentos sobre os outros estilos de API, confira os re
       correta: false
       explicacao: "Cache ajuda com performance de requisições repetidas, mas não reduz a quantidade de round-trips necessários para montar essa tela — o problema é estrutural do REST orientado a recursos fixos."
 
+    - texto: gRPC, porque é o protocolo mais rápido disponível.
+      correta: false
+      explicacao: "gRPC é ótimo para performance entre microsserviços internos, mas não foi desenhado para resolver agregação flexível de dados para um cliente — isso é o ponto forte do GraphQL."
 - tipo: single
   pergunta: Dois microsserviços internos da sua empresa (nunca acessados de fora) trocam milhares de mensagens por segundo e precisam do menor tempo de resposta possível. Qual estilo é o mais indicado?
   opcoes:
+    - texto: REST, porque é o padrão mais usado no mercado.
+      correta: false
+      explicacao: "Popularidade não é o critério aqui — para esse cenário específico (latência mínima, alto volume, interno), o overhead de JSON texto do REST perde para o formato binário do gRPC."
+    - texto: GraphQL, porque é o mais flexível de todos os estilos.
+      correta: false
+      explicacao: "Flexibilidade de consulta é o forte do GraphQL para clientes diversos (mobile, web), não para comunicação interna de altíssima performance entre dois serviços que já sabem exatamente o que trocar."
     - texto: gRPC, pelo formato binário (Protobuf) e por HTTP/2, que priorizam performance sobre legibilidade.
       correta: true
       explicacao: "Isso mesmo! Para comunicação backend-to-backend onde performance importa mais que ser lido em um navegador, o gRPC com Protobuf é a escolha clássica."
       explicacao_erro: "Quando não há necessidade de o dado ser lido por humanos (sem navegador, sem curl fácil) e a prioridade é velocidade entre serviços internos, o gRPC (binário, HTTP/2) supera REST e GraphQL em performance."
-    - texto: GraphQL, porque é o mais flexível de todos os estilos.
-      correta: false
-      explicacao: "Flexibilidade de consulta é o forte do GraphQL para clientes diversos (mobile, web), não para comunicação interna de altíssima performance entre dois serviços que já sabem exatamente o que trocar."
-    - texto: REST, porque é o padrão mais usado no mercado.
-      correta: false
-      explicacao: "Popularidade não é o critério aqui — para esse cenário específico (latência mínima, alto volume, interno), o overhead de JSON texto do REST perde para o formato binário do gRPC."
     - texto: Webhooks, porque eliminam a necessidade de o cliente perguntar por dados.
       correta: false
       explicacao: "Webhooks servem para notificar eventos pontuais (ex: pagamento aprovado), não para troca contínua de milhares de mensagens por segundo entre dois serviços."
@@ -755,6 +755,9 @@ Para aprofundar seus conhecimentos sobre os outros estilos de API, confira os re
 - tipo: single
   pergunta: "Por que um Message Broker (RabbitMQ/Kafka) é preferível a uma fila em memória (ex: uma lista Python) quando o sistema precisa escalar para várias instâncias?"
   opcoes:
+    - texto: Não há diferença real, os Brokers são só uma camada de complexidade desnecessária.
+      correta: false
+      explicacao: "Há diferença real e importante: sem um Broker, escalar horizontalmente (várias instâncias) e sobreviver a quedas do serviço fica muito mais difícil."
     - texto: Porque o Broker é centralizado e distribui as mensagens entre múltiplos consumidores, além de persistir os dados em disco.
       correta: true
       explicacao: "Correto! Uma fila em memória só existe dentro de um processo — se você sobe 5 instâncias, cada uma tem sua fila isolada. O Broker centraliza e sobrevive a reinícios."
@@ -765,7 +768,4 @@ Para aprofundar seus conhecimentos sobre os outros estilos de API, confira os re
     - texto: Porque filas em memória só funcionam com a linguagem Python.
       correta: false
       explicacao: "Isso é verdade sobre uma estrutura como queue.Queue, mas não é o motivo principal — o problema central é durabilidade (persistência) e centralização entre múltiplas instâncias, não a linguagem em si."
-    - texto: Não há diferença real, os Brokers são só uma camada de complexidade desnecessária.
-      correta: false
-      explicacao: "Há diferença real e importante: sem um Broker, escalar horizontalmente (várias instâncias) e sobreviver a quedas do serviço fica muito mais difícil."
 ```

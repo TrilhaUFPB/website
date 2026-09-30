@@ -767,9 +767,6 @@ Para aprofundar seus conhecimentos sobre arrays, listas e estruturas de dados, c
       correta: true
       explicacao: Correto! O operador `*` repete a lista 3 vezes, resultando em `[1, 2, 1, 2, 1, 2]`. Em seguida, o operador `+` concatena `[3]` ao final.
       explicacao_erro: O operador `*` repete a lista inteira 3 vezes (`[1, 2, 1, 2, 1, 2]`) e depois `+` concatena `[3]` ao final, resultando em `[1, 2, 1, 2, 1, 2, 3]`.
-    - texto: "[1, 2, 3, 1, 2, 3, 1, 2, 3]"
-      correta: false
-      explicacao: Esse seria o resultado de `(lista + [3]) * 3`. Aqui, o `*` opera sobre `lista` antes da concatenação com `[3]`.
     - texto: "[3, 3, 3, 3]"
       correta: false
       explicacao: Esse resultado não faz sentido com os operadores usados. `lista * 3` repete os elementos `[1, 2]`, não multiplica cada elemento.
@@ -777,6 +774,9 @@ Para aprofundar seus conhecimentos sobre arrays, listas e estruturas de dados, c
       correta: false
       explicacao: Esse seria o resultado de `lista + [3]`. A operação `* 3` precisa ser aplicada antes da concatenação.
 
+    - texto: "[1, 2, 3, 1, 2, 3, 1, 2, 3]"
+      correta: false
+      explicacao: Esse seria o resultado de `(lista + [3]) * 3`. Aqui, o `*` opera sobre `lista` antes da concatenação com `[3]`.
 - tipo: single
   pergunta: |
     Um aluno escreveu o seguinte código e a lista dele sumiu. Qual é o motivo?
@@ -803,6 +803,10 @@ Para aprofundar seus conhecimentos sobre arrays, listas e estruturas de dados, c
 - tipo: single
   pergunta: "Qual delimitador deve ser passado ao método `split()` para converter a string `\"25/12/2024\"` na lista `['25', '12', '2024']`?"
   opcoes:
+    - texto: "Nenhum (chamar `split()` sem argumento)"
+      correta: false
+      explicacao: "O método `split()` sem argumento divide por espaços em branco. Como não há espaços em \"25/12/2024\", a string inteira seria retornada como um único elemento."
+
     - texto: "\"/\""
       correta: true
       explicacao: Correto! O método `split(\"/\")` divide a string em cada ocorrência do caractere `/`, produzindo `['25', '12', '2024']`.
@@ -813,10 +817,6 @@ Para aprofundar seus conhecimentos sobre arrays, listas e estruturas de dados, c
     - texto: "\"-\""
       correta: false
       explicacao: O hífen `-` não aparece na string. `split(\"-\")` retornaria a string inteira sem divisão.
-    - texto: "Nenhum (chamar `split()` sem argumento)"
-      correta: false
-      explicacao: "O método `split()` sem argumento divide por espaços em branco. Como não há espaços em \"25/12/2024\", a string inteira seria retornada como um único elemento."
-
 - tipo: single
   pergunta: |
     Um aluno tentou percorrer uma Linked List e o programa travou em loop infinito. O que está faltando?
@@ -827,20 +827,20 @@ Para aprofundar seus conhecimentos sobre arrays, listas e estruturas de dados, c
         # O que está faltando aqui?
     ```
   opcoes:
-    - texto: "`current = current.next`"
-      correta: true
-      explicacao: Correto! Sem avançar o ponteiro `current` para o próximo nó, o loop sempre avalia o mesmo nó e nunca termina.
-      explicacao_erro: A linha `current = current.next` é obrigatória para avançar o ponteiro ao próximo nó. Sem ela, `current` nunca muda e o `while` nunca termina.
-    - texto: "`current += 1`"
-      correta: false
-      explicacao: Nós de uma Linked List não são acessados por índice numérico. Para avançar, usa-se `current = current.next`.
     - texto: "`break`"
       correta: false
       explicacao: Um `break` encerraria o loop após o primeiro nó, ignorando todos os outros. O objetivo é percorrer toda a lista.
+    - texto: "`current += 1`"
+      correta: false
+      explicacao: Nós de uma Linked List não são acessados por índice numérico. Para avançar, usa-se `current = current.next`.
     - texto: "`return current`"
       correta: false
       explicacao: Um `return` encerraria a função inteira após o primeiro nó. O objetivo é percorrer todos os nós da lista.
 
+    - texto: "`current = current.next`"
+      correta: true
+      explicacao: Correto! Sem avançar o ponteiro `current` para o próximo nó, o loop sempre avalia o mesmo nó e nunca termina.
+      explicacao_erro: A linha `current = current.next` é obrigatória para avançar o ponteiro ao próximo nó. Sem ela, `current` nunca muda e o `while` nunca termina.
 - tipo: single
   pergunta: |
     Na função `inverter` abaixo, o que aconteceria se a linha `proximo_temp = atual.next` fosse removida?
@@ -856,6 +856,9 @@ Para aprofundar seus conhecimentos sobre arrays, listas e estruturas de dados, c
         return anterior
     ```
   opcoes:
+    - texto: A lista ficaria duplicada.
+      correta: false
+      explicacao: A lista não seria duplicada. O problema é diferente — o ponteiro para o próximo nó seria perdido, tornando o restante da lista inacessível.
     - texto: Perderíamos o acesso ao resto da lista original para sempre.
       correta: true
       explicacao: Correto! Ao fazer `atual.next = anterior`, a referência ao próximo nó é sobrescrita. Sem salvar `proximo_temp` antes, não há como avançar — o restante da lista fica inacessível.
@@ -863,9 +866,6 @@ Para aprofundar seus conhecimentos sobre arrays, listas e estruturas de dados, c
     - texto: Nada demais — a lista seria invertida normalmente.
       correta: false
       explicacao: Não. A inversão depende de avançar para o próximo nó após modificar o ponteiro. Sem salvar `proximo_temp`, isso se torna impossível.
-    - texto: A lista ficaria duplicada.
-      correta: false
-      explicacao: A lista não seria duplicada. O problema é diferente — o ponteiro para o próximo nó seria perdido, tornando o restante da lista inacessível.
     - texto: A função lançaria um `AttributeError`.
       correta: false
       explicacao: "Não há erro de atributo. O problema é lógico: `atual` nunca avança e os nós seguintes ficam inacessíveis."

@@ -109,19 +109,23 @@ Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, 
       correta: true
       explicacao: Exato! Um programa é composto por instruções que orientam o computador na execução de tarefas.
       explicacao_erro: Um programa é definido como uma sequência de instruções que especifica como executar uma operação de computação.
+    - texto: Uma conexão entre o computador e a internet
+      correta: false
+      explicacao: Isso se refere a redes de comunicação. Um programa existe independentemente de qualquer conexão.
+
     - texto: Um conjunto de arquivos armazenados no computador
       correta: false
       explicacao: Arquivos são dados persistidos em disco. Um programa é uma sequência de instruções, não um arquivo em si.
     - texto: Um dispositivo responsável por processar dados
       correta: false
       explicacao: Isso descreve o hardware, como o processador (CPU). Um programa é software, não um componente físico.
-    - texto: Uma conexão entre o computador e a internet
-      correta: false
-      explicacao: Isso se refere a redes de comunicação. Um programa existe independentemente de qualquer conexão.
-
 - tipo: single
   pergunta: Qual característica descreve melhor o Python?
   opcoes:
+    - texto: É uma linguagem que não precisa de interpretador nem compilador
+      correta: false
+      explicacao: Todo código precisa ser processado de alguma forma. O Python usa um interpretador para executar o código.
+
     - texto: É uma linguagem compilada que precisa ser traduzida integralmente antes da execução
       correta: false
       explicacao: Isso descreve linguagens como C ou C++. O Python não exige uma etapa explícita de compilação.
@@ -132,24 +136,20 @@ Para aprofundar seus conhecimentos sobre introdução ao ambiente e execução, 
       correta: true
       explicacao: Correto! O Python é tradicionalmente tratado como uma linguagem interpretada, executada linha por linha.
       explicacao_erro: O Python é uma linguagem de alto nível classificada como interpretada. O interpretador lê e executa o código diretamente, sem etapa de compilação explícita.
-    - texto: É uma linguagem que não precisa de interpretador nem compilador
-      correta: false
-      explicacao: Todo código precisa ser processado de alguma forma. O Python usa um interpretador para executar o código.
-
 - tipo: single
   pergunta: Qual é uma vantagem do modo interativo do Python?
   opcoes:
     - texto: Permite executar programas maiores de forma mais eficiente
       correta: false
       explicacao: O modo interativo é indicado para trechos pequenos. Para programas maiores, o modo script é o adequado.
-    - texto: Exibe automaticamente o conteúdo de qualquer arquivo .py
+    - texto: Elimina a necessidade do comando print()
       correta: false
-      explicacao: O modo interativo não lê arquivos automaticamente. Ele aguarda comandos digitados diretamente no prompt.
+      explicacao: O print() ainda é necessário em scripts. No modo interativo, expressões simples exibem resultado, mas o print() continua sendo usado.
     - texto: Permite testar pequenos trechos de código e ver o resultado imediatamente
       correta: true
       explicacao: Exatamente! O modo interativo é ideal para experimentação e aprendizado rápido.
       explicacao_erro: O modo interativo permite executar comandos e ver o resultado na hora, sem precisar salvar um arquivo. É ideal para testar pequenos trechos de código.
-    - texto: Elimina a necessidade do comando print()
+    - texto: Exibe automaticamente o conteúdo de qualquer arquivo .py
       correta: false
-      explicacao: O print() ainda é necessário em scripts. No modo interativo, expressões simples exibem resultado, mas o print() continua sendo usado.
+      explicacao: O modo interativo não lê arquivos automaticamente. Ele aguarda comandos digitados diretamente no prompt.
 ```

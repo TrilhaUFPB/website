@@ -583,6 +583,10 @@ Nesta aula prática, você verá como aplicar os conceitos de estrutura semânti
     - texto: Usar a tag strong, já que ela deixa o texto em negrito
       correta: false
       explicacao: strong não é sobre aparência — ela indica que o conteúdo tem importância no contexto. Usá-la apenas pelo efeito visual mistura estrutura com estilo.
+    - texto: Usar h1, pois títulos aparecem em destaque na página
+      correta: false
+      explicacao: h1 representa o título principal da página, uma estrutura hierárquica — não é uma ferramenta para destacar palavras soltas no meio de um texto.
+
     - texto: Usar a tag em, já que ela deixa o texto em itálico
       correta: false
       explicacao: em também não é sobre aparência — ela indica ênfase de sentido no texto. Usá-la só pelo efeito visual é o mesmo erro de usar strong pela aparência.
@@ -590,41 +594,37 @@ Nesta aula prática, você verá como aplicar os conceitos de estrutura semânti
       correta: true
       explicacao: Exato! strong e em carregam significado semântico (importância e ênfase). Quando o objetivo é só a aparência, sem nenhum sentido especial no conteúdo, isso é papel do CSS, não de tags semânticas.
       explicacao_erro: strong e em existem para comunicar significado (importância e ênfase), não para gerar um efeito visual isolado. Quando a intenção é puramente estética, o correto é resolver isso com CSS.
-    - texto: Usar h1, pois títulos aparecem em destaque na página
-      correta: false
-      explicacao: h1 representa o título principal da página, uma estrutura hierárquica — não é uma ferramenta para destacar palavras soltas no meio de um texto.
-
 - tipo: single
   pergunta: Qual é a função do atributo alt em uma imagem?
   opcoes:
-    - texto: Definir a largura e altura da imagem na página
-      correta: false
-      explicacao: Largura e altura são definidas pelos atributos width e height, não pelo alt. O alt tem uma função diferente, ligada à acessibilidade.
-    - texto: Aumentar a velocidade de carregamento da imagem
-      correta: false
-      explicacao: O alt não afeta a velocidade de carregamento da imagem. Otimização de performance envolve outras técnicas, como compressão e formatos de arquivo.
-    - texto: Indicar em qual pasta a imagem está armazenada
-      correta: false
-      explicacao: Isso é função do atributo src, que aponta para o caminho do arquivo. O alt serve para outro propósito, relacionado à acessibilidade.
     - texto: Fornecer uma alternativa textual para quando a imagem não pode ser vista, como em leitores de tela ou falhas de carregamento
       correta: true
       explicacao: Exato! O alt existe para que o conteúdo da imagem ainda seja compreensível mesmo quando ela não pode ser exibida — seja por um leitor de tela, uma conexão lenta ou um erro de carregamento.
       explicacao_erro: O alt fornece uma alternativa textual para a imagem, usada por leitores de tela e exibida quando a imagem falha ao carregar. Ele não tem relação com tamanho, pasta ou velocidade de carregamento.
 
+    - texto: Indicar em qual pasta a imagem está armazenada
+      correta: false
+      explicacao: Isso é função do atributo src, que aponta para o caminho do arquivo. O alt serve para outro propósito, relacionado à acessibilidade.
+    - texto: Aumentar a velocidade de carregamento da imagem
+      correta: false
+      explicacao: O alt não afeta a velocidade de carregamento da imagem. Otimização de performance envolve outras técnicas, como compressão e formatos de arquivo.
+    - texto: Definir a largura e altura da imagem na página
+      correta: false
+      explicacao: Largura e altura são definidas pelos atributos width e height, não pelo alt. O alt tem uma função diferente, ligada à acessibilidade.
 - tipo: single
   pergunta: Qual é a principal diferença entre usar a tag section e a tag div para agrupar um bloco de conteúdo?
   opcoes:
+    - texto: div permite usar CSS, mas section não permite
+      correta: false
+      explicacao: Tanto div quanto section podem ser estilizadas normalmente com CSS. A diferença entre elas está no significado semântico, não na possibilidade de estilização.
+    - texto: section tem significado semântico e indica uma seção temática do documento, enquanto div é um contêiner genérico sem significado
+      correta: true
+      explicacao: Exato! section comunica que aquele bloco representa um tema ou capítulo do conteúdo, normalmente com um título próprio. div serve apenas para agrupar elementos sem carregar esse significado.
+      explicacao_erro: A diferença está no significado semântico. section indica uma seção temática do documento (geralmente com um título), enquanto div é um contêiner genérico usado quando não há necessidade de significado adicional.
     - texto: div é mais rápida de carregar no navegador do que section
       correta: false
       explicacao: Não existe diferença de performance entre essas tags. A diferença entre elas é de significado semântico, não de velocidade.
     - texto: section só pode ser usada dentro de formulários, enquanto div pode ser usada em qualquer lugar
       correta: false
       explicacao: section não tem essa restrição — ela pode ser usada em qualquer parte do documento para representar uma seção temática, não apenas em formulários.
-    - texto: section tem significado semântico e indica uma seção temática do documento, enquanto div é um contêiner genérico sem significado
-      correta: true
-      explicacao: Exato! section comunica que aquele bloco representa um tema ou capítulo do conteúdo, normalmente com um título próprio. div serve apenas para agrupar elementos sem carregar esse significado.
-      explicacao_erro: A diferença está no significado semântico. section indica uma seção temática do documento (geralmente com um título), enquanto div é um contêiner genérico usado quando não há necessidade de significado adicional.
-    - texto: div permite usar CSS, mas section não permite
-      correta: false
-      explicacao: Tanto div quanto section podem ser estilizadas normalmente com CSS. A diferença entre elas está no significado semântico, não na possibilidade de estilização.
 ```

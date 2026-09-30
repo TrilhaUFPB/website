@@ -56,13 +56,6 @@ Para aprofundar seus conhecimentos sobre os tipos de dados, confira o seguinte r
 - tipo: single
   pergunta: O que caracteriza um dado estruturado?
   opcoes:
-    - texto: Está organizado em um esquema bem definido, geralmente em formato tabular
-      correta: true
-      explicacao: Exato! Dados estruturados seguem um esquema fixo, com colunas e linhas bem definidas, como em tabelas de banco de dados.
-      explicacao_erro: Dados estruturados são organizados em um esquema bem definido, geralmente tabular, com colunas representando atributos e linhas representando registros.
-    - texto: Não segue nenhum modelo fixo de organização
-      correta: false
-      explicacao: Isso descreve dados não estruturados, como textos livres e imagens. Dados estruturados seguem um esquema rígido e bem definido.
     - texto: Combina flexibilidade de esquema com campos e hierarquias explícitas
       correta: false
       explicacao: Isso descreve dados semi-estruturados, como JSON e XML. Dados estruturados seguem um esquema fixo e tabular, sem essa flexibilidade.
@@ -70,16 +63,16 @@ Para aprofundar seus conhecimentos sobre os tipos de dados, confira o seguinte r
       correta: false
       explicacao: Dados estruturados são armazenados principalmente em tabelas de banco de dados ou planilhas, não apenas em arquivos de texto.
 
+    - texto: Está organizado em um esquema bem definido, geralmente em formato tabular
+      correta: true
+      explicacao: Exato! Dados estruturados seguem um esquema fixo, com colunas e linhas bem definidas, como em tabelas de banco de dados.
+      explicacao_erro: Dados estruturados são organizados em um esquema bem definido, geralmente tabular, com colunas representando atributos e linhas representando registros.
+    - texto: Não segue nenhum modelo fixo de organização
+      correta: false
+      explicacao: Isso descreve dados não estruturados, como textos livres e imagens. Dados estruturados seguem um esquema rígido e bem definido.
 - tipo: single
   pergunta: Quais são exemplos comuns de formatos usados para representar dados semi-estruturados?
   opcoes:
-    - texto: JSON, XML e YAML
-      correta: true
-      explicacao: Exato! Esses formatos possuem estrutura explícita, como campos e hierarquias, mas não seguem o modelo tabular rígido.
-      explicacao_erro: Dados semi-estruturados são comumente representados por formatos como JSON, XML e YAML, usados em integrações entre sistemas.
-    - texto: Tabelas de banco de dados relacionais
-      correta: false
-      explicacao: Tabelas de banco de dados são o exemplo clássico de dados estruturados, não semi-estruturados.
     - texto: Vídeos e áudios
       correta: false
       explicacao: Vídeos e áudios são exemplos de dados não estruturados, pois não seguem nenhum esquema fixo.
@@ -87,20 +80,27 @@ Para aprofundar seus conhecimentos sobre os tipos de dados, confira o seguinte r
       correta: false
       explicacao: Planilhas seguem um modelo tabular organizado, sendo um exemplo de dados estruturados, não semi-estruturados.
 
+    - texto: Tabelas de banco de dados relacionais
+      correta: false
+      explicacao: Tabelas de banco de dados são o exemplo clássico de dados estruturados, não semi-estruturados.
+    - texto: JSON, XML e YAML
+      correta: true
+      explicacao: Exato! Esses formatos possuem estrutura explícita, como campos e hierarquias, mas não seguem o modelo tabular rígido.
+      explicacao_erro: Dados semi-estruturados são comumente representados por formatos como JSON, XML e YAML, usados em integrações entre sistemas.
 - tipo: single
   pergunta: Por que dados não estruturados exigem mais processamento para extrair informações úteis?
   opcoes:
+    - texto: Porque só podem ser lidos por linguagens de programação específicas
+      correta: false
+      explicacao: Dados não estruturados podem ser lidos por várias linguagens. O desafio é a falta de organização, não a linguagem usada para processá-los.
+    - texto: Porque são armazenados apenas em nuvem
+      correta: false
+      explicacao: O local de armazenamento não define se um dado é estruturado ou não. A característica principal é a ausência de um esquema fixo.
     - texto: Porque não seguem um modelo fixo de organização nem um esquema pré-definido
       correta: true
       explicacao: Exato! Como textos livres, imagens e vídeos não têm estrutura definida, técnicas específicas são necessárias para extrair informações deles.
       explicacao_erro: Dados não estruturados não seguem um esquema pré-definido, o que exige técnicas específicas de processamento para extrair informações úteis.
-    - texto: Porque são armazenados apenas em nuvem
-      correta: false
-      explicacao: O local de armazenamento não define se um dado é estruturado ou não. A característica principal é a ausência de um esquema fixo.
     - texto: Porque ocupam mais espaço em disco que outros tipos de dados
       correta: false
       explicacao: O espaço em disco não é o motivo. A dificuldade está na ausência de estrutura, o que exige processamento específico para extrair sentido dos dados.
-    - texto: Porque só podem ser lidos por linguagens de programação específicas
-      correta: false
-      explicacao: Dados não estruturados podem ser lidos por várias linguagens. O desafio é a falta de organização, não a linguagem usada para processá-los.
 ```

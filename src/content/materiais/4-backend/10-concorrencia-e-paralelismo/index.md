@@ -286,41 +286,44 @@ Vídeo da playlist de aulas de backend do Fábio Akita ( ele é meio robotico ma
 - tipo: single
   pergunta: "Seu servidor backend roda em uma máquina com apenas 1 núcleo de CPU. Ele recebe três requisições: a primeira vai consultar o banco de dados, a segunda vai chamar uma API externa de pagamentos e a terceira vai ler um arquivo do disco. O servidor intercala essas requisições, adiantando uma enquanto as outras aguardam a resposta de suas operações. Qual conceito arquitetural descreve exatamente esse cenário?"
   opcoes:
-    - texto: "Paralelismo, pois as três requisições estão sendo executadas simultaneamente."
-      correta: false
-      explicacao: "Como há apenas 1 núcleo de CPU, é fisicamente impossível executar as tarefas de forma simultânea (paralelismo). O que há é uma alternância rápida de contexto."
-    - texto: "Concorrência, pois o servidor está coordenando múltiplas tarefas em progresso no mesmo intervalo de tempo, aproveitando os momentos de espera (I/O)."
-      correta: true
-      explicacao: "Exato! O servidor gerencia múltiplas tarefas sobrepondo os tempos de espera. Ele não está executando as três ao mesmo milissegundo (já que só tem 1 núcleo), mas intercala o trabalho para não ficar ocioso."
-      explicacao_erro: "Em uma máquina de núcleo único, a execução simultânea (paralelismo) não é possível. O que ocorre aqui é a coordenação de tarefas em espera, o que define a concorrência."
-    - texto: "Backpressure, porque o servidor está limitando as requisições ativas."
-      correta: false
-      explicacao: "O cenário não descreve rejeição de requisições sob carga (backpressure), apenas a forma como o servidor lida com esperas por I/O."
     - texto: "Processamento CPU-bound, pois ler disco e chamar APIs consome muita CPU."
       correta: false
       explicacao: "Consultar banco, chamar API externa e ler disco são clássicos exemplos de operações I/O-bound (espera por entrada/saída), e não CPU-bound."
 
+    - texto: "Backpressure, porque o servidor está limitando as requisições ativas."
+      correta: false
+      explicacao: "O cenário não descreve rejeição de requisições sob carga (backpressure), apenas a forma como o servidor lida com esperas por I/O."
+    - texto: "Concorrência, pois o servidor está coordenando múltiplas tarefas em progresso no mesmo intervalo de tempo, aproveitando os momentos de espera (I/O)."
+      correta: true
+      explicacao: "Exato! O servidor gerencia múltiplas tarefas sobrepondo os tempos de espera. Ele não está executando as três ao mesmo milissegundo (já que só tem 1 núcleo), mas intercala o trabalho para não ficar ocioso."
+      explicacao_erro: "Em uma máquina de núcleo único, a execução simultânea (paralelismo) não é possível. O que ocorre aqui é a coordenação de tarefas em espera, o que define a concorrência."
+    - texto: "Paralelismo, pois as três requisições estão sendo executadas simultaneamente."
+      correta: false
+      explicacao: "Como há apenas 1 núcleo de CPU, é fisicamente impossível executar as tarefas de forma simultânea (paralelismo). O que há é uma alternância rápida de contexto."
 - tipo: single
   pergunta: "Uma rota da sua API recebe um arquivo CSV enorme, faz parse na memória, realiza cálculos matemáticos pesados em cada linha e gera um relatório consolidado. Conforme a carga aumenta, o endpoint fica muito lento, e você tenta resolver aumentando o limite de concorrência (threads/workers). A latência acaba piorando ainda mais. Qual é a causa técnica desse problema?"
   opcoes:
     - texto: "O workload é I/O-bound. A lentidão ocorre porque o disco não consegue ler o CSV rápido o suficiente para muitas threads."
       correta: false
       explicacao: "O cenário foca nos cálculos matemáticos pesados na memória e na consolidação, que são características de operações limitadas pela CPU, não por I/O."
-    - texto: "Falta implementar Rate Limiting no banco de dados para evitar gargalos de leitura."
-      correta: false
-      explicacao: "A rota descrita não faz chamadas ao banco de dados; ela opera com processamento de um CSV em memória."
-    - texto: "O servidor atingiu um estado de backpressure automático, suspendendo a CPU para resfriamento físico."
-      correta: false
-      explicacao: "Backpressure é uma técnica de arquitetura de software para recusar tráfego extra, não um mecanismo térmico da CPU."
     - texto: "O workload é CPU-bound. Aumentar a concorrência sem adicionar núcleos reais só aumenta a competição pela CPU e o overhead de alternância do sistema operacional."
       correta: true
       explicacao: "Perfeito! Tarefas dominadas por processamento (CPU-bound) não se beneficiam de concorrência excessiva. Ao colocar várias requisições pesadas disputando a mesma CPU, você gasta mais tempo trocando de contexto do que processando os dados de fato."
       explicacao_erro: "Em cenários CPU-bound, as requisições não 'esperam', elas 'calculam'. Aumentar a concorrência apenas empilha tarefas pesadas na mesma CPU, gerando lentidão por disputa de recursos em vez de resolver o gargalo."
       
 
+    - texto: "Falta implementar Rate Limiting no banco de dados para evitar gargalos de leitura."
+      correta: false
+      explicacao: "A rota descrita não faz chamadas ao banco de dados; ela opera com processamento de um CSV em memória."
+    - texto: "O servidor atingiu um estado de backpressure automático, suspendendo a CPU para resfriamento físico."
+      correta: false
+      explicacao: "Backpressure é uma técnica de arquitetura de software para recusar tráfego extra, não um mecanismo térmico da CPU."
 - tipo: single
   pergunta: "Durante um pico de acessos, o banco de dados da sua aplicação começou a responder 500ms mais devagar. A CPU da API continuou baixa, mas em poucos minutos o servidor backend crashou por falta de memória (OOM) e esgotamento de conexões. O que explica esse colapso em cascata?"
   opcoes:
+    - texto: "Como o workload virou CPU-bound de repente, a concorrência não conseguiu dar conta do número de requisições."
+      correta: false
+      explicacao: "Esperar pelo banco de dados caracteriza um cenário I/O-bound, não CPU-bound. A CPU continuou baixa, comprovando que o limite foi de memória/conexões."
     - texto: "A lentidão no banco fez com que as requisições ficassem vivas (em espera) por mais tempo na API, acumulando conexões e memória até estourar os limites do servidor."
       correta: true
       explicacao: "Isso mesmo! Requisições em espera (I/O) não consomem muita CPU, mas mantêm o estado em memória e seguram conexões. Se o gargalo externo fica lento, a API acumula trabalho pendente até colapsar."
@@ -331,9 +334,6 @@ Vídeo da playlist de aulas de backend do Fábio Akita ( ele é meio robotico ma
     - texto: "A API ativou sua política de Timeouts precocemente, o que consome grandes quantidades de memória para gerar os logs de erro."
       correta: false
       explicacao: "Timeouts bem configurados na verdade protegeriam a aplicação, derrubando as conexões antes que a memória estourasse. O problema foi a falta deles."
-    - texto: "Como o workload virou CPU-bound de repente, a concorrência não conseguiu dar conta do número de requisições."
-      correta: false
-      explicacao: "Esperar pelo banco de dados caracteriza um cenário I/O-bound, não CPU-bound. A CPU continuou baixa, comprovando que o limite foi de memória/conexões."
 ```
 
 

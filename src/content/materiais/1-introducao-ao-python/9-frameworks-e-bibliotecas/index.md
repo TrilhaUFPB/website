@@ -384,51 +384,51 @@ Para aprofundar seus conhecimentos sobre frameworks e bibliotecas, confira os se
 - tipo: single
   pergunta: O que é uma biblioteca em Python?
   opcoes:
-    - texto: Um conjunto de códigos pré-escritos prontos para usar em projetos
-      correta: true
-      explicacao: Exato! Bibliotecas reúnem funções, classes e métodos já desenvolvidos e testados por outros programadores.
-      explicacao_erro: Uma biblioteca é um conjunto de códigos pré-escritos que você importa e usa no seu projeto, sem precisar criar tudo do zero.
     - texto: Um programa que compila o código Python antes de executar
       correta: false
       explicacao: Isso descreve um compilador. Bibliotecas são conjuntos de código reutilizável, não ferramentas de execução.
-    - texto: Um arquivo de configuração do ambiente Python
-      correta: false
-      explicacao: Arquivos de configuração definem o ambiente. Bibliotecas contêm código com funções e classes prontas para uso.
     - texto: Um framework com estrutura pré-definida para aplicações
       correta: false
       explicacao: Frameworks e bibliotecas são conceitos diferentes. A biblioteca você controla quando usar — o framework controla seu código.
 
+    - texto: Um conjunto de códigos pré-escritos prontos para usar em projetos
+      correta: true
+      explicacao: Exato! Bibliotecas reúnem funções, classes e métodos já desenvolvidos e testados por outros programadores.
+      explicacao_erro: Uma biblioteca é um conjunto de códigos pré-escritos que você importa e usa no seu projeto, sem precisar criar tudo do zero.
+    - texto: Um arquivo de configuração do ambiente Python
+      correta: false
+      explicacao: Arquivos de configuração definem o ambiente. Bibliotecas contêm código com funções e classes prontas para uso.
 - tipo: single
   pergunta: Qual é a principal diferença entre uma biblioteca e um framework?
   opcoes:
-    - texto: Bibliotecas são gratuitas, frameworks são pagos
-      correta: false
-      explicacao: Tanto bibliotecas quanto frameworks podem ser gratuitos ou pagos. A diferença está em quem controla o fluxo do código.
-    - texto: No framework, é ele quem chama o seu código — não o contrário
-      correta: true
-      explicacao: Exato! Isso é a inversão de controle — o framework define a estrutura e chama seu código nos momentos certos.
-      explicacao_erro: A diferença principal é o controle do fluxo. Com uma biblioteca, você chama o código quando quiser. Com um framework, ele é quem chama o seu código.
-    - texto: Frameworks só existem em Python, bibliotecas em qualquer linguagem
-      correta: false
-      explicacao: Frameworks existem em diversas linguagens, como React (JavaScript), Django (Python), Spring (Java), entre outros.
     - texto: Bibliotecas externas não precisam ser instaladas, frameworks sim
       correta: false
       explicacao: Tanto bibliotecas externas quanto frameworks precisam ser instalados, geralmente via pip ou outro gerenciador de pacotes.
 
+    - texto: Frameworks só existem em Python, bibliotecas em qualquer linguagem
+      correta: false
+      explicacao: Frameworks existem em diversas linguagens, como React (JavaScript), Django (Python), Spring (Java), entre outros.
+    - texto: No framework, é ele quem chama o seu código — não o contrário
+      correta: true
+      explicacao: Exato! Isso é a inversão de controle — o framework define a estrutura e chama seu código nos momentos certos.
+      explicacao_erro: A diferença principal é o controle do fluxo. Com uma biblioteca, você chama o código quando quiser. Com um framework, ele é quem chama o seu código.
+    - texto: Bibliotecas são gratuitas, frameworks são pagos
+      correta: false
+      explicacao: Tanto bibliotecas quanto frameworks podem ser gratuitos ou pagos. A diferença está em quem controla o fluxo do código.
 - tipo: single
   pergunta: O que diferencia uma biblioteca padrão de uma biblioteca externa em Python?
   opcoes:
-    - texto: Bibliotecas padrão são pagas, bibliotecas externas são gratuitas
+    - texto: Bibliotecas externas são mais lentas que as padrão
       correta: false
-      explicacao: Nenhuma das duas é paga por padrão. A diferença está em como elas são obtidas e instaladas.
+      explicacao: A velocidade depende da implementação de cada biblioteca, não de ser padrão ou externa.
     - texto: Bibliotecas padrão já vêm com o Python instalado, externas precisam ser instaladas via pip
       correta: true
       explicacao: Correto! Bibliotecas como math e random já vêm com o Python. Já pandas e requests precisam ser instaladas separadamente.
       explicacao_erro: Bibliotecas padrão (como math e datetime) já vêm incluídas na instalação do Python. Bibliotecas externas (como pandas) precisam ser instaladas via pip.
-    - texto: Bibliotecas externas são mais lentas que as padrão
-      correta: false
-      explicacao: A velocidade depende da implementação de cada biblioteca, não de ser padrão ou externa.
     - texto: Bibliotecas padrão só funcionam no modo interativo do Python
       correta: false
       explicacao: Bibliotecas padrão funcionam em qualquer modo de execução, tanto interativo quanto script.
+    - texto: Bibliotecas padrão são pagas, bibliotecas externas são gratuitas
+      correta: false
+      explicacao: Nenhuma das duas é paga por padrão. A diferença está em como elas são obtidas e instaladas.
 ```

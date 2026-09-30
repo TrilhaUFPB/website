@@ -583,9 +583,10 @@ Para aprofundar seus conhecimentos sobre Programação Orientada a Objetos, conf
 - tipo: single
   pergunta: Uma escola precisa cadastrar professores e alunos no sistema. Qual conceito de POO melhor representa essa organização?
   opcoes:
-    - texto: Criar funções separadas para cada tipo de pessoa
+    - texto: Usar variáveis globais para cada informação
       correta: false
-      explicacao: Funções isoladas não agrupam atributos e comportamentos relacionados. Classes são a abordagem adequada para modelar entidades do mundo real.
+      explicacao: Variáveis globais dificultam organização e manutenção. POO existe justamente para evitar esse tipo de estrutura.
+
     - texto: Criar classes Professor e Aluno com seus atributos e métodos
       correta: true
       explicacao: Exato! Classes modelam entidades reais agrupando seus atributos (dados) e métodos (comportamentos) em uma estrutura organizada.
@@ -593,33 +594,32 @@ Para aprofundar seus conhecimentos sobre Programação Orientada a Objetos, conf
     - texto: Armazenar tudo em uma lista de dicionários
       correta: false
       explicacao: Dicionários armazenam dados, mas não encapsulam comportamentos nem criam relações entre entidades como as classes fazem.
-    - texto: Usar variáveis globais para cada informação
+    - texto: Criar funções separadas para cada tipo de pessoa
       correta: false
-      explicacao: Variáveis globais dificultam organização e manutenção. POO existe justamente para evitar esse tipo de estrutura.
-
+      explicacao: Funções isoladas não agrupam atributos e comportamentos relacionados. Classes são a abordagem adequada para modelar entidades do mundo real.
 - tipo: single
   pergunta: Você criou uma classe Cachorro com o método latir(). Depois escreveu rex = Cachorro(). O que é rex e o que acontece quando você chama rex.latir()?
   opcoes:
     - texto: rex é a classe e latir() cria um novo objeto
       correta: false
       explicacao: rex não é a classe, pois a classe já foi definida antes. rex é um objeto criado a partir dela, e latir() é um comportamento que esse objeto executa.
-    - texto: rex é um objeto instanciado da classe Cachorro e rex.latir() executa o método definido na classe
-      correta: true
-      explicacao: Exato! rex é uma instância concreta da classe Cachorro. Ao chamar rex.latir(), o objeto executa o comportamento definido na classe.
-      explicacao_erro: Lembre-se que a classe é o molde e o objeto é a instância criada a partir dela. rex = Cachorro() é o ato de instanciar — criar um objeto real baseado no padrão da classe.
-    - texto: rex é um método e latir() é um atributo da classe
-      correta: false
-      explicacao: rex é um objeto, não um método. E latir() é um método — um comportamento definido na classe — não um atributo.
     - texto: rex é uma cópia da classe Cachorro e latir() cria outra classe
       correta: false
       explicacao: Objetos não são cópias de classes. A classe continua existindo como molde; rex é apenas uma instância independente criada a partir dela.
 
+    - texto: rex é um método e latir() é um atributo da classe
+      correta: false
+      explicacao: rex é um objeto, não um método. E latir() é um método — um comportamento definido na classe — não um atributo.
+    - texto: rex é um objeto instanciado da classe Cachorro e rex.latir() executa o método definido na classe
+      correta: true
+      explicacao: Exato! rex é uma instância concreta da classe Cachorro. Ao chamar rex.latir(), o objeto executa o comportamento definido na classe.
+      explicacao_erro: Lembre-se que a classe é o molde e o objeto é a instância criada a partir dela. rex = Cachorro() é o ato de instanciar — criar um objeto real baseado no padrão da classe.
 - tipo: single
   pergunta: Ao revisar o código de um colega, você nota que o saldo de ContaBancaria pode ser alterado diretamente de qualquer lugar. Que risco isso representa e qual conceito da POO foi ignorado?
   opcoes:
-    - texto: Nenhum problema, acessar atributos diretamente é uma boa prática em Python
+    - texto: O problema está na ausência de polimorfismo pois deveriam existir várias versões do método saldo()
       correta: false
-      explicacao: Acessar e alterar atributos diretamente ignora qualquer validação, permitindo que o objeto entre em um estado inválido como um saldo negativo sem passar pelo método sacar().
+      explicacao: Polimorfismo permite que objetos diferentes respondam ao mesmo método de formas distintas. Não tem relação com a proteção de dados internos.
     - texto: O problema está na falta de herança pois a conta deveria herdar de uma classe base
       correta: false
       explicacao: Herança resolve reutilização de código entre classes, não a proteção de dados internos de um objeto.
@@ -627,7 +627,7 @@ Para aprofundar seus conhecimentos sobre Programação Orientada a Objetos, conf
       correta: true
       explicacao: Exato! Encapsulamento protege os dados internos do objeto, forçando o uso de métodos que validam as operações antes de alterar o estado.
       explicacao_erro: Encapsulamento existe para proteger a integridade dos dados. Tornar o saldo privado e expor apenas métodos controlados garante que o objeto nunca entre em um estado inválido.
-    - texto: O problema está na ausência de polimorfismo pois deveriam existir várias versões do método saldo()
+    - texto: Nenhum problema, acessar atributos diretamente é uma boa prática em Python
       correta: false
-      explicacao: Polimorfismo permite que objetos diferentes respondam ao mesmo método de formas distintas. Não tem relação com a proteção de dados internos.
+      explicacao: Acessar e alterar atributos diretamente ignora qualquer validação, permitindo que o objeto entre em um estado inválido como um saldo negativo sem passar pelo método sacar().
 ```

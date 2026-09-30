@@ -932,6 +932,10 @@ Para revisar os principais conceitos de TypeScript e entender como seu sistema d
     - texto: any e unknown são exatamente a mesma coisa, apenas com nomes diferentes
       correta: false
       explicacao: Não são a mesma coisa. any desliga completamente a checagem de tipos, enquanto unknown exige que você verifique o tipo antes de usar o valor.
+    - texto: any só pode ser usado em funções, enquanto unknown só pode ser usado em variáveis
+      correta: false
+      explicacao: Ambos podem ser usados tanto em variáveis quanto em parâmetros de função ou retornos. A diferença real está no nível de segurança que cada um oferece, não em onde podem ser aplicados.
+
     - texto: unknown desliga a checagem de tipos, enquanto any obriga a fazer verificações antes de usar o valor
       correta: false
       explicacao: É o contrário! any é quem desliga a checagem de tipos (permitindo qualquer uso, mesmo arriscado). unknown é o mais seguro, pois obriga uma verificação antes do uso.
@@ -939,23 +943,19 @@ Para revisar os principais conceitos de TypeScript e entender como seu sistema d
       correta: true
       explicacao: Exato! any é como "tirar o cinto de segurança" — qualquer coisa passa. unknown é mais seguro, pois força uma checagem (como typeof) antes de permitir qualquer operação com o valor.
       explicacao_erro: any desliga a checagem de tipos, permitindo qualquer uso sem restrição — o que é arriscado. Já unknown obriga você a verificar o tipo (com typeof, por exemplo) antes de usar o valor, sendo uma alternativa mais segura.
-    - texto: any só pode ser usado em funções, enquanto unknown só pode ser usado em variáveis
-      correta: false
-      explicacao: Ambos podem ser usados tanto em variáveis quanto em parâmetros de função ou retornos. A diferença real está no nível de segurança que cada um oferece, não em onde podem ser aplicados.
-
 - tipo: single
   pergunta: Por que retornar (await response.json()) as User[] direto, sem validação, é considerado uma prática arriscada?
   opcoes:
+    - texto: Porque o as afirma ao compilador que o dado tem determinado formato, mas não garante isso de verdade quando a API responde algo diferente
+      correta: true
+      explicacao: Exato! O as é apenas uma afirmação para o TypeScript, sem nenhuma validação real em runtime. Se a API mudar um campo ou tipo, o TypeScript não tem como perceber, e o erro só aparece quando o código já está rodando.
+      explicacao_erro: O as apenas instrui o compilador a aceitar aquele tipo, sem checar de verdade se o dado corresponde a ele. Se a API retornar algo diferente do esperado, o bug só vai aparecer em runtime, já que o TypeScript não valida isso de fato.
     - texto: Porque o as sempre gera um erro em tempo de compilação
       correta: false
       explicacao: 'Pelo contrário — o as normalmente compila sem erro. É justamente por isso que ele é arriscado: ele "cala" o compilador sem garantir que o dado realmente tem aquele formato.'
     - texto: Porque o as valida os dados em runtime automaticamente
       correta: false
       explicacao: Essa é a confusão perigosa! O as NÃO valida nada em runtime — ele só afirma ao compilador "confie em mim". Se a API mudar, o app pode quebrar mesmo com o as no código.
-    - texto: Porque o as afirma ao compilador que o dado tem determinado formato, mas não garante isso de verdade quando a API responde algo diferente
-      correta: true
-      explicacao: Exato! O as é apenas uma afirmação para o TypeScript, sem nenhuma validação real em runtime. Se a API mudar um campo ou tipo, o TypeScript não tem como perceber, e o erro só aparece quando o código já está rodando.
-      explicacao_erro: O as apenas instrui o compilador a aceitar aquele tipo, sem checar de verdade se o dado corresponde a ele. Se a API retornar algo diferente do esperado, o bug só vai aparecer em runtime, já que o TypeScript não valida isso de fato.
     - texto: Porque TypeScript não permite usar as com dados vindos de fetch
       correta: false
       explicacao: É perfeitamente possível usar as com dados de fetch — tecnicamente funciona. O problema não é a permissão, mas sim a falsa sensação de segurança que isso gera.
@@ -966,14 +966,14 @@ Para revisar os principais conceitos de TypeScript e entender como seu sistema d
     - texto: O tipo do erro que será lançado caso a Promise seja rejeitada
       correta: false
       explicacao: O tratamento de erro geralmente é feito separadamente (como em um catch). O T em Promise<T> se refere especificamente ao valor de sucesso, não ao erro.
-    - texto: O tipo do valor que a Promise terá disponível depois que ela for resolvida (após o await)
-      correta: true
-      explicacao: Exato! Promise<T> significa "uma promessa que, quando resolvida, entrega um valor do tipo T". Por exemplo, Promise<User[]> indica que, após o await, você terá um array de User.
-      explicacao_erro: O T em Promise<T> indica o tipo do valor que estará disponível depois que a Promise for resolvida, geralmente após um await. Promise<User[]>, por exemplo, indica que o resultado final será um array de usuários.
     - texto: O nome da função assíncrona que gerou a Promise
       correta: false
       explicacao: Promise<T> não tem relação com o nome da função. T é sempre o tipo do valor resolvido, independente de como a função assíncrona foi nomeada.
     - texto: O tempo, em milissegundos, que a Promise vai levar para resolver
       correta: false
       explicacao: TypeScript não lida com tempo de execução nos tipos — isso seria uma responsabilidade do código em runtime, não do sistema de tipos. T representa apenas o formato do valor resolvido.
+    - texto: O tipo do valor que a Promise terá disponível depois que ela for resolvida (após o await)
+      correta: true
+      explicacao: Exato! Promise<T> significa "uma promessa que, quando resolvida, entrega um valor do tipo T". Por exemplo, Promise<User[]> indica que, após o await, você terá um array de User.
+      explicacao_erro: O T em Promise<T> indica o tipo do valor que estará disponível depois que a Promise for resolvida, geralmente após um await. Promise<User[]>, por exemplo, indica que o resultado final será um array de usuários.
 ```

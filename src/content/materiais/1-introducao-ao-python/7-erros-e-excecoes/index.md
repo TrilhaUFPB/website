@@ -280,35 +280,35 @@ Para aprofundar seus conhecimentos sobre erros e tratamento de exceções em Pyt
 - tipo: single
   pergunta: Qual é a principal diferença conceitual apontada no texto entre a estrutura if/else e a estrutura try/except?
   opcoes:
-    - texto: O if/else só funciona para prevenir erros de sintaxe, enquanto o try/except funciona para erros de lógica.
-      correta: false
-      explicacao: O if/else é para fluxo de controle e try/except para tratamento de exceções. Nenhum dos dois corrige erros de sintaxe ou lógica diretamente.
     - texto: Ambas possuem a mesma utilidade e verificam as condições antes do código rodar.
       correta: false
       explicacao: Elas operam sob lógicas diferentes em relação a quando o teste ou a tentativa é feita.
-    - texto: O if/else tenta executar o código e reage ao erro, enquanto o try/except avalia variáveis booleanas.
+    - texto: O if/else só funciona para prevenir erros de sintaxe, enquanto o try/except funciona para erros de lógica.
       correta: false
-      explicacao: Esta afirmação inverte os conceitos das duas estruturas.
+      explicacao: O if/else é para fluxo de controle e try/except para tratamento de exceções. Nenhum dos dois corrige erros de sintaxe ou lógica diretamente.
     - texto: O if/else verifica uma condição antes de agir, enquanto o try/except tenta executar e reage caso algo dê errado.
       correta: true
       explicacao: O if/else atua de forma preventiva antes da execução, já o try/except é reativo às exceções geradas durante a tentativa de rodar um bloco.
 
+    - texto: O if/else tenta executar o código e reage ao erro, enquanto o try/except avalia variáveis booleanas.
+      correta: false
+      explicacao: Esta afirmação inverte os conceitos das duas estruturas.
 - tipo: single
   pergunta: Qual é o erro que ocorre quando tentamos acessar um índice que não existe em uma lista?
   opcoes:
     - texto: NameError
       correta: false
       explicacao: NameError ocorre ao tentar usar uma variável que ainda não foi definida no código.
-    - texto: IndexError
-      correta: true
-      explicacao: Linguagens de baixo nível, como Assembly, interagem diretamente com o hardware. O Python é de alto nível.
-    - texto: FileNotFoundError
-      correta: false
-      explicacao: Este erro ocorre ao tentar acessar um arquivo inexistente no sistema operacional.
     - texto: TypeError
       correta: false
       explicacao: TypeError ocorre ao realizar operações com tipos de dados incompatíveis.
 
+    - texto: FileNotFoundError
+      correta: false
+      explicacao: Este erro ocorre ao tentar acessar um arquivo inexistente no sistema operacional.
+    - texto: IndexError
+      correta: true
+      explicacao: Linguagens de baixo nível, como Assembly, interagem diretamente com o hardware. O Python é de alto nível.
 - tipo: single
   pergunta: |
     Considere o seguinte trecho de código:
@@ -324,16 +324,16 @@ Para aprofundar seus conhecimentos sobre erros e tratamento de exceções em Pyt
     ```
     Se o usuário digitar o caractere "0" (o número zero como string) no terminal, qual será o fluxo exato de execução e a saída no console?
   opcoes:
-    - texto: "A função int() falha ao converter, acionando o bloco except ValueError."
-      correta: false
-      explicacao: "A função int() consegue perfeitamente converter a string para o inteiro 0. Não há ValueError."
-    - texto: "Ocorre um erro de tipo, pois não se pode dividir por uma string, travando o programa com um TypeError."
-      correta: false
-      explicacao: "A conversão para inteiro ocorreu na linha anterior, então a divisão será feita e depois realizado o calculo normalmente"
-    - texto: "A conversão para int ocorre. Na linha seguinte, a divisão falha, acionando o bloco except ZeroDivisionError"
-      correta: true
-      explicacao: "A string 0 se torna um número válido para conversão e erro só ocorre no momento da operação matemática, gerando a exceção correta de divisão por zero."
     - texto: "O código ignora os dois excepts e executa um bloco finally oculto por padrão."
       correta: false
       explicacao: "O erro de divisão por zero ocorre e é explicitamente capturado pelo except correspondente."
+    - texto: "Ocorre um erro de tipo, pois não se pode dividir por uma string, travando o programa com um TypeError."
+      correta: false
+      explicacao: "A conversão para inteiro ocorreu na linha anterior, então a divisão será feita e depois realizado o calculo normalmente"
+    - texto: "A função int() falha ao converter, acionando o bloco except ValueError."
+      correta: false
+      explicacao: "A função int() consegue perfeitamente converter a string para o inteiro 0. Não há ValueError."
+    - texto: "A conversão para int ocorre. Na linha seguinte, a divisão falha, acionando o bloco except ZeroDivisionError"
+      correta: true
+      explicacao: "A string 0 se torna um número válido para conversão e erro só ocorre no momento da operação matemática, gerando a exceção correta de divisão por zero."
 ```

@@ -640,6 +640,10 @@ Para aprofundar seus conhecimentos sobre como a Web funciona e sobre front-end e
     - texto: Ele é enviado ao servidor como parte dos headers da requisição
       correta: false
       explicacao: O fragmento não viaja nos headers. Ele é usado apenas pelo navegador, no lado do cliente, para focar em uma parte específica da página já carregada.
+    - texto: Ele substitui a necessidade do domínio na requisição
+      correta: false
+      explicacao: O domínio continua sendo essencial para o navegador saber para onde enviar a requisição. O fragmento não tem relação com isso.
+
     - texto: Ele é enviado ao servidor como parte da query string
       correta: false
       explicacao: Fragmento e query string são partes diferentes da URL. A query string (depois do ?) é enviada ao servidor; o fragmento (depois do #) não é.
@@ -647,41 +651,37 @@ Para aprofundar seus conhecimentos sobre como a Web funciona e sobre front-end e
       correta: true
       explicacao: Exato! O fragmento ajuda o navegador a rolar até uma parte específica do conteúdo (como uma seção de avaliações), mas essa informação fica só no lado do cliente.
       explicacao_erro: O fragmento (depois do #) normalmente não é enviado ao servidor na requisição HTTP. Ele serve apenas para o navegador decidir para onde rolar dentro da página já carregada.
-    - texto: Ele substitui a necessidade do domínio na requisição
-      correta: false
-      explicacao: O domínio continua sendo essencial para o navegador saber para onde enviar a requisição. O fragmento não tem relação com isso.
-
 - tipo: single
   pergunta: Por que o DNS existe, segundo o material?
   opcoes:
-    - texto: Porque humanos preferem nomes fáceis de lembrar, e computadores se comunicam usando endereços IP
-      correta: true
-      explicacao: Exato! O DNS funciona como uma "agenda telefônica", traduzindo nomes amigáveis (como "www.exemplo.com") para o endereço IP que os computadores realmente usam para se comunicar.
-      explicacao_erro: O DNS existe porque computadores se comunicam usando endereços IP, mas humanos preferem nomes fáceis de lembrar. O DNS funciona como uma agenda telefônica, traduzindo um pelo outro.
-    - texto: Porque o HTTP não funciona sem ele
-      correta: false
-      explicacao: HTTP funciona mesmo acessando diretamente um endereço IP, sem precisar de nome de domínio. O DNS existe pela conveniência humana, não como um requisito técnico do HTTP.
-    - texto: Porque ele criptografa a comunicação entre cliente e servidor
-      correta: false
-      explicacao: Criptografia é papel do TLS/HTTPS, não do DNS. O DNS serve apenas para resolver nomes em endereços IP.
     - texto: Porque ele armazena o conteúdo das páginas visitadas
       correta: false
       explicacao: Quem armazena o conteúdo das páginas para acesso rápido é o cache, não o DNS. O DNS resolve nomes de domínio para endereços IP.
 
+    - texto: Porque humanos preferem nomes fáceis de lembrar, e computadores se comunicam usando endereços IP
+      correta: true
+      explicacao: Exato! O DNS funciona como uma "agenda telefônica", traduzindo nomes amigáveis (como "www.exemplo.com") para o endereço IP que os computadores realmente usam para se comunicar.
+      explicacao_erro: O DNS existe porque computadores se comunicam usando endereços IP, mas humanos preferem nomes fáceis de lembrar. O DNS funciona como uma agenda telefônica, traduzindo um pelo outro.
+    - texto: Porque ele criptografa a comunicação entre cliente e servidor
+      correta: false
+      explicacao: Criptografia é papel do TLS/HTTPS, não do DNS. O DNS serve apenas para resolver nomes em endereços IP.
+    - texto: Porque o HTTP não funciona sem ele
+      correta: false
+      explicacao: HTTP funciona mesmo acessando diretamente um endereço IP, sem precisar de nome de domínio. O DNS existe pela conveniência humana, não como um requisito técnico do HTTP.
 - tipo: single
   pergunta: Por que separar front-end e back-end é considerado uma boa prática de engenharia, segundo o material?
   opcoes:
-    - texto: Porque JavaScript não pode rodar no servidor
-      correta: false
-      explicacao: Isso não é verdade tecnicamente (existe até Node.js) e não é o motivo apresentado no material para a separação de responsabilidades.
     - texto: Porque permite manutenção mais fácil, escala de equipe, segurança e evolução tecnológica independente entre as camadas
       correta: true
       explicacao: Exato! O material lista justamente esses quatro benefícios — mudar o visual sem mexer em regras críticas, equipes trabalhando em paralelo, regras sensíveis protegidas no servidor, e liberdade para trocar tecnologia de UI sem reescrever tudo.
       explicacao_erro: A separação melhora manutenção, permite que equipes diferentes trabalhem em paralelo, mantém regras sensíveis protegidas no servidor, e permite evoluir a tecnologia de UI sem reescrever todo o sistema.
-    - texto: Porque bancos de dados só funcionam quando acessados pelo navegador diretamente
+    - texto: Porque JavaScript não pode rodar no servidor
       correta: false
-      explicacao: Pelo contrário — o material explica que o banco de dados quase nunca é acessado diretamente pelo navegador. O caminho típico passa pelo back-end.
+      explicacao: Isso não é verdade tecnicamente (existe até Node.js) e não é o motivo apresentado no material para a separação de responsabilidades.
     - texto: Porque o HTML não pode ser interpretado no mesmo servidor que roda a lógica de negócio
       correta: false
       explicacao: Isso tecnicamente é possível (muitos sistemas fazem isso). O motivo real da separação está em manutenção, escala de equipe, segurança e evolução — não numa limitação técnica de onde o HTML pode ser interpretado.
+    - texto: Porque bancos de dados só funcionam quando acessados pelo navegador diretamente
+      correta: false
+      explicacao: Pelo contrário — o material explica que o banco de dados quase nunca é acessado diretamente pelo navegador. O caminho típico passa pelo back-end.
 ```

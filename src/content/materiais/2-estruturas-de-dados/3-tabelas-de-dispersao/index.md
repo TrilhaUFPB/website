@@ -199,51 +199,51 @@ Para aprofundar seus conhecimentos sobre Tabelas de Dispersão e Dicionários, c
 - tipo: single
   pergunta: Por que a busca em uma Tabela de Dispersão é geralmente O(1), enquanto a busca em uma lista é O(n)?
   opcoes:
-    - texto: Porque ela ordena os elementos automaticamente antes de buscar
-      correta: false
-      explicacao: Tabelas de Dispersão não ordenam os dados. O ganho de eficiência vem do cálculo direto do índice, não de ordenação.
-    - texto: Porque ela calcula diretamente o índice onde o dado está armazenado
-      correta: true
-      explicacao: Correto! A função de hash transforma a chave em um índice e vai direto ao coletor correspondente, sem precisar percorrer a estrutura elemento por elemento.
-      explicacao_erro: A eficiência O(1) vem da função de dispersão, que calcula o índice do dado diretamente. Uma lista precisaria percorrer todos os elementos no pior caso.
     - texto: Porque ela usa dois ponteiros para dividir o problema ao meio
       correta: false
       explicacao: Isso descreve a busca binária, que opera em O(log n) em listas ordenadas. A Tabela de Dispersão usa uma função hash para acesso direto.
+    - texto: Porque ela ordena os elementos automaticamente antes de buscar
+      correta: false
+      explicacao: Tabelas de Dispersão não ordenam os dados. O ganho de eficiência vem do cálculo direto do índice, não de ordenação.
     - texto: Porque ela percorre a tabela com um loop otimizado pelo Python
       correta: false
       explicacao: Não há loop de percorrimento. A eficiência vem do cálculo direto do índice pela função de hash.
 
+    - texto: Porque ela calcula diretamente o índice onde o dado está armazenado
+      correta: true
+      explicacao: Correto! A função de hash transforma a chave em um índice e vai direto ao coletor correspondente, sem precisar percorrer a estrutura elemento por elemento.
+      explicacao_erro: A eficiência O(1) vem da função de dispersão, que calcula o índice do dado diretamente. Uma lista precisaria percorrer todos os elementos no pior caso.
 - tipo: single
   pergunta: Qual é a principal causa de uma Tabela de Dispersão degradar de O(1) para O(n)?
   opcoes:
-    - texto: A tabela ser criada com tamanho zero
-      correta: false
-      explicacao: Uma tabela de tamanho zero geraria erro de inicialização. A degradação de performance está relacionada à distribuição dos dados, não ao tamanho inicial.
     - texto: Muitas colisões causadas por uma função de hash com distribuição ruim
       correta: true
       explicacao: Correto! Se a função de hash concentrar muitas chaves no mesmo índice, o coletor forma uma lista encadeada longa. Percorrer essa lista é O(n), eliminando a vantagem da estrutura.
       explicacao_erro: O pior caso O(n) ocorre quando uma má função de hash gera muitas colisões, concentrando todos os dados no mesmo coletor e criando uma lista encadeada longa.
-    - texto: O uso de chaves do tipo string em vez de inteiro
-      correta: false
-      explicacao: Chaves do tipo string são perfeitamente válidas em tabelas de dispersão. O Python, por exemplo, aceita strings como chaves de dicionários sem perda de performance.
     - texto: Acessar a tabela com o operador in em vez de colchetes
       correta: false
       explicacao: O operador in é igualmente eficiente para dicionários em Python. A degradação de performance se deve à qualidade da função de hash, não ao operador usado.
 
+    - texto: A tabela ser criada com tamanho zero
+      correta: false
+      explicacao: Uma tabela de tamanho zero geraria erro de inicialização. A degradação de performance está relacionada à distribuição dos dados, não ao tamanho inicial.
+    - texto: O uso de chaves do tipo string em vez de inteiro
+      correta: false
+      explicacao: Chaves do tipo string são perfeitamente válidas em tabelas de dispersão. O Python, por exemplo, aceita strings como chaves de dicionários sem perda de performance.
 - tipo: single
   pergunta: Em Python, qual método de dicionário retorna pares (chave, valor) e é ideal para uso em loops for?
   opcoes:
-    - texto: .keys()
-      correta: false
-      explicacao: .keys() retorna apenas as chaves do dicionário, sem os valores associados.
     - texto: .values()
       correta: false
       explicacao: .values() retorna apenas os valores do dicionário, sem as chaves associadas.
+    - texto: .keys()
+      correta: false
+      explicacao: .keys() retorna apenas as chaves do dicionário, sem os valores associados.
+    - texto: .pairs()
+      correta: false
+      explicacao: O método .pairs() não existe em Python. Para obter pares (chave, valor), usa-se .items().
     - texto: .items()
       correta: true
       explicacao: Correto! .items() retorna tuplas (chave, valor), permitindo acessar ambos simultaneamente no loop — por isso é o método mais utilizado para iterar sobre um dicionário.
       explicacao_erro: O método .items() é o correto. Ele retorna tuplas (chave, valor) que podem ser desempacotadas diretamente no for, como em "for chave, valor in d.items()".
-    - texto: .pairs()
-      correta: false
-      explicacao: O método .pairs() não existe em Python. Para obter pares (chave, valor), usa-se .items().
 ```

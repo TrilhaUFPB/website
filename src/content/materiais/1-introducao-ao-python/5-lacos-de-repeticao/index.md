@@ -108,12 +108,12 @@ Para aprofundar seus conhecimentos sobre laços de repetição, confira os segui
       correta: true
       explicacao: Exato! O "for" é ideal quando você sabe quantas repetições serão feitas, já o "while" depende de uma condição que pode mudar a qualquer momento.
       explicacao_erro: O "for" é usado quando se conhece o número de repetições ou se percorre uma sequência. O "while" repete enquanto uma condição for verdadeira.
-    - texto: O "while" só funciona com números, enquanto o "for" funciona com qualquer tipo de dado
-      correta: false
-      explicacao: Isso não é verdade. O "while" funciona com qualquer condição booleana, não apenas com números.
     - texto: O "for" sempre executa pelo menos uma vez, enquanto o "while" pode não executar nenhuma vez
       correta: false
       explicacao: Na verdade, o "for" também pode não executar nenhuma vez, por exemplo se a sequência estiver vazia.
+    - texto: O "while" só funciona com números, enquanto o "for" funciona com qualquer tipo de dado
+      correta: false
+      explicacao: Isso não é verdade. O "while" funciona com qualquer condição booleana, não apenas com números.
     - texto: Não há diferença, os dois fazem exatamente a mesma coisa
       correta: false
       explicacao: Há sim uma diferença fundamental. O "for" itera sobre sequências ou um número fixo de vezes, enquanto o "while" depende de uma condição.
@@ -121,16 +121,16 @@ Para aprofundar seus conhecimentos sobre laços de repetição, confira os segui
 - tipo: single
   pergunta: O que acontece quando a instrução "break" é executada dentro de um laço?
   opcoes:
-    - texto: O laço é encerrado imediatamente, e o programa continua na instrução após o bloco do loop
-      correta: true
-      explicacao: Correto! O "break" interrompe o laço na hora, independente da condição ou de quantas iterações ainda restariam.
-      explicacao_erro: O "break" encerra o laço imediatamente, pulando para a primeira instrução fora do bloco do loop.
     - texto: A iteração atual é pulada e o laço continua da próxima
       correta: false
       explicacao: Isso descreve o comportamento do "continue", não do "break". O "break" encerra o laço completamente.
     - texto: O programa volta ao início do laço e reinicia a contagem
       correta: false
       explicacao: O "break" não reinicia nada. Ele encerra o laço e o programa segue para o que vem depois dele.
+    - texto: O laço é encerrado imediatamente, e o programa continua na instrução após o bloco do loop
+      correta: true
+      explicacao: Correto! O "break" interrompe o laço na hora, independente da condição ou de quantas iterações ainda restariam.
+      explicacao_erro: O "break" encerra o laço imediatamente, pulando para a primeira instrução fora do bloco do loop.
     - texto: O "break" só funciona dentro de laços "while", não dentro de laços "for"
       correta: false
       explicacao: O "break" funciona tanto no "for" quanto no "while". Ele encerra qualquer tipo de laço imediatamente.
@@ -138,16 +138,16 @@ Para aprofundar seus conhecimentos sobre laços de repetição, confira os segui
 - tipo: single
   pergunta: O que a função range(5) gera quando usada em um laço "for"?
   opcoes:
+    - texto: Uma sequência de números de 0 a 5
+      correta: false
+      explicacao: O range(n) vai até n-1, não até n. Então range(5) para em 4, não em 5.
+    - texto: Uma sequência de números de 1 a 5
+      correta: false
+      explicacao: Cuidado! O range começa em 0, não em 1. range(5) gera 0, 1, 2, 3 e 4.
     - texto: Uma sequência de números de 0 a 4
       correta: true
       explicacao: Isso mesmo! O range(n) gera números de 0 até n-1, ou seja, range(5) gera 0, 1, 2, 3 e 4.
       explicacao_erro: O range(n) começa em 0 e vai até n-1. Então range(5) gera os números 0, 1, 2, 3 e 4.
-    - texto: Uma sequência de números de 1 a 5
-      correta: false
-      explicacao: Cuidado! O range começa em 0, não em 1. range(5) gera 0, 1, 2, 3 e 4.
-    - texto: Uma sequência de números de 0 a 5
-      correta: false
-      explicacao: O range(n) vai até n-1, não até n. Então range(5) para em 4, não em 5.
     - texto: Repete o laço infinitamente até o programa ser encerrado
       correta: false
       explicacao: O range gera uma sequência finita de números. Para loops infinitos usaríamos "while True", por exemplo.

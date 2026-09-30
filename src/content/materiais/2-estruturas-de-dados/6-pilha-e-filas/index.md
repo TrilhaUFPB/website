@@ -97,24 +97,29 @@ Para aprofundar seus conhecimentos sobre Pilhas e Filas, confira os seguintes re
     Uma fila de impressão recebe documentos na seguinte sequência: `[Relatório, Fatura, Contrato, Email]`.
     Considerando o princípio FIFO (First In, First Out), se o sistema realizar duas operações de desenfileirar (dequeue) e, em seguida, adicionar um novo documento chamado "Nota Fiscal" (enqueue), como ficará a fila?
   opcoes:
-    - texto: "[Contrato, Email, Nota Fiscal]"
-      correta: true
-      explicacao: "Correto! As duas operações de `dequeue` removem os primeiros elementos que chegaram ('Relatório' e 'Fatura'). Em seguida, o `enqueue` adiciona 'Nota Fiscal' ao final da fila."
-      explicacao_erro: "Lembre-se do conceito de FIFO: os primeiros a entrar são os primeiros a sair. Os dois `dequeues` tiram os 2 primeiros itens. O `enqueue` coloca o novo no final."
-    - texto: "[Relatório, Fatura, Nota Fiscal]"
-      correta: false
-      explicacao: "Essa opção manteria os primeiros itens e removeria os últimos. Isso seria o comportamento de uma Pilha (LIFO), e não de uma Fila."
     - texto: "[Nota Fiscal, Contrato, Email]"
       correta: false
       explicacao: "O `enqueue` adiciona um item ao final da fila, não no início."
+    - texto: "[Relatório, Fatura, Nota Fiscal]"
+      correta: false
+      explicacao: "Essa opção manteria os primeiros itens e removeria os últimos. Isso seria o comportamento de uma Pilha (LIFO), e não de uma Fila."
     - texto: "[Email, Contrato, Nota Fiscal]"
       correta: false
       explicacao: "A ordem dos elementos remanescentes não se inverte quando estão aguardando na fila."
 
+    - texto: "[Contrato, Email, Nota Fiscal]"
+      correta: true
+      explicacao: "Correto! As duas operações de `dequeue` removem os primeiros elementos que chegaram ('Relatório' e 'Fatura'). Em seguida, o `enqueue` adiciona 'Nota Fiscal' ao final da fila."
+      explicacao_erro: "Lembre-se do conceito de FIFO: os primeiros a entrar são os primeiros a sair. Os dois `dequeues` tiram os 2 primeiros itens. O `enqueue` coloca o novo no final."
 - tipo: single
   pergunta: |
     Você está programando um sistema de "Voltar" para um navegador. O usuário acessou a página A, depois a B, e por fim a C. Se o usuário clicar em "Voltar", para qual página ele deve ir? Que estrutura de dados você usaria para isso?
   opcoes:
+    - texto: "Pilha, pois a última página visitada (C) deve ser a primeira a ser removida."
+      correta: true
+      explicacao: "Correto! O histórico de navegação funciona baseando-se no princípio LIFO (Último a Entrar, Primeiro a Sair). A última página visitada fica no topo da Pilha."
+      explicacao_erro: "Sistemas como o botão de 'Voltar' ou 'Desfazer' usam Pilhas (LIFO), pois você precisa retornar ao estado mais recente que foi registrado."
+
     - texto: "Fila, para garantir que a página A seja a primeira a ser exibida."
       correta: false
       explicacao: "Se fosse uma Fila (FIFO), clicar em 'Voltar' te levaria para a página A (a primeira visitada de todas), o que quebra a navegação do usuário."
@@ -124,25 +129,20 @@ Para aprofundar seus conhecimentos sobre Pilhas e Filas, confira os seguintes re
     - texto: "Fila, pois é um sistema de histórico."
       correta: false
       explicacao: "Filas processam por ordem de chegada (o mais antigo primeiro). Históricos precisam retroceder a partir do item mais recente, portanto usam Pilhas."
-    - texto: "Pilha, pois a última página visitada (C) deve ser a primeira a ser removida."
-      correta: true
-      explicacao: "Correto! O histórico de navegação funciona baseando-se no princípio LIFO (Último a Entrar, Primeiro a Sair). A última página visitada fica no topo da Pilha."
-      explicacao_erro: "Sistemas como o botão de 'Voltar' ou 'Desfazer' usam Pilhas (LIFO), pois você precisa retornar ao estado mais recente que foi registrado."
-
 - tipo: single
   pergunta: "Por que dizemos que o `pop()` em uma pilha é uma operação O(1) (tempo constante)?"
   opcoes:
+    - texto: "Porque ele apaga toda a memória do computador."
+      correta: false
+      explicacao: "O método `pop()` atua removendo apenas um elemento específico (o do topo) daquela estrutura de dados, não afetando a memória como um todo."
     - texto: "Porque ele precisa percorrer toda a lista para achar o último item."
       correta: false
       explicacao: "O computador já possui o ponteiro ou o índice apontando diretamente para o topo, então ele não precisa percorrer a lista (o que seria uma operação O(n))."
+    - texto: "Porque ele sempre remove o primeiro item da lista."
+      correta: false
+      explicacao: "Remover o primeiro item é característico do `dequeue` de uma Fila. Em implementações simples de array, isso inclusive exigiria reposicionar os outros elementos, tornando o custo O(n)."
     - texto: "Porque ele sempre remove o elemento do topo, sem precisar mover outros itens."
       correta: true
       explicacao: "Correto! Ao remover o último elemento adicionado (topo), todos os outros elementos permanecem intactos em seus lugares originais, tornando a operação instantânea, independentemente do tamanho da pilha."
       explicacao_erro: "Em uma pilha, você só interage com uma extremidade (o topo). Remover esse elemento não exige reindexar ou deslocar o restante dos dados."
-    - texto: "Porque ele apaga toda a memória do computador."
-      correta: false
-      explicacao: "O método `pop()` atua removendo apenas um elemento específico (o do topo) daquela estrutura de dados, não afetando a memória como um todo."
-    - texto: "Porque ele sempre remove o primeiro item da lista."
-      correta: false
-      explicacao: "Remover o primeiro item é característico do `dequeue` de uma Fila. Em implementações simples de array, isso inclusive exigiria reposicionar os outros elementos, tornando o custo O(n)."
 ```

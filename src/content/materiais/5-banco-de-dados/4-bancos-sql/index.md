@@ -262,25 +262,18 @@ CREATE TABLE matriculas (
     - texto: "INT com AUTO_INCREMENT."
       correta: false
       explicacao: "O AUTO_INCREMENT gera números sequenciais e totalmente previsíveis (1, 2, 3...), o que vai contra o requisito de segurança descrito na pergunta."
-    - texto: "UUID."
-      correta: true
-      explicacao: "Exato O UUID gera strings únicas e complexas (ex: '550e8400-e29b-41d4-a716-446655440000'), evitando a previsibilidade dos números inteiros sequenciais."
-      explicacao_erro: "O UUID é o tipo ideal para gerar identificadores complexos em formato de string, substituindo o tradicional número sequencial."
     - texto: "SERIAL."
       correta: false
       explicacao: "SERIAL é apenas a nomenclatura do PostgreSQL equivalente ao AUTO_INCREMENT, ou seja, também gera números sequenciais previsíveis."
     - texto: "VARCHAR com NOT NULL."
       correta: false
+    - texto: "UUID."
+      correta: true
+      explicacao: "Exato O UUID gera strings únicas e complexas (ex: '550e8400-e29b-41d4-a716-446655440000'), evitando a previsibilidade dos números inteiros sequenciais."
+      explicacao_erro: "O UUID é o tipo ideal para gerar identificadores complexos em formato de string, substituindo o tradicional número sequencial."
 - tipo: single
   pergunta: "Você possui a tabela 'usuarios' e a tabela 'pedidos' conectadas por uma Chave Estrangeira (FK). Você quer configurar o banco para que, caso um usuário seja excluído do sistema, todos os pedidos vinculados a ele sejam automaticamente apagados, evitando deixar os dados referentes a ele no banco. Qual característica da Chave Estrangeira permite isso?"
   opcoes:
-    - texto: "A configuração de exclusão em Cascata."
-      correta: true
-      explicacao: "Exatamente! A Foreign Key pode ser configurada com ações em 'Cascata' (CASCADE). Isso faz com que operações feitas na tabela principal, como deleções, reflitam automaticamente nas tabelas dependentes, mantendo a consistência e economizando trabalho no código da aplicação."
-      explicacao_erro: "A exclusão em Cascata é o recurso específico da Chave Estrangeira que automatiza a deleção de registros associados em outras tabelas."
-    - texto: "A Integridade Referencial restrita."
-      correta: false
-      explicacao: "A integridade referencial padrão do banco bloqueia a exclusão para evitar dados órfãos (o que geraria um erro)."
     - texto: "O uso da restrição UNIQUE na Chave Estrangeira, forçando a exclusão dupla."
       correta: false
       explicacao: "A restrição UNIQUE (Única) serve para impedir dados repetidos em uma mesma coluna. Ela não tem função de apagar registros em outras tabelas."
@@ -288,4 +281,11 @@ CREATE TABLE matriculas (
       correta: false
       explicacao: "Chaves Primárias servem para identificar registros dentro de sua própria tabela. Mudar a FK para PK não cria mecanismos de deleção automática entre tabelas diferentes."
 
+    - texto: "A configuração de exclusão em Cascata."
+      correta: true
+      explicacao: "Exatamente! A Foreign Key pode ser configurada com ações em 'Cascata' (CASCADE). Isso faz com que operações feitas na tabela principal, como deleções, reflitam automaticamente nas tabelas dependentes, mantendo a consistência e economizando trabalho no código da aplicação."
+      explicacao_erro: "A exclusão em Cascata é o recurso específico da Chave Estrangeira que automatiza a deleção de registros associados em outras tabelas."
+    - texto: "A Integridade Referencial restrita."
+      correta: false
+      explicacao: "A integridade referencial padrão do banco bloqueia a exclusão para evitar dados órfãos (o que geraria um erro)."
 ```

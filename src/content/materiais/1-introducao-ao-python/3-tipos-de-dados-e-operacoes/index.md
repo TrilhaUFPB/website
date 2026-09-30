@@ -123,23 +123,29 @@ Para aprofundar seus conhecimentos sobre tipos de dados e operações, confira o
 - tipo: single
   pergunta: Sabendo que o Python segue a ordem PEMDAS, qual é o resultado da expressão matemática `10 + 2 * 5`?
   opcoes:
-    - texto: "60"
-      correta: false
-      explicacao: Incorreto. Isso aconteceria se a adição fosse executada primeiro, o que quebra a precedência matemática.
-    - texto: "20"
-      correta: true
-      explicacao: Perfeito! A multiplicação (`2 * 5 = 10`) tem prioridade sobre a adição, resultando depois em `10 + 10 = 20`.
-      explicacao_erro: Lembre-se da regra PEMDAS. A operação de multiplicação (`*`) deve ser processada obrigatoriamente antes da adição (`+`).
-    - texto: "14"
-      correta: false
-      explicacao: Incorreto. O interpretador não realiza os cálculos de forma aleatória. Multiplicações vêm antes de somas.
     - texto: "O Python retornará um erro de sintaxe."
       correta: false
       explicacao: A expressão é perfeitamente válida e numérica, sendo processada sem problemas pelo interpretador.
 
+    - texto: "60"
+      correta: false
+      explicacao: Incorreto. Isso aconteceria se a adição fosse executada primeiro, o que quebra a precedência matemática.
+    - texto: "14"
+      correta: false
+      explicacao: Incorreto. O interpretador não realiza os cálculos de forma aleatória. Multiplicações vêm antes de somas.
+    - texto: "20"
+      correta: true
+      explicacao: Perfeito! A multiplicação (`2 * 5 = 10`) tem prioridade sobre a adição, resultando depois em `10 + 10 = 20`.
+      explicacao_erro: Lembre-se da regra PEMDAS. A operação de multiplicação (`*`) deve ser processada obrigatoriamente antes da adição (`+`).
 - tipo: single
   pergunta: O que significa dizer que as strings em Python são "imutáveis"?
   opcoes:
+    - texto: Que elas não aceitam letras maiúsculas através de métodos.
+      correta: false
+      explicacao: Métodos alteram a caixa do texto de saída perfeitamente, o conceito de imutabilidade se refere à preservação do dado original na memória.
+    - texto: Que variáveis de texto só podem receber atribuições uma única vez no script.
+      correta: false
+      explicacao: A variável em si pode ser reatribuída com um novo valor, mas o objeto caractere antigo na memória não se modifica.
     - texto: Que uma vez criada, os métodos chamados nela criam novos textos, mantendo a string original inalterada na memória.
       correta: true
       explicacao: Exato! Métodos como `.replace()` ou `.upper()` geram uma nova string como resposta, sem modificar a variável original.
@@ -147,10 +153,4 @@ Para aprofundar seus conhecimentos sobre tipos de dados e operações, confira o
     - texto: Que não é possível concatenar ou somar textos usando o operador `+`.
       correta: false
       explicacao: A concatenação é permitida, mas ela gera uma terceira string nova, mantendo as originais intactas.
-    - texto: Que variáveis de texto só podem receber atribuições uma única vez no script.
-      correta: false
-      explicacao: A variável em si pode ser reatribuída com um novo valor, mas o objeto caractere antigo na memória não se modifica.
-    - texto: Que elas não aceitam letras maiúsculas através de métodos.
-      correta: false
-      explicacao: Métodos alteram a caixa do texto de saída perfeitamente, o conceito de imutabilidade se refere à preservação do dado original na memória.
 ```

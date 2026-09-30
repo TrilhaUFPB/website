@@ -584,33 +584,33 @@ Para aprofundar seus conhecimentos sobre estilização em React/Next, confira os
 - tipo: single
   pergunta: Como o CSS Modules evita que duas classes chamadas `.button` em componentes diferentes colidam?
   opcoes:
-    - texto: O navegador aplica automaticamente só a última classe `.button` declarada na página
-      correta: false
-      explicacao: Não é assim que o CSS funciona — sem CSS Modules, um `.button` genérico afetaria qualquer elemento com essa classe, causando exatamente o problema de colisão que o Modules resolve.
-    - texto: Cada dev precisa nomear manualmente sua classe com um prefixo diferente por componente
-      correta: false
-      explicacao: Essa seria uma convenção manual, propensa a erro. O CSS Modules resolve isso automaticamente no build, gerando nomes únicos sem que você precise inventar prefixos.
     - texto: Cada classe é transformada em um nome único no build (geralmente com hash), isolando o escopo
       correta: true
       explicacao: Exato! É por isso que `.button` num componente vira algo como `button__a1b2c3` — um "apelido privado" gerado no build, diferente do CSS global onde `.button` é um apelido público que qualquer regra pode afetar.
       explicacao_erro: CSS Modules resolve colisão transformando cada classe num nome único no build (geralmente com hash). Não é o navegador que faz isso em runtime, nem uma convenção de nomenclatura manual — é uma transformação automática do processo de build.
+    - texto: Cada dev precisa nomear manualmente sua classe com um prefixo diferente por componente
+      correta: false
+      explicacao: Essa seria uma convenção manual, propensa a erro. O CSS Modules resolve isso automaticamente no build, gerando nomes únicos sem que você precise inventar prefixos.
     - texto: CSS Modules simplesmente proíbe duas classes com o mesmo nome no projeto inteiro
       correta: false
       explicacao: Pelo contrário — é exatamente por isso que o CSS Modules é útil, permitindo que `.button` exista em vários arquivos `.module.css` diferentes, sem colisão, porque cada um vira um nome único no build.
 
+    - texto: O navegador aplica automaticamente só a última classe `.button` declarada na página
+      correta: false
+      explicacao: Não é assim que o CSS funciona — sem CSS Modules, um `.button` genérico afetaria qualquer elemento com essa classe, causando exatamente o problema de colisão que o Modules resolve.
 - tipo: single
   pergunta: Por que o texto do material afirma que "Tailwind não é um atalho para escrever menos"?
   opcoes:
+    - texto: Porque ele elimina de vez a necessidade de qualquer JavaScript no projeto
+      correta: false
+      explicacao: Tailwind lida apenas com estilização (CSS via classes utilitárias) — não tem relação com reduzir ou substituir JavaScript no projeto.
+    - texto: Porque o Tailwind gera automaticamente componentes React prontos para o projeto
+      correta: false
+      explicacao: O Tailwind não gera componentes — ele fornece classes utilitárias. Componentes prontos é o que bibliotecas como MUI ou shadcn/ui oferecem, cada uma com sua própria filosofia.
     - texto: Porque suas classes utilitárias seguem uma escala consistente, funcionando como um design system mínimo
       correta: true
       explicacao: "Exato! `p-4`, `text-sm` e as variações de cor não são só abreviações — elas obrigam o time inteiro a compor a partir dos mesmos degraus de uma escala, em vez de cada pessoa escolher valores livres como `margin: 13px`."
       explicacao_erro: O ganho do Tailwind não é digitar menos caracteres — é que suas classes utilitárias seguem uma escala consistente (spacing, tipografia, cores), funcionando como um design system mínimo embutido na forma de escrever UI.
-    - texto: Porque o Tailwind gera automaticamente componentes React prontos para o projeto
-      correta: false
-      explicacao: O Tailwind não gera componentes — ele fornece classes utilitárias. Componentes prontos é o que bibliotecas como MUI ou shadcn/ui oferecem, cada uma com sua própria filosofia.
-    - texto: Porque ele elimina de vez a necessidade de qualquer JavaScript no projeto
-      correta: false
-      explicacao: Tailwind lida apenas com estilização (CSS via classes utilitárias) — não tem relação com reduzir ou substituir JavaScript no projeto.
     - texto: Porque uma mesma classe do Tailwind só pode ser usada uma vez por página inteira
       correta: false
       explicacao: Não existe essa limitação — classes utilitárias do Tailwind podem, e costumam, se repetir livremente por toda a aplicação. É esperado reutilizar `p-4` ou `text-sm` em vários lugares.
@@ -621,13 +621,13 @@ Para aprofundar seus conhecimentos sobre estilização em React/Next, confira os
     - texto: O shadcn/ui não usa Tailwind, enquanto o MUI é construído inteiramente sobre Tailwind
       correta: false
       explicacao: É o oposto do que o material descreve — o shadcn/ui costuma ser construído sobre Tailwind. O MUI tem seu próprio sistema de tema, independente do Tailwind.
+    - texto: O MUI exige bem menos manutenção porque nunca muda sua API entre versões
+      correta: false
+      explicacao: O material alerta justamente o contrário — APIs e detalhes de integração do MUI variam por versão, então a documentação oficial deve ser consultada no momento de implementar.
     - texto: No shadcn/ui, os componentes são copiados pro seu repositório; no MUI, você consome uma dependência externa
       correta: true
       explicacao: Exato! Essa é a diferença que o material chama de atenção — o shadcn/ui te dá controle total porque o código passa a ser seu, mas isso também significa que você é responsável por entendê-lo e mantê-lo, diferente de simplesmente atualizar uma versão do MUI.
       explicacao_erro: shadcn/ui gera componentes que você copia para o seu próprio repositório e passa a manter como código do projeto. O MUI, ao contrário, é consumido como uma dependência externa que você instala e atualiza.
-    - texto: O MUI exige bem menos manutenção porque nunca muda sua API entre versões
-      correta: false
-      explicacao: O material alerta justamente o contrário — APIs e detalhes de integração do MUI variam por versão, então a documentação oficial deve ser consultada no momento de implementar.
     - texto: shadcn/ui é uma biblioteca paga, enquanto o MUI é sempre totalmente gratuito
       correta: false
       explicacao: A diferença central discutida no material não é sobre custo — é sobre onde o código dos componentes vive e quem é responsável por mantê-lo.
@@ -635,20 +635,20 @@ Para aprofundar seus conhecimentos sobre estilização em React/Next, confira os
 - tipo: single
   pergunta: Segundo o material, por que "design tokens" evitam ter que caçar 200 hexadecimais espalhados pelo projeto quando a cor "primary" precisa mudar?
   opcoes:
-    - texto: Um token é um contrato — um valor nomeado, como "primary", consumido em um lugar só por todo o projeto
-      correta: true
-      explicacao: Exato! Em vez de cada componente declarar sua própria cor "azul #1d4ed8", todos referenciam o token semântico "primary". Mudar o tom em um lugar central propaga a mudança, sem precisar caçar o valor hardcoded em cada arquivo.
-      explicacao_erro: O ponto central dos design tokens é centralizar a decisão em um valor nomeado, como "primary", que os componentes consomem. Isso é o que o material chama de "token é um contrato" — muda uma vez, propaga para todo o projeto.
     - texto: Porque os tokens são gerados de forma automática por inteligência artificial a partir do design
       correta: false
       explicacao: Não há nada de automático ou de IA envolvido — tokens são simplesmente valores nomeados que o time define manualmente para representar decisões de design (cores, tipografia, espaçamento).
-    - texto: Porque a adoção de tokens elimina de vez a necessidade de qualquer CSS no projeto
-      correta: false
-      explicacao: Tokens não eliminam CSS — eles são consumidos justamente através de CSS (variáveis), Tailwind (configuração de tema) ou bibliotecas de UI (theming). O CSS continua existindo, só que referenciando os tokens em vez de valores soltos.
     - texto: Porque cada componente deve declarar sua própria paleta de cores, independente dos outros
       correta: false
       explicacao: Isso é exatamente o oposto do que os tokens resolvem — a ideia é que a paleta seja centralizada e compartilhada, não redeclarada de forma independente em cada componente.
 
+    - texto: Porque a adoção de tokens elimina de vez a necessidade de qualquer CSS no projeto
+      correta: false
+      explicacao: Tokens não eliminam CSS — eles são consumidos justamente através de CSS (variáveis), Tailwind (configuração de tema) ou bibliotecas de UI (theming). O CSS continua existindo, só que referenciando os tokens em vez de valores soltos.
+    - texto: Um token é um contrato — um valor nomeado, como "primary", consumido em um lugar só por todo o projeto
+      correta: true
+      explicacao: Exato! Em vez de cada componente declarar sua própria cor "azul #1d4ed8", todos referenciam o token semântico "primary". Mudar o tom em um lugar central propaga a mudança, sem precisar caçar o valor hardcoded em cada arquivo.
+      explicacao_erro: O ponto central dos design tokens é centralizar a decisão em um valor nomeado, como "primary", que os componentes consomem. Isso é o que o material chama de "token é um contrato" — muda uma vez, propaga para todo o projeto.
 - tipo: single
   pergunta: |
     Um desenvolvedor remove o `outline` de foco de todos os botões do projeto "porque fica mais bonito sem a borda ao clicar".
@@ -657,14 +657,14 @@ Para aprofundar seus conhecimentos sobre estilização em React/Next, confira os
     - texto: Porque essa alteração de estilo quebra o processo de build do Next.js
       correta: false
       explicacao: Remover o outline de foco é uma alteração de CSS válida do ponto de vista técnico — não quebra o build. O problema é de acessibilidade e experiência de uso, não de build.
+    - texto: Porque só bibliotecas prontas como MUI e Chakra têm permissão pra definir foco
+      correta: false
+      explicacao: Qualquer abordagem — CSS puro, CSS Modules, Tailwind ou uma UI library — pode e deve definir estados de foco visíveis. Não é uma capacidade exclusiva de bibliotecas de componentes.
+    - texto: Porque `outline` é uma propriedade do CSS que tecnicamente não pode ser removida
+      correta: false
+      explicacao: "`outline` pode sim ser removido via CSS — o ponto não é uma limitação técnica, é que fazer isso sem substituir por outra indicação visual de foco prejudica a acessibilidade."
     - texto: Porque o foco visível é parte da acessibilidade e da navegação por teclado, não só estética
       correta: true
       explicacao: Exato! O material é direto sobre isso — foco é parte do UX e da acessibilidade. Sem indicação visual de foco, quem navega pelo teclado (tecla Tab) perde a referência de onde está na página.
       explicacao_erro: O material trata "remover foco porque é feio" como um erro clássico justamente porque o foco visível é parte da acessibilidade — é o que permite que alguém navegando só com o teclado saiba em qual elemento está.
-    - texto: Porque `outline` é uma propriedade do CSS que tecnicamente não pode ser removida
-      correta: false
-      explicacao: "`outline` pode sim ser removido via CSS — o ponto não é uma limitação técnica, é que fazer isso sem substituir por outra indicação visual de foco prejudica a acessibilidade."
-    - texto: Porque só bibliotecas prontas como MUI e Chakra têm permissão pra definir foco
-      correta: false
-      explicacao: Qualquer abordagem — CSS puro, CSS Modules, Tailwind ou uma UI library — pode e deve definir estados de foco visíveis. Não é uma capacidade exclusiva de bibliotecas de componentes.
 ```

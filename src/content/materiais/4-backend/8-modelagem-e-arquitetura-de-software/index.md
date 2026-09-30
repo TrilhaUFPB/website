@@ -506,6 +506,9 @@ Para aprofundar seus conhecimentos sobre modelagem e arquitetura de software, co
 - tipo: single
   pergunta: Segundo o Teorema CAP, por que sistemas distribuídos na nuvem geralmente precisam escolher entre Consistência (C) e Disponibilidade (A)?
   opcoes:
+    - texto: Porque Consistência e Disponibilidade são a mesma coisa em sistemas distribuídos
+      correta: false
+      explicacao: São conceitos diferentes. Consistência significa que todos os nós veem os mesmos dados; Disponibilidade significa que todo pedido recebe resposta, mesmo que o dado esteja desatualizado.
     - texto: Porque a Tolerância a Partição (P) é praticamente obrigatória, restando escolher entre C e A quando a rede falha
       correta: true
       explicacao: Exato! Como P é obrigatório na nuvem, a escolha real do sistema acontece entre CP (travar para manter consistência) e AP (responder mesmo com dado desatualizado).
@@ -513,9 +516,6 @@ Para aprofundar seus conhecimentos sobre modelagem e arquitetura de software, co
     - texto: Porque bancos de dados relacionais não suportam Disponibilidade
       correta: false
       explicacao: Bancos relacionais podem sim priorizar disponibilidade dependendo da configuração. O Teorema CAP trata de um trade-off geral em sistemas distribuídos, não de uma limitação específica de um tipo de banco.
-    - texto: Porque Consistência e Disponibilidade são a mesma coisa em sistemas distribuídos
-      correta: false
-      explicacao: São conceitos diferentes. Consistência significa que todos os nós veem os mesmos dados; Disponibilidade significa que todo pedido recebe resposta, mesmo que o dado esteja desatualizado.
     - texto: Porque o CAP se aplica apenas a sistemas com um único servidor
       correta: false
       explicacao: O CAP se aplica justamente a sistemas distribuídos, com múltiplos nós ou réplicas — não faz sentido em um sistema de servidor único.
@@ -523,32 +523,32 @@ Para aprofundar seus conhecimentos sobre modelagem e arquitetura de software, co
 - tipo: single
   pergunta: O que caracteriza um módulo com alta coesão e baixo acoplamento, o objetivo ideal de design?
   opcoes:
-    - texto: O módulo depende fortemente de vários outros módulos, mas faz várias coisas diferentes internamente
-      correta: false
-      explicacao: Isso descreve o oposto do ideal — alto acoplamento (muita dependência de outros módulos) e baixa coesão (fazer coisas diferentes ao invés de uma coisa bem feita).
-    - texto: O módulo não depende de nenhum outro módulo e não tem nenhuma responsabilidade definida
-      correta: false
-      explicacao: Um módulo sem responsabilidade definida não tem coesão, mesmo que não dependa de outros. O objetivo é justamente ter uma responsabilidade clara (alta coesão) combinada com pouca dependência externa (baixo acoplamento).
-    - texto: O módulo faz uma coisa bem feita internamente e depende pouco de outros módulos para funcionar
-      correta: true
-      explicacao: Exato! Alta coesão significa que o módulo tem uma responsabilidade bem definida e focada. Baixo acoplamento significa que ele depende pouco de outros módulos, então mudanças em um não quebram o outro.
-      explicacao_erro: O ideal é alta coesão (o módulo faz uma coisa bem feita) combinada com baixo acoplamento (depende pouco de outros módulos para funcionar).
     - texto: O módulo muda sempre que qualquer outro módulo do sistema muda
       correta: false
       explicacao: Isso é sintoma de alto acoplamento, o oposto do que se busca. Em um bom design, mudar um módulo não deveria forçar mudanças em cascata pelos outros.
 
+    - texto: O módulo depende fortemente de vários outros módulos, mas faz várias coisas diferentes internamente
+      correta: false
+      explicacao: Isso descreve o oposto do ideal — alto acoplamento (muita dependência de outros módulos) e baixa coesão (fazer coisas diferentes ao invés de uma coisa bem feita).
+    - texto: O módulo faz uma coisa bem feita internamente e depende pouco de outros módulos para funcionar
+      correta: true
+      explicacao: Exato! Alta coesão significa que o módulo tem uma responsabilidade bem definida e focada. Baixo acoplamento significa que ele depende pouco de outros módulos, então mudanças em um não quebram o outro.
+      explicacao_erro: O ideal é alta coesão (o módulo faz uma coisa bem feita) combinada com baixo acoplamento (depende pouco de outros módulos para funcionar).
+    - texto: O módulo não depende de nenhum outro módulo e não tem nenhuma responsabilidade definida
+      correta: false
+      explicacao: Um módulo sem responsabilidade definida não tem coesão, mesmo que não dependa de outros. O objetivo é justamente ter uma responsabilidade clara (alta coesão) combinada com pouca dependência externa (baixo acoplamento).
 - tipo: single
   pergunta: Qual é o propósito principal de um ADR (Architecture Decision Record)?
   opcoes:
     - texto: Documentar o código-fonte linha por linha para facilitar a manutenção
       correta: false
       explicacao: Documentação de código é um objetivo diferente. O ADR foca especificamente em decisões arquiteturais, não em explicar o funcionamento interno do código.
-    - texto: Gerar diagramas automáticos da arquitetura do sistema
-      correta: false
-      explicacao: Geração automática de diagramas é o objetivo de ferramentas como o Structurizr (Docs as Code), não do ADR. O ADR é um registro textual de decisões.
     - texto: Substituir a necessidade de testes automatizados no projeto
       correta: false
       explicacao: ADR e testes automatizados resolvem problemas completamente diferentes. O ADR documenta decisões arquiteturais; testes garantem que o código funciona como esperado.
+    - texto: Gerar diagramas automáticos da arquitetura do sistema
+      correta: false
+      explicacao: Geração automática de diagramas é o objetivo de ferramentas como o Structurizr (Docs as Code), não do ADR. O ADR é um registro textual de decisões.
     - texto: Registrar o contexto e a decisão tomada em um momento específico, explicando o porquê de uma escolha arquitetural
       correta: true
       explicacao: Exato! Como resume o material — "o código diz COMO, o ADR diz PORQUÊ" — o ADR existe para que decisões estruturais não virem "conhecimento tribal" perdido com o tempo.

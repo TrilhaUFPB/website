@@ -76,10 +76,6 @@ Para aprofundar seus conhecimentos sobre estruturas condicionais, confira os seg
   pergunta: |
     No Python, qual é a diferença funcional entre os operadores `=` e `==`?
   opcoes:
-    - texto: "O `=` é usado para comparar se dois valores são iguais e o `==` para atribuir valores."
-      correta: false
-      explicacao: |
-        Incorreto. É exatamente o contrário! A confusão entre esses dois é um dos erros mais comuns em Python.
     - texto: "O `=` atribui um valor a uma variável, enquanto o `==` compara se dois valores são iguais."
       correta: true
       explicacao: |
@@ -91,6 +87,10 @@ Para aprofundar seus conhecimentos sobre estruturas condicionais, confira os seg
       explicacao: |
         Incorreto. Usar o operador errado resultará em erro de sintaxe ou em um comportamento lógico inesperado no seu código.
 
+    - texto: "O `=` é usado para comparar se dois valores são iguais e o `==` para atribuir valores."
+      correta: false
+      explicacao: |
+        Incorreto. É exatamente o contrário! A confusão entre esses dois é um dos erros mais comuns em Python.
 - tipo: single
   pergunta: |
     Quando utilizamos uma estrutura condicional encadeada com múltiplos blocos `if`, `elif` e um `else` no final, o que acontece se a primeira condição do `if` e a segunda do `elif` forem falsas?

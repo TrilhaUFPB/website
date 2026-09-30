@@ -1713,30 +1713,23 @@ Para aprofundar seus conhecimentos sobre o protocolo HTTP, confira o seguinte re
 - tipo: single
   pergunta: O que significa dizer que o HTTP é stateless (sem estado)?
   opcoes:
-    - texto: Cada requisição é tratada de forma independente, sem que o servidor precise lembrar requisições anteriores
-      correta: true
-      explicacao: Exato! Por padrão, o servidor não guarda memória entre requisições. Quando existe sessão ou autenticação, ela é construída por cima do HTTP usando mecanismos como cookies e tokens.
-      explicacao_erro: Stateless significa que cada requisição é independente e o servidor não é obrigado a lembrar o que aconteceu antes. Sessão, login e carrinho de compras existem, mas são construídos por cima do HTTP, não fazem parte dele por padrão.
-    - texto: Significa que o HTTP não permite autenticação nem sessões de usuário
-      correta: false
-      explicacao: HTTP permite sim autenticação e sessões, mas elas não fazem parte do protocolo em si. Elas são implementadas por cima dele, usando cookies, tokens e outros mecanismos.
-    - texto: Significa que o servidor sempre responde com o mesmo conteúdo, independente da requisição
-      correta: false
-      explicacao: Stateless não tem relação com o conteúdo da resposta ser sempre igual. Significa apenas que o servidor não depende de requisições anteriores para processar a atual.
     - texto: Significa que a comunicação não usa cabeçalhos
       correta: false
       explicacao: Cabeçalhos fazem parte de toda requisição e resposta HTTP. Stateless se refere à independência entre requisições, não à ausência de cabeçalhos.
 
+    - texto: Significa que o HTTP não permite autenticação nem sessões de usuário
+      correta: false
+      explicacao: HTTP permite sim autenticação e sessões, mas elas não fazem parte do protocolo em si. Elas são implementadas por cima dele, usando cookies, tokens e outros mecanismos.
+    - texto: Cada requisição é tratada de forma independente, sem que o servidor precise lembrar requisições anteriores
+      correta: true
+      explicacao: Exato! Por padrão, o servidor não guarda memória entre requisições. Quando existe sessão ou autenticação, ela é construída por cima do HTTP usando mecanismos como cookies e tokens.
+      explicacao_erro: Stateless significa que cada requisição é independente e o servidor não é obrigado a lembrar o que aconteceu antes. Sessão, login e carrinho de compras existem, mas são construídos por cima do HTTP, não fazem parte dele por padrão.
+    - texto: Significa que o servidor sempre responde com o mesmo conteúdo, independente da requisição
+      correta: false
+      explicacao: Stateless não tem relação com o conteúdo da resposta ser sempre igual. Significa apenas que o servidor não depende de requisições anteriores para processar a atual.
 - tipo: single
   pergunta: Qual é a função principal dos headers (cabeçalhos) em uma mensagem HTTP?
   opcoes:
-    - texto: Carregar metadados sobre a requisição ou resposta, como tipo de conteúdo, autenticação e cache
-      correta: true
-      explicacao: Exato! Headers carregam informações que não devem ficar misturadas no corpo, ajudando cliente e servidor a coordenar formato, autenticação, cache e segurança.
-      explicacao_erro: Os headers carregam metadados como formato do conteúdo, autenticação e informações de cache — dados que ajudam cliente e servidor a se coordenarem sem misturar isso no corpo da mensagem.
-    - texto: Armazenar o conteúdo principal que está sendo enviado ou recebido
-      correta: false
-      explicacao: O conteúdo principal fica no corpo (body) da mensagem, não nos headers. Os headers carregam metadados sobre esse conteúdo.
     - texto: Definir apenas a URL que está sendo acessada
       correta: false
       explicacao: A URL e o método ficam na linha inicial da requisição, não nos headers. Os headers carregam metadados adicionais sobre a mensagem.
@@ -1744,6 +1737,13 @@ Para aprofundar seus conhecimentos sobre o protocolo HTTP, confira o seguinte re
       correta: false
       explicacao: O status code é uma parte separada e essencial da resposta, indicando o resultado. Os headers complementam a mensagem, mas não substituem o status.
 
+    - texto: Armazenar o conteúdo principal que está sendo enviado ou recebido
+      correta: false
+      explicacao: O conteúdo principal fica no corpo (body) da mensagem, não nos headers. Os headers carregam metadados sobre esse conteúdo.
+    - texto: Carregar metadados sobre a requisição ou resposta, como tipo de conteúdo, autenticação e cache
+      correta: true
+      explicacao: Exato! Headers carregam informações que não devem ficar misturadas no corpo, ajudando cliente e servidor a coordenar formato, autenticação, cache e segurança.
+      explicacao_erro: Os headers carregam metadados como formato do conteúdo, autenticação e informações de cache — dados que ajudam cliente e servidor a se coordenarem sem misturar isso no corpo da mensagem.
 - tipo: single
   pergunta: Por que o CORS existe?
   opcoes:
@@ -1751,15 +1751,15 @@ Para aprofundar seus conhecimentos sobre o protocolo HTTP, confira o seguinte re
       correta: true
       explicacao: Exato! A política de mesma origem existe para proteger o usuário, e o CORS é o mecanismo que permite ao servidor autorizar, de forma explícita e controlada, o acesso a partir de outras origens.
       explicacao_erro: O CORS existe porque o navegador aplica uma política de segurança que bloqueia requisições entre origens diferentes por padrão. O CORS permite que o servidor autorize esse acesso de forma controlada.
-    - texto: Para criptografar a comunicação entre cliente e servidor
-      correta: false
-      explicacao: Criptografia é função do HTTPS/TLS, não do CORS. O CORS trata de permissões entre origens diferentes no navegador.
     - texto: Para armazenar cookies de forma mais segura
       correta: false
       explicacao: Armazenamento seguro de cookies envolve atributos como HttpOnly e Secure, não o CORS. O CORS controla quais origens podem acessar recursos de uma API.
     - texto: Para acelerar requisições feitas por scripts e backends
       correta: false
       explicacao: O CORS não tem relação com velocidade. Ele é uma regra de segurança do navegador que controla acesso entre origens diferentes, e nem se aplica a comunicação backend-a-backend.
+    - texto: Para criptografar a comunicação entre cliente e servidor
+      correta: false
+      explicacao: Criptografia é função do HTTPS/TLS, não do CORS. O CORS trata de permissões entre origens diferentes no navegador.
 ```
 
 ---

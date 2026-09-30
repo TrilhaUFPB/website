@@ -122,20 +122,20 @@ Para aprofundar seus conhecimentos sobre Big O e Estruturas de Dados, confira os
 - tipo: single
   pergunta: O que a notação Big O mede em um algoritmo?
   opcoes:
-    - texto: Como o tempo de execução cresce conforme a quantidade de dados aumenta
-      correta: true
-      explicacao: Exato! Big O não mede segundos, mas sim como o algoritmo se comporta quando o volume de dados escala.
-      explicacao_erro: Big O não mede o tempo em segundos, mas sim como o tempo de execução cresce proporcionalmente à quantidade de dados.
-    - texto: Quantos segundos um algoritmo leva para executar
-      correta: false
-      explicacao: Big O não mede tempo absoluto. Um algoritmo O(n) pode ser mais rápido ou mais lento que outro dependendo do hardware, mas Big O descreve apenas o crescimento.
-    - texto: Quantos erros um algoritmo pode ter
-      correta: false
-      explicacao: Big O não tem relação com erros. Ele descreve a eficiência e escalabilidade de um algoritmo conforme o volume de dados cresce.
     - texto: Quanta memória RAM o computador possui
       correta: false
       explicacao: Big O descreve o comportamento do algoritmo, não uma característica do hardware. Ele responde à pergunta - se os dados dobrarem, quanto mais tempo vai levar?
 
+    - texto: Como o tempo de execução cresce conforme a quantidade de dados aumenta
+      correta: true
+      explicacao: Exato! Big O não mede segundos, mas sim como o algoritmo se comporta quando o volume de dados escala.
+      explicacao_erro: Big O não mede o tempo em segundos, mas sim como o tempo de execução cresce proporcionalmente à quantidade de dados.
+    - texto: Quantos erros um algoritmo pode ter
+      correta: false
+      explicacao: Big O não tem relação com erros. Ele descreve a eficiência e escalabilidade de um algoritmo conforme o volume de dados cresce.
+    - texto: Quantos segundos um algoritmo leva para executar
+      correta: false
+      explicacao: Big O não mede tempo absoluto. Um algoritmo O(n) pode ser mais rápido ou mais lento que outro dependendo do hardware, mas Big O descreve apenas o crescimento.
 - tipo: single
   pergunta: Qual é a complexidade Big O de um loop dentro de outro loop, onde ambos percorrem a mesma lista de tamanho n?
   opcoes:
@@ -143,12 +143,12 @@ Para aprofundar seus conhecimentos sobre Big O e Estruturas de Dados, confira os
       correta: true
       explicacao: Correto! Para cada elemento do loop externo, o loop interno percorre todos os n elementos. Isso resulta em n × n = n² operações.
       explicacao_erro: Quando há um loop dentro de outro, multiplicamos as complexidades. Como cada loop é O(n), o resultado é O(n × n) = O(n²).
-    - texto: O(n)
-      correta: false
-      explicacao: O(n) seria correto se houvesse apenas um loop. Com dois loops aninhados percorrendo a mesma lista, a complexidade é O(n²).
     - texto: O(1)
       correta: false
       explicacao: O(1) indica tempo constante, ou seja, o algoritmo sempre faz o mesmo número de operações independente do tamanho dos dados. Dois loops aninhados crescem com n².
+    - texto: O(n)
+      correta: false
+      explicacao: O(n) seria correto se houvesse apenas um loop. Com dois loops aninhados percorrendo a mesma lista, a complexidade é O(n²).
     - texto: O(2n)
       correta: false
       explicacao: O(2n) simplifica para O(n) pelas regras do Big O. Dois loops aninhados resultam em O(n²), não em uma soma.
@@ -163,10 +163,10 @@ Para aprofundar seus conhecimentos sobre Big O e Estruturas de Dados, confira os
     - texto: Um tipo de variável que armazena apenas números inteiros
       correta: false
       explicacao: Isso descreve um tipo primitivo de dado, como int. Uma estrutura de dados é um conceito mais amplo que define como organizar e acessar conjuntos de informações.
-    - texto: Uma linguagem de programação voltada para banco de dados
-      correta: false
-      explicacao: Isso descreve linguagens como SQL. Estrutura de dados é um conceito de organização de informações na memória, independente de linguagem.
     - texto: Um algoritmo que ordena elementos de uma lista
       correta: false
       explicacao: Isso descreve um algoritmo de ordenação, como o Bubble Sort. Uma estrutura de dados define como os dados são organizados, não como são processados.
+    - texto: Uma linguagem de programação voltada para banco de dados
+      correta: false
+      explicacao: Isso descreve linguagens como SQL. Estrutura de dados é um conceito de organização de informações na memória, independente de linguagem.
 ```

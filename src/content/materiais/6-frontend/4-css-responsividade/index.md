@@ -822,37 +822,37 @@ Nesta aula prática, você verá como aplicar Flexbox, Grid e media queries para
 
 ```quiz
 - tipo: single
-    pergunta: "Segundo o material, qual é a diferença prática entre um layout 'responsivo' e um layout 'adaptativo'?"
-    opcoes:
-      - texto: "O responsivo funciona apenas em celulares, enquanto o adaptativo é a técnica usada exclusivamente para telas de desktop."
-        correta: false
-        explicacao: "Ambos os conceitos se aplicam a todas as telas (mobile, tablet, desktop). Eles diferem apenas em *como* a mudança de layout ocorre."
-      - texto: "O responsivo exige o uso exclusivo de Flexbox, enquanto o adaptativo funciona apenas com CSS Grid."
-        correta: false
-        explicacao: "A distinção não tem relação com ferramentas específicas (Flexbox ou Grid). O layout adaptativo já existia muito antes dessas tecnologias, usando apenas media queries."
-      - texto: "O responsivo muda de forma fluida e contínua (usando larguras relativas), enquanto o adaptativo troca de layout em etapas (geralmente guiado por breakpoints)."
-        correta: true
-        explicacao: "Correto! Enquanto o layout responsivo se ajusta continuamente e preenche o espaço de forma fluida, o adaptativo dá 'saltos' estruturais baseados em pontos de quebra predefinidos."
-        explicacao_erro: "A principal diferença está na transição: layouts responsivos são fluidos e contínuos, enquanto adaptativos mudam em blocos ou etapas distintas."
-      - texto: "Não há diferença prática; ambos são termos comerciais diferentes para o uso obrigatório de Media Queries no CSS moderno."
-        correta: false
-        explicacao: "Há uma diferença prática estrutural. O adaptativo foca em estados fixos em larguras específicas, enquanto o responsivo foca em flexibilidade contínua."
+  pergunta: "Segundo o material, qual é a diferença prática entre um layout 'responsivo' e um layout 'adaptativo'?"
+  opcoes:
+    - texto: "Não há diferença prática; ambos são termos comerciais diferentes para o uso obrigatório de Media Queries no CSS moderno."
+      correta: false
+      explicacao: "Há uma diferença prática estrutural. O adaptativo foca em estados fixos em larguras específicas, enquanto o responsivo foca em flexibilidade contínua."
 
+    - texto: "O responsivo funciona apenas em celulares, enquanto o adaptativo é a técnica usada exclusivamente para telas de desktop."
+      correta: false
+      explicacao: "Ambos os conceitos se aplicam a todas as telas (mobile, tablet, desktop). Eles diferem apenas em *como* a mudança de layout ocorre."
+    - texto: "O responsivo muda de forma fluida e contínua (usando larguras relativas), enquanto o adaptativo troca de layout em etapas (geralmente guiado por breakpoints)."
+      correta: true
+      explicacao: "Correto! Enquanto o layout responsivo se ajusta continuamente e preenche o espaço de forma fluida, o adaptativo dá 'saltos' estruturais baseados em pontos de quebra predefinidos."
+      explicacao_erro: "A principal diferença está na transição: layouts responsivos são fluidos e contínuos, enquanto adaptativos mudam em blocos ou etapas distintas."
+    - texto: "O responsivo exige o uso exclusivo de Flexbox, enquanto o adaptativo funciona apenas com CSS Grid."
+      correta: false
+      explicacao: "A distinção não tem relação com ferramentas específicas (Flexbox ou Grid). O layout adaptativo já existia muito antes dessas tecnologias, usando apenas media queries."
 - tipo: single
-    pergunta: "No Flexbox, é comum a confusão entre as propriedades `align-items` e `align-content`. Qual é a principal diferença entre elas descrita no texto?"
-    opcoes:
-      - texto: "`align-items` alinha os itens individualmente dentro de uma linha, enquanto `align-content` alinha o conjunto de linhas inteiras, funcionando apenas quando há múltiplas linhas."
-        correta: true
-        explicacao: "Exatamente! Se você tem apenas uma linha de itens, `align-content` não fará diferença. Ele serve para distribuir o espaço entre múltiplas linhas geradas pelo `flex-wrap`."
-        explicacao_erro: "`align-items` trabalha no posicionamento dos itens na linha atual, enquanto `align-content` gerencia o espaçamento de todo o bloco de linhas dentro do container."
-      - texto: "`align-items` funciona no eixo principal (main axis), enquanto `align-content` atua no eixo transversal (cross axis)."
-        correta: false
-        explicacao: "Ambas as propriedades operam no eixo transversal (cross axis). Quem opera no eixo principal (main axis) é o `justify-content`."
-      - texto: "`align-content` é usado exclusivamente para alinhar texto dentro dos itens, enquanto `align-items` move as caixas inteiras no layout."
-        correta: false
-        explicacao: "Ambas as propriedades afetam as caixas (itens). O alinhamento do texto interno é controlado por regras de texto ou transformando o próprio item em um novo container Flex."
-      - texto: "Ambas fazem exatamente a mesma coisa, mas `align-items` deve ser declarada nos filhos (flex items) e `align-content` no pai (flex container)."
-        correta: false
-        explicacao: "Falso. Tanto `align-items` quanto `align-content` são propriedades de container, ou seja, declaradas exclusivamente no elemento pai."
+  pergunta: "No Flexbox, é comum a confusão entre as propriedades `align-items` e `align-content`. Qual é a principal diferença entre elas descrita no texto?"
+  opcoes:
+    - texto: "`align-items` alinha os itens individualmente dentro de uma linha, enquanto `align-content` alinha o conjunto de linhas inteiras, funcionando apenas quando há múltiplas linhas."
+      correta: true
+      explicacao: "Exatamente! Se você tem apenas uma linha de itens, `align-content` não fará diferença. Ele serve para distribuir o espaço entre múltiplas linhas geradas pelo `flex-wrap`."
+      explicacao_erro: "`align-items` trabalha no posicionamento dos itens na linha atual, enquanto `align-content` gerencia o espaçamento de todo o bloco de linhas dentro do container."
+    - texto: "Ambas fazem exatamente a mesma coisa, mas `align-items` deve ser declarada nos filhos (flex items) e `align-content` no pai (flex container)."
+      correta: false
+      explicacao: "Falso. Tanto `align-items` quanto `align-content` são propriedades de container, ou seja, declaradas exclusivamente no elemento pai."
 
+    - texto: "`align-items` funciona no eixo principal (main axis), enquanto `align-content` atua no eixo transversal (cross axis)."
+      correta: false
+      explicacao: "Ambas as propriedades operam no eixo transversal (cross axis). Quem opera no eixo principal (main axis) é o `justify-content`."
+    - texto: "`align-content` é usado exclusivamente para alinhar texto dentro dos itens, enquanto `align-items` move as caixas inteiras no layout."
+      correta: false
+      explicacao: "Ambas as propriedades afetam as caixas (itens). O alinhamento do texto interno é controlado por regras de texto ou transformando o próprio item em um novo container Flex."
 ```

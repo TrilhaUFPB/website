@@ -345,10 +345,6 @@ São vídeos em inglês e por causa do sotaque deles é um pouco mais díficil d
 - tipo: single
   pergunta: "Sua API possui uma rota que gera um relatório financeiro em PDF, um processo que leva cerca de 45 segundos. Atualmente, os clientes fazem a requisição HTTP e ficam aguardando, mas durante picos de uso, muitos recebem erro de '504 Gateway Timeout'. Qual é a melhor abordagem arquitetural para resolver esse problema de forma definitiva?"
   opcoes:
-    - texto: "Mudar para um fluxo assíncrono: a API aceita o pedido, coloca em uma fila, e devolve imediatamente um 'Job ID' para o cliente consultar o status (polling) depois."
-      correta: true
-      explicacao: "Perfeito! Para operações longas, separar o pedido da conclusão evita que conexões fiquem presas e estourem timeouts. A fila absorve o pico e o cliente ganha previsibilidade."
-      explicacao_erro: "Em operações muito longas e variáveis (como gerar um PDF pesado), manter a conexão síncrona aberta consome recursos do servidor à toa e aumenta o risco de timeouts no meio do caminho. O modelo assíncrono com devolução de um ID resolve isso."
     - texto: "Aumentar o timeout do Load Balancer e do servidor web para 120 segundos, mantendo a comunicação síncrona."
       correta: false
       explicacao: "Aumentar o timeout apenas mascara o problema. Em momentos de pico, as conexões presas por 45+ segundos vão esgotar a memória e os workers do servidor, causando instabilidade."
@@ -359,12 +355,13 @@ São vídeos em inglês e por causa do sotaque deles é um pouco mais díficil d
       correta: false
       explicacao: "A sintaxe async/await lida com concorrência e liberação de I/O, não com paralelismo de CPU. Gerar um PDF costuma ser CPU-bound, então apenas usar 'async' não resolve o problema do gargalo nem o timeout do cliente."
 
+    - texto: "Mudar para um fluxo assíncrono: a API aceita o pedido, coloca em uma fila, e devolve imediatamente um 'Job ID' para o cliente consultar o status (polling) depois."
+      correta: true
+      explicacao: "Perfeito! Para operações longas, separar o pedido da conclusão evita que conexões fiquem presas e estourem timeouts. A fila absorve o pico e o cliente ganha previsibilidade."
+      explicacao_erro: "Em operações muito longas e variáveis (como gerar um PDF pesado), manter a conexão síncrona aberta consome recursos do servidor à toa e aumenta o risco de timeouts no meio do caminho. O modelo assíncrono com devolução de um ID resolve isso."
 - tipo: single
   pergunta: "Você refatorou uma rota do seu backend FastAPI, trocando requisições síncronas (`requests.get`) por requisições assíncronas (`httpx.AsyncClient().get`). As chamadas vão para um banco de dados e uma API externa (ambos I/O-bound). O que acontece de fato no servidor quando essa rota recebe alto tráfego?"
   opcoes:
-    - texto: "A API externa e o banco de dados processarão a requisição mais rápido, pois recebem um comando assíncrono."
-      correta: false
-      explicacao: "O assincronismo do seu código afeta apenas a forma como o SEU servidor gerencia a espera. O banco e a API externa não sabem (nem se importam) se você usou código bloqueante ou não bloqueante."
     - texto: "O servidor executará múltiplas tarefas ao mesmo tempo em diferentes núcleos do processador (paralelismo real)."
       correta: false
       explicacao: "Execução assíncrona baseada em event loop (como no asyncio do Python) lida com concorrência, não paralelismo. As tarefas se alternam na mesma thread, aproveitando o tempo de espera."
@@ -376,12 +373,12 @@ São vídeos em inglês e por causa do sotaque deles é um pouco mais díficil d
       explicacao: "Isso mesmo! A grande vantagem da execução assíncrona (não-bloqueante) em I/O é liberar a thread do servidor para fazer outras coisas úteis (como aceitar novas requisições) em vez de ficar ociosa esperando a rede responder."
       explicacao_erro: "A execução assíncrona não acelera as dependências externas. O ganho está na eficiência do servidor: em vez de a thread dormir esperando o I/O, ela é liberada para atender outras conexões simultâneas."
 
+    - texto: "A API externa e o banco de dados processarão a requisição mais rápido, pois recebem um comando assíncrono."
+      correta: false
+      explicacao: "O assincronismo do seu código afeta apenas a forma como o SEU servidor gerencia a espera. O banco e a API externa não sabem (nem se importam) se você usou código bloqueante ou não bloqueante."
 - tipo: single
   pergunta: "Dois microsserviços internos, 'Pedidos' e 'Notas Fiscais', precisam se comunicar. 'Pedidos' solicita a emissão de uma nota, o que leva cerca de 5 minutos. Como 'Pedidos' não pode ficar parado esperando, qual padrão de comunicação assíncrona é o mais eficiente para evitar tráfego de rede desnecessário?"
   opcoes:
-    - texto: "Polling com intervalo de 1 segundo. 'Pedidos' pergunta a cada segundo se a nota já está pronta."
-      correta: false
-      explicacao: "Se a nota leva 5 minutos, consultar a cada segundo geraria 300 requisições inúteis por pedido. Isso sobrecarrega a rede e o banco de dados desnecessariamente."
     - texto: "Webhooks (Callbacks). O microsserviço 'Pedidos' informa uma URL, e o serviço de 'Notas Fiscais' faz um POST nessa URL assim que terminar."
       correta: true
       explicacao: "Correto! Como ambos são serviços de backend, eles podem expor endpoints. O Webhook é perfeito aqui porque elimina a necessidade de ficar 'perguntando' (polling), notificando apenas quando o trabalho realmente acaba."
@@ -389,6 +386,9 @@ São vídeos em inglês e por causa do sotaque deles é um pouco mais díficil d
     - texto: "Comunicação síncrona HTTP padrão, mantendo a conexão aberta por 5 minutos."
       correta: false
       explicacao: "Manter uma conexão HTTP aberta por 5 minutos é um péssimo design. Qualquer falha na rede no minuto 4 resultaria na perda da comunicação, além de bloquear recursos."
+    - texto: "Polling com intervalo de 1 segundo. 'Pedidos' pergunta a cada segundo se a nota já está pronta."
+      correta: false
+      explicacao: "Se a nota leva 5 minutos, consultar a cada segundo geraria 300 requisições inúteis por pedido. Isso sobrecarrega a rede e o banco de dados desnecessariamente."
     - texto: "Uso de chaves de Idempotência no banco de dados."
       correta: false
       explicacao: "A idempotência é uma técnica para evitar duplicação em caso de retries, e não um padrão de notificação de que um trabalho terminou."

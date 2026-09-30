@@ -96,44 +96,40 @@ Para aprofundar seus conhecimentos sobre aplicações e pipelines de dados, conf
 - tipo: single
   pergunta: Qual subárea de dados é responsável por construir a infraestrutura, garantir o fluxo e a qualidade dos dados?
   opcoes:
-    - texto: Engenharia de dados
-      correta: true
-      explicacao: Correto! A engenharia de dados cuida da infraestrutura, do fluxo e da qualidade — ela constrói as fundações sobre as quais as demais subáreas operam.
-      explicacao_erro: A engenharia de dados é a responsável pela infraestrutura e qualidade dos dados. Ciência de dados foca em modelagem e análise de dados em linguagem de negócio.
-    - texto: Ciência de dados
-      correta: false
-      explicacao: A ciência de dados aplica estatística e aprendizado de máquina para descobrir padrões. A infraestrutura e o fluxo de dados são responsabilidade da engenharia de dados.
-    - texto: Análise de dados
-      correta: false
-      explicacao: A análise de dados transforma resultados em informação acionável para o negócio. A infraestrutura é responsabilidade da engenharia de dados.
     - texto: Analytics & BI
       correta: false
       explicacao: Analytics & BI é uma aplicação que consome dados já preparados. A construção da infraestrutura é papel da engenharia de dados.
 
+    - texto: Análise de dados
+      correta: false
+      explicacao: A análise de dados transforma resultados em informação acionável para o negócio. A infraestrutura é responsabilidade da engenharia de dados.
+    - texto: Ciência de dados
+      correta: false
+      explicacao: A ciência de dados aplica estatística e aprendizado de máquina para descobrir padrões. A infraestrutura e o fluxo de dados são responsabilidade da engenharia de dados.
+    - texto: Engenharia de dados
+      correta: true
+      explicacao: Correto! A engenharia de dados cuida da infraestrutura, do fluxo e da qualidade — ela constrói as fundações sobre as quais as demais subáreas operam.
+      explicacao_erro: A engenharia de dados é a responsável pela infraestrutura e qualidade dos dados. Ciência de dados foca em modelagem e análise de dados em linguagem de negócio.
 - tipo: single
   pergunta: Qual é a ordem correta das etapas em uma pipeline de dados?
   opcoes:
-    - texto: Coleta → Armazenamento → Processamento → Exploração → Visualização → Deploy
-      correta: true
-      explicacao: Correto! Esse é o fluxo padrão de uma pipeline de dados, da ingestão até a entrega de valor e monitoramento contínuo.
-      explicacao_erro: A pipeline segue a ordem natural do ciclo de vida dos dados, começando pela coleta e terminando no deploy e monitoramento.
+    - texto: Coleta → Processamento → Armazenamento → Deploy → Exploração → Visualização
+      correta: false
+      explicacao: O armazenamento geralmente ocorre antes do processamento, e a exploração e modelagem antecedem o deploy em produção.
+
     - texto: Exploração → Coleta → Processamento → Armazenamento → Visualização → Deploy
       correta: false
       explicacao: Não é possível explorar dados antes de coletá-los e armazená-los. A exploração ocorre após o processamento e estruturação.
     - texto: Armazenamento → Coleta → Visualização → Processamento → Deploy → Exploração
       correta: false
       explicacao: Os dados precisam ser coletados antes de serem armazenados, e processados antes de serem visualizados. Essa ordem está invertida.
-    - texto: Coleta → Processamento → Armazenamento → Deploy → Exploração → Visualização
-      correta: false
-      explicacao: O armazenamento geralmente ocorre antes do processamento, e a exploração e modelagem antecedem o deploy em produção.
-
+    - texto: Coleta → Armazenamento → Processamento → Exploração → Visualização → Deploy
+      correta: true
+      explicacao: Correto! Esse é o fluxo padrão de uma pipeline de dados, da ingestão até a entrega de valor e monitoramento contínuo.
+      explicacao_erro: A pipeline segue a ordem natural do ciclo de vida dos dados, começando pela coleta e terminando no deploy e monitoramento.
 - tipo: single
   pergunta: O que é ETL Reverso no contexto de aplicações de dados?
   opcoes:
-    - texto: O processo de enviar dados de volta para as fontes de dados originais ou sistemas operacionais.
-      correta: true
-      explicacao: Correto! O ETL Reverso inverte o fluxo tradicional — em vez de extrair dados dos sistemas para análise, ele envia os resultados analíticos de volta para os sistemas de origem, como CRMs ou plataformas de marketing.
-      explicacao_erro: O ETL Reverso consiste em enviar dados de volta para as fontes originais, integrando insights analíticos aos sistemas operacionais do negócio.
     - texto: Um processo de ETL que executa as etapas na ordem inversa (Load → Transform → Extract).
       correta: false
       explicacao: Isso descreve o ELT (Extract, Load, Transform), não o ETL Reverso. O ETL Reverso refere-se ao envio de dados de volta para sistemas de origem.
@@ -143,4 +139,8 @@ Para aprofundar seus conhecimentos sobre aplicações e pipelines de dados, conf
     - texto: O processo de reprocessar dados que falharam durante a pipeline.
       correta: false
       explicacao: Reprocessamento de falhas é uma prática de resiliência de pipelines. O ETL Reverso tem um significado específico — enviar dados de volta para sistemas de origem.
+    - texto: O processo de enviar dados de volta para as fontes de dados originais ou sistemas operacionais.
+      correta: true
+      explicacao: Correto! O ETL Reverso inverte o fluxo tradicional — em vez de extrair dados dos sistemas para análise, ele envia os resultados analíticos de volta para os sistemas de origem, como CRMs ou plataformas de marketing.
+      explicacao_erro: O ETL Reverso consiste em enviar dados de volta para as fontes originais, integrando insights analíticos aos sistemas operacionais do negócio.
 ```

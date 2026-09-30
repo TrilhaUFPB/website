@@ -501,9 +501,6 @@ Conteúdo da pycom de 2010 bastante denso mas possui uma mostragem prática do G
       correta: true
       explicacao: "Exato! Em workloads focados em CPU (CPU-bound), o GIL impede que threads executem bytecode Python simultaneamente em múltiplos núcleos. Elas acabam se revezando, não gerando ganho de tempo."
       explicacao_erro: "As threads no CPython não executam código Python puro em paralelo real por causa do GIL. Por isso, para tarefas CPU-bound pesadas, usar `threading` gera overhead de coordenação sem ganho real de velocidade."
-    - texto: "O event loop do Python travou porque você não utilizou a palavra-chave `await` dentro da função das threads."
-      correta: false
-      explicacao: "O event loop e as palavras-chave `async/await` pertencem ao modelo do `asyncio`, que é diferente do modelo de `threading` clássico."
     - texto: "Threads no Python têm memórias totalmente isoladas, então o tempo foi gasto copiando as imagens para cada uma delas."
       correta: false
       explicacao: "Threads do mesmo processo compartilham a mesma memória. O isolamento de memória é uma característica do `multiprocessing` (processos)."
@@ -511,6 +508,9 @@ Conteúdo da pycom de 2010 bastante denso mas possui uma mostragem prática do G
       correta: false
       explicacao: "Acessar a mesma variável sem lock causa 'condição de corrida' (dados corrompidos ou inconsistentes), mas não trava o programa sozinho. O travamento sem erro geralmente aponta para um deadlock envolvendo Locks disputados ou, neste caso do enunciado, apenas o comportamento esperado do GIL."
 
+    - texto: "O event loop do Python travou porque você não utilizou a palavra-chave `await` dentro da função das threads."
+      correta: false
+      explicacao: "O event loop e as palavras-chave `async/await` pertencem ao modelo do `asyncio`, que é diferente do modelo de `threading` clássico."
 - tipo: single
   pergunta: "Você refatorou uma rota de relatórios para usar `multiprocessing`, já que é uma tarefa estritamente CPU-bound. Na função que o processo worker executa, você incrementa uma variável global chamada `total_relatorios_gerados += 1`. Ao final da execução, o processo principal imprime essa variável e o valor continua sendo 0. Qual foi o erro conceitual?"
   opcoes:
@@ -520,11 +520,11 @@ Conteúdo da pycom de 2010 bastante denso mas possui uma mostragem prática do G
     - texto: "O bloco `if __name__ == '__main__':` não foi utilizado, o que resetou a variável durante a execução dos workers."
       correta: false
       explicacao: "Embora a falta do `if __name__ == '__main__':` cause erros graves (como loops de criação de processos no Windows), o fato da variável não atualizar se deve estritamente ao isolamento de memória entre processos."
+    - texto: "O interpretador ativou o GIL para proteger a variável global, bloqueando a escrita pelos processos filhos."
+      correta: false
+      explicacao: "O GIL atua no nível da thread dentro de um único processo. Processos separados têm interpretadores separados e GILs separados, não interferindo uns nos outros."
     - texto: "Em `multiprocessing`, cada processo tem sua própria memória isolada. A variável alterada no worker não é a mesma do processo principal."
       correta: true
       explicacao: "Correto! Diferente das threads, processos não compartilham estado automaticamente. Alterar uma variável global dentro de um worker altera apenas a cópia daquele worker. Para compartilhar dados, é necessário enviar os resultados explicitamente (ex: retorno da função ou Filas inter-processo)."
       explicacao_erro: "Processos no sistema operacional possuem espaços de memória separados. Variáveis globais não são sincronizadas entre o processo 'Pai' (principal) e os processos 'Filhos' (workers)."
-    - texto: "O interpretador ativou o GIL para proteger a variável global, bloqueando a escrita pelos processos filhos."
-      correta: false
-      explicacao: "O GIL atua no nível da thread dentro de um único processo. Processos separados têm interpretadores separados e GILs separados, não interferindo uns nos outros."
 ```

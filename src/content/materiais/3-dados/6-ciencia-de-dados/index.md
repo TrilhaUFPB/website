@@ -558,9 +558,10 @@ Para aprofundar seus conhecimentos sobre Ciências de Dados, confira os seguinte
 - tipo: single
   pergunta: Uma empresa quer prever se um cliente vai cancelar a assinatura (sim ou não) usando dados históricos de comportamento com resultado já conhecido. Que tipo de aprendizado é mais adequado?
   opcoes:
-    - texto: Aprendizado não supervisionado, pois o algoritmo vai agrupar clientes parecidos
+    - texto: Deep Learning, pois é sempre a melhor opção para prever comportamento de clientes
       correta: false
-      explicacao: Não supervisionado é usado quando não há rótulos conhecidos. Aqui já sabemos quais clientes cancelaram no passado, ou seja, existe um rótulo (target) disponível para o treino.
+      explicacao: Deep Learning é uma abordagem técnica (redes neurais em camadas), não uma categoria de aprendizado. Para dados tabulares como este, modelos mais simples costumam funcionar tão bem ou melhor.
+
     - texto: Aprendizado supervisionado, pois existem dados históricos com o resultado (cancelou ou não) já conhecido
       correta: true
       explicacao: Exato! Quando temos exemplos passados com a resposta correta (cancelou/não cancelou), o algoritmo aprende a mapear entradas para essa saída conhecida — a definição central do aprendizado supervisionado.
@@ -568,13 +569,16 @@ Para aprofundar seus conhecimentos sobre Ciências de Dados, confira os seguinte
     - texto: Aprendizado por reforço, pois o modelo vai aprender por tentativa e erro
       correta: false
       explicacao: Reforço é usado quando o algoritmo toma ações num ambiente e recebe recompensas/punições ao longo do tempo, não quando já existe uma base de dados histórica rotulada.
-    - texto: Deep Learning, pois é sempre a melhor opção para prever comportamento de clientes
+    - texto: Aprendizado não supervisionado, pois o algoritmo vai agrupar clientes parecidos
       correta: false
-      explicacao: Deep Learning é uma abordagem técnica (redes neurais em camadas), não uma categoria de aprendizado. Para dados tabulares como este, modelos mais simples costumam funcionar tão bem ou melhor.
-
+      explicacao: Não supervisionado é usado quando não há rótulos conhecidos. Aqui já sabemos quais clientes cancelaram no passado, ou seja, existe um rótulo (target) disponível para o treino.
 - tipo: single
   pergunta: Um modelo atinge 99% de acerto no conjunto de treino, mas apenas 60% em dados novos (teste). O que provavelmente aconteceu e o que isso significa?
   opcoes:
+    - texto: Faltam mais dados de treino para o modelo aprender melhor
+      correta: false
+      explicacao: Embora mais dados às vezes ajudem, o sintoma descrito (treino ótimo, teste ruim) é a assinatura de overfitting, que geralmente se resolve reduzindo a complexidade do modelo ou usando técnicas de regularização/validação, não apenas adicionando dados.
+
     - texto: Underfitting, porque o modelo é simples demais para aprender os padrões
       correta: false
       explicacao: Underfitting apresenta desempenho ruim tanto no treino quanto no teste. Aqui o treino está ótimo, o que aponta para o problema oposto.
@@ -585,10 +589,6 @@ Para aprofundar seus conhecimentos sobre Ciências de Dados, confira os seguinte
     - texto: O modelo está funcionando corretamente, pois 99% no treino é sempre um bom sinal
       correta: false
       explicacao: Um desempenho excelente no treino não garante nada sobre a capacidade de generalização. O que importa de fato é o desempenho em dados novos (validação/teste).
-    - texto: Faltam mais dados de treino para o modelo aprender melhor
-      correta: false
-      explicacao: Embora mais dados às vezes ajudem, o sintoma descrito (treino ótimo, teste ruim) é a assinatura de overfitting, que geralmente se resolve reduzindo a complexidade do modelo ou usando técnicas de regularização/validação, não apenas adicionando dados.
-
 - tipo: single
   pergunta: Um banco está construindo um modelo para detectar fraude em transações (evento raro). Deixar uma fraude passar despercebida (falso negativo) é muito mais caro do que bloquear uma transação legítima por engano. Qual métrica deve orientar a escolha do modelo?
   opcoes:
@@ -599,12 +599,12 @@ Para aprofundar seus conhecimentos sobre Ciências de Dados, confira os seguinte
       correta: true
       explicacao: Exato! Recall responde "dos positivos reais, quantos eu encontrei?". Como o custo de deixar passar uma fraude é o mais alto, priorizar recall garante que o modelo capture o maior número possível de fraudes reais.
       explicacao_erro: A pergunta certa aqui é "qual erro dói mais no meu problema?". Como deixar fraude passar (falso negativo) é mais caro que bloquear por engano (falso positivo), a métrica que prioriza captar os positivos reais é o recall.
-    - texto: Precisão, pois garante que toda transação marcada como fraude realmente seja fraude
-      correta: false
-      explicacao: Precisão é importante quando o custo de um falso positivo é alto. Mas no cenário descrito, o custo de deixar passar uma fraude (falso negativo) é o que mais preocupa, então recall é mais adequado.
     - texto: R², pois compara o modelo com uma previsão simples de baseline
       correta: false
       explicacao: R² é uma métrica de regressão (usada quando o target é um número contínuo). Detecção de fraude é um problema de classificação, então métricas como recall, precisão e F1 são as apropriadas.
+    - texto: Precisão, pois garante que toda transação marcada como fraude realmente seja fraude
+      correta: false
+      explicacao: Precisão é importante quando o custo de um falso positivo é alto. Mas no cenário descrito, o custo de deixar passar uma fraude (falso negativo) é o que mais preocupa, então recall é mais adequado.
 ```
 # Referências
 

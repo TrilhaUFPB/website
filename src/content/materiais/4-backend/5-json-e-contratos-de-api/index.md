@@ -714,10 +714,11 @@ Para aprofundar seus conhecimentos sobre JSON e contratos de API, confira os seg
   pergunta: |
     Uma API bancária armazena IDs de transação como inteiros de 64 bits (ex: `9007199254740993`). Um desenvolvedor front-end percebe que, ao processar a resposta JSON no navegador, o ID chega alterado (`9007199254740992`). Qual é a causa mais provável desse problema?
   opcoes:
-    - texto: O servidor está com um bug na serialização e precisa ser corrigido urgentemente
+    - texto: O problema é exclusivo de conexões HTTP sem HTTPS
       correta: false
       explicacao: |
-        O servidor pode estar enviando o valor corretamente. O problema geralmente acontece ao interpretar o número no cliente, não ao gerá-lo no servidor.
+        O protocolo de transporte não interfere na forma como os números são interpretados. Isso é uma questão de tipos de dados, não de segurança de rede.
+
     - texto: Números em JSON são todos tratados como ponto flutuante de dupla precisão, e o JavaScript perde precisão em inteiros muito grandes
       correta: true
       explicacao: |
@@ -728,19 +729,14 @@ Para aprofundar seus conhecimentos sobre JSON e contratos de API, confira os seg
       correta: false
       explicacao: |
         Não existe esse limite de dígitos na especificação do JSON. O problema é de precisão na representação em ponto flutuante, não de quantidade de dígitos.
-    - texto: O problema é exclusivo de conexões HTTP sem HTTPS
+    - texto: O servidor está com um bug na serialização e precisa ser corrigido urgentemente
       correta: false
       explicacao: |
-        O protocolo de transporte não interfere na forma como os números são interpretados. Isso é uma questão de tipos de dados, não de segurança de rede.
-
+        O servidor pode estar enviando o valor corretamente. O problema geralmente acontece ao interpretar o número no cliente, não ao gerá-lo no servidor.
 - tipo: single
   pergunta: |
     Ao implementar o cadastro de usuários, um desenvolvedor usa a mesma classe Pydantic para receber os dados de entrada e devolver a resposta da API. Um usuário mal-intencionado consegue enviar um campo `is_admin: true` no corpo da requisição e se tornar administrador. Qual prática de design de contratos evitaria essa vulnerabilidade?
   opcoes:
-    - texto: Adicionar mais validação de força de senha no cadastro
-      correta: false
-      explicacao: |
-        A força da senha não tem relação com esse problema. A vulnerabilidade está em aceitar campos que o cliente não deveria poder definir.
     - texto: Usar DTOs separados para entrada e saída, garantindo que apenas os campos esperados sejam aceitos pelo servidor
       correta: true
       explicacao: |
@@ -751,6 +747,10 @@ Para aprofundar seus conhecimentos sobre JSON e contratos de API, confira os seg
       correta: false
       explicacao: |
         O formato de serialização não influencia esse tipo de vulnerabilidade. O problema está na modelagem do contrato, não no formato dos dados.
+    - texto: Adicionar mais validação de força de senha no cadastro
+      correta: false
+      explicacao: |
+        A força da senha não tem relação com esse problema. A vulnerabilidade está em aceitar campos que o cliente não deveria poder definir.
     - texto: Aumentar o tempo de expiração do token de autenticação
       correta: false
       explicacao: |

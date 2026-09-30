@@ -1246,26 +1246,26 @@ Para aprofundar seus conhecimentos sobre cliente-servidor, APIs e arquitetura ba
     - texto: O cliente e o servidor têm exatamente as mesmas responsabilidades
       correta: false
       explicacao: Cliente e servidor têm papéis bem diferentes. O cliente cuida da interação com o usuário, e o servidor garante as regras de negócio de verdade.
-    - texto: Apenas o servidor interage com o usuário
-      correta: false
-      explicacao: É o cliente que interage diretamente com o usuário, coletando entradas e exibindo resultados. O servidor processa a lógica por trás dessas interações.
     - texto: Apenas o cliente pode acessar o banco de dados
       correta: false
       explicacao: É o servidor que acessa e consulta os dados, não o cliente. O cliente apenas exibe o que recebe do servidor.
 
+    - texto: Apenas o servidor interage com o usuário
+      correta: false
+      explicacao: É o cliente que interage diretamente com o usuário, coletando entradas e exibindo resultados. O servidor processa a lógica por trás dessas interações.
 - tipo: single
   pergunta: Por que a validação feita apenas no lado do cliente não é suficiente?
   opcoes:
-    - texto: Porque o usuário controla o ambiente do cliente e pode enviar requisições sem passar pela interface
-      correta: true
-      explicacao: Exato! Como o cliente não é confiável, a validação nele é apenas conveniência. A validação real e obrigatória precisa acontecer no servidor.
-      explicacao_erro: A validação no cliente é apenas uma conveniência de UX. Como o usuário controla o ambiente do cliente, apenas o servidor pode garantir que as regras sejam realmente cumpridas.
     - texto: Porque o cliente nunca consegue validar nada
       correta: false
       explicacao: O cliente pode sim fazer validações básicas de UX, como checar campos vazios. O problema é que essas validações não são garantia de segurança.
     - texto: Porque o servidor é mais lento que o cliente
       correta: false
       explicacao: A questão não é velocidade, mas confiabilidade. O servidor precisa validar porque é o único lado que garante que as regras sejam cumpridas de verdade.
+    - texto: Porque o usuário controla o ambiente do cliente e pode enviar requisições sem passar pela interface
+      correta: true
+      explicacao: Exato! Como o cliente não é confiável, a validação nele é apenas conveniência. A validação real e obrigatória precisa acontecer no servidor.
+      explicacao_erro: A validação no cliente é apenas uma conveniência de UX. Como o usuário controla o ambiente do cliente, apenas o servidor pode garantir que as regras sejam realmente cumpridas.
     - texto: Porque o cliente não tem acesso à internet
       correta: false
       explicacao: O cliente normalmente tem acesso à internet, é assim que ele se comunica com o servidor. O problema é que ele não é confiável para garantir regras de negócio.
@@ -1277,13 +1277,13 @@ Para aprofundar seus conhecimentos sobre cliente-servidor, APIs e arquitetura ba
       correta: true
       explicacao: Exato! O contrato define exatamente o formato de entradas, saídas e erros, permitindo que o cliente integre com confiança.
       explicacao_erro: Um contrato de API define regras claras sobre entradas, saídas e erros, permitindo que cliente e servidor trabalhem juntos sem precisar conhecer a implementação interna um do outro.
-    - texto: Um documento legal assinado entre a empresa e o cliente
-      correta: false
-      explicacao: Não se trata de um documento jurídico, mas sim de um acordo técnico sobre como a API deve se comportar de forma previsível.
     - texto: Uma promessa de que a API nunca vai mudar
       correta: false
       explicacao: APIs podem evoluir com o tempo. O contrato define quais mudanças são compatíveis (como adicionar um campo opcional) e quais quebram os clientes existentes.
     - texto: Uma configuração de segurança do servidor
       correta: false
       explicacao: O contrato trata da previsibilidade da comunicação entre cliente e servidor (formatos, erros, regras), não especificamente de configurações de segurança.
+    - texto: Um documento legal assinado entre a empresa e o cliente
+      correta: false
+      explicacao: Não se trata de um documento jurídico, mas sim de um acordo técnico sobre como a API deve se comportar de forma previsível.
 ```

@@ -63,6 +63,11 @@ Para aprofundar seus conhecimentos sobre engenharia de dados, confira os seguint
     Um time de ciência de dados reclama que os modelos vivem quebrando porque os dados chegam incompletos e em formatos que mudam sem aviso.
     Segundo o que vimos, de quem é a base que precisa ser resolvida primeiro?
   opcoes:
+    - texto: "Da área de negócio, que deveria definir melhor os relatórios"
+      correta: false
+      explicacao: |
+        Definir bem os requisitos ajuda, mas não resolve dados chegando incompletos e com formato variável. Isso é garantido pelos processos de ingestão e monitoramento de qualidade.
+
     - texto: "Da própria ciência de dados, que deveria tratar os dados dentro do modelo"
       correta: false
       explicacao: |
@@ -73,34 +78,33 @@ Para aprofundar seus conhecimentos sobre engenharia de dados, confira os seguint
         Correto! Sem uma base sólida de ingestão, armazenamento e qualidade, cientistas e analistas têm dificuldade para acessar dados limpos e consistentes. É essa fundação que a engenharia de dados sustenta.
       explicacao_erro: |
         A relação entre as áreas é de dependência: análise e ciência de dados consomem o que a engenharia produz. Dados incompletos e com formato instável apontam para a camada que os coleta e padroniza.
-    - texto: "Da área de negócio, que deveria definir melhor os relatórios"
-      correta: false
-      explicacao: |
-        Definir bem os requisitos ajuda, mas não resolve dados chegando incompletos e com formato variável. Isso é garantido pelos processos de ingestão e monitoramento de qualidade.
-
 - tipo: single
   pergunta: |
     O que o **ETL (Extract, Transform, Load)** representa no contexto da engenharia de dados?
   opcoes:
+    - texto: "Um tipo de banco de dados otimizado para análise"
+      correta: false
+      explicacao: |
+        Isso descreve um data warehouse, que costuma ser o **destino** de um processo de ETL — não o processo em si.
+
+    - texto: "Uma linguagem de programação usada para consultar bancos relacionais"
+      correta: false
+      explicacao: |
+        Essa é a descrição do SQL. O ETL não é uma linguagem, e sim um padrão de fluxo que pode ser implementado com SQL, Python, Spark e outras ferramentas.
     - texto: "O fluxo de extrair dados das fontes, transformá-los conforme regras de negócio e carregá-los em um destino"
       correta: true
       explicacao: |
         Exato! É o conceito central que descreve o caminho do dado desde os sistemas de origem até um sistema de destino analítico ou operacional.
       explicacao_erro: |
         As três letras são as próprias etapas, em ordem: Extract (extrair da fonte), Transform (aplicar regras de negócio) e Load (carregar no destino).
-    - texto: "Uma linguagem de programação usada para consultar bancos relacionais"
-      correta: false
-      explicacao: |
-        Essa é a descrição do SQL. O ETL não é uma linguagem, e sim um padrão de fluxo que pode ser implementado com SQL, Python, Spark e outras ferramentas.
-    - texto: "Um tipo de banco de dados otimizado para análise"
-      correta: false
-      explicacao: |
-        Isso descreve um data warehouse, que costuma ser o **destino** de um processo de ETL — não o processo em si.
-
 - tipo: single
   pergunta: |
     Entre as tecnologias centrais da engenharia de dados, qual é a função do **Bash / shell**?
   opcoes:
+    - texto: "Fornecer ambiente escalável de computação e armazenamento sob demanda"
+      correta: false
+      explicacao: |
+        Essa é a descrição da infraestrutura em nuvem (AWS, Azure, GCP), que dispensa manter hardware próprio e permite ajustar recursos conforme a necessidade.
     - texto: "Consultar e transformar dados em bancos relacionais e data warehouses"
       correta: false
       explicacao: |
@@ -111,8 +115,4 @@ Para aprofundar seus conhecimentos sobre engenharia de dados, confira os seguint
         Isso mesmo! O shell é a cola do dia a dia: agenda rotinas, encadeia scripts e move dados entre serviços diferentes, mesmo quando cada um foi escrito em outra linguagem.
       explicacao_erro: |
         Pense no que fica *em volta* do pipeline: alguém precisa disparar os scripts na hora certa e mover arquivos entre etapas. Esse papel de automação e integração com o sistema operacional é do shell.
-    - texto: "Fornecer ambiente escalável de computação e armazenamento sob demanda"
-      correta: false
-      explicacao: |
-        Essa é a descrição da infraestrutura em nuvem (AWS, Azure, GCP), que dispensa manter hardware próprio e permite ajustar recursos conforme a necessidade.
 ```
