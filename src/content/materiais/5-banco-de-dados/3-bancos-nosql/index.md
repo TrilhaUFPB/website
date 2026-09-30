@@ -241,68 +241,68 @@ Para aprofundar seus conhecimentos sobre bancos de dados NoSQL, confira o seguin
 - tipo: single
   pergunta: Por que dois documentos na mesma coleção MongoDB podem ter campos diferentes entre si?
   opcoes:
-    - texto: Porque bancos de documentos não seguem um esquema fixo — cada documento pode ter sua própria estrutura
+    - texto: Porque o MongoDB corrompe os dados quando o volume de gravações cresce muito rápido
+      correta: false
+      explicacao: Não tem relação com corrupção de dados. Documentos com campos diferentes numa mesma coleção são um comportamento normal e esperado do modelo, não um erro.
+    - texto: Porque cada documento da coleção fica salvo fisicamente em um banco separado
+      correta: false
+      explicacao: Documentos de uma mesma coleção ficam armazenados juntos, no mesmo banco. A flexibilidade de estrutura não tem relação com onde os dados são fisicamente armazenados.
+    - texto: Porque bancos de documentos não seguem esquema fixo — cada um tem sua estrutura
       correta: true
       explicacao: Exato! Diferente do modelo relacional, onde toda linha de uma tabela segue as mesmas colunas, um banco de documentos não exige que todos os documentos de uma coleção tenham os mesmos campos.
       explicacao_erro: Bancos de documentos não têm esquema fixo. Cada documento de uma coleção pode ter campos próprios — é isso que dá a flexibilidade de armazenar, por exemplo, um usuário com telefone e outro sem.
-    - texto: Porque o MongoDB corrompe os dados quando o volume cresce
-      correta: false
-      explicacao: Não tem relação com corrupção de dados. Documentos com campos diferentes numa mesma coleção são um comportamento normal e esperado do modelo, não um erro.
-    - texto: Porque cada documento fica em um banco de dados diferente
-      correta: false
-      explicacao: Documentos de uma mesma coleção ficam armazenados juntos, no mesmo banco. A flexibilidade de estrutura não tem relação com onde os dados são fisicamente armazenados.
-    - texto: Porque o JSON obriga todo campo a ser opcional
+    - texto: Porque o formato JSON exige que todo campo do documento seja opcional
       correta: false
       explicacao: O formato JSON em si não impõe isso — é uma decisão de design do banco de documentos não exigir um esquema fixo, permitindo que cada documento declare só os campos que precisa.
 
 - tipo: single
   pergunta: O que explica a velocidade extrema de bancos chave-valor como o Redis?
   opcoes:
-    - texto: Eles funcionam como um dicionário — busca por chave exata em tempo constante, geralmente com os dados em memória RAM
+    - texto: Eles usam queries SQL bastante otimizadas para acelerar a busca por conteúdo
+      correta: false
+      explicacao: Bancos chave-valor não usam SQL nem fazem busca por conteúdo — só localizam um valor a partir da chave exata. É justamente por abrir mão dessa busca por conteúdo que ganham velocidade.
+    - texto: Funcionam como um dicionário — busca por chave exata em tempo constante, quase sempre em RAM
       correta: true
       explicacao: Exato! Sem precisar varrer registros ou percorrer relacionamentos, a busca por uma chave é direta, e manter os dados em RAM (em vez de disco) reduz a latência para microssegundos.
       explicacao_erro: A velocidade vem da simplicidade do modelo — busca por chave exata, sem joins ou queries complexas — combinada com o fato de os dados costumarem ficar em memória RAM.
-    - texto: Eles usam queries SQL otimizadas para busca por conteúdo
-      correta: false
-      explicacao: Bancos chave-valor não usam SQL nem fazem busca por conteúdo — só localizam um valor a partir da chave exata. É justamente por abrir mão dessa busca por conteúdo que ganham velocidade.
-    - texto: Eles distribuem cada chave em um servidor diferente, sempre
+    - texto: Eles distribuem cada chave num servidor diferente, sempre, mesmo em projetos pequenos
       correta: false
       explicacao: A distribuição entre servidores (escalabilidade horizontal) é possível, mas não é o motivo principal da velocidade — mesmo rodando em um único servidor, a busca por chave em memória já é extremamente rápida.
-    - texto: Eles armazenam os dados já ordenados por valor
+    - texto: Eles mantêm os dados sempre pré-ordenados pelo valor armazenado, não pela chave
       correta: false
       explicacao: Bancos chave-valor não organizam os dados por valor — a busca é sempre pela chave, não pelo conteúdo armazenado.
 
 - tipo: single
   pergunta: Por que bancos de grafos respondem muito mais rápido do que bancos relacionais a perguntas como "quem são os amigos dos meus amigos?"
   opcoes:
-    - texto: Porque os relacionamentos (arestas) já são armazenados como parte da estrutura, sem precisar de múltiplos JOINs entre tabelas
+    - texto: Porque bancos de grafos só guardam as conexões entre nós, sem nenhuma propriedade
+      correta: false
+      explicacao: Bancos de grafos guardam propriedades tanto nos nós quanto nas arestas (como a data de início numa amizade) — não é essa a fonte da velocidade.
+    - texto: Porque eles convertem o grafo inteiro numa tabela relacional otimizada antes de buscar
+      correta: false
+      explicacao: Não há essa conversão — bancos de grafos mantêm nós e arestas como sua própria estrutura de armazenamento, sem passar por um modelo relacional.
+    - texto: Porque grafos só funcionam bem com poucos registros, então a busca é sempre pequena
+      correta: false
+      explicacao: Bancos de grafos como o Neo4j são usados por empresas como NASA, eBay e Walmart, justamente em redes grandes e complexas — a rapidez vem da estrutura, não do tamanho reduzido dos dados.
+    - texto: Porque as arestas já ficam armazenadas como parte da estrutura, sem precisar de JOINs
       correta: true
       explicacao: Exato! Num banco relacional, essa pergunta exigiria vários JOINs entre tabelas de usuários e amizades. Num banco de grafos, as arestas conectando os nós já existem fisicamente armazenadas, tornando a travessia direta.
       explicacao_erro: A vantagem dos bancos de grafos é guardar nós e arestas como estrutura nativa — percorrer relacionamentos vira uma travessia direta, em vez de múltiplos JOINs entre tabelas como num banco relacional.
-    - texto: Porque bancos de grafos não guardam propriedades, só as conexões
-      correta: false
-      explicacao: Bancos de grafos guardam propriedades tanto nos nós quanto nas arestas (como a data de início numa amizade) — não é essa a fonte da velocidade.
-    - texto: Porque eles convertem automaticamente o grafo em uma tabela relacional otimizada
-      correta: false
-      explicacao: Não há essa conversão — bancos de grafos mantêm nós e arestas como sua própria estrutura de armazenamento, sem passar por um modelo relacional.
-    - texto: Porque grafos só funcionam com poucos registros, então a busca é sempre pequena
-      correta: false
-      explicacao: Bancos de grafos como o Neo4j são usados por empresas como NASA, eBay e Walmart, justamente em redes grandes e complexas — a rapidez vem da estrutura, não do tamanho reduzido dos dados.
 
 - tipo: single
   pergunta: O que um banco de dados vetorial encontra quando você faz uma busca?
   opcoes:
-    - texto: Os itens cujo vetor (embedding) está mais próximo do vetor da busca, ou seja, os mais similares em significado
+    - texto: Os itens cujo vetor (embedding) está mais próximo do vetor buscado, os mais similares
       correta: true
       explicacao: Exato! O banco calcula a distância entre vetores. Como embeddings de conteúdos parecidos ficam próximos no espaço vetorial, a busca retorna os itens mais similares — não uma correspondência exata de texto.
       explicacao_erro: Bancos vetoriais fazem busca por similaridade, não por correspondência exata. Eles calculam a distância entre o vetor buscado e os vetores armazenados, retornando os mais próximos.
-    - texto: Os registros que têm exatamente o mesmo texto da busca
+    - texto: Somente os registros com exatamente o mesmo texto usado na busca original
       correta: false
       explicacao: Essa é uma busca por correspondência exata, que bancos tradicionais já fazem bem. O diferencial do banco vetorial é justamente encontrar itens parecidos, mesmo sem o mesmo texto.
-    - texto: Os itens mais recentes cadastrados no banco
+    - texto: Os itens cadastrados mais recentemente, ordenados por data de inserção no banco
       correta: false
       explicacao: Recência não é o critério de busca de um banco vetorial — o critério é a proximidade (similaridade) entre vetores no espaço de embeddings.
-    - texto: Os itens armazenados na mesma coleção JSON
+    - texto: Todos os itens armazenados dentro da mesma coleção JSON do documento buscado
       correta: false
       explicacao: Isso descreve uma característica de bancos de documentos, não vetoriais. Bancos vetoriais organizam a busca pela distância entre vetores, não por coleções de documentos.
 
@@ -311,6 +311,12 @@ Para aprofundar seus conhecimentos sobre bancos de dados NoSQL, confira o seguin
     Um time precisa de um cache que responda em microssegundos para guardar a sessão de login dos usuários — sem consultas complexas, só "salvar por uma chave" e "buscar por essa chave".
     Qual tipo de banco NoSQL é o mais adequado?
   opcoes:
+    - texto: Banco de documentos
+      correta: false
+      explicacao: Bancos de documentos são ótimos para dados semi-estruturados com campos variáveis, mas para um cache simples de "chave → valor" sem essa variação de estrutura, um banco chave-valor é mais direto e mais rápido.
+    - texto: Banco vetorial
+      correta: false
+      explicacao: Bancos vetoriais servem para busca por similaridade semântica, não para guardar e buscar uma sessão por uma chave exata. Esse é o cenário clássico de um banco chave-valor.
     - texto: Banco chave-valor
       correta: true
       explicacao: Exato! É exatamente o caso de uso ideal de um banco chave-valor como o Redis — velocidade extrema, operações simples de GET/SET, e nenhuma necessidade de queries complexas ou relacionamentos.
@@ -318,10 +324,4 @@ Para aprofundar seus conhecimentos sobre bancos de dados NoSQL, confira o seguin
     - texto: Banco de grafos
       correta: false
       explicacao: Bancos de grafos brilham quando o problema envolve relacionamentos entre entidades (como amizades). O cenário descrito não tem relacionamentos — é busca simples por chave, o caso de uso de um banco chave-valor.
-    - texto: Banco de documentos
-      correta: false
-      explicacao: Bancos de documentos são ótimos para dados semi-estruturados com campos variáveis, mas para um cache simples de "chave → valor" sem essa variação de estrutura, um banco chave-valor é mais direto e mais rápido.
-    - texto: Banco vetorial
-      correta: false
-      explicacao: Bancos vetoriais servem para busca por similaridade semântica, não para guardar e buscar uma sessão por uma chave exata. Esse é o cenário clássico de um banco chave-valor.
 ```

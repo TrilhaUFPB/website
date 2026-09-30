@@ -398,68 +398,68 @@ Para aprofundar seus conhecimentos sobre o App Router e a fronteira entre Server
 - tipo: single
   pergunta: Qual a diferença conceitual central entre React e Next.js?
   opcoes:
-    - texto: React é uma biblioteca de UI; Next.js é um framework que usa React e entrega convenções prontas para roteamento, renderização e SEO
+    - texto: Não existe diferença real — Next.js é apenas um apelido de mercado para projetos em React
+      correta: false
+      explicacao: Existe uma diferença real de escopo. React é uma biblioteca de UI; Next.js é um framework completo que toma decisões de roteamento, renderização e estrutura de projeto.
+    - texto: React é a biblioteca de UI; Next.js é o framework que usa React e entrega convenções prontas
       correta: true
       explicacao: Exato! O React resolve componentização e atualização de UI, mas deixa decisões como roteamento, renderização e SEO nas mãos do desenvolvedor. O Next.js entrega convenções prontas para isso.
       explicacao_erro: React é uma biblioteca focada em construir interfaces. Next.js é um framework construído sobre o React que resolve, com convenções prontas, tudo que o React sozinho deixa em aberto — roteamento, renderização e SEO.
-    - texto: Não existe diferença real, Next.js é só um apelido para projetos React
-      correta: false
-      explicacao: Existe uma diferença real de escopo. React é uma biblioteca de UI; Next.js é um framework completo que toma decisões de roteamento, renderização e estrutura de projeto.
-    - texto: React roda no servidor e Next.js roda no cliente
+    - texto: React sempre roda no servidor, enquanto o Next.js roda inteiramente no navegador
       correta: false
       explicacao: É o contrário do que define cada um — essa distinção não é sobre onde cada um roda, mas sobre escopo. Aliás, o App Router do Next introduz justamente a renderização no servidor por padrão.
-    - texto: Next.js substitui completamente a necessidade de aprender React
+    - texto: O Next.js existe para substituir completamente a necessidade de aprender React
       correta: false
       explicacao: O Next.js usa o React por baixo dos panos — ele não substitui o React, mas se apoia nele para entregar convenções prontas.
 
 - tipo: single
   pergunta: No App Router, o que acontece com uma pasta escrita entre parênteses, como `(auth)`?
   opcoes:
-    - texto: Ela organiza o código, mas não aparece como segmento na URL final
+    - texto: Ela vira um segmento obrigatório da URL final, igual a qualquer outra pasta comum
+      correta: false
+      explicacao: Route groups são exatamente a exceção a essa regra — o parêntese sinaliza ao Next para não incluir aquele nome no caminho da URL.
+    - texto: Ela transforma automaticamente todo componente dentro dela em um Client Component
+      correta: false
+      explicacao: Route groups não têm relação com a fronteira Server/Client — essa distinção depende da diretiva `"use client"`, não da forma como as pastas são organizadas.
+    - texto: Ela existe só para agrupar páginas especiais de erro e de rota não encontrada
+      correta: false
+      explicacao: Páginas de erro usam arquivos especiais como `error.tsx` e `not-found.tsx`. Route groups servem para organizar rotas relacionadas, sem relação direta com tratamento de erro.
+    - texto: Ela ajuda a organizar o código, mas não aparece como segmento na URL final
       correta: true
       explicacao: Exato! Route groups servem para organizar arquivos relacionados sem afetar a URL — uma pasta `(auth)/login/page.tsx` vira a rota `/login`, não `/auth/login`.
       explicacao_erro: Pastas entre parênteses são "route groups" — elas existem para organizar o código, mas o Next as ignora ao montar a URL da rota.
-    - texto: Ela vira um segmento obrigatório da URL, como qualquer outra pasta
-      correta: false
-      explicacao: Route groups são exatamente a exceção a essa regra — o parêntese sinaliza ao Next para não incluir aquele nome no caminho da URL.
-    - texto: Ela transforma automaticamente todos os componentes dentro dela em Client Components
-      correta: false
-      explicacao: Route groups não têm relação com a fronteira Server/Client — essa distinção depende da diretiva `"use client"`, não da forma como as pastas são organizadas.
-    - texto: Ela é usada exclusivamente para páginas de erro e not-found
-      correta: false
-      explicacao: Páginas de erro usam arquivos especiais como `error.tsx` e `not-found.tsx`. Route groups servem para organizar rotas relacionadas, sem relação direta com tratamento de erro.
 
 - tipo: single
   pergunta: Por que um Client Component não pode importar diretamente um Server Component?
   opcoes:
-    - texto: Porque o código de um Server Component roda no servidor e não pode ser enviado para o navegador, onde o Client Component é executado
+    - texto: Porque o código do Server Component roda no servidor e não pode ser enviado ao navegador
       correta: true
       explicacao: Exato! Um Server Component pode depender de recursos que só existem no servidor. Permitir essa importação quebraria a fronteira — por isso o fluxo correto é o Server Component renderizar o Client Component, passando props serializáveis, nunca o contrário.
       explicacao_erro: A fronteira existe porque o código de Server Components roda no servidor. Um Client Component roda no navegador, então importar um Server Component significaria tentar rodar código de servidor no cliente — o que não é possível.
-    - texto: Porque Client Components não podem receber props
+    - texto: Porque Client Components, por definição, não têm permissão para receber nenhuma prop
       correta: false
       explicacao: Client Components recebem props normalmente — inclusive de Server Components, desde que sejam props serializáveis. O problema não é receber props, é a direção da importação.
-    - texto: Porque isso deixaria a aplicação lenta demais
+    - texto: Porque isso deixaria qualquer aplicação Next extremamente lenta para carregar
       correta: false
       explicacao: Não é uma questão de performance, e sim de onde cada tipo de componente pode executar. A restrição existe porque código de Server Component não pode rodar no navegador.
-    - texto: Porque só existe um Client Component por aplicação
+    - texto: Porque uma aplicação Next só pode ter um único Client Component no total
       correta: false
       explicacao: Uma aplicação Next pode ter quantos Client Components forem necessários. A regra da fronteira é sobre a direção da importação, não sobre quantidade.
 
 - tipo: single
   pergunta: Por que buscar dados em um Server Component (em vez de com `useEffect` no cliente) costuma ser a abordagem recomendada no App Router?
   opcoes:
-    - texto: Porque reduz o JavaScript enviado ao cliente e entrega o HTML já pronto com os dados, melhorando performance percebida e SEO
+    - texto: Porque o hook `useEffect` foi descontinuado nas versões mais recentes do React
+      correta: false
+      explicacao: "`useEffect` continua existindo e é necessário em Client Components para fetch que depende do navegador ou de interação do usuário. O ponto não é a extinção do hook, é a preferência por resolver no servidor quando possível."
+    - texto: Porque o App Router simplesmente proíbe qualquer chamada de fetch feita no cliente
+      correta: false
+      explicacao: Fetch no cliente não é proibido — é usado quando os dados dependem do browser ou de interação do usuário. É uma questão de padrão recomendado, não de proibição.
+    - texto: Reduz o JavaScript enviado ao cliente e entrega o HTML pronto, melhorando performance e SEO
       correta: true
       explicacao: Exato! Fetch no servidor significa que o HTML já chega com os dados renderizados, sem depender de uma segunda requisição no navegador — isso melhora tanto a performance percebida quanto a indexação por crawlers.
       explicacao_erro: O padrão recomendado é buscar dados no servidor por padrão, e usar fetch no cliente só quando necessário, como dados que dependem de interação do usuário — porque isso reduz JS no cliente e entrega HTML pronto.
-    - texto: Porque `useEffect` não existe mais no React moderno
-      correta: false
-      explicacao: "`useEffect` continua existindo e é necessário em Client Components para fetch que depende do navegador ou de interação do usuário. O ponto não é a extinção do hook, é a preferência por resolver no servidor quando possível."
-    - texto: Porque fetch no cliente é proibido no App Router
-      correta: false
-      explicacao: Fetch no cliente não é proibido — é usado quando os dados dependem do browser ou de interação do usuário. É uma questão de padrão recomendado, não de proibição.
-    - texto: Porque dados buscados no servidor nunca podem ser cacheados
+    - texto: Porque dados buscados no servidor jamais podem passar por qualquer tipo de cache
       correta: false
       explicacao: "É o oposto — fetch no servidor é cacheado por padrão no Next.js, e `revalidate` permite controlar quando esses dados são atualizados."
 
@@ -468,17 +468,17 @@ Para aprofundar seus conhecimentos sobre o App Router e a fronteira entre Server
     Um componente declarado sem `"use client"` tenta usar `useState` e o build falha.
     Qual é a causa e a correção, segundo o modelo mental do App Router?
   opcoes:
-    - texto: O componente é um Server Component por padrão, que não suporta hooks como `useState`; a correção é adicionar `"use client"` no topo do arquivo
+    - texto: O `useState` foi removido do React e precisa ser substituído por `useEffect` no código
+      correta: false
+      explicacao: "`useState` continua sendo um hook válido do React. O problema não é o hook em si, e sim tentar usá-lo em um componente que roda no servidor por padrão."
+    - texto: É um Server Component por padrão, sem suporte a hooks; a correção é declarar `"use client"`
       correta: true
       explicacao: Exato! No App Router, todo componente é Server Component por padrão. Hooks como `useState` e `useEffect`, além de eventos e APIs do navegador, exigem que o arquivo seja declarado como Client Component com `"use client"`.
       explicacao_erro: Esse é um dos erros mais comuns listados no material — usar `useState` em um Server Component. Como todo componente é Server por padrão, a correção é declarar `"use client"` no topo do arquivo que precisa de estado, eventos ou APIs do navegador.
-    - texto: O `useState` foi removido do React e deve ser substituído por `useEffect`
-      correta: false
-      explicacao: "`useState` continua sendo um hook válido do React. O problema não é o hook em si, e sim tentar usá-lo em um componente que roda no servidor por padrão."
-    - texto: O componente precisa ser movido para a pasta `pages/` em vez de `app/`
+    - texto: O componente precisa ser fisicamente movido da pasta `app/` para a antiga `pages/`
       correta: false
       explicacao: Misturar `app/` com o antigo `pages/` é, inclusive, um dos erros comuns citados no material — mas não é essa a causa do erro de `useState`. A correção é declarar `"use client"`, não trocar de pasta.
-    - texto: O erro não tem relação com Server ou Client Components, é um bug do Next.js
+    - texto: É simplesmente um bug do framework, sem relação com Server ou Client Components
       correta: false
       explicacao: Não é um bug — é o comportamento esperado do App Router. Hooks de estado exigem explicitamente a diretiva `"use client"`, já que o padrão é todo componente ser Server Component.
 ```
