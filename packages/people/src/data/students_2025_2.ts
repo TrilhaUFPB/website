@@ -19,7 +19,7 @@ export const RhuanOliveira: Person = {
 };
 
 export const SergioFreitas: Person = {
-    name: "Sérgio Gabriel Rodrigues Freitas",
+    name: "Sérgio Freitas",
     course: "Ciência da Computação",
     semester: "2",
     role: "Front-End Developer",
@@ -155,8 +155,8 @@ export const SofiaAraujo: Person = {
     name: "Sofia Oliveira Araújo",
     course: "Ciência da Computação",
     semester: "2",
-    role: "",
-    company: "",
+    role: "Software Engineer",
+    company: "Dhauz",
     link: "https://www.linkedin.com/in/sofia-araújo-439178294",
     photo: "/assets/pessoas/2025.2/sofia.png",
     class: "2025.2",
