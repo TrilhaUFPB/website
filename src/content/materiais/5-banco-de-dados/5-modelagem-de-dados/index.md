@@ -12,7 +12,6 @@ order: 5
 - [5.2. Entidades, Atributos e Relacionamentos](#52-entidades-atributos-e-relacionamentos)
 - [5.3. Normalização](#53-normalizacao)
 - [5.4. Boas Práticas](#54-boas-praticas)
-- [Complemente o Aprendizado](#complemente-o-aprendizado)
 - [Teste seu Conhecimento](#exercicios)
 
 ---
@@ -519,16 +518,6 @@ CREATE TABLE produtos (
 - Menos bugs
 - Integridade garantida pelo banco (não depende do código)
 - Documentação automática (deixa claro as regras)
-
----
-
-# Complemente o Aprendizado
-
-Para aprofundar seus conhecimentos sobre modelagem de dados, confira os seguintes recursos:
-
-- 
-
-- 
 
 ---
 
