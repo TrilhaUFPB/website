@@ -169,7 +169,7 @@ Vamos narrar uma situação real: você abre o navegador, digita um endereço e 
 
 URL é o endereço de um recurso. Ele não é só "o domínio". Um URL típico:
 
-```
+```text
 https://www.exemplo.com/produtos/camisa?cor=azul&tamanho=m#avaliacoes
 ```
 
@@ -241,7 +241,7 @@ Uma requisição inclui:
 - às vezes um corpo (body), principalmente em POST/PUT/PATCH
 
 Exemplo textual (simplificado) de request:
-```
+```text
 GET /produtos/camisa?cor=azul HTTP/1.1
 Host: www.exemplo.com
 Accept: text/html
@@ -256,7 +256,7 @@ Uma resposta inclui:
 - opcionalmente um body (HTML, JSON, imagem…)
 
 Exemplo textual (simplificado) de response:
-```
+```text
 HTTP/1.1 200 OK
 Content-Type: text/html; charset=utf-8
 Cache-Control: max-age=60
@@ -476,7 +476,7 @@ Nesta etapa, vamos montar o "esqueleto" clássico de um projeto estático: HTML 
 
 Para projetos pequenos, o importante é não virar bagunça. Uma organização típica (sem exageros) é:
 
-```
+```text
 meu-site/
 ├─ index.html
 ├─ css/

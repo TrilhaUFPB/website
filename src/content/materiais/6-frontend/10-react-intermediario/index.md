@@ -569,7 +569,7 @@ Uma regra prática: **componentes de UI** deveriam ser o mais “burrinhos” po
 
 Uma estrutura simples e comum:
 
-```
+```text
 src/
   components/   (reutilizáveis, UI)
   screens/      (telas/páginas)

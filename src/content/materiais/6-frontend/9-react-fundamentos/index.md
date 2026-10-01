@@ -1,13 +1,38 @@
 ---
 title: 9. React Fundamentos
-description: 
+subtitle: Componentes, JSX, props, state e eventos com React e TypeScript
+description: Aprenda como o React cria e atualiza interfaces e como escrever componentes modernos com TypeScript, usando props, state, eventos, formulários controlados e listas.
 category: Frontend
 order: 9
 ---
 
+## Sumário
+
+- [9.1. O que é React (modelo mental)](#91-o-que-e-react-modelo-mental)
+- [9.2. Componentes (Function Components)](#92-componentes-function-components)
+- [9.3. JSX e TSX (o “HTML dentro do JS” sem mito)](#93-jsx-e-tsx-o-html-dentro-do-js-sem-mito)
+- [9.4. Props (entrada do componente)](#94-props-entrada-do-componente)
+- [9.5. State (useState) — quando a UI precisa “lembrar”](#95-state-usestate-quando-a-ui-precisa-lembrar)
+- [9.6. Eventos no React (comparando com DOM)](#96-eventos-no-react-comparando-com-dom)
+- [9.7. Formulários controlados (o padrão “profissional”)](#97-formularios-controlados-o-padrao-profissional)
+- [9.8. Renderização de listas (map) e keys](#98-renderizacao-de-listas-map-e-keys)
+- [9.9. Boas práticas de estrutura e legibilidade](#99-boas-praticas-de-estrutura-e-legibilidade)
+- [9.10. Erros comuns e confusões clássicas](#910-erros-comuns-e-confusoes-classicas)
+- [9.11. Glossário rápido](#911-glossario-rapido)
+- [9.12. Resumo final](#912-resumo-final)
+- [Teste seu Conhecimento](#exercicios)
+
+---
+
+> Toda vez que algo muda em uma página, como um produto novo no carrinho, alguém precisa garantir que cada parte da tela mostre a informação certa. O React assume esse trabalho, e, depois que você entende a lógica dele, criar telas que reagem ao usuário fica bem mais simples.
+
+---
+
+<!--
 ## Objetivo da aula
 
 Construir um modelo mental sólido de como o React cria e atualiza interfaces, e como escrever componentes modernos (Function Components + Hooks) em **TypeScript**, usando **props**, **state**, **eventos**, **formulários controlados** e **listas** — com foco em clareza, legibilidade e previsibilidade do fluxo de dados.
+-->
 
 ## Pré-requisitos
 
@@ -44,8 +69,7 @@ A ideia central é simples e poderosa:
 
 Isso muda o estilo mental: em vez de “cliquei aqui, então esconda esse elemento e mude aquele texto”, você pensa “se `isOpen` é `true`, então o painel aparece; se é `false`, ele não aparece”.
 
-**Conceito-chave**
-No React, você não “manda a tela mudar”. Você **muda o state**, e a tela é **derivada** desse state.
+> **Conceito-chave:** No React, você não “manda a tela mudar”. Você **muda o state**, e a tela é **derivada** desse state.
 
 ## Componentes como “peças” reutilizáveis
 
@@ -71,8 +95,7 @@ No React (declarativo), você:
 * escreve handlers que mudam estado,
 * e o React aplica as mudanças necessárias no DOM.
 
-**Dica**
-“Declarativo” não significa “mágico”. Significa que você descreve *o resultado*, e o React administra os passos intermediários.
+> **Dica:** “Declarativo” não significa “mágico”. Significa que você descreve *o resultado*, e o React administra os passos intermediários.
 
 ## Virtual DOM e reconciliação (visão geral leve)
 
@@ -154,8 +177,7 @@ Um componente bom costuma ser:
 
 Em vez de um “componente gigante” que faz tudo, você organiza em camadas: componentes simples compõem componentes mais completos.
 
-**Dica**
-Se você precisa rolar muito para entender um componente, é sinal de que ele pode ser dividido.
+> **Dica:** Se você precisa rolar muito para entender um componente, é sinal de que ele pode ser dividido.
 
 ## Exemplo mínimo de componente (TSX) e explicação linha a linha
 
@@ -175,8 +197,7 @@ export function Greeting({ name }: GreetingProps) {
 * `({ name }: GreetingProps)`: destructuring + tipagem explícita.
 * `return <p>...`: JSX/TSX descrevendo o resultado visual.
 
-**Conceito-chave**
-Um componente não “imprime” na tela por conta própria. Ele **retorna uma descrição** do que deve aparecer.
+> **Conceito-chave:** Um componente não “imprime” na tela por conta própria. Ele **retorna uma descrição** do que deve aparecer.
 
 ---
 
@@ -194,8 +215,7 @@ JSX parece HTML, mas não é:
 
 TSX é JSX + TypeScript: permite que o TypeScript entenda tipos enquanto você escreve JSX.
 
-**Conceito-chave**
-JSX é uma forma de escrever **árvores de elementos** em um formato legível.
+> **Conceito-chave:** JSX é uma forma de escrever **árvores de elementos** em um formato legível.
 
 ## Por que `className` e não `class`
 
@@ -225,8 +245,7 @@ return <p>{isAdmin ? "Acesso total" : "Acesso limitado"}</p>;
 return <p>{hasError && "Ocorreu um erro."}</p>;
 ```
 
-**Atenção**
-Com `&&`, o lado esquerdo precisa ser um boolean “limpo”. Se você usar um número, `0 && "texto"` resulta em `0` (e pode aparecer na tela). Prefira booleans.
+> **Atenção:** Com `&&`, o lado esquerdo precisa ser um boolean “limpo”. Se você usar um número, `0 && "texto"` resulta em `0` (e pode aparecer na tela). Prefira booleans.
 
 ## Atributos e tipos: string vs expressão
 
@@ -299,8 +318,7 @@ Props representam dados **recebidos**. Se você as muta, você:
 * pode criar inconsistências (o pai “acha” uma coisa, o filho alterou outra),
 * viola a ideia de “fonte única de verdade”.
 
-**Atenção**
-Se você precisa “alterar algo”, normalmente isso é **state** (local) ou uma ação solicitada ao pai via callback.
+> **Atenção:** Se você precisa “alterar algo”, normalmente isso é **state** (local) ou uma ação solicitada ao pai via callback.
 
 ## Tipagem de props em TypeScript
 
@@ -387,8 +405,7 @@ export function InfoCard({ title, description, onAction }: InfoCardProps) {
 }
 ```
 
-**Conceito-chave**
-Quando você passa uma função por props, você está criando um “fio” de comunicação: o filho não muda o estado do pai diretamente — ele **pede** por meio de uma callback.
+> **Conceito-chave:** Quando você passa uma função por props, você está criando um “fio” de comunicação: o filho não muda o estado do pai diretamente — ele **pede** por meio de uma callback.
 
 ---
 
@@ -434,8 +451,7 @@ export function Counter() {
 }
 ```
 
-**Conceito-chave**
-O componente “roda de novo” (re-render) porque o state mudou — não porque você “mandou redesenhar”.
+> **Conceito-chave:** O componente “roda de novo” (re-render) porque o state mudou — não porque você “mandou redesenhar”.
 
 ## Regras importantes
 
@@ -443,8 +459,7 @@ O componente “roda de novo” (re-render) porque o state mudou — não porque
 
 Se o state é um objeto/array, você não deve fazer `push`, `sort` mutável, ou alterar propriedades diretamente. O React precisa de uma **nova referência** para entender que mudou.
 
-**Atenção**
-Mesmo que “pareça funcionar”, mutação costuma gerar bugs intermitentes e difíceis de rastrear.
+> **Atenção:** Mesmo que “pareça funcionar”, mutação costuma gerar bugs intermitentes e difíceis de rastrear.
 
 ### Atualizações podem ser agrupadas (noção)
 
@@ -566,8 +581,7 @@ export function MiniForm() {
 }
 ```
 
-**Atenção**
-Em um `<form>`, um `<button>` sem `type` pode se comportar como submit por padrão. Em exemplos e em produção, prefira declarar `type="button"` quando não for submit.
+> **Atenção:** Em um `<form>`, um `<button>` sem `type` pode se comportar como submit por padrão. Em exemplos e em produção, prefira declarar `type="button"` quando não for submit.
 
 ---
 
@@ -653,16 +667,14 @@ export function SignupForm() {
 }
 ```
 
-**Dica**
-Comece simples: “um state por campo” é ótimo para formulários pequenos e didáticos. Estado em objeto faz sentido quando o formulário cresce — mas introduz detalhes (merge, imutabilidade) que aumentam o custo mental.
+> **Dica:** Comece simples: “um state por campo” é ótimo para formulários pequenos e didáticos. Estado em objeto faz sentido quando o formulário cresce — mas introduz detalhes (merge, imutabilidade) que aumentam o custo mental.
 
 ## Trade-off: estado por campo vs estado como objeto
 
 * **Por campo**: mais verboso, mais explícito, mais fácil de raciocinar.
 * **Objeto único**: menos `useState`, mas exige cuidado com updates imutáveis.
 
-**Conceito-chave**
-Form controlado é basicamente um ciclo fechado: UI mostra `value`; evento muda state; state redefine `value`.
+> **Conceito-chave:** Form controlado é basicamente um ciclo fechado: UI mostra `value`; evento muda state; state redefine `value`.
 
 ---
 ![Figura 3 — Form controlado: input → onChange → setState → value atualiza](/api/materiais-assets/6-frontend/9-react-fundamentos/assets/image-2.png)
@@ -714,15 +726,13 @@ Sem identidade, quando uma lista muda (insere, remove, reordena), o React pode:
 * misturar estados locais de componentes filhos,
 * causar bugs visuais difíceis.
 
-**Conceito-chave**
-`key` não é “um índice qualquer”. É uma etiqueta de identidade para o React rastrear cada item ao longo do tempo.
+> **Conceito-chave:** `key` não é “um índice qualquer”. É uma etiqueta de identidade para o React rastrear cada item ao longo do tempo.
 
 ## Por que não usar `index` quando a lista muda
 
 Se você usa `index` como `key` e insere um item no topo, todos os índices mudam. O React “acha” que os itens trocaram de identidade — e aí o reaproveitamento fica errado.
 
-**Atenção**
-`index` como key só é aceitável quando a lista é **estática** (não muda ordem, não insere/remove) — o que é mais raro do que parece.
+> **Atenção:** `index` como key só é aceitável quando a lista é **estática** (não muda ordem, não insere/remove) — o que é mais raro do que parece.
 
 ## Estados comuns: lista vazia, loading, error (noção, sem fetch)
 
@@ -825,8 +835,7 @@ Para condições maiores:
 * extraia para variáveis (`const content = ...`)
 * ou funções pequenas (`function renderBody() { ... }`)
 
-**Dica**
-Uma boa regra prática: se você precisa “ler em voz alta” uma expressão dentro de `{}`, talvez ela devesse virar uma variável nomeada.
+> **Dica:** Uma boa regra prática: se você precisa “ler em voz alta” uma expressão dentro de `{}`, talvez ela devesse virar uma variável nomeada.
 
 ## Padrões de pasta (visão geral)
 
@@ -873,8 +882,7 @@ Nos exemplos desta aula, manteremos neutro: foco no React/TS, não no styling.
 * **Colocar lógica gigante no JSX**, deixando UI difícil de ler.
 * **Assumir que state atualiza “na hora”** como uma variável comum — e escrever código dependente dessa suposição.
 
-**Atenção**
-A maioria desses problemas não é “erro de sintaxe”; é erro de **modelo mental**. Quando você entende UI = f(state) e identidade via `key`, muitos bugs deixam de existir.
+> **Atenção:** A maioria desses problemas não é “erro de sintaxe”; é erro de **modelo mental**. Quando você entende UI = f(state) e identidade via `key`, muitos bugs deixam de existir.
 
 ---
 
@@ -903,3 +911,74 @@ A maioria desses problemas não é “erro de sintaxe”; é erro de **modelo me
 React é mais fácil quando você aceita o contrato principal: **a UI é uma função do estado**. Componentes são funções que retornam UI; **props** levam dados do pai para o filho; **state** permite que a UI “lembre” e reaja a interações; eventos disparam handlers que mudam state; formulários controlados tornam inputs previsíveis; listas são renderizadas com `map` e precisam de **keys estáveis** para preservar identidade.
 
 **Próximos passos naturais** (apenas como direção): lidar com efeitos (ex: buscar dados), compartilhar estado entre componentes mais distantes e melhorar performance — assuntos que dependem desse fundamento estar bem firme.
+
+---
+
+```quiz
+- tipo: single
+  pergunta: |
+    Um componente `Contador` mostra o número de cliques. Uma colega propõe, dentro do handler, buscar o `<span>` com `document.querySelector` e alterar o `textContent`. Segundo a ideia de **UI = f(state)**, qual é a abordagem correta?
+  opcoes:
+    - texto: Manter a manipulação manual do DOM, já que o React só cuida da primeira renderização
+      correta: false
+      explicacao: |
+        O React cuida de todas as atualizações da interface. Misturar DOM manual com React cria dois "donos" da mesma tela e gera inconsistências.
+    - texto: Guardar o número em uma variável comum e alterá-la no handler
+      correta: false
+      explicacao: |
+        Variáveis comuns são recriadas a cada render e, além disso, alterá-las não avisa o React de que a tela precisa ser atualizada.
+    - texto: Guardar o número em state e deixar o componente descrever a UI a partir dele
+      correta: true
+      explicacao: |
+        Exato! Você muda o state e o React re-renderiza o componente, atualizando a tela. A UI é consequência do estado, não algo que você edita manualmente.
+      explicacao_erro: |
+        Em React, a UI é calculada a partir do state (UI = f(state)). Para o número mudar na tela, ele precisa estar em state; o React cuida de atualizar o DOM.
+    - texto: Recriar o componente inteiro com `document.createElement` a cada clique
+      correta: false
+      explicacao: |
+        Isso é manipulação manual do DOM, exatamente o que o modelo declarativo do React evita.
+- tipo: single
+  pergunta: |
+    Um componente `Card` recebe `title` por props, e dentro dele alguém faz `props.title = "Novo título"` para "atualizar" o texto. Por que isso é um problema?
+  opcoes:
+    - texto: Não é problema, porque props são variáveis locais e podem ser alteradas livremente dentro do componente
+      correta: false
+      explicacao: |
+        Props pertencem ao componente pai. Alterá-las no filho quebra o fluxo de dados e não faz o React re-renderizar.
+    - texto: Props são somente leitura e fluem de cima para baixo; para mudar o valor, o dono do dado atualiza seu state
+      correta: true
+      explicacao: |
+        Exato! O pai é dono do dado e o passa ao filho via props. Para mudar, o dono atualiza seu state e o filho recebe o novo valor no próximo render.
+      explicacao_erro: |
+        Props são entradas somente leitura que vêm do pai. Quem precisa alterar o valor deve guardá-lo em state (no componente dono) e passar o novo valor para baixo.
+    - texto: O problema é só de tipagem, pois em TypeScript a mutação de props funcionaria sem nenhum erro
+      correta: false
+      explicacao: |
+        Não se trata de tipagem. Mesmo que compilasse, mutar props não dispara re-render e quebra a previsibilidade.
+    - texto: Props só podem ser alteradas dentro de um `useEffect`, e nunca diretamente no corpo do componente
+      correta: false
+      explicacao: |
+        Nenhum hook autoriza a mutação de props. Elas devem ser tratadas como imutáveis.
+- tipo: single
+  pergunta: |
+    Uma lista é renderizada com `todos.map((t, index) => <li key={index}>...</li>)`. Quando uma nova tarefa é inserida no topo, itens com input interno passam a mostrar o texto trocado. Qual é a causa e a correção?
+  opcoes:
+    - texto: O `key` nem deveria existir em listas, e a correção é simplesmente removê-lo do `<li>`
+      correta: false
+      explicacao: |
+        O `key` é necessário em listas. Sem ele, o React emite aviso e perde a referência de identidade dos itens.
+    - texto: O `map` não funciona com inserções no topo, então seria preciso trocar por um `for` comum
+      correta: false
+      explicacao: |
+        `map` funciona bem. O problema está na identidade dos itens, não no método de iteração.
+    - texto: É um problema de CSS, e a correção é limpar a cache do navegador e recarregar a página
+      correta: false
+      explicacao: |
+        Não é questão de estilo nem de cache: o React está reaproveitando os elementos errados por causa das keys.
+    - texto: O índice muda ao inserir no topo, e o React associa as keys aos itens errados; use um id estável, como `t.id`
+      correta: true
+      explicacao: |
+        Exato! `key` é a identidade do item. Se ela é o índice, ao inserir no topo todos os índices mudam e o React reaproveita os elementos errados. Um id estável mantém cada item ligado aos seus próprios dados.
+      explicacao_erro: |
+        Usar `index` como key faz a identidade dos itens mudar quando a ordem muda. A correção é usar um id estável e único, como `t.id`.
+```

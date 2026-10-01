@@ -214,7 +214,7 @@ Esse é um divisor de águas para evitar confusões.
 * **Descrição do que aparece:** duas camadas empilhadas; cima “Type System”, baixo “JavaScript Runtime”.
 * **Opção 1: diagrama simples (ASCII)**
 
-  ```
+  ```text
   ┌────────────────────────────────────┐
   │ CAMADA DE TIPOS (TypeScript)        │  <- compile-time (editor/compilador)
   │ - interfaces, type aliases          │

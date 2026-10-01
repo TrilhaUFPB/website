@@ -112,7 +112,7 @@ O layout define **estrutura persistente** (header, footer), enquanto `page.tsx` 
 
 Cada pasta vira um segmento da URL:
 
-```
+```text
 app/
  ├─ page.tsx        → /
  └─ about/
@@ -140,7 +140,7 @@ Pastas entre parênteses, como `(auth)` ou `(dashboard)`, **não aparecem na URL
 
 ## Exemplo de árvore e URLs
 
-```
+```text
 app/
  ├─ layout.tsx
  ├─ page.tsx              → /

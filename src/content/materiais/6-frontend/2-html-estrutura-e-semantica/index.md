@@ -194,7 +194,7 @@ Títulos (`<h1>` a `<h6>`) formam uma **hierarquia de seções**. Eles ajudam:
 
 *Figura 2 — Hierarquia visual de títulos*
 
-```
+```text
 h1: Guia de HTML Semântico
   h2: Introdução
   h2: Estrutura do Documento
