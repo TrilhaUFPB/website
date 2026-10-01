@@ -8,11 +8,15 @@ export default {
       "role": "Presidente"
     },
     {
+      "personId": "JoaoGabrielArruda",
+      "role": "Líder de Logística"
+    },
+    {
       "personId": "Joaquim",
       "role": "Líder de Aulas"
     },
     {
-      "personId": "Bea",
+      "personId": "SergioFreitas",
       "role": "Líder de Mídias e Impacto"
     },
     {
@@ -45,10 +49,6 @@ export default {
     },
     {
       "personId": "GabrielCarvalho",
-      "role": "Membro da Organização"
-    },
-    {
-      "personId": "JoaoGabrielArruda",
       "role": "Membro da Organização"
     },
     {
@@ -89,10 +89,6 @@ export default {
     },
     {
       "personId": "LucianaNascimento",
-      "role": "Membro da Organização"
-    },
-    {
-      "personId": "SergioFreitas",
       "role": "Membro da Organização"
     }
   ]
