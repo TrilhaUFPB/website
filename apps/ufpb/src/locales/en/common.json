@@ -642,26 +642,40 @@
         "category": "fullstack",
         "title": "Introduction to Back-end Development",
         "description": "Understand the role of the back end in an application and how different systems communicate over the web. In this class, we will explore concepts such as clients and servers, requests and responses, HTTP, APIs, endpoints, HTTP methods, status codes, JSON, and data validation, putting these concepts into practice by building a simple API.",
-        "embedUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?utm_content=DAHCdA8c7fI&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "embedUrl": "https://www.canva.com/design/DAHWyie3oao/X2jDbN6AuA89mqXNumdBVw/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHWyie3oao/X2jDbN6AuA89mqXNumdBVw/edit",
         "date": "October 2, 2026",
         "deadline": "October 8, 2026",
-        "homework": "Homework coming soon.",
-        "links": [],
-        "dateISO": "2026-10-02"
+        "homework": "Follow the activity instructions in the fullstack-lab repository.",
+        "links": [
+          {
+            "label": "Open repository — fullstack-lab",
+            "url": "https://github.com/TrilhaUFPB/fullstack-lab"
+          }
+        ],
+        "dateISO": "2026-10-02",
+        "noSubmission": true,
+        "submissionNote": "We will follow your submission progress directly through your GitHub forks. Keep your activity changes up to date in your fork; you do not need to submit a link through a form."
       },
       {
         "number": "17",
         "category": "fullstack",
         "title": "Introduction to Databases",
         "description": "Learn how applications store, organize, and retrieve information persistently. We will cover the fundamentals of relational databases, including tables, entities, keys, relationships, constraints, and queries, and discuss how to turn an application's requirements into a consistent data model.",
-        "embedUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?utm_content=DAHBC_b0Jbs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "embedUrl": "https://docs.google.com/presentation/d/1H3-YZRjWsv7-Kq-acegIzsHEbIwj3BJdlwXv-D7gb1U/embed",
+        "canvaUrl": "https://docs.google.com/presentation/d/1H3-YZRjWsv7-Kq-acegIzsHEbIwj3BJdlwXv-D7gb1U/edit?slide=id.SLIDES_API2080733033_228#slide=id.SLIDES_API2080733033_228",
         "date": "October 9, 2026",
         "deadline": "October 15, 2026",
-        "homework": "Homework coming soon.",
-        "links": [],
-        "dateISO": "2026-10-09"
+        "homework": "Follow the Checkpoint 02 instructions in the fullstack-lab repository.",
+        "links": [
+          {
+            "label": "Open activity — Checkpoint 02",
+            "url": "https://github.com/TrilhaUFPB/fullstack-lab/blob/main/docs/checkpoint-02.md"
+          }
+        ],
+        "dateISO": "2026-10-09",
+        "noSubmission": true,
+        "submissionNote": "We will follow your submission progress directly through your GitHub forks. Keep your activity changes up to date in your fork; you do not need to submit a link through a form."
       },
       {
         "number": "18",
@@ -737,7 +751,8 @@
     "clearSearch": "Clear search",
     "noResults": "No lessons found for “{q}”.",
     "lessonSingular": "lesson",
-    "lessonPlural": "lessons"
+    "lessonPlural": "lessons",
+    "trackingTitle": "Submission progress"
   },
   "campus": {
     "text0": "The program",
