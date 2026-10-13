@@ -641,26 +641,40 @@
         "category": "fullstack",
         "title": "Introdução ao Back-end",
         "description": "Entenda o papel do back-end em uma aplicação e como diferentes sistemas se comunicam pela web. Nesta aula, vamos explorar conceitos como cliente e servidor, requisições e respostas, HTTP, APIs, endpoints, métodos HTTP, códigos de status, JSON e validação de dados, colocando esses conceitos em prática na construção de uma API simples.",
-        "embedUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHCdA8c7fI/k5WabounCxuqTjFHPnMi2g/view?utm_content=DAHCdA8c7fI&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "embedUrl": "https://www.canva.com/design/DAHWyie3oao/X2jDbN6AuA89mqXNumdBVw/view?embed",
+        "canvaUrl": "https://www.canva.com/design/DAHWyie3oao/X2jDbN6AuA89mqXNumdBVw/edit",
         "date": "2 de outubro de 2026",
         "deadline": "8 de outubro de 2026",
-        "homework": "Tarefa em breve.",
-        "links": [],
-        "dateISO": "2026-10-02"
+        "homework": "Siga as instruções da atividade no repositório fullstack-lab.",
+        "links": [
+          {
+            "label": "Acessar repositório — fullstack-lab",
+            "url": "https://github.com/TrilhaUFPB/fullstack-lab"
+          }
+        ],
+        "dateISO": "2026-10-02",
+        "noSubmission": true,
+        "submissionNote": "Vamos acompanhar o progresso das entregas diretamente pelos forks de vocês no GitHub. Mantenha as alterações da atividade atualizadas no seu fork; não é necessário enviar um link por formulário."
       },
       {
         "number": "17",
         "category": "fullstack",
         "title": "Introdução a Banco de Dados",
         "description": "Aprenda como aplicações armazenam, organizam e recuperam informações de forma persistente. Vamos entender os fundamentos de bancos de dados relacionais, passando por tabelas, entidades, chaves, relacionamentos, restrições e consultas, além de discutir como transformar os requisitos de uma aplicação em um modelo de dados consistente.",
-        "embedUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?embed",
-        "canvaUrl": "https://www.canva.com/design/DAHBC_b0Jbs/JITXL1dnTa857Wn2z9XpJQ/view?utm_content=DAHBC_b0Jbs&utm_campaign=designshare&utm_medium=embeds&utm_source=link",
+        "embedUrl": "https://docs.google.com/presentation/d/1H3-YZRjWsv7-Kq-acegIzsHEbIwj3BJdlwXv-D7gb1U/embed",
+        "canvaUrl": "https://docs.google.com/presentation/d/1H3-YZRjWsv7-Kq-acegIzsHEbIwj3BJdlwXv-D7gb1U/edit?slide=id.SLIDES_API2080733033_228#slide=id.SLIDES_API2080733033_228",
         "date": "9 de outubro de 2026",
         "deadline": "15 de outubro de 2026",
-        "homework": "Tarefa em breve.",
-        "links": [],
-        "dateISO": "2026-10-09"
+        "homework": "Siga as instruções do Checkpoint 02 no repositório fullstack-lab.",
+        "links": [
+          {
+            "label": "Acessar atividade — Checkpoint 02",
+            "url": "https://github.com/TrilhaUFPB/fullstack-lab/blob/main/docs/checkpoint-02.md"
+          }
+        ],
+        "dateISO": "2026-10-09",
+        "noSubmission": true,
+        "submissionNote": "Vamos acompanhar o progresso das entregas diretamente pelos forks de vocês no GitHub. Mantenha as alterações da atividade atualizadas no seu fork; não é necessário enviar um link por formulário."
       },
       {
         "number": "18",
@@ -736,7 +750,8 @@
     "clearSearch": "Limpar busca",
     "noResults": "Nenhuma aula encontrada para “{q}”.",
     "lessonSingular": "aula",
-    "lessonPlural": "aulas"
+    "lessonPlural": "aulas",
+    "trackingTitle": "Acompanhamento da entrega"
   },
   "campus": {
     "text0": "O programa",

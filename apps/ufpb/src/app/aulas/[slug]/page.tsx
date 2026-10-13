@@ -44,6 +44,7 @@ type Aula = {
   deadline?: string;
   taskType?: string;
   noSubmission?: boolean;
+  submissionNote?: string;
   openable?: boolean;
   demoUrl?: string;
   demoTitle?: string;
@@ -206,7 +207,7 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
             </ul>
           )}
 
-          {guidelines?.items?.length > 0 && (
+          {!aula.submissionNote && guidelines?.items?.length > 0 && (
             <div className="aula-guidelines">
               <span className="aula-guidelines-title">{guidelines.title}</span>
               <ul className="aula-guidelines-list">
@@ -217,7 +218,7 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
             </div>
           )}
 
-          <div className={`aula-tarefa-grid${aula.noSubmission ? ' aula-tarefa-grid--single' : ''}`}>
+          <div className={`aula-tarefa-grid${aula.noSubmission && !aula.submissionNote ? ' aula-tarefa-grid--single' : ''}`}>
             {/* Descrição */}
             <div>
               <h2 className="aula-tarefa-h2">{t('aulas.descricaoTitle')}</h2>
@@ -227,6 +228,15 @@ export default function AulaPage({ params }: { params: Promise<{ slug: string }>
                 </div>
               )}
             </div>
+
+            {aula.submissionNote && (
+              <div>
+                <h2 className="aula-tarefa-h2">{t('aulas.trackingTitle')}</h2>
+                <div className="aula-homework-box">
+                  <p>{aula.submissionNote}</p>
+                </div>
+              </div>
+            )}
 
             {/* Submeter: hidden when the task is graded elsewhere (e.g. a judge platform) */}
             {!aula.noSubmission && (

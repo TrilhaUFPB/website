@@ -13,6 +13,23 @@ function lesson(locale, number) {
   return locale.aulas.items.find((item) => item.number === number);
 }
 
+test('acompanha as duas atividades iniciais de fullstack pelos forks nos dois idiomas', () => {
+  for (const locale of [portuguese, english]) {
+    const backend = lesson(locale, '16');
+    const database = lesson(locale, '17');
+
+    assert.equal(backend.links[0].url, 'https://github.com/TrilhaUFPB/fullstack-lab');
+    assert.equal(database.links[0].url, 'https://github.com/TrilhaUFPB/fullstack-lab/blob/main/docs/checkpoint-02.md');
+    assert.equal(backend.embedUrl, 'https://www.canva.com/design/DAHWyie3oao/X2jDbN6AuA89mqXNumdBVw/view?embed');
+    assert.equal(database.embedUrl, 'https://docs.google.com/presentation/d/1H3-YZRjWsv7-Kq-acegIzsHEbIwj3BJdlwXv-D7gb1U/embed');
+    for (const aula of [backend, database]) {
+      assert.equal(aula.noSubmission, true);
+      assert.match(aula.submissionNote, /forks/);
+    }
+    assert.equal(lesson(locale, '18').noSubmission, undefined);
+  }
+});
+
 test('substitui a apresentação por uma roda de conversa em 04/09', () => {
   const aula12 = lesson(portuguese, '12');
 
