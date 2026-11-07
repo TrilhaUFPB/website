@@ -3,6 +3,11 @@ import Link from "next/link";
 import { getMaterialBySlug, generateAllMaterialParams, getAdjacentMaterials, getAllAreas, extractHeadings } from "@/lib/materials";
 import MarkdownRenderer from "@/components/materiais/MarkdownRenderer";
 import TableOfContents from "@/components/materiais/TableOfContents";
+import JsonLd from "@/components/JsonLd";
+
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://trilhaufpb.com"
+).replace(/\/$/, "");
 
 interface MaterialPageProps {
   params: Promise<{ segment: string; slug: string }>;
@@ -19,6 +24,7 @@ export async function generateMetadata({ params }: MaterialPageProps) {
   return {
     title: `${material.title} | Materiais Trilha UFPB`,
     description: material.description || `Material didático: ${material.title}`,
+    alternates: { canonical: `/materiais/${segment}/${slug}` },
   };
 }
 
@@ -33,8 +39,26 @@ export default async function MaterialPage({ params }: MaterialPageProps) {
   const readingTime = Math.ceil(wordCount / 200);
   const headings = extractHeadings(material.content);
 
+  const url = `${siteUrl}/materiais/${area}/${slug}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    name: material.title,
+    description: material.description || undefined,
+    url,
+    inLanguage: "pt-BR",
+    isAccessibleForFree: true,
+    learningResourceType: "Lição",
+    timeRequired: `PT${readingTime}M`,
+    isPartOf: currentArea
+      ? { "@type": "Course", name: currentArea.name, provider: { "@id": `${siteUrl}/#organization` } }
+      : undefined,
+    publisher: { "@id": `${siteUrl}/#organization` },
+  };
+
   return (
     <section className="section">
+      <JsonLd data={jsonLd} />
       <div className="container">
         <header className="section-head">
           <p className="eyebrow tag-dot" style={{ color: 'var(--mint-deep)' }}>

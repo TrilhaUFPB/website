@@ -8,6 +8,7 @@ import {
   Poppins,
   Space_Grotesk,
 } from "next/font/google";
+import JsonLd from "@/components/JsonLd";
 
 import { PostHogProvider } from "./posthog-provider";
 
@@ -44,6 +45,22 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://otrilha.com
 const description =
   "Uma comunidade de estudantes que abre caminhos para aprender, se conectar e construir, com Trilha UFPB, Momento, Hack The Path e Trilha UFPE.";
 
+const campusUrl = (
+  process.env.NEXT_PUBLIC_UFPB_URL?.trim() || "https://trilhaufpb.com"
+).replace(/\/$/, "");
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
+  name: "Trilha",
+  url: siteUrl,
+  description,
+  inLanguage: "pt-BR",
+  subOrganization: { "@type": "EducationalOrganization", name: "Trilha UFPB", url: campusUrl },
+  sameAs: [campusUrl],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -76,7 +93,10 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${spaceGrotesk.variable} ${dmSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <PostHogProvider>{children}</PostHogProvider>
+        <PostHogProvider>
+          <JsonLd data={organizationJsonLd} />
+          {children}
+        </PostHogProvider>
       </body>
     </html>
   );
