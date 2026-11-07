@@ -12,6 +12,7 @@ import {
 } from "next/font/google";
 import { I18nProvider } from "./i18n-provider";
 import { PostHogProvider } from "./posthog-provider";
+import JsonLd from "@/components/JsonLd";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -46,6 +47,22 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://trilhaufpb.
 const description =
   "Programa gratuito de programação, projetos e mentoria na UFPB. Aulas, materiais e uma comunidade de estudantes para aprender fazendo.";
 
+const communityUrl = (
+  process.env.NEXT_PUBLIC_TRILHA_URL?.trim() || "https://otrilha.com"
+).replace(/\/$/, "");
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "@id": `${siteUrl}/#organization`,
+  name: "Trilha UFPB",
+  url: siteUrl,
+  description,
+  inLanguage: "pt-BR",
+  parentOrganization: { "@type": "Organization", name: "Trilha", url: communityUrl },
+  sameAs: [communityUrl],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -79,6 +96,7 @@ export default function RootLayout({
         className={`${poppins.variable} ${spaceGrotesk.variable} ${dmSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <PostHogProvider>
+          <JsonLd data={organizationJsonLd} />
           <I18nProvider>{children}</I18nProvider>
         </PostHogProvider>
       </body>
