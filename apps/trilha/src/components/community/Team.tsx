@@ -1,6 +1,8 @@
 import { currentStudentIds, alumniIds, founderIds, leaderIds, leaderMembership, organizerIds } from '@trilha/people/directory';
 import { ButtonLink, ArrowIcon } from '@trilha/ui';
 import PersonCard from './PersonCard';
+import TeamViewSwitch from './TeamViewSwitch';
+import './trajetoria.css';
 
 const leadershipSections = [
  { title: 'Trilha', key: 'trilha' },
@@ -18,6 +20,7 @@ export default function Team() {
   <ButtonLink href="/"><ArrowIcon direction="left" /> Voltar ao Trilha</ButtonLink>
   <span className="section-label">QUEM SOMOS</span><h1>Uma rede feita de gente.</h1>
   <p>Conheça quem constrói o Trilha, compartilha conhecimento e faz nossas iniciativas acontecerem.</p>
+  <TeamViewSwitch current="grade" />
   <section className="directory-group" aria-label="Fundadores"><h2>Fundadores</h2><div className="team-grid people-map">{founderIds.map(id => <PersonCard key={id} personId={id} founder />)}</div></section>
   <section className="directory-group" aria-label="Líderes"><h2>Líderes</h2>
    {leadershipSections.filter(section => section.ids.length).map(section => <section className="leadership-subsection" key={section.key} aria-labelledby={`leaders-${section.key}`}>

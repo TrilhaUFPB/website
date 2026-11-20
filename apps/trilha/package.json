@@ -9,20 +9,26 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@trilha/people": "*",
+    "@trilha/ui": "*",
+    "d3-selection": "^3.0.0",
+    "d3-transition": "^3.0.1",
+    "d3-zoom": "^3.0.0",
     "next": "16.1.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "posthog-js": "^1.258.5",
     "posthog-node": "^5.6.0",
-    "@trilha/ui": "*",
-    "@trilha/people": "*"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@types/d3-selection": "^3.0.11",
+    "@types/d3-transition": "^3.0.9",
+    "@types/d3-zoom": "^3.0.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "typescript": "^5",
     "eslint": "^9",
-    "eslint-config-next": "16.1.6"
+    "eslint-config-next": "16.1.6",
+    "typescript": "^5"
   }
 }
