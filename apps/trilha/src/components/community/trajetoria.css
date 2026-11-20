@@ -1,0 +1,123 @@
+/* Grade / Trajetória switch, shared by both views of /equipe */
+.trilha-site .tj-switch { display: inline-flex; gap: 2px; margin-top: 28px; padding: 4px; border: 1px solid var(--night); border-radius: 999px; background: var(--trilha-paper); font-size: 13px; font-weight: 500; }
+.trilha-site .tj-switch a { padding: 8px 20px; border-radius: 999px; transition: background-color .15s ease; }
+.trilha-site .tj-switch a:hover { background: var(--mint); }
+.trilha-site .tj-switch a[aria-current="page"] { background: var(--night); color: var(--trilha-paper); }
+
+/* The page becomes the canvas: a compact header, then the grid runs edge to edge to the bottom. */
+.trilha-site.tj-fullpage { height: 100vh; height: 100dvh; overflow: hidden; color: var(--night); }
+.trilha-site .tj { display: flex; flex-direction: column; height: 100%; }
+.trilha-site .tj-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 48px; width: 100%; max-width: 1320px; margin: 0 auto; padding: 22px 30px 18px; }
+.trilha-site .tj-head-intro { max-width: 620px; }
+.trilha-site .tj-head .section-label { display: block; margin-top: 18px; }
+.trilha-site .tj-head h1 { margin: 6px 0 0; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.1; letter-spacing: -1.5px; }
+.trilha-site .tj-head p { margin: 10px 0 0; font-size: 14px; line-height: 1.7; }
+.trilha-site .tj-head .tj-switch { margin-top: 14px; }
+
+.trilha-site .tj-stats { display: flex; flex-wrap: wrap; gap: 12px 36px; margin: 0; }
+.trilha-site .tj-stats div { display: flex; flex-direction: column-reverse; }
+.trilha-site .tj-stats dt { font-size: 12px; color: var(--trilha-muted); }
+.trilha-site .tj-stats dd { margin: 0; font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif; font-size: 32px; font-weight: 600; letter-spacing: -1px; font-variant-numeric: tabular-nums; }
+
+/* canvas */
+.trilha-site .tj-canvas {
+  position: relative; flex: 1; min-height: 0;
+  border-top: 1px solid var(--trilha-border); overflow: hidden;
+  background-color: var(--trilha-paper);
+  background-image: radial-gradient(circle, #00092820 1px, transparent 1.2px);
+  cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+}
+.trilha-site .tj-canvas:active { cursor: grabbing; }
+.trilha-site .tj-canvas svg { display: block; font-family: var(--font-poppins), "Poppins", sans-serif; }
+.trilha-site .tj-ui { position: absolute; z-index: 2; cursor: default; }
+
+.tj-col { stroke: var(--trilha-border); stroke-dasharray: 2 5; }
+.tj-col-label { text-anchor: middle; font: 600 16px var(--font-space-grotesk), "Space Grotesk", sans-serif; fill: var(--trilha-ink); letter-spacing: -.3px; }
+.tj-col-sub { text-anchor: middle; font-size: 11px; fill: var(--trilha-muted); }
+
+.tj-lane { fill: none; stroke: var(--trilha-ink); stroke-opacity: .2; stroke-width: 2; stroke-linejoin: round; transition: stroke .15s, stroke-opacity .15s, stroke-width .15s; }
+.tj-lane.is-active { stroke: var(--trilha-electric); stroke-opacity: 1; stroke-width: 3; }
+.tj-link { fill: none; stroke: var(--trilha-ink); stroke-opacity: .1; stroke-width: 1.5; transition: stroke .15s, stroke-opacity .15s; }
+.tj-link.is-active { stroke: var(--trilha-electric); stroke-opacity: .9; stroke-width: 2.5; }
+.tj-name { text-anchor: end; font-size: 11px; fill: var(--trilha-ink); cursor: pointer; transition: opacity .2s; }
+.is-far .tj-name { opacity: 0; pointer-events: none; }
+
+.tj-node { cursor: pointer; outline: none; transition: opacity .15s; }
+.tj-node image, .tj-node .tj-initials-bg { transition: transform .15s ease-out; }
+.tj-node:hover image, .tj-node:hover .tj-initials-bg { transform: scale(1.06); }
+.tj-node:focus-visible .tj-ring, .tj-node:focus-visible .tj-ring-bg { stroke: var(--trilha-electric); stroke-width: 3; }
+.tj-ring, .tj-ring-bg { fill: var(--trilha-cream); stroke-width: 2.5; }
+.tj-ring--aluno { stroke: var(--trilha-sky); }
+.tj-ring--org { stroke: var(--trilha-electric); }
+.tj-ring--lider { stroke: var(--trilha-mint); }
+.tj-ring--fundador { stroke: var(--trilha-ink); }
+.tj-initials-bg { fill: #d8def0; }
+.tj-initials { text-anchor: middle; font-size: 8px; font-weight: 600; fill: var(--trilha-ink); }
+
+.tj-icon-bg { stroke: var(--trilha-paper); stroke-width: 1; }
+.tj-icon path, .tj-icon circle:not(.tj-icon-bg) { stroke-linejoin: round; stroke-linecap: round; }
+.tj-icon--aluno .tj-icon-bg { fill: var(--trilha-sky); }
+.tj-icon--aluno path { fill: var(--trilha-ink); stroke: var(--trilha-ink); stroke-width: .6; }
+.tj-icon--org .tj-icon-bg { fill: var(--trilha-electric); }
+.tj-icon--org :not(.tj-icon-bg) { fill: #fff; }
+.tj-icon--lider .tj-icon-bg { fill: var(--trilha-mint); }
+.tj-icon--lider path { fill: var(--trilha-ink); }
+.tj-icon--fundador .tj-icon-bg { fill: var(--trilha-ink); }
+.tj-icon--fundador path { fill: none; stroke: #fff; stroke-width: 1.1; }
+
+.tj-cluster { fill: var(--trilha-paper); stroke: var(--trilha-border); transition: stroke .15s; }
+.tj-cluster.is-active { stroke: var(--trilha-electric); stroke-width: 2; }
+.tj-cluster-label { font: 600 13px var(--font-space-grotesk), "Space Grotesk", sans-serif; fill: var(--trilha-ink); }
+.tj-cluster-count { fill: var(--trilha-muted); font-weight: 400; }
+
+/* overlay UI */
+.trilha-site .tj-legend { top: 12px; left: 12px; display: flex; flex-wrap: wrap; gap: 6px 16px; max-width: calc(100% - 300px); margin: 0; padding: 9px 16px; list-style: none; font-size: 12px; background: color-mix(in srgb, var(--trilha-paper) 92%, transparent); backdrop-filter: blur(6px); border: 1px solid var(--trilha-border); border-radius: 999px; }
+.trilha-site .tj-legend li { display: inline-flex; align-items: center; gap: 7px; }
+.trilha-site .tj-legend svg { flex: none; overflow: visible; }
+.trilha-site .tj-split-chip { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 2.5px solid; border-color: #123b37 #123b37 #665185 #665185; transform: rotate(45deg); }
+
+.trilha-site .tj-search { top: 12px; right: 12px; width: 240px; }
+.trilha-site .tj-search input { width: 100%; height: 38px; padding: 0 16px; border: 1px solid var(--trilha-border); border-radius: 999px; background: var(--trilha-paper); color: var(--night); font: inherit; font-size: 13px; outline: none; transition: border-color .15s; }
+.trilha-site .tj-search input:focus { border-color: var(--night); }
+.trilha-site .tj-search ul { margin: 6px 0 0; padding: 6px; list-style: none; background: var(--trilha-paper); border: 1px solid var(--trilha-border); border-radius: 14px; box-shadow: 0 10px 30px #00092818; }
+.trilha-site .tj-search li { display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 9px; font-size: 13px; cursor: pointer; }
+.trilha-site .tj-search li[aria-selected="true"] { background: #e8edff; }
+.trilha-site .tj-search img { flex: none; border-radius: 50%; object-fit: cover; }
+
+.trilha-site .tj-card { padding: 14px 16px; background: var(--trilha-paper); border: 1px solid var(--trilha-border); border-radius: 14px; box-shadow: 0 12px 36px #00092822; font-size: 12.5px; pointer-events: none; animation: tj-card-in .16s ease-out; }
+.trilha-site .tj-card.is-pinned { pointer-events: auto; border-color: var(--night); }
+.trilha-site .tj-card header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.trilha-site .tj-card header img, .trilha-site .tj-card-initials { flex: none; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; background: #d8def0; }
+.trilha-site .tj-card strong { display: block; font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif; font-size: 16px; line-height: 1.2; }
+.trilha-site .tj-card header a { font-size: 12px; color: var(--electric); }
+.trilha-site .tj-card header a:hover { text-decoration: underline; }
+.trilha-site .tj-card ol { display: grid; gap: 6px; margin: 0; padding: 10px 0 0; list-style: none; border-top: 1px solid var(--trilha-border); }
+.trilha-site .tj-card li { display: flex; align-items: center; gap: 8px; }
+.trilha-site .tj-card svg { flex: none; overflow: visible; }
+.trilha-site .tj-card-period { min-width: 44px; color: var(--trilha-muted); font-variant-numeric: tabular-nums; }
+.trilha-site .tj-card-init { flex: none; width: 10px; height: 10px; margin: 0 2px; border-radius: 50%; }
+@keyframes tj-card-in { from { opacity: 0; transform: translateY(4px); } }
+
+.trilha-site .tj-controls { right: 12px; bottom: 12px; display: flex; align-items: center; gap: 2px; padding: 4px; background: var(--trilha-paper); border: 1px solid var(--night); border-radius: 999px; box-shadow: var(--trilha-press-shadow); font-size: 12px; }
+.trilha-site .tj-controls button { min-width: 34px; height: 34px; padding: 0 10px; border: 0; border-radius: 999px; background: transparent; color: var(--night); font-size: 15px; cursor: pointer; transition: background-color .15s; }
+.trilha-site .tj-controls button:hover { background: var(--mint); }
+.trilha-site .tj-controls button:focus-visible { outline: 2px solid var(--electric); outline-offset: 1px; }
+.trilha-site .tj-controls .tj-controls-fit { margin-left: 4px; padding: 0 14px; font-size: 12px; border-left: 1px solid var(--trilha-border); border-radius: 0 999px 999px 0; }
+.trilha-site .tj-controls span { min-width: 40px; text-align: center; color: var(--trilha-muted); font-variant-numeric: tabular-nums; }
+.trilha-site .tj-help { position: absolute; left: 12px; bottom: 12px; z-index: 2; margin: 0; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--trilha-paper) 90%, transparent); backdrop-filter: blur(6px); font-size: 11px; color: var(--trilha-muted); pointer-events: none; }
+
+@media (max-width: 720px) {
+  .trilha-site .tj-head { padding: 20px 16px 16px; gap: 14px; }
+  .trilha-site .tj-head .section-label { margin-top: 16px; }
+  .trilha-site .tj-head p { display: none; }
+  .trilha-site .tj-stats { display: none; }
+  .trilha-site .tj-legend { right: 12px; max-width: none; border-radius: 14px; gap: 4px 12px; font-size: 11px; }
+  .trilha-site .tj-search { top: auto; bottom: 64px; left: 12px; right: 12px; width: auto; }
+  .trilha-site .tj-search ul { position: absolute; bottom: 44px; left: 0; right: 0; }
+  .trilha-site .tj-help { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tj-lane, .tj-link, .tj-node, .tj-cluster, .tj-name, .tj-node image { transition: none; }
+  .trilha-site .tj-card { animation: none; }
+}
